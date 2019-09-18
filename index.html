@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="None">
+        
+        
+        <link rel="shortcut icon" href="./img/favicon.ico">
+        <title>Manu Docs</title>
+        <link href="./css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="./css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="./css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="./css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+	
+	<script src="./js/jquery-1.10.2.min.js"></script>
+        <script src="./js/bootstrap-3.0.3.min.js"></script>
+        <script src="./js/highlight.pack.js"></script> 
+    </head>
+
+    <body class="homepage">
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href=".">Manu Docs</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#aprendiendo-a-usar-emacs">Aprendiendo a usar Emacs</a></li>
+            <li><a href="#comandos-importantes">Comandos importantes</a></li>
+            <li><a href="#atajos">Atajos</a></li>
+            <li><a href="#edicion">Edición</a></li>
+            <li><a href="#desplazamiento">Desplazamiento</a></li>
+            <li><a href="#acciones">Acciones</a></li>
+            <li><a href="#archivos">Archivos</a></li>
+            <li><a href="#ventanas-ventanas">Ventanas / Ventanas</a></li>
+            <li><a href="#observaciones">Observaciones</a></li>
+            <li><a href="#configuracion-personalizada">Configuración personalizada</a></li>
+            <li><a href="#informacion-adicional">Información Adicional</a></li>
+        <li class="main "><a href="#recursos">Recursos</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="aprendiendo-a-usar-emacs">Aprendiendo a usar Emacs</h1>
+<h2 id="comandos-importantes">Comandos importantes</h2>
+<ul>
+<li>C+g (Cancelar accion)</li>
+</ul>
+<hr />
+<h2 id="atajos">Atajos</h2>
+<ul>
+<li>C (Ctrl)</li>
+<li>X (Alt)</li>
+</ul>
+<hr />
+<h2 id="edicion">Edición</h2>
+<ul>
+<li>C-w (Cortar texto)</li>
+<li>C-w (Pegar texto)</li>
+<li>C-w (Copiar texto)</li>
+<li>C-w u (Deshacer cambio)</li>
+<li>C-x C-s (Guardar archivo)</li>
+</ul>
+<hr />
+<h2 id="desplazamiento">Desplazamiento</h2>
+<ul>
+<li>M-AvPag (Scrollear otra ventana, manteniendo el cursor en la actual)</li>
+<li>M-RePag (Scrollear otra ventana, manteniendo el cursor en la actual)</li>
+<li>C-s (Busqueda incremental, hacia adelante)</li>
+<li>C-r (Busqueda decremental, hacia atras)</li>
+<li>C-g (Finaliza búsqueda)</li>
+<li>C-u 8 * (Escribe el asterisco 8 veces)</li>
+<li>
+<p>M-Delback (Borra por palabras)</p>
+</li>
+<li>
+<p>C-k (Borra desde el puntero hasta el final de linea)</p>
+</li>
+<li>
+<p>M-k (Elimina texto hasta final del texto, parrafos)</p>
+</li>
+<li>
+<p>C-v  (Avanzar sig. Página)</p>
+</li>
+<li>M-v (Retroceder, anterior página)</li>
+<li>M-&lt; (Retroceder por palabras)</li>
+<li>M-&gt; (Avanzar por palabras)</li>
+<li>C-a (Principio de linea)</li>
+<li>C-e (Final de linea)</li>
+</ul>
+<hr />
+<h2 id="acciones">Acciones</h2>
+<ul>
+<li>M-x dired (Listar directorio)</li>
+<li>
+<p>M-x dired C-x C-f (Listar directorio-&gt;crear archivo)</p>
+</li>
+<li>
+<p>M-x (Abre la terminal)</p>
+</li>
+<li>M-x list-packages (Lista todos los paquetes)</li>
+</ul>
+<hr />
+<h2 id="archivos">Archivos</h2>
+<ul>
+<li>C-x C-b (Listar buffers)</li>
+</ul>
+<h2 id="ventanas-ventanas">Ventanas / Ventanas</h2>
+<ul>
+<li>C-x 1 (Cierras las otras ventanas que no son la actual)</li>
+<li>C-x 2 (Divide la ventana en 2)</li>
+<li>C-x o (Mueve el cursor a la otra ventana)</li>
+<li>C-x b (Cambiar a otro buffer)</li>
+</ul>
+<hr />
+<h2 id="observaciones">Observaciones</h2>
+<ul>
+<li>M-x dired<ul>
+<li>d (Agregar a la lista de acciones. Ej. Borrar, Modificar)</li>
+<li>x (Ejecutar la accion)</li>
+<li>g (Actualizar directorio)</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="configuracion-personalizada">Configuración personalizada</h2>
+<h3 id="1-abrir-ide-desde-la-terminal-sin-entorno-grafico-gui">1. Abrir IDE desde la terminal sin entorno gráfico (GUI)</h3>
+<blockquote>
+<p>emacs -nw</p>
+</blockquote>
+<h3 id="2-configurar-la-indentacion-del-codigo-tabulacion">2. Configurar la indentación del código (tabulación)</h3>
+<p><code>;; Set Indentation (tabs)
+;;https://www.gnu.org/software/emacs/manual/html_node/efaq/Changing-the-length-of-a-Tab.html
+;https://www.emacswiki.org/emacs/IndentationBasics 
+(setq-default tab-width 2)</code></p>
+<h3 id="3-autoindentacion">3. Autoindentación</h3>
+<p><code>;; https://www.emacswiki.org/emacs/AutoIndentation 
+(add-hook 'lisp-mode-hook '(lambda ()
+  (local-set-key (kbd "RET") 'newline-and-indent)))</code></p>
+<hr />
+<h2 id="informacion-adicional">Información Adicional</h2>
+<h3 id="1-como-usar-cx-b-cambiar-de-buffer">1. Como usar C+x b (Cambiar de buffer)</h3>
+<p>Puede continuar usando C-x o para cambiar entre las ventanas.  Cada ventana tiene su propia posición del cursor, pero únicamente una ventana actual muestra el cursor.  Todos los comandos de edición comunes se aplican a la ventana en que está el cursor.  Llamaremos esto la "ventana seleccionada".
+El comando C-M-v es muy útil cuando está editando un texto en una ventana y usando la otra ventana como referencia.  Puede mantener el cursor siempre en la ventana donde está editando, y avanzar a la otra ventana secuencialmente con C-M-v.</p>
+<h3 id="2-guardar">2. Guardar</h3>
+<p>“Esto copia el texto dentro de Emacs al archivo.  La primera vez que haga esto, Emacs renombrará el archivo original con un nuevo nombre para que éste no se pierda.  El nuevo nombre se hace agregando "~" al final del nombre del archivo original. Cuando guardar haya terminado, Emacs mostrará el nombre del archivo escrito.  Deberá guardar frecuentemente, para que no pierda mucho
+trabajo si el sistema falla.” Puede encontrar un archivo existente, para verlo o editarlo.  También puede hacerlo con un archivo que no exista.Ésta es la forma de crear un archivo en Emacs: encuentre el archivo, que comenzará vacío, luego comience a insertar el texto para ese archivo.  Cuando invoque "guardar" el archivo, Emacs creará realmente el archivo con el texto que ha insertado.  De ahí en adelante, puede considerarse estar editando un archivo existente.</p>
+<h3 id="3-buffers-ventanas">3. Buffers (Ventanas)</h3>
+<p>CUALQUIER texto que vea en una ventana de Emacs siempre es parte de un buffer.  Algunos buffers no corresponden a un archivo.  Por ejemplo, el buffer llamado "<em>Buffer List</em>" no tiene ningún archivo.  Es el buffer que contiene la lista de buffers que ha creado con C-x C-b.  El buffer llamado "<em>Messages</em>" tampoco tiene un archivo correspondiente; contiene los mensajes que han aparecido en la línea de abajo durante su sesión de Emacs.</p>
+<h3 id="4-auto-guardado">4. Auto guardado</h3>
+<p>Si ha hecho cambios en un archivo, pero no los ha guardado, éstos podrían perderse si su computadora falla.  Para protegerlo de esto, Emacs periódicamente escribe un archivo "auto guardado" para cada archivo que está editando.  El nombre del archivo auto guardado tiene un # al principio y al final; por ejemplo, si su archivo se llama "hola.c", su archivo auto guardado es "#hola.c#".  Cuando guarda por la vía normal, Emacs borra su archivo de auto guardado.
+Si la computadora falla, puede recuperar su edición de auto guardado encontrando el archivo normal (el archivo que estuvo editando, no el archivo de auto guardar) y entonces tecleando M-x recover file<Return>.  Cuando le pregunte por la confirmación, teclee yes<Return> para ir y recuperar la información del auto guardado.</p>
+<hr />
+<h1 id="recursos">Recursos</h1>
+<ul>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Exiting.html">Documentación Oficial</a></li>
+<li><a href="https://daringfireball.net/projects/markdown/syntax&gt;">Formatear texto .md</a></li>
+<li><a href="https://www.mkdocs.org/#getting-started&gt;">Documentar contenido</a></li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Other-Window.html">Comando C-M-v Scroll-other-window</a></li>
+</ul></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '.';</script>
+        <script data-main="./mkdocs/js/search.js" src="./mkdocs/js/require.js"></script>
+        <script src="./js/base.js"></script><div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 0.16.3
+Build Date UTC : 2019-09-18 23:15:22
+-->
