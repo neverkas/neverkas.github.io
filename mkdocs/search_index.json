@@ -2,102 +2,127 @@
     "docs": [
         {
             "location": "/",
-            "text": "Aprendiendo a usar Emacs\n\n\nComandos importantes\n\n\n\n\nC+g (Cancelar accion)\n\n\n\n\n\n\nAtajos\n\n\n\n\nC (Ctrl)\n\n\nX (Alt)\n\n\n\n\n\n\nEdici\u00f3n\n\n\n\n\nC-w (Cortar texto)\n\n\nC-w (Pegar texto)\n\n\nC-w (Copiar texto)\n\n\nC-w u (Deshacer cambio)\n\n\nC-x C-s (Guardar archivo)\n\n\n\n\n\n\nDesplazamiento\n\n\n\n\nM-AvPag (Scrollear otra ventana, manteniendo el cursor en la actual)\n\n\nM-RePag (Scrollear otra ventana, manteniendo el cursor en la actual)\n\n\nC-s (Busqueda incremental, hacia adelante)\n\n\nC-r (Busqueda decremental, hacia atras)\n\n\nC-g (Finaliza b\u00fasqueda)\n\n\nC-u 8 * (Escribe el asterisco 8 veces)\n\n\n\n\nM-Delback (Borra por palabras)\n\n\n\n\n\n\nC-k (Borra desde el puntero hasta el final de linea)\n\n\n\n\n\n\nM-k (Elimina texto hasta final del texto, parrafos)\n\n\n\n\n\n\nC-v  (Avanzar sig. P\u00e1gina)\n\n\n\n\nM-v (Retroceder, anterior p\u00e1gina)\n\n\nM-< (Retroceder por palabras)\n\n\nM-> (Avanzar por palabras)\n\n\nC-a (Principio de linea)\n\n\nC-e (Final de linea)\n\n\n\n\n\n\nAcciones\n\n\n\n\nM-x dired (Listar directorio)\n\n\n\n\nM-x dired C-x C-f (Listar directorio->crear archivo)\n\n\n\n\n\n\nM-x (Abre la terminal)\n\n\n\n\nM-x list-packages (Lista todos los paquetes)\n\n\n\n\n\n\nArchivos\n\n\n\n\nC-x C-b (Listar buffers)\n\n\n\n\nVentanas / Ventanas\n\n\n\n\nC-x 1 (Cierras las otras ventanas que no son la actual)\n\n\nC-x 2 (Divide la ventana en 2)\n\n\nC-x o (Mueve el cursor a la otra ventana)\n\n\nC-x b (Cambiar a otro buffer)\n\n\n\n\n\n\nObservaciones\n\n\n\n\nM-x dired\n\n\nd (Agregar a la lista de acciones. Ej. Borrar, Modificar)\n\n\nx (Ejecutar la accion)\n\n\ng (Actualizar directorio)\n\n\n\n\n\n\n\n\n\n\nConfiguraci\u00f3n personalizada\n\n\n1. Abrir IDE desde la terminal sin entorno gr\u00e1fico (GUI)\n\n\n\n\nemacs -nw\n\n\n\n\n2. Configurar la indentaci\u00f3n del c\u00f3digo (tabulaci\u00f3n)\n\n\n;; Set Indentation (tabs)\n;;https://www.gnu.org/software/emacs/manual/html_node/efaq/Changing-the-length-of-a-Tab.html\n;https://www.emacswiki.org/emacs/IndentationBasics \n(setq-default tab-width 2)\n\n\n3. Autoindentaci\u00f3n\n\n\n;; https://www.emacswiki.org/emacs/AutoIndentation \n(add-hook 'lisp-mode-hook '(lambda ()\n  (local-set-key (kbd \"RET\") 'newline-and-indent)))\n\n\n\n\nInformaci\u00f3n Adicional\n\n\n1. Como usar C+x b (Cambiar de buffer)\n\n\nPuede continuar usando C-x o para cambiar entre las ventanas.  Cada ventana tiene su propia posici\u00f3n del cursor, pero \u00fanicamente una ventana actual muestra el cursor.  Todos los comandos de edici\u00f3n comunes se aplican a la ventana en que est\u00e1 el cursor.  Llamaremos esto la \"ventana seleccionada\".\nEl comando C-M-v es muy \u00fatil cuando est\u00e1 editando un texto en una ventana y usando la otra ventana como referencia.  Puede mantener el cursor siempre en la ventana donde est\u00e1 editando, y avanzar a la otra ventana secuencialmente con C-M-v.\n\n\n2. Guardar\n\n\n\u201cEsto copia el texto dentro de Emacs al archivo.  La primera vez que haga esto, Emacs renombrar\u00e1 el archivo original con un nuevo nombre para que \u00e9ste no se pierda.  El nuevo nombre se hace agregando \"~\" al final del nombre del archivo original. Cuando guardar haya terminado, Emacs mostrar\u00e1 el nombre del archivo escrito.  Deber\u00e1 guardar frecuentemente, para que no pierda mucho\ntrabajo si el sistema falla.\u201d Puede encontrar un archivo existente, para verlo o editarlo.  Tambi\u00e9n puede hacerlo con un archivo que no exista.\u00c9sta es la forma de crear un archivo en Emacs: encuentre el archivo, que comenzar\u00e1 vac\u00edo, luego comience a insertar el texto para ese archivo.  Cuando invoque \"guardar\" el archivo, Emacs crear\u00e1 realmente el archivo con el texto que ha insertado.  De ah\u00ed en adelante, puede considerarse estar editando un archivo existente.\n\n\n3. Buffers (Ventanas)\n\n\nCUALQUIER texto que vea en una ventana de Emacs siempre es parte de un buffer.  Algunos buffers no corresponden a un archivo.  Por ejemplo, el buffer llamado \"\nBuffer List\n\" no tiene ning\u00fan archivo.  Es el buffer que contiene la lista de buffers que ha creado con C-x C-b.  El buffer llamado \"\nMessages\n\" tampoco tiene un archivo correspondiente; contiene los mensajes que han aparecido en la l\u00ednea de abajo durante su sesi\u00f3n de Emacs.\n\n\n4. Auto guardado\n\n\nSi ha hecho cambios en un archivo, pero no los ha guardado, \u00e9stos podr\u00edan perderse si su computadora falla.  Para protegerlo de esto, Emacs peri\u00f3dicamente escribe un archivo \"auto guardado\" para cada archivo que est\u00e1 editando.  El nombre del archivo auto guardado tiene un # al principio y al final; por ejemplo, si su archivo se llama \"hola.c\", su archivo auto guardado es \"#hola.c#\".  Cuando guarda por la v\u00eda normal, Emacs borra su archivo de auto guardado.\nSi la computadora falla, puede recuperar su edici\u00f3n de auto guardado encontrando el archivo normal (el archivo que estuvo editando, no el archivo de auto guardar) y entonces tecleando M-x recover file\n.  Cuando le pregunte por la confirmaci\u00f3n, teclee yes\n para ir y recuperar la informaci\u00f3n del auto guardado.\n\n\n\n\nRecursos\n\n\n\n\nDocumentaci\u00f3n Oficial\n\n\nFormatear texto .md\n\n\nDocumentar contenido\n\n\nComando C-M-v Scroll-other-window",
+            "text": "Objetivo personal\n\n\n\n\nCompartir conocimiento acerca de los lenguajes de programaci\u00f3n, nuevas tecnolog\u00edas e informaci\u00f3n \u00fatil y necesaria para mantenerme siempre actualizado. Espero poder ayudar a quienes tengan ganas de aprender.\n\n\n\n\n\n\nDocumentaci\u00f3n\n\n\nProgramaci\u00f3n\n\n\n\n\nAprendiendo a usar Emacs, un IDE muy potente.\n\nIr a la p\u00e1gina\n\n\n\n\n\n\nRecursos\n\n\n\n\nFormatear texto .md\n\n\nDocumentar contenido",
             "title": "Home"
         },
         {
-            "location": "/#aprendiendo-a-usar-emacs",
+            "location": "/#objetivo-personal",
+            "text": "Compartir conocimiento acerca de los lenguajes de programaci\u00f3n, nuevas tecnolog\u00edas e informaci\u00f3n \u00fatil y necesaria para mantenerme siempre actualizado. Espero poder ayudar a quienes tengan ganas de aprender.",
+            "title": "Objetivo personal"
+        },
+        {
+            "location": "/#documentacion",
+            "text": "",
+            "title": "Documentaci\u00f3n"
+        },
+        {
+            "location": "/#programacion",
+            "text": "Aprendiendo a usar Emacs, un IDE muy potente. Ir a la p\u00e1gina",
+            "title": "Programaci\u00f3n"
+        },
+        {
+            "location": "/#recursos",
+            "text": "Formatear texto .md  Documentar contenido",
+            "title": "Recursos"
+        },
+        {
+            "location": "/programacion/",
+            "text": "Aprendiendo a usar Emacs\n\n\nComandos importantes\n\n\n\n\nC+g (Cancelar accion)\n\n\n\n\n\n\nAtajos\n\n\n\n\nC (Ctrl)\n\n\nX (Alt)\n\n\n\n\n\n\nEdici\u00f3n\n\n\n\n\nC-w (Cortar texto)\n\n\nC-w (Pegar texto)\n\n\nC-w (Copiar texto)\n\n\nC-w u (Deshacer cambio)\n\n\nC-x C-s (Guardar archivo)\n\n\n\n\n\n\nDesplazamiento\n\n\n\n\nM-AvPag (Scrollear otra ventana, manteniendo el cursor en la actual)\n\n\nM-RePag (Scrollear otra ventana, manteniendo el cursor en la actual)\n\n\nC-s (Busqueda incremental, hacia adelante)\n\n\nC-r (Busqueda decremental, hacia atras)\n\n\nC-g (Finaliza b\u00fasqueda)\n\n\nC-u 8 * (Escribe el asterisco 8 veces)\n\n\n\n\nM-Delback (Borra por palabras)\n\n\n\n\n\n\nC-k (Borra desde el puntero hasta el final de linea)\n\n\n\n\n\n\nM-k (Elimina texto hasta final del texto, parrafos)\n\n\n\n\n\n\nC-v  (Avanzar sig. P\u00e1gina)\n\n\n\n\nM-v (Retroceder, anterior p\u00e1gina)\n\n\nM-< (Retroceder por palabras)\n\n\nM-> (Avanzar por palabras)\n\n\nC-a (Principio de linea)\n\n\nC-e (Final de linea)\n\n\n\n\n\n\nAcciones\n\n\n\n\nM-x dired (Listar directorio)\n\n\n\n\nM-x dired C-x C-f (Listar directorio->crear archivo)\n\n\n\n\n\n\nM-x (Abre la terminal)\n\n\n\n\nM-x list-packages (Lista todos los paquetes)\n\n\n\n\n\n\nArchivos\n\n\n\n\nC-x C-b (Listar buffers)\n\n\n\n\nVentanas / Ventanas\n\n\n\n\nC-x 1 (Cierras las otras ventanas que no son la actual)\n\n\nC-x 2 (Divide la ventana en 2)\n\n\nC-x o (Mueve el cursor a la otra ventana)\n\n\nC-x b (Cambiar a otro buffer)\n\n\n\n\n\n\nObservaciones\n\n\n\n\nM-x dired\n\n\nd (Agregar a la lista de acciones. Ej. Borrar, Modificar)\n\n\nx (Ejecutar la accion)\n\n\ng (Actualizar directorio)\n\n\n\n\n\n\n\n\n\n\nConfiguraci\u00f3n personalizada\n\n\n1. Abrir IDE desde la terminal sin entorno gr\u00e1fico (GUI)\n\n\n\n\nemacs -nw\n\n\n\n\n2. Configurar la indentaci\u00f3n del c\u00f3digo (tabulaci\u00f3n)\n\n\n;; Set Indentation (tabs)\n;;https://www.gnu.org/software/emacs/manual/html_node/efaq/Changing-the-length-of-a-Tab.html\n;https://www.emacswiki.org/emacs/IndentationBasics \n(setq-default tab-width 2)\n\n\n3. Autoindentaci\u00f3n\n\n\n;; https://www.emacswiki.org/emacs/AutoIndentation \n(add-hook 'lisp-mode-hook '(lambda ()\n  (local-set-key (kbd \"RET\") 'newline-and-indent)))\n\n\n\n\nInformaci\u00f3n Adicional\n\n\n1. Como usar C+x b (Cambiar de buffer)\n\n\nPuede continuar usando C-x o para cambiar entre las ventanas.  Cada ventana tiene su propia posici\u00f3n del cursor, pero \u00fanicamente una ventana actual muestra el cursor.  Todos los comandos de edici\u00f3n comunes se aplican a la ventana en que est\u00e1 el cursor.  Llamaremos esto la \"ventana seleccionada\".\nEl comando C-M-v es muy \u00fatil cuando est\u00e1 editando un texto en una ventana y usando la otra ventana como referencia.  Puede mantener el cursor siempre en la ventana donde est\u00e1 editando, y avanzar a la otra ventana secuencialmente con C-M-v.\n\n\n2. Guardar\n\n\n\u201cEsto copia el texto dentro de Emacs al archivo.  La primera vez que haga esto, Emacs renombrar\u00e1 el archivo original con un nuevo nombre para que \u00e9ste no se pierda.  El nuevo nombre se hace agregando \"~\" al final del nombre del archivo original. Cuando guardar haya terminado, Emacs mostrar\u00e1 el nombre del archivo escrito.  Deber\u00e1 guardar frecuentemente, para que no pierda mucho\ntrabajo si el sistema falla.\u201d Puede encontrar un archivo existente, para verlo o editarlo.  Tambi\u00e9n puede hacerlo con un archivo que no exista.\u00c9sta es la forma de crear un archivo en Emacs: encuentre el archivo, que comenzar\u00e1 vac\u00edo, luego comience a insertar el texto para ese archivo.  Cuando invoque \"guardar\" el archivo, Emacs crear\u00e1 realmente el archivo con el texto que ha insertado.  De ah\u00ed en adelante, puede considerarse estar editando un archivo existente.\n\n\n3. Buffers (Ventanas)\n\n\nCUALQUIER texto que vea en una ventana de Emacs siempre es parte de un buffer.  Algunos buffers no corresponden a un archivo.  Por ejemplo, el buffer llamado \"\nBuffer List\n\" no tiene ning\u00fan archivo.  Es el buffer que contiene la lista de buffers que ha creado con C-x C-b.  El buffer llamado \"\nMessages\n\" tampoco tiene un archivo correspondiente; contiene los mensajes que han aparecido en la l\u00ednea de abajo durante su sesi\u00f3n de Emacs.\n\n\n4. Auto guardado\n\n\nSi ha hecho cambios en un archivo, pero no los ha guardado, \u00e9stos podr\u00edan perderse si su computadora falla.  Para protegerlo de esto, Emacs peri\u00f3dicamente escribe un archivo \"auto guardado\" para cada archivo que est\u00e1 editando.  El nombre del archivo auto guardado tiene un # al principio y al final; por ejemplo, si su archivo se llama \"hola.c\", su archivo auto guardado es \"#hola.c#\".  Cuando guarda por la v\u00eda normal, Emacs borra su archivo de auto guardado.\nSi la computadora falla, puede recuperar su edici\u00f3n de auto guardado encontrando el archivo normal (el archivo que estuvo editando, no el archivo de auto guardar) y entonces tecleando M-x recover file\n.  Cuando le pregunte por la confirmaci\u00f3n, teclee yes\n para ir y recuperar la informaci\u00f3n del auto guardado.\n\n\n\n\nRecursos\n\n\n\n\nDocumentaci\u00f3n Oficial\n\n\nComando C-M-v Scroll-other-window",
+            "title": "Programacion"
+        },
+        {
+            "location": "/programacion/#aprendiendo-a-usar-emacs",
             "text": "",
             "title": "Aprendiendo a usar Emacs"
         },
         {
-            "location": "/#comandos-importantes",
+            "location": "/programacion/#comandos-importantes",
             "text": "C+g (Cancelar accion)",
             "title": "Comandos importantes"
         },
         {
-            "location": "/#atajos",
+            "location": "/programacion/#atajos",
             "text": "C (Ctrl)  X (Alt)",
             "title": "Atajos"
         },
         {
-            "location": "/#edicion",
+            "location": "/programacion/#edicion",
             "text": "C-w (Cortar texto)  C-w (Pegar texto)  C-w (Copiar texto)  C-w u (Deshacer cambio)  C-x C-s (Guardar archivo)",
             "title": "Edici\u00f3n"
         },
         {
-            "location": "/#desplazamiento",
+            "location": "/programacion/#desplazamiento",
             "text": "M-AvPag (Scrollear otra ventana, manteniendo el cursor en la actual)  M-RePag (Scrollear otra ventana, manteniendo el cursor en la actual)  C-s (Busqueda incremental, hacia adelante)  C-r (Busqueda decremental, hacia atras)  C-g (Finaliza b\u00fasqueda)  C-u 8 * (Escribe el asterisco 8 veces)   M-Delback (Borra por palabras)    C-k (Borra desde el puntero hasta el final de linea)    M-k (Elimina texto hasta final del texto, parrafos)    C-v  (Avanzar sig. P\u00e1gina)   M-v (Retroceder, anterior p\u00e1gina)  M-< (Retroceder por palabras)  M-> (Avanzar por palabras)  C-a (Principio de linea)  C-e (Final de linea)",
             "title": "Desplazamiento"
         },
         {
-            "location": "/#acciones",
+            "location": "/programacion/#acciones",
             "text": "M-x dired (Listar directorio)   M-x dired C-x C-f (Listar directorio->crear archivo)    M-x (Abre la terminal)   M-x list-packages (Lista todos los paquetes)",
             "title": "Acciones"
         },
         {
-            "location": "/#archivos",
+            "location": "/programacion/#archivos",
             "text": "C-x C-b (Listar buffers)",
             "title": "Archivos"
         },
         {
-            "location": "/#ventanas-ventanas",
+            "location": "/programacion/#ventanas-ventanas",
             "text": "C-x 1 (Cierras las otras ventanas que no son la actual)  C-x 2 (Divide la ventana en 2)  C-x o (Mueve el cursor a la otra ventana)  C-x b (Cambiar a otro buffer)",
             "title": "Ventanas / Ventanas"
         },
         {
-            "location": "/#observaciones",
+            "location": "/programacion/#observaciones",
             "text": "M-x dired  d (Agregar a la lista de acciones. Ej. Borrar, Modificar)  x (Ejecutar la accion)  g (Actualizar directorio)",
             "title": "Observaciones"
         },
         {
-            "location": "/#configuracion-personalizada",
+            "location": "/programacion/#configuracion-personalizada",
             "text": "",
             "title": "Configuraci\u00f3n personalizada"
         },
         {
-            "location": "/#1-abrir-ide-desde-la-terminal-sin-entorno-grafico-gui",
+            "location": "/programacion/#1-abrir-ide-desde-la-terminal-sin-entorno-grafico-gui",
             "text": "emacs -nw",
             "title": "1. Abrir IDE desde la terminal sin entorno gr\u00e1fico (GUI)"
         },
         {
-            "location": "/#2-configurar-la-indentacion-del-codigo-tabulacion",
+            "location": "/programacion/#2-configurar-la-indentacion-del-codigo-tabulacion",
             "text": ";; Set Indentation (tabs)\n;;https://www.gnu.org/software/emacs/manual/html_node/efaq/Changing-the-length-of-a-Tab.html\n;https://www.emacswiki.org/emacs/IndentationBasics \n(setq-default tab-width 2)",
             "title": "2. Configurar la indentaci\u00f3n del c\u00f3digo (tabulaci\u00f3n)"
         },
         {
-            "location": "/#3-autoindentacion",
+            "location": "/programacion/#3-autoindentacion",
             "text": ";; https://www.emacswiki.org/emacs/AutoIndentation \n(add-hook 'lisp-mode-hook '(lambda ()\n  (local-set-key (kbd \"RET\") 'newline-and-indent)))",
             "title": "3. Autoindentaci\u00f3n"
         },
         {
-            "location": "/#informacion-adicional",
+            "location": "/programacion/#informacion-adicional",
             "text": "",
             "title": "Informaci\u00f3n Adicional"
         },
         {
-            "location": "/#1-como-usar-cx-b-cambiar-de-buffer",
+            "location": "/programacion/#1-como-usar-cx-b-cambiar-de-buffer",
             "text": "Puede continuar usando C-x o para cambiar entre las ventanas.  Cada ventana tiene su propia posici\u00f3n del cursor, pero \u00fanicamente una ventana actual muestra el cursor.  Todos los comandos de edici\u00f3n comunes se aplican a la ventana en que est\u00e1 el cursor.  Llamaremos esto la \"ventana seleccionada\".\nEl comando C-M-v es muy \u00fatil cuando est\u00e1 editando un texto en una ventana y usando la otra ventana como referencia.  Puede mantener el cursor siempre en la ventana donde est\u00e1 editando, y avanzar a la otra ventana secuencialmente con C-M-v.",
             "title": "1. Como usar C+x b (Cambiar de buffer)"
         },
         {
-            "location": "/#2-guardar",
+            "location": "/programacion/#2-guardar",
             "text": "\u201cEsto copia el texto dentro de Emacs al archivo.  La primera vez que haga esto, Emacs renombrar\u00e1 el archivo original con un nuevo nombre para que \u00e9ste no se pierda.  El nuevo nombre se hace agregando \"~\" al final del nombre del archivo original. Cuando guardar haya terminado, Emacs mostrar\u00e1 el nombre del archivo escrito.  Deber\u00e1 guardar frecuentemente, para que no pierda mucho\ntrabajo si el sistema falla.\u201d Puede encontrar un archivo existente, para verlo o editarlo.  Tambi\u00e9n puede hacerlo con un archivo que no exista.\u00c9sta es la forma de crear un archivo en Emacs: encuentre el archivo, que comenzar\u00e1 vac\u00edo, luego comience a insertar el texto para ese archivo.  Cuando invoque \"guardar\" el archivo, Emacs crear\u00e1 realmente el archivo con el texto que ha insertado.  De ah\u00ed en adelante, puede considerarse estar editando un archivo existente.",
             "title": "2. Guardar"
         },
         {
-            "location": "/#3-buffers-ventanas",
+            "location": "/programacion/#3-buffers-ventanas",
             "text": "CUALQUIER texto que vea en una ventana de Emacs siempre es parte de un buffer.  Algunos buffers no corresponden a un archivo.  Por ejemplo, el buffer llamado \" Buffer List \" no tiene ning\u00fan archivo.  Es el buffer que contiene la lista de buffers que ha creado con C-x C-b.  El buffer llamado \" Messages \" tampoco tiene un archivo correspondiente; contiene los mensajes que han aparecido en la l\u00ednea de abajo durante su sesi\u00f3n de Emacs.",
             "title": "3. Buffers (Ventanas)"
         },
         {
-            "location": "/#4-auto-guardado",
+            "location": "/programacion/#4-auto-guardado",
             "text": "Si ha hecho cambios en un archivo, pero no los ha guardado, \u00e9stos podr\u00edan perderse si su computadora falla.  Para protegerlo de esto, Emacs peri\u00f3dicamente escribe un archivo \"auto guardado\" para cada archivo que est\u00e1 editando.  El nombre del archivo auto guardado tiene un # al principio y al final; por ejemplo, si su archivo se llama \"hola.c\", su archivo auto guardado es \"#hola.c#\".  Cuando guarda por la v\u00eda normal, Emacs borra su archivo de auto guardado.\nSi la computadora falla, puede recuperar su edici\u00f3n de auto guardado encontrando el archivo normal (el archivo que estuvo editando, no el archivo de auto guardar) y entonces tecleando M-x recover file .  Cuando le pregunte por la confirmaci\u00f3n, teclee yes  para ir y recuperar la informaci\u00f3n del auto guardado.",
             "title": "4. Auto guardado"
         },
         {
-            "location": "/#recursos",
-            "text": "Documentaci\u00f3n Oficial  Formatear texto .md  Documentar contenido  Comando C-M-v Scroll-other-window",
+            "location": "/programacion/#recursos",
+            "text": "Documentaci\u00f3n Oficial  Comando C-M-v Scroll-other-window",
             "title": "Recursos"
         }
     ]
