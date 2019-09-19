@@ -2,13 +2,13 @@
     "docs": [
         {
             "location": "/",
-            "text": "Objetivo personal\n\n\n\n\nCompartir conocimiento acerca de los lenguajes de programaci\u00f3n, nuevas tecnolog\u00edas e informaci\u00f3n \u00fatil y necesaria para mantenerme siempre actualizado. Espero poder ayudar a quienes tengan ganas de aprender.\n\n\n\n\n\n\nDocumentaci\u00f3n\n\n\nProgramaci\u00f3n\n\n\n\n\nAprendiendo a usar Emacs, un IDE muy potente.\n\nIr a la p\u00e1gina\n\n\n\n\n\n\nRecursos\n\n\n\n\nFormatear texto .md\n\n\nDocumentar contenido",
+            "text": "Objetivo\n\n\n\n\nCompartir conocimiento acerca de los lenguajes de programaci\u00f3n, nuevas tecnolog\u00edas e informaci\u00f3n \u00fatil y necesaria para mantenerse siempre actualizado. Dirigido a quienes realmente tengan ganas de aprender.\n\n\n\n\n\n\nDocumentaci\u00f3n\n\n\nProgramaci\u00f3n\n\n\n\n\nAprendiendo a usar Emacs, un IDE muy potente.\n\nIr a la p\u00e1gina\n\n\n\n\n\n\nRecursos\n\n\n\n\nFormatear texto .md\n\n\nDocumentar contenido",
             "title": "Home"
         },
         {
-            "location": "/#objetivo-personal",
-            "text": "Compartir conocimiento acerca de los lenguajes de programaci\u00f3n, nuevas tecnolog\u00edas e informaci\u00f3n \u00fatil y necesaria para mantenerme siempre actualizado. Espero poder ayudar a quienes tengan ganas de aprender.",
-            "title": "Objetivo personal"
+            "location": "/#objetivo",
+            "text": "Compartir conocimiento acerca de los lenguajes de programaci\u00f3n, nuevas tecnolog\u00edas e informaci\u00f3n \u00fatil y necesaria para mantenerse siempre actualizado. Dirigido a quienes realmente tengan ganas de aprender.",
+            "title": "Objetivo"
         },
         {
             "location": "/#documentacion",
