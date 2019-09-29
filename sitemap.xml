@@ -4,15 +4,39 @@
     
     <url>
      <loc>/</loc>
-     <lastmod>2019-09-18</lastmod>
+     <lastmod>2019-09-29</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
 
     
     <url>
-     <loc>/programacion/</loc>
-     <lastmod>2019-09-18</lastmod>
+     <loc>/guia-linux-parte-1/</loc>
+     <lastmod>2019-09-29</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/guia-linux-parte-2/</loc>
+     <lastmod>2019-09-29</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/ide-emacs/</loc>
+     <lastmod>2019-09-29</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/virtualbox/</loc>
+     <lastmod>2019-09-29</lastmod>
      <changefreq>daily</changefreq>
     </url>
     

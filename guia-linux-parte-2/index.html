@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Guia linux parte 2 - Manu Docs</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+	
+	<script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="..">Manu Docs</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                    <li >
+                        <a href="..">Home</a>
+                    </li>
+                    <li >
+                        <a href="../guia-linux-parte-1/">Guia linux parte 1</a>
+                    </li>
+                    <li class="active">
+                        <a href="./">Guia linux parte 2</a>
+                    </li>
+                    <li >
+                        <a href="../ide-emacs/">Ide emacs</a>
+                    </li>
+                    <li >
+                        <a href="../virtualbox/">Virtualbox</a>
+                    </li>
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../guia-linux-parte-1/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../ide-emacs/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#1-tareas-procesos">1. Tareas &amp;&amp; Procesos</a></li>
+            <li><a href="#11-iniciar-tareas">1.1 Iniciar tareas</a></li>
+            <li><a href="#114-pasar-una-tarea-a-primer-o-segundo-plano">1.1.4 Pasar una tarea a primer o segundo plano</a></li>
+            <li><a href="#12-ver-procesos-y-tareas">1.2 Ver procesos y tareas</a></li>
+            <li><a href="#13-detener-una-tarea-en-ejecucion">1.3 Detener una tarea en ejecución</a></li>
+            <li><a href="#14-guardar-un-proceso-dependiente-de-una-terminal">1.4 Guardar un proceso dependiente de una terminal</a></li>
+            <li><a href="#15-practicando-procesos-tareas">1.5 Practicando procesos, tareas</a></li>
+            <li><a href="#2-sincronizar-directorios">2 Sincronizar directorios</a></li>
+            <li><a href="#21-copiar-un-directorio-local-a-otro">2.1 Copiar un directorio local a otro</a></li>
+        <li class="main "><a href="#referencia">Referencia</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="1-tareas-procesos">1. Tareas &amp;&amp; Procesos</h1>
+<blockquote>
+<p>Los <strong>procesos</strong> son programas que se pueden estar ejecutando o no. Estos procesos se los llama <strong>tarea</strong> en caso de que se esten corriendo en el sistema.</p>
+<p>Las <strong>tareas</strong> se pueden iniciar tanto en <strong>primer plano</strong> (foreground) como en <strong>segundo plano</strong> (background). En el primer caso, se puede dar si se ejecuta la tarea desde la terminal, esta tomará el control de la consola y solo se podra hacer uso de la terminal cuando la tarea finalize o que nosotros la finalizemos. En el segundo caso, permiten utilizar la terminal mientras la tarea se está ejecutando.</p>
+</blockquote>
+<h2 id="11-iniciar-tareas">1.1 Iniciar tareas</h2>
+<h3 id="111-iniciar-una-tarea-en-primer-plano">1.1.1 Iniciar una tarea en primer plano</h3>
+<blockquote>
+<p>Esta tarea se va a seguir ejecutando hasta que se finalice desde la interfáz gráfica de ese programa, o si se finaliza desde la terminal, hasta tanto no se puede usar esa terminal para otros comandos.</p>
+</blockquote>
+<pre><code class="bash">firefox # inicia el navegador firefox en primer plano
+</code></pre>
+
+<h3 id="112-iniciar-una-tarea-en-segundo-plano">1.1.2 Iniciar una tarea en segundo plano</h3>
+<blockquote>
+<p>En segundo plano se pueden agregar aquellas que no necesitan interactuar con la consola, es como un "esconder" mientras se ejecutan.</p>
+</blockquote>
+<pre><code class="bash">firefox &amp; # inicia el navegador firefox en segundo plano
+tar -cvzf fotos.tar.gz fotos &amp; # comprimir los archivos de la carpeta fotos
+</code></pre>
+
+<blockquote>
+<p>Observación: Sólo se necesita de agregar el <strong>&amp;</strong> seguido de nombre del programa</p>
+</blockquote>
+<h3 id="113-evitar-imprimir-mensajes-de-una-tarea-que-esta-segundo-plano">1.1.3 Evitar imprimir  mensajes de una tarea que está segundo plano</h3>
+<blockquote>
+<p>Con el comando <strong>nohup</strong> podemos seguir utilizando la terminal, sin que aparezcan los mensajes que generan los programas que tenemos en segundo plano.</p>
+</blockquote>
+<pre><code class="bash">nohup mkdocs serve &amp; # corre el programa &quot;mkdocs&quot; en segundo plano, y no mostrará los mensajes
+</code></pre>
+
+<h2 id="114-pasar-una-tarea-a-primer-o-segundo-plano">1.1.4 Pasar una tarea a primer o segundo plano</h2>
+<blockquote>
+<p>A veces puede ocurrir que se desee alternar</p>
+</blockquote>
+<pre><code class="bash">fg numeroTarea # pasa una tarea a primer plano
+fg numeroTarea # pasa la tarea a segundo plano
+</code></pre>
+
+<h2 id="12-ver-procesos-y-tareas">1.2 Ver procesos y tareas</h2>
+<blockquote>
+<p>Con el comando <strong>jobs</strong> podemos conocer las tareas que se ejecutan en segundo plano desde la terminal que tenemos abierta. Este nos detallará el <strong>número de proceso</strong>(important para luego detenerlo), su <strong>estado de ejecución</strong>.</p>
+<p>Con el comando <strong>ps</strong> nos mostrará todas las tareas (dispone de varios parametros que personalizan la información)</p>
+</blockquote>
+<p>Algunas referencias a las columnas del listado de procesos:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Columna</th>
+<th align="left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">pid</td>
+<td align="left">Identificador del proceso</td>
+</tr>
+<tr>
+<td align="left">tty</td>
+<td align="left">Identifica la terminal donde esta corriendo</td>
+</tr>
+<tr>
+<td align="left">comm</td>
+<td align="left">Es el comando que se ejecutó en la terminal</td>
+</tr>
+<tr>
+<td align="left">etime</td>
+<td align="left">Cantidad de tiempo en ejecución</td>
+</tr>
+<tr>
+<td align="left">%mem</td>
+<td align="left">Cuanto ocupa en memoria</td>
+</tr>
+<tr>
+<td align="left">%cpu</td>
+<td align="left">Cuanto utiliza del procesador</td>
+</tr>
+</tbody>
+</table>
+<p>Otras referencias de los parámetros para el comando <strong>ps</strong> que lista los procesos:</p>
+<table>
+<thead>
+<tr>
+<th align="center">Parámetro</th>
+<th align="left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">a</td>
+<td align="left">Muestra los procesos que tienen una terminal controladora</td>
+</tr>
+<tr>
+<td align="center">x</td>
+<td align="left">Muestra los procesos que "no" tienen una terminal controladora</td>
+</tr>
+<tr>
+<td align="center">f</td>
+<td align="left">Muestra las relaciones padre/hijo entre los procesos</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="bash">jobs # devuelve una lista con las tareas en ejecución en la terminal actual
+ps   # devuelve todas las tareas 
+</code></pre>
+
+<h3 id="121-obtener-solo-el-numero-de-proceso">1.2.1 Obtener solo el número de proceso</h3>
+<blockquote>
+<p>Suelo optar por <strong>pgrep</strong> seguido del nombre del proceso, que es mas sencillo.
+Aunque también de una más extensa sería con <strong>ps</strong> para listar los procesos, con filtrar el proceso con <strong>grep</strong> y retornar la columna del PID con <strong>awk</strong></p>
+</blockquote>
+<pre><code class="bash">pgrep | nombreTarea     # devuelve el numero de id del un proceso
+ps | grep nombreTarea | awk '{print $1}' # también devuelve el numero de id del proceso
+</code></pre>
+
+<h3 id="122-obtener-solo-algunos-datos-de-los-procesos">1.2.2 Obtener solo algunos datos de los procesos</h3>
+<blockquote>
+<p>En caso de querer saber solo algunas de las columnas de <strong>ps</strong> podemos usar el parametro <strong>eo</strong> seguido de las columnas. 
+Algunos campos podrian ser</p>
+</blockquote>
+<pre><code class="bash">ps -eo pid,comm,etime # mostrará la columna del identificador, el comando, y tiempo en ejecución
+</code></pre>
+
+<blockquote>
+<p><strong>Observación:</strong> Es importante que las columnas este separadas por coma sin espacios.</p>
+</blockquote>
+<h3 id="123-ordenar-los-procesos-por-algun-campo">1.2.3 Ordenar los procesos por algun campo</h3>
+<blockquote>
+<p>Para esto necesitamos del parametro <strong>--sort</strong> seguido de los campos que utilizamos como criterio para ordenar</p>
+</blockquote>
+<pre><code class="bash">ps -eo pid,comm,etime,%cpu --sort=-%mem | head 
+</code></pre>
+
+<blockquote>
+<p><strong>Observación:</strong> Si queres visualizar la cabecera de los campos, agregar <strong>head</strong></p>
+</blockquote>
+<h3 id="124-mostrar-procesos-padres-e-hijos">1.2.4 Mostrar procesos padres e hijos</h3>
+<blockquote>
+<p>A veces es importante conocer si un proceso depende de varios es decir al detener este sus procesos hijos también.</p>
+</blockquote>
+<pre><code class="bash">ps --forest # muestra los procesos padres e hijos
+</code></pre>
+
+<h2 id="13-detener-una-tarea-en-ejecucion">1.3 Detener una tarea en ejecución</h2>
+<blockquote>
+<p>Si la tara está en <strong>primer plano</strong> podriamos usar el atajo <strong>CTRL+Z</strong></p>
+<p>Si la tarea está en <strong>segundo plano</strong>, utilizaremos el comando <strong>kill</strong> seguido del numero de proceso o el PID que lo identifica.</p>
+</blockquote>
+<pre><code class="bash">kill %1     # detiene el proceso numero 1
+</code></pre>
+
+<blockquote>
+<p><strong>Observación:</strong> Al utilizar el % va seguido del número de proceso, caso contrario agregar el PID del proceso</p>
+</blockquote>
+<h2 id="14-guardar-un-proceso-dependiente-de-una-terminal">1.4 Guardar un proceso dependiente de una terminal</h2>
+<blockquote>
+<p>Con el comando <strong>disown</strong> se puede guardar un proceso que está corriendo en <strong>segundo plano</strong> sobre una terminal, y si la misma se cierra el proceso no se interrumpirá.
+Como argumento se le puede pasar el <strong>PID</strong> ó el número de proceso precedido por el <strong>%</strong></p>
+</blockquote>
+<p>Opción 1, con el comando <strong>pgrep</strong>:</p>
+<pre><code class="bash">nohup mkdocs serve&amp; # ejecuto el programa en segundo plano, y oculto sus mensajes
+pgrep mkdocs        # busco el PID del proceso
+disown 3003         # le paso PID para guardarlo
+</code></pre>
+
+<p>Opción 2, con el comando <strong>ps</strong>:</p>
+<pre><code class="bash">nohup mkdocs serve&amp; # ejecuto el programa en segundo plano, y oculto sus mensajes
+ps -ax | grep mkdocs # busco el PID
+disown 3003          # le paso el PID (si es que fuese 3003)
+</code></pre>
+
+<h2 id="15-practicando-procesos-tareas">1.5 Practicando procesos, tareas</h2>
+<pre><code>firefox &amp; ; chrome &amp; # corro en segundo plano ambos navegadores web
+
+jobs                 # verifico el numero de proceso de ambos, y si estan corriendo
+kill %1          # detengo el que tenga el número de proceso 1
+
+ps -a | grep chrome  # verifico el PID del programa, suponiendo que firefox se detuvo
+kill 3021            # detengo el proceso con PID 3021 (suponiendo que es chrome)
+
+</code></pre>
+
+<hr />
+<h2 id="2-sincronizar-directorios">2 Sincronizar directorios</h2>
+<blockquote>
+<p>El comando <strong>rsync</strong> cumple un rol fundamental para copiar, mover archivos y carpetas, se dice que es aún más rápido que utilizar <strong>cp</strong> ó <strong>scp</strong> ya que comprime los archivos antes de transferirlos.</p>
+</blockquote>
+<p>Algunos de los parámetros son:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Parámetro</th>
+<th align="left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">a</td>
+<td align="left">Modo archivo</td>
+</tr>
+<tr>
+<td align="left">v</td>
+<td align="left">Modo Verboso - Muestra el información durante la transferencia</td>
+</tr>
+<tr>
+<td align="left">q</td>
+<td align="left">Modo Silencioso - No muestra la información que se transfiere</td>
+</tr>
+<tr>
+<td align="left">z</td>
+<td align="left">Comprimir datos al transferir</td>
+</tr>
+<tr>
+<td align="left">h</td>
+<td align="left">Humaniza los valores de transferencia</td>
+</tr>
+</tbody>
+</table>
+<h2 id="21-copiar-un-directorio-local-a-otro">2.1 Copiar un directorio local a otro</h2>
+<pre><code class="bash">$ rysnc -vazh directorio1/ directorio2/ # Copia todo lo del directorio1 al directorio2
+</code></pre>
+
+<h3 id="22-transferir-todos-los-archivos-de-un-directorio-local-a-un-servidor">2.2 Transferir todos los archivos de un directorio local a un servidor</h3>
+<pre><code class="bash">$ rysnc -vazh carpeta/* host1:pruebas/ # transferir a un servidor
+</code></pre>
+
+<h3 id="23-transferir-un-directorio-local-a-un-servidor-pasandole-usuario">2.3 Transferir un directorio local a un servidor pasandole usuario</h3>
+<pre><code class="bash">$ rysnc -vazh directorio2/ usuario:host2:fotos/ # transferir a un servidor pasando usuario
+</code></pre>
+
+<h3 id="24-transferir-desde-un-servidor-a-la-maquina-local">2.4 Transferir desde un servidor a la maquina local</h3>
+<pre><code class="bash">$ rysnc -vazh admin:192.168.92.1:/srv/fotos /home/juan/carpeta # transferir desde el servidor a la maquina local
+</code></pre>
+
+<h3 id="24-transfencia-segura-con-ssh-desde-el-servidor-a-maquina-local">2.4 Transfencia segura con ssh desde el servidor a máquina local</h3>
+<blockquote>
+<p>A diferencia del resto se agrega el parámetro <strong>e</strong> y <strong>ssh</strong></p>
+</blockquote>
+<pre><code class="bash">$ rysnc -vazh -e ssh admin@192.168.92.1:/srv/fotos /home/juan/fotos
+</code></pre>
+
+<h3 id="24-simular-transferencia-de-archivos">2.4 Simular transferencia de archivos</h3>
+<blockquote>
+<p>Si queremos probar en caso de errores podemos utilizar <strong>--dry-run</strong></p>
+</blockquote>
+<pre><code class="bash">$ rysnc -vazh --dry-run directorio1/ directorio2/ # Copia todo lo del directorio1 al directorio2
+</code></pre>
+
+<h1 id="referencia">Referencia</h1>
+<ul>
+<li>Documentación sobre rsyncm, Linux.die <a href="https://linux.die.net/man/1/rsync">Ver Página</a></li>
+<li>Conociendo el comando rsync, LinuxTechi <a href="https://www.linuxtechi.com/rsync-command-examples-linux/">Ver Página</a></li>
+</ul></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '..';</script>
+        <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+        <script src="../js/base.js"></script><div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Virtualbox - Manu Docs</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+	
+	<script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="..">Manu Docs</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                    <li >
+                        <a href="..">Home</a>
+                    </li>
+                    <li >
+                        <a href="../guia-linux-parte-1/">Guia linux parte 1</a>
+                    </li>
+                    <li >
+                        <a href="../guia-linux-parte-2/">Guia linux parte 2</a>
+                    </li>
+                    <li >
+                        <a href="../ide-emacs/">Ide emacs</a>
+                    </li>
+                    <li class="active">
+                        <a href="./">Virtualbox</a>
+                    </li>
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../ide-emacs/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li class="disabled">
+                        <a rel="prev" >
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#1-descargar-virtualbox">1. Descargar Virtualbox</a></li>
+        <li class="main "><a href="#2-programa-para-correr-virtualbox">2. Programa para correr Virtualbox</a></li>
+        <li class="main "><a href="#descargar-compiladores-viejos">Descargar compiladores viejos</a></li>
+        <li class="main "><a href="#2-comandos-utiles">2. Comandos utiles</a></li>
+            <li><a href="#21-modificar-configuracion-mientras-esta-apagada">2.1 Modificar configuración mientras esta apagada</a></li>
+            <li><a href="#22-modificar-configuracion-mientras-se-ejecuta">2.2 Modificar configuración mientras se ejecuta</a></li>
+            <li><a href="#23-encender-maquina-virtual-desdela-terminal">2.3 Encender maquina virtual desdela terminal</a></li>
+            <li><a href="#24-apagar-maquina-virtual">2.4 Apagar maquina virtual</a></li>
+            <li><a href="#25-buscar-si-existe-maquina-virtual">2.5 Buscar si existe maquina virtual</a></li>
+            <li><a href="#26-listar-maquinas-virtuales-creadas">2.6 Listar maquinas virtuales creadas</a></li>
+            <li><a href="#27-listar-maquinas-virtuales-que-se-estan-ejecutando">2.7 Listar maquinas virtuales que se estan ejecutando</a></li>
+            <li><a href="#28-conectarse-a-la-maquina-virtual-desde-la-terminal">2.8 Conectarse a la maquina virtual desde la terminal</a></li>
+            <li><a href="#29-listar-las-extensiones-instaladas">2.9 Listar las extensiones instaladas</a></li>
+            <li><a href="#210-agregar-usuario">2.10 Agregar usuario</a></li>
+            <li><a href="#211-desinstalar-la-extension">2.11 Desinstalar la extension</a></li>
+            <li><a href="#212-otros">2.12 Otros</a></li>
+            <li><a href="#3resolver-posibles-errores">3.Resolver Posibles errores</a></li>
+            <li><a href="#3-no-me-deja-conectar-al-vrde-server-via-remota-con-rdesktop">3.  No me deja conectar al VRDE Server via remota con rdesktop</a></li>
+            <li><a href="#4-recursos">4. Recursos</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h2 id="1-descargar-virtualbox">1. Descargar Virtualbox</h2>
+<p><a href="https://www.virtualbox.org/wiki/Linux_Downloads">Ir a Descargas de VirtualBox</a></p>
+<h2 id="2-programa-para-correr-virtualbox">2. Programa para correr Virtualbox</h2>
+<p>Creamos el archivo con <code>touch crearMaquinaVirtual.sh</code> copiamos el código que aparece debajo,
+y luego ejecutamos el programa en la terminal con <code>.\crearMaquinaVirtual.sh miMaquina1</code></p>
+<pre><code>#!/bin/bash
+# verificamos que estamos pasando como parametro el nombre de la maquina virtual
+if [ ! $1 ]
+then
+    echo &quot;Error: falta pasar por argumento el nombre de la maquina virtual&quot;
+else
+    # configuraciones
+    NOMBRE_MAQUINA_VIRTUAL=$1 # primer argumento, nombre de la maquina virtual
+    CAPACIDAD_MEMORIA=1024 # en Mbytes
+    CAPACIDAD_DISCO=10000 # en Mbytes
+    DIRECTORIO_MAQUINAS_VIRTUALES=&quot;$HOME/VirtualBox VMs&quot;
+    #RUTA_IMAGEN_UBUNTU=&quot;$HOME/iso/ubuntu-18.04.3-desktop-amd64.iso&quot;
+    RUTA_IMAGEN_UBUNTU=&quot;$HOME/iso/ubuntu-18.04.3-live-server-amd64.iso&quot;
+
+    echo &quot;Verificando si la maquina virtual existe..&quot;
+    if [ -d &quot;${DIRECTORIO_MAQUINAS_VIRTUALES}/${NOMBRE_MAQUINA_VIRTUAL}&quot; ] 
+    then
+    echo &quot;Deteniendo maquina virtual..&quot;
+        vboxmanage startvm $NOMBRE_MAQUINA_VIRTUAL --type emergencystop
+
+    echo &quot;Iniciando maquina virtual..&quot;
+        VBoxHeadless --startvm $NOMBRE_MAQUINA_VIRTUAL
+    else
+    echo &quot;Verificando si el package extension está instalado..&quot;
+    sh actualizarVirtualBoxExtension.sh # ejecutamos el archivo (debe existir)
+
+        # creo la vm y la registro
+        #VBoxManage createvm --name ${NOMBRE_MAQUINA_VIRTUAL} --register --ostype Ubuntu # para 32 bits
+    echo &quot;Creando y registrando Máquina Virtual..&quot;
+    VBoxManage createvm --name ${NOMBRE_MAQUINA_VIRTUAL} --register --ostype Ubuntu_64 # para 64 bits
+    echo &quot;Configurando Guest Machine..&quot;
+    VBoxManage modifyvm ${NOMBRE_MAQUINA_VIRTUAL} --memory ${CAPACIDAD_MEMORIA} --boot1 dvd --vrde on --vrdeport 5001 --acpi on
+
+        # 4 NUEVAS CONFIGURACIONES
+        # nuevas configuraciones (averiguar mas de vrde server, pae, nic1 nat, natpf1 guestssh, ..)
+    echo &quot;Configurando adaptador de red..&quot;
+        VBoxManage modifyvm ${NOMBRE_MAQUINA_VIRTUAL} --nic1 bridged --bridgeadapter1 enp1s0        
+        VBoxManage modifyvm ${NOMBRE_MAQUINA_VIRTUAL} --nic1 nat
+        VBoxManage modifyvm ${NOMBRE_MAQUINA_VIRTUAL} --natpf1 &quot;ssh,tcp,,4422,,22&quot;
+        VBoxManage modifyvm ${NOMBRE_MAQUINA_VIRTUAL} --pae on
+
+    echo &quot;Agregando controladores SATA..&quot;
+        #asigno la capacidad en disco a utilizar
+        VBoxManage createvdi --filename &quot;${DIRECTORIO_MAQUINAS_VIRTUALES}/${NOMBRE_MAQUINA_VIRTUAL}/${NOMBRE_MAQUINA_VIRTUAL}-disk01.vdi&quot; --size ${CAPACIDAD_DISCO}
+        #le agrego el uso de dispositivos
+        VBoxManage storagectl ${NOMBRE_MAQUINA_VIRTUAL} --name &quot;IDE Controller&quot; --add ide
+        VBoxManage storageattach ${NOMBRE_MAQUINA_VIRTUAL} --storagectl &quot;IDE Controller&quot; --port 0 --device 0 --type hdd --medium &quot;${DIRECTORIO_MAQUINAS_VIRTUALES}/${NOMBRE_MAQUINA_VIRTUAL}/${NOMBRE_MAQUINA_VIRTUAL}-disk01.vdi&quot;
+        VBoxManage storageattach ${NOMBRE_MAQUINA_VIRTUAL} --storagectl &quot;IDE Controller&quot; --port 1 --device 0 --type dvddrive --medium ${RUTA_IMAGEN_UBUNTU}
+    # despues de instalar, correr lo sig. para sacar la imagen, sino no arranca el sistema instalado
+    # vboxmanage storageattach test5 --storagectl &quot;IDE Controller&quot; --port 1 --device 0 --type dvddrive --medium none
+    fi
+fi
+
+export PATH=$HOME/bin/myscripts
+</code></pre>
+
+<h1 id="descargar-compiladores-viejos">Descargar compiladores viejos</h1>
+<p>Cambiar en el enlace la version que necesitas
+https://www.virtualbox.org/wiki/Download_Old_Builds_5_1</p>
+<h1 id="2-comandos-utiles">2. Comandos utiles</h1>
+<h4 id="21-modificar-configuracion-mientras-esta-apagada">2.1 Modificar configuración mientras esta apagada</h4>
+<p><code>vboxmanage modifyvm nombreMaquinaVirtual --natpf3 "guestssh,tcp,127.0.0.1,2222,,22"</code></p>
+<h4 id="22-modificar-configuracion-mientras-se-ejecuta">2.2 Modificar configuración mientras se ejecuta</h4>
+<p><code>vboxmanage controlvm nombreMaquinaVirtual natpf3 "guestssh,tcp,127.0.0.1,2222,,22"</code></p>
+<h4 id="23-encender-maquina-virtual-desdela-terminal">2.3 Encender maquina virtual desdela terminal</h4>
+<p><code>vboxheadless -s nombreMaquinaVirtual</code></p>
+<h4 id="24-apagar-maquina-virtual">2.4 Apagar maquina virtual</h4>
+<p><code>VBoxManage controlvm "testvm" poweroff</code></p>
+<h4 id="25-buscar-si-existe-maquina-virtual">2.5 Buscar si existe maquina virtual</h4>
+<p><code>VBoxManage showvminfo "testvm"</code></p>
+<h4 id="26-listar-maquinas-virtuales-creadas">2.6 Listar maquinas virtuales creadas</h4>
+<p><code>VBoxManage list vms</code></p>
+<h4 id="27-listar-maquinas-virtuales-que-se-estan-ejecutando">2.7 Listar maquinas virtuales que se estan ejecutando</h4>
+<p><code>VBoxManage list runningvms</code></p>
+<h4 id="28-conectarse-a-la-maquina-virtual-desde-la-terminal">2.8 Conectarse a la maquina virtual desde la terminal</h4>
+<p><code>rdesktop -a 16 -N localhost:3389</code></p>
+<h4 id="29-listar-las-extensiones-instaladas">2.9 Listar las extensiones instaladas</h4>
+<p><code>vboxmanage list extpacks</code></p>
+<h4 id="210-agregar-usuario">2.10 Agregar usuario</h4>
+<pre><code>`sudo usermod -a -G vboxusers unNombreDeUsuario`
+</code></pre>
+<h4 id="211-desinstalar-la-extension">2.11 Desinstalar la extension</h4>
+<p><code>vboxmanage extpack uninstall "Oracle VM VirtualBox Extension Pack"</code></p>
+<h4 id="212-otros">2.12 Otros</h4>
+<pre><code>vboxmanage showvminfo programming | grep NIC
+modifyvm programming --natpf1 &quot;ssh,tcp,127.0.0.1,5422,,,22&quot;
+vboxmanage modifyvm programming --natpf1 &quot;SSH,tcp,127.0.0.1,2522,10.0.2.15,22&quot;
+</code></pre>
+
+<h2 id="3resolver-posibles-errores">3.Resolver Posibles errores</h2>
+<h3 id="31-no-aparece-la-conexion-vrde-server-escuchando-puerto-3389">3.1. No aparece la conexion vrde server escuchando puerto 3389</h3>
+<p><strong>Posible solución</strong></p>
+<pre><code>$vboxmanage modifyvm vmtest5 --vrde on
+</code></pre>
+
+<h3 id="32-no-permite-arrancar-via-terminal">3.2 No permite arrancar via terminal</h3>
+<pre><code>$ vboxmanage starvm nombreMaquinaVirtual
+
+# esto ejecuta con entorno gráfico, y el mensaje es el siguiente
+this kernel requires the following features not present on the cpu
+</code></pre>
+
+<p><strong>Posible solución</strong>
+<code>$ VboxManage modifyvm nombreVM --pae on</code></p>
+<h2 id="3-no-me-deja-conectar-al-vrde-server-via-remota-con-rdesktop">3.  No me deja conectar al VRDE Server via remota con rdesktop</h2>
+<p>El servidor aparece:</p>
+<pre><code>$ vboxheadless -s nombreMaquinaVirtual
+
+# y al intentar conectarse via remota en otra terminal, aparece lo sig.:
+webSocketsHandshake: invalid client header
+</code></pre>
+
+<p>En el cliente muestra:</p>
+<pre><code>$ rdesktop localhost
+# 
+Autoselected keyboard map en-gb
+ERROR: Connection closed
+</code></pre>
+
+<p><strong>Posible solución:</strong>
+1. Descargar e instalar la extension pack de Virtualbox (que sea la misma versin que Virtualbox)
+2. Ingresar lo siguiente en la terminal
+<code>$ VBoxManage setproperty vrdeextpack "Oracle VM VirtualBox Extension Pack</code></p>
+<h2 id="4-recursos">4. Recursos</h2>
+<ul>
+<li>https://code-maven.com/virtualbox-host-only-network-ssh-to-remote-machine</li>
+<li>http://xmodulo.com/how-to-create-and-start-virtualbox-vm-without-gui.html</li>
+<li>https://help.github.com/en/articles/basic-writing-and-formatting-syntax</li>
+<li>https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet</li>
+</ul></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '..';</script>
+        <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+        <script src="../js/base.js"></script><div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

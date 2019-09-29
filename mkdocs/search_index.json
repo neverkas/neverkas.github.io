@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/",
-            "text": "Objetivo\n\n\n\n\nCompartir conocimiento acerca de los lenguajes de programaci\u00f3n, nuevas tecnolog\u00edas e informaci\u00f3n \u00fatil y necesaria para mantenerse siempre actualizado. Dirigido a quienes realmente tengan ganas de aprender.\n\n\n\n\n\n\nDocumentaci\u00f3n\n\n\nProgramaci\u00f3n\n\n\n\n\nAprendiendo a usar Emacs, un IDE muy potente.\n\nIr a la p\u00e1gina\n\n\n\n\n\n\nRecursos\n\n\n\n\nFormatear texto .md\n\n\nDocumentar contenido",
+            "text": "Objetivo\n\n\n\n\nCompartir conocimiento acerca de los lenguajes de programaci\u00f3n, nuevas tecnolog\u00edas e informaci\u00f3n \u00fatil y necesaria para mantenerse siempre actualizado. Dirigido a quienes realmente tengan ganas de aprender.\n\n\n\n\n\n\nDocumentaci\u00f3n\n\n\n1. Programaci\u00f3n\n\n\n\n\nProgramando en Emacs, un IDE muy potente.\n \nIr a la p\u00e1gina\n\n\nSubir proyectos a Repositorios con Github Bash\n\n\n\n\n2. Linux\n\n\n\n\nSobrevivir usando la terminal de Linux - Parte 1\n \nIr a la p\u00e1gina\n\n\nSobrevivir usando la terminal de Linux - Parte 2\n \nIr a la p\u00e1gina\n\n\nConfigurando la red\n\n\nCrear programas en BASH\n\n\n\n\n3. Virtualizaci\u00f3n && Maquinas Virtuales\n\n\n\n\nComo crear y configurar una M\u00e1quina Virtual\n \nIr a la p\u00e1gina\n\n\nInstalar y configurar ssh\n\n\n\n\n4. Documentar\n\n\n\n\nDescubriendo los archivos .md\n\n\nPrimeros pasos usando LaTeX\n\n\n\n\n5. Ejercicios de programaci\u00f3n\n\n\n\n\nAprendiendo Haskell\n  \nIr a la p\u00e1gina\n\n\nAprendiendo C++\n  \nIr a la p\u00e1gina\n\n\nAprendiendo Lenguaje de M\u00e1quina\n  \nIr a la p\u00e1gina\n\n\n\n\n\n\nRecursos\n\n\n\n\nFormatear texto .md\n\n\nDocumentar contenido",
             "title": "Home"
         },
         {
@@ -16,9 +16,29 @@
             "title": "Documentaci\u00f3n"
         },
         {
-            "location": "/#programacion",
-            "text": "Aprendiendo a usar Emacs, un IDE muy potente. Ir a la p\u00e1gina",
-            "title": "Programaci\u00f3n"
+            "location": "/#1-programacion",
+            "text": "Programando en Emacs, un IDE muy potente.\n  Ir a la p\u00e1gina  Subir proyectos a Repositorios con Github Bash",
+            "title": "1. Programaci\u00f3n"
+        },
+        {
+            "location": "/#2-linux",
+            "text": "Sobrevivir usando la terminal de Linux - Parte 1\n  Ir a la p\u00e1gina  Sobrevivir usando la terminal de Linux - Parte 2\n  Ir a la p\u00e1gina  Configurando la red  Crear programas en BASH",
+            "title": "2. Linux"
+        },
+        {
+            "location": "/#3-virtualizacion-maquinas-virtuales",
+            "text": "Como crear y configurar una M\u00e1quina Virtual\n  Ir a la p\u00e1gina  Instalar y configurar ssh",
+            "title": "3. Virtualizaci\u00f3n &amp;&amp; Maquinas Virtuales"
+        },
+        {
+            "location": "/#4-documentar",
+            "text": "Descubriendo los archivos .md  Primeros pasos usando LaTeX",
+            "title": "4. Documentar"
+        },
+        {
+            "location": "/#5-ejercicios-de-programacion",
+            "text": "Aprendiendo Haskell\n   Ir a la p\u00e1gina  Aprendiendo C++\n   Ir a la p\u00e1gina  Aprendiendo Lenguaje de M\u00e1quina\n   Ir a la p\u00e1gina",
+            "title": "5. Ejercicios de programaci\u00f3n"
         },
         {
             "location": "/#recursos",
@@ -26,104 +46,584 @@
             "title": "Recursos"
         },
         {
-            "location": "/programacion/",
-            "text": "Aprendiendo a usar Emacs\n\n\nComandos importantes\n\n\n\n\nC+g (Cancelar accion)\n\n\n\n\n\n\nAtajos\n\n\n\n\nC (Ctrl)\n\n\nX (Alt)\n\n\n\n\n\n\nEdici\u00f3n\n\n\n\n\nC-w (Cortar texto)\n\n\nC-w (Pegar texto)\n\n\nC-w (Copiar texto)\n\n\nC-w u (Deshacer cambio)\n\n\nC-x C-s (Guardar archivo)\n\n\n\n\n\n\nDesplazamiento\n\n\n\n\nM-AvPag (Scrollear otra ventana, manteniendo el cursor en la actual)\n\n\nM-RePag (Scrollear otra ventana, manteniendo el cursor en la actual)\n\n\nC-s (Busqueda incremental, hacia adelante)\n\n\nC-r (Busqueda decremental, hacia atras)\n\n\nC-g (Finaliza b\u00fasqueda)\n\n\nC-u 8 * (Escribe el asterisco 8 veces)\n\n\n\n\nM-Delback (Borra por palabras)\n\n\n\n\n\n\nC-k (Borra desde el puntero hasta el final de linea)\n\n\n\n\n\n\nM-k (Elimina texto hasta final del texto, parrafos)\n\n\n\n\n\n\nC-v  (Avanzar sig. P\u00e1gina)\n\n\n\n\nM-v (Retroceder, anterior p\u00e1gina)\n\n\nM-< (Retroceder por palabras)\n\n\nM-> (Avanzar por palabras)\n\n\nC-a (Principio de linea)\n\n\nC-e (Final de linea)\n\n\n\n\n\n\nAcciones\n\n\n\n\nM-x dired (Listar directorio)\n\n\n\n\nM-x dired C-x C-f (Listar directorio->crear archivo)\n\n\n\n\n\n\nM-x (Abre la terminal)\n\n\n\n\nM-x list-packages (Lista todos los paquetes)\n\n\n\n\n\n\nArchivos\n\n\n\n\nC-x C-b (Listar buffers)\n\n\n\n\nVentanas / Ventanas\n\n\n\n\nC-x 1 (Cierras las otras ventanas que no son la actual)\n\n\nC-x 2 (Divide la ventana en 2)\n\n\nC-x o (Mueve el cursor a la otra ventana)\n\n\nC-x b (Cambiar a otro buffer)\n\n\n\n\n\n\nObservaciones\n\n\n\n\nM-x dired\n\n\nd (Agregar a la lista de acciones. Ej. Borrar, Modificar)\n\n\nx (Ejecutar la accion)\n\n\ng (Actualizar directorio)\n\n\n\n\n\n\n\n\n\n\nConfiguraci\u00f3n personalizada\n\n\n1. Abrir IDE desde la terminal sin entorno gr\u00e1fico (GUI)\n\n\n\n\nemacs -nw\n\n\n\n\n2. Configurar la indentaci\u00f3n del c\u00f3digo (tabulaci\u00f3n)\n\n\n;; Set Indentation (tabs)\n;;https://www.gnu.org/software/emacs/manual/html_node/efaq/Changing-the-length-of-a-Tab.html\n;https://www.emacswiki.org/emacs/IndentationBasics \n(setq-default tab-width 2)\n\n\n3. Autoindentaci\u00f3n\n\n\n;; https://www.emacswiki.org/emacs/AutoIndentation \n(add-hook 'lisp-mode-hook '(lambda ()\n  (local-set-key (kbd \"RET\") 'newline-and-indent)))\n\n\n\n\nInformaci\u00f3n Adicional\n\n\n1. Como usar C+x b (Cambiar de buffer)\n\n\nPuede continuar usando C-x o para cambiar entre las ventanas.  Cada ventana tiene su propia posici\u00f3n del cursor, pero \u00fanicamente una ventana actual muestra el cursor.  Todos los comandos de edici\u00f3n comunes se aplican a la ventana en que est\u00e1 el cursor.  Llamaremos esto la \"ventana seleccionada\".\nEl comando C-M-v es muy \u00fatil cuando est\u00e1 editando un texto en una ventana y usando la otra ventana como referencia.  Puede mantener el cursor siempre en la ventana donde est\u00e1 editando, y avanzar a la otra ventana secuencialmente con C-M-v.\n\n\n2. Guardar\n\n\n\u201cEsto copia el texto dentro de Emacs al archivo.  La primera vez que haga esto, Emacs renombrar\u00e1 el archivo original con un nuevo nombre para que \u00e9ste no se pierda.  El nuevo nombre se hace agregando \"~\" al final del nombre del archivo original. Cuando guardar haya terminado, Emacs mostrar\u00e1 el nombre del archivo escrito.  Deber\u00e1 guardar frecuentemente, para que no pierda mucho\ntrabajo si el sistema falla.\u201d Puede encontrar un archivo existente, para verlo o editarlo.  Tambi\u00e9n puede hacerlo con un archivo que no exista.\u00c9sta es la forma de crear un archivo en Emacs: encuentre el archivo, que comenzar\u00e1 vac\u00edo, luego comience a insertar el texto para ese archivo.  Cuando invoque \"guardar\" el archivo, Emacs crear\u00e1 realmente el archivo con el texto que ha insertado.  De ah\u00ed en adelante, puede considerarse estar editando un archivo existente.\n\n\n3. Buffers (Ventanas)\n\n\nCUALQUIER texto que vea en una ventana de Emacs siempre es parte de un buffer.  Algunos buffers no corresponden a un archivo.  Por ejemplo, el buffer llamado \"\nBuffer List\n\" no tiene ning\u00fan archivo.  Es el buffer que contiene la lista de buffers que ha creado con C-x C-b.  El buffer llamado \"\nMessages\n\" tampoco tiene un archivo correspondiente; contiene los mensajes que han aparecido en la l\u00ednea de abajo durante su sesi\u00f3n de Emacs.\n\n\n4. Auto guardado\n\n\nSi ha hecho cambios en un archivo, pero no los ha guardado, \u00e9stos podr\u00edan perderse si su computadora falla.  Para protegerlo de esto, Emacs peri\u00f3dicamente escribe un archivo \"auto guardado\" para cada archivo que est\u00e1 editando.  El nombre del archivo auto guardado tiene un # al principio y al final; por ejemplo, si su archivo se llama \"hola.c\", su archivo auto guardado es \"#hola.c#\".  Cuando guarda por la v\u00eda normal, Emacs borra su archivo de auto guardado.\nSi la computadora falla, puede recuperar su edici\u00f3n de auto guardado encontrando el archivo normal (el archivo que estuvo editando, no el archivo de auto guardar) y entonces tecleando M-x recover file\n.  Cuando le pregunte por la confirmaci\u00f3n, teclee yes\n para ir y recuperar la informaci\u00f3n del auto guardado.\n\n\n\n\nRecursos\n\n\n\n\nDocumentaci\u00f3n Oficial\n\n\nComando C-M-v Scroll-other-window",
-            "title": "Programacion"
+            "location": "/guia-linux-parte-1/",
+            "text": "1. Enlaces\n\n\n\n\nExisten dos tipos de enlaces, blandos y duros, el que m\u00e1s nos interesa por ahora es el primero.\n\n\n\n\n1.1. Enlaces blandos\n\n\n\n\nEs parecido al acceso directo en Windows, permite dirigirse al archivo o directorio desde otro archivo ubicado donde uno quiera.\n\n\n\n\nln -s original_file new_file\n\n\n\n\n\n\n2. Directorios\n\n\n2.1. Crear un arbol de directorios\n\n\n\n\nCon \nmkdir -p\n seguido de los directorios que se quieran crear, a diferencia de usar solo \nmkdir\n sin el parametro \np\n, es que este crea multiples directorios padres.\n\n\n\n\nmkdir -p git/proyectos/prueba1 # crea la carpeta git, dentro proyectos y dentro prueba1\n\n\n\n\n2.2. Eliminar multiples directorios\n\n\n\n\nSe opera de igual forma que con crear, pero se utiliza \nrm\n en vez de \nmkdir\n\n\n\n\nrm -p git/proyectos/sistemaDeControl # se borran todos los directorios\n\n\n\n\n\n\nObservacion:\n Se puede tambi\u00e9n utilizar el parametro \n-r\n en vez de \n-p\n\n\n\n\n\n\n3. Compresi\u00f3n de Archivos\n\n\n\n\nLa compresi\u00f3n de archivos permite reducir el espacio que ocupan en disco, por tanto permite adjuntar en un correo, subir a la nube con mayor velocidad.\n\n\n\n\n3.1. Comprimir con gzip y bzip2\n\n\n\n\nCon \ngzip\n se puede comprimir un archivo que le agrega la extensi\u00f3n \n.gz\n, mientras que con \nbzip2\n comprime el archivo a\u00fan m\u00e1s y le agrega la extensi\u00f3n \n.bz\n. En ambos casos los comprime de manera individual es decir no los agrupa en un solo archivo, pero que si lo permite \ntar\n\n\n\n\n3.1.1. Comprimir un archivo con gzip\n\n\ngzip finanzas.txt # finanzas.txt se comprime y convierte en finanzas.txt.gz\n\n\n\n\n3.1.2. Comprimir  un archivo con gzip con la mejor compresi\u00f3n posible\n\n\ngzip -9 finanzas.txt # finanzas.txt se comprime y convierte en finanzas.txt.gz\n\n\n\n\n3.1.3. Comprimir con gzip varios archivos en una linea\n\n\ngzip *.txt # comprime todos los archivos de extension .txt\n\n\n\n\n3.1.3. Extraer con gzip el contenido de un archivo\n\n\ngzip -d finanzas.txt.gz # descomprime el archivo y vuelve al formato original finanzas.txt\ngunzip - finanzas.txt.gz # otra manera de descomprimir sin pasar parametros\n\n\n\n\n\n\nObservaci\u00f3n:\n Solo se necesita agregar el parametro \n-d\n antes del nombre del archivo\n\n\n\n\n3.2. Comprimir con tar\n\n\n\n\nEsta herramienta incluye \ngzip\n y \nbzip2\n para comprimir multiples archivos, con el formato \n.tar.gz\n o \n.tar.bz\n\n\n\n\nLa lista de los parametros que se le pueden pasar son:\n\n\n\n\n\n\n\n\nParametro\n\n\nDescripci\u00f3n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nc\n\n\nCrea el archivo\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nx\n\n\nExtrae el contenido\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nv\n\n\nMuestra el paso a paso\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nz\n\n\nComprime con gzip\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nj\n\n\nComprime con bzip2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nf\n\n\nPara indicar nombre del archivo\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n3.2.1. Comprimir una carpeta\n\n\n\n\nEl parametro \nv\n permite visualizar por pantalla el paso a paso de que comprime, extrae, etc..\n\n\n\n\ntar -cvzf archivos.tar.gz finanzas # comprime y agrupa en archivos.tar.gz, lo que tenga la carpeta en un solo archivo\n\n\n\n\n\n\nObservaci\u00f3n:\n Es importante respetar el orden de los par\u00e1metros, sino no funciona el comando.\n\n\n\n\n3.2.2. Comprimir multiples archivos\n\n\ntar -cvzf archivos.tar.gz *.txt # comprime y agrupa en archivos.tar.gz, los archivos de extension **.txt**\n\n\n\n\n3.2.3. Descomprimir un archivo .tar.gz\n\n\n\n\nLa diferencia con comprimir es que se cambia el parametro \nc\n por \nx\n\n\n\n\ntar -xczf achivos.tar.gz # extrae el contenido del archivo .tar.gz \n\n\n\n\n\n\n4. Permisos\n\n\n4.1. chown\n\n\n\n\nPara cambiar la propiedad de un archivo a un usuario\n\n\n\n\n4.2. chgrp\n\n\n\n\nPara cambiar la propiedad de un archivo a un grupo\n\n\n\n\n4.3. chmod\n\n\n\n\nPara asignar permisos a directorios y/o archivos, se puede realizar de dos maneras \nN\u00famerica\n \u00f3 \nSimb\u00f3lica\n.\nEn lo personal prefiero la \nsimb\u00f3lica\n.\n\n\n\n\n4.3.1. N\u00famerica\n\n\n\n\n\n\n\n\nPermiso\n\n\nDescripci\u00f3n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n1\n\n\nEjecuci\u00f3n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n2\n\n\nEscritura\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n4\n\n\nLectura\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEl orden de los permisos es:\n\n\n\n\nPropietario\n\n\nGrupo\n\n\nInvitado (cualquier usuario)\n\n\n\n\nPermiso de s\u00f3lo ejecuci\u00f3n(1) para el Propietario\n\n\nchmod 100 archivo.txt\n\n\n\n\nPermiso de ejecuci\u00f3n(1) y lectura(4) para el Propietario\n\n\nchmod 500 archivo.txt\n\n\n\n\nPermiso de ejecuci\u00f3n(1), lectura(4) y escritura(2) para el Propietario\n\n\nchmod 700 archivo.txt\n\n\n\n\nPermiso de ejecuci\u00f3n(1), lectura(4) para el Propietario, y el grupo\n\n\nchmod 550 archivo.txt\n\n\n\n\nPermiso de ejecuci\u00f3n(1), lectura(4) para el Propietario, el grupo, invitados\n\n\nchmod 555 archivo.txt\n \n\n\nPermiso de ejecuci\u00f3n(1), lectura(4), Escritura(2) para el Propietario y ejecuci\u00f3n(1), lectura(4) el grupo, invitados\n\n\nchmod 755 archivo.txt\n\n\n\n\n4.3.2 Simb\u00f3lica\n\n\n\n\nPara agregar, eliminar permisos se agrega primero a quien (usuario, grupo, cualquier usuario) seguido del operador \n+\n, \n-\n, \n=\n que agrega, elimina, reemplaza los permisos respectivamente.\n\n\n\n\n\n\n\n\n\n\nPermiso\n\n\nDescripci\u00f3n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nx\n\n\nEjecuci\u00f3n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nw\n\n\nEscritura\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nr\n\n\nLectura\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nu\n: se refiere al usuario\n\n\ng\n: al grupo al que pertenece\n\n\no\n: es cualquier usuario\n\n\n\n\n4.3.2 Agregar permisos al usuario\n\n\nSe utiliza el operador suma \n+permiso\n\n\nchmod u+x archivo.txt # Permiso de Ejecucion\nchmod u+xr archivo.txt # Permiso de Ejecuci\u00f3n y lectura\nchmod u+xwr archivo.txt # Permiso de Ejecuci\u00f3n, lectura y escritura\n\n\n\n\n4.3.2 Agregar permisos al usuario, grupo e invitados\n\n\nchmod ug+xr archivo.txt # Permiso de ejecuci\u00f3n, lectura para el Usario/Grupo\nchmod ugo+xwr archivo.txt # Permiso de ejecuci\u00f3n, lectura para el Usuario/Grupo/Invitados\n\n\n\n\n4.3.2 Agregar diferentes permisos\n\n\n\n\nLos permisos se deben separar por comas\n\n\n\n\nchmod u+xwr, go+xr archivo.txt # Permiso de ejecuci\u00f3n, lectura, escritura al Usuario, y Permisos de ejecuci\u00f3n, lectura al Grupo/Invitados\n\n\n\n\n4.3.2 Eliminar Permisos\n\n\n\n\nSe utiliza el operador menos \n-permiso\n, funciona igual que agregar pero con el signo \n-\n\n\n\n\nchmod u-x archivo.txt # Eliminar Permiso de ejecucion para el Propietario\nchmod u-xr archivo.txt # Eliminar Permiso de ejecuci\u00f3n(x) y lectura(r) para el Propietario(u) \n\n\n\n\n4.3.2 Sobreescribir Permisos\n\n\n\n\nTambien se procede de igual forma que los dos anteriores pero se cambia el operador por el \n=\n\n\n\n\nchmod u=xr archivo.txt # Asignar Permiso de ejecuci\u00f3n(x) y lectura(r) para el Propietario(u) \nchmod ugo=xr archivo.txt # Asignar solo Permiso de ejecuci\u00f3n(x) y lectura(r) para el Propietario(u), Grupo, e Invitado \n\n\n\n\n\n\nObservaci\u00f3n:\n Si ya disponia de permisos, ser\u00e1n eliminados y reemplazaran por estos nuevos\n\n\n\n\n\n\n4. Listar directorios\n\n\n4.1. Listar las carpetas y archivos de un directorio\n\n\n\n\nPara esto utilizamos el comando \nls\n que nos da informaci\u00f3n del directorio en el que nos encontremos, como tambi\u00e9n podemos pasarle una ruta del directorio que queremos saber.\n\n\n\n\nAlgunos parametros que le podemos pasar al comando \nls\n:\n\n\n\n\na\n: muestra todos los archivos, hasta los ocultos\n\n\nl\n: muestra los archivos y sus permisos\n\n\n\n\nls  # lista los archivos del directorio actual\nls -a   # lista todos los archivos hasta los ocultos\nls -l   # lista los archivos y sus permisos\nls -la  # \n\n\n\n\n\n\n5.Tuberia, Redirecci\u00f3n de datos\n\n\n\n\nUna tuberia se representa con el simbolo \n|\n y permite utilizar la salida de un programa como entrada de otro es decir pasarlo por parametro.\n\n\n\n\n5.1 Filtrar el listado de directorio\n\n\n\n\nCon \nls\n listamos el directorio c\n\n\n\n\nls -l | grep \"control\" # listamos todo el directorio o se\u00f1alamos los que digan \"control\"\n\n\n\n\n5.2 Redirigir la salida de un programa como entrada de otro\n\n\n\n\nEsto se podria usar para guardar informaci\u00f3n en caso de tener fallas al instalar o configurar un programa y se necesite consultar en alg\u00fan foro que soliciten informaci\u00f3n de lo que devuelve ejecutar un comando\n\n\n\n\nls > /tmp/datos.txt # guarda en datos.txt lo que devuelve el comando ls (el listado del directorio)\n\n\n\n\n5.3 Rederigir como entrada la salida de otro\n\n\n\n\ngrep 'pedro' < /archivos/clientes.txt # El contenido del .txt se lo pasa al grep\n\n\n\n\n\n\n6. Documentaci\u00f3n de los programas\n\n\n\n\nAl usar el comando \nman\n, nos despliega informaci\u00f3n necesaria de como utilizar otros comandos y programas\n\n\n\n\n6.1 Obtener documentaci\u00f3n resumida de un programa\n\n\n\n\nSe le pasa el parametro \n-f\n\n\n\n\nman -f grep # devuelve informaci\u00f3n acerca del comando grep\n\n\n\n\n6.2 Obtener documentaci\u00f3n m\u00e1s ordenada de un programa\n\n\n\n\nes otra herramienta parecida a man pero m\u00e1s f\u00e1cil de entender (aunque no tan completa como man), esta dispone de hipervinculos de referencia\n\n\n\n\ninfo grep # devuelve informaci\u00f3n acerca del comando grep\n\n\n\n\n\n\n7. Otros comandos interesantes\n\n\n7.1. Ejecutar multiples comandos en una linea\n\n\n\n\nPara esto debemos utilizar el s\u00edmbolo \n ; \n para separar los comandos a ejecutar\n\n\n\n\nls -l ; cat /etc/passwd\n\n\n\n\n7.2. Ejecutar un programa luego de otro\n\n\n\n\nA diferencia de utilizar \n;\n, con el operador l\u00f3gico \n&&\n podemos pedirle que ejecute un programa luego que uno anterior se haya ejecutado. Podria verse como un si sucede esto,entonces hace este otro tambi\u00e9n.\n\n\n\n\nmkdir programa1 && programa2\n\n\n\n\n7.3. Saber la ruta de un programa\n\n\nwhereis ls\n\n\n\n\n7.4. Pasar por parametro la salida de un comando\n\n\n\n\nUna alternativa a esto ser\u00eda el uso de los \nacentos inversos\n que nos permiten pasar la salida de un comando como parametro a otro comando\n\n\n\n\nkill `cat carpeta/proceso.pid`\n\n\n\n\n7.5 Cambiar de usuario\n\n\n\n\nEn caso que estemos usando varios usuarios, o accedamos a una terminal externa\n\n\n\n\nsu neverkas # cambia el usuario a Neverkas\n\n\n\n\n7.6 Saber en que terminal nos encontramos\n\n\n\n\nEn caso de que tengamos varias terminales abiertas ejecutando varios procesos en segundo plano, y queramos buscar los procesos de una terminal espec\u00edfica, pero no sabemos de cual. Nos posicionamos en esa terminal y ejecutamos el comando \ntty\n.\n\n\n\n\ntty # nos devuelve informaci\u00f3n de la terminal actual\n\n\n\n\n7.7 Saber la ruta en la que se encuentra la terminal\n\n\n\n\nCon \npwd\n podemos saber en que ruta nos encontramos en caso de conectarnos en algun servidor\n\n\n\n\npwd # muestra la ruta en donde nos encontramos parados\n\n\n\n\n\n\n8. Referencias\n\n\n\n\nPara armar esta guia me base en algunos libros y sitios web que consider\u00e9 \u00fatiles\n\n\n\n\n\n\nLibro - Manual de Administracion de Linux, Steve Shah\n\n\nCurso GNU/Linux - Tareas y Procesos \nVer P\u00e1gina\n\n\nResumen de programas en la terminal \nVer P\u00e1gina\n\n\nResumen de la Jerarqu\u00eda del Sistema de Archivos \nVer P\u00e1gina\n\n\nComo utilizar la redirecci\u00f3n \nVer P\u00e1gina\n\n\n\n\nProyecto de Informacion sobre Linux \nVer P\u00e1gina\n\n\n\n\n\n\nEjemplos del comando ps \nVer P\u00e1gina\n\n\n\n\nGuia de comandos bash \nVer P\u00e1gina",
+            "title": "Guia linux parte 1"
         },
         {
-            "location": "/programacion/#aprendiendo-a-usar-emacs",
+            "location": "/guia-linux-parte-1/#1-enlaces",
+            "text": "Existen dos tipos de enlaces, blandos y duros, el que m\u00e1s nos interesa por ahora es el primero.",
+            "title": "1. Enlaces"
+        },
+        {
+            "location": "/guia-linux-parte-1/#11-enlaces-blandos",
+            "text": "Es parecido al acceso directo en Windows, permite dirigirse al archivo o directorio desde otro archivo ubicado donde uno quiera.   ln -s original_file new_file",
+            "title": "1.1. Enlaces blandos"
+        },
+        {
+            "location": "/guia-linux-parte-1/#2-directorios",
             "text": "",
-            "title": "Aprendiendo a usar Emacs"
+            "title": "2. Directorios"
         },
         {
-            "location": "/programacion/#comandos-importantes",
-            "text": "C+g (Cancelar accion)",
-            "title": "Comandos importantes"
+            "location": "/guia-linux-parte-1/#21-crear-un-arbol-de-directorios",
+            "text": "Con  mkdir -p  seguido de los directorios que se quieran crear, a diferencia de usar solo  mkdir  sin el parametro  p , es que este crea multiples directorios padres.   mkdir -p git/proyectos/prueba1 # crea la carpeta git, dentro proyectos y dentro prueba1",
+            "title": "2.1. Crear un arbol de directorios"
         },
         {
-            "location": "/programacion/#atajos",
-            "text": "C (Ctrl)  X (Alt)",
-            "title": "Atajos"
+            "location": "/guia-linux-parte-1/#22-eliminar-multiples-directorios",
+            "text": "Se opera de igual forma que con crear, pero se utiliza  rm  en vez de  mkdir   rm -p git/proyectos/sistemaDeControl # se borran todos los directorios   Observacion:  Se puede tambi\u00e9n utilizar el parametro  -r  en vez de  -p",
+            "title": "2.2. Eliminar multiples directorios"
         },
         {
-            "location": "/programacion/#edicion",
-            "text": "C-w (Cortar texto)  C-w (Pegar texto)  C-w (Copiar texto)  C-w u (Deshacer cambio)  C-x C-s (Guardar archivo)",
-            "title": "Edici\u00f3n"
+            "location": "/guia-linux-parte-1/#3-compresion-de-archivos",
+            "text": "La compresi\u00f3n de archivos permite reducir el espacio que ocupan en disco, por tanto permite adjuntar en un correo, subir a la nube con mayor velocidad.",
+            "title": "3. Compresi\u00f3n de Archivos"
         },
         {
-            "location": "/programacion/#desplazamiento",
-            "text": "M-AvPag (Scrollear otra ventana, manteniendo el cursor en la actual)  M-RePag (Scrollear otra ventana, manteniendo el cursor en la actual)  C-s (Busqueda incremental, hacia adelante)  C-r (Busqueda decremental, hacia atras)  C-g (Finaliza b\u00fasqueda)  C-u 8 * (Escribe el asterisco 8 veces)   M-Delback (Borra por palabras)    C-k (Borra desde el puntero hasta el final de linea)    M-k (Elimina texto hasta final del texto, parrafos)    C-v  (Avanzar sig. P\u00e1gina)   M-v (Retroceder, anterior p\u00e1gina)  M-< (Retroceder por palabras)  M-> (Avanzar por palabras)  C-a (Principio de linea)  C-e (Final de linea)",
-            "title": "Desplazamiento"
+            "location": "/guia-linux-parte-1/#31-comprimir-con-gzip-y-bzip2",
+            "text": "Con  gzip  se puede comprimir un archivo que le agrega la extensi\u00f3n  .gz , mientras que con  bzip2  comprime el archivo a\u00fan m\u00e1s y le agrega la extensi\u00f3n  .bz . En ambos casos los comprime de manera individual es decir no los agrupa en un solo archivo, pero que si lo permite  tar",
+            "title": "3.1. Comprimir con gzip y bzip2"
         },
         {
-            "location": "/programacion/#acciones",
-            "text": "M-x dired (Listar directorio)   M-x dired C-x C-f (Listar directorio->crear archivo)    M-x (Abre la terminal)   M-x list-packages (Lista todos los paquetes)",
-            "title": "Acciones"
+            "location": "/guia-linux-parte-1/#311-comprimir-un-archivo-con-gzip",
+            "text": "gzip finanzas.txt # finanzas.txt se comprime y convierte en finanzas.txt.gz",
+            "title": "3.1.1. Comprimir un archivo con gzip"
         },
         {
-            "location": "/programacion/#archivos",
-            "text": "C-x C-b (Listar buffers)",
-            "title": "Archivos"
+            "location": "/guia-linux-parte-1/#312-comprimir-un-archivo-con-gzip-con-la-mejor-compresion-posible",
+            "text": "gzip -9 finanzas.txt # finanzas.txt se comprime y convierte en finanzas.txt.gz",
+            "title": "3.1.2. Comprimir  un archivo con gzip con la mejor compresi\u00f3n posible"
         },
         {
-            "location": "/programacion/#ventanas-ventanas",
-            "text": "C-x 1 (Cierras las otras ventanas que no son la actual)  C-x 2 (Divide la ventana en 2)  C-x o (Mueve el cursor a la otra ventana)  C-x b (Cambiar a otro buffer)",
-            "title": "Ventanas / Ventanas"
+            "location": "/guia-linux-parte-1/#313-comprimir-con-gzip-varios-archivos-en-una-linea",
+            "text": "gzip *.txt # comprime todos los archivos de extension .txt",
+            "title": "3.1.3. Comprimir con gzip varios archivos en una linea"
         },
         {
-            "location": "/programacion/#observaciones",
-            "text": "M-x dired  d (Agregar a la lista de acciones. Ej. Borrar, Modificar)  x (Ejecutar la accion)  g (Actualizar directorio)",
-            "title": "Observaciones"
+            "location": "/guia-linux-parte-1/#313-extraer-con-gzip-el-contenido-de-un-archivo",
+            "text": "gzip -d finanzas.txt.gz # descomprime el archivo y vuelve al formato original finanzas.txt\ngunzip - finanzas.txt.gz # otra manera de descomprimir sin pasar parametros   Observaci\u00f3n:  Solo se necesita agregar el parametro  -d  antes del nombre del archivo",
+            "title": "3.1.3. Extraer con gzip el contenido de un archivo"
         },
         {
-            "location": "/programacion/#configuracion-personalizada",
+            "location": "/guia-linux-parte-1/#32-comprimir-con-tar",
+            "text": "Esta herramienta incluye  gzip  y  bzip2  para comprimir multiples archivos, con el formato  .tar.gz  o  .tar.bz   La lista de los parametros que se le pueden pasar son:     Parametro  Descripci\u00f3n          c  Crea el archivo        x  Extrae el contenido        v  Muestra el paso a paso        z  Comprime con gzip        j  Comprime con bzip2        f  Para indicar nombre del archivo",
+            "title": "3.2. Comprimir con tar"
+        },
+        {
+            "location": "/guia-linux-parte-1/#321-comprimir-una-carpeta",
+            "text": "El parametro  v  permite visualizar por pantalla el paso a paso de que comprime, extrae, etc..   tar -cvzf archivos.tar.gz finanzas # comprime y agrupa en archivos.tar.gz, lo que tenga la carpeta en un solo archivo   Observaci\u00f3n:  Es importante respetar el orden de los par\u00e1metros, sino no funciona el comando.",
+            "title": "3.2.1. Comprimir una carpeta"
+        },
+        {
+            "location": "/guia-linux-parte-1/#322-comprimir-multiples-archivos",
+            "text": "tar -cvzf archivos.tar.gz *.txt # comprime y agrupa en archivos.tar.gz, los archivos de extension **.txt**",
+            "title": "3.2.2. Comprimir multiples archivos"
+        },
+        {
+            "location": "/guia-linux-parte-1/#323-descomprimir-un-archivo-targz",
+            "text": "La diferencia con comprimir es que se cambia el parametro  c  por  x   tar -xczf achivos.tar.gz # extrae el contenido del archivo .tar.gz",
+            "title": "3.2.3. Descomprimir un archivo .tar.gz"
+        },
+        {
+            "location": "/guia-linux-parte-1/#4-permisos",
             "text": "",
-            "title": "Configuraci\u00f3n personalizada"
+            "title": "4. Permisos"
         },
         {
-            "location": "/programacion/#1-abrir-ide-desde-la-terminal-sin-entorno-grafico-gui",
-            "text": "emacs -nw",
-            "title": "1. Abrir IDE desde la terminal sin entorno gr\u00e1fico (GUI)"
+            "location": "/guia-linux-parte-1/#41-chown",
+            "text": "Para cambiar la propiedad de un archivo a un usuario",
+            "title": "4.1. chown"
         },
         {
-            "location": "/programacion/#2-configurar-la-indentacion-del-codigo-tabulacion",
+            "location": "/guia-linux-parte-1/#42-chgrp",
+            "text": "Para cambiar la propiedad de un archivo a un grupo",
+            "title": "4.2. chgrp"
+        },
+        {
+            "location": "/guia-linux-parte-1/#43-chmod",
+            "text": "Para asignar permisos a directorios y/o archivos, se puede realizar de dos maneras  N\u00famerica  \u00f3  Simb\u00f3lica .\nEn lo personal prefiero la  simb\u00f3lica .",
+            "title": "4.3. chmod"
+        },
+        {
+            "location": "/guia-linux-parte-1/#431-numerica",
+            "text": "Permiso  Descripci\u00f3n          1  Ejecuci\u00f3n        2  Escritura        4  Lectura         El orden de los permisos es:   Propietario  Grupo  Invitado (cualquier usuario)",
+            "title": "4.3.1. N\u00famerica"
+        },
+        {
+            "location": "/guia-linux-parte-1/#permiso-de-solo-ejecucion1-para-el-propietario",
+            "text": "chmod 100 archivo.txt",
+            "title": "Permiso de s\u00f3lo ejecuci\u00f3n(1) para el Propietario"
+        },
+        {
+            "location": "/guia-linux-parte-1/#permiso-de-ejecucion1-y-lectura4-para-el-propietario",
+            "text": "chmod 500 archivo.txt",
+            "title": "Permiso de ejecuci\u00f3n(1) y lectura(4) para el Propietario"
+        },
+        {
+            "location": "/guia-linux-parte-1/#permiso-de-ejecucion1-lectura4-y-escritura2-para-el-propietario",
+            "text": "chmod 700 archivo.txt",
+            "title": "Permiso de ejecuci\u00f3n(1), lectura(4) y escritura(2) para el Propietario"
+        },
+        {
+            "location": "/guia-linux-parte-1/#permiso-de-ejecucion1-lectura4-para-el-propietario-y-el-grupo",
+            "text": "chmod 550 archivo.txt",
+            "title": "Permiso de ejecuci\u00f3n(1), lectura(4) para el Propietario, y el grupo"
+        },
+        {
+            "location": "/guia-linux-parte-1/#permiso-de-ejecucion1-lectura4-para-el-propietario-el-grupo-invitados",
+            "text": "chmod 555 archivo.txt",
+            "title": "Permiso de ejecuci\u00f3n(1), lectura(4) para el Propietario, el grupo, invitados"
+        },
+        {
+            "location": "/guia-linux-parte-1/#permiso-de-ejecucion1-lectura4-escritura2-para-el-propietario-y-ejecucion1-lectura4-el-grupo-invitados",
+            "text": "chmod 755 archivo.txt",
+            "title": "Permiso de ejecuci\u00f3n(1), lectura(4), Escritura(2) para el Propietario y ejecuci\u00f3n(1), lectura(4) el grupo, invitados"
+        },
+        {
+            "location": "/guia-linux-parte-1/#432-simbolica",
+            "text": "Para agregar, eliminar permisos se agrega primero a quien (usuario, grupo, cualquier usuario) seguido del operador  + ,  - ,  =  que agrega, elimina, reemplaza los permisos respectivamente.      Permiso  Descripci\u00f3n          x  Ejecuci\u00f3n        w  Escritura        r  Lectura          u : se refiere al usuario  g : al grupo al que pertenece  o : es cualquier usuario",
+            "title": "4.3.2 Simb\u00f3lica"
+        },
+        {
+            "location": "/guia-linux-parte-1/#432-agregar-permisos-al-usuario",
+            "text": "Se utiliza el operador suma  +permiso  chmod u+x archivo.txt # Permiso de Ejecucion\nchmod u+xr archivo.txt # Permiso de Ejecuci\u00f3n y lectura\nchmod u+xwr archivo.txt # Permiso de Ejecuci\u00f3n, lectura y escritura",
+            "title": "4.3.2 Agregar permisos al usuario"
+        },
+        {
+            "location": "/guia-linux-parte-1/#432-agregar-permisos-al-usuario-grupo-e-invitados",
+            "text": "chmod ug+xr archivo.txt # Permiso de ejecuci\u00f3n, lectura para el Usario/Grupo\nchmod ugo+xwr archivo.txt # Permiso de ejecuci\u00f3n, lectura para el Usuario/Grupo/Invitados",
+            "title": "4.3.2 Agregar permisos al usuario, grupo e invitados"
+        },
+        {
+            "location": "/guia-linux-parte-1/#432-agregar-diferentes-permisos",
+            "text": "Los permisos se deben separar por comas   chmod u+xwr, go+xr archivo.txt # Permiso de ejecuci\u00f3n, lectura, escritura al Usuario, y Permisos de ejecuci\u00f3n, lectura al Grupo/Invitados",
+            "title": "4.3.2 Agregar diferentes permisos"
+        },
+        {
+            "location": "/guia-linux-parte-1/#432-eliminar-permisos",
+            "text": "Se utiliza el operador menos  -permiso , funciona igual que agregar pero con el signo  -   chmod u-x archivo.txt # Eliminar Permiso de ejecucion para el Propietario\nchmod u-xr archivo.txt # Eliminar Permiso de ejecuci\u00f3n(x) y lectura(r) para el Propietario(u)",
+            "title": "4.3.2 Eliminar Permisos"
+        },
+        {
+            "location": "/guia-linux-parte-1/#432-sobreescribir-permisos",
+            "text": "Tambien se procede de igual forma que los dos anteriores pero se cambia el operador por el  =   chmod u=xr archivo.txt # Asignar Permiso de ejecuci\u00f3n(x) y lectura(r) para el Propietario(u) \nchmod ugo=xr archivo.txt # Asignar solo Permiso de ejecuci\u00f3n(x) y lectura(r) para el Propietario(u), Grupo, e Invitado    Observaci\u00f3n:  Si ya disponia de permisos, ser\u00e1n eliminados y reemplazaran por estos nuevos",
+            "title": "4.3.2 Sobreescribir Permisos"
+        },
+        {
+            "location": "/guia-linux-parte-1/#4-listar-directorios",
+            "text": "",
+            "title": "4. Listar directorios"
+        },
+        {
+            "location": "/guia-linux-parte-1/#41-listar-las-carpetas-y-archivos-de-un-directorio",
+            "text": "Para esto utilizamos el comando  ls  que nos da informaci\u00f3n del directorio en el que nos encontremos, como tambi\u00e9n podemos pasarle una ruta del directorio que queremos saber.   Algunos parametros que le podemos pasar al comando  ls :   a : muestra todos los archivos, hasta los ocultos  l : muestra los archivos y sus permisos   ls  # lista los archivos del directorio actual\nls -a   # lista todos los archivos hasta los ocultos\nls -l   # lista los archivos y sus permisos\nls -la  #",
+            "title": "4.1. Listar las carpetas y archivos de un directorio"
+        },
+        {
+            "location": "/guia-linux-parte-1/#5tuberia-redireccion-de-datos",
+            "text": "Una tuberia se representa con el simbolo  |  y permite utilizar la salida de un programa como entrada de otro es decir pasarlo por parametro.",
+            "title": "5.Tuberia, Redirecci\u00f3n de datos"
+        },
+        {
+            "location": "/guia-linux-parte-1/#51-filtrar-el-listado-de-directorio",
+            "text": "Con  ls  listamos el directorio c   ls -l | grep \"control\" # listamos todo el directorio o se\u00f1alamos los que digan \"control\"",
+            "title": "5.1 Filtrar el listado de directorio"
+        },
+        {
+            "location": "/guia-linux-parte-1/#52-redirigir-la-salida-de-un-programa-como-entrada-de-otro",
+            "text": "Esto se podria usar para guardar informaci\u00f3n en caso de tener fallas al instalar o configurar un programa y se necesite consultar en alg\u00fan foro que soliciten informaci\u00f3n de lo que devuelve ejecutar un comando   ls > /tmp/datos.txt # guarda en datos.txt lo que devuelve el comando ls (el listado del directorio)",
+            "title": "5.2 Redirigir la salida de un programa como entrada de otro"
+        },
+        {
+            "location": "/guia-linux-parte-1/#53-rederigir-como-entrada-la-salida-de-otro",
+            "text": "grep 'pedro' < /archivos/clientes.txt # El contenido del .txt se lo pasa al grep",
+            "title": "5.3 Rederigir como entrada la salida de otro"
+        },
+        {
+            "location": "/guia-linux-parte-1/#6-documentacion-de-los-programas",
+            "text": "Al usar el comando  man , nos despliega informaci\u00f3n necesaria de como utilizar otros comandos y programas",
+            "title": "6. Documentaci\u00f3n de los programas"
+        },
+        {
+            "location": "/guia-linux-parte-1/#61-obtener-documentacion-resumida-de-un-programa",
+            "text": "Se le pasa el parametro  -f   man -f grep # devuelve informaci\u00f3n acerca del comando grep",
+            "title": "6.1 Obtener documentaci\u00f3n resumida de un programa"
+        },
+        {
+            "location": "/guia-linux-parte-1/#62-obtener-documentacion-mas-ordenada-de-un-programa",
+            "text": "es otra herramienta parecida a man pero m\u00e1s f\u00e1cil de entender (aunque no tan completa como man), esta dispone de hipervinculos de referencia   info grep # devuelve informaci\u00f3n acerca del comando grep",
+            "title": "6.2 Obtener documentaci\u00f3n m\u00e1s ordenada de un programa"
+        },
+        {
+            "location": "/guia-linux-parte-1/#7-otros-comandos-interesantes",
+            "text": "",
+            "title": "7. Otros comandos interesantes"
+        },
+        {
+            "location": "/guia-linux-parte-1/#71-ejecutar-multiples-comandos-en-una-linea",
+            "text": "Para esto debemos utilizar el s\u00edmbolo   ;   para separar los comandos a ejecutar   ls -l ; cat /etc/passwd",
+            "title": "7.1. Ejecutar multiples comandos en una linea"
+        },
+        {
+            "location": "/guia-linux-parte-1/#72-ejecutar-un-programa-luego-de-otro",
+            "text": "A diferencia de utilizar  ; , con el operador l\u00f3gico  &&  podemos pedirle que ejecute un programa luego que uno anterior se haya ejecutado. Podria verse como un si sucede esto,entonces hace este otro tambi\u00e9n.   mkdir programa1 && programa2",
+            "title": "7.2. Ejecutar un programa luego de otro"
+        },
+        {
+            "location": "/guia-linux-parte-1/#73-saber-la-ruta-de-un-programa",
+            "text": "whereis ls",
+            "title": "7.3. Saber la ruta de un programa"
+        },
+        {
+            "location": "/guia-linux-parte-1/#74-pasar-por-parametro-la-salida-de-un-comando",
+            "text": "Una alternativa a esto ser\u00eda el uso de los  acentos inversos  que nos permiten pasar la salida de un comando como parametro a otro comando   kill `cat carpeta/proceso.pid`",
+            "title": "7.4. Pasar por parametro la salida de un comando"
+        },
+        {
+            "location": "/guia-linux-parte-1/#75-cambiar-de-usuario",
+            "text": "En caso que estemos usando varios usuarios, o accedamos a una terminal externa   su neverkas # cambia el usuario a Neverkas",
+            "title": "7.5 Cambiar de usuario"
+        },
+        {
+            "location": "/guia-linux-parte-1/#76-saber-en-que-terminal-nos-encontramos",
+            "text": "En caso de que tengamos varias terminales abiertas ejecutando varios procesos en segundo plano, y queramos buscar los procesos de una terminal espec\u00edfica, pero no sabemos de cual. Nos posicionamos en esa terminal y ejecutamos el comando  tty .   tty # nos devuelve informaci\u00f3n de la terminal actual",
+            "title": "7.6 Saber en que terminal nos encontramos"
+        },
+        {
+            "location": "/guia-linux-parte-1/#77-saber-la-ruta-en-la-que-se-encuentra-la-terminal",
+            "text": "Con  pwd  podemos saber en que ruta nos encontramos en caso de conectarnos en algun servidor   pwd # muestra la ruta en donde nos encontramos parados",
+            "title": "7.7 Saber la ruta en la que se encuentra la terminal"
+        },
+        {
+            "location": "/guia-linux-parte-1/#8-referencias",
+            "text": "Para armar esta guia me base en algunos libros y sitios web que consider\u00e9 \u00fatiles    Libro - Manual de Administracion de Linux, Steve Shah  Curso GNU/Linux - Tareas y Procesos  Ver P\u00e1gina  Resumen de programas en la terminal  Ver P\u00e1gina  Resumen de la Jerarqu\u00eda del Sistema de Archivos  Ver P\u00e1gina  Como utilizar la redirecci\u00f3n  Ver P\u00e1gina   Proyecto de Informacion sobre Linux  Ver P\u00e1gina    Ejemplos del comando ps  Ver P\u00e1gina   Guia de comandos bash  Ver P\u00e1gina",
+            "title": "8. Referencias"
+        },
+        {
+            "location": "/guia-linux-parte-2/",
+            "text": "1. Tareas && Procesos\n\n\n\n\nLos \nprocesos\n son programas que se pueden estar ejecutando o no. Estos procesos se los llama \ntarea\n en caso de que se esten corriendo en el sistema.\n\n\nLas \ntareas\n se pueden iniciar tanto en \nprimer plano\n (foreground) como en \nsegundo plano\n (background). En el primer caso, se puede dar si se ejecuta la tarea desde la terminal, esta tomar\u00e1 el control de la consola y solo se podra hacer uso de la terminal cuando la tarea finalize o que nosotros la finalizemos. En el segundo caso, permiten utilizar la terminal mientras la tarea se est\u00e1 ejecutando.\n\n\n\n\n1.1 Iniciar tareas\n\n\n1.1.1 Iniciar una tarea en primer plano\n\n\n\n\nEsta tarea se va a seguir ejecutando hasta que se finalice desde la interf\u00e1z gr\u00e1fica de ese programa, o si se finaliza desde la terminal, hasta tanto no se puede usar esa terminal para otros comandos.\n\n\n\n\nfirefox # inicia el navegador firefox en primer plano\n\n\n\n\n1.1.2 Iniciar una tarea en segundo plano\n\n\n\n\nEn segundo plano se pueden agregar aquellas que no necesitan interactuar con la consola, es como un \"esconder\" mientras se ejecutan.\n\n\n\n\nfirefox & # inicia el navegador firefox en segundo plano\ntar -cvzf fotos.tar.gz fotos & # comprimir los archivos de la carpeta fotos\n\n\n\n\n\n\nObservaci\u00f3n: S\u00f3lo se necesita de agregar el \n&\n seguido de nombre del programa\n\n\n\n\n1.1.3 Evitar imprimir  mensajes de una tarea que est\u00e1 segundo plano\n\n\n\n\nCon el comando \nnohup\n podemos seguir utilizando la terminal, sin que aparezcan los mensajes que generan los programas que tenemos en segundo plano.\n\n\n\n\nnohup mkdocs serve & # corre el programa \"mkdocs\" en segundo plano, y no mostrar\u00e1 los mensajes\n\n\n\n\n1.1.4 Pasar una tarea a primer o segundo plano\n\n\n\n\nA veces puede ocurrir que se desee alternar\n\n\n\n\nfg numeroTarea # pasa una tarea a primer plano\nfg numeroTarea # pasa la tarea a segundo plano\n\n\n\n\n1.2 Ver procesos y tareas\n\n\n\n\nCon el comando \njobs\n podemos conocer las tareas que se ejecutan en segundo plano desde la terminal que tenemos abierta. Este nos detallar\u00e1 el \nn\u00famero de proceso\n(important para luego detenerlo), su \nestado de ejecuci\u00f3n\n.\n\n\nCon el comando \nps\n nos mostrar\u00e1 todas las tareas (dispone de varios parametros que personalizan la informaci\u00f3n)\n\n\n\n\nAlgunas referencias a las columnas del listado de procesos:\n\n\n\n\n\n\n\n\nColumna\n\n\nDescripci\u00f3n\n\n\n\n\n\n\n\n\n\n\npid\n\n\nIdentificador del proceso\n\n\n\n\n\n\ntty\n\n\nIdentifica la terminal donde esta corriendo\n\n\n\n\n\n\ncomm\n\n\nEs el comando que se ejecut\u00f3 en la terminal\n\n\n\n\n\n\netime\n\n\nCantidad de tiempo en ejecuci\u00f3n\n\n\n\n\n\n\n%mem\n\n\nCuanto ocupa en memoria\n\n\n\n\n\n\n%cpu\n\n\nCuanto utiliza del procesador\n\n\n\n\n\n\n\n\nOtras referencias de los par\u00e1metros para el comando \nps\n que lista los procesos:\n\n\n\n\n\n\n\n\nPar\u00e1metro\n\n\nDescripci\u00f3n\n\n\n\n\n\n\n\n\n\n\na\n\n\nMuestra los procesos que tienen una terminal controladora\n\n\n\n\n\n\nx\n\n\nMuestra los procesos que \"no\" tienen una terminal controladora\n\n\n\n\n\n\nf\n\n\nMuestra las relaciones padre/hijo entre los procesos\n\n\n\n\n\n\n\n\njobs # devuelve una lista con las tareas en ejecuci\u00f3n en la terminal actual\nps   # devuelve todas las tareas \n\n\n\n\n1.2.1 Obtener solo el n\u00famero de proceso\n\n\n\n\nSuelo optar por \npgrep\n seguido del nombre del proceso, que es mas sencillo.\nAunque tambi\u00e9n de una m\u00e1s extensa ser\u00eda con \nps\n para listar los procesos, con filtrar el proceso con \ngrep\n y retornar la columna del PID con \nawk\n\n\n\n\npgrep | nombreTarea     # devuelve el numero de id del un proceso\nps | grep nombreTarea | awk '{print $1}' # tambi\u00e9n devuelve el numero de id del proceso\n\n\n\n\n1.2.2 Obtener solo algunos datos de los procesos\n\n\n\n\nEn caso de querer saber solo algunas de las columnas de \nps\n podemos usar el parametro \neo\n seguido de las columnas. \nAlgunos campos podrian ser\n\n\n\n\nps -eo pid,comm,etime # mostrar\u00e1 la columna del identificador, el comando, y tiempo en ejecuci\u00f3n\n\n\n\n\n\n\nObservaci\u00f3n:\n Es importante que las columnas este separadas por coma sin espacios.\n\n\n\n\n1.2.3 Ordenar los procesos por algun campo\n\n\n\n\nPara esto necesitamos del parametro \n--sort\n seguido de los campos que utilizamos como criterio para ordenar\n\n\n\n\nps -eo pid,comm,etime,%cpu --sort=-%mem | head \n\n\n\n\n\n\nObservaci\u00f3n:\n Si queres visualizar la cabecera de los campos, agregar \nhead\n\n\n\n\n1.2.4 Mostrar procesos padres e hijos\n\n\n\n\nA veces es importante conocer si un proceso depende de varios es decir al detener este sus procesos hijos tambi\u00e9n.\n\n\n\n\nps --forest # muestra los procesos padres e hijos\n\n\n\n\n1.3 Detener una tarea en ejecuci\u00f3n\n\n\n\n\nSi la tara est\u00e1 en \nprimer plano\n podriamos usar el atajo \nCTRL+Z\n\n\nSi la tarea est\u00e1 en \nsegundo plano\n, utilizaremos el comando \nkill\n seguido del numero de proceso o el PID que lo identifica.\n\n\n\n\nkill %1     # detiene el proceso numero 1\n\n\n\n\n\n\nObservaci\u00f3n:\n Al utilizar el % va seguido del n\u00famero de proceso, caso contrario agregar el PID del proceso\n\n\n\n\n1.4 Guardar un proceso dependiente de una terminal\n\n\n\n\nCon el comando \ndisown\n se puede guardar un proceso que est\u00e1 corriendo en \nsegundo plano\n sobre una terminal, y si la misma se cierra el proceso no se interrumpir\u00e1.\nComo argumento se le puede pasar el \nPID\n \u00f3 el n\u00famero de proceso precedido por el \n%\n\n\n\n\nOpci\u00f3n 1, con el comando \npgrep\n:\n\n\nnohup mkdocs serve& # ejecuto el programa en segundo plano, y oculto sus mensajes\npgrep mkdocs        # busco el PID del proceso\ndisown 3003         # le paso PID para guardarlo\n\n\n\n\nOpci\u00f3n 2, con el comando \nps\n:\n\n\nnohup mkdocs serve& # ejecuto el programa en segundo plano, y oculto sus mensajes\nps -ax | grep mkdocs # busco el PID\ndisown 3003          # le paso el PID (si es que fuese 3003)\n\n\n\n\n1.5 Practicando procesos, tareas\n\n\nfirefox & ; chrome & # corro en segundo plano ambos navegadores web\n\njobs                 # verifico el numero de proceso de ambos, y si estan corriendo\nkill %1          # detengo el que tenga el n\u00famero de proceso 1\n\nps -a | grep chrome  # verifico el PID del programa, suponiendo que firefox se detuvo\nkill 3021            # detengo el proceso con PID 3021 (suponiendo que es chrome)\n\n\n\n\n\n\n\n2 Sincronizar directorios\n\n\n\n\nEl comando \nrsync\n cumple un rol fundamental para copiar, mover archivos y carpetas, se dice que es a\u00fan m\u00e1s r\u00e1pido que utilizar \ncp\n \u00f3 \nscp\n ya que comprime los archivos antes de transferirlos.\n\n\n\n\nAlgunos de los par\u00e1metros son:\n\n\n\n\n\n\n\n\nPar\u00e1metro\n\n\nDescripci\u00f3n\n\n\n\n\n\n\n\n\n\n\na\n\n\nModo archivo\n\n\n\n\n\n\nv\n\n\nModo Verboso - Muestra el informaci\u00f3n durante la transferencia\n\n\n\n\n\n\nq\n\n\nModo Silencioso - No muestra la informaci\u00f3n que se transfiere\n\n\n\n\n\n\nz\n\n\nComprimir datos al transferir\n\n\n\n\n\n\nh\n\n\nHumaniza los valores de transferencia\n\n\n\n\n\n\n\n\n2.1 Copiar un directorio local a otro\n\n\n$ rysnc -vazh directorio1/ directorio2/ # Copia todo lo del directorio1 al directorio2\n\n\n\n\n2.2 Transferir todos los archivos de un directorio local a un servidor\n\n\n$ rysnc -vazh carpeta/* host1:pruebas/ # transferir a un servidor\n\n\n\n\n2.3 Transferir un directorio local a un servidor pasandole usuario\n\n\n$ rysnc -vazh directorio2/ usuario:host2:fotos/ # transferir a un servidor pasando usuario\n\n\n\n\n2.4 Transferir desde un servidor a la maquina local\n\n\n$ rysnc -vazh admin:192.168.92.1:/srv/fotos /home/juan/carpeta # transferir desde el servidor a la maquina local\n\n\n\n\n2.4 Transfencia segura con ssh desde el servidor a m\u00e1quina local\n\n\n\n\nA diferencia del resto se agrega el par\u00e1metro \ne\n y \nssh\n\n\n\n\n$ rysnc -vazh -e ssh admin@192.168.92.1:/srv/fotos /home/juan/fotos\n\n\n\n\n2.4 Simular transferencia de archivos\n\n\n\n\nSi queremos probar en caso de errores podemos utilizar \n--dry-run\n\n\n\n\n$ rysnc -vazh --dry-run directorio1/ directorio2/ # Copia todo lo del directorio1 al directorio2\n\n\n\n\nReferencia\n\n\n\n\nDocumentaci\u00f3n sobre rsyncm, Linux.die \nVer P\u00e1gina\n\n\nConociendo el comando rsync, LinuxTechi \nVer P\u00e1gina",
+            "title": "Guia linux parte 2"
+        },
+        {
+            "location": "/guia-linux-parte-2/#1-tareas-procesos",
+            "text": "Los  procesos  son programas que se pueden estar ejecutando o no. Estos procesos se los llama  tarea  en caso de que se esten corriendo en el sistema.  Las  tareas  se pueden iniciar tanto en  primer plano  (foreground) como en  segundo plano  (background). En el primer caso, se puede dar si se ejecuta la tarea desde la terminal, esta tomar\u00e1 el control de la consola y solo se podra hacer uso de la terminal cuando la tarea finalize o que nosotros la finalizemos. En el segundo caso, permiten utilizar la terminal mientras la tarea se est\u00e1 ejecutando.",
+            "title": "1. Tareas &amp;&amp; Procesos"
+        },
+        {
+            "location": "/guia-linux-parte-2/#11-iniciar-tareas",
+            "text": "",
+            "title": "1.1 Iniciar tareas"
+        },
+        {
+            "location": "/guia-linux-parte-2/#111-iniciar-una-tarea-en-primer-plano",
+            "text": "Esta tarea se va a seguir ejecutando hasta que se finalice desde la interf\u00e1z gr\u00e1fica de ese programa, o si se finaliza desde la terminal, hasta tanto no se puede usar esa terminal para otros comandos.   firefox # inicia el navegador firefox en primer plano",
+            "title": "1.1.1 Iniciar una tarea en primer plano"
+        },
+        {
+            "location": "/guia-linux-parte-2/#112-iniciar-una-tarea-en-segundo-plano",
+            "text": "En segundo plano se pueden agregar aquellas que no necesitan interactuar con la consola, es como un \"esconder\" mientras se ejecutan.   firefox & # inicia el navegador firefox en segundo plano\ntar -cvzf fotos.tar.gz fotos & # comprimir los archivos de la carpeta fotos   Observaci\u00f3n: S\u00f3lo se necesita de agregar el  &  seguido de nombre del programa",
+            "title": "1.1.2 Iniciar una tarea en segundo plano"
+        },
+        {
+            "location": "/guia-linux-parte-2/#113-evitar-imprimir-mensajes-de-una-tarea-que-esta-segundo-plano",
+            "text": "Con el comando  nohup  podemos seguir utilizando la terminal, sin que aparezcan los mensajes que generan los programas que tenemos en segundo plano.   nohup mkdocs serve & # corre el programa \"mkdocs\" en segundo plano, y no mostrar\u00e1 los mensajes",
+            "title": "1.1.3 Evitar imprimir  mensajes de una tarea que est\u00e1 segundo plano"
+        },
+        {
+            "location": "/guia-linux-parte-2/#114-pasar-una-tarea-a-primer-o-segundo-plano",
+            "text": "A veces puede ocurrir que se desee alternar   fg numeroTarea # pasa una tarea a primer plano\nfg numeroTarea # pasa la tarea a segundo plano",
+            "title": "1.1.4 Pasar una tarea a primer o segundo plano"
+        },
+        {
+            "location": "/guia-linux-parte-2/#12-ver-procesos-y-tareas",
+            "text": "Con el comando  jobs  podemos conocer las tareas que se ejecutan en segundo plano desde la terminal que tenemos abierta. Este nos detallar\u00e1 el  n\u00famero de proceso (important para luego detenerlo), su  estado de ejecuci\u00f3n .  Con el comando  ps  nos mostrar\u00e1 todas las tareas (dispone de varios parametros que personalizan la informaci\u00f3n)   Algunas referencias a las columnas del listado de procesos:     Columna  Descripci\u00f3n      pid  Identificador del proceso    tty  Identifica la terminal donde esta corriendo    comm  Es el comando que se ejecut\u00f3 en la terminal    etime  Cantidad de tiempo en ejecuci\u00f3n    %mem  Cuanto ocupa en memoria    %cpu  Cuanto utiliza del procesador     Otras referencias de los par\u00e1metros para el comando  ps  que lista los procesos:     Par\u00e1metro  Descripci\u00f3n      a  Muestra los procesos que tienen una terminal controladora    x  Muestra los procesos que \"no\" tienen una terminal controladora    f  Muestra las relaciones padre/hijo entre los procesos     jobs # devuelve una lista con las tareas en ejecuci\u00f3n en la terminal actual\nps   # devuelve todas las tareas",
+            "title": "1.2 Ver procesos y tareas"
+        },
+        {
+            "location": "/guia-linux-parte-2/#121-obtener-solo-el-numero-de-proceso",
+            "text": "Suelo optar por  pgrep  seguido del nombre del proceso, que es mas sencillo.\nAunque tambi\u00e9n de una m\u00e1s extensa ser\u00eda con  ps  para listar los procesos, con filtrar el proceso con  grep  y retornar la columna del PID con  awk   pgrep | nombreTarea     # devuelve el numero de id del un proceso\nps | grep nombreTarea | awk '{print $1}' # tambi\u00e9n devuelve el numero de id del proceso",
+            "title": "1.2.1 Obtener solo el n\u00famero de proceso"
+        },
+        {
+            "location": "/guia-linux-parte-2/#122-obtener-solo-algunos-datos-de-los-procesos",
+            "text": "En caso de querer saber solo algunas de las columnas de  ps  podemos usar el parametro  eo  seguido de las columnas. \nAlgunos campos podrian ser   ps -eo pid,comm,etime # mostrar\u00e1 la columna del identificador, el comando, y tiempo en ejecuci\u00f3n   Observaci\u00f3n:  Es importante que las columnas este separadas por coma sin espacios.",
+            "title": "1.2.2 Obtener solo algunos datos de los procesos"
+        },
+        {
+            "location": "/guia-linux-parte-2/#123-ordenar-los-procesos-por-algun-campo",
+            "text": "Para esto necesitamos del parametro  --sort  seguido de los campos que utilizamos como criterio para ordenar   ps -eo pid,comm,etime,%cpu --sort=-%mem | head    Observaci\u00f3n:  Si queres visualizar la cabecera de los campos, agregar  head",
+            "title": "1.2.3 Ordenar los procesos por algun campo"
+        },
+        {
+            "location": "/guia-linux-parte-2/#124-mostrar-procesos-padres-e-hijos",
+            "text": "A veces es importante conocer si un proceso depende de varios es decir al detener este sus procesos hijos tambi\u00e9n.   ps --forest # muestra los procesos padres e hijos",
+            "title": "1.2.4 Mostrar procesos padres e hijos"
+        },
+        {
+            "location": "/guia-linux-parte-2/#13-detener-una-tarea-en-ejecucion",
+            "text": "Si la tara est\u00e1 en  primer plano  podriamos usar el atajo  CTRL+Z  Si la tarea est\u00e1 en  segundo plano , utilizaremos el comando  kill  seguido del numero de proceso o el PID que lo identifica.   kill %1     # detiene el proceso numero 1   Observaci\u00f3n:  Al utilizar el % va seguido del n\u00famero de proceso, caso contrario agregar el PID del proceso",
+            "title": "1.3 Detener una tarea en ejecuci\u00f3n"
+        },
+        {
+            "location": "/guia-linux-parte-2/#14-guardar-un-proceso-dependiente-de-una-terminal",
+            "text": "Con el comando  disown  se puede guardar un proceso que est\u00e1 corriendo en  segundo plano  sobre una terminal, y si la misma se cierra el proceso no se interrumpir\u00e1.\nComo argumento se le puede pasar el  PID  \u00f3 el n\u00famero de proceso precedido por el  %   Opci\u00f3n 1, con el comando  pgrep :  nohup mkdocs serve& # ejecuto el programa en segundo plano, y oculto sus mensajes\npgrep mkdocs        # busco el PID del proceso\ndisown 3003         # le paso PID para guardarlo  Opci\u00f3n 2, con el comando  ps :  nohup mkdocs serve& # ejecuto el programa en segundo plano, y oculto sus mensajes\nps -ax | grep mkdocs # busco el PID\ndisown 3003          # le paso el PID (si es que fuese 3003)",
+            "title": "1.4 Guardar un proceso dependiente de una terminal"
+        },
+        {
+            "location": "/guia-linux-parte-2/#15-practicando-procesos-tareas",
+            "text": "firefox & ; chrome & # corro en segundo plano ambos navegadores web\n\njobs                 # verifico el numero de proceso de ambos, y si estan corriendo\nkill %1          # detengo el que tenga el n\u00famero de proceso 1\n\nps -a | grep chrome  # verifico el PID del programa, suponiendo que firefox se detuvo\nkill 3021            # detengo el proceso con PID 3021 (suponiendo que es chrome)",
+            "title": "1.5 Practicando procesos, tareas"
+        },
+        {
+            "location": "/guia-linux-parte-2/#2-sincronizar-directorios",
+            "text": "El comando  rsync  cumple un rol fundamental para copiar, mover archivos y carpetas, se dice que es a\u00fan m\u00e1s r\u00e1pido que utilizar  cp  \u00f3  scp  ya que comprime los archivos antes de transferirlos.   Algunos de los par\u00e1metros son:     Par\u00e1metro  Descripci\u00f3n      a  Modo archivo    v  Modo Verboso - Muestra el informaci\u00f3n durante la transferencia    q  Modo Silencioso - No muestra la informaci\u00f3n que se transfiere    z  Comprimir datos al transferir    h  Humaniza los valores de transferencia",
+            "title": "2 Sincronizar directorios"
+        },
+        {
+            "location": "/guia-linux-parte-2/#21-copiar-un-directorio-local-a-otro",
+            "text": "$ rysnc -vazh directorio1/ directorio2/ # Copia todo lo del directorio1 al directorio2",
+            "title": "2.1 Copiar un directorio local a otro"
+        },
+        {
+            "location": "/guia-linux-parte-2/#22-transferir-todos-los-archivos-de-un-directorio-local-a-un-servidor",
+            "text": "$ rysnc -vazh carpeta/* host1:pruebas/ # transferir a un servidor",
+            "title": "2.2 Transferir todos los archivos de un directorio local a un servidor"
+        },
+        {
+            "location": "/guia-linux-parte-2/#23-transferir-un-directorio-local-a-un-servidor-pasandole-usuario",
+            "text": "$ rysnc -vazh directorio2/ usuario:host2:fotos/ # transferir a un servidor pasando usuario",
+            "title": "2.3 Transferir un directorio local a un servidor pasandole usuario"
+        },
+        {
+            "location": "/guia-linux-parte-2/#24-transferir-desde-un-servidor-a-la-maquina-local",
+            "text": "$ rysnc -vazh admin:192.168.92.1:/srv/fotos /home/juan/carpeta # transferir desde el servidor a la maquina local",
+            "title": "2.4 Transferir desde un servidor a la maquina local"
+        },
+        {
+            "location": "/guia-linux-parte-2/#24-transfencia-segura-con-ssh-desde-el-servidor-a-maquina-local",
+            "text": "A diferencia del resto se agrega el par\u00e1metro  e  y  ssh   $ rysnc -vazh -e ssh admin@192.168.92.1:/srv/fotos /home/juan/fotos",
+            "title": "2.4 Transfencia segura con ssh desde el servidor a m\u00e1quina local"
+        },
+        {
+            "location": "/guia-linux-parte-2/#24-simular-transferencia-de-archivos",
+            "text": "Si queremos probar en caso de errores podemos utilizar  --dry-run   $ rysnc -vazh --dry-run directorio1/ directorio2/ # Copia todo lo del directorio1 al directorio2",
+            "title": "2.4 Simular transferencia de archivos"
+        },
+        {
+            "location": "/guia-linux-parte-2/#referencia",
+            "text": "Documentaci\u00f3n sobre rsyncm, Linux.die  Ver P\u00e1gina  Conociendo el comando rsync, LinuxTechi  Ver P\u00e1gina",
+            "title": "Referencia"
+        },
+        {
+            "location": "/ide-emacs/",
+            "text": "Programando en Emacs\n\n\n1. Atajos\n\n\n\n\n\n\n\n\nAtajo\n\n\nDescripci\u00f3n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nC\n\n\nSe refiere a la tecla Ctrl\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nX\n\n\nSe refiere a la tecla Alt\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n2. Acciones\n\n\n\n\n\n\n\n\nComando\n\n\nDescripci\u00f3n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nC-x C-c\n\n\nSalir de Emacs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nM-x dired\n\n\nListar directorio\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nM-x shell\n\n\nAbre la terminal\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nM-x list-packages\n\n\nLista todos los paquetes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n3. Comandos para Edici\u00f3n\n\n\n\n\n\n\n\n\nComando\n\n\nDescripci\u00f3n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nC-w\n\n\nCortar texto\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nX-w\n\n\nCopiar texto\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nC-y\n\n\nPegar texto\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nC-w u\n\n\nDeshacer cambio\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nC-x h\n\n\nSeleccionar todo el texto\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nC-x\n\n\nCancelar acci\u00f3n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nC-x C-s\n\n\nGuardar archivo\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n4. Comandos de Desplazamiento\n\n\n\n\n\n\n\n\nComando\n\n\nDescripci\u00f3n\n\n\n\n\n\n\n\n\n\n\nM-AvPag\n\n\nScrollear otra ventana, sin mover el cursor\n\n\n\n\n\n\nM-RePag\n\n\nScrollear otra ventana, sin mover el cursor\n\n\n\n\n\n\nC-s\n\n\nBusqueda incremental, hacia adelante\n\n\n\n\n\n\nC-r\n\n\nBusqueda decremental, hacia atras\n\n\n\n\n\n\nC-g\n\n\nFinaliza b\u00fasqueda\n\n\n\n\n\n\nC-u 8 *\n\n\nEscribe el asterisco 8 veces\n\n\n\n\n\n\nM-Delback\n\n\nBorra por palabras\n\n\n\n\n\n\n\u00a0\n\n\n\n\n\n\n\n\nC-k\n\n\nBorra desde el puntero hasta el final de linea\n\n\n\n\n\n\nM-k\n\n\nElimina texto hasta final del texto, parrafos\n\n\n\n\n\n\n\u00a0\n\n\n\n\n\n\n\n\nC-v\n\n\nAvanzar sig. P\u00e1gina\n\n\n\n\n\n\nM-v\n\n\nRetroceder, anterior p\u00e1gina\n\n\n\n\n\n\nM-<\n\n\nRetroceder por palabras\n\n\n\n\n\n\nM->\n\n\nAvanzar por palabras\n\n\n\n\n\n\nC-a\n\n\nPrincipio de linea\n\n\n\n\n\n\nC-e\n\n\nFinal de linea\n\n\n\n\n\n\n\n\n\n\n5. Control de Buffers / Ventanas\n\n\n\n\n\n\n\n\nComando\n\n\nDescripci\u00f3n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nC-x 1\n\n\nCierras las otras ventanas que no es la actual\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nC-x 2\n\n\nDivide la ventana en 2 (horizontal)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nC-x 3\n\n\nDivide la ventana en 2 (vertical)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nC-x o\n\n\nMueve el cursor a la otra ventana\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nC-x b\n\n\nCambiar a otro buffer\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nC-x C-b\n\n\nListar buffers\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nC-x k\n\n\nCerrar ventana (no emacs)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n6. Otros\n\n\n6.1 Modificar archivos con permisos root\n\n\n\n\nSe procede de igual manera que cuando se abren los archivos, con la excepci\u00f3n que se agrega \n/sudo::/\n antes de la ruta de archivo\n\n\n\n\nC-x C-f /sudo::/ruta/archivo.extension # \n\n\n\n\n6.2 Acciones sobre el listado de directorios (dired)\n\n\n\n\nLuego de haber lanzar \nM-x dired\n se pueden ejecutar acciones estando dentro del listado\n\n\n\n\n\n\n\n\n\n\nAcci\u00f3n\n\n\nDescripci\u00f3n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nd\n\n\nSeleccionar archivo para aplicarle una acci\u00f3n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nx\n\n\nEjecutar acci\u00f3n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ng\n\n\nActualizar cambios\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nC-x C-f\n\n\nCrear un archivo\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nC-x C-q\n\n\nRenombrar archivos (Finalizar con C-c C-c)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n7. Configuraci\u00f3n personalizada\n\n\n7.1. Abrir Emacs desde la terminal sin entorno gr\u00e1fico (GUI)\n\n\nroot@root:~$ emacs -nw # abrir emacs sin entorno gr\u00e1fico\n\n\n\n\n7.2. Configurar la indentaci\u00f3n del c\u00f3digo (tabulaci\u00f3n)\n\n\n;; Set Indentation (tabs)\n;;https://www.gnu.org/software/emacs/manual/html_node/efaq/Changing-the-length-of-a-Tab.html\n;https://www.emacswiki.org/emacs/IndentationBasics \n(setq-default tab-width 2)\n\n\n\n\n7.3. Autoindentaci\u00f3n\n\n\n;; https://www.emacswiki.org/emacs/AutoIndentation \n(add-hook 'lisp-mode-hook '(lambda ()\n  (local-set-key (kbd \"RET\") 'newline-and-indent)))\n\n\n\n\n\n\n8. Informaci\u00f3n Adicional\n\n\n8.1. Como usar C+x b (Cambiar de buffer)\n\n\n\n\nPuede continuar usando C-x o para cambiar entre las ventanas.  Cada ventana tiene su propia posici\u00f3n del cursor, pero \u00fanicamente una ventana actual muestra el cursor.  Todos los comandos de edici\u00f3n comunes se aplican a la ventana en que est\u00e1 el cursor.  Llamaremos esto la \"ventana seleccionada\".\n\n\nEl comando C-M-v es muy \u00fatil cuando est\u00e1 editando un texto en una ventana y usando la otra ventana como referencia.  Puede mantener el cursor siempre en la ventana donde est\u00e1 editando, y avanzar a la otra ventana secuencialmente con C-M-v.\n\n\n\n\n8.2. Guardar\n\n\n\n\n\u201cEsto copia el texto dentro de Emacs al archivo.  La primera vez que haga esto, Emacs renombrar\u00e1 el archivo original con un nuevo nombre para que \u00e9ste no se pierda.  El nuevo nombre se hace agregando \"~\" al final del nombre del archivo original.\n\n\nCuando guardar haya terminado, Emacs mostrar\u00e1 el nombre del archivo escrito.  Deber\u00e1 guardar frecuentemente, para que no pierda mucho\ntrabajo si el sistema falla.\u201d Puede encontrar un archivo existente, para verlo o editarlo.\n\n\nTambi\u00e9n puede hacerlo con un archivo que no exista.\u00c9sta es la forma de crear un archivo en Emacs: encuentre el archivo, que comenzar\u00e1 vac\u00edo, luego comience a insertar el texto para ese archivo.  Cuando invoque \"guardar\" el archivo, Emacs crear\u00e1 realmente el archivo con el texto que ha insertado.  De ah\u00ed en adelante, puede considerarse estar editando un archivo existente.\n\n\n\n\n8.3. Buffers (Ventanas)\n\n\n\n\nCUALQUIER texto que vea en una ventana de Emacs siempre es parte de un buffer.  Algunos buffers no corresponden a un archivo.  Por ejemplo, el buffer llamado \"\nBuffer List\n\" no tiene ning\u00fan archivo.\n\n\nEs el buffer que contiene la lista de buffers que ha creado con C-x C-b.  El buffer llamado \"\nMessages\n\" tampoco tiene un archivo correspondiente; contiene los mensajes que han aparecido en la l\u00ednea de abajo durante su sesi\u00f3n de Emacs.\n\n\n\n\n8.4. Auto guardado\n\n\n\n\nSi ha hecho cambios en un archivo, pero no los ha guardado, \u00e9stos podr\u00edan perderse si su computadora falla.  Para protegerlo de esto, Emacs peri\u00f3dicamente escribe un archivo \"auto guardado\" para cada archivo que est\u00e1 editando.\n\n\nEl nombre del archivo auto guardado tiene un # al principio y al final; por ejemplo, si su archivo se llama \"hola.c\", su archivo auto guardado es \"#hola.c#\".\n\n\nCuando guarda por la v\u00eda normal, Emacs borra su archivo de auto guardado. Si la computadora falla, puede recuperar su edici\u00f3n de auto guardado encontrando el archivo normal (el archivo que estuvo editando, no el archivo de auto guardar) y entonces tecleando M-x recover file\n.\n\n\nCuando le pregunte por la confirmaci\u00f3n, teclee yes\n para ir y recuperar la informaci\u00f3n del auto guardado.\n\n\n\n\n\n\nReferencias\n\n\n\n\nConfiguraci\u00f3n del archivo Init, ErgoEmacs \nVer P\u00e1gina\n\n\nUtilizando el Editor de Directorios, GNU \nVer P\u00e1gina\n\n\nDocumentaci\u00f3n Oficial, GNU.org \nVer P\u00e1gina\n\n\nReferencia de comandos, EmacsWiki \nVer P\u00e1gina\n\n\n\n\nComando C-M-v Scroll-other-window, GNU.org \nVer P\u00e1gina\n\n\n\n\n\n\nRenombrar multiples archivos \nVer P\u00e1gina",
+            "title": "Ide emacs"
+        },
+        {
+            "location": "/ide-emacs/#programando-en-emacs",
+            "text": "",
+            "title": "Programando en Emacs"
+        },
+        {
+            "location": "/ide-emacs/#1-atajos",
+            "text": "Atajo  Descripci\u00f3n            C  Se refiere a la tecla Ctrl          X  Se refiere a la tecla Alt",
+            "title": "1. Atajos"
+        },
+        {
+            "location": "/ide-emacs/#2-acciones",
+            "text": "Comando  Descripci\u00f3n          C-x C-c  Salir de Emacs        M-x dired  Listar directorio        M-x shell  Abre la terminal        M-x list-packages  Lista todos los paquetes",
+            "title": "2. Acciones"
+        },
+        {
+            "location": "/ide-emacs/#3-comandos-para-edicion",
+            "text": "Comando  Descripci\u00f3n          C-w  Cortar texto        X-w  Copiar texto        C-y  Pegar texto        C-w u  Deshacer cambio        C-x h  Seleccionar todo el texto        C-x  Cancelar acci\u00f3n        C-x C-s  Guardar archivo",
+            "title": "3. Comandos para Edici\u00f3n"
+        },
+        {
+            "location": "/ide-emacs/#4-comandos-de-desplazamiento",
+            "text": "Comando  Descripci\u00f3n      M-AvPag  Scrollear otra ventana, sin mover el cursor    M-RePag  Scrollear otra ventana, sin mover el cursor    C-s  Busqueda incremental, hacia adelante    C-r  Busqueda decremental, hacia atras    C-g  Finaliza b\u00fasqueda    C-u 8 *  Escribe el asterisco 8 veces    M-Delback  Borra por palabras    \u00a0     C-k  Borra desde el puntero hasta el final de linea    M-k  Elimina texto hasta final del texto, parrafos    \u00a0     C-v  Avanzar sig. P\u00e1gina    M-v  Retroceder, anterior p\u00e1gina    M-<  Retroceder por palabras    M->  Avanzar por palabras    C-a  Principio de linea    C-e  Final de linea",
+            "title": "4. Comandos de Desplazamiento"
+        },
+        {
+            "location": "/ide-emacs/#5-control-de-buffers-ventanas",
+            "text": "Comando  Descripci\u00f3n          C-x 1  Cierras las otras ventanas que no es la actual        C-x 2  Divide la ventana en 2 (horizontal)        C-x 3  Divide la ventana en 2 (vertical)        C-x o  Mueve el cursor a la otra ventana        C-x b  Cambiar a otro buffer        C-x C-b  Listar buffers        C-x k  Cerrar ventana (no emacs)",
+            "title": "5. Control de Buffers / Ventanas"
+        },
+        {
+            "location": "/ide-emacs/#6-otros",
+            "text": "",
+            "title": "6. Otros"
+        },
+        {
+            "location": "/ide-emacs/#61-modificar-archivos-con-permisos-root",
+            "text": "Se procede de igual manera que cuando se abren los archivos, con la excepci\u00f3n que se agrega  /sudo::/  antes de la ruta de archivo   C-x C-f /sudo::/ruta/archivo.extension #",
+            "title": "6.1 Modificar archivos con permisos root"
+        },
+        {
+            "location": "/ide-emacs/#62-acciones-sobre-el-listado-de-directorios-dired",
+            "text": "Luego de haber lanzar  M-x dired  se pueden ejecutar acciones estando dentro del listado      Acci\u00f3n  Descripci\u00f3n          d  Seleccionar archivo para aplicarle una acci\u00f3n        x  Ejecutar acci\u00f3n        g  Actualizar cambios        C-x C-f  Crear un archivo        C-x C-q  Renombrar archivos (Finalizar con C-c C-c)",
+            "title": "6.2 Acciones sobre el listado de directorios (dired)"
+        },
+        {
+            "location": "/ide-emacs/#7-configuracion-personalizada",
+            "text": "",
+            "title": "7. Configuraci\u00f3n personalizada"
+        },
+        {
+            "location": "/ide-emacs/#71-abrir-emacs-desde-la-terminal-sin-entorno-grafico-gui",
+            "text": "root@root:~$ emacs -nw # abrir emacs sin entorno gr\u00e1fico",
+            "title": "7.1. Abrir Emacs desde la terminal sin entorno gr\u00e1fico (GUI)"
+        },
+        {
+            "location": "/ide-emacs/#72-configurar-la-indentacion-del-codigo-tabulacion",
             "text": ";; Set Indentation (tabs)\n;;https://www.gnu.org/software/emacs/manual/html_node/efaq/Changing-the-length-of-a-Tab.html\n;https://www.emacswiki.org/emacs/IndentationBasics \n(setq-default tab-width 2)",
-            "title": "2. Configurar la indentaci\u00f3n del c\u00f3digo (tabulaci\u00f3n)"
+            "title": "7.2. Configurar la indentaci\u00f3n del c\u00f3digo (tabulaci\u00f3n)"
         },
         {
-            "location": "/programacion/#3-autoindentacion",
+            "location": "/ide-emacs/#73-autoindentacion",
             "text": ";; https://www.emacswiki.org/emacs/AutoIndentation \n(add-hook 'lisp-mode-hook '(lambda ()\n  (local-set-key (kbd \"RET\") 'newline-and-indent)))",
-            "title": "3. Autoindentaci\u00f3n"
+            "title": "7.3. Autoindentaci\u00f3n"
         },
         {
-            "location": "/programacion/#informacion-adicional",
+            "location": "/ide-emacs/#8-informacion-adicional",
             "text": "",
-            "title": "Informaci\u00f3n Adicional"
+            "title": "8. Informaci\u00f3n Adicional"
         },
         {
-            "location": "/programacion/#1-como-usar-cx-b-cambiar-de-buffer",
-            "text": "Puede continuar usando C-x o para cambiar entre las ventanas.  Cada ventana tiene su propia posici\u00f3n del cursor, pero \u00fanicamente una ventana actual muestra el cursor.  Todos los comandos de edici\u00f3n comunes se aplican a la ventana en que est\u00e1 el cursor.  Llamaremos esto la \"ventana seleccionada\".\nEl comando C-M-v es muy \u00fatil cuando est\u00e1 editando un texto en una ventana y usando la otra ventana como referencia.  Puede mantener el cursor siempre en la ventana donde est\u00e1 editando, y avanzar a la otra ventana secuencialmente con C-M-v.",
-            "title": "1. Como usar C+x b (Cambiar de buffer)"
+            "location": "/ide-emacs/#81-como-usar-cx-b-cambiar-de-buffer",
+            "text": "Puede continuar usando C-x o para cambiar entre las ventanas.  Cada ventana tiene su propia posici\u00f3n del cursor, pero \u00fanicamente una ventana actual muestra el cursor.  Todos los comandos de edici\u00f3n comunes se aplican a la ventana en que est\u00e1 el cursor.  Llamaremos esto la \"ventana seleccionada\".  El comando C-M-v es muy \u00fatil cuando est\u00e1 editando un texto en una ventana y usando la otra ventana como referencia.  Puede mantener el cursor siempre en la ventana donde est\u00e1 editando, y avanzar a la otra ventana secuencialmente con C-M-v.",
+            "title": "8.1. Como usar C+x b (Cambiar de buffer)"
         },
         {
-            "location": "/programacion/#2-guardar",
-            "text": "\u201cEsto copia el texto dentro de Emacs al archivo.  La primera vez que haga esto, Emacs renombrar\u00e1 el archivo original con un nuevo nombre para que \u00e9ste no se pierda.  El nuevo nombre se hace agregando \"~\" al final del nombre del archivo original. Cuando guardar haya terminado, Emacs mostrar\u00e1 el nombre del archivo escrito.  Deber\u00e1 guardar frecuentemente, para que no pierda mucho\ntrabajo si el sistema falla.\u201d Puede encontrar un archivo existente, para verlo o editarlo.  Tambi\u00e9n puede hacerlo con un archivo que no exista.\u00c9sta es la forma de crear un archivo en Emacs: encuentre el archivo, que comenzar\u00e1 vac\u00edo, luego comience a insertar el texto para ese archivo.  Cuando invoque \"guardar\" el archivo, Emacs crear\u00e1 realmente el archivo con el texto que ha insertado.  De ah\u00ed en adelante, puede considerarse estar editando un archivo existente.",
-            "title": "2. Guardar"
+            "location": "/ide-emacs/#82-guardar",
+            "text": "\u201cEsto copia el texto dentro de Emacs al archivo.  La primera vez que haga esto, Emacs renombrar\u00e1 el archivo original con un nuevo nombre para que \u00e9ste no se pierda.  El nuevo nombre se hace agregando \"~\" al final del nombre del archivo original.  Cuando guardar haya terminado, Emacs mostrar\u00e1 el nombre del archivo escrito.  Deber\u00e1 guardar frecuentemente, para que no pierda mucho\ntrabajo si el sistema falla.\u201d Puede encontrar un archivo existente, para verlo o editarlo.  Tambi\u00e9n puede hacerlo con un archivo que no exista.\u00c9sta es la forma de crear un archivo en Emacs: encuentre el archivo, que comenzar\u00e1 vac\u00edo, luego comience a insertar el texto para ese archivo.  Cuando invoque \"guardar\" el archivo, Emacs crear\u00e1 realmente el archivo con el texto que ha insertado.  De ah\u00ed en adelante, puede considerarse estar editando un archivo existente.",
+            "title": "8.2. Guardar"
         },
         {
-            "location": "/programacion/#3-buffers-ventanas",
+            "location": "/ide-emacs/#83-buffers-ventanas",
             "text": "CUALQUIER texto que vea en una ventana de Emacs siempre es parte de un buffer.  Algunos buffers no corresponden a un archivo.  Por ejemplo, el buffer llamado \" Buffer List \" no tiene ning\u00fan archivo.  Es el buffer que contiene la lista de buffers que ha creado con C-x C-b.  El buffer llamado \" Messages \" tampoco tiene un archivo correspondiente; contiene los mensajes que han aparecido en la l\u00ednea de abajo durante su sesi\u00f3n de Emacs.",
-            "title": "3. Buffers (Ventanas)"
+            "title": "8.3. Buffers (Ventanas)"
         },
         {
-            "location": "/programacion/#4-auto-guardado",
-            "text": "Si ha hecho cambios en un archivo, pero no los ha guardado, \u00e9stos podr\u00edan perderse si su computadora falla.  Para protegerlo de esto, Emacs peri\u00f3dicamente escribe un archivo \"auto guardado\" para cada archivo que est\u00e1 editando.  El nombre del archivo auto guardado tiene un # al principio y al final; por ejemplo, si su archivo se llama \"hola.c\", su archivo auto guardado es \"#hola.c#\".  Cuando guarda por la v\u00eda normal, Emacs borra su archivo de auto guardado.\nSi la computadora falla, puede recuperar su edici\u00f3n de auto guardado encontrando el archivo normal (el archivo que estuvo editando, no el archivo de auto guardar) y entonces tecleando M-x recover file .  Cuando le pregunte por la confirmaci\u00f3n, teclee yes  para ir y recuperar la informaci\u00f3n del auto guardado.",
-            "title": "4. Auto guardado"
+            "location": "/ide-emacs/#84-auto-guardado",
+            "text": "Si ha hecho cambios en un archivo, pero no los ha guardado, \u00e9stos podr\u00edan perderse si su computadora falla.  Para protegerlo de esto, Emacs peri\u00f3dicamente escribe un archivo \"auto guardado\" para cada archivo que est\u00e1 editando.  El nombre del archivo auto guardado tiene un # al principio y al final; por ejemplo, si su archivo se llama \"hola.c\", su archivo auto guardado es \"#hola.c#\".  Cuando guarda por la v\u00eda normal, Emacs borra su archivo de auto guardado. Si la computadora falla, puede recuperar su edici\u00f3n de auto guardado encontrando el archivo normal (el archivo que estuvo editando, no el archivo de auto guardar) y entonces tecleando M-x recover file .  Cuando le pregunte por la confirmaci\u00f3n, teclee yes  para ir y recuperar la informaci\u00f3n del auto guardado.",
+            "title": "8.4. Auto guardado"
         },
         {
-            "location": "/programacion/#recursos",
-            "text": "Documentaci\u00f3n Oficial  Comando C-M-v Scroll-other-window",
-            "title": "Recursos"
+            "location": "/ide-emacs/#referencias",
+            "text": "Configuraci\u00f3n del archivo Init, ErgoEmacs  Ver P\u00e1gina  Utilizando el Editor de Directorios, GNU  Ver P\u00e1gina  Documentaci\u00f3n Oficial, GNU.org  Ver P\u00e1gina  Referencia de comandos, EmacsWiki  Ver P\u00e1gina   Comando C-M-v Scroll-other-window, GNU.org  Ver P\u00e1gina    Renombrar multiples archivos  Ver P\u00e1gina",
+            "title": "Referencias"
+        },
+        {
+            "location": "/virtualbox/",
+            "text": "1. Descargar Virtualbox\n\n\nIr a Descargas de VirtualBox\n\n\n2. Programa para correr Virtualbox\n\n\nCreamos el archivo con \ntouch crearMaquinaVirtual.sh\n copiamos el c\u00f3digo que aparece debajo,\ny luego ejecutamos el programa en la terminal con \n.\\crearMaquinaVirtual.sh miMaquina1\n\n\n#!/bin/bash\n# verificamos que estamos pasando como parametro el nombre de la maquina virtual\nif [ ! $1 ]\nthen\n    echo \"Error: falta pasar por argumento el nombre de la maquina virtual\"\nelse\n    # configuraciones\n    NOMBRE_MAQUINA_VIRTUAL=$1 # primer argumento, nombre de la maquina virtual\n    CAPACIDAD_MEMORIA=1024 # en Mbytes\n    CAPACIDAD_DISCO=10000 # en Mbytes\n    DIRECTORIO_MAQUINAS_VIRTUALES=\"$HOME/VirtualBox VMs\"\n    #RUTA_IMAGEN_UBUNTU=\"$HOME/iso/ubuntu-18.04.3-desktop-amd64.iso\"\n    RUTA_IMAGEN_UBUNTU=\"$HOME/iso/ubuntu-18.04.3-live-server-amd64.iso\"\n\n    echo \"Verificando si la maquina virtual existe..\"\n    if [ -d \"${DIRECTORIO_MAQUINAS_VIRTUALES}/${NOMBRE_MAQUINA_VIRTUAL}\" ] \n    then\n    echo \"Deteniendo maquina virtual..\"\n        vboxmanage startvm $NOMBRE_MAQUINA_VIRTUAL --type emergencystop\n\n    echo \"Iniciando maquina virtual..\"\n        VBoxHeadless --startvm $NOMBRE_MAQUINA_VIRTUAL\n    else\n    echo \"Verificando si el package extension est\u00e1 instalado..\"\n    sh actualizarVirtualBoxExtension.sh # ejecutamos el archivo (debe existir)\n\n        # creo la vm y la registro\n        #VBoxManage createvm --name ${NOMBRE_MAQUINA_VIRTUAL} --register --ostype Ubuntu # para 32 bits\n    echo \"Creando y registrando M\u00e1quina Virtual..\"\n    VBoxManage createvm --name ${NOMBRE_MAQUINA_VIRTUAL} --register --ostype Ubuntu_64 # para 64 bits\n    echo \"Configurando Guest Machine..\"\n    VBoxManage modifyvm ${NOMBRE_MAQUINA_VIRTUAL} --memory ${CAPACIDAD_MEMORIA} --boot1 dvd --vrde on --vrdeport 5001 --acpi on\n\n        # 4 NUEVAS CONFIGURACIONES\n        # nuevas configuraciones (averiguar mas de vrde server, pae, nic1 nat, natpf1 guestssh, ..)\n    echo \"Configurando adaptador de red..\"\n        VBoxManage modifyvm ${NOMBRE_MAQUINA_VIRTUAL} --nic1 bridged --bridgeadapter1 enp1s0        \n        VBoxManage modifyvm ${NOMBRE_MAQUINA_VIRTUAL} --nic1 nat\n        VBoxManage modifyvm ${NOMBRE_MAQUINA_VIRTUAL} --natpf1 \"ssh,tcp,,4422,,22\"\n        VBoxManage modifyvm ${NOMBRE_MAQUINA_VIRTUAL} --pae on\n\n    echo \"Agregando controladores SATA..\"\n        #asigno la capacidad en disco a utilizar\n        VBoxManage createvdi --filename \"${DIRECTORIO_MAQUINAS_VIRTUALES}/${NOMBRE_MAQUINA_VIRTUAL}/${NOMBRE_MAQUINA_VIRTUAL}-disk01.vdi\" --size ${CAPACIDAD_DISCO}\n        #le agrego el uso de dispositivos\n        VBoxManage storagectl ${NOMBRE_MAQUINA_VIRTUAL} --name \"IDE Controller\" --add ide\n        VBoxManage storageattach ${NOMBRE_MAQUINA_VIRTUAL} --storagectl \"IDE Controller\" --port 0 --device 0 --type hdd --medium \"${DIRECTORIO_MAQUINAS_VIRTUALES}/${NOMBRE_MAQUINA_VIRTUAL}/${NOMBRE_MAQUINA_VIRTUAL}-disk01.vdi\"\n        VBoxManage storageattach ${NOMBRE_MAQUINA_VIRTUAL} --storagectl \"IDE Controller\" --port 1 --device 0 --type dvddrive --medium ${RUTA_IMAGEN_UBUNTU}\n    # despues de instalar, correr lo sig. para sacar la imagen, sino no arranca el sistema instalado\n    # vboxmanage storageattach test5 --storagectl \"IDE Controller\" --port 1 --device 0 --type dvddrive --medium none\n    fi\nfi\n\nexport PATH=$HOME/bin/myscripts\n\n\n\n\nDescargar compiladores viejos\n\n\nCambiar en el enlace la version que necesitas\nhttps://www.virtualbox.org/wiki/Download_Old_Builds_5_1\n\n\n2. Comandos utiles\n\n\n2.1 Modificar configuraci\u00f3n mientras esta apagada\n\n\nvboxmanage modifyvm nombreMaquinaVirtual --natpf3 \"guestssh,tcp,127.0.0.1,2222,,22\"\n\n\n2.2 Modificar configuraci\u00f3n mientras se ejecuta\n\n\nvboxmanage controlvm nombreMaquinaVirtual natpf3 \"guestssh,tcp,127.0.0.1,2222,,22\"\n\n\n2.3 Encender maquina virtual desdela terminal\n\n\nvboxheadless -s nombreMaquinaVirtual\n\n\n2.4 Apagar maquina virtual\n\n\nVBoxManage controlvm \"testvm\" poweroff\n\n\n2.5 Buscar si existe maquina virtual\n\n\nVBoxManage showvminfo \"testvm\"\n\n\n2.6 Listar maquinas virtuales creadas\n\n\nVBoxManage list vms\n\n\n2.7 Listar maquinas virtuales que se estan ejecutando\n\n\nVBoxManage list runningvms\n\n\n2.8 Conectarse a la maquina virtual desde la terminal\n\n\nrdesktop -a 16 -N localhost:3389\n\n\n2.9 Listar las extensiones instaladas\n\n\nvboxmanage list extpacks\n\n\n2.10 Agregar usuario\n\n\n`sudo usermod -a -G vboxusers unNombreDeUsuario`\n\n\n\n2.11 Desinstalar la extension\n\n\nvboxmanage extpack uninstall \"Oracle VM VirtualBox Extension Pack\"\n\n\n2.12 Otros\n\n\nvboxmanage showvminfo programming | grep NIC\nmodifyvm programming --natpf1 \"ssh,tcp,127.0.0.1,5422,,,22\"\nvboxmanage modifyvm programming --natpf1 \"SSH,tcp,127.0.0.1,2522,10.0.2.15,22\"\n\n\n\n\n3.Resolver Posibles errores\n\n\n3.1. No aparece la conexion vrde server escuchando puerto 3389\n\n\nPosible soluci\u00f3n\n\n\n$vboxmanage modifyvm vmtest5 --vrde on\n\n\n\n\n3.2 No permite arrancar via terminal\n\n\n$ vboxmanage starvm nombreMaquinaVirtual\n\n# esto ejecuta con entorno gr\u00e1fico, y el mensaje es el siguiente\nthis kernel requires the following features not present on the cpu\n\n\n\n\nPosible soluci\u00f3n\n\n\n$ VboxManage modifyvm nombreVM --pae on\n\n\n3.  No me deja conectar al VRDE Server via remota con rdesktop\n\n\nEl servidor aparece:\n\n\n$ vboxheadless -s nombreMaquinaVirtual\n\n# y al intentar conectarse via remota en otra terminal, aparece lo sig.:\nwebSocketsHandshake: invalid client header\n\n\n\n\nEn el cliente muestra:\n\n\n$ rdesktop localhost\n# \nAutoselected keyboard map en-gb\nERROR: Connection closed\n\n\n\n\nPosible soluci\u00f3n:\n\n1. Descargar e instalar la extension pack de Virtualbox (que sea la misma versin que Virtualbox)\n2. Ingresar lo siguiente en la terminal\n\n$ VBoxManage setproperty vrdeextpack \"Oracle VM VirtualBox Extension Pack\n\n\n4. Recursos\n\n\n\n\nhttps://code-maven.com/virtualbox-host-only-network-ssh-to-remote-machine\n\n\nhttp://xmodulo.com/how-to-create-and-start-virtualbox-vm-without-gui.html\n\n\nhttps://help.github.com/en/articles/basic-writing-and-formatting-syntax\n\n\nhttps://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet",
+            "title": "Virtualbox"
+        },
+        {
+            "location": "/virtualbox/#1-descargar-virtualbox",
+            "text": "Ir a Descargas de VirtualBox",
+            "title": "1. Descargar Virtualbox"
+        },
+        {
+            "location": "/virtualbox/#2-programa-para-correr-virtualbox",
+            "text": "Creamos el archivo con  touch crearMaquinaVirtual.sh  copiamos el c\u00f3digo que aparece debajo,\ny luego ejecutamos el programa en la terminal con  .\\crearMaquinaVirtual.sh miMaquina1  #!/bin/bash\n# verificamos que estamos pasando como parametro el nombre de la maquina virtual\nif [ ! $1 ]\nthen\n    echo \"Error: falta pasar por argumento el nombre de la maquina virtual\"\nelse\n    # configuraciones\n    NOMBRE_MAQUINA_VIRTUAL=$1 # primer argumento, nombre de la maquina virtual\n    CAPACIDAD_MEMORIA=1024 # en Mbytes\n    CAPACIDAD_DISCO=10000 # en Mbytes\n    DIRECTORIO_MAQUINAS_VIRTUALES=\"$HOME/VirtualBox VMs\"\n    #RUTA_IMAGEN_UBUNTU=\"$HOME/iso/ubuntu-18.04.3-desktop-amd64.iso\"\n    RUTA_IMAGEN_UBUNTU=\"$HOME/iso/ubuntu-18.04.3-live-server-amd64.iso\"\n\n    echo \"Verificando si la maquina virtual existe..\"\n    if [ -d \"${DIRECTORIO_MAQUINAS_VIRTUALES}/${NOMBRE_MAQUINA_VIRTUAL}\" ] \n    then\n    echo \"Deteniendo maquina virtual..\"\n        vboxmanage startvm $NOMBRE_MAQUINA_VIRTUAL --type emergencystop\n\n    echo \"Iniciando maquina virtual..\"\n        VBoxHeadless --startvm $NOMBRE_MAQUINA_VIRTUAL\n    else\n    echo \"Verificando si el package extension est\u00e1 instalado..\"\n    sh actualizarVirtualBoxExtension.sh # ejecutamos el archivo (debe existir)\n\n        # creo la vm y la registro\n        #VBoxManage createvm --name ${NOMBRE_MAQUINA_VIRTUAL} --register --ostype Ubuntu # para 32 bits\n    echo \"Creando y registrando M\u00e1quina Virtual..\"\n    VBoxManage createvm --name ${NOMBRE_MAQUINA_VIRTUAL} --register --ostype Ubuntu_64 # para 64 bits\n    echo \"Configurando Guest Machine..\"\n    VBoxManage modifyvm ${NOMBRE_MAQUINA_VIRTUAL} --memory ${CAPACIDAD_MEMORIA} --boot1 dvd --vrde on --vrdeport 5001 --acpi on\n\n        # 4 NUEVAS CONFIGURACIONES\n        # nuevas configuraciones (averiguar mas de vrde server, pae, nic1 nat, natpf1 guestssh, ..)\n    echo \"Configurando adaptador de red..\"\n        VBoxManage modifyvm ${NOMBRE_MAQUINA_VIRTUAL} --nic1 bridged --bridgeadapter1 enp1s0        \n        VBoxManage modifyvm ${NOMBRE_MAQUINA_VIRTUAL} --nic1 nat\n        VBoxManage modifyvm ${NOMBRE_MAQUINA_VIRTUAL} --natpf1 \"ssh,tcp,,4422,,22\"\n        VBoxManage modifyvm ${NOMBRE_MAQUINA_VIRTUAL} --pae on\n\n    echo \"Agregando controladores SATA..\"\n        #asigno la capacidad en disco a utilizar\n        VBoxManage createvdi --filename \"${DIRECTORIO_MAQUINAS_VIRTUALES}/${NOMBRE_MAQUINA_VIRTUAL}/${NOMBRE_MAQUINA_VIRTUAL}-disk01.vdi\" --size ${CAPACIDAD_DISCO}\n        #le agrego el uso de dispositivos\n        VBoxManage storagectl ${NOMBRE_MAQUINA_VIRTUAL} --name \"IDE Controller\" --add ide\n        VBoxManage storageattach ${NOMBRE_MAQUINA_VIRTUAL} --storagectl \"IDE Controller\" --port 0 --device 0 --type hdd --medium \"${DIRECTORIO_MAQUINAS_VIRTUALES}/${NOMBRE_MAQUINA_VIRTUAL}/${NOMBRE_MAQUINA_VIRTUAL}-disk01.vdi\"\n        VBoxManage storageattach ${NOMBRE_MAQUINA_VIRTUAL} --storagectl \"IDE Controller\" --port 1 --device 0 --type dvddrive --medium ${RUTA_IMAGEN_UBUNTU}\n    # despues de instalar, correr lo sig. para sacar la imagen, sino no arranca el sistema instalado\n    # vboxmanage storageattach test5 --storagectl \"IDE Controller\" --port 1 --device 0 --type dvddrive --medium none\n    fi\nfi\n\nexport PATH=$HOME/bin/myscripts",
+            "title": "2. Programa para correr Virtualbox"
+        },
+        {
+            "location": "/virtualbox/#descargar-compiladores-viejos",
+            "text": "Cambiar en el enlace la version que necesitas\nhttps://www.virtualbox.org/wiki/Download_Old_Builds_5_1",
+            "title": "Descargar compiladores viejos"
+        },
+        {
+            "location": "/virtualbox/#2-comandos-utiles",
+            "text": "",
+            "title": "2. Comandos utiles"
+        },
+        {
+            "location": "/virtualbox/#21-modificar-configuracion-mientras-esta-apagada",
+            "text": "vboxmanage modifyvm nombreMaquinaVirtual --natpf3 \"guestssh,tcp,127.0.0.1,2222,,22\"",
+            "title": "2.1 Modificar configuraci\u00f3n mientras esta apagada"
+        },
+        {
+            "location": "/virtualbox/#22-modificar-configuracion-mientras-se-ejecuta",
+            "text": "vboxmanage controlvm nombreMaquinaVirtual natpf3 \"guestssh,tcp,127.0.0.1,2222,,22\"",
+            "title": "2.2 Modificar configuraci\u00f3n mientras se ejecuta"
+        },
+        {
+            "location": "/virtualbox/#23-encender-maquina-virtual-desdela-terminal",
+            "text": "vboxheadless -s nombreMaquinaVirtual",
+            "title": "2.3 Encender maquina virtual desdela terminal"
+        },
+        {
+            "location": "/virtualbox/#24-apagar-maquina-virtual",
+            "text": "VBoxManage controlvm \"testvm\" poweroff",
+            "title": "2.4 Apagar maquina virtual"
+        },
+        {
+            "location": "/virtualbox/#25-buscar-si-existe-maquina-virtual",
+            "text": "VBoxManage showvminfo \"testvm\"",
+            "title": "2.5 Buscar si existe maquina virtual"
+        },
+        {
+            "location": "/virtualbox/#26-listar-maquinas-virtuales-creadas",
+            "text": "VBoxManage list vms",
+            "title": "2.6 Listar maquinas virtuales creadas"
+        },
+        {
+            "location": "/virtualbox/#27-listar-maquinas-virtuales-que-se-estan-ejecutando",
+            "text": "VBoxManage list runningvms",
+            "title": "2.7 Listar maquinas virtuales que se estan ejecutando"
+        },
+        {
+            "location": "/virtualbox/#28-conectarse-a-la-maquina-virtual-desde-la-terminal",
+            "text": "rdesktop -a 16 -N localhost:3389",
+            "title": "2.8 Conectarse a la maquina virtual desde la terminal"
+        },
+        {
+            "location": "/virtualbox/#29-listar-las-extensiones-instaladas",
+            "text": "vboxmanage list extpacks",
+            "title": "2.9 Listar las extensiones instaladas"
+        },
+        {
+            "location": "/virtualbox/#210-agregar-usuario",
+            "text": "`sudo usermod -a -G vboxusers unNombreDeUsuario`",
+            "title": "2.10 Agregar usuario"
+        },
+        {
+            "location": "/virtualbox/#211-desinstalar-la-extension",
+            "text": "vboxmanage extpack uninstall \"Oracle VM VirtualBox Extension Pack\"",
+            "title": "2.11 Desinstalar la extension"
+        },
+        {
+            "location": "/virtualbox/#212-otros",
+            "text": "vboxmanage showvminfo programming | grep NIC\nmodifyvm programming --natpf1 \"ssh,tcp,127.0.0.1,5422,,,22\"\nvboxmanage modifyvm programming --natpf1 \"SSH,tcp,127.0.0.1,2522,10.0.2.15,22\"",
+            "title": "2.12 Otros"
+        },
+        {
+            "location": "/virtualbox/#3resolver-posibles-errores",
+            "text": "",
+            "title": "3.Resolver Posibles errores"
+        },
+        {
+            "location": "/virtualbox/#31-no-aparece-la-conexion-vrde-server-escuchando-puerto-3389",
+            "text": "Posible soluci\u00f3n  $vboxmanage modifyvm vmtest5 --vrde on",
+            "title": "3.1. No aparece la conexion vrde server escuchando puerto 3389"
+        },
+        {
+            "location": "/virtualbox/#32-no-permite-arrancar-via-terminal",
+            "text": "$ vboxmanage starvm nombreMaquinaVirtual\n\n# esto ejecuta con entorno gr\u00e1fico, y el mensaje es el siguiente\nthis kernel requires the following features not present on the cpu  Posible soluci\u00f3n  $ VboxManage modifyvm nombreVM --pae on",
+            "title": "3.2 No permite arrancar via terminal"
+        },
+        {
+            "location": "/virtualbox/#3-no-me-deja-conectar-al-vrde-server-via-remota-con-rdesktop",
+            "text": "El servidor aparece:  $ vboxheadless -s nombreMaquinaVirtual\n\n# y al intentar conectarse via remota en otra terminal, aparece lo sig.:\nwebSocketsHandshake: invalid client header  En el cliente muestra:  $ rdesktop localhost\n# \nAutoselected keyboard map en-gb\nERROR: Connection closed  Posible soluci\u00f3n: \n1. Descargar e instalar la extension pack de Virtualbox (que sea la misma versin que Virtualbox)\n2. Ingresar lo siguiente en la terminal $ VBoxManage setproperty vrdeextpack \"Oracle VM VirtualBox Extension Pack",
+            "title": "3.  No me deja conectar al VRDE Server via remota con rdesktop"
+        },
+        {
+            "location": "/virtualbox/#4-recursos",
+            "text": "https://code-maven.com/virtualbox-host-only-network-ssh-to-remote-machine  http://xmodulo.com/how-to-create-and-start-virtualbox-vm-without-gui.html  https://help.github.com/en/articles/basic-writing-and-formatting-syntax  https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet",
+            "title": "4. Recursos"
         }
     ]
 }

@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Ide emacs - Manu Docs</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+	
+	<script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="..">Manu Docs</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                    <li >
+                        <a href="..">Home</a>
+                    </li>
+                    <li >
+                        <a href="../guia-linux-parte-1/">Guia linux parte 1</a>
+                    </li>
+                    <li >
+                        <a href="../guia-linux-parte-2/">Guia linux parte 2</a>
+                    </li>
+                    <li class="active">
+                        <a href="./">Ide emacs</a>
+                    </li>
+                    <li >
+                        <a href="../virtualbox/">Virtualbox</a>
+                    </li>
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../guia-linux-parte-2/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../virtualbox/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#programando-en-emacs">Programando en Emacs</a></li>
+            <li><a href="#1-atajos">1. Atajos</a></li>
+            <li><a href="#2-acciones">2. Acciones</a></li>
+            <li><a href="#3-comandos-para-edicion">3. Comandos para Edición</a></li>
+            <li><a href="#4-comandos-de-desplazamiento">4. Comandos de Desplazamiento</a></li>
+            <li><a href="#5-control-de-buffers-ventanas">5. Control de Buffers / Ventanas</a></li>
+            <li><a href="#6-otros">6. Otros</a></li>
+            <li><a href="#7-configuracion-personalizada">7. Configuración personalizada</a></li>
+            <li><a href="#8-informacion-adicional">8. Información Adicional</a></li>
+        <li class="main "><a href="#referencias">Referencias</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="programando-en-emacs">Programando en Emacs</h1>
+<h2 id="1-atajos">1. Atajos</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Atajo</th>
+<th>Descripción</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">C</td>
+<td>Se refiere a la tecla Ctrl</td>
+<td><td colspan="6"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">X</td>
+<td>Se refiere a la tecla Alt</td>
+<td><td colspan="6"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-acciones">2. Acciones</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Comando</th>
+<th align="left">Descripción</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">C-x C-c</td>
+<td align="left">Salir de Emacs</td>
+<td><td colspan="4"></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">M-x dired</td>
+<td align="left">Listar directorio</td>
+<td><td colspan="4"></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">M-x shell</td>
+<td align="left">Abre la terminal</td>
+<td><td colspan="4"></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">M-x list-packages</td>
+<td align="left">Lista todos los paquetes</td>
+<td><td colspan="4"></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-comandos-para-edicion">3. Comandos para Edición</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Comando</th>
+<th align="left">Descripción</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">C-w</td>
+<td align="left">Cortar texto</td>
+<td><td colspan="4"></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">X-w</td>
+<td align="left">Copiar texto</td>
+<td><td colspan="4"></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">C-y</td>
+<td align="left">Pegar texto</td>
+<td><td colspan="4"></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">C-w u</td>
+<td align="left">Deshacer cambio</td>
+<td><td colspan="4"></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">C-x h</td>
+<td align="left">Seleccionar todo el texto</td>
+<td><td colspan="4"></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">C-x</td>
+<td align="left">Cancelar acción</td>
+<td><td colspan="4"></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">C-x C-s</td>
+<td align="left">Guardar archivo</td>
+<td><td colspan="4"></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-comandos-de-desplazamiento">4. Comandos de Desplazamiento</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Comando</th>
+<th align="left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">M-AvPag</td>
+<td align="left">Scrollear otra ventana, sin mover el cursor</td>
+</tr>
+<tr>
+<td align="left">M-RePag</td>
+<td align="left">Scrollear otra ventana, sin mover el cursor</td>
+</tr>
+<tr>
+<td align="left">C-s</td>
+<td align="left">Busqueda incremental, hacia adelante</td>
+</tr>
+<tr>
+<td align="left">C-r</td>
+<td align="left">Busqueda decremental, hacia atras</td>
+</tr>
+<tr>
+<td align="left">C-g</td>
+<td align="left">Finaliza búsqueda</td>
+</tr>
+<tr>
+<td align="left">C-u 8 *</td>
+<td align="left">Escribe el asterisco 8 veces</td>
+</tr>
+<tr>
+<td align="left">M-Delback</td>
+<td align="left">Borra por palabras</td>
+</tr>
+<tr>
+<td align="left">&nbsp;</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">C-k</td>
+<td align="left">Borra desde el puntero hasta el final de linea</td>
+</tr>
+<tr>
+<td align="left">M-k</td>
+<td align="left">Elimina texto hasta final del texto, parrafos</td>
+</tr>
+<tr>
+<td align="left">&nbsp;</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">C-v</td>
+<td align="left">Avanzar sig. Página</td>
+</tr>
+<tr>
+<td align="left">M-v</td>
+<td align="left">Retroceder, anterior página</td>
+</tr>
+<tr>
+<td align="left">M-&lt;</td>
+<td align="left">Retroceder por palabras</td>
+</tr>
+<tr>
+<td align="left">M-&gt;</td>
+<td align="left">Avanzar por palabras</td>
+</tr>
+<tr>
+<td align="left">C-a</td>
+<td align="left">Principio de linea</td>
+</tr>
+<tr>
+<td align="left">C-e</td>
+<td align="left">Final de linea</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-control-de-buffers-ventanas">5. Control de Buffers / Ventanas</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Comando</th>
+<th align="left">Descripción</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">C-x 1</td>
+<td align="left">Cierras las otras ventanas que no es la actual</td>
+<td><td colspan="4"></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">C-x 2</td>
+<td align="left">Divide la ventana en 2 (horizontal)</td>
+<td><td colspan="4"></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">C-x 3</td>
+<td align="left">Divide la ventana en 2 (vertical)</td>
+<td><td colspan="4"></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">C-x o</td>
+<td align="left">Mueve el cursor a la otra ventana</td>
+<td><td colspan="4"></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">C-x b</td>
+<td align="left">Cambiar a otro buffer</td>
+<td><td colspan="4"></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">C-x C-b</td>
+<td align="left">Listar buffers</td>
+<td><td colspan="4"></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">C-x k</td>
+<td align="left">Cerrar ventana (no emacs)</td>
+<td><td colspan="4"></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-otros">6. Otros</h2>
+<h3 id="61-modificar-archivos-con-permisos-root">6.1 Modificar archivos con permisos root</h3>
+<blockquote>
+<p>Se procede de igual manera que cuando se abren los archivos, con la excepción que se agrega <strong>/sudo::/</strong> antes de la ruta de archivo</p>
+</blockquote>
+<pre><code class="bash">C-x C-f /sudo::/ruta/archivo.extension # 
+</code></pre>
+
+<h3 id="62-acciones-sobre-el-listado-de-directorios-dired">6.2 Acciones sobre el listado de directorios (dired)</h3>
+<blockquote>
+<p>Luego de haber lanzar <code>M-x dired</code> se pueden ejecutar acciones estando dentro del listado</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">Acción</th>
+<th align="left">Descripción</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">d</td>
+<td align="left">Seleccionar archivo para aplicarle una acción</td>
+<td><td colspan="4"></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">x</td>
+<td align="left">Ejecutar acción</td>
+<td><td colspan="4"></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">g</td>
+<td align="left">Actualizar cambios</td>
+<td><td colspan="4"></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">C-x C-f</td>
+<td align="left">Crear un archivo</td>
+<td><td colspan="4"></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">C-x C-q</td>
+<td align="left">Renombrar archivos (Finalizar con C-c C-c)</td>
+<td><td colspan="4"></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-configuracion-personalizada">7. Configuración personalizada</h2>
+<h3 id="71-abrir-emacs-desde-la-terminal-sin-entorno-grafico-gui">7.1. Abrir Emacs desde la terminal sin entorno gráfico (GUI)</h3>
+<pre><code class="bash">root@root:~$ emacs -nw # abrir emacs sin entorno gráfico
+</code></pre>
+
+<h3 id="72-configurar-la-indentacion-del-codigo-tabulacion">7.2. Configurar la indentación del código (tabulación)</h3>
+<pre><code>;; Set Indentation (tabs)
+;;https://www.gnu.org/software/emacs/manual/html_node/efaq/Changing-the-length-of-a-Tab.html
+;https://www.emacswiki.org/emacs/IndentationBasics 
+(setq-default tab-width 2)
+</code></pre>
+
+<h3 id="73-autoindentacion">7.3. Autoindentación</h3>
+<pre><code>;; https://www.emacswiki.org/emacs/AutoIndentation 
+(add-hook 'lisp-mode-hook '(lambda ()
+  (local-set-key (kbd &quot;RET&quot;) 'newline-and-indent)))
+</code></pre>
+
+<hr />
+<h2 id="8-informacion-adicional">8. Información Adicional</h2>
+<h3 id="81-como-usar-cx-b-cambiar-de-buffer">8.1. Como usar C+x b (Cambiar de buffer)</h3>
+<blockquote>
+<p>Puede continuar usando C-x o para cambiar entre las ventanas.  Cada ventana tiene su propia posición del cursor, pero únicamente una ventana actual muestra el cursor.  Todos los comandos de edición comunes se aplican a la ventana en que está el cursor.  Llamaremos esto la "ventana seleccionada".</p>
+<p>El comando C-M-v es muy útil cuando está editando un texto en una ventana y usando la otra ventana como referencia.  Puede mantener el cursor siempre en la ventana donde está editando, y avanzar a la otra ventana secuencialmente con C-M-v.</p>
+</blockquote>
+<h3 id="82-guardar">8.2. Guardar</h3>
+<blockquote>
+<p>“Esto copia el texto dentro de Emacs al archivo.  La primera vez que haga esto, Emacs renombrará el archivo original con un nuevo nombre para que éste no se pierda.  El nuevo nombre se hace agregando "~" al final del nombre del archivo original.</p>
+<p>Cuando guardar haya terminado, Emacs mostrará el nombre del archivo escrito.  Deberá guardar frecuentemente, para que no pierda mucho
+trabajo si el sistema falla.” Puede encontrar un archivo existente, para verlo o editarlo.</p>
+<p>También puede hacerlo con un archivo que no exista.Ésta es la forma de crear un archivo en Emacs: encuentre el archivo, que comenzará vacío, luego comience a insertar el texto para ese archivo.  Cuando invoque "guardar" el archivo, Emacs creará realmente el archivo con el texto que ha insertado.  De ahí en adelante, puede considerarse estar editando un archivo existente.</p>
+</blockquote>
+<h3 id="83-buffers-ventanas">8.3. Buffers (Ventanas)</h3>
+<blockquote>
+<p>CUALQUIER texto que vea en una ventana de Emacs siempre es parte de un buffer.  Algunos buffers no corresponden a un archivo.  Por ejemplo, el buffer llamado "<em>Buffer List</em>" no tiene ningún archivo.</p>
+<p>Es el buffer que contiene la lista de buffers que ha creado con C-x C-b.  El buffer llamado "<em>Messages</em>" tampoco tiene un archivo correspondiente; contiene los mensajes que han aparecido en la línea de abajo durante su sesión de Emacs.</p>
+</blockquote>
+<h3 id="84-auto-guardado">8.4. Auto guardado</h3>
+<blockquote>
+<p>Si ha hecho cambios en un archivo, pero no los ha guardado, éstos podrían perderse si su computadora falla.  Para protegerlo de esto, Emacs periódicamente escribe un archivo "auto guardado" para cada archivo que está editando.</p>
+<p>El nombre del archivo auto guardado tiene un # al principio y al final; por ejemplo, si su archivo se llama "hola.c", su archivo auto guardado es "#hola.c#".</p>
+<p>Cuando guarda por la vía normal, Emacs borra su archivo de auto guardado. Si la computadora falla, puede recuperar su edición de auto guardado encontrando el archivo normal (el archivo que estuvo editando, no el archivo de auto guardar) y entonces tecleando M-x recover file<Return>.</p>
+<p>Cuando le pregunte por la confirmación, teclee yes<Return> para ir y recuperar la información del auto guardado.</p>
+</blockquote>
+<hr />
+<h1 id="referencias">Referencias</h1>
+<ul>
+<li>Configuración del archivo Init, ErgoEmacs <a href="http://ergoemacs.org/emacs/emacs_make_modern.html">Ver Página</a></li>
+<li>Utilizando el Editor de Directorios, GNU <a href="http://dinasis.com/oliver/Learning_GNU_Emacs/gnu3-CHP-5-SECT-2.html">Ver Página</a></li>
+<li>Documentación Oficial, GNU.org <a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Exiting.html">Ver Página</a></li>
+<li>Referencia de comandos, EmacsWiki <a href="https://www.emacswiki.org/emacs/EmacsNewbieKeyReference">Ver Página</a></li>
+<li>
+<p>Comando C-M-v Scroll-other-window, GNU.org <a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Other-Window.html">Ver Página</a></p>
+</li>
+<li>
+<p>Renombrar multiples archivos <a href="http://pragmaticemacs.com/emacs/dired-rename-multiple-files/">Ver Página</a></p>
+</li>
+</ul></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '..';</script>
+        <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+        <script src="../js/base.js"></script><div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
