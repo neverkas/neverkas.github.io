@@ -1,106 +1,171 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        
-        
-        <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Ide emacs - Manu Docs</title>
-        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="../css/font-awesome-4.5.0.css" rel="stylesheet">
-        <link href="../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="../css/highlight.css">
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-        <![endif]-->
-	
-	<script src="../js/jquery-1.10.2.min.js"></script>
-        <script src="../js/bootstrap-3.0.3.min.js"></script>
-        <script src="../js/highlight.pack.js"></script> 
-    </head>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Neverkas">
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Guia de Emacs - Manu Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
-    <body>
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Guia de Emacs";
+    var mkdocs_page_input_path = "ide-emacs.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
 
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
+<body class="wy-body-for-nav" role="document">
 
-        <!-- Collapsed navigation -->
-        <div class="navbar-header">
-            <!-- Expander button -->
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="..">Manu Docs</a>
-        </div>
+  <div class="wy-grid-for-nav">
 
-        <!-- Expanded navigation -->
-        <div class="navbar-collapse collapse">
-                <!-- Main navigation -->
-                <ul class="nav navbar-nav">
-                    <li >
-                        <a href="..">Home</a>
-                    </li>
-                    <li >
-                        <a href="../guia-linux-parte-1/">Guia linux parte 1</a>
-                    </li>
-                    <li >
-                        <a href="../guia-linux-parte-2/">Guia linux parte 2</a>
-                    </li>
-                    <li class="active">
-                        <a href="./">Ide emacs</a>
-                    </li>
-                    <li >
-                        <a href="../virtualbox/">Virtualbox</a>
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Manu Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
                     </li>
                 </ul>
-
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
-                        <i class="fa fa-search"></i> Search
-                    </a>
-                </li>
-                    <li >
-                        <a rel="next" href="../guia-linux-parte-2/">
-                            <i class="fa fa-arrow-left"></i> Previous
-                        </a>
+                <p class="caption"><span class="caption-text">Guia de Linux</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-de-linux/guia-linux-parte-1/">Lineas de comando (Parte 1)</a>
                     </li>
-                    <li >
-                        <a rel="prev" href="../virtualbox/">
-                            Next <i class="fa fa-arrow-right"></i>
-                        </a>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-de-linux/guia-linux-parte-2/">Lineas de comando (Parte 2)</a>
                     </li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-        <div class="container">
-                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
-    <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#programando-en-emacs">Programando en Emacs</a></li>
-            <li><a href="#1-atajos">1. Atajos</a></li>
-            <li><a href="#2-acciones">2. Acciones</a></li>
-            <li><a href="#3-comandos-para-edicion">3. Comandos para Edición</a></li>
-            <li><a href="#4-comandos-de-desplazamiento">4. Comandos de Desplazamiento</a></li>
-            <li><a href="#5-control-de-buffers-ventanas">5. Control de Buffers / Ventanas</a></li>
-            <li><a href="#6-otros">6. Otros</a></li>
-            <li><a href="#7-configuracion-personalizada">7. Configuración personalizada</a></li>
-            <li><a href="#8-informacion-adicional">8. Información Adicional</a></li>
-        <li class="main "><a href="#referencias">Referencias</a></li>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-de-linux/guia-linux-personalizar/">Personalizar el Sistema</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-de-linux/guia-linux-3/">Configuraciones</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-de-linux/linux-configuracion-de-red/">Configuración de Red</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-git/">Guia de Git</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Guia de Emacs</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1-editar-archivos-desde-la-terminal-de-linux">1. Editar archivos desde la terminal de linux</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#1-atajos">1. Atajos</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-acciones">2. Acciones</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-comandos-para-edicion">3. Comandos para Edición</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-comandos-de-desplazamiento">4. Comandos de Desplazamiento</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#5-control-de-buffers-ventanas">5. Control de Buffers / Ventanas</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#6-otros">6. Otros</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#61-modificar-archivos-con-permisos-root">6.1 Modificar archivos con permisos root</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#62-acciones-sobre-el-listado-de-directorios-dired">6.2 Acciones sobre el listado de directorios (dired)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#7-configuracion-personalizada">7. Configuración personalizada</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#71-configurar-la-indentacion-del-codigo-tabulacion">7.1. Configurar la indentación del código (tabulación)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#72-autoindentacion">7.2. Autoindentación</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#8-informacion-adicional">8. Información Adicional</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#81-como-usar-cx-b-cambiar-de-buffer">8.1. Como usar C+x b (Cambiar de buffer)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#82-guardar">8.2. Guardar</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#83-buffers-ventanas">8.3. Buffers (Ventanas)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#84-auto-guardado">8.4. Auto guardado</a>
+    </li>
+        </ul>
+    </li>
     </ul>
-</div></div>
-                <div class="col-md-9" role="main">
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Guia de Maquinas Virtuales</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../virtualbox/">Configurando Virtualbox</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
 
-<h1 id="programando-en-emacs">Programando en Emacs</h1>
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Manu Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Guia de Emacs</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/neverkas/manu-doc/edit/master/docs/ide-emacs.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="programar-con-emacs">Programar con Emacs</h1>
+<h2 id="1-editar-archivos-desde-la-terminal-de-linux">1. Editar archivos desde la terminal de linux</h2>
+<blockquote>
+<p>Si estamos apurados y queremos ver ó modificar un archivo sin entorno gráfico
+ejecutamos el ide pasando el parámetro <strong>-nw</strong></p>
+</blockquote>
+<pre><code class="bash">emacs -nw /etc/hosts # abrimos el archivo hosts
+</code></pre>
+
+<blockquote>
+<p><strong>Observación</strong>: Si queremos evitar pasarle el parámetro, podemos crear un alias en linux</p>
+</blockquote>
 <h2 id="1-atajos">1. Atajos</h2>
 <table>
 <thead>
@@ -251,6 +316,14 @@
 <tr>
 <td align="left">C-x C-s</td>
 <td align="left">Guardar archivo</td>
+<td><td colspan="4"></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="left">C-x C-v</td>
+<td align="left">Actualizar buffer</td>
 <td><td colspan="4"></td>
 <td></td>
 <td></td>
@@ -479,18 +552,14 @@
 </table>
 <hr />
 <h2 id="7-configuracion-personalizada">7. Configuración personalizada</h2>
-<h3 id="71-abrir-emacs-desde-la-terminal-sin-entorno-grafico-gui">7.1. Abrir Emacs desde la terminal sin entorno gráfico (GUI)</h3>
-<pre><code class="bash">root@root:~$ emacs -nw # abrir emacs sin entorno gráfico
-</code></pre>
-
-<h3 id="72-configurar-la-indentacion-del-codigo-tabulacion">7.2. Configurar la indentación del código (tabulación)</h3>
+<h3 id="71-configurar-la-indentacion-del-codigo-tabulacion">7.1. Configurar la indentación del código (tabulación)</h3>
 <pre><code>;; Set Indentation (tabs)
 ;;https://www.gnu.org/software/emacs/manual/html_node/efaq/Changing-the-length-of-a-Tab.html
 ;https://www.emacswiki.org/emacs/IndentationBasics 
 (setq-default tab-width 2)
 </code></pre>
 
-<h3 id="73-autoindentacion">7.3. Autoindentación</h3>
+<h3 id="72-autoindentacion">7.2. Autoindentación</h3>
 <pre><code>;; https://www.emacswiki.org/emacs/AutoIndentation 
 (add-hook 'lisp-mode-hook '(lambda ()
   (local-set-key (kbd &quot;RET&quot;) 'newline-and-indent)))
@@ -535,39 +604,95 @@ trabajo si el sistema falla.” Puede encontrar un archivo existente, para verlo
 <li>
 <p>Renombrar multiples archivos <a href="http://pragmaticemacs.com/emacs/dired-rename-multiple-files/">Ver Página</a></p>
 </li>
-</ul></div>
-        </div>
-
-        <footer class="col-md-12">
-            <hr>
-            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
-        </footer>
-        <script>var base_url = '..';</script>
-        <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
-        <script src="../js/base.js"></script><div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+</ul>
+<h1 id="referencias-pendientes-a-revisar">Referencias pendientes a revisar</h1>
+<ul>
+<li>https://www.emacswiki.org/emacs/WhatAreTheNeedsOfProgrammers#toc6</li>
+<li>https://truongtx.me/2013/03/10/ecb-emacs-code-browser</li>
+<li>https://www.reddit.com/r/emacs/comments/931ogo/finally_a_decent_method_outline_for_my_emacs_ecb/</li>
+</ul>
+<p><strong>cedet</strong></p>
+<ul>
+<li>https://appsintheopen.com/articles/1-setting-up-emacs-for-rails-development/part/6-setting-up-the-emacs-code-browser</li>
+</ul>
+<p><strong>actualmente usando neoTree</strong></p>
+<ul>
+<li>https://github.com/jaypei/emacs-neotree/blob/dev/README.md</li>
+<li>https://github.com/Alexander-Miller/treemacs</li>
+</ul>
+<p><strong>View method, classes,..</strong></p>
+<ul>
+<li>https://stackoverflow.com/questions/7497132/emacs-ecb-method-window-not-showing-all-methods</li>
+<li>https://superuser.com/questions/629090/emacs-displaying-list-of-subroutines-functions-classes-in-a-source-file</li>
+<li>http://cedet.sourceforge.net/</li>
+<li>https://www.emacswiki.org/emacs/ImenuMode
+http://cedet.sourceforge.net/</li>
+</ul>
+<p><strong>ECB</strong></p>
+<ul>
+<li>http://ecb.sourceforge.net/docs/ecb_002dmethods.html</li>
+<li>http://www.xemacs.org/Documentation/sources/xemacs-packages/xemacs-packages/ecb/ecb_5.html</li>
+<li>
+<p>http://ecb.sourceforge.net/docs/Interactive-ECB-commands.html</p>
+</li>
+<li>
+<p>https://elpy.readthedocs.io/en/latest/introduction.html#overview</p>
+</li>
+<li>http://ecb.sourceforge.net/</li>
+</ul>
+              
             </div>
-            <div class="modal-body">
-                <p>
-                    From here you can search these documents. Enter
-                    your search terms below.
-                </p>
-                <form role="form">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
-                    </div>
-                </form>
-                <div id="mkdocs-search-results"></div>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../virtualbox/" class="btn btn-neutral float-right" title="Configurando Virtualbox">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../guia-git/" class="btn btn-neutral" title="Guia de Git"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
     </div>
-</div>
+  
 
-    </body>
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/neverkas/manu-doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../guia-git/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../virtualbox/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
 </html>

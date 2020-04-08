@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Neverkas">
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Guia de Git - Manu Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Guia de Git";
+    var mkdocs_page_input_path = "guia-git.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Manu Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Guia de Linux</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-de-linux/guia-linux-parte-1/">Lineas de comando (Parte 1)</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-de-linux/guia-linux-parte-2/">Lineas de comando (Parte 2)</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-de-linux/guia-linux-personalizar/">Personalizar el Sistema</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-de-linux/guia-linux-3/">Configuraciones</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-de-linux/linux-configuracion-de-red/">Configuración de Red</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Guia de Git</a>
+    <ul class="current">
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../ide-emacs/">Guia de Emacs</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Guia de Maquinas Virtuales</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../virtualbox/">Configurando Virtualbox</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Manu Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Guia de Git</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/neverkas/manu-doc/edit/master/docs/guia-git.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="guia-de-git">Guia de GIT</h1>
+<p><img src=/images/programming-software.jpg></p>
+<h1 id="1-basico">1. Básico</h1>
+<p>Investigar mas de
+revert, fetch, reset</p>
+<h2 id="11-agregar-todos-los-cambios-nuevos">1.1 Agregar todos los cambios nuevos</h2>
+<blockquote>
+<p>Si hicimos cambios en varios archivos y directorios, y no queremos agregar cambio por cambio
+podemos pasarle por parámetro un punto, que indica el directorio que estas posicionado.
+La idea seria ubicarse en la raíz o directorio principal para lanzar el comando.</p>
+</blockquote>
+<pre><code>git add . 
+</code></pre>
+
+<h2 id="11-deshacer-cambios">1.1 Deshacer cambios</h2>
+<blockquote>
+<p>Se puede revertir los cambios de un archivo, o de todos los archivos que se cambiaron
+de forma temporal o permanente.</p>
+</blockquote>
+<h2 id="12-deshacer-cambios-locales">1.2 Deshacer cambios locales</h2>
+<blockquote>
+<p>Si modificaste un archivo, y por alguna razón no podemos usar el shortcut Ctrl+z
+para volver atras porque se nos cerró el editor, ó reinició el ordenador.
+Podemos volver los cambios del archivo antes de esa modificación
+haciendo uso del comando <strong>checkout</strong> seguido de dos guiones y del nombre de archivo.</p>
+</blockquote>
+<pre><code class="bash">git checkout -- archivo.html
+</code></pre>
+
+<blockquote>
+<p>Observación: Un cambio es local, cuando modificas archivos con tu editor de texto, y guardas los cambios.</p>
+</blockquote>
+<h2 id="13-deshacer-cambios-de-un-archivo-del-stage">1.3 Deshacer cambios de un archivo del stage</h2>
+<blockquote>
+<p>Si modificaste un archivo, lo guardaste y lo agregaste al repositorio local con <strong>git add</strong>
+aún se pueden deshacer los cambios. Necesitarás usar primero el <strong>reset head</strong> para decirle
+a git que no quieres el último cambio, y luego proceder como antes con <strong>checkout</strong> para deshacer
+el cambio guardado.</p>
+</blockquote>
+<pre><code>git reset HEAD archivo.html
+</code></pre>
+
+<blockquote>
+<p>Observación: Un cambio está en stage, si utilizaste el comando *<em>git add</em></p>
+</blockquote>
+<h2 id="15-deshacer-cambios-con-reset-sin-borrar-historial-stage">1.5 Deshacer cambios con "reset" sin borrar historial (stage)</h2>
+<blockquote>
+<p>Una solución a "no borrar los commits del historial" que es posible que a veces
+lo hagamos de forma intencional por pequeños cambios es pasar el parámetro <strong>soft</strong>.</p>
+<p>Con este parámetro <strong>soft</strong> los cambios de los commits apareceran en el <strong>stage</strong>,
+caso contrario a que si usamos <strong>hard</strong>. Con este segundo se debe tener cuidado,
+porque apuntará al commit indicado y los anteriores a él se borrarán del stage,
+no pudiendo ver diferencias o hacer checkout de ellos.</p>
+</blockquote>
+<pre><code>git reset --soft 6148578
+</code></pre>
+
+<blockquote>
+<p>Observación: El hash de un commit se puede obtener utilizando <strong>git log --oneline</strong> aparece
+a la iquierda de mensaje</p>
+</blockquote>
+<h2 id="12-revertir-todos-los-cambios-de-forma-temporal">1.2 Revertir todos los cambios de forma temporal</h2>
+<blockquote>
+<p>Con el comando <strong>stash</strong> en realidad movemos los cambios a otro lugar como si lo escondieramos.
+Si mientras realizabamos cambios(A), y de repente nos piden cambios(B), ocultamos los cambios(A)
+con <strong>stash</strong>. Hacemos los cambios(B)</p>
+</blockquote>
+<pre><code class="bash">git stash
+</code></pre>
+
+<pre><code>git revert
+</code></pre>
+
+<h2 id="12-ver-un-resumen-de-los-commits">1.2 Ver un resumen de los commits</h2>
+<pre><code>git log --oneline
+</code></pre>
+
+<hr />
+<h1 id="1-branches">1. Branches</h1>
+<h2 id="11-crear-un-branch">1.1 Crear un branch</h2>
+<blockquote>
+<p>Los branches nos permiten crear nuevas funcionalidades o modificaciones del proyecto
+sin modificar de forma directa en él. Por tanto podemos crear un branch para trabajar
+sobre esta nueva mejora lanzar commits y push al repositorio por más que aún esté en
+desarrollo lo que realizamos.</p>
+</blockquote>
+<pre><code class="bash">git branch nombre-del-Branch
+</code></pre>
+
+<h2 id="12-crear-un-branch-y-cambiar-al-nuevo-branch">1.2 Crear un branch y cambiar al nuevo branch</h2>
+<blockquote>
+<p>Cuando creamos un branch, suele quedarse posicionado en el <em>master</em>, de esta manera
+podemos crear el branch y ya trabajar sobre el.</p>
+</blockquote>
+<pre><code class="bash">git checkout -b nombre-del-branch
+</code></pre>
+
+<h2 id="13-modificar-el-nombre-de-un-branch">1.3 Modificar el nombre de un branch</h2>
+<pre><code class="bash">git branch -m nombre-del-branch nuevo-nombre-del-branch
+</code></pre>
+
+<h2 id="14-borrar">1.4 Borrar</h2>
+<pre><code class="bash">git branch -d nombre-del-branch
+</code></pre>
+
+<h2 id="15-listar-branches-creados">1.5 Listar branches creados</h2>
+<blockquote></blockquote>
+<pre><code class="bash">git branch
+</code></pre>
+
+<h2 id="16-cambiarse-a-un-branch">1.6 Cambiarse a un branch</h2>
+<blockquote></blockquote>
+<pre><code class="bash">git checkout nombre-del-branch
+</code></pre>
+
+<h1 id="2-tags-o-etiquetas">2. Tags ó Etiquetas</h1>
+<blockquote>
+<p>Sirven para tener un control de versiones del proyecto,
+Existen dos tipos "ligeros" y "anotados", los segundos son los más recomendados
+en caso de querer tener más información.</p>
+</blockquote>
+<h2 id="21-crear-tag">2.1 Crear tag</h2>
+<pre><code>git tag -a v1.0.0 -m &quot;Proyecto v1.0.0&quot;
+</code></pre>
+
+<h2 id="22-listar-tags">2.2 Listar tags</h2>
+<pre><code>git tag
+</code></pre>
+
+<h2 id="23-eliminar-tag">2.3 Eliminar tag</h2>
+<pre><code>git tag -d v1.0.0
+</code></pre>
+
+<h1 id="3-stash">3. Stash</h1>
+<blockquote>
+<p>Para esconder cambios utilizamos el comando <strong>stash</strong></p>
+</blockquote>
+<h2 id="31-listar-cambios-ocultos">3.1 listar cambios ocultos</h2>
+<pre><code>git stash list
+</code></pre>
+
+<h2 id="32-aplicar-el-ultimo-cambio">3.2 aplicar el ultimo cambio</h2>
+<pre><code>git stash apply
+</code></pre>
+
+<h2 id="33-guardar-un-stash-mas-descriptivo">3.3 guardar un stash mas descriptivo</h2>
+<pre><code>git stash save &quot;Se ha realizado cambios en la letra fuente&quot;
+</code></pre>
+
+<h2 id="34-mostrar-informacion-de-un-stash">3.4 mostrar informacion de un stash</h2>
+<pre><code>git stash show
+</code></pre>
+
+<h2 id="35-remover-de-la-pila-del-stash">3.5 remover de la pila del stash</h2>
+<pre><code>git stash drop
+</code></pre>
+
+<h1 id="recursos">Recursos</h1>
+<ul>
+<li>Como deshacer cambios <a href="https://dev.to/neshaz/when-to-use-git-reset-git-revert--git-checkout-18je">Ver Página</a></li>
+<li>Agregar color a la terminal de GIT<ul>
+<li>Opción 1 - <a href="https://nathanhoad.net/how-to-colours-in-git/">Ver página</a></li>
+<li>Opción 2 - <a href="https://www.leaseweb.com/labs/2013/08/git-tip-beautiful-colored-and-readable-output/">Ver Página</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="videos-utiles">Videos útiles</h1>
+<ul>
+<li>
+<p>Comandos <strong>fetch</strong> <strong>pull</strong> y <strong>rebase</strong>
+ <a href="https://www.youtube.com/watch?v=r-PTFYVmGNo">Ver Video</a></p>
+</li>
+<li>
+<p>Interpretacion grafica del comando <strong>commit</strong>
+ <a href="https://pvigier.github.io/2019/05/06/commit-graph-drawing-algorithms.html">Ver Pagina</a></p>
+</li>
+<li>
+<p>Diferencias entre los comandos <strong>rebase</strong> y <strong>merge</strong>
+ <a href="https://medium.com/datadriveninvestor/git-rebase-vs-merge-cc5199edd77c">Ver Pagina</a></p>
+</li>
+<li>
+<p>Interpretacion grafica del historial
+<a href="https://www.bitsnbites.eu/a-tidy-linear-git-history/">Ver Pagina</a></p>
+</li>
+<li>
+<p>Tutorial de Git
+ <a href="https://www.slideshare.net/th507/git-an-intro-of-plumbing-and-porcelain-commands">Ver Pagina</a></p>
+</li>
+<li>
+<p>Interpretacion grafica del historial y comandos
+<a href="https://jeffsaracco.com/Happy-git-Trees/">Ver Pagina</a></p>
+</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../ide-emacs/" class="btn btn-neutral float-right" title="Guia de Emacs">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../guia-de-linux/linux-configuracion-de-red/" class="btn btn-neutral" title="Configuración de Red"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/neverkas/manu-doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../guia-de-linux/linux-configuracion-de-red/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../ide-emacs/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
