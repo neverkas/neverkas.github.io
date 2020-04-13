@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Neverkas">
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Integrando Git con MAGIT - Manu Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Integrando Git con MAGIT";
+    var mkdocs_page_input_path = "guia-de-emacs/guia-emacs-magit.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Manu Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Guia de Linux</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-parte-1/">Lineas de comando (Parte 1)</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-parte-2/">Lineas de comando (Parte 2)</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-personalizar/">Personalizar el Sistema</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-3/">Configuraciones</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/linux-configuracion-de-red/">Configuración de Red</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-git/">Guia de Git</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Guia de Emacs</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-emacs/">Empezando con Emacs</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-emacs-spacemacs/">Avanzando con Spacemacs</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-emacs-modo-org/">Integrando el Modo Org</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Integrando Git con MAGIT</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#traer-cambios-de-un-branch-al-master">Traer cambios de un branch al master</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#diferencia-entre-master-y-originmaster">Diferencia entre master y origin/master</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#guardar-cambios-de-forma-temporal-stash">Guardar cambios de forma temporal (Stash)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#listar-historial-de-commits-de-un-archivo">Listar historial de commits de un archivo</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Guia de Maquinas Virtuales</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../virtualbox/">Configurando Virtualbox</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Manu Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Guia de Emacs &raquo;</li>
+        
+      
+    
+    <li>Integrando Git con MAGIT</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/neverkas/manu-doc/edit/master/docs/guia-de-emacs/guia-emacs-magit.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="tips">Tips</h1>
+<h3 id="traer-cambios-de-un-branch-al-master">Traer cambios de un branch al master</h3>
+<blockquote>
+<p>Si hicimos cambios y los guardamos en <strong>branches</strong> y queremos traerlos al <strong>branch master</strong> (suele ser la ultima version, la que ira a produccion)</p>
+</blockquote>
+<ol>
+<li>
+<p>Cambiamos al <strong>branch master</strong></p>
+<blockquote>
+<p>Presionamos <strong>SPC g s</strong> para acceder al menu de Magit, 
+luego <strong>b b</strong> y elegimos el <strong>master branch</strong> (no es lo mismo que origin/master)</p>
+</blockquote>
+</li>
+<li>
+<p>Hacemos <strong>merge</strong> con el branch que queremos (Ej. hotfix branch o testing branch)</p>
+<blockquote>
+<p>Presionamos <strong>SPC g s</strong> luego <strong>m m</strong> y elegimos el <strong>branch</strong> para traer los cambios al <strong>master branch</strong></p>
+</blockquote>
+</li>
+<li>
+<p>Hacemos <strong>push</strong> del <strong>merge</strong></p>
+<blockquote>
+<p>Presionamos con <strong>SPC g s</strong> luego <strong>p p</strong></p>
+</blockquote>
+</li>
+</ol>
+<h3 id="diferencia-entre-master-y-originmaster">Diferencia entre master y origin/master</h3>
+<blockquote>
+<p>Del ejemplo anterior quizas puede aparecer esto, y pueden surgir dudas.
+Cuando se dice <strong>master</strong> se refiere al <strong>local branch</strong> (el entorno local),
+mientras que <strong>origin/master</strong> hace referencia al <strong>remote branch</strong> (el que esta en el servidor github**</p>
+</blockquote>
+<p><strong>Observacion:</strong> Lo mismo aplica con los <strong>branches</strong>
+Ej. origin/hotfix y hotfix, origin/testing y testing, etc..</p>
+<p><strong>Referencias:</strong></p>
+<ul>
+<li>Referencia #1 - Stackify.com - <a href="https://stackify.com/git-checkout-remote-branch/">Ver Pagina</a></li>
+<li>Referencia #2 - Stackoverfow - <a href="https://stackoverflow.com/questions/48596045/git-difference-between-origin-master-and-origin-master">Ver Pagina</a></li>
+</ul>
+<h3 id="guardar-cambios-de-forma-temporal-stash">Guardar cambios de forma temporal (Stash)</h3>
+<blockquote>
+<p>Si hicimos cambios en archivos de nuestro ordenador (se dice que es local, y se guarda en <strong>unstage</strong>),
+para guardar esos cambios en otro lugar de "forma temporal" (se guarda en <strong>stash</strong>) antes de hacer un <strong>pull</strong> </p>
+</blockquote>
+<ol>
+<li>
+<p>Antes de hacer <strong>commit</strong> de los cambios, separamos el codigo con <strong>stash</strong></p>
+<blockquote>
+<p>Los cambios que se hicimos en los archivos del entorno local estan en <strong>unstage</strong> sino hicimos commit,
+seleccionamos ese bloque de codigo y presionamos <strong>zz RET</strong> (no le asignamos nombre porque es opcional).
+<strong>Nota:</strong> Cuando volvamos al archivo, no apareceran lo cambios, quedaron separados en <strong>stash</strong></p>
+</blockquote>
+</li>
+<li>
+<p>Creamos un <strong>branch</strong> para las nuevas caracteristicas que nos pidieron de improviso</p>
+<blockquote>
+<p>Al crear el <strong>branch</strong> nos aseguramos de separar las nuevas caracteristicas
+del <strong>commit</strong> que hariamos con las funcionalidades que estabamos desarrollando.</p>
+</blockquote>
+</li>
+<li>
+<p>Volvemos a traer el codigo que reservamos con <strong>stash</strong></p>
+<blockquote>
+<p>Seleccionamos los cambios que teniamos <strong>stashes</strong> y presionamos <strong>a</strong> (add/agregar)
+y volvera a aparecer esos cambios en el archivo, por tanto estara en <strong>unstage</strong> 
+donde quedan las modificaciones que aun no se hizo <strong>commit</strong> (si lo hicieramos quedarian
+en <strong>stage</strong>)</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="listar-historial-de-commits-de-un-archivo">Listar historial de commits de un archivo</h3>
+<blockquote>
+<p>Corremos el comando <strong>blame</strong> presionando <strong>SPC g b</strong> y nos muestra un log de los cambios
+Si presionamos <strong>b</strong> va a los commits anteriores y con <strong>q</strong> los mas recientes</p>
+</blockquote>
+<p><strong>Referencias:</strong></p>
+<ul>
+<li>Referencia #1 - Magit.vc - <a href="https://magit.vc/manual/magit/Blaming.html">Ver Pagina</a></li>
+</ul>
+<hr />
+<h1 id="atajos">Atajos</h1>
+<table>
+<thead>
+<tr>
+<th align="left">Comando</th>
+<th align="left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">SPC-g s</td>
+<td align="left">Muestra el estado de cambios</td>
+</tr>
+<tr>
+<td align="left">Tab</td>
+<td align="left">Expande/Oculta el contenido del bloque donde esta el cursor</td>
+</tr>
+<tr>
+<td align="left">s</td>
+<td align="left">Agrega archivos nuevos/Guarda los cambios locales <strong>unstage</strong> en <strong>stage</strong></td>
+</tr>
+<tr>
+<td align="left">u</td>
+<td align="left">Pasa los cambios de <strong>stage</strong> al entorno local (unstage)</td>
+</tr>
+<tr>
+<td align="left">x</td>
+<td align="left">Descarta los cambios</td>
+</tr>
+<tr>
+<td align="left">c c</td>
+<td align="left">Crear <strong>commit</strong> (luego de escribir el motivo, se debe finalizar)</td>
+</tr>
+<tr>
+<td align="left">, ,</td>
+<td align="left">Finalizar <strong>commit</strong></td>
+</tr>
+<tr>
+<td align="left">b c</td>
+<td align="left">Crear un nuevo branch, y hacer checkout de ese branch</td>
+</tr>
+<tr>
+<td align="left">b b</td>
+<td align="left">Cambiar de <strong>branch</strong> (Ej. Ir del master al develop o testing)</td>
+</tr>
+<tr>
+<td align="left">t t</td>
+<td align="left">Crear un <strong>tag</strong></td>
+</tr>
+<tr>
+<td align="left">p p</td>
+<td align="left">Hacer <strong>push</strong></td>
+</tr>
+<tr>
+<td align="left">p e</td>
+<td align="left">Hacer <em>push</em>** en un repositorio externo</td>
+</tr>
+<tr>
+<td align="left">F p</td>
+<td align="left">Hacer <strong>pull</strong></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pendiente a Investigar:</strong></p>
+<ul>
+<li>Acerca de spin-off</li>
+<li>Diferencia entre un push remote y upstream (lo mismo para pull)</li>
+</ul>
+<p>Algunas referencias:</p>
+<ul>
+<li>https://help.github.com/es/github/using-git/pushing-commits-to-a-remote-repository</li>
+<li>https://stackoverflow.com/questions/13751319/git-push-current-vs-push-upstream-tracking</li>
+<li>https://www.reddit.com/r/emacs/comments/8ficmj/magit_upstream_vs_pushremote/</li>
+<li>https://fluca1978.github.io/2017/06/11/magit-spin-offs-anothew-way-to-name.html</li>
+</ul>
+<hr />
+<h1 id="posibles-situaciones">Posibles Situaciones</h1>
+<h3 id="hacer-cambios-subirlos-y-actualizar">Hacer cambios, subirlos y actualizar</h3>
+<ol>
+<li>
+<p>Guardamos los cambios de forma local <strong>(unstage)</strong></p>
+<blockquote>
+<p>Modificamos los archivos, guardamos con con <strong>SPC f s</strong> o <strong>M-x s</strong></p>
+</blockquote>
+</li>
+<li>
+<p>Guardo los cambios en <strong>Stage</strong></p>
+<blockquote>
+<p>Presionamos <strong>SPC g s</strong> seleccionamos los cambios que queremos guardar en <strong>stage</strong> 
+con <strong>shift</strong> o <strong>v</strong> y las flechas Down/Up, y presionamos <strong>s</strong></p>
+</blockquote>
+</li>
+<li>
+<p>Hacemos <strong>commit</strong> (aplicamos los cambios)</p>
+<blockquote>
+<p>Presionamos <strong>SPC g s</strong> seguido de <strong>c c</strong></p>
+</blockquote>
+</li>
+<li>
+<p>Creomos un <strong>branch</strong> del <strong>commit</strong></p>
+<blockquote>
+<p>Presionamos <strong>SPC g s</strong> seguido de <strong>b c</strong> luego <strong>RET</strong> y escribimos
+el nombre del nuevo <strong>branch</strong> donde se guardaran los cambios del <strong>commit</strong></p>
+</blockquote>
+</li>
+<li>
+<p>Hacemos <strong>push</strong></p>
+<blockquote>
+<p>Presionamos <strong>SPC g s</strong> seguido de <strong>p p</strong></p>
+</blockquote>
+</li>
+<li>
+<p>Hacemos <strong>pull</strong> del <strong>branch</strong> nuevo al <strong>master branch</strong></p>
+<blockquote>
+<p>Presionamos <strong>SPC g s</strong> seguido de <strong>b b</strong> elegimos el <strong>master branch</strong>
+y terminamos con <strong>F p</strong></p>
+</blockquote>
+</li>
+</ol>
+<p><strong>Observacion:</strong></p>
+<blockquote>
+<p>Si ya estamos en el menu de <strong>magit</strong> no es necesario presionar el atajo <strong>SPC g s</strong></p>
+</blockquote>
+<h3 id="resolver-conflicto-diferencia-entre-archivos">Resolver conflicto, diferencia entre archivos</h3>
+<blockquote>
+<p>Si en el paso 5 del ejemplo anterior hubiesemos tenido un conflicto,
+porque alguien modifico el mismo archivo en las mismas lineas.</p>
+</blockquote>
+<ol>
+<li>
+<p>Hacemos <strong>pull</strong></p>
+<blockquote>
+<p>Para traer el archivo con el que tenemos conflicto,
+ver las diferencias entre este archivo y el archivo local para resolverlo.</p>
+</blockquote>
+</li>
+<li>
+<p>Mostramos el conflicto</p>
+<blockquote>
+<p>Presionamos <strong>SPC g s</strong> y luego <strong>e</strong> , apareciendo tres buffers 
+identificados en la parte inferior izquierda con las letras A, B, C.</p>
+<p>A y B son los archivos en conflicto, y C el archivo final, el que tendra los conflictos resuelto.</p>
+</blockquote>
+</li>
+<li>
+<p>Comparamos las diferencias con <strong>n</strong> y <strong>p</strong></p>
+<blockquote>
+<p>Si presionamos <strong>p</strong> o <strong>n</strong> se resaltara los cambios, p de <strong>previous diff</strong> n de <strong>next diff</strong> </p>
+</blockquote>
+</li>
+<li>
+<p>Corregimos el conflicto</p>
+<blockquote>
+<p>Podemos elegir entre elegir que archivo (buffer A o B) sera el correcto como solucion e ira al buffer C, 
+presionando la letra minuscula del buffer que identifica al archivo.</p>
+<p>La otra manera, seria si corregimos las diferencias de forma manual escribiendo en el buffer C</p>
+</blockquote>
+</li>
+<li>
+<p>Guardamos los cambios y salimos</p>
+<blockquote>
+<p>Presionamos <strong>q</strong> seguido de <strong>y</strong> dos veces para confirmar los cambios realizados.</p>
+</blockquote>
+</li>
+<li>
+<p>Verificamos que se hizo el <strong>merge</strong></p>
+<blockquote>
+<p>Presionamos <strong>SPC g s</strong> y debe decir "Merging origin/nombre del branch"</p>
+</blockquote>
+</li>
+<li>
+<p>Hacemos <strong>commit</strong> del <strong>merge</strong> y <strong>push</strong></p>
+<blockquote>
+<p>Comiteamos con <strong>c c</strong> y <strong>, ,</strong> y por ultimo pusheamos con <strong>P p</strong></p>
+</blockquote>
+</li>
+</ol>
+<hr />
+<h1 id="referencias">Referencias</h1>
+<h2 id="paginas-de-referencia">Paginas de referencia</h2>
+<ul>
+<li>Referencia #1 - Salty Crane - <a href="https://www.saltycrane.com/blog/2018/11/magit-spacemacs-evil-magit-notes/">Ver Pagina</a></li>
+</ul>
+<h2 id="videos-de-referencia">Videos de referencia</h2>
+<ul>
+<li>Referencia #1 - <a href="https://www.youtube.com/watch?v=7ywEgcbaiys">Ver Video</a></li>
+<li>Referencia #2 - <a href="https://www.youtube.com/watch?v=qXgGtyjXPiw">Ver Video</a></li>
+<li>Referencia #3 - <a href="https://www.youtube.com/watch?v=fFuf3hExF5w">Ver Video</a></li>
+<li>Referencia #4 - <a href="https://www.youtube.com/watch?v=NDP91RNgT4A">Ver Video</a></li>
+<li>Referencia #5 - <a href="https://www.youtube.com/watch?v=1IYsiHXR620">Ver Video</a></li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../virtualbox/" class="btn btn-neutral float-right" title="Configurando Virtualbox">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../guia-emacs-modo-org/" class="btn btn-neutral" title="Integrando el Modo Org"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/neverkas/manu-doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../guia-emacs-modo-org/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../virtualbox/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

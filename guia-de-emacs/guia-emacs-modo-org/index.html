@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Neverkas">
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Integrando el Modo Org - Manu Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Integrando el Modo Org";
+    var mkdocs_page_input_path = "guia-de-emacs/guia-emacs-modo-org.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Manu Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Guia de Linux</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-parte-1/">Lineas de comando (Parte 1)</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-parte-2/">Lineas de comando (Parte 2)</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-personalizar/">Personalizar el Sistema</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-3/">Configuraciones</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/linux-configuracion-de-red/">Configuración de Red</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-git/">Guia de Git</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Guia de Emacs</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-emacs/">Empezando con Emacs</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-emacs-spacemacs/">Avanzando con Spacemacs</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Integrando el Modo Org</a>
+    <ul class="current">
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-emacs-magit/">Integrando Git con MAGIT</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Guia de Maquinas Virtuales</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../virtualbox/">Configurando Virtualbox</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Manu Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Guia de Emacs &raquo;</li>
+        
+      
+    
+    <li>Integrando el Modo Org</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/neverkas/manu-doc/edit/master/docs/guia-de-emacs/guia-emacs-modo-org.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="para-iniciar-emacs-con-un-archivo-org">Para iniciar Emacs con un archivo .org"</h2>
+<ol>
+<li>Modificar el archivo de configuracion C-x C-f ~/.emacs.d/init.el</li>
+<li>Ir al final del archivo <strong>C-Fin</strong> y agregar la siguiente linea<blockquote>
+<p>;; cambiar por la ruta que desees
+(find-file "~/Dropbox/orgfiles/agenda1.org")</p>
+</blockquote>
+</li>
+</ol>
+<hr />
+<h2 id="crear-una-lista-de-tareas">Crear una lista de tareas</h2>
+<blockquote>
+<p>Escribimos el simbolo * asterisco seguido del texto</p>
+</blockquote>
+<p>Ej.</p>
+<pre><code>* Lunes
+* Martes
+</code></pre>
+
+<h2 id="crear-una-sublista-de-tareas">Crear una sublista de tareas</h2>
+<blockquote>
+<p>Escribimos el simbolo * asterisco dos veces, y se agrega como sublista de la lista que tenga antes.</p>
+</blockquote>
+<p>Ej.</p>
+<pre><code>* Lunes
+** Estudiar para mañana
+** Terminar resumen de Fisica
+* Martes
+</code></pre>
+
+<h2 id="crear-tareas-con-vinetas">Crear tareas con viñetas</h2>
+<blockquote>
+<p>Escribimos un <strong>guion</strong> seguido del texto que queramos seguido de <strong>M-RET</strong></p>
+</blockquote>
+<ul>
+<li>Para agregar nuevos elementos en el mismo nivel (tabulacion) presionar <strong>M-RET</strong></li>
+<li>Para cambiar el tipo de viñeta presionar <strong>Shift</strong> y las flechas Up/Down</li>
+</ul>
+<p>Ej.</p>
+<pre><code>* Lunes
+** Estudiar para mañana
+   - Algebra
+   - Fisica
+** Terminar resumen
+   - Quimica
+   - Matematica
+</code></pre>
+
+<hr />
+<h1 id="crear-una-lista-de-seguimiento-con-to-do">Crear una lista de seguimiento con to-do</h1>
+<blockquote>
+<p>Para saber cuales y cuantas tareas se resolvieron y cuantas no</p>
+</blockquote>
+<p>Al comienzo de las listas agregar <strong>[/]</strong> o [%]</p>
+<ul>
+<li>Con [/] aparecera cuantas tareas se hicieron sobre el total</li>
+<li>Con [%] aparecera un % del total</li>
+<li>Para cambiar el estado como <strong>Pendiente/Finalizada</strong> presionar <strong>Shift</strong> y las flechas <strong>Left/Right</strong></li>
+</ul>
+<p>Ej.</p>
+<pre><code>* Lunes
+** [/] Estudiar para mañana
+   - Algebra
+   - Fisica
+** [%] Terminar resumen
+   - Quimica
+   - Matematica
+</code></pre>
+
+<hr />
+<h3 id="crear-una-lista-de-seguimiento-con-checkboxes">Crear una lista de seguimiento con checkboxes</h3>
+<blockquote>
+<p>Para saber cuales y cuantas tareas se resolvieron y cuantas no</p>
+</blockquote>
+<ul>
+<li>Con [/] aparecera cuantas tareas se hicieron sobre el total</li>
+<li>Con [%] aparecera un % del total</li>
+<li>Las tareas tengan <strong>checkbox</strong> deben comenzar con [ ] </li>
+<li>Para marcar las tareas como <strong>Finalizadas</strong> presionar <strong>C-c C-c</strong></li>
+</ul>
+<p>Ej.</p>
+<pre><code>* Lunes
+** [/] Parciales rendidos
+   1. [ ] Algebra
+   2. [ ] Fisica
+** [%] Tareas Pendientes
+   - [ ] Limpiar cuarto
+   - [ ] Llamar a mi jefe
+</code></pre>
+
+<hr />
+<h1 id="atajos">Atajos</h1>
+<table>
+<thead>
+<tr>
+<th align="left">Comando</th>
+<th align="left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">C-c C-s</td>
+<td align="left">Agendar una fecha para una tarea (schedule)</td>
+</tr>
+<tr>
+<td align="left">C-c C-d</td>
+<td align="left">Programar una fecha limite para finalizar una tarea (deadline)</td>
+</tr>
+<tr>
+<td align="left">Shift flechas Left/Right</td>
+<td align="left">Elegir el dia del mes en el calendario</td>
+</tr>
+<tr>
+<td align="left">g</td>
+<td align="left">Actualiza los cambios del buffer de la agenda (igual que con <strong>dired</strong>)</td>
+</tr>
+<tr>
+<td align="left">M-x org-agenda-file-to-front</td>
+<td align="left">Guardar el archivo .org actual en la agenda</td>
+</tr>
+<tr>
+<td align="left">C-c C-q</td>
+<td align="left">Agregar tags</td>
+</tr>
+<tr>
+<td align="left">C-RET</td>
+<td align="left">Agregar nuevo item a la agenda</td>
+</tr>
+<tr>
+<td align="left">M Flechas Up/Down</td>
+<td align="left">Cambia el orden/prioridad de las tareas, moviendo hacia arriba/abajo</td>
+</tr>
+<tr>
+<td align="left">M flechas Left/Right</td>
+<td align="left">Mueve el nivel(tabulacion) de la tarea</td>
+</tr>
+<tr>
+<td align="left">Tab</td>
+<td align="left">Expande/Oculta una lista que tiene elementos</td>
+</tr>
+<tr>
+<td align="left">Shift-Tab</td>
+<td align="left">Expande/Oculta todas las listas que tengan elementos</td>
+</tr>
+<tr>
+<td align="left">Shift flechas Up/Down</td>
+<td align="left">Cambiar la prioridad de la tarea (Alta/Media/Baja)</td>
+</tr>
+<tr>
+<td align="left">Shift flechas Left/Right</td>
+<td align="left">Cambiar el estado de la tarea (Pendiente/Finalizada/Revisar)</td>
+</tr>
+<tr>
+<td align="left">C-c C-t</td>
+<td align="left">Cambiar el estado de la tarea</td>
+</tr>
+<tr>
+<td align="left">M-x org-agenda m</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">C-x C-l</td>
+<td align="left">Crear hipervinculos</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="referencias">Referencias</h1>
+<h2 id="paginas-de-referencia">Paginas de referencia</h2>
+<h3 id="guias">Guias</h3>
+<ul>
+<li>Guia basica - Emacslife - <a href="http://emacslife.com/baby-steps-org.html">Ver Pagina</a></li>
+<li>Guia basica - Orgmode - <a href="https://orgmode.org/worg/org-tutorials/orgtutorial_dto-es.html">Ver Pagina</a></li>
+<li>Guia completa - Norang - <a href="http://doc.norang.ca/org-mode.html">Ver Pagina</a></li>
+</ul>
+<h3 id="agregar-etiquetas-a-las-tareas">Agregar etiquetas a las tareas</h3>
+<ul>
+<li>Referencia #1 - <a href="https://www.youtube.com/watch?v=FJq__bBi0nI">Ver Video</a></li>
+<li>Referencia #2 - Orgmode.org - <a href="https://orgmode.org/manual/Setting-Tags.html">Ver Pagina</a></li>
+</ul>
+<h3 id="como-organizarse-con-el-modo-org">Como organizarse con el modo Org</h3>
+<ul>
+<li>Referencia #1 - <a href="https://www.youtube.com/watch?v=C6nbjqn5Uxw">Ver Video</a></li>
+<li>Referencia #2 - <a href="https://www.youtube.com/watch?v=QQSaDDVP__s">Ver Video - Parte 1</a></li>
+<li>Referencia #2 - <a href="https://www.youtube.com/watch?v=sXTtDiLXr48">Ver Video - Parte 2</a></li>
+<li>Referencia #4 - <a href="https://www.youtube.com/watch?v=PVsSOmUB7ic">Ver Video</a></li>
+<li>Referencia #5 - <a href="https://www.youtube.com/watch?v=gDHE23vl9E0">Ver Video</a></li>
+<li>Referencia #6 - <a href="https://www.youtube.com/watch?v=LFO2UbzbZhA">Ver Video</a></li>
+<li>Referencia #7 - <a href="https://www.youtube.com/watch?v=dljNabciEGg">Ver Video</a></li>
+<li>Referencia #8 - <a href="https://www.youtube.com/watch?v=fgizHHd7nOo">Ver Video</a></li>
+</ul>
+<h3 id="cambiar-las-prioridades-de-las-tareas">Cambiar las prioridades de las tareas</h3>
+<ul>
+<li>Referencia #1 - <a href="https://www.youtube.com/watch?v=WSF4EgQqa3Q">Ver Video</a></li>
+<li>Referencia #2 - <a href="https://github.com/harrybournis/org-fancy-priorities">Ver Pagina</a></li>
+</ul>
+<h3 id="modificar-agenda-estados">Modificar Agenda estados</h3>
+<ul>
+<li>Referencia #1 - Practicalli - <a href="https://practicalli.github.io/spacemacs/org-mode/todo-states-customise.html">Ver Pagina</a></li>
+<li>Referencia #2 - Sainathadapa - <a href="https://sainathadapa.github.io/emacs-spacemacs-config/org-config">Ver Pagina</a></li>
+<li>Referencia #3 - Orgmode.org  - <a href="https://orgmode.org/manual/TODO-Basics.html">Ver Pagina</a></li>
+<li>Referencia #4 - Orgmode.org -  <a href="https://orgmode.org/manual/Setting-Tags.html">Ver Pagina</a></li>
+</ul>
+<h3 id="otros">Otros</h3>
+<ul>
+<li>Comandos agenda-file - Orgmode.org <a href="https://orgmode.org/manual/Agenda-Files.html">Ver Pagina</a></li>
+<li>
+<p>Manejar los Hipervinculos - Orgmode.org - <a href="https://orgmode.org/manual/Handling-Links.html">Ver Pagina</a></p>
+</li>
+<li>
+<p>Como usar snippets -<a href="https://www.youtube.com/watch?v=UT1bcq_HIkE">Ver Video</a></p>
+</li>
+<li>Agendar Fechas -<a href="https://www.youtube.com/watch?v=QQSaDDVP__s">Ver Video</a></li>
+<li>Crear presentaciones - <a href="https://www.youtube.com/watch?v=bRoSpJ23Kzk">Ver video</a></li>
+<li>Hacer gantt - <a href="https://www.youtube.com/watch?v=5ViUBaarsbw">Ver Video</a></li>
+</ul>
+<h3 id="integrar-archivos-org-con-dropbox">Integrar archivos ORG con dropbox</h3>
+<blockquote>
+<p>La referencia #1 me funciono</p>
+</blockquote>
+<ul>
+<li>Referencia #1 - Webdav - <a href="https://webdav.io/webdav/webdav-integrations/webdav-dropbox/">Ver Pagina</a></li>
+<li>Referencia #2 - Opensource.com - <a href="https://opensource.com/article/19/4/calendar-git">Ver Pagina</a></li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../guia-emacs-magit/" class="btn btn-neutral float-right" title="Integrando Git con MAGIT">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../guia-emacs-spacemacs/" class="btn btn-neutral" title="Avanzando con Spacemacs"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/neverkas/manu-doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../guia-emacs-spacemacs/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../guia-emacs-magit/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

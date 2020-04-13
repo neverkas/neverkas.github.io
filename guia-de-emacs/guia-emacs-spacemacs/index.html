@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Neverkas">
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Avanzando con Spacemacs - Manu Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Avanzando con Spacemacs";
+    var mkdocs_page_input_path = "guia-de-emacs/guia-emacs-spacemacs.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Manu Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Guia de Linux</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-parte-1/">Lineas de comando (Parte 1)</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-parte-2/">Lineas de comando (Parte 2)</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-personalizar/">Personalizar el Sistema</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-3/">Configuraciones</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/linux-configuracion-de-red/">Configuración de Red</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-git/">Guia de Git</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Guia de Emacs</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-emacs/">Empezando con Emacs</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Avanzando con Spacemacs</a>
+    <ul class="current">
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-emacs-modo-org/">Integrando el Modo Org</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-emacs-magit/">Integrando Git con MAGIT</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Guia de Maquinas Virtuales</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../virtualbox/">Configurando Virtualbox</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Manu Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Guia de Emacs &raquo;</li>
+        
+      
+    
+    <li>Avanzando con Spacemacs</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/neverkas/manu-doc/edit/master/docs/guia-de-emacs/guia-emacs-spacemacs.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="tips-importantes">Tips - Importantes</h1>
+<blockquote>
+<p>Para que se guarden los cambios de la agenda, y se puedan filtrar usar <strong>M-x org-agenda-file-to-front</strong>
+Para abrir la agenda <strong>C-c a</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">Comando</th>
+<th align="left">Descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">SPC q r</td>
+<td align="left">Reiniciar spacemacs</td>
+</tr>
+<tr>
+<td align="left">M-m f e R</td>
+<td align="left">Aplicar configuraciones</td>
+</tr>
+</tbody>
+</table>
+<h1 id="gestionar-archivos-proyectos">Gestionar archivos, proyectos</h1>
+<h2 id="atajos-con-treemacsneotree">Atajos con Treemacs/Neotree</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Comando</th>
+<th align="left">Descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">C-c C-p a</td>
+<td align="left">Agregar proyecto</td>
+</tr>
+<tr>
+<td align="left">C-c C-p d</td>
+<td align="left">Eliminar proyecto</td>
+</tr>
+</tbody>
+</table>
+<h2 id="atajos-con-projectfile">Atajos con Projectfile</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Comando</th>
+<th align="left">Descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">SPC f r</td>
+<td align="left">Abrir algun archivo reciente (recent files)</td>
+</tr>
+<tr>
+<td align="left">SPC p p</td>
+<td align="left">Cambiar del proyecto actual a otro</td>
+</tr>
+<tr>
+<td align="left">SPC p f</td>
+<td align="left">Abrir algun archivo del proyecto actual</td>
+</tr>
+<tr>
+<td align="left">M-x projectile-remove-known-project</td>
+<td align="left">Eliminar alguno de los proyectos agregados</td>
+</tr>
+</tbody>
+</table>
+<h2 id="referencias">Referencias</h2>
+<h3 id="sitios-de-referencia">Sitios de referencia</h3>
+<ul>
+<li>Referencia #1 - Spacemacs.org, Develop <a href="https://develop.spacemacs.org/layers/+filetree/neotree/README.html">Ver Pagina</a></li>
+<li>Referencia #2 - Spacemacs.org, Develop <a href="https://develop.spacemacs.org/layers/+filetree/treemacs/README.html">Ver Pagina</a></li>
+<li>Referencia #3 - Github, Alexander Miller <a href="https://github.com/Alexander-Miller/treemacs">Ver Pagina</a></li>
+</ul>
+<h3 id="videos-de-referencia">Videos de referencia</h3>
+<ul>
+<li>Referencia #1 <a href="https://www.youtube.com/watch?v=Bu7nF9hPSts">Ver Video</a></li>
+<li>Referencia #2 <a href="https://www.youtube.com/watch?v=Rx3wRl5d-J0">Ver Video</a></li>
+<li>Referencia #3 <a href="https://www.youtube.com/watch?v=OrTJ17ivOL0">Ver Video</a></li>
+<li>Referencia #4 <a href="https://www.youtube.com/watch?v=Z88ZmeMo1X0">Ver Video</a></li>
+<li>Referencia #5 <a href="https://www.youtube.com/watch?v=kPVVuJWS2vo">Ver Video</a></li>
+</ul>
+<hr />
+<h1 id="atajos-en-hybrid-mode">Atajos en Hybrid Mode</h1>
+<blockquote>
+<p>El modo hibrido es una combinacion entre el <strong>holy mode</strong> (atajos de emacs) 
+y el <strong>evil mode</strong> (atajos de vim)
+El atajo <strong>SPC</strong> suele ser la tecla <strong>espacio</strong></p>
+</blockquote>
+<h2 id="atajos-en-evil-mode-vim">Atajos en Evil Mode (Vim)</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Comando</th>
+<th align="left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">SPC f t</td>
+<td align="left">Abrir gestor de archivos Neotree/Treemac (file tree)</td>
+</tr>
+<tr>
+<td align="left">SPC f f</td>
+<td align="left">Buscar un archivo (find file)</td>
+</tr>
+<tr>
+<td align="left">SPC f s</td>
+<td align="left">Guardar archivo</td>
+</tr>
+<tr>
+<td align="left">v</td>
+<td align="left">Seleccionar/Deseleccionar texto</td>
+</tr>
+</tbody>
+</table>
+<h2 id="atajos-en-holy-mode-emacs">Atajos en Holy Mode (Emacs)</h2>
+<blockquote>
+<p>La metakey <strong>M</strong> suele referirse a la tecla <strong>Alt</strong> seguido a la tecla que haga referencia.
+Mientras que <strong>C</strong> es la tecla <strong>Control</strong> seguido de la tecla que se mencione.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">Comando</th>
+<th align="left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">C-1</td>
+<td align="left">Cierra todos los buffer excepto el actual</td>
+</tr>
+<tr>
+<td align="left">C-0</td>
+<td align="left">Cierra el buffer actual</td>
+</tr>
+<tr>
+<td align="left">C-2</td>
+<td align="left">Abre un buffer horizontal al actual</td>
+</tr>
+<tr>
+<td align="left">C-3</td>
+<td align="left">Abre un buffer vertical al actual</td>
+</tr>
+<tr>
+<td align="left">C-x k</td>
+<td align="left">Matar el buffer actual</td>
+</tr>
+<tr>
+<td align="left">C-Shift-Del</td>
+<td align="left">Borra una linea entera</td>
+</tr>
+<tr>
+<td align="left">M-%</td>
+<td align="left">Reemplazar palabras</td>
+</tr>
+<tr>
+<td align="left">M-m f-t</td>
+<td align="left">Gestor de archivos Neotree/Treemacs</td>
+</tr>
+<tr>
+<td align="left">C-k</td>
+<td align="left">Borrar una linea</td>
+</tr>
+<tr>
+<td align="left">C-e</td>
+<td align="left">Ir al final de la linea</td>
+</tr>
+<tr>
+<td align="left">C-Inicio</td>
+<td align="left">Ir al principio del archivo</td>
+</tr>
+<tr>
+<td align="left">C-Fin</td>
+<td align="left">Ir al final del archivo</td>
+</tr>
+<tr>
+<td align="left">C-x C-+</td>
+<td align="left">Aumentar el tamaño de texto</td>
+</tr>
+<tr>
+<td align="left">C-x C--</td>
+<td align="left">Disminuir el tamaño de texto</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Observacion</strong>*</p>
+<blockquote>
+<p>El gestor de archivos Neotree/Treemacs es similar al <strong>dired</strong>, con la diferencia
+que este ocupa menos espacio en la pantalla</p>
+</blockquote>
+<hr />
+<h1 id="referencias_1">Referencias</h1>
+<h3 id="guias-basicas">Guias basicas</h3>
+<ul>
+<li>Referencia #1 - CharlasCyclon.com - <a href="https://charlascylon.com/2017-09-20-spacemacs-mi-configuracion-personal">Ver Pagina</a></li>
+<li>Referencia #2 - Medium.com, Kokegudiel2 - <a href="https://medium.com/@kokegudiel2/configuari%C3%B3n-de-spacemacs-para-principiantes-ed43ddf3030f">Ver Pagina</a></li>
+</ul>
+<h3 id="guias-avanzadas">Guias Avanzadas</h3>
+<ul>
+<li>Referencia #1 - Wiki, ArchLinux - <a href="https://wiki.archlinux.org/index.php/Spacemacs">Ver Pagina</a></li>
+<li>Referencia #2 - Github, Syl20bnr - <a href="https://github.com/syl20bnr/spacemacs/blob/master/doc/DOCUMENTATION.org">Ver Pagina</a></li>
+</ul>
+<h3 id="capas-layers">Capas (Layers)</h3>
+<blockquote>
+<p>Subprogramas que agregan funcionalidad a spacemacs</p>
+</blockquote>
+<ul>
+<li>Referencia #1, Spacemacs.org - <a href="https://www.spacemacs.org/layers/LAYERS.html">Ver Pagina</a></li>
+</ul>
+<h3 id="themes">Themes</h3>
+<blockquote>
+<p>Para cambiar el estilo, la visualizacion, diseño, el color fondo y del texto,..</p>
+</blockquote>
+<ul>
+<li>Themes, ThemeGallery <a href="https://themegallery.robdor.com/">Ver Pagina</a></li>
+</ul>
+<h3 id="fuentes">Fuentes</h3>
+<blockquote>
+<p>El tipo de fuente, puede hacer mas entendible, claro, y ameno luego de muchas horas de lectura.</p>
+</blockquote>
+<ul>
+<li>Referencia #1 - SourceFoundry.org - <a href="https://sourcefoundry.org/hack/playground.html">Ver Pagina</a></li>
+<li>Referencia #2 - Opensource.com - <a href="https://opensource.com/article/17/11/how-select-open-source-programming-font">Ver Pagina</a></li>
+</ul>
+<h3 id="configuraciones-de-spacemacs">Configuraciones de Spacemacs</h3>
+<blockquote>
+<p>Las configuraciones se hacen en el archivo <strong>~/.spacemacs</strong></p>
+</blockquote>
+<ul>
+<li>Referencia #1 - Out of cheese error - <a href="https://out-of-cheese-error.netlify.com/spacemacs-config">Ver Pagina</a></li>
+<li>Referencia #2 - Practicalli - <a href="https://practicalli.github.io/spacemacs/install-spacemacs/additional-configuration.html">Ver Pagina</a></li>
+</ul>
+<h2 id="videos">Videos</h2>
+<h3 id="canales-favoritos">Canales Favoritos</h3>
+<blockquote>
+<p>Conceptos, Atajos, Herramientas, etc.</p>
+</blockquote>
+<ul>
+<li>Referencia #1 - <a href="https://www.youtube.com/watch?v=MRYzPWnk2mE&amp;list=PLxj9UAX4Em-IiOfvF2Qs742LxEK4owSkr">Ir a canal</a></li>
+<li>Referencia #2 - <a href="https://www.youtube.com/watch?v=d6iY_1aMzeg&amp;list=PLX2044Ew-UVVv31a0-Qn3dA6Sd_-NyA1n">Ir a Canal</a></li>
+<li>Referencia #3 - <a href="https://www.youtube.com/watch?v=BRqjaN4-gGQ&amp;list=PLhXZp00uXBk4np17N39WvB80zgxlZfVwj">Ir a Canal</a></li>
+</ul>
+<h3 id="configuraciones-basicas">Configuraciones basicas</h3>
+<blockquote>
+<p>Para los que recien estan iniciandose</p>
+</blockquote>
+<ul>
+<li>Referencia #1 - <a href="https://www.youtube.com/watch?v=8k7BTIqufqQ">Ver Video</a></li>
+<li>Referencia #2 - <a href="https://www.youtube.com/watch?v=Ie4z9-z948c">Ver Video</a></li>
+<li>Referencia #3 - <a href="https://www.youtube.com/watch?v=PKaJoqQQoIA">Ver video</a></li>
+</ul>
+<h3 id="buffers-ibuffer-y-emmet">Buffers, ibuffer y Emmet</h3>
+<ul>
+<li>Referencia #1 <a href="https://www.youtube.com/watch?v=yUfA-7wWNKA">Ver Video</a></li>
+</ul>
+<h3 id="personalizando-la-terminal">Personalizando la terminal</h3>
+<ul>
+<li>Referencia #1 <a href="https://www.youtube.com/watch?v=L9vA7FHoQnk">Ver Video</a></li>
+</ul>
+<h3 id="pendientes-a-revisar">Pendientes a revisar</h3>
+<ul>
+<li>https://www.youtube.com/watch?v=8k7BTIqufqQ</li>
+<li>https://orgmode.org/guide/Hyperlinks.html</li>
+<li>https://www.youtube.com/watch?v=I2C6QTtxfe8</li>
+<li>https://www.youtube.com/watch?v=39u8K12rXHE</li>
+<li>https://orgmode.org/manual/Initial-visibility.html</li>
+<li>https://www.youtube.com/watch?v=S4f-GUxu3CY</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../guia-emacs-modo-org/" class="btn btn-neutral float-right" title="Integrando el Modo Org">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../guia-emacs/" class="btn btn-neutral" title="Empezando con Emacs"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/neverkas/manu-doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../guia-emacs/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../guia-emacs-modo-org/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
