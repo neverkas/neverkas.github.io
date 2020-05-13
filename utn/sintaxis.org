@@ -1,0 +1,24 @@
+#+TITLE: Sintaxis
+#+AUTHOR: Jelou
+
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="themes/styles/readtheorg/css/htmlize.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="themes/styles/readtheorg/css/readtheorg.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="manu-theme/custom.css"/>
+
+#+HTML_HEAD: <script type="text/javascript" src="themes/styles/lib/js/jquery.min.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="themes/styles/lib/js/bootstrap.min.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="themes/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="themes/styles/readtheorg/js/readtheorg.js"></script>
+
+#+OPTIONS: num:nil p:t
+
+* Informacion
+   + [[https://classroom.google.com/u/1/c/NTM3Mjk2MjYyNjZa][ **Aula Virtual** Bender (Google Classes)]]
+   + [[https://us04web.zoom.us/j/144552585][ **Clase Virtual** por Zuñiga (En zoom)]] <2020-04-15 mié 19:00 +1w>
+
+* Cronograma dictado
+    1. [X] Lenguajes Formales
+    2. [X] Ansi C1
+    3. [X] Gramaticas
+    4. [X] Expresiones Regulares
+    5. [X] BNF
