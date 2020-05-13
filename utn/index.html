@@ -1,0 +1,712 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-05-12 mar 21:15 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>UTN General</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Jelou" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="themes/styles/readtheorg/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="themes/styles/readtheorg/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="css/custom.css"/>
+<script type="text/javascript" src="themes/styles/lib/js/jquery.min.js"></script>
+<script type="text/javascript" src="themes/styles/lib/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="themes/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="themes/styles/readtheorg/js/readtheorg.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">UTN General</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgb9d8c64">Agenda</a></li>
+<li><a href="#org9e39222">Proximos Feriados</a></li>
+<li><a href="#org46ddcc6">Trabajos Practicos <code>[10/21]</code></a>
+<ul>
+<li><a href="#org396fced"><span class="todo _TODO_">[TODO]</span> TP 4&#xa0;&#xa0;&#xa0;<span class="tag"><span class="pdep">pdep</span></span></a></li>
+<li><a href="#org304a57a"><span class="todo _TODO_">[TODO]</span> Actividad 4: Sintaxis y Semantica&#xa0;&#xa0;&#xa0;<span class="tag"><span class="sintaxis">sintaxis</span></span></a></li>
+<li><a href="#org5812e35"><span class="todo _TODO_">[TODO]</span> Actividad 5 - Expresiones Regulares&#xa0;&#xa0;&#xa0;<span class="tag"><span class="sintaxis">sintaxis</span></span></a></li>
+<li><a href="#orge6216f8"><span class="todo _WAITING_">[WAITING]</span> TP 3 - Estudio Preliminar &amp;&amp; Relevamiento&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ads">ads</span>&#xa0;<span class="grupal">grupal</span></span></a></li>
+<li><a href="#orge7ed02f"><span class="todo _WAITING_">[WAITING]</span> TP Grupal 1&#xa0;&#xa0;&#xa0;<span class="tag"><span class="fisica">fisica</span>&#xa0;<span class="grupal">grupal</span></span></a></li>
+<li><a href="#org6496c84"><span class="todo _TODO_">[TODO]</span> Actividad 5 A: Expresiones Regulares&#xa0;&#xa0;&#xa0;<span class="tag"><span class="sintaxis">sintaxis</span></span></a></li>
+<li><a href="#orgf0ce5cf"><span class="todo _WAITING_">[WAITING]</span> TP 3&#xa0;&#xa0;&#xa0;<span class="tag"><span class="pdep">pdep</span></span></a></li>
+<li><a href="#org4d0cb58"><span class="todo _WAITING_">[WAITING]</span> Actividad C 2 - Tipos, Operadores y Expresiones&#xa0;&#xa0;&#xa0;<span class="tag"><span class="sintaxis">sintaxis</span></span></a></li>
+<li><a href="#org89e49e3"><span class="done _DONE_">[DONE]</span> TP 2 - Cpm&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ads">ads</span>&#xa0;<span class="grupal">grupal</span></span></a></li>
+<li><a href="#org5c5b100"><span class="done _DONE_">[DONE]</span> Actividad 1 - Lenguajes Formales&#xa0;&#xa0;&#xa0;<span class="tag"><span class="sintaxis">sintaxis</span></span></a></li>
+<li><a href="#org477ef00"><span class="done _DONE_">[DONE]</span> Actividad 1 - Ansi C&#xa0;&#xa0;&#xa0;<span class="tag"><span class="sintaxis">sintaxis</span></span></a></li>
+<li><a href="#org37e500e"><span class="done _DONE_">[DONE]</span> Actividad 2 - Gramaticas&#xa0;&#xa0;&#xa0;<span class="tag"><span class="sintaxis">sintaxis</span></span></a></li>
+<li><a href="#org1fab98d"><span class="todo _WAITING_">[WAITING]</span> Reentrega - Actividad 2 - Gramaticas&#xa0;&#xa0;&#xa0;<span class="tag"><span class="sintaxis">sintaxis</span></span></a></li>
+<li><a href="#orgf3d1880"><span class="todo _WAITING_">[WAITING]</span> Actividad 3 - BNF&#xa0;&#xa0;&#xa0;<span class="tag"><span class="sintaxis">sintaxis</span></span></a></li>
+<li><a href="#orgf00d479"><span class="todo _WAITING_">[WAITING]</span> Actividad C 2 - Ansi C&#xa0;&#xa0;&#xa0;<span class="tag"><span class="sintaxis">sintaxis</span></span></a></li>
+<li><a href="#org0eaffb1"><span class="done _DONE_">[DONE]</span> TP 0&#xa0;&#xa0;&#xa0;<span class="tag"><span class="pdep">pdep</span></span></a></li>
+<li><a href="#orgedd53ff"><span class="done _DONE_">[DONE]</span> TP 1&#xa0;&#xa0;&#xa0;<span class="tag"><span class="pdep">pdep</span></span></a></li>
+<li><a href="#org9a0b7de"><span class="done _DONE_">[DONE]</span> TP 1 Grupal - GANT&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ads">ads</span>&#xa0;<span class="grupal">grupal</span></span></a></li>
+<li><a href="#org559509f"><span class="done _DONE_">[DONE]</span> Reentrega - TP 1 Individual - CPM/PERT&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ads">ads</span></span></a></li>
+<li><a href="#orgf5e4aa5"><span class="done _DONE_">[DONE]</span> TP 1 Individual - CPM/PERT&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ads">ads</span></span></a></li>
+<li><a href="#org508a865"><span class="done _DONE_">[DONE]</span> TP 2&#xa0;&#xa0;&#xa0;<span class="tag"><span class="pdep">pdep</span></span></a></li>
+<li><a href="#org663957d">TP Grupal 2&#xa0;&#xa0;&#xa0;<span class="tag"><span class="fisica">fisica</span>&#xa0;<span class="grupal">grupal</span></span></a></li>
+<li><a href="#orgcff5d57">TP Grupal 3&#xa0;&#xa0;&#xa0;<span class="tag"><span class="fisica">fisica</span>&#xa0;<span class="grupal">grupal</span></span></a></li>
+<li><a href="#orga64ef87">TP Grupal 4&#xa0;&#xa0;&#xa0;<span class="tag"><span class="fisica">fisica</span>&#xa0;<span class="grupal">grupal</span></span></a></li>
+</ul>
+</li>
+<li><a href="#orgfff77c2">Materias</a>
+<ul>
+<li><a href="#orgbb0816e">Fisica 1</a></li>
+<li><a href="#orgde6705b">Sintaxis</a></li>
+<li><a href="#orgd6cd7a0">Analisis Matematico</a></li>
+<li><a href="#org4a06c23">Paradigmas de Programacion</a></li>
+<li><a href="#org98b7f24">Analisis de Sistemas</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb9d8c64" class="outline-2">
+<h2 id="orgb9d8c64">Agenda</h2>
+<div class="outline-text-2" id="text-orgb9d8c64">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">DIA</th>
+<th scope="col" class="org-right">HORARIO</th>
+<th scope="col" class="org-left">MATERIA</th>
+<th scope="col" class="org-left">CURSO</th>
+<th scope="col" class="org-left">PROFESOR</th>
+<th scope="col" class="org-left">MAS INFO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">MARTES</td>
+<td class="org-right">14:15-18:15</td>
+<td class="org-left"><a href="#org12fcbf3">AMI</a></td>
+<td class="org-left">Z1033</td>
+<td class="org-left">Gomez Eduardo</td>
+<td class="org-left">Ver Materia</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">MIERCOLES</td>
+<td class="org-right">14:15-17:30</td>
+<td class="org-left"><a href="#org77df4f9">PDEP</a></td>
+<td class="org-left">K2031</td>
+<td class="org-left">Mariana Matos</td>
+<td class="org-left">Ver Materia</td>
+</tr>
+
+<tr>
+<td class="org-left">MIERCOLES</td>
+<td class="org-right">19:00</td>
+<td class="org-left">SSL</td>
+<td class="org-left"><b><b>OYENTE</b></b></td>
+<td class="org-left">Zuñiga</td>
+<td class="org-left">Ver Materia</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">JUEVES</td>
+<td class="org-right">8:30-12:30</td>
+<td class="org-left"><a href="#orgd56dbd4">Fisica 1</a></td>
+<td class="org-left">Z1203</td>
+<td class="org-left">Gabriela Beltramino</td>
+<td class="org-left"><a href="fisica.html">Ver Materia</a></td>
+</tr>
+
+<tr>
+<td class="org-left">JUEVES</td>
+<td class="org-right">14:00-16:00</td>
+<td class="org-left"><a href="#orgd56dbd4">Fisica 1</a></td>
+<td class="org-left"><b><b>OYENTE</b></b></td>
+<td class="org-left">Roberto Ferrazo</td>
+<td class="org-left">Ver Materia</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">VIERNES</td>
+<td class="org-right">8:30-12:30</td>
+<td class="org-left"><a href="#orgaed467f">AdS</a></td>
+<td class="org-left">K2105</td>
+<td class="org-left">Diego H. Schmidt</td>
+<td class="org-left">Ver Materia</td>
+</tr>
+
+<tr>
+<td class="org-left">VIERNES</td>
+<td class="org-right">14:15-18:00</td>
+<td class="org-left">AMI</td>
+<td class="org-left"><b><b>OYENTE</b></b></td>
+<td class="org-left">Monica Blazques</td>
+<td class="org-left">Ver Materia</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">SABADO</td>
+<td class="org-right">8:30-11:45</td>
+<td class="org-left"><a href="#org95754d9">SSL</a></td>
+<td class="org-left">K2006</td>
+<td class="org-left">Adrian Bender</td>
+<td class="org-left">Ver Materia</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org9e39222" class="outline-2">
+<h2 id="org9e39222">Proximos Feriados</h2>
+<div class="outline-text-2" id="text-org9e39222">
+<p>
+<b><b><a href="http://siga.frba.utn.edu.ar/up/docs/CalendarioAcademico2020.jpg">Ir al Calendario Academico</a></b></b>
+</p>
+
+<ul class="org-ul">
+<li>Examenes Finales</li>
+<li>Dia de la Revolucion de Mayo</li>
+<li>Dia Paso a la Inmortalidad del General Guemes</li>
+<li>Dia del Trabajador del Estado</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org46ddcc6" class="outline-2">
+<h2 id="org46ddcc6">Trabajos Practicos <code>[10/21]</code></h2>
+<div class="outline-text-2" id="text-org46ddcc6">
+</div>
+<div id="outline-container-org396fced" class="outline-3">
+<h3 id="org396fced"><span class="todo _TODO_">[TODO]</span> TP 4&#xa0;&#xa0;&#xa0;<span class="tag"><span class="pdep">pdep</span></span></h3>
+<div class="outline-text-3" id="text-org396fced">
+<p><span class="timestamp-wrapper"><span class="timestamp-kwd">DEADLINE:</span> <span class="timestamp">&lt;2020-04-29 mié&gt;</span> <span class="timestamp-kwd">SCHEDULED:</span> <span class="timestamp">&lt;2020-04-24 vie&gt; </span></span></p>
+</div>
+</div>
+<div id="outline-container-org304a57a" class="outline-3">
+<h3 id="org304a57a"><span class="todo _TODO_">[TODO]</span> Actividad 4: Sintaxis y Semantica&#xa0;&#xa0;&#xa0;<span class="tag"><span class="sintaxis">sintaxis</span></span></h3>
+<div class="outline-text-3" id="text-org304a57a">
+<ul class="org-ul">
+<li><a href="https://classroom.google.com/u/2/c/NTM3Mjk2MjYyNjZa/a/Nzk1MDA1ODk3MzBa/details">Ver Teoria en el Aula Virtual</a></li>
+<li><a href="https://classroom.google.com/u/2/c/NTM3Mjk2MjYyNjZa/a/Nzk1MDA1ODk3MzBa/details">Ver TP en el Aula Virtual</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5812e35" class="outline-3">
+<h3 id="org5812e35"><span class="todo _TODO_">[TODO]</span> Actividad 5 - Expresiones Regulares&#xa0;&#xa0;&#xa0;<span class="tag"><span class="sintaxis">sintaxis</span></span></h3>
+<div class="outline-text-3" id="text-org5812e35">
+<p><span class="timestamp-wrapper"><span class="timestamp-kwd">DEADLINE:</span> <span class="timestamp">&lt;2020-05-16 sáb&gt;</span></span></p>
+<ul class="org-ul">
+<li><a href="https://classroom.google.com/u/2/c/NTM3Mjk2MjYyNjZa/m/OTkyMDQ4NDg3MDla/details">Ver Teoria en el Aula Virtual</a></li>
+<li><a href="https://classroom.google.com/u/2/c/NTM3Mjk2MjYyNjZa/a/OTkyMDk0MDQ1OTRa/details">Ver TP en el Aula Virtual</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge6216f8" class="outline-3">
+<h3 id="orge6216f8"><span class="todo _WAITING_">[WAITING]</span> TP 3 - Estudio Preliminar &amp;&amp; Relevamiento&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ads">ads</span>&#xa0;<span class="grupal">grupal</span></span></h3>
+<div class="outline-text-3" id="text-orge6216f8">
+<p><span class="timestamp-wrapper"><span class="timestamp-kwd">DEADLINE:</span> <span class="timestamp">&lt;2020-05-08 vie&gt;</span></span></p>
+<p>
+<a href="https://www.campusvirtual.frba.utn.edu.ar/especialidad/mod/assign/view.php?id=127382">Ver Enunciado (Campus Virtual)</a> 
+</p>
+</div>
+</div>
+<div id="outline-container-orge7ed02f" class="outline-3">
+<h3 id="orge7ed02f"><span class="todo _WAITING_">[WAITING]</span> TP Grupal 1&#xa0;&#xa0;&#xa0;<span class="tag"><span class="fisica">fisica</span>&#xa0;<span class="grupal">grupal</span></span></h3>
+<div class="outline-text-3" id="text-orge7ed02f">
+<p><span class="timestamp-wrapper"><span class="timestamp-kwd">DEADLINE:</span> <span class="timestamp">&lt;2020-05-08 vie&gt;</span> <span class="timestamp-kwd">SCHEDULED:</span> <span class="timestamp">&lt;2020-04-27 lun&gt; </span></span></p>
+</div>
+</div>
+<div id="outline-container-org6496c84" class="outline-3">
+<h3 id="org6496c84"><span class="todo _TODO_">[TODO]</span> Actividad 5 A: Expresiones Regulares&#xa0;&#xa0;&#xa0;<span class="tag"><span class="sintaxis">sintaxis</span></span></h3>
+<div class="outline-text-3" id="text-org6496c84">
+<p><span class="timestamp-wrapper"><span class="timestamp-kwd">DEADLINE:</span> <span class="timestamp">&lt;2020-05-16 sáb&gt; </span></span></p>
+</div>
+</div>
+<div id="outline-container-orgf0ce5cf" class="outline-3">
+<h3 id="orgf0ce5cf"><span class="todo _WAITING_">[WAITING]</span> TP 3&#xa0;&#xa0;&#xa0;<span class="tag"><span class="pdep">pdep</span></span></h3>
+</div>
+<div id="outline-container-org4d0cb58" class="outline-3">
+<h3 id="org4d0cb58"><span class="todo _WAITING_">[WAITING]</span> Actividad C 2 - Tipos, Operadores y Expresiones&#xa0;&#xa0;&#xa0;<span class="tag"><span class="sintaxis">sintaxis</span></span></h3>
+<div class="outline-text-3" id="text-org4d0cb58">
+<p><span class="timestamp-wrapper"><span class="timestamp-kwd">DEADLINE:</span> <span class="timestamp">&lt;2020-05-02 sáb&gt;</span></span></p>
+
+<ul class="org-ul">
+<li><a href="https://classroom.google.com/u/2/c/NTM3Mjk2MjYyNjZa/a/NzY3NTAzNjgyMDha/details">Ver Tp en el Aula Virtual</a></li>
+<li><a href="https://classroom.google.com/u/2/c/NTM3Mjk2MjYyNjZa/m/NzE3MzUyNjIyODFa/details">Ver Teoria en el Aula Virtual</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org89e49e3" class="outline-3">
+<h3 id="org89e49e3"><span class="done _DONE_">[DONE]</span> TP 2 - Cpm&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ads">ads</span>&#xa0;<span class="grupal">grupal</span></span></h3>
+<div class="outline-text-3" id="text-org89e49e3">
+<p><span class="timestamp-wrapper"><span class="timestamp-kwd">CLOSED:</span> <span class="timestamp">[2020-05-08 vie 00:54] </span> <span class="timestamp-kwd">DEADLINE:</span> <span class="timestamp">&lt;2020-05-08 vie&gt;</span></span></p>
+
+<p>
+<a href="https://www.campusvirtual.frba.utn.edu.ar/especialidad/mod/assign/view.php?id=125857">Ver Enunciado (Campus Virtual)</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org5c5b100" class="outline-3">
+<h3 id="org5c5b100"><span class="done _DONE_">[DONE]</span> Actividad 1 - Lenguajes Formales&#xa0;&#xa0;&#xa0;<span class="tag"><span class="sintaxis">sintaxis</span></span></h3>
+<div class="outline-text-3" id="text-org5c5b100">
+<p><span class="timestamp-wrapper"><span class="timestamp-kwd">CLOSED:</span> <span class="timestamp">[2020-04-20 lun 02:04]</span></span></p>
+</div>
+</div>
+<div id="outline-container-org477ef00" class="outline-3">
+<h3 id="org477ef00"><span class="done _DONE_">[DONE]</span> Actividad 1 - Ansi C&#xa0;&#xa0;&#xa0;<span class="tag"><span class="sintaxis">sintaxis</span></span></h3>
+<div class="outline-text-3" id="text-org477ef00">
+<p><span class="timestamp-wrapper"><span class="timestamp-kwd">CLOSED:</span> <span class="timestamp">[2020-04-14 mar 16:59]</span></span></p>
+</div>
+</div>
+<div id="outline-container-org37e500e" class="outline-3">
+<h3 id="org37e500e"><span class="done _DONE_">[DONE]</span> Actividad 2 - Gramaticas&#xa0;&#xa0;&#xa0;<span class="tag"><span class="sintaxis">sintaxis</span></span></h3>
+<div class="outline-text-3" id="text-org37e500e">
+<p><span class="timestamp-wrapper"><span class="timestamp-kwd">CLOSED:</span> <span class="timestamp">[2020-04-14 mar 16:48]</span></span></p>
+</div>
+</div>
+<div id="outline-container-org1fab98d" class="outline-3">
+<h3 id="org1fab98d"><span class="todo _WAITING_">[WAITING]</span> Reentrega - Actividad 2 - Gramaticas&#xa0;&#xa0;&#xa0;<span class="tag"><span class="sintaxis">sintaxis</span></span></h3>
+</div>
+<div id="outline-container-orgf3d1880" class="outline-3">
+<h3 id="orgf3d1880"><span class="todo _WAITING_">[WAITING]</span> Actividad 3 - BNF&#xa0;&#xa0;&#xa0;<span class="tag"><span class="sintaxis">sintaxis</span></span></h3>
+<div class="outline-text-3" id="text-orgf3d1880">
+<p>
+<a href="https://classroom.google.com/u/2/c/NTM3Mjk2MjYyNjZa/a/NzU0NjgzNjYyODFa/details">Ir a la Tarea (Google Classes)</a>
+DEADLINE: <span class="timestamp-wrapper"><span class="timestamp">&lt;2020-04-19 dom&gt;</span></span>
+</p>
+</div>
+</div>
+<div id="outline-container-orgf00d479" class="outline-3">
+<h3 id="orgf00d479"><span class="todo _WAITING_">[WAITING]</span> Actividad C 2 - Ansi C&#xa0;&#xa0;&#xa0;<span class="tag"><span class="sintaxis">sintaxis</span></span></h3>
+<div class="outline-text-3" id="text-orgf00d479">
+<p><span class="timestamp-wrapper"><span class="timestamp-kwd">DEADLINE:</span> <span class="timestamp">&lt;2020-05-04 lun&gt;</span></span></p>
+
+<ul class="org-ul">
+<li><a href="https://classroom.google.com/u/2/c/NTM3Mjk2MjYyNjZa/a/NzY3NTAzNjgyMDha/details">Ver TP en el Aula Virtual</a></li>
+<li><a href="https://classroom.google.com/u/2/c/NTM3Mjk2MjYyNjZa/m/NzE3MzUyNjIyODFa/details">Ver Teoria en el Aula Virtual</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0eaffb1" class="outline-3">
+<h3 id="org0eaffb1"><span class="done _DONE_">[DONE]</span> TP 0&#xa0;&#xa0;&#xa0;<span class="tag"><span class="pdep">pdep</span></span></h3>
+<div class="outline-text-3" id="text-org0eaffb1">
+<p><span class="timestamp-wrapper"><span class="timestamp-kwd">CLOSED:</span> <span class="timestamp">[2020-04-14 mar 16:48]</span></span></p>
+</div>
+</div>
+<div id="outline-container-orgedd53ff" class="outline-3">
+<h3 id="orgedd53ff"><span class="done _DONE_">[DONE]</span> TP 1&#xa0;&#xa0;&#xa0;<span class="tag"><span class="pdep">pdep</span></span></h3>
+<div class="outline-text-3" id="text-orgedd53ff">
+<p><span class="timestamp-wrapper"><span class="timestamp-kwd">CLOSED:</span> <span class="timestamp">[2020-04-14 mar 16:48]</span></span></p>
+</div>
+</div>
+<div id="outline-container-org9a0b7de" class="outline-3">
+<h3 id="org9a0b7de"><span class="done _DONE_">[DONE]</span> TP 1 Grupal - GANT&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ads">ads</span>&#xa0;<span class="grupal">grupal</span></span></h3>
+<div class="outline-text-3" id="text-org9a0b7de">
+<p><span class="timestamp-wrapper"><span class="timestamp-kwd">CLOSED:</span> <span class="timestamp">[2020-04-17 vie 00:51]</span></span></p>
+</div>
+</div>
+<div id="outline-container-org559509f" class="outline-3">
+<h3 id="org559509f"><span class="done _DONE_">[DONE]</span> Reentrega - TP 1 Individual - CPM/PERT&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ads">ads</span></span></h3>
+<div class="outline-text-3" id="text-org559509f">
+<p><span class="timestamp-wrapper"><span class="timestamp-kwd">CLOSED:</span> <span class="timestamp">[2020-05-02 sáb 22:30] </span> <span class="timestamp-kwd">DEADLINE:</span> <span class="timestamp">&lt;2020-05-01 vie&gt;</span></span></p>
+</div>
+</div>
+<div id="outline-container-orgf5e4aa5" class="outline-3">
+<h3 id="orgf5e4aa5"><span class="done _DONE_">[DONE]</span> TP 1 Individual - CPM/PERT&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ads">ads</span></span></h3>
+<div class="outline-text-3" id="text-orgf5e4aa5">
+<p><span class="timestamp-wrapper"><span class="timestamp-kwd">CLOSED:</span> <span class="timestamp">[2020-04-23 jue 16:54] </span> <span class="timestamp-kwd">DEADLINE:</span> <span class="timestamp">&lt;2020-04-24 vie&gt;</span></span></p>
+<p>
+<a href="https://www.campusvirtual.frba.utn.edu.ar/especialidad/mod/assign/view.php?id=122043">Ver TP en el Aula Virtual</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org508a865" class="outline-3">
+<h3 id="org508a865"><span class="done _DONE_">[DONE]</span> TP 2&#xa0;&#xa0;&#xa0;<span class="tag"><span class="pdep">pdep</span></span></h3>
+<div class="outline-text-3" id="text-org508a865">
+<p><span class="timestamp-wrapper"><span class="timestamp-kwd">CLOSED:</span> <span class="timestamp">[2020-04-23 jue 17:43]</span></span></p>
+</div>
+</div>
+<div id="outline-container-org663957d" class="outline-3">
+<h3 id="org663957d">TP Grupal 2&#xa0;&#xa0;&#xa0;<span class="tag"><span class="fisica">fisica</span>&#xa0;<span class="grupal">grupal</span></span></h3>
+<div class="outline-text-3" id="text-org663957d">
+<p><span class="timestamp-wrapper"><span class="timestamp-kwd">DEADLINE:</span> <span class="timestamp">&lt;2020-05-29 vie&gt; </span> <span class="timestamp-kwd">SCHEDULED:</span> <span class="timestamp">&lt;2020-05-18 lun&gt;</span></span></p>
+</div>
+</div>
+<div id="outline-container-orgcff5d57" class="outline-3">
+<h3 id="orgcff5d57">TP Grupal 3&#xa0;&#xa0;&#xa0;<span class="tag"><span class="fisica">fisica</span>&#xa0;<span class="grupal">grupal</span></span></h3>
+<div class="outline-text-3" id="text-orgcff5d57">
+<p><span class="timestamp-wrapper"><span class="timestamp-kwd">DEADLINE:</span> <span class="timestamp">&lt;2020-06-19 vie&gt; </span> <span class="timestamp-kwd">SCHEDULED:</span> <span class="timestamp">&lt;2020-06-08 lun&gt;</span></span></p>
+</div>
+</div>
+<div id="outline-container-orga64ef87" class="outline-3">
+<h3 id="orga64ef87">TP Grupal 4&#xa0;&#xa0;&#xa0;<span class="tag"><span class="fisica">fisica</span>&#xa0;<span class="grupal">grupal</span></span></h3>
+<div class="outline-text-3" id="text-orga64ef87">
+<p><span class="timestamp-wrapper"><span class="timestamp-kwd">DEADLINE:</span> <span class="timestamp">&lt;2020-07-08 mié&gt; </span> <span class="timestamp-kwd">SCHEDULED:</span> <span class="timestamp">&lt;2020-06-29 lun&gt;</span></span></p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgfff77c2" class="outline-2">
+<h2 id="orgfff77c2">Materias</h2>
+<div class="outline-text-2" id="text-orgfff77c2">
+</div>
+<div id="outline-container-orgbb0816e" class="outline-3">
+<h3 id="orgbb0816e">Fisica 1</h3>
+<div class="outline-text-3" id="text-orgbb0816e">
+<p>
+<a id="orgd56dbd4"></a>
+</p>
+<ul class="org-ul">
+<li><a href="https://www.campusvirtual.frba.utn.edu.ar/especialidad/course/view.php?id=2865"><b><b>Aula Virtual</b></b> de Beltramino</a></li>
+<li><a href="https://www.campusvirtual.frba.utn.edu.ar/especialidad/course/view.php?id=2868"><b><b>Aula Virtual</b></b> de Ferrazo</a></li>
+<li>Profesora: Gabriela Beltramino</li>
+<li>Horario: 8:30-12:30</li>
+<li>Curso: Z1203</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgde6705b" class="outline-3">
+<h3 id="orgde6705b">Sintaxis</h3>
+<div class="outline-text-3" id="text-orgde6705b">
+<p>
+<a id="org95754d9"></a>
+</p>
+<ul class="org-ul">
+<li><a href="https://classroom.google.com/u/1/c/NTM3Mjk2MjYyNjZa"><b><b>Aula Virtual</b></b> Bender</a></li>
+<li><a href="https://us04web.zoom.us/j/144552585"><b><b>Clase Virtual</b></b> por Zuñiga</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd6cd7a0" class="outline-3">
+<h3 id="orgd6cd7a0">Analisis Matematico</h3>
+<div class="outline-text-3" id="text-orgd6cd7a0">
+<p>
+<a id="org12fcbf3"></a>
+</p>
+<ul class="org-ul">
+<li><a href="https://www.campusvirtual.frba.utn.edu.ar/especialidad/course/view.php?id=3107"><b><b>Aula Virtual</b></b> de Blazques</a></li>
+<li><a href="https://us04web.zoom.us/j/77373826174"><b><b>Clase Virtual</b></b> por Blazques</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4a06c23" class="outline-3">
+<h3 id="org4a06c23">Paradigmas de Programacion</h3>
+<div class="outline-text-3" id="text-org4a06c23">
+<p>
+<a id="org77df4f9"></a>
+</p>
+<ul class="org-ul">
+<li><a href="https://github.com/pdep-mit/mini-tps-funcional-2020-neverkas">Repositorio Github (Mini TPs)</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org98b7f24" class="outline-3">
+<h3 id="org98b7f24">Analisis de Sistemas</h3>
+<div class="outline-text-3" id="text-org98b7f24">
+<p>
+<a id="orgaed467f"></a>
+</p>
+<ul class="org-ul">
+<li><a href="https://www.campusvirtual.frba.utn.edu.ar/especialidad/course/view.php?id=2612">Aula Virtual</a></li>
+<li><a href="https://meet.google.com/afr-axsj-joi?authuser=3">Clase Virtual</a></li>
+<li><a href="https://www.lucidchart.com/documents#/documents?folder_id=213972579">LucidChart (Tps/Ejercicios)</a></li>
+<li><a href="https://drive.google.com/drive/u/0/folders/1E4Bt-7AQfPI245EcSHKEbs2yxj7BSXMP">GDrive de ADS</a></li>
+<li><a href="https://drive.google.com/drive/u/2/folders/15P8_Enn5W42AU3DwZRhoS54W2WbQlhLc">GDrive (by Profe)</a></li>
+<li><a href="https://utnbaanlisisd-vrq8030.slack.com/">Canal de Slack</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Jelou</p>
+<p class="date">Created: 2020-05-12 mar 21:15</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
