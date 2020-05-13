@@ -12,6 +12,8 @@
 
 #+OPTIONS: num:nil p:t
 
+[[file:index.html][**Volver al inicio**]]
+
 * Informacion
    + [[https://classroom.google.com/u/1/c/NTM3Mjk2MjYyNjZa][ **Aula Virtual** Bender (Google Classes)]]
    + [[https://us04web.zoom.us/j/144552585][ **Clase Virtual** por Zuñiga (En zoom)]] <2020-04-15 mié 19:00 +1w>
