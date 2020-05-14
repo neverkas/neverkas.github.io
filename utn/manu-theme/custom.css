@@ -43,3 +43,13 @@ code{
     background:none;
     border:none;
 }
+.filaSeleccionada{
+    background-color:#fffc59 !important;
+    border: dashed 1px #000;
+    font-weight:bold;
+}
+.HOYES p{
+    font-size: 1em;
+    font-weight: bold;
+    margin: 20px;
+}

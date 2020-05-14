@@ -15,8 +15,15 @@
 [[file:index.html][**Volver al inicio**]]
 
 * Informacion
-   + [[https://classroom.google.com/u/1/c/NTM3Mjk2MjYyNjZa][ **Aula Virtual** Bender (Google Classes)]]
-   + [[https://us04web.zoom.us/j/144552585][ **Clase Virtual** por Zuñiga (En zoom)]] <2020-04-15 mié 19:00 +1w>
+   + [[https://classroom.google.com/u/1/c/NTM3Mjk2MjYyNjZa][ **Aula Virtual** Bender (Google Classes)]] 
+   + [[https://us04web.zoom.us/j/144552585][ **Clase Virtual** por Zuñiga (En zoom)]] Clave: K2053
+   <2020-04-15 mié 19:00 +1w>
+  
+* Trabajos Practicos
+** [TODO] Actividad C 3: Control de flujo
+   DEADLINE: <2020-05-27 mié>
+   [[https://classroom.google.com/u/2/c/NTM3Mjk2MjYyNjZa/a/ODQ3MzA0NDk5ODJa/details][Ir a la Tarea]]
+   [[https://classroom.google.com/u/2/c/NTM3Mjk2MjYyNjZa/m/MTI0MzY5NTQ1MzA1/details][Ir a la Teoria]]
 
 * Cronograma dictado
     1. [X] Lenguajes Formales
