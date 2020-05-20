@@ -66,9 +66,11 @@
 * TP Laboratorio
 Seguimiento de los trabajos grupales de laboratorio
 
- - [X] Mediciones
- - [ ] Optica
-
+** [TODO] Optica
+   DEADLINE: <2020-05-29 vie>
+   [[https://drive.google.com/drive/u/0/folders/1SEx5eRIOsj1U6l8ZGdQZHROymLDk8XCQ][Ir al GDrive]]
+** [DONE] Mediciones
+   CLOSED: [2020-05-19 mar 19:27]
 * Cronograma Dictado
 ** Optica y Geometrica [2/2]                                        
     :PROPERTIES:

@@ -13,3 +13,8 @@
 
 #+OPTIONS: num:nil p:t
 
+* Material
+  - [[https://www.campusvirtual.frba.utn.edu.ar/especialidad/course/view.php?id=2862][Ir al Aula Virtual (Gomez Eduardo)]]
+  - [[https://www.campusvirtual.frba.utn.edu.ar/especialidad/course/view.php?id=3107][Ir al Aula Virtual (Monica Blazquez)]] 
+  - [[https://drive.google.com/drive/u/0/folders/14HMtKoVGFtcroJzP4SxXb6LzTltbd4IC][Ir al Drive de AMI (Personal)]] 
+* Cronograma

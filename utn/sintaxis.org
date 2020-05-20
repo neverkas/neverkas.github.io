@@ -15,16 +15,49 @@
 [[file:index.html][**Volver al inicio**]]
 
 * Informacion
-   + [[https://classroom.google.com/u/1/c/NTM3Mjk2MjYyNjZa][ **Aula Virtual** Bender (Google Classes)]] 
-   + [[https://us04web.zoom.us/j/144552585][ **Clase Virtual** por Zuñiga (En zoom)]] Clave: K2053
+   + [[https://classroom.google.com/u/1/c/NTM3Mjk2MjYyNjZa][ **Aula Virtual** Bender (Google Classes)]]
+   + [[https://us04web.zoom.us/j/144552585][**Clase Virtual** por Zuñiga - Miercoles 19:00pm]] (Clave: K2053)
+   + [[https://us04web.zoom.us/j/699789041?pwd=SWUzQTQ2cHBEYlFLS1VpVHZublV0UT09][**Clase Virtual** por Zuñiga - Jueves 8:00am]] (Clave: K2004)
    <2020-04-15 mié 19:00 +1w>
   
 * Trabajos Practicos
-** [TODO] Actividad C 3: Control de flujo
+** [TODO] [#B] Actividad C 3: Control de flujo
    DEADLINE: <2020-05-27 mié>
    [[https://classroom.google.com/u/2/c/NTM3Mjk2MjYyNjZa/a/ODQ3MzA0NDk5ODJa/details][Ir a la Tarea]]
    [[https://classroom.google.com/u/2/c/NTM3Mjk2MjYyNjZa/m/MTI0MzY5NTQ1MzA1/details][Ir a la Teoria]]
+** [TODO] [#B] Actividad: Sintaxis de direcciones de correo electronico :sintaxis:
+   DEADLINE: <2020-05-27 mié>
+   [[https://classroom.google.com/u/2/c/NTM3Mjk2MjYyNjZa/a/ODU3NzM1NTI1ODFa/details][Ir a la Tarea]]
+** [WAITING] Actividad 5 A: Expresiones Regulares                  :sintaxis:
+   DEADLINE: <2020-05-16 sáb>
+   - [[https://classroom.google.com/u/2/c/NTM3Mjk2MjYyNjZa/m/OTkyMDQ4NDg3MDla/details][Ver Teoria en el Aula Virtual]]
+   - [[https://classroom.google.com/u/2/c/NTM3Mjk2MjYyNjZa/a/OTkyMDk0MDQ1OTRa/details][Ver TP en el Aula Virtual]]
+** [DONE] Actividad 4: Sintaxis y Semantica                        :sintaxis:
+   CLOSED: [2020-05-16 sáb 17:31]
+   - [[https://classroom.google.com/u/2/c/NTM3Mjk2MjYyNjZa/a/Nzk1MDA1ODk3MzBa/details][Ver Teoria en el Aula Virtual]]
+   - [[https://classroom.google.com/u/2/c/NTM3Mjk2MjYyNjZa/a/Nzk1MDA1ODk3MzBa/details][Ver TP en el Aula Virtual]]
+     No era tarea, era para resolver en clase
+** [WAITING] Actividad 3 - BNF                                     :sintaxis:
+   [[https://classroom.google.com/u/2/c/NTM3Mjk2MjYyNjZa/a/NzU0NjgzNjYyODFa/details][Ir a la Tarea (Google Classes)]]
+   DEADLINE: <2020-04-19 dom>
+** [WAITING] Reentrega - Actividad 2 - Gramaticas                  :sintaxis:
+** [WAITING] Actividad C 2 - Tipos, Operadores y Expresiones       :sintaxis:
+   DEADLINE: <2020-05-02 sáb>
+   
+   - [[https://classroom.google.com/u/2/c/NTM3Mjk2MjYyNjZa/a/NzY3NTAzNjgyMDha/details][Ver Tp en el Aula Virtual]]
+   - [[https://classroom.google.com/u/2/c/NTM3Mjk2MjYyNjZa/m/NzE3MzUyNjIyODFa/details][Ver Teoria en el Aula Virtual]] 
+** [WAITING] Actividad C 2 - Ansi C                                :sintaxis:
+   DEADLINE: <2020-05-04 lun>
 
+   - [[https://classroom.google.com/u/2/c/NTM3Mjk2MjYyNjZa/a/NzY3NTAzNjgyMDha/details][Ver TP en el Aula Virtual]]
+   - [[https://classroom.google.com/u/2/c/NTM3Mjk2MjYyNjZa/m/NzE3MzUyNjIyODFa/details][Ver Teoria en el Aula Virtual]]
+   
+** [DONE] Actividad 1 - Lenguajes Formales                         :sintaxis:
+   CLOSED: [2020-04-20 lun 02:04]
+** [DONE] Actividad 1 - Ansi C                                     :sintaxis:
+   CLOSED: [2020-04-14 mar 16:59]
+** [DONE] Actividad 2 - Gramaticas                                 :sintaxis:
+   CLOSED: [2020-04-14 mar 16:48]
 * Cronograma dictado
     1. [X] Lenguajes Formales
     2. [X] Ansi C1
