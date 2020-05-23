@@ -25,8 +25,8 @@
    DEADLINE: <2020-05-27 mié>
    [[https://classroom.google.com/u/2/c/NTM3Mjk2MjYyNjZa/a/ODQ3MzA0NDk5ODJa/details][Ir a la Tarea]]
    [[https://classroom.google.com/u/2/c/NTM3Mjk2MjYyNjZa/m/MTI0MzY5NTQ1MzA1/details][Ir a la Teoria]]
-** [TODO] [#B] Actividad: Sintaxis de direcciones de correo electronico :sintaxis:
-   DEADLINE: <2020-05-27 mié>
+** [DONE] [#B] Actividad: Sintaxis de direcciones de correo electronico :sintaxis:
+   CLOSED: [2020-05-23 sáb 00:39] DEADLINE: <2020-05-23 sáb>
    [[https://classroom.google.com/u/2/c/NTM3Mjk2MjYyNjZa/a/ODU3NzM1NTI1ODFa/details][Ir a la Tarea]]
 ** [WAITING] Actividad 5 A: Expresiones Regulares                  :sintaxis:
    DEADLINE: <2020-05-16 sáb>

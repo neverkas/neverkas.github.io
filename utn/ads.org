@@ -26,3 +26,17 @@
   1. [X] Planificacion
   2. [X] Gantt
   3. [X] CPM/PERT
+
+* Trabajos Practicos
+** [DOING] TP Grupal 05 - Tabla de Decision - TD001: Juego Online       :ads:
+   DEADLINE: <2020-05-22 vie>
+** [DOING] TP Integrador 01 - Estudio Preliminar                        :ads:
+   DEADLINE: <2020-05-22 vie>
+** TP Integrador 02 - Estudio Relevamiento                              :ads:
+   DEADLINE: <2020-06-12 vie>
+** TP Integrador 03 - Estudio de Factibilidd                            :ads:
+   DEADLINE: <2020-07-03 vie>
+** TP Integrador 04 - Analisis Estructurado                             :ads:
+   DEADLINE: <2020-09-25 vie>
+** TP Integrador 05 - Analisis Orientado a Objetos                      :ads:
+   DEADLINE: <2020-10-23 vie>
