@@ -1,0 +1,33 @@
+#+TITLE: Paradigmas de Programacion
+#+AUTHOR:    Jelou 
+
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="themes/styles/readtheorg/css/htmlize.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="themes/styles/readtheorg/css/readtheorg.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="manu-theme/custom.css"/>
+
+#+HTML_HEAD: <script type="text/javascript" src="themes/styles/lib/js/jquery.min.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="themes/styles/lib/js/bootstrap.min.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="themes/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="themes/styles/readtheorg/js/readtheorg.js"></script>
+
+#+OPTIONS: num:nil p:t
+
+[[file:index.html][**Volver al inicio**]]
+
+* Enlaces
+   - [[https://github.com/pdep-mit/mini-tps-funcional-2020-neverkas][Repositorio Github (Mini TPs)]]
+   - [[https://github.com/pdep-mit/tp-integrador-funcional-2020-neverkas][Repositorio Github (TP Integrador)]]
+   - [[https://app.mural.co/t/pdepmit6138/m/pdepmit6138/1586024286497/7f9080db144136910935b90964ab93d66af0e85b][Mural de actividades]]
+* Parciales de Practica 
+  - [[https://docs.google.com/document/d/1Gc-ot4AStIaGePl-q2V1KJBhpiXL0ye6pWvLki4vWZg/edit][Parcial Lambda Prop]]
+* Trabajos Practicos [3/6]
+** [TODO] [#A] TP Integrador                                           :pdep:
+** [WAITING] TP 4                                                      :pdep:
+   SCHEDULED: <2020-04-24 vie> DEADLINE: <2020-04-29 mié>
+** [WAITING] TP 3                                                      :pdep:
+** [DONE] TP 2                                                         :pdep:
+   CLOSED: [2020-04-23 jue 17:43]
+** [DONE] TP 0                                                         :pdep:
+   CLOSED: [2020-04-14 mar 16:48]
+** [DONE] TP 1                                                         :pdep:
+   CLOSED: [2020-04-14 mar 16:48]

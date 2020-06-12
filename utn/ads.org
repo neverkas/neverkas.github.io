@@ -1,0 +1,42 @@
+#+TITLE: Analisis de Sistemas
+#+AUTHOR:    Jelou 
+
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="themes/styles/readtheorg/css/htmlize.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="themes/styles/readtheorg/css/readtheorg.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="manu-theme/custom.css"/>
+
+#+HTML_HEAD: <script type="text/javascript" src="themes/styles/lib/js/jquery.min.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="themes/styles/lib/js/bootstrap.min.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="themes/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="themes/styles/readtheorg/js/readtheorg.js"></script>
+
+#+OPTIONS: num:nil p:t
+
+[[file:index.html][**Volver al inicio**]]
+
+* Enlaces
+   + [[https://www.campusvirtual.frba.utn.edu.ar/especialidad/course/view.php?id=2612][Ir al Aula Virtual (Campus Virtual)]]
+   + [[https://meet.google.com/afr-axsj-joi?authuser=3][Ir a la Clase Virtual (Meet Google)]]
+   + [[https://www.lucidchart.com/documents#/documents?folder_id=213972579][Ir al LucidChart (Tps/Ejercicios)]]
+   + [[https://drive.google.com/drive/u/0/folders/1E4Bt-7AQfPI245EcSHKEbs2yxj7BSXMP][Ir a mi Drive de ADS]]
+   + [[https://drive.google.com/drive/u/2/folders/15P8_Enn5W42AU3DwZRhoS54W2WbQlhLc][Ir al drive del Grupo (Creado por el Profe)]]
+   + [[https://utnbaanlisisd-vrq8030.slack.com/][Ir al Slack de ADS]]
+
+* Cronograma Dictado
+  1. [X] Planificacion
+  2. [X] Gantt
+  3. [X] CPM/PERT
+
+* Trabajos Practicos
+** [DOING] TP Grupal 05 - Tabla de Decision - TD001: Juego Online       :ads:
+   DEADLINE: <2020-05-22 vie>
+** [DOING] TP Integrador 01 - Estudio Preliminar                        :ads:
+   DEADLINE: <2020-05-22 vie>
+** TP Integrador 02 - Estudio Relevamiento                              :ads:
+   DEADLINE: <2020-06-12 vie>
+** TP Integrador 03 - Estudio de Factibilidd                            :ads:
+   DEADLINE: <2020-07-03 vie>
+** TP Integrador 04 - Analisis Estructurado                             :ads:
+   DEADLINE: <2020-09-25 vie>
+** TP Integrador 05 - Analisis Orientado a Objetos                      :ads:
+   DEADLINE: <2020-10-23 vie>

@@ -1,0 +1,75 @@
+#+TITLE:     UTN General
+#+AUTHOR:    Jelou 
+
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="themes/styles/readtheorg/css/htmlize.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="themes/styles/readtheorg/css/readtheorg.css"/>
+
+#+HTML_HEAD: <script type="text/javascript" src="themes/styles/lib/js/jquery.min.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="themes/styles/lib/js/bootstrap.min.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="themes/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="themes/styles/readtheorg/js/readtheorg.js"></script>
+
+#+HTML_HEAD: <script type="text/javascript" src="manu-theme/lodash.min.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="manu-theme/moment-with-locales.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="manu-theme/custom.js"></script>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="manu-theme/custom.css"/>
+
+#+OPTIONS: num:nil p:t
+
+#+BEGIN_HOYES
+Hoy es
+
+#+END_HOYES
+
+* Agenda
+  
+#+BEGIN_AGENDA
+
+| DIA       |     HORARIO | MATERIA | CURSO      | PROFESOR            | MAS INFO    |
+|-----------+-------------+---------+------------+---------------------+-------------|
+| MARTES    | 14:15-18:15 | AMI     | Z1033      | Gomez Eduardo       | [[file:ami.html][Ver Materia]] |
+|           |             |         |            |                     |             |
+| MIERCOLES | 14:15-17:30 | PDEP    | K2031      | Mariana Matos       | [[file:pdep.html][Ver Materia]] |
+| MIERCOLES | 19:00-21:00 | SSL     | **OYENTE** | Zuñiga              | Ver Materia |
+|           |             |         |            |                     |             |
+| JUEVES    |  8:30-12:30 | FISICA  | Z1203      | Gabriela Beltramino | [[file:fisica.html][Ver Materia]] |
+| JUEVES    | 14:00-16:00 | FISICA  | **OYENTE** | Roberto Ferrazo     | Ver Materia |
+|           |             |         |            |                     |             |
+| VIERNES   |  8:30-12:30 | ADS     | K2105      | Diego H. Schmidt    | [[file:ads.html][Ver Materia]] |
+| VIERNES   | 14:15-18:00 | AMI     | **OYENTE** | Monica Blazques     | Ver Materia |
+|           |             |         |            |                     |             |
+| SABADO    |  8:30-11:45 | SSL     | K2006      | Adrian Bender       | [[file:sintaxis.html][Ver Materia]] |
+#+END_AGENDA
+
+* Proximos Feriados
+  **[[http://siga.frba.utn.edu.ar/up/docs/CalendarioAcademico2020.jpg][Ir al Calendario Academico]]**
+  
+ - Examenes Finales
+ - Dia de la Revolucion de Mayo
+ - Dia Paso a la Inmortalidad del General Guemes
+ - Dia del Trabajador del Estado
+
+* Trabajos Practicos [10/22]
+** [DONE] TP 2 - Cpm                                             :ads:grupal:
+   CLOSED: [2020-05-08 vie 00:54] DEADLINE: <2020-05-08 vie>
+
+   [[https://www.campusvirtual.frba.utn.edu.ar/especialidad/mod/assign/view.php?id=125857][Ver Enunciado (Campus Virtual)]]
+** [WAITING] TP 3 - Estudio Preliminar && Relevamiento           :ads:grupal:
+   DEADLINE: <2020-05-08 vie>
+   [[https://www.campusvirtual.frba.utn.edu.ar/especialidad/mod/assign/view.php?id=127382][Ver Enunciado (Campus Virtual)]] 
+** [WAITING] TP Grupal 1                                      :fisica:grupal:
+   SCHEDULED: <2020-04-27 lun> DEADLINE: <2020-05-08 vie>
+** [DONE] TP 1 Grupal - GANT                                     :ads:grupal:
+   CLOSED: [2020-04-17 vie 00:51]
+** [DONE] Reentrega - TP 1 Individual - CPM/PERT                        :ads:
+   CLOSED: [2020-05-02 sáb 22:30] DEADLINE: <2020-05-01 vie>
+** [DONE] TP 1 Individual - CPM/PERT                                    :ads:
+   CLOSED: [2020-04-23 jue 16:54] DEADLINE: <2020-04-24 vie>
+   [[https://www.campusvirtual.frba.utn.edu.ar/especialidad/mod/assign/view.php?id=122043][Ver TP en el Aula Virtual]]
+** TP Grupal 2                                                :fisica:grupal:
+   DEADLINE: <2020-05-29 vie> SCHEDULED: <2020-05-18 lun>
+** TP Grupal 3                                                :fisica:grupal:
+   DEADLINE: <2020-06-19 vie> SCHEDULED: <2020-06-08 lun>
+** TP Grupal 4                                                :fisica:grupal:
+   DEADLINE: <2020-07-08 mié> SCHEDULED: <2020-06-29 lun>
+   
