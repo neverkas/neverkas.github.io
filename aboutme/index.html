@@ -9,7 +9,7 @@
   <meta name="author" content="Neverkas">
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Vagrant - Manu Docs</title>
+  <title>About me - Manu Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -20,8 +20,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Vagrant";
-    var mkdocs_page_input_path = "investigando.md";
+    var mkdocs_page_name = "About me";
+    var mkdocs_page_input_path = "aboutme.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -50,8 +50,8 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
                 <p class="caption"><span class="caption-text">Off Topic</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../aboutme/">About me</a>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">About me</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Guia de Emacs</span></p>
@@ -117,11 +117,15 @@
     <li><a href="..">Docs</a> &raquo;</li>
     
       
+        
+          <li>Off Topic &raquo;</li>
+        
+      
     
-    <li>Vagrant</li>
+    <li>About me</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/neverkas/manu-doc/edit/master/docs/investigando.md"
+        <a href="https://github.com/neverkas/manu-doc/edit/master/docs/aboutme.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -132,58 +136,38 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="vagrant">Vagrant</h1>
-<p>Boxes donde ya se pueden ver otros
-https://app.vagrantup.com/boxes/search</p>
-<h1 id="1-instalacion">1. Instalación</h1>
-<p>https://linuxize.com/post/how-to-install-vagrant-on-ubuntu-18-04/</p>
-<h1 id="2-configuracion">2. Configuración</h1>
-<pre><code class="bash">vagrant init
-vagrant box add ubuntu/precise64 # descargamos ubuntu
-# ubuntu/bionic64
-</code></pre>
-
-<h1 id="posibles-errores">Posibles errores</h1>
-<h2 id="1">1.</h2>
-<p>https://superuser.com/questions/614941/vagrant-fails-to-create-box-with-libvirt</p>
-<h1 id="2">2.</h1>
-<p>https://rstopup.com/error-al-intentar-vagrant-up.html
-$ vagrant box list
-Vas a ver algo como laravel/homestead(virtualbox,x.x.x)
-Siguiente localizar su Vagrantfile y busque la línea que dice
-config.vm.box = "box"
-reemplazar box con el nombre de cuadro cuando se ejecuta vagrant box list.</p>
-<hr />
-<h1 id="referencias">Referencias</h1>
-<ul>
-<li>General<ul>
-<li>Referencia #1 <a href="https://www.youtube.com/watch?v=UFE-Nz9cxJg">Ver Video</a></li>
-</ul>
-</li>
-<li>Vagrant<ul>
-<li>Pagina Oficial <a href="https://www.vagrantup.com/downloads.html">Ver Página</a></li>
-<li>Referencia #1 <a href="https://www.youtube.com/watch?v=Ud7cmVCNACE&amp;list=PLTd5ehIj0goPCodyeh2ThX37Ceh-2torY">Ver Video</a></li>
-</ul>
-</li>
-<li>Ansible<ul>
-<li>Referencia #1 <a href="https://www.youtube.com/watch?v=slNIwBPeQvE&amp;list=PLTd5ehIj0goP2RSCvTiz3-Cko8U6SQV1P">Ver Video</a></li>
-</ul>
-</li>
-<li>Dotfiles<ul>
-<li>
-<h1 id="referencia-1-httpsvictoriadevbloghow-to-set-up-a-fresh-ubuntu-desktop-using-only-dotfiles-and-bash-scripts">Referencia #1 https://victoria.dev/blog/how-to-set-up-a-fresh-ubuntu-desktop-using-only-dotfiles-and-bash-scripts/</h1>
-</li>
-<li>Referencia #2 <a href="https://medium.com/@webprolific/getting-started-with-dotfiles-43c3602fd789">Ver Página</a></li>
-<li>Referencia #3 <a href="https://www.atareao.es/podcast/dotfiles-o-archivos-de-configuracion/">Ver Página</a></li>
-<li>Referencia #4 <a href="https://github.com/webpro/awesome-dotfiles#tools">Ver Página</a></li>
-<li>Referencia #5 <a href="https://pragdave.me/blog/2018/08/28/maintaining-dotfiles.html">Ver Página</a></li>
-</ul>
-</li>
-</ul>
+                <p><span style="float:left; padding-right:10px;"> 
+<img src="/images/itsme.jpg">
+</span></p>
+<blockquote>
+<p>Bienvenido a mi blog de programacion :)</p>
+<p>Me pareció importante transmitir quien es el que escribe todo esto.</p>
+<p>Soy un apasionado de la gastronomía, de la programación y ferviente seguidor de la carpintería.
+Me parece que cada actividad nos permite reinventarnos, ser y hacer lo que queramos.</p>
+<p>Como todos a veces me encuentro con proyectos que requieren más o menos tiempo de 
+desarrollo e investigación, no obstante si alguno de ellos atrapa realmente mi atención y considero que tienen
+alguna utilidad a futuro seguramente no duerma por algunos días hasta lograrlo o acercarme al menos un poco.
+(este es uno de esos tantos proyectos pendientes, de los que prometemos algun dia hacer)</p>
+<p>Por último, lo que ciertamente despertó mi curiosidad sobre aprender a programar, fue el hecho de ser un 
+un fanático de los videojuegos de computadora en tiempo real, aunque en la actualidad perdí cierto interés en los
+juegos, mi interés por la informática continua en pie. Sin embargo lo otro que me inspiró fue la una grandiosa 
+película de ficción <strong>Matrix</strong>.</p>
+</blockquote>
+<p><span style="float:none;"></span></p>
+<p><center>
+<img src="/images/matrix.jpg" width="500">
+</center></p>
               
             </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../guia-de-emacs/guia-emacs/" class="btn btn-neutral float-right" title="Empezando con Emacs">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+    </div>
   
 
   <hr/>
@@ -209,6 +193,8 @@ reemplazar box con el nombre de cuadro cuando se ejecuta vagrant box list.</p>
           <a href="https://github.com/neverkas/manu-doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
+      
+        <span style="margin-left: 15px"><a href="../guia-de-emacs/guia-emacs/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

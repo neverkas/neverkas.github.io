@@ -15,6 +15,8 @@
   <link rel="stylesheet" href="../../css/theme.css" />
   <link rel="stylesheet" href="../../css/theme_extra.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link href="../../css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../../css/extra.css" rel="stylesheet" />
   
   <script>
     // Current page data
@@ -47,25 +49,9 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <p class="caption"><span class="caption-text">Off Topic</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Guia de Linux</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-parte-1/">Lineas de comando (Parte 1)</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-parte-2/">Lineas de comando (Parte 2)</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-personalizar/">Personalizar el Sistema</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-3/">Configuraciones</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/linux-configuracion-de-red/">Configuración de Red</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../guia-git/">Guia de Git</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../aboutme/">About me</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Guia de Emacs</span></p>
@@ -91,6 +77,8 @@
     <li class="toctree-l3"><a class="reference internal" href="#62-acciones-sobre-el-listado-de-directorios-dired">6.2 Acciones sobre el listado de directorios (dired)</a>
     </li>
         </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#referencias">Referencias</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#7-configuracion-personalizada">7. Configuración personalizada</a>
         <ul>
@@ -121,9 +109,36 @@
                     <li class="toctree-l1"><a class="reference internal" href="../guia-emacs-magit/">Integrando Git con MAGIT</a>
                     </li>
                 </ul>
-                <p class="caption"><span class="caption-text">Guia de Maquinas Virtuales</span></p>
+                <p class="caption"><span class="caption-text">Guia de Linux</span></p>
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-parte-1/">Lineas de comando (Parte 1)</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-parte-2/">Lineas de comando (Parte 2)</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-problemas-comunes/">Problemas frecuentes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-personalizar/">Personalizar el Sistema</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-3/">Configuraciones</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-particionamiento/">Particionamiento</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-vagrant-ansible/">Vagrant y Ansible</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-gestores-de-paquetes/">Gestores de paquetes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-expresiones-regulares/">Expresiones Regulares</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/linux-configuracion-de-red/">Configuración de Red</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Nuevas Guias</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-git/">Guia de Git</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../virtualbox/">Configurando Virtualbox</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../navegadores-web-extensiones-utiles/">Extensiones utiles para los Navegadores Web</a>
                     </li>
                 </ul>
       </div>
@@ -166,6 +181,7 @@
             <div class="section">
               
                 <h1 id="programar-con-emacs">Programar con Emacs</h1>
+<p><img src="/images/emacs.gif"></p>
 <h2 id="1-editar-archivos-desde-la-terminal-de-linux">1. Editar archivos desde la terminal de linux</h2>
 <blockquote>
 <p>Si estamos apurados y queremos ver ó modificar un archivo sin entorno gráfico
@@ -178,11 +194,11 @@ ejecutamos el ide pasando el parámetro <strong>-nw</strong></p>
 <p><strong>Observación</strong>: Si queremos evitar pasarle el parámetro, podemos crear un alias en linux</p>
 </blockquote>
 <h2 id="1-atajos">1. Atajos</h2>
-<table>
+<table class="table">
 <thead>
 <tr>
 <th align="left">Atajo</th>
-<th>Descripción</th>
+<th scope="col">Descripción</th>
 </tr>
 </thead>
 <tbody>
@@ -194,163 +210,263 @@ ejecutamos el ide pasando el parámetro <strong>-nw</strong></p>
 <td align="left">X</td>
 <td>Se refiere a la tecla Alt</td>
 </tr>
+<tr>
+<td align="left">SPC</td>
+<td>Se refiere a la tecla Espacio</td>
+</tr>
 </tbody>
 </table>
 <hr />
 <h2 id="2-acciones">2. Acciones</h2>
-<table>
+<table class="table">
 <thead>
 <tr>
-<th align="left">Comando</th>
+<th align="left">Holy mode</th>
+<th scope="col">Evil Mode</th>
 <th align="left">Descripción</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td align="left">C-x C-c</td>
+<td>SPC-q-q</td>
 <td align="left">Salir de Emacs</td>
 </tr>
 <tr>
 <td align="left">M-x dired</td>
+<td></td>
 <td align="left">Listar directorio</td>
 </tr>
 <tr>
 <td align="left">M-x shell</td>
+<td>Spc-'</td>
 <td align="left">Abre la terminal</td>
 </tr>
 <tr>
 <td align="left">M-x list-packages</td>
+<td></td>
 <td align="left">Lista todos los paquetes</td>
 </tr>
 </tbody>
 </table>
 <hr />
 <h2 id="3-comandos-para-edicion">3. Comandos para Edición</h2>
-<table>
+<table class="table">
 <thead>
 <tr>
-<th align="left">Comando</th>
+<th align="left">Holy Mode</th>
+<th scope="col">Evil Mode</th>
 <th align="left">Descripción</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td align="left">C-w</td>
+<td>d</td>
 <td align="left">Cortar texto</td>
 </tr>
 <tr>
 <td align="left">X-w</td>
-<td align="left">Copiar texto</td>
+<td>y</td>
+<td align="left">Copiar texto seleccionado</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td>Y</td>
+<td align="left">Copiar desde el cursor hasta final de linea</td>
 </tr>
 <tr>
 <td align="left">C-y</td>
-<td align="left">Pegar texto</td>
+<td>p</td>
+<td align="left">Pegar texto despues del cursor</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td>P</td>
+<td align="left">Pegar texto antes del cursor</td>
 </tr>
 <tr>
 <td align="left">C-w u</td>
+<td>u</td>
 <td align="left">Deshacer cambio</td>
 </tr>
 <tr>
+<td align="left"></td>
+<td></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Shift &lt; Arrow &gt;</td>
+<td>v &lt; h/j/k/l &gt;</td>
+<td align="left">Seleccionar texto</td>
+</tr>
+<tr>
 <td align="left">C-x h</td>
+<td></td>
 <td align="left">Seleccionar todo el texto</td>
 </tr>
 <tr>
 <td align="left">C-x</td>
+<td>ESC</td>
 <td align="left">Cancelar acción</td>
 </tr>
 <tr>
 <td align="left">C-x C-s</td>
+<td>SPC f s</td>
 <td align="left">Guardar archivo</td>
 </tr>
 <tr>
 <td align="left">C-x C-v</td>
+<td></td>
 <td align="left">Actualizar buffer</td>
 </tr>
-</tbody>
-</table>
-<hr />
-<h2 id="4-comandos-de-desplazamiento">4. Comandos de Desplazamiento</h2>
-<table>
-<thead>
 <tr>
-<th align="left">Comando</th>
-<th align="left">Descripción</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">M-AvPag</td>
-<td align="left">Scrollear otra ventana, sin mover el cursor</td>
+<td align="left"></td>
+<td></td>
+<td align="left"></td>
 </tr>
 <tr>
-<td align="left">M-RePag</td>
-<td align="left">Scrollear otra ventana, sin mover el cursor</td>
+<td align="left"></td>
+<td>o</td>
+<td align="left">Insertar linea debajo del cursor</td>
 </tr>
 <tr>
-<td align="left">C-s</td>
-<td align="left">Busqueda incremental, hacia adelante</td>
-</tr>
-<tr>
-<td align="left">C-r</td>
-<td align="left">Busqueda decremental, hacia atras</td>
-</tr>
-<tr>
-<td align="left">C-g</td>
-<td align="left">Finaliza búsqueda</td>
-</tr>
-<tr>
-<td align="left">C-u 8 *</td>
-<td align="left">Escribe el asterisco 8 veces</td>
-</tr>
-<tr>
-<td align="left">M-Delback</td>
-<td align="left">Borra por palabras</td>
-</tr>
-<tr>
-<td align="left">&nbsp;</td>
+<td align="left"></td>
+<td></td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">C-k</td>
+<td></td>
 <td align="left">Borra desde el puntero hasta el final de linea</td>
 </tr>
 <tr>
 <td align="left">M-k</td>
+<td></td>
 <td align="left">Elimina texto hasta final del texto, parrafos</td>
 </tr>
 <tr>
-<td align="left">&nbsp;</td>
+<td align="left"></td>
+<td></td>
 <td align="left"></td>
 </tr>
 <tr>
-<td align="left">C-v</td>
-<td align="left">Avanzar sig. Página</td>
+<td align="left"></td>
+<td>dd</td>
+<td align="left">Elimina linea</td>
 </tr>
 <tr>
-<td align="left">M-v</td>
-<td align="left">Retroceder, anterior página</td>
+<td align="left"></td>
+<td>D</td>
+<td align="left">Elimina desde el principio al final de linea</td>
 </tr>
 <tr>
-<td align="left">M-&lt;</td>
-<td align="left">Retroceder por palabras</td>
+<td align="left"></td>
+<td>x</td>
+<td align="left">Elimina caracter despues del cursor</td>
 </tr>
 <tr>
-<td align="left">M-&gt;</td>
-<td align="left">Avanzar por palabras</td>
+<td align="left"></td>
+<td>X</td>
+<td align="left">Elimina caracter antes del cursor</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-comandos-de-desplazamiento">4. Comandos de Desplazamiento</h2>
+<table class="table">
+<thead>
+<tr>
+<th align="left">Holy Mode</th>
+<th scope="col">Evil Mode</th>
+<th align="left">Descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">C-s</td>
+<td></td>
+<td align="left">Busqueda de texto, hacia adelante</td>
+</tr>
+<tr>
+<td align="left">C-r</td>
+<td></td>
+<td align="left">Busqueda de texto, hacia atras</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td>/[patron] RET</td>
+<td align="left">Busqueda de texto hacia adelante (<strong>n</strong> para avanzar, <strong>N</strong> para retroceder)</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td>?[patron] RET</td>
+<td align="left">Busqueda de texto hacia atras (<strong>n</strong> para avanzar, <strong>N</strong> para retroceder)</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td></td>
+<td align="left"></td>
 </tr>
 <tr>
 <td align="left">C-a</td>
+<td>^</td>
 <td align="left">Principio de linea</td>
 </tr>
 <tr>
 <td align="left">C-e</td>
+<td>$</td>
 <td align="left">Final de linea</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">C-n</td>
+<td>j</td>
+<td align="left">Mover cursor hacia abajo</td>
+</tr>
+<tr>
+<td align="left">C-p</td>
+<td>k</td>
+<td align="left">Mover cursor hacia arriba</td>
+</tr>
+<tr>
+<td align="left">C-b</td>
+<td>h</td>
+<td align="left">Mover cursor hacia la izquierda (backward)</td>
+</tr>
+<tr>
+<td align="left">C-f</td>
+<td>l</td>
+<td align="left">Mover cursor hacia la derecha (foward)</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">M-g</td>
+<td>&lt; n &gt; gg</td>
+<td align="left">Ir a la linea n (Ej. 20gg va a la linea 20)</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">C-u 8 *</td>
+<td></td>
+<td align="left">Escribe el asterisco 8 veces</td>
 </tr>
 </tbody>
 </table>
 <hr />
 <h2 id="5-control-de-buffers-ventanas">5. Control de Buffers / Ventanas</h2>
-<table>
+<table class="table">
 <thead>
 <tr>
 <th align="left">Comando</th>
@@ -405,7 +521,7 @@ ejecutamos el ide pasando el parámetro <strong>-nw</strong></p>
 <blockquote>
 <p>Luego de haber lanzar <code>M-x dired</code> se pueden ejecutar acciones estando dentro del listado</p>
 </blockquote>
-<table>
+<table class="table">
 <thead>
 <tr>
 <th align="left">Acción</th>
@@ -435,7 +551,10 @@ ejecutamos el ide pasando el parámetro <strong>-nw</strong></p>
 </tr>
 </tbody>
 </table>
-<hr />
+<h2 id="referencias">Referencias</h2>
+<ul>
+<li><a href="https://caiorss.github.io/Emacs-Elisp-Programming/Keybindings.html">Ver Pagina</a></li>
+</ul>
 <h2 id="7-configuracion-personalizada">7. Configuración personalizada</h2>
 <h3 id="71-configurar-la-indentacion-del-codigo-tabulacion">7.1. Configurar la indentación del código (tabulación)</h3>
 <pre><code>;; Set Indentation (tabs)
@@ -477,7 +596,7 @@ trabajo si el sistema falla.” Puede encontrar un archivo existente, para verlo
 <p>Cuando le pregunte por la confirmación, teclee yes<Return> para ir y recuperar la información del auto guardado.</p>
 </blockquote>
 <hr />
-<h1 id="referencias">Referencias</h1>
+<h1 id="referencias_1">Referencias</h1>
 <ul>
 <li>Configuración del archivo Init, ErgoEmacs <a href="http://ergoemacs.org/emacs/emacs_make_modern.html">Ver Página</a></li>
 <li>Utilizando el Editor de Directorios, GNU <a href="http://dinasis.com/oliver/Learning_GNU_Emacs/gnu3-CHP-5-SECT-2.html">Ver Página</a></li>
@@ -492,6 +611,7 @@ trabajo si el sistema falla.” Puede encontrar un archivo existente, para verlo
 </ul>
 <h1 id="referencias-pendientes-a-revisar">Referencias pendientes a revisar</h1>
 <ul>
+<li>https://develop.spacemacs.org/layers/+lang/markdown/README.html</li>
 <li>https://www.emacswiki.org/emacs/WhatAreTheNeedsOfProgrammers#toc6</li>
 <li>https://truongtx.me/2013/03/10/ecb-emacs-code-browser</li>
 <li>https://www.reddit.com/r/emacs/comments/931ogo/finally_a_decent_method_outline_for_my_emacs_ecb/</li>
@@ -535,7 +655,7 @@ http://cedet.sourceforge.net/</li>
         <a href="../guia-emacs-spacemacs/" class="btn btn-neutral float-right" title="Avanzando con Spacemacs">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../../guia-git/" class="btn btn-neutral" title="Guia de Git"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../aboutme/" class="btn btn-neutral" title="About me"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -563,7 +683,7 @@ http://cedet.sourceforge.net/</li>
           <a href="https://github.com/neverkas/manu-doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../../guia-git/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../../aboutme/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../guia-emacs-spacemacs/" style="color: #fcfcfc">Next &raquo;</a></span>
@@ -572,6 +692,8 @@ http://cedet.sourceforge.net/</li>
 </div>
     <script>var base_url = '../..';</script>
     <script src="../../js/theme.js" defer></script>
+      <script src="../../js/jquery-3.5.0.min.js" defer></script>
+      <script src="../../js/customize.js" defer></script>
       <script src="../../search/main.js" defer></script>
     <script defer>
         window.onload = function () {

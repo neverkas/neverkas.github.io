@@ -9,7 +9,7 @@
   <meta name="author" content="Neverkas">
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Configuraciones - Manu Docs</title>
+  <title>Gestores de paquetes - Manu Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -20,8 +20,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Configuraciones";
-    var mkdocs_page_input_path = "guia-de-linux/guia-linux-3.md";
+    var mkdocs_page_name = "Gestores de paquetes";
+    var mkdocs_page_input_path = "guia-de-linux/guia-linux-gestores-de-paquetes.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -75,17 +75,39 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../guia-linux-personalizar/">Personalizar el Sistema</a>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Configuraciones</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#1-crear-un-alias">1. Crear un Alias</a>
-    </li>
-    </ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-linux-3/">Configuraciones</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../guia-linux-particionamiento/">Particionamiento</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../guia-linux-vagrant-ansible/">Vagrant y Ansible</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../guia-linux-gestores-de-paquetes/">Gestores de paquetes</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Gestores de paquetes</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1-comandos-basicos">1. Comandos Basicos</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#12-instalar-un-package-y-evitar-confirmar-la-instalacion">1.2 Instalar un package y evitar confirmar la instalación</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#13-cambiar-gestor-de-paquetes">1.3 Cambiar Gestor de Paquetes</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#131-instalacion">1.3.1 Instalacion</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#132-problemas-frecuentes">1.3.2 Problemas frecuentes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#133-referencias">1.3.3 Referencias</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-posibles-errores">2. Posibles errores</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#21-fdisk-cannot-open-devsda-permission-denied">2.1 fdisk: cannot open /dev/sda: Permission denied</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#22-no-funciona-pacstrap">2.2 No funciona Pacstrap</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#23-referencias">2.3 Referencias</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../guia-linux-expresiones-regulares/">Expresiones Regulares</a>
                     </li>
@@ -126,10 +148,10 @@
         
       
     
-    <li>Configuraciones</li>
+    <li>Gestores de paquetes</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/neverkas/manu-doc/edit/master/docs/guia-de-linux/guia-linux-3.md"
+        <a href="https://github.com/neverkas/manu-doc/edit/master/docs/guia-de-linux/guia-linux-gestores-de-paquetes.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -140,23 +162,97 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="guia-de-linux-configuracion">Guia de Linux - Configuración</h1>
-<h2 id="1-crear-un-alias">1. Crear un Alias</h2>
-<blockquote>
-<p>Los <strong>alias</strong> nos permiten ejecutar comandos con un nombre personalizado.
-Puede darse que querramos ejecutar un programa con varios parámetros, con
-solo escribir en la terminal una palabra, que sería más fácil de recordar.</p>
-</blockquote>
-<pre><code class="bash">sudo nano ~/.bashrc # accedemos al archivo .bashrc para modificar
-
-# creamos el alias 'emacs' cada vez que se ejecute en la terminal
-# en realidad ejecutará el comando 'emacs -nw' es decir con ese otro parámetro
-sed -i &quot;1ialias emacs = 'emacs -nw'&quot;
+                <h1 id="gestores-de-paquetes">Gestores de Paquetes</h1>
+<hr />
+<h2 id="1-comandos-basicos">1. Comandos Basicos</h2>
+<pre><code class="bash">pacman -S     # Install a package(s)  
+pacman -Rs   # Remove a package(s)  
+pacman -Ss   #  Search for package(s) 
+pacman -Syu # Upgrade Packages    
 </code></pre>
 
+<h2 id="12-instalar-un-package-y-evitar-confirmar-la-instalacion">1.2 Instalar un package y evitar confirmar la instalación</h2>
+<pre><code class="bash">pacman -S --noconfirm apache
+# yes | pacman -S apache  # sería otra alternativa
+</code></pre>
+
+<h2 id="13-cambiar-gestor-de-paquetes">1.3 Cambiar Gestor de Paquetes</h2>
+<h4 id="131-instalacion">1.3.1 Instalacion</h4>
+<ol>
+<li>Para instalar ingresar lo siguiente en la terminal</li>
+</ol>
+<pre><code>git clone https://aur.archlinux.org/aurman.git
+cd aurman
+makepkg -si
+</code></pre>
+
+<ol>
+<li>
+<p>Para buscar paquetes <code>aurman -Ss &lt;package-name&gt;</code></p>
+</li>
+<li>
+<p>Para instalar paquetes <code>aurman -S &lt;package-name&gt;</code></p>
+</li>
+</ol>
+<h4 id="132-problemas-frecuentes">1.3.2 Problemas frecuentes</h4>
+<pre><code>==&gt; Validando los archivos source con md5sums...
+    aurman_sources ... Omitido
+==&gt; Verificando las firmas de las fuentes con gpg...
+    aurman_sources git repo ... HA FALLADO (clave pública desconocida 465022E743D71E39)
+==&gt; ERROR: ¡No se ha podido verificar alguna de las firmas PGP!
+</code></pre>
+
+<p><strong>Solucion:</strong></p>
+<p>1- Ingresar en la terminal el comando <code>gpg --recv-key</code> seguido de la clave publica que aparezca en el error</p>
+<pre><code class="bash">gpg --recv-key 465022E743D71E39
+</code></pre>
+
+<p>2-  Volver a compilar con <code>makepkg -si</code> </p>
+<h3 id="133-referencias">1.3.3 Referencias</h3>
+<ul>
+<li><a href="https://forum.manjaro.org/t/aur-package-fails-to-verify-pgp-gpg-key-unknown-public-key-one-or-more-pgp-signatures-could-not-be-verified/42687">Problemas al instalar Aurman (forum.manjaro.org)</a></li>
+<li><a href="https://www.linuxadictos.com/las-mejores-alternativas-para-reemplazar-yaourt-en-arch-linux.html">Alternativas para reemplazar yaourt (linuxadictos.com)</a></li>
+<li><a href="https://maslinux.es/yaourt-esta-muerto-utiliza-estas-alternativas-para-aur-en-arch-linux/">Yaourt esta deprecado en Arch Linux (maslinux.net)</a></li>
+</ul>
+<hr />
+<h2 id="2-posibles-errores">2. Posibles errores</h2>
+<h4 id="21-fdisk-cannot-open-devsda-permission-denied">2.1 fdisk: cannot open /dev/sda: Permission denied</h4>
+<blockquote>
+<p>Escribir en la terminal <code>su</code> presionar Enter, y escribir la password</p>
+</blockquote>
+<h4 id="22-no-funciona-pacstrap">2.2 No funciona Pacstrap</h4>
+<blockquote>
+<p>El error en consola sería el siguiente:</p>
+</blockquote>
+<pre><code>[root@archlinux vagrant]# pacstrap
+bash: pacstrap: command not found
+</code></pre>
+
+<p><strong>Solución:</strong></p>
+<pre><code> # 1. instalamos pkgfile
+yes | pacman -S pkgfile
+
+ # 2. lo actualizamos
+pkgfile --update
+
+
+pkgfile pacstrap # 3.  algo..?
+
+ # instalamos los scripts faltantes
+yes | pacman -S extra/arch-install-scripts
+</code></pre>
+
+<h4 id="23-referencias">2.3 Referencias</h4>
+<ul>
+<li><a href="https://archlinuxarm.org/forum/viewtopic.php?f=60&amp;t=8529">Referencia #1 - Arch Linux Arm</a></li>
+</ul>
+<hr />
 <h1 id="referencias">Referencias</h1>
 <ul>
-<li>Como crear referencias <a href="https://vitux.com/how-to-create-aliases-for-customizing-commands-in-ubuntu/">Ver Página</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/Pacman">Pacman Comandos - Documentación Oficial </a></li>
+<li><a href="https://stackoverflow.com/questions/35343707/linux-apt-get-command-not-found-how-to-install-a-package-in-arch-linux">Referencia #1 - StackOverflow</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/USB_flash_installation_medium_(Espa%C3%B1ol)">USB Flash Installation Media - Wiki ArchLinux</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/Multiboot_USB_drive_(Espa%C3%B1ol)">Multiboot Usb Drive - Wiki ArchLinux</a></li>
 </ul>
               
             </div>
@@ -165,10 +261,10 @@ sed -i &quot;1ialias emacs = 'emacs -nw'&quot;
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../guia-linux-particionamiento/" class="btn btn-neutral float-right" title="Particionamiento">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../guia-linux-expresiones-regulares/" class="btn btn-neutral float-right" title="Expresiones Regulares">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../guia-linux-personalizar/" class="btn btn-neutral" title="Personalizar el Sistema"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../guia-linux-vagrant-ansible/" class="btn btn-neutral" title="Vagrant y Ansible"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -196,10 +292,10 @@ sed -i &quot;1ialias emacs = 'emacs -nw'&quot;
           <a href="https://github.com/neverkas/manu-doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../guia-linux-personalizar/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../guia-linux-vagrant-ansible/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../guia-linux-particionamiento/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../guia-linux-expresiones-regulares/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

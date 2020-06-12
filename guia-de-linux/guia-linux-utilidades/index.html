@@ -9,7 +9,7 @@
   <meta name="author" content="Neverkas">
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Configuraciones - Manu Docs</title>
+  <title>Sincronizar Servicios Cloud con Rclone - Manu Docs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -20,8 +20,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Configuraciones";
-    var mkdocs_page_input_path = "guia-de-linux/guia-linux-3.md";
+    var mkdocs_page_name = "Sincronizar Servicios Cloud con Rclone";
+    var mkdocs_page_input_path = "guia-de-linux/guia-linux-utilidades.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -66,7 +66,7 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Guia de Linux</span></p>
-                <ul class="current">
+                <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../guia-linux-parte-1/">Lineas de comando (Parte 1)</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../guia-linux-parte-2/">Lineas de comando (Parte 2)</a>
@@ -75,11 +75,7 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../guia-linux-personalizar/">Personalizar el Sistema</a>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Configuraciones</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#1-crear-un-alias">1. Crear un Alias</a>
-    </li>
-    </ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-linux-3/">Configuraciones</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../guia-linux-particionamiento/">Particionamiento</a>
                     </li>
@@ -121,15 +117,11 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
-        
-          <li>Guia de Linux &raquo;</li>
-        
-      
     
-    <li>Configuraciones</li>
+    <li>Sincronizar Servicios Cloud con Rclone</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/neverkas/manu-doc/edit/master/docs/guia-de-linux/guia-linux-3.md"
+        <a href="https://github.com/neverkas/manu-doc/edit/master/docs/guia-de-linux/guia-linux-utilidades.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -140,37 +132,87 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="guia-de-linux-configuracion">Guia de Linux - Configuración</h1>
-<h2 id="1-crear-un-alias">1. Crear un Alias</h2>
+                <h1 id="sincronizar-servicios-cloud-con-rclone">Sincronizar Servicios Cloud con Rclone</h1>
+<h2 id="comandos-basicos-de-rclone">Comandos basicos de Rclone</h2>
+<p>| Comando                                       | Descripcion                                                    |
+| rclone listremotes                            | Lista los servicios                                            |
+| rclone config                                 | Muestra la configuracion                                       |
+| rclone ls unRemoto:                           | Lista los archivos y directorios de unRemoto                   |
+| rclone lsd unRemoto:                          | Lista solo los directorios                                     |
+| rclone mkdir unRemoto:unaCarpeta              | Crea el directorio unaCarpeta en el remoto unRemoto            |
+| rclone sync unRemoto:unaCarpeta ~/Escritorio/ | Sincroniza contenido del remoto a una carpeta la maquina local |
+|                                               |                                                                |</p>
+<p><strong>Observaciones:</strong>
+- Es posible que necesites agregar sudo 
+- Es importante que en los comandos seguido de nombre del remoto Ej. unRemoto, se agreguen dos puntos</p>
+<h2 id="encriptar-archivos">Encriptar archivos</h2>
+<ul>
+<li>https://rclone.org/crypt/</li>
+<li>https://www.youtube.com/watch?v=jW_4KRd3Hdo</li>
+<li>https://www.youtube.com/watch?v=KBr_qf5G4CY</li>
+<li>https://www.youtube.com/watch?v=-b9Ow2iX2DQ</li>
+</ul>
+<h2 id="referencias">Referencias</h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=HblhrGIotFo">Referencia #1 - Ver video</a></li>
+<li><a href="https://console.developers.google.com/projectselector2/apis/dashboard">Panel de APIs y Servicios (developers.google.com)</a></li>
+<li><a href="https://rclone.org/drive/">Configurar Google Drive (rclone.org)</a></li>
+<li><a href="https://www.youtube.com/watch?v=jW_4KRd3Hdo">Encriptar archivos - Ver Video</a></li>
+</ul>
+<h1 id="respaldar-configuraciones">Respaldar configuraciones</h1>
+<h2 id="instalaste-stow">Instalaste Stow</h2>
 <blockquote>
-<p>Los <strong>alias</strong> nos permiten ejecutar comandos con un nombre personalizado.
-Puede darse que querramos ejecutar un programa con varios parámetros, con
-solo escribir en la terminal una palabra, que sería más fácil de recordar.</p>
+<p>GNU Stow sirve para manejar los archivos de configuracion (conocidos como Dotfiles) mediante el subversionado</p>
 </blockquote>
-<pre><code class="bash">sudo nano ~/.bashrc # accedemos al archivo .bashrc para modificar
-
-# creamos el alias 'emacs' cada vez que se ejecute en la terminal
-# en realidad ejecutará el comando 'emacs -nw' es decir con ese otro parámetro
-sed -i &quot;1ialias emacs = 'emacs -nw'&quot;
+<ol>
+<li>
+<p>Primero lo instalamos
+<code>aurman -S stow</code></p>
+</li>
+<li>
+<p>Creamos una carpeta <strong>dotfiles</strong> en el Escritorio 
+Es donde guardaremos las configuraciones</p>
+</li>
+</ol>
+<pre><code>mkdir ~/dotfiles
 </code></pre>
 
-<h1 id="referencias">Referencias</h1>
-<ul>
-<li>Como crear referencias <a href="https://vitux.com/how-to-create-aliases-for-customizing-commands-in-ubuntu/">Ver Página</a></li>
-</ul>
+<ol>
+<li>Creamos los directorios de los programas a respaldar</li>
+</ol>
+<pre><code>mkdir spacemacs
+mkdir -p emacs emacs.d
+</code></pre>
+
+<ol>
+<li>Movemos los archivos de configuracion a las carpetas</li>
+</ol>
+<pre><code>mv ~/.spacemacs ~/dotfiles/spacemacs
+mv ~/.emacs.d/init.el ~/dotfiles/emacs
+</code></pre>
+
+<ol>
+<li>Ejecutar el comando stow en los directorios
+Lo que va a hacer es crear un enlace simbolico en la ruta ~ de los archivos de configuracion,
+por tanto tendras el original en el directorio <em>dotfiles</em></li>
+</ol>
+<pre><code>stow spacemacs
+stow emacs
+</code></pre>
+
+<p>Observacion:
+Para que funcione es importante que el directorio <strong>dotfiles</strong> este ubicado en la raiz, asi <strong>~/dotfiles</strong>
+porque crea los enlaces simbolos un nivel mas arriba de la carpeta dotfiles es decir ~</p>
+<p><a href="https://tomeaton.uk/blog/jekyll/update/2017/10/25/Managing-dotfiles-with-GNU-stow.html">Referencia #1 - Ver Página</a>
+<a href="https://dev.to/writingcode/how-i-manage-my-dotfiles-using-gnu-stow-4l59">Referencia #2 - Ver Página</a>
+http://www.garin.io/dotfiles-with-stow
+<a href="https://dotfiles.github.io">Referencia #3 - Ver Página</a></p>
+<p>https://blog.resuelve.io/gestionando-dotfiles-con-gnu-stow-b3cb0d7d40a2
+https://www.youtube.com/watch?v=zhdO46oqeRw</p>
               
             </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../guia-linux-particionamiento/" class="btn btn-neutral float-right" title="Particionamiento">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../guia-linux-personalizar/" class="btn btn-neutral" title="Personalizar el Sistema"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
@@ -196,10 +238,6 @@ sed -i &quot;1ialias emacs = 'emacs -nw'&quot;
           <a href="https://github.com/neverkas/manu-doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../guia-linux-personalizar/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../guia-linux-particionamiento/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

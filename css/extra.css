@@ -1,0 +1,57 @@
+/*
+*   hslpicker.com
+*/
+
+/* Cambia el estilo de los divisores de contenido  */
+hr{
+    border: dashed 1px hsla(270, 50%, 60%, 1) !important;
+}
+
+/* */
+.wy-plain-list-decimal, .rst-content .section ol, .rst-content ol.arabic, article ol{
+    margin-bottom:10px;
+}
+
+
+/* Mejora el diseño, y reduce el margen inferior en los bloques de codigo de tres tildes */
+.wy-menu-vertical header, .wy-menu-vertical p.caption{
+    background-color: #639;
+    font-size: 90%;
+    color: #FFF;
+    padding: 0 1em;
+}
+
+/* Codigo de una linea de una tilde */
+.rst-content code{
+    color: hsl(6, 85%, 50%);
+    border: solid 1px #999;
+}
+/* Bloques de codigo grandes con tres tildes  */
+.rst-content pre code{
+    border: dashed 2px hsla(270, 50%, 70%, 1);
+    background: hsl(0, 0%, 95%);
+}
+
+/* Menu lateral izquierdo, le agrega es simbolo a cada Titulo  */
+.wy-menu-vertical header, .wy-menu-vertical p.caption span::before{
+    content: "▲";
+}
+/* Menu lateral izquierdo, le agrega es simbolo a cada Subtitulo  */
+.wy-menu-vertical a::before{
+    content: "» "
+}
+
+/* Breadcrum */
+.wy-breadcrumbs .badge{
+    padding: 0.7em 0.5em;
+}
+.wy-breadcrumbs li a{
+    padding:0;
+    color:#fff;
+}
+.wy-breadcrumbs li span.custom-breadcrum-arrow{
+    font-size:2em;
+    float:right;
+    height: 20px;
+    margin-top:-8px;
+}

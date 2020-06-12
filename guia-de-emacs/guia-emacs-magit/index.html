@@ -15,6 +15,8 @@
   <link rel="stylesheet" href="../../css/theme.css" />
   <link rel="stylesheet" href="../../css/theme_extra.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link href="../../css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../../css/extra.css" rel="stylesheet" />
   
   <script>
     // Current page data
@@ -47,25 +49,9 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <p class="caption"><span class="caption-text">Off Topic</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Guia de Linux</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-parte-1/">Lineas de comando (Parte 1)</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-parte-2/">Lineas de comando (Parte 2)</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-personalizar/">Personalizar el Sistema</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-3/">Configuraciones</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/linux-configuracion-de-red/">Configuración de Red</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../guia-git/">Guia de Git</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../aboutme/">About me</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Guia de Emacs</span></p>
@@ -78,20 +64,77 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Integrando Git con MAGIT</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#traer-cambios-de-un-branch-al-master">Traer cambios de un branch al master</a>
+    <li class="toctree-l2"><a class="reference internal" href="#1-traer-cambios-de-un-branch-al-master">1. Traer cambios de un branch al master</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#diferencia-entre-master-y-originmaster">Diferencia entre master y origin/master</a>
+    <li class="toctree-l2"><a class="reference internal" href="#2-diferencia-entre-master-y-originmaster">2. Diferencia entre master y origin/master</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#22-referencias">2.2 Referencias</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#guardar-cambios-de-forma-temporal-stash">Guardar cambios de forma temporal (Stash)</a>
+        </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#listar-historial-de-commits-de-un-archivo">Listar historial de commits de un archivo</a>
+    <li class="toctree-l2"><a class="reference internal" href="#3-guardar-cambios-de-forma-temporal-stash">3. Guardar cambios de forma temporal (Stash)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#32-referencias">3.2 Referencias</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-listar-historial-de-commits-de-un-archivo">4. Listar historial de commits de un archivo</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#42-referencias">4.2. Referencias</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#5-atajos">5. Atajos</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#6-posibles-situaciones">6. Posibles Situaciones</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#61-hacer-cambios-subirlos-y-actualizar">6.1 Hacer cambios, subirlos y actualizar</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#62-resolver-conflicto-diferencia-entre-archivos">6.2 Resolver conflicto, diferencia entre archivos</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#7-referencias">7. Referencias</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#71-paginas-recomendadas">7.1 Paginas recomendadas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#72-videos-de-recomendados">7.2 Videos de recomendados</a>
+    </li>
+        </ul>
     </li>
     </ul>
                     </li>
                 </ul>
-                <p class="caption"><span class="caption-text">Guia de Maquinas Virtuales</span></p>
+                <p class="caption"><span class="caption-text">Guia de Linux</span></p>
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-parte-1/">Lineas de comando (Parte 1)</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-parte-2/">Lineas de comando (Parte 2)</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-problemas-comunes/">Problemas frecuentes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-personalizar/">Personalizar el Sistema</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-3/">Configuraciones</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-particionamiento/">Particionamiento</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-vagrant-ansible/">Vagrant y Ansible</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-gestores-de-paquetes/">Gestores de paquetes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-expresiones-regulares/">Expresiones Regulares</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/linux-configuracion-de-red/">Configuración de Red</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Nuevas Guias</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-git/">Guia de Git</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../virtualbox/">Configurando Virtualbox</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../navegadores-web-extensiones-utiles/">Extensiones utiles para los Navegadores Web</a>
                     </li>
                 </ul>
       </div>
@@ -133,11 +176,9 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="tips">Tips</h1>
-<h3 id="traer-cambios-de-un-branch-al-master">Traer cambios de un branch al master</h3>
-<blockquote>
+                <h1 id="integrando-git-con-magit">Integrando GIT con MAGIT</h1>
+<h2 id="1-traer-cambios-de-un-branch-al-master">1. Traer cambios de un branch al master</h2>
 <p>Si hicimos cambios y los guardamos en <strong>branches</strong> y queremos traerlos al <strong>branch master</strong> (suele ser la ultima version, la que ira a produccion)</p>
-</blockquote>
 <ol>
 <li>
 <p>Cambiamos al <strong>branch master</strong></p>
@@ -159,24 +200,22 @@ luego <strong>b b</strong> y elegimos el <strong>master branch</strong> (no es l
 </blockquote>
 </li>
 </ol>
-<h3 id="diferencia-entre-master-y-originmaster">Diferencia entre master y origin/master</h3>
-<blockquote>
-<p>Del ejemplo anterior quizas puede aparecer esto, y pueden surgir dudas.
-Cuando se dice <strong>master</strong> se refiere al <strong>local branch</strong> (el entorno local),
+<hr />
+<h2 id="2-diferencia-entre-master-y-originmaster">2. Diferencia entre master y origin/master</h2>
+<p>Del ejemplo anterior quizas puede aparecer esto, y pueden surgir dudas.</p>
+<p>Cuando se dice <strong>master</strong> se refiere al <strong>local branch</strong> (el entorno local),
 mientras que <strong>origin/master</strong> hace referencia al <strong>remote branch</strong> (el que esta en el servidor github**</p>
-</blockquote>
 <p><strong>Observacion:</strong> Lo mismo aplica con los <strong>branches</strong>
 Ej. origin/hotfix y hotfix, origin/testing y testing, etc..</p>
-<p><strong>Referencias:</strong></p>
+<h4 id="22-referencias">2.2 Referencias</h4>
 <ul>
 <li>Referencia #1 - Stackify.com - <a href="https://stackify.com/git-checkout-remote-branch/">Ver Pagina</a></li>
 <li>Referencia #2 - Stackoverfow - <a href="https://stackoverflow.com/questions/48596045/git-difference-between-origin-master-and-origin-master">Ver Pagina</a></li>
 </ul>
-<h3 id="guardar-cambios-de-forma-temporal-stash">Guardar cambios de forma temporal (Stash)</h3>
-<blockquote>
+<hr />
+<h2 id="3-guardar-cambios-de-forma-temporal-stash">3. Guardar cambios de forma temporal (Stash)</h2>
 <p>Si hicimos cambios en archivos de nuestro ordenador (se dice que es local, y se guarda en <strong>unstage</strong>),
 para guardar esos cambios en otro lugar de "forma temporal" (se guarda en <strong>stash</strong>) antes de hacer un <strong>pull</strong> </p>
-</blockquote>
 <ol>
 <li>
 <p>Antes de hacer <strong>commit</strong> de los cambios, separamos el codigo con <strong>stash</strong></p>
@@ -203,18 +242,22 @@ en <strong>stage</strong>)</p>
 </blockquote>
 </li>
 </ol>
-<h3 id="listar-historial-de-commits-de-un-archivo">Listar historial de commits de un archivo</h3>
-<blockquote>
+<h4 id="32-referencias">3.2 Referencias</h4>
+<ul>
+<li>Referencia #1 - Code Tutsplus <a href="https://code.tutsplus.com/es/tutorials/quick-tip-leveraging-the-power-of-git-stash--cms-22988">Ver Pagina</a></li>
+<li>Referencia #2 - RunRoom -  <a href="https://www.runroom.com/realworld/git-stash">Ver Pagina</a></li>
+</ul>
+<hr />
+<h2 id="4-listar-historial-de-commits-de-un-archivo">4. Listar historial de commits de un archivo</h2>
 <p>Corremos el comando <strong>blame</strong> presionando <strong>SPC g b</strong> y nos muestra un log de los cambios
 Si presionamos <strong>b</strong> va a los commits anteriores y con <strong>q</strong> los mas recientes</p>
-</blockquote>
-<p><strong>Referencias:</strong></p>
+<h4 id="42-referencias">4.2. Referencias</h4>
 <ul>
 <li>Referencia #1 - Magit.vc - <a href="https://magit.vc/manual/magit/Blaming.html">Ver Pagina</a></li>
 </ul>
 <hr />
-<h1 id="atajos">Atajos</h1>
-<table>
+<h2 id="5-atajos">5. Atajos</h2>
+<table class="table">
 <thead>
 <tr>
 <th align="left">Comando</th>
@@ -274,27 +317,11 @@ Si presionamos <strong>b</strong> va a los commits anteriores y con <strong>q</s
 <td align="left">F p</td>
 <td align="left">Hacer <strong>pull</strong></td>
 </tr>
-<tr>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
 </tbody>
 </table>
-<p><strong>Pendiente a Investigar:</strong></p>
-<ul>
-<li>Acerca de spin-off</li>
-<li>Diferencia entre un push remote y upstream (lo mismo para pull)</li>
-</ul>
-<p>Algunas referencias:</p>
-<ul>
-<li>https://help.github.com/es/github/using-git/pushing-commits-to-a-remote-repository</li>
-<li>https://stackoverflow.com/questions/13751319/git-push-current-vs-push-upstream-tracking</li>
-<li>https://www.reddit.com/r/emacs/comments/8ficmj/magit_upstream_vs_pushremote/</li>
-<li>https://fluca1978.github.io/2017/06/11/magit-spin-offs-anothew-way-to-name.html</li>
-</ul>
 <hr />
-<h1 id="posibles-situaciones">Posibles Situaciones</h1>
-<h3 id="hacer-cambios-subirlos-y-actualizar">Hacer cambios, subirlos y actualizar</h3>
+<h2 id="6-posibles-situaciones">6. Posibles Situaciones</h2>
+<h4 id="61-hacer-cambios-subirlos-y-actualizar">6.1 Hacer cambios, subirlos y actualizar</h4>
 <ol>
 <li>
 <p>Guardamos los cambios de forma local <strong>(unstage)</strong></p>
@@ -340,11 +367,9 @@ y terminamos con <strong>F p</strong></p>
 <blockquote>
 <p>Si ya estamos en el menu de <strong>magit</strong> no es necesario presionar el atajo <strong>SPC g s</strong></p>
 </blockquote>
-<h3 id="resolver-conflicto-diferencia-entre-archivos">Resolver conflicto, diferencia entre archivos</h3>
-<blockquote>
+<h4 id="62-resolver-conflicto-diferencia-entre-archivos">6.2 Resolver conflicto, diferencia entre archivos</h4>
 <p>Si en el paso 5 del ejemplo anterior hubiesemos tenido un conflicto,
 porque alguien modifico el mismo archivo en las mismas lineas.</p>
-</blockquote>
 <ol>
 <li>
 <p>Hacemos <strong>pull</strong></p>
@@ -395,12 +420,12 @@ presionando la letra minuscula del buffer que identifica al archivo.</p>
 </li>
 </ol>
 <hr />
-<h1 id="referencias">Referencias</h1>
-<h2 id="paginas-de-referencia">Paginas de referencia</h2>
+<h2 id="7-referencias">7. Referencias</h2>
+<h4 id="71-paginas-recomendadas">7.1 Paginas recomendadas</h4>
 <ul>
 <li>Referencia #1 - Salty Crane - <a href="https://www.saltycrane.com/blog/2018/11/magit-spacemacs-evil-magit-notes/">Ver Pagina</a></li>
 </ul>
-<h2 id="videos-de-referencia">Videos de referencia</h2>
+<h4 id="72-videos-de-recomendados">7.2 Videos de recomendados</h4>
 <ul>
 <li>Referencia #1 - <a href="https://www.youtube.com/watch?v=7ywEgcbaiys">Ver Video</a></li>
 <li>Referencia #2 - <a href="https://www.youtube.com/watch?v=qXgGtyjXPiw">Ver Video</a></li>
@@ -415,7 +440,7 @@ presionando la letra minuscula del buffer que identifica al archivo.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../virtualbox/" class="btn btn-neutral float-right" title="Configurando Virtualbox">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../guia-de-linux/guia-linux-parte-1/" class="btn btn-neutral float-right" title="Lineas de comando (Parte 1)">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../guia-emacs-modo-org/" class="btn btn-neutral" title="Integrando el Modo Org"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -449,12 +474,14 @@ presionando la letra minuscula del buffer que identifica al archivo.</p>
         <span><a href="../guia-emacs-modo-org/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../../virtualbox/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../../guia-de-linux/guia-linux-parte-1/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
     <script>var base_url = '../..';</script>
     <script src="../../js/theme.js" defer></script>
+      <script src="../../js/jquery-3.5.0.min.js" defer></script>
+      <script src="../../js/customize.js" defer></script>
       <script src="../../search/main.js" defer></script>
     <script defer>
         window.onload = function () {

@@ -15,6 +15,8 @@
   <link rel="stylesheet" href="../../css/theme.css" />
   <link rel="stylesheet" href="../../css/theme_extra.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link href="../../css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../../css/extra.css" rel="stylesheet" />
   
   <script>
     // Current page data
@@ -47,25 +49,9 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <p class="caption"><span class="caption-text">Off Topic</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Guia de Linux</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-parte-1/">Lineas de comando (Parte 1)</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-parte-2/">Lineas de comando (Parte 2)</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-personalizar/">Personalizar el Sistema</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-3/">Configuraciones</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/linux-configuracion-de-red/">Configuración de Red</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../guia-git/">Guia de Git</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../aboutme/">About me</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Guia de Emacs</span></p>
@@ -74,6 +60,64 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Avanzando con Spacemacs</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1-tips-importantes">1. Tips - Importantes</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#12-atajos-con-treemacsneotree">1.2 Atajos con Treemacs/Neotree</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#13-atajos-con-projectfile">1.3 Atajos con Projectfile</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#14-referencias">1.4 Referencias</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-atajos-en-hybrid-mode">2. Atajos en Hybrid Mode</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#21-atajos-en-evil-mode-vim">2.1 Atajos en Evil Mode (Vim)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#22-atajos-en-holy-mode-emacs">2.2 Atajos en Holy Mode (Emacs)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-ecuaciones-algebraicas">3. Ecuaciones algebraicas</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#31-configuraciones">3.1 Configuraciones</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#32-como-escribir-las-ecuaciones">3.2 Como escribir las ecuaciones</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#33-posibles-errores">3.3 Posibles Errores</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#34-referencias">3.4 Referencias</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-referencias-de-sitios-web">4. Referencias de Sitios Web</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#41-guias-basicas">4.1 Guias basicas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#42-guias-avanzadas">4.2 Guias Avanzadas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#43-capas-layers">4.3 Capas (Layers)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#44-themes">4.4 Themes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#45-fuentes">4.5 Fuentes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#46-configuraciones-de-spacemacs">4.6 Configuraciones de Spacemacs</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#5-referencias-de-videos">5. Referencias de Videos</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#51-canales-favoritos">5.1 Canales Favoritos</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#52-configuraciones-basicas">5.2 Configuraciones basicas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#53-buffers-ibuffer-y-emmet">5.3 Buffers, ibuffer y Emmet</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#54-personalizando-la-terminal">5.4 Personalizando la terminal</a>
+    </li>
+        </ul>
+    </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../guia-emacs-modo-org/">Integrando el Modo Org</a>
@@ -81,9 +125,36 @@
                     <li class="toctree-l1"><a class="reference internal" href="../guia-emacs-magit/">Integrando Git con MAGIT</a>
                     </li>
                 </ul>
-                <p class="caption"><span class="caption-text">Guia de Maquinas Virtuales</span></p>
+                <p class="caption"><span class="caption-text">Guia de Linux</span></p>
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-parte-1/">Lineas de comando (Parte 1)</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-parte-2/">Lineas de comando (Parte 2)</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-problemas-comunes/">Problemas frecuentes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-personalizar/">Personalizar el Sistema</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-3/">Configuraciones</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-particionamiento/">Particionamiento</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-vagrant-ansible/">Vagrant y Ansible</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-gestores-de-paquetes/">Gestores de paquetes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-expresiones-regulares/">Expresiones Regulares</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/linux-configuracion-de-red/">Configuración de Red</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Nuevas Guias</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-git/">Guia de Git</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../virtualbox/">Configurando Virtualbox</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../navegadores-web-extensiones-utiles/">Extensiones utiles para los Navegadores Web</a>
                     </li>
                 </ul>
       </div>
@@ -125,12 +196,12 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="tips-importantes">Tips - Importantes</h1>
-<blockquote>
-<p>Para que se guarden los cambios de la agenda, y se puedan filtrar usar <strong>M-x org-agenda-file-to-front</strong>
-Para abrir la agenda <strong>C-c a</strong></p>
-</blockquote>
-<table>
+                <h1 id="avanzando-con-spacemacs">Avanzando con Spacemacs</h1>
+<p><img src="/images/spacemacs.png"></p>
+<h2 id="1-tips-importantes">1. Tips - Importantes</h2>
+<p>Para que se guarden los cambios de la agenda, y se puedan filtrar usar <code>M-x org-agenda-file-to-front</code>
+Para abrir la agenda <code>C-c a</code></p>
+<table class="table">
 <thead>
 <tr>
 <th align="left">Comando</th>
@@ -139,18 +210,17 @@ Para abrir la agenda <strong>C-c a</strong></p>
 </thead>
 <tbody>
 <tr>
-<td align="left">SPC q r</td>
+<td align="left"><kbd>SPC</kbd> <kbd>q</kbd> <kbd>r</kbd></td>
 <td align="left">Reiniciar spacemacs</td>
 </tr>
 <tr>
-<td align="left">M-m f e R</td>
+<td align="left"><kbd>M</kbd> <kbd>m</kbd> <kbd>f</kbd> <kbd>e</kbd> <kbd>R</kbd></td>
 <td align="left">Aplicar configuraciones</td>
 </tr>
 </tbody>
 </table>
-<h1 id="gestionar-archivos-proyectos">Gestionar archivos, proyectos</h1>
-<h2 id="atajos-con-treemacsneotree">Atajos con Treemacs/Neotree</h2>
-<table>
+<h4 id="12-atajos-con-treemacsneotree">1.2 Atajos con Treemacs/Neotree</h4>
+<table class="table">
 <thead>
 <tr>
 <th align="left">Comando</th>
@@ -159,17 +229,17 @@ Para abrir la agenda <strong>C-c a</strong></p>
 </thead>
 <tbody>
 <tr>
-<td align="left">C-c C-p a</td>
+<td align="left"><kbd>C</kbd> <kbd>c</kbd> <kbd>C</kbd> <kbd>p</kbd> <kbd>a</kbd></td>
 <td align="left">Agregar proyecto</td>
 </tr>
 <tr>
-<td align="left">C-c C-p d</td>
+<td align="left"><kbd>C</kbd> <kbd>c</kbd> <kbd>C</kbd> <kbd>p</kbd> <kbd>d</kbd></td>
 <td align="left">Eliminar proyecto</td>
 </tr>
 </tbody>
 </table>
-<h2 id="atajos-con-projectfile">Atajos con Projectfile</h2>
-<table>
+<h4 id="13-atajos-con-projectfile">1.3 Atajos con Projectfile</h4>
+<table class="table">
 <thead>
 <tr>
 <th align="left">Comando</th>
@@ -178,16 +248,16 @@ Para abrir la agenda <strong>C-c a</strong></p>
 </thead>
 <tbody>
 <tr>
+<td align="left">SPC p f</td>
+<td align="left">Abrir algun archivo del proyecto actual</td>
+</tr>
+<tr>
 <td align="left">SPC f r</td>
-<td align="left">Abrir algun archivo reciente (recent files)</td>
+<td align="left">Abrir algun archivo reciente (recent files**</td>
 </tr>
 <tr>
 <td align="left">SPC p p</td>
 <td align="left">Cambiar del proyecto actual a otro</td>
-</tr>
-<tr>
-<td align="left">SPC p f</td>
-<td align="left">Abrir algun archivo del proyecto actual</td>
 </tr>
 <tr>
 <td align="left">M-x projectile-remove-known-project</td>
@@ -195,15 +265,15 @@ Para abrir la agenda <strong>C-c a</strong></p>
 </tr>
 </tbody>
 </table>
-<h2 id="referencias">Referencias</h2>
-<h3 id="sitios-de-referencia">Sitios de referencia</h3>
+<h4 id="14-referencias">1.4 Referencias</h4>
+<p><strong>Sitios web recomendados</strong></p>
 <ul>
 <li>Referencia #1 - Spacemacs.org, Develop <a href="https://develop.spacemacs.org/layers/+filetree/neotree/README.html">Ver Pagina</a></li>
 <li>Referencia #2 - Spacemacs.org, Develop <a href="https://develop.spacemacs.org/layers/+filetree/treemacs/README.html">Ver Pagina</a></li>
-<li>Referencia #3 - Github, Alexander Miller <a href="https://github.com/Alexander-Miller/treemacs">Ver Pagina</a></li>
 </ul>
-<h3 id="videos-de-referencia">Videos de referencia</h3>
+<p><strong>Videos recomendados:</strong></p>
 <ul>
+<li>Referencia #3 - Github, Alexander Miller <a href="https://github.com/Alexander-Miller/treemacs">Ver Pagina</a></li>
 <li>Referencia #1 <a href="https://www.youtube.com/watch?v=Bu7nF9hPSts">Ver Video</a></li>
 <li>Referencia #2 <a href="https://www.youtube.com/watch?v=Rx3wRl5d-J0">Ver Video</a></li>
 <li>Referencia #3 <a href="https://www.youtube.com/watch?v=OrTJ17ivOL0">Ver Video</a></li>
@@ -211,14 +281,11 @@ Para abrir la agenda <strong>C-c a</strong></p>
 <li>Referencia #5 <a href="https://www.youtube.com/watch?v=kPVVuJWS2vo">Ver Video</a></li>
 </ul>
 <hr />
-<h1 id="atajos-en-hybrid-mode">Atajos en Hybrid Mode</h1>
-<blockquote>
+<h2 id="2-atajos-en-hybrid-mode">2. Atajos en Hybrid Mode</h2>
 <p>El modo hibrido es una combinacion entre el <strong>holy mode</strong> (atajos de emacs) 
-y el <strong>evil mode</strong> (atajos de vim)
-El atajo <strong>SPC</strong> suele ser la tecla <strong>espacio</strong></p>
-</blockquote>
-<h2 id="atajos-en-evil-mode-vim">Atajos en Evil Mode (Vim)</h2>
-<table>
+y el <strong>evil mode</strong> (atajos de vim). El atajo <strong>SPC</strong> suele ser la tecla <strong>espacio</strong></p>
+<h4 id="21-atajos-en-evil-mode-vim">2.1 Atajos en Evil Mode (Vim)</h4>
+<table class="table">
 <thead>
 <tr>
 <th align="left">Comando</th>
@@ -244,12 +311,10 @@ El atajo <strong>SPC</strong> suele ser la tecla <strong>espacio</strong></p>
 </tr>
 </tbody>
 </table>
-<h2 id="atajos-en-holy-mode-emacs">Atajos en Holy Mode (Emacs)</h2>
-<blockquote>
+<h4 id="22-atajos-en-holy-mode-emacs">2.2 Atajos en Holy Mode (Emacs)</h4>
 <p>La metakey <strong>M</strong> suele referirse a la tecla <strong>Alt</strong> seguido a la tecla que haga referencia.
 Mientras que <strong>C</strong> es la tecla <strong>Control</strong> seguido de la tecla que se mencione.</p>
-</blockquote>
-<table>
+<table class="table">
 <thead>
 <tr>
 <th align="left">Comando</th>
@@ -315,88 +380,137 @@ Mientras que <strong>C</strong> es la tecla <strong>Control</strong> seguido de 
 </tr>
 </tbody>
 </table>
-<p><strong>Observacion</strong>*</p>
+<p><strong>Observacion:</strong>*</p>
 <blockquote>
 <p>El gestor de archivos Neotree/Treemacs es similar al <strong>dired</strong>, con la diferencia
 que este ocupa menos espacio en la pantalla</p>
 </blockquote>
 <hr />
-<h1 id="referencias_1">Referencias</h1>
-<h3 id="guias-basicas">Guias basicas</h3>
+<h2 id="3-ecuaciones-algebraicas">3. Ecuaciones algebraicas</h2>
+<h4 id="31-configuraciones">3.1 Configuraciones</h4>
+<p>1- Agregar o descomentar las siguientes lineas en los layers de .spacemacs</p>
+<pre><code>latex
+bibtex
+auto-completion
+</code></pre>
+
+<p>2- Agregar la siguiente configuracion dentro de user-config de .spacemacs</p>
+<pre><code>  ;; Aumentamos el tamaño del texto que suele aparecer en tamaño chico
+  (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0)** 
+</code></pre>
+
+<p>3- Aplicar los cambios reiniciando spacemacs con <code>SPC-q-r</code> </p>
+<h4 id="32-como-escribir-las-ecuaciones">3.2 Como escribir las ecuaciones</h4>
+<p>1- Para escribir ecuaciones debemos encerrarlas con el simbolo pesos <strong>$$</strong></p>
+<p>Ej.</p>
+<pre><code>$$ 4x^2 = 16 \times \frac{2}{4x} $$
+</code></pre>
+
+<p>2- Para visualizar ejecutar <code>C-c C-x C-l</code> o  <code>, T x</code>
+3- Para mostrar el texto en formato latex ejecutar <code>C-c C-c</code> o <code>, ,</code></p>
+<blockquote>
+<p><strong>Observacion:</strong> Si queremos que muestren todas las formulas al abrir un documento, agregar al principio
+del archivo la siguiente linea</p>
+</blockquote>
+<pre><code>#+STARTUP: latexpreview
+</code></pre>
+
+<h4 id="33-posibles-errores">3.3 Posibles Errores</h4>
+<ol>
+<li>No nos permita ver una vista preliminar del archivo</li>
+</ol>
+<pre><code>&gt;File &quot;/tmp/orgtex9997XKu.dvi&quot; wasn't produced. Please adjust 'dvipng' part of `org-preview-latex-process-alist'.
+&gt;Found a log is generated, /tmp/orgtex9997XKu.log. Something interesting is in this log: &quot;LaTeX Error: File `wrapfig.sty' &gt;not found.** Then a quick search tells me texlive-latex-extra package is missing.
+</code></pre>
+
+<p><strong>Solucion:</strong></p>
+<p>1- En la terminal instalar el paquete <code>texlive-latex-extra</code> y <code>texlive-bin</code></p>
+<pre><code> sudo pacman -S textlive-latex-extra
+ sudo pacman -S textlive-bin
+</code></pre>
+
+<ol>
+<li>Agregar configuracion en el <strong>user-config</strong> del archivo <strong>.spacemacs</strong> </li>
+</ol>
+<pre><code> ;; (setq org-latex-create-formula-image-program 'imagemagick)
+ (setq org-latex-create-formula-image-program 'dvipng)
+ ;;(setq-default org-html-with-latex `dvipng)
+</code></pre>
+
+<p><strong>Referencias puntuales a los errores mencionados:</strong></p>
+<ul>
+<li><a href="https://www.reddit.com/r/emacs/comments/5rf9d4/help_org_setup_preview_latex_fragments/">Referencia #1 (reddit.com)</a></li>
+<li><a href="https://emacs.stackexchange.com/questions/18627/preview-latex-fragment-in-org-mode-blank-square-shown">Referencia #2 (emacs.stackexchange.com)</a></li>
+<li><a href="https://sourceforge.net/projects/dvipng/">Referencia #3 (sourceforge.net)</a></li>
+<li><a href="https://ecuadorminingnews.com/install-texlive-bin/">Referencia #4 (ecuadorminingnews.com)</a>
+ -<a href="https://bbs.archlinux.org/viewtopic.php?id=168634">Referencia #5 (bbs.archlinux.org)</a></li>
+<li><a href="https://stackoverflow.com/questions/30151338/org-latex-preview-is-fuzzy-on-retina-displays">Referencia #6 (stackoverflow.com)</a></li>
+<li><a href="https://github.com/politza/pdf-tools">PDF-tools (github.com)</a></li>
+</ul>
+<h4 id="34-referencias">3.4 Referencias</h4>
+<ul>
+<li><a href="https://orgmode.org/worg/org-symbols.html">Lista de simbolos (orgmode.org)</a></li>
+<li><a href="https://orgmode.org/worg/org-tutorials/org-latex-preview.html">Tutorial (orgmode.org)</a></li>
+<li><a href="https://orgmode.org/manual/LaTeX-fragments.html">Tutorial #2 (orgmode.org)</a></li>
+<li><a href="https://emacs.stackexchange.com/questions/19880/font-size-control-of-latex-previews-in-org-files">Aumentar tamaño del texto #1 (emacs.stackexchange.com)</a></li>
+<li><a href="https://tex.stackexchange.com/questions/78501/change-size-of-the-inline-image-for-latex-fragment-in-emacs-org-mode">Aumentar tamaño del texto #2 (tex.stackexchange.com)</a></li>
+</ul>
+<hr />
+<h2 id="4-referencias-de-sitios-web">4. Referencias de Sitios Web</h2>
+<h4 id="41-guias-basicas">4.1 Guias basicas</h4>
 <ul>
 <li>Referencia #1 - CharlasCyclon.com - <a href="https://charlascylon.com/2017-09-20-spacemacs-mi-configuracion-personal">Ver Pagina</a></li>
 <li>Referencia #2 - Medium.com, Kokegudiel2 - <a href="https://medium.com/@kokegudiel2/configuari%C3%B3n-de-spacemacs-para-principiantes-ed43ddf3030f">Ver Pagina</a></li>
 </ul>
-<h3 id="guias-avanzadas">Guias Avanzadas</h3>
+<h4 id="42-guias-avanzadas">4.2 Guias Avanzadas</h4>
 <ul>
 <li>Referencia #1 - Wiki, ArchLinux - <a href="https://wiki.archlinux.org/index.php/Spacemacs">Ver Pagina</a></li>
 <li>Referencia #2 - Github, Syl20bnr - <a href="https://github.com/syl20bnr/spacemacs/blob/master/doc/DOCUMENTATION.org">Ver Pagina</a></li>
 </ul>
-<h3 id="capas-layers">Capas (Layers)</h3>
-<blockquote>
+<h4 id="43-capas-layers">4.3 Capas (Layers)</h4>
 <p>Subprogramas que agregan funcionalidad a spacemacs</p>
-</blockquote>
 <ul>
 <li>Referencia #1, Spacemacs.org - <a href="https://www.spacemacs.org/layers/LAYERS.html">Ver Pagina</a></li>
 </ul>
-<h3 id="themes">Themes</h3>
-<blockquote>
+<h4 id="44-themes">4.4 Themes</h4>
 <p>Para cambiar el estilo, la visualizacion, diseño, el color fondo y del texto,..</p>
-</blockquote>
 <ul>
 <li>Themes, ThemeGallery <a href="https://themegallery.robdor.com/">Ver Pagina</a></li>
 </ul>
-<h3 id="fuentes">Fuentes</h3>
-<blockquote>
+<h4 id="45-fuentes">4.5 Fuentes</h4>
 <p>El tipo de fuente, puede hacer mas entendible, claro, y ameno luego de muchas horas de lectura.</p>
-</blockquote>
 <ul>
 <li>Referencia #1 - SourceFoundry.org - <a href="https://sourcefoundry.org/hack/playground.html">Ver Pagina</a></li>
 <li>Referencia #2 - Opensource.com - <a href="https://opensource.com/article/17/11/how-select-open-source-programming-font">Ver Pagina</a></li>
 </ul>
-<h3 id="configuraciones-de-spacemacs">Configuraciones de Spacemacs</h3>
-<blockquote>
+<h4 id="46-configuraciones-de-spacemacs">4.6 Configuraciones de Spacemacs</h4>
 <p>Las configuraciones se hacen en el archivo <strong>~/.spacemacs</strong></p>
-</blockquote>
 <ul>
 <li>Referencia #1 - Out of cheese error - <a href="https://out-of-cheese-error.netlify.com/spacemacs-config">Ver Pagina</a></li>
 <li>Referencia #2 - Practicalli - <a href="https://practicalli.github.io/spacemacs/install-spacemacs/additional-configuration.html">Ver Pagina</a></li>
 </ul>
-<h2 id="videos">Videos</h2>
-<h3 id="canales-favoritos">Canales Favoritos</h3>
-<blockquote>
+<h2 id="5-referencias-de-videos">5. Referencias de Videos</h2>
+<h4 id="51-canales-favoritos">5.1 Canales Favoritos</h4>
 <p>Conceptos, Atajos, Herramientas, etc.</p>
-</blockquote>
 <ul>
 <li>Referencia #1 - <a href="https://www.youtube.com/watch?v=MRYzPWnk2mE&amp;list=PLxj9UAX4Em-IiOfvF2Qs742LxEK4owSkr">Ir a canal</a></li>
 <li>Referencia #2 - <a href="https://www.youtube.com/watch?v=d6iY_1aMzeg&amp;list=PLX2044Ew-UVVv31a0-Qn3dA6Sd_-NyA1n">Ir a Canal</a></li>
 <li>Referencia #3 - <a href="https://www.youtube.com/watch?v=BRqjaN4-gGQ&amp;list=PLhXZp00uXBk4np17N39WvB80zgxlZfVwj">Ir a Canal</a></li>
 </ul>
-<h3 id="configuraciones-basicas">Configuraciones basicas</h3>
-<blockquote>
+<h4 id="52-configuraciones-basicas">5.2 Configuraciones basicas</h4>
 <p>Para los que recien estan iniciandose</p>
-</blockquote>
 <ul>
 <li>Referencia #1 - <a href="https://www.youtube.com/watch?v=8k7BTIqufqQ">Ver Video</a></li>
 <li>Referencia #2 - <a href="https://www.youtube.com/watch?v=Ie4z9-z948c">Ver Video</a></li>
 <li>Referencia #3 - <a href="https://www.youtube.com/watch?v=PKaJoqQQoIA">Ver video</a></li>
 </ul>
-<h3 id="buffers-ibuffer-y-emmet">Buffers, ibuffer y Emmet</h3>
+<h4 id="53-buffers-ibuffer-y-emmet">5.3 Buffers, ibuffer y Emmet</h4>
 <ul>
 <li>Referencia #1 <a href="https://www.youtube.com/watch?v=yUfA-7wWNKA">Ver Video</a></li>
 </ul>
-<h3 id="personalizando-la-terminal">Personalizando la terminal</h3>
+<h4 id="54-personalizando-la-terminal">5.4 Personalizando la terminal</h4>
 <ul>
 <li>Referencia #1 <a href="https://www.youtube.com/watch?v=L9vA7FHoQnk">Ver Video</a></li>
-</ul>
-<h3 id="pendientes-a-revisar">Pendientes a revisar</h3>
-<ul>
-<li>https://www.youtube.com/watch?v=8k7BTIqufqQ</li>
-<li>https://orgmode.org/guide/Hyperlinks.html</li>
-<li>https://www.youtube.com/watch?v=I2C6QTtxfe8</li>
-<li>https://www.youtube.com/watch?v=39u8K12rXHE</li>
-<li>https://orgmode.org/manual/Initial-visibility.html</li>
-<li>https://www.youtube.com/watch?v=S4f-GUxu3CY</li>
 </ul>
               
             </div>
@@ -445,6 +559,8 @@ que este ocupa menos espacio en la pantalla</p>
 </div>
     <script>var base_url = '../..';</script>
     <script src="../../js/theme.js" defer></script>
+      <script src="../../js/jquery-3.5.0.min.js" defer></script>
+      <script src="../../js/customize.js" defer></script>
       <script src="../../search/main.js" defer></script>
     <script defer>
         window.onload = function () {

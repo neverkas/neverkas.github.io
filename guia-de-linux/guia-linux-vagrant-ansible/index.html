@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Neverkas">
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Vagrant y Ansible - Manu Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link href="../../css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../../css/extra.css" rel="stylesheet" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Vagrant y Ansible";
+    var mkdocs_page_input_path = "guia-de-linux/guia-linux-vagrant-ansible.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Manu Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <p class="caption"><span class="caption-text">Off Topic</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../aboutme/">About me</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Guia de Emacs</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-emacs/guia-emacs/">Empezando con Emacs</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-emacs/guia-emacs-spacemacs/">Avanzando con Spacemacs</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-emacs/guia-emacs-modo-org/">Integrando el Modo Org</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-emacs/guia-emacs-magit/">Integrando Git con MAGIT</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Guia de Linux</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-linux-parte-1/">Lineas de comando (Parte 1)</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-linux-parte-2/">Lineas de comando (Parte 2)</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-linux-problemas-comunes/">Problemas frecuentes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-linux-personalizar/">Personalizar el Sistema</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-linux-3/">Configuraciones</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-linux-particionamiento/">Particionamiento</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Vagrant y Ansible</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1-particionar-disco">1. Particionar disco</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#11-crear-particiones">1.1 Crear particiones</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#12-formatear-particiones-primarias">1.2 Formatear particiones primarias</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#13-montamos-las-unidades-filesystem">1.3 Montamos las unidades (Filesystem)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-gestor-de-paquetes">2. Gestor de Paquetes</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#21-agregamos-el-pacstrap">2.1 Agregamos el pacstrap</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#22-agregamos-mas-paquetes">2.2 Agregamos mas paquetes</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-configuramos-la-red">3. Configuramos la red</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#31-modificamos-la-configuracion-en-hosts">3.1 Modificamos la configuracion en hosts</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#32-modificamos-los-dns">3.2 Modificamos los DNS</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-configuracion-grub">4. Configuración GRUB</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#42-agregamos-la-nueva-unidad-al-filesystem">4.2 Agregamos la nueva unidad al filesystem</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#43-referencias">4.3 Referencias</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#5-entorno-grafico">5. Entorno gráfico</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-linux-gestores-de-paquetes/">Gestores de paquetes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-linux-expresiones-regulares/">Expresiones Regulares</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../linux-configuracion-de-red/">Configuración de Red</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Nuevas Guias</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-git/">Guia de Git</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../virtualbox/">Configurando Virtualbox</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../navegadores-web-extensiones-utiles/">Extensiones utiles para los Navegadores Web</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Manu Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Guia de Linux &raquo;</li>
+        
+      
+    
+    <li>Vagrant y Ansible</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/neverkas/manu-doc/edit/master/docs/guia-de-linux/guia-linux-vagrant-ansible.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="vagrant-y-ansible">Vagrant y Ansible</h1>
+<p><img src="/images/vagrant-ansible-docker.webp"></p>
+<h2 id="1-particionar-disco">1. Particionar disco</h2>
+<h4 id="11-crear-particiones">1.1 Crear particiones</h4>
+<blockquote>
+<p>Creamos dos particiones primarias y una SWAP
+1. Una particion primaria <strong>/home</strong> que usaremos como escritorio, le asignamos 20,50GB o el espacio que querramos
+2. Una partición primaria <strong>/</strong> que será para el sistema, le asignamos 8 GB
+3. Una SWAP para la memoria, asignamos 2GB</p>
+</blockquote>
+<pre><code class="bash"># iniciamos el proceso de particionar
+fdisk /dev/sda
+# presionamos 'n' para crear una particion
+# presionamos 'p' para listar las particiones creadas
+# presionamos 'w' para guardar los cambios
+
+ # listamos las particiones, para verificar que aparezcan
+fdisk -l
+</code></pre>
+
+<blockquote>
+<p>Observación: La virtualbox bajada con vagrant solo necesitas crear 1 partición primaria /home, y formatear esta nueva.</p>
+</blockquote>
+<h4 id="12-formatear-particiones-primarias">1.2 Formatear particiones primarias</h4>
+<pre><code class="bash"># cambiamos /dev/sda3 por el que aparezca cuando creamos las particiones primarias
+
+mkfs.ext4 /dev/sda3
+</code></pre>
+
+<blockquote>
+<p>Observación: En mi caso solo tuve que formatear una sola,</p>
+</blockquote>
+<h4 id="13-montamos-las-unidades-filesystem">1.3 Montamos las unidades (Filesystem)</h4>
+<pre><code class="bash">mkdir /mnt/home
+mount /dev/sda3 /mnt/home
+</code></pre>
+
+<hr />
+<h2 id="2-gestor-de-paquetes">2. Gestor de Paquetes</h2>
+<h4 id="21-agregamos-el-pacstrap">2.1 Agregamos el pacstrap</h4>
+<blockquote>
+<p>Investigar en detalle
+Sino lo hacemos no podremos correr el comando pacstrap</p>
+</blockquote>
+<pre><code class="bash">yes | pacman -S pkgfile # 1. instalamos pkgfile
+pkgfile --update # 2. lo actualizamos
+pkgfile pacstrap # 3.  algo..?
+yes | pacman -S extra/arch-install-scripts  # instalamos los scripts faltantes
+</code></pre>
+
+<h4 id="22-agregamos-mas-paquetes">2.2 Agregamos mas paquetes</h4>
+<blockquote>
+<p>Investigar más</p>
+</blockquote>
+<pre><code class="bash">pacstrap /mnt base base-devel
+</code></pre>
+
+<hr />
+<h2 id="3-configuramos-la-red">3. Configuramos la red</h2>
+<h4 id="31-modificamos-la-configuracion-en-hosts">3.1 Modificamos la configuracion en hosts</h4>
+<pre><code class="bash"># comando para la edicion de archivos
+nano /etc/hosts 
+
+# agregamos lo siguiente
+127.0.0.1   localhost
+::1     localhost
+127.0.0.1   arch-linux.localdomain  arch-linux
+</code></pre>
+
+<h4 id="32-modificamos-los-dns">3.2 Modificamos los DNS</h4>
+<pre><code class="bash"># comando para la la edicion
+nano /etc/resolv.conf
+
+# agregamos lo siguiente
+nameserver 1.1.1.1
+nameserver 8.8.8.8
+</code></pre>
+
+<hr />
+<h2 id="4-configuracion-grub">4. Configuración GRUB</h2>
+<pre><code class="bash">pacman -S --noconfirm grub # instalamos package grub
+grub-install /dev/sda # instalamos el grub en el disco
+
+# no tuve que crear el mkconfig porque ya estaba creada
+#grub-mkconfig -o /boot/grub/grub.cfg # creamos la configuración 
+#passwd root # para cambiar la clave del root
+
+pacman -Syu # para actualizar el linux (es como un apt-get upgrade)
+</code></pre>
+
+<h4 id="42-agregamos-la-nueva-unidad-al-filesystem">4.2 Agregamos la nueva unidad al filesystem</h4>
+<pre><code class="bash">nano /etc/fstab
+/dev/sda3 /home ext4 defaults 0 2
+</code></pre>
+
+<h4 id="43-referencias">4.3 Referencias</h4>
+<ul>
+<li><a href="http://www.tldp.org/pub/Linux/docs/ldp-archived/system-admin-guide/translations/es/html/ch06s08.html">Que son los sistemas de archivos - The Linux Documentation Project</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/File_systems_(Espa%C3%B1ol)">Breve introducción a los sistemas de archivo - Wiki Arch Linux</a></li>
+<li><a href="https://hipertextual.com/archivo/2014/08/que-es-grub/">Que es el GRUB - Hipertextual</a></li>
+<li><a href="http://www.adminso.es/index.php/GRUB_-_Configuraci%C3%B3n">Configuracion del GRUB - Adminso</a></li>
+<li><a href="https://www.debian.org/doc/manuals/debian-handbook/sect.config-bootloader.es.html">Configuracion de GRUB 2 - Debian</a></li>
+</ul>
+<hr />
+<h2 id="5-entorno-grafico">5. Entorno gráfico</h2>
+<blockquote>
+<p>Para poder empezar a usar una interfaz gráfica</p>
+</blockquote>
+<pre><code class="bash">pacman -Syu # actualizamos la distribución de linux
+pacman -S --noconfirm -xorg-server # instalamos el servidor para el entorno gráfico
+pacman -S --noconfirm gnome gnome-extra # instalamos el escritorio Gnome
+
+systemctl enable gdm # activamos el servicio del escritorio Gnome (se creará un enlace simbólico)
+</code></pre>
+
+<hr />
+<h1 id="referencias">Referencias</h1>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=AdDw8qIQzW8">Configuración - Ver Video</a></li>
+<li><a href="https://www.drivemeca.com/arch-linux-guia-de-instalacion/">Configuración # 1 - Ver Página</a></li>
+<li><a href="https://www.vagrantup.com/docs/cli/ssh_config.html">Configuración #2 - Ver Página</a></li>
+</ul>
+<hr />
+<h1 id="4-vagrant">4. Vagrant</h1>
+<h4 id="41-conectarse-a-mariadb">4.1 Conectarse a mariadb</h4>
+<blockquote>
+<p>Para evitar errores al conectarse ingresar la siguiente linea de comando</p>
+</blockquote>
+<pre><code># pedirá la contraseña que ingresamos al momento de instalar mariadb-server
+mysql -u root -p
+</code></pre>
+
+<h4 id="42-compartir-directorios">4.2 Compartir directorios</h4>
+<blockquote>
+<p>Para compartir archivos y directorios entre la maquina local y la virtual</p>
+</blockquote>
+<ol>
+<li>Entramos al servidor <code>vagrant ssh</code></li>
+<li>Creamos el archivo o carpeta en <code>~/vagrant/</code></li>
+<li>Luego ya podemos acceder desde la maquina local en el directorio que tengamos el Vagrantfile</li>
+</ol>
+<p>Ej.</p>
+<pre><code>mkdir ~/vagrant/curso-mysql # creamos una carpeta
+touch ~/vagrant/archivo.sql # creamos un archivo sql
+</code></pre>
+
+<ul>
+<li><a href="https://www.vagrantup.com/intro/getting-started/synced_folders.html">Referencia #1 - Vagrantup</a></li>
+<li><a href="https://stackoverflow.com/questions/18528717/vagrant-shared-and-synced-folders">Referencia #2 - Stackoverflow</a></li>
+<li><a href="https://drupalize.me/videos/sharing-files-between-your-guest-and-host-machines?p=1526">Referencia #3 - Drupalize</a></li>
+</ul>
+<h4 id="43-ingresar-usuario-por-virtualbox">4.3 Ingresar Usuario por VirtualBox</h4>
+<blockquote>
+<p>El usuario por defecto es <code>root</code> y la contraseña <code>vagrant</code></p>
+</blockquote>
+<ul>
+<li><a href="https://bbs.archlinux.org/viewtopic.php?id=243685">Referencia #1 </a></li>
+</ul>
+<h4 id="44-redimensionar-espacio-en-disco">4.4 Redimensionar espacio en disco</h4>
+<p>1- Instalar via terminal un plugin</p>
+<pre><code>vagrant plugin install vagrant-disksize
+</code></pre>
+
+<p>2- Modificar la configuración  del .Vagrant</p>
+<pre><code class="bash">   config.vm.box = 'ubuntu/xenial64'
+   config.disksize.size = '50GB'
+</code></pre>
+
+<p>3- Reiniciar la máquina virtual</p>
+<pre><code class="bash">vagrant halt 
+vagrant up
+</code></pre>
+
+<h4 id="45-cambiar-configuracion-ssh">4.5 Cambiar configuración SSH</h4>
+<ol>
+<li>Cambiar en el archivo .Vagrant</li>
+</ol>
+<pre><code># si quiero cambiar el usuario al que se conecta
+config.ssh.username = 'root'
+config.ssh.password = 'MONICA'
+</code></pre>
+
+<ul>
+<li><a href="https://computingforgeeks.com/how-to-fix-vagrant-ssh-authentication-failure-after-packaging-vagrant-box/">Referencia #1</a></li>
+</ul>
+<h4 id="46-posibles-errores">4.6 Posibles errores</h4>
+<h5 id="-con-guest-aditions">- Con Guest aditions</h5>
+<blockquote>
+<p>Si tenes problemas para conectarte</p>
+</blockquote>
+<pre><code class="bash">vagrant plugins install vagrant-vbguest # instalar
+vagrant vbguest --status #revisar
+vagrant vbguest # correr
+</code></pre>
+
+<ul>
+<li><a href="https://medium.com/@thucnc/how-to-increase-disk-size-on-a-vagrant-vm-using-virtualbox-c3d24acee3f4">Referencia #1</a></li>
+<li><a href="https://marcbrandner.com/blog/increasing-disk-space-of-a-linux-based-vagrant-box-on-provisioning/">Referencia #2</a></li>
+</ul>
+<h4 id="47-plugins">4.7 Plugins</h4>
+<blockquote>
+<p>Algunos plugins utiles</p>
+</blockquote>
+<ul>
+<li>vagrant-disksize</li>
+<li>vagrant-vbguest</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../guia-linux-gestores-de-paquetes/" class="btn btn-neutral float-right" title="Gestores de paquetes">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../guia-linux-particionamiento/" class="btn btn-neutral" title="Particionamiento"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/neverkas/manu-doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../guia-linux-particionamiento/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../guia-linux-gestores-de-paquetes/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../js/jquery-3.5.0.min.js" defer></script>
+      <script src="../../js/customize.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

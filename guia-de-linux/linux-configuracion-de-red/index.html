@@ -15,6 +15,8 @@
   <link rel="stylesheet" href="../../css/theme.css" />
   <link rel="stylesheet" href="../../css/theme_extra.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link href="../../css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../../css/extra.css" rel="stylesheet" />
   
   <script>
     // Current page data
@@ -47,27 +49,9 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <p class="caption"><span class="caption-text">Off Topic</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Guia de Linux</span></p>
-                <ul class="current">
-                    <li class="toctree-l1"><a class="reference internal" href="../guia-linux-parte-1/">Lineas de comando (Parte 1)</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../guia-linux-parte-2/">Lineas de comando (Parte 2)</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../guia-linux-personalizar/">Personalizar el Sistema</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../guia-linux-3/">Configuraciones</a>
-                    </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Configuración de Red</a>
-    <ul class="current">
-    </ul>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../guia-git/">Guia de Git</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../aboutme/">About me</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Guia de Emacs</span></p>
@@ -81,9 +65,74 @@
                     <li class="toctree-l1"><a class="reference internal" href="../../guia-de-emacs/guia-emacs-magit/">Integrando Git con MAGIT</a>
                     </li>
                 </ul>
-                <p class="caption"><span class="caption-text">Guia de Maquinas Virtuales</span></p>
+                <p class="caption"><span class="caption-text">Guia de Linux</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-linux-parte-1/">Lineas de comando (Parte 1)</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-linux-parte-2/">Lineas de comando (Parte 2)</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-linux-problemas-comunes/">Problemas frecuentes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-linux-personalizar/">Personalizar el Sistema</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-linux-3/">Configuraciones</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-linux-particionamiento/">Particionamiento</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-linux-vagrant-ansible/">Vagrant y Ansible</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-linux-gestores-de-paquetes/">Gestores de paquetes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-linux-expresiones-regulares/">Expresiones Regulares</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Configuración de Red</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1-proxy-con-squid-firewall-con-ufw">1. Proxy (con Squid) &amp;&amp; Firewall (con Ufw)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#11-comandos-basicos">1.1 Comandos básicos</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#12-referencias">1.2 Referencias</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-configuracion-de-red">2 Configuración de red</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#21-comandos">2.1 Comandos</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-conceptos">3. Conceptos</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#32-referencias">3.2 Referencias</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-configurar-proxy">4. Configurar Proxy</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#42-referencias">4.2 Referencias</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#5-iptables">5. Iptables</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#51-referencias">5.1 Referencias</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#6-referencias">6. Referencias</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Nuevas Guias</span></p>
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-git/">Guia de Git</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../virtualbox/">Configurando Virtualbox</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../navegadores-web-extensiones-utiles/">Extensiones utiles para los Navegadores Web</a>
                     </li>
                 </ul>
       </div>
@@ -126,45 +175,148 @@
             <div class="section">
               
                 <h1 id="guia-de-linux-configuracion-de-red">Guia de Linux - Configuración de Red</h1>
-<blockquote>
 <p>Por el momento no pude documentar por completo documentacion de este tipo
-pero debajo dejo algunas referencias.</p>
-</blockquote>
-<h1 id="referencias">Referencias</h1>
+pero debajo dejo algunas referencias importantes para entrar en tema.</p>
+<h2 id="1-proxy-con-squid-firewall-con-ufw">1. Proxy (con Squid) &amp;&amp; Firewall (con Ufw)</h2>
+<h4 id="11-comandos-basicos">1.1 Comandos básicos</h4>
+<p>Comandos utilizados en la distribución <strong>ArchLinux</strong> puede llegar a diferir según cual tengan instalado.</p>
+<ol>
+<li>Para iniciar el servicio usar <code>sudo systemctl start squid</code></li>
+<li>Para saber el estado <code>sudo systemctl status squid</code></li>
+<li>Reiniciar <code>sudo systemctl restart squid</code></li>
+<li>Revisar si no hay errores <code>sudo squid -k check</code></li>
+</ol>
+<h5 id="12-referencias">1.2 Referencias</h5>
 <ul>
-<li>
-<p>Comando ifconfig, The Linux Documentation Project 
- <a href="http://es.tldp.org/Manuales-LuCAS/GARL2/garl2/x-087-2-iface.ifconfig.html">Ver Pagina</a></p>
-</li>
-<li>
-<p>Configurar Interfaces, LinuxConfig
- <a href="https://linuxconfig.org/configuring-virtual-network-interfaces-in-linux">Ver Pagina</a></p>
-</li>
-<li>
-<p>Configurar manual ip permanente/temporal, Meltit
- <a href="http://www.meltit.com.ar/linux-configuracion-internetip-manual-permanente-y-temporal-route-nameserver-interf
-aces-ifconfig-gateway">Ver Pagina</a></p>
-</li>
-<li>
-<p>Configuracion de la Interfaz - IngDiaz
- <a href="http://www.ingdiaz.org/configuracion-de-interfaces-de-red-en-ubuntu-distros-basados-en-debian/">Ver Pagina</a></p>
-</li>
-<li>
-<p>Comando ip y ifconfig, Linux Party
- <a href="https://www.linux-party.com/29-internet/10036-ifconfig-vs-ip-diferencia-y-comparacion-de-la-configuracion-de-red">Ver Pagina</a></p>
-</li>
-<li>
-<p>Comando ifconfig con ejemplos, Mas Linux
- <a href="https://maslinux.es/comando-ifconfig-aprende-con-algunos-ejemplos/">Ver Pagina</a></p>
-</li>
-<li>
-<p>Curso de Administracion de Sistemas y Redes
- <a href="http://persoal.citius.usc.es/tf.pena/ASR/Tema_3html/node21.html">Ver Pagina</a></p>
-</li>
-<li>
-<p>Curso de Redes
- <a href="http://e-ghost.deusto.es/docs/articulo.redes.html">Ver Pagina</a></p>
-</li>
+<li>Página Oficial de Squid <a href="http://www.squid-cache.org">Ver Página</a></li>
+<li>Configurar Squid en Ubuntu - Ajpsoft <a href="https://www.ajpdsoft.com/modules.php?name=News&amp;file=article&amp;sid=441">Ver Página</a></li>
+<li>Conceptos de Proxy con Squid - Educacion ITE <a href="http://www.ite.educacion.es/formacion/materiales/85/cd/linux/m6/proxy_squid.html">Ver Página</a></li>
+<li>Configurar Squid en Ubuntu - Kacharreando <a href="http://www.kacharreando.com/ubuntu/configurar-proxy-squid/">Ver Página</a></li>
+<li>Que es Squid - Wiki <a href="https://es.wikipedia.org/wiki/Squid_(programa)">Ver Página</a></li>
+<li>Configurar Servicios Linux con Proxy <a href="https://www.sysadminsdecuba.com/2017/11/tips-configuracion-de-proxy-para-los-servicios-de-linux/">Ver Página</a></li>
+<li><a href="https://www.pks.mpg.de/~mueller/docs/suse10.2/html/opensuse-manual_en/manual/sec.squid.configfile.html">Manual de Configuración</a></li>
+<li><a href="https://doxfer.webmin.com/Webmin/Squid_Proxy_Server">Breve introducción a Squid Server</a></li>
+</ul>
+<hr />
+<h2 id="2-configuracion-de-red">2 Configuración de red</h2>
+<p>Según la distribución de Linux los comandos pueden variar, estos se hacen en ArchLinux</p>
+<h4 id="21-comandos">2.1 Comandos</h4>
+<p>1- Listar interfaces de red</p>
+<pre><code class="bash">ip link # listar interfaces
+</code></pre>
+
+<p>2- Mostrar IP de las interfaces</p>
+<pre><code class="bash">ip address show
+</code></pre>
+
+<p>3- Otros</p>
+<pre><code class="bash">nmcli # para ver las conexiones
+nmtui # editar conexiones via terminal 
+nm-connection-editor #gui de conexiones
+</code></pre>
+
+<hr />
+<h2 id="3-conceptos">3. Conceptos</h2>
+<p>En Linux se identifican las interfaces de red de la siguiente forma:</p>
+<ul>
+<li>Adaptadores Ethernet: eth0, eth1, eth2, eth3 ...</li>
+<li>Adaptadores Inalambricos: wlan0, wlan1, wlan2, wlan3..</li>
+<li>Adaptador de LoopBack: lo </li>
+</ul>
+<blockquote>
+<p><strong>Nota:</strong> El adaptador o interfaz de loopback es un adaptador virtual de la misma maquina y se accede de a traves de la direccion 127.0.0.1 o del nombre de dominio localhost</p>
+</blockquote>
+<h4 id="32-referencias">3.2 Referencias</h4>
+<ul>
+<li>Documentación Oficial de Redes -TLDP <a href="http://www.tldp.org/LDP/nag2/">Ver Página</a></li>
+<li>Configuración de red - Wiki Arch <a href="https://wiki.archlinux.org/index.php/Network_configuration">Ver Página</a></li>
+<li>Como usar NetworkManager <a href="https://linuxhint.com/arch_linux_network_manager/">Ver Página</a></li>
+<li>Configurar Red - CetemRedes <a href="http://cetemredes2.blogspot.com/2014/04/configurar-adaptador-de-red.html">Ver Página</a></li>
+<li>Configurar Red en Ubuntu - Danjared <a href="https://danjared.wordpress.com/2011/03/09/configurar-el-proxy-en-ubuntu/">Ver Página</a></li>
+<li>Configurar Proxy con Tor <a href="https://securityhacklabs.net/articulo/enrutando-todo-tu-trafico-bajo-la-red-tor-como-un-proxy-transparente-en-linux">Ver Página</a></li>
+<li>Conceptos de Redes <a href="http://www.nexolinux.com/configurar-red-en-linux/">Ver Página</a></li>
+</ul>
+<hr />
+<h2 id="4-configurar-proxy">4. Configurar Proxy</h2>
+<p>Se debe modificar el archivo de configuración </p>
+<pre><code class="bash">ip address show
+ip route show
+</code></pre>
+
+<p>1- Abrir el archivo de configuración </p>
+<pre><code class="bash">sudo nano /etc/environment 
+</code></pre>
+
+<p>2- Agregar la siguiente configuración</p>
+<pre><code class="bash">http_proxy=&quot;http://192.168.1.89:3128/&quot;
+https_proxy=&quot;https://192.168.1.89:3128/&quot;
+no_proxy=&quot;localhost,127.0.0.1,::1
+</code></pre>
+
+<blockquote>
+<p><strong>Observación:</strong> El puerto 3128 es el predeterminado por squid</p>
+</blockquote>
+<p>3- Configuración via terminal (alternativa al paso 1 y 2)</p>
+<p>Agregar en la terminal las siguientes lineas de comando</p>
+<pre><code class="bash">export http_proxy=http://192.168.1.89:3128/
+export https_proxy=http://192.168.1.89:3128/
+</code></pre>
+
+<blockquote>
+<p><strong>Observación:</strong> 3128 es el puerto, esta modificación solo afecta a la sesión abierta
+investigar sobre como correrlo en la shell zsh al iniciar</p>
+</blockquote>
+<p>4- Ver variables globales de configuración</p>
+<p>Para verificar que se aplicaron los cambios</p>
+<pre><code class="bash">env | grep proxy
+</code></pre>
+
+<p>5- Modificar en el navegador web Opera</p>
+<p>Cada navegador tomar diferente los proxy</p>
+<pre><code class="bash">opera --proxy-server=&quot;http://192.168.1.89.3128/&quot;
+</code></pre>
+
+<blockquote>
+<p><strong>Observación:</strong> Para más información ingresar lo siguiente en la barra de direcciones <code>opera://linux-proxy-config</code></p>
+</blockquote>
+<p>6- Para ver errores de Squid</p>
+<p>Para ver los errores de squid antes de correr del servicio </p>
+<pre><code class="bash">sudo squid -k check
+sudo squid -k reconfigure # lanza error si hay algo mal configurado
+</code></pre>
+
+<h4 id="42-referencias">4.2 Referencias</h4>
+<ul>
+<li>[Configurar Proxy en la Shell ZSH](https://ketansingh.net/setting-proxy-for-archlinux/</li>
+<li>Configurar en Ubuntu <a href="https://www.youtube.com/watch?v=6qLRHDXPda8">Ver Video</a></li>
+<li><a href="https://www.garron.me/es/gnu-linux/configurar-proxy-ubuntu-desktop-server.html">Configurar Proxy - Garron</a></li>
+<li><a href="https://www.sololinux.es/instalar-squid-proxy-server-en-ubuntu-18-04/">Configurar en Ubuntu</a></li>
+<li><a href="https://medium.com/@krish.raghuram/setting-up-proxy-in-ubuntu-95058da0b2d4">Configurar Enviroment</a></li>
+<li><a href="http://www.user-agents.org">User Agent</a></li>
+<li><a href="https://www.whoishostingthis.com/tools/user-agent/">Conocer user agente</a></li>
+<li><a href="https://www.linuxquestions.org/questions/linux-server-73/block-a-browser-in-squid-924596/">Block a Browser in Squid</a></li>
+<li><a href="https://www.sololinux.es/instalar-squid-proxy-server-en-ubuntu-18-04/">Instalar Squid Proxy Server en Ubuntu</a></li>
+</ul>
+<hr />
+<h2 id="5-iptables">5. Iptables</h2>
+<h4 id="51-referencias">5.1 Referencias</h4>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=Yk61s5Ec6YA">Referencia #1 - Youtube </a></li>
+<li><a href="https://www.youtube.com/watch?v=qPEA6J9pjG8">Referencia #2 - YOutube</a></li>
+<li><a href="https://www.youtube.com/watch?v=zELPIdxoGaQ&amp;t=93s">Referencia #3 - youtube</a></li>
+</ul>
+<hr />
+<h2 id="6-referencias">6. Referencias</h2>
+<ul>
+<li><a href="http://es.tldp.org/Manuales-LuCAS/GARL2/garl2/x-087-2-iface.ifconfig.html">Comando ifconfig, The Linux Documentation Project</a></li>
+<li><a href="https://linuxconfig.org/configuring-virtual-network-interfaces-in-linux">Configurar Interfaces, LinuxConfig</a></li>
+<li><a href="http://www.meltit.com.ar/linux-configuracion-internetip-manual-permanente-y-temporal-route-nameserver-interf
+aces-ifconfig-gateway">Configurar manual ip permanente/temporal, Meltit</a></li>
+<li><a href="http://www.ingdiaz.org/configuracion-de-interfaces-de-red-en-ubuntu-distros-basados-en-debian/">Configuracion de la Interfaz - IngDiaz</a></li>
+<li><a href="https://www.linux-party.com/29-internet/10036-ifconfig-vs-ip-diferencia-y-comparacion-de-la-configuracion-de-red">Comando ip y ifconfig, Linux Party</a></li>
+<li><a href="https://maslinux.es/comando-ifconfig-aprende-con-algunos-ejemplos/">Comando ifconfig con ejemplos, Mas Linux</a></li>
+<li><a href="http://persoal.citius.usc.es/tf.pena/ASR/Tema_3html/node21.html">Curso de Administracion de Sistemas y Redes</a></li>
+<li><a href="http://e-ghost.deusto.es/docs/articulo.redes.html">Curso de Redes</a></li>
 </ul>
               
             </div>
@@ -176,7 +328,7 @@ aces-ifconfig-gateway">Ver Pagina</a></p>
         <a href="../../guia-git/" class="btn btn-neutral float-right" title="Guia de Git">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../guia-linux-3/" class="btn btn-neutral" title="Configuraciones"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../guia-linux-expresiones-regulares/" class="btn btn-neutral" title="Expresiones Regulares"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -204,7 +356,7 @@ aces-ifconfig-gateway">Ver Pagina</a></p>
           <a href="https://github.com/neverkas/manu-doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../guia-linux-3/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../guia-linux-expresiones-regulares/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../../guia-git/" style="color: #fcfcfc">Next &raquo;</a></span>
@@ -213,6 +365,8 @@ aces-ifconfig-gateway">Ver Pagina</a></p>
 </div>
     <script>var base_url = '../..';</script>
     <script src="../../js/theme.js" defer></script>
+      <script src="../../js/jquery-3.5.0.min.js" defer></script>
+      <script src="../../js/customize.js" defer></script>
       <script src="../../search/main.js" defer></script>
     <script defer>
         window.onload = function () {

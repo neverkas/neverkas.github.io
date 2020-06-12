@@ -15,6 +15,8 @@
   <link rel="stylesheet" href="../../css/theme.css" />
   <link rel="stylesheet" href="../../css/theme_extra.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link href="../../css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../../css/extra.css" rel="stylesheet" />
   
   <script>
     // Current page data
@@ -47,25 +49,9 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <p class="caption"><span class="caption-text">Off Topic</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Guia de Linux</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-parte-1/">Lineas de comando (Parte 1)</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-parte-2/">Lineas de comando (Parte 2)</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-personalizar/">Personalizar el Sistema</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-3/">Configuraciones</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/linux-configuracion-de-red/">Configuración de Red</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../guia-git/">Guia de Git</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../aboutme/">About me</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Guia de Emacs</span></p>
@@ -76,14 +62,79 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Integrando el Modo Org</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1-tareas-basicas-para-empezar">1. Tareas basicas para empezar</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#11-para-iniciar-emacs-con-un-archivo-org">1.1 Para iniciar Emacs con un archivo .org"</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#12-crear-una-lista-de-tareas">1.2 Crear una lista de tareas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#13-crear-una-sublista-de-tareas">1.3 Crear una sublista de tareas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#14-crear-tareas-con-vinetas">1.4 Crear tareas con viñetas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#15-crear-una-lista-de-seguimiento-con-to-do">1.5 Crear una lista de seguimiento con to-do</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#16-crear-una-lista-de-seguimiento-con-checkboxes">1.6 Crear una lista de seguimiento con checkboxes</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-atajos">2. Atajos</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-sitios-web-recomendados">3. Sitios web recomendados</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#31-atajos">3.1 Atajos</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#32-guias">3.2 Guias</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#33-agregar-etiquetas-a-las-tareas">3.3 Agregar etiquetas a las tareas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#34-como-organizarse-con-el-modo-org">3.4 Como organizarse con el modo Org</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#35-cambiar-las-prioridades-de-las-tareas">3.5 Cambiar las prioridades de las tareas</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#36-modificar-agenda-estados">3.6 Modificar Agenda estados</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#35-otros">3.5 Otros</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#36-integrar-archivos-org-con-dropbox">3.6 Integrar archivos ORG con dropbox</a>
+    </li>
+        </ul>
+    </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../guia-emacs-magit/">Integrando Git con MAGIT</a>
                     </li>
                 </ul>
-                <p class="caption"><span class="caption-text">Guia de Maquinas Virtuales</span></p>
+                <p class="caption"><span class="caption-text">Guia de Linux</span></p>
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-parte-1/">Lineas de comando (Parte 1)</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-parte-2/">Lineas de comando (Parte 2)</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-problemas-comunes/">Problemas frecuentes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-personalizar/">Personalizar el Sistema</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-3/">Configuraciones</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-particionamiento/">Particionamiento</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-vagrant-ansible/">Vagrant y Ansible</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-gestores-de-paquetes/">Gestores de paquetes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/guia-linux-expresiones-regulares/">Expresiones Regulares</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-de-linux/linux-configuracion-de-red/">Configuración de Red</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Nuevas Guias</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-git/">Guia de Git</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../virtualbox/">Configurando Virtualbox</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../navegadores-web-extensiones-utiles/">Extensiones utiles para los Navegadores Web</a>
                     </li>
                 </ul>
       </div>
@@ -125,29 +176,27 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="para-iniciar-emacs-con-un-archivo-org">Para iniciar Emacs con un archivo .org"</h2>
+                <h1 id="integrando-el-modo-org">Integrando el Modo Org</h1>
+<p><img src="/images/orgmode2.png"></p>
+<h2 id="1-tareas-basicas-para-empezar">1. Tareas basicas para empezar</h2>
+<h4 id="11-para-iniciar-emacs-con-un-archivo-org">1.1 Para iniciar Emacs con un archivo .org"</h4>
 <ol>
-<li>Modificar el archivo de configuracion C-x C-f ~/.emacs.d/init.el</li>
-<li>Ir al final del archivo <strong>C-Fin</strong> y agregar la siguiente linea<blockquote>
-<p>;; cambiar por la ruta que desees
-(find-file "~/Dropbox/orgfiles/agenda1.org")</p>
-</blockquote>
-</li>
+<li>Modificar el archivo de configuracion <kbd>C-x C-f</kbd> ~/.emacs.d/init.el</li>
+<li>Ir al final del archivo <kbd>C-Fin</kbd> y agregar la siguiente linea</li>
 </ol>
-<hr />
-<h2 id="crear-una-lista-de-tareas">Crear una lista de tareas</h2>
-<blockquote>
+<pre><code>;; cambiar por la ruta que desees
+(find-file &quot;~/Dropbox/orgfiles/agenda1.org&quot;)
+</code></pre>
+
+<h4 id="12-crear-una-lista-de-tareas">1.2 Crear una lista de tareas</h4>
 <p>Escribimos el simbolo * asterisco seguido del texto</p>
-</blockquote>
 <p>Ej.</p>
 <pre><code>* Lunes
 * Martes
 </code></pre>
 
-<h2 id="crear-una-sublista-de-tareas">Crear una sublista de tareas</h2>
-<blockquote>
+<h4 id="13-crear-una-sublista-de-tareas">1.3 Crear una sublista de tareas</h4>
 <p>Escribimos el simbolo * asterisco dos veces, y se agrega como sublista de la lista que tenga antes.</p>
-</blockquote>
 <p>Ej.</p>
 <pre><code>* Lunes
 ** Estudiar para mañana
@@ -155,10 +204,8 @@
 * Martes
 </code></pre>
 
-<h2 id="crear-tareas-con-vinetas">Crear tareas con viñetas</h2>
-<blockquote>
+<h4 id="14-crear-tareas-con-vinetas">1.4 Crear tareas con viñetas</h4>
 <p>Escribimos un <strong>guion</strong> seguido del texto que queramos seguido de <strong>M-RET</strong></p>
-</blockquote>
 <ul>
 <li>Para agregar nuevos elementos en el mismo nivel (tabulacion) presionar <strong>M-RET</strong></li>
 <li>Para cambiar el tipo de viñeta presionar <strong>Shift</strong> y las flechas Up/Down</li>
@@ -173,12 +220,9 @@
    - Matematica
 </code></pre>
 
-<hr />
-<h1 id="crear-una-lista-de-seguimiento-con-to-do">Crear una lista de seguimiento con to-do</h1>
-<blockquote>
+<h4 id="15-crear-una-lista-de-seguimiento-con-to-do">1.5 Crear una lista de seguimiento con to-do</h4>
 <p>Para saber cuales y cuantas tareas se resolvieron y cuantas no</p>
-</blockquote>
-<p>Al comienzo de las listas agregar <strong>[/]</strong> o [%]</p>
+<p>Al comienzo de las listas agregar <strong>[/]</strong> o <strong>[%]</strong></p>
 <ul>
 <li>Con [/] aparecera cuantas tareas se hicieron sobre el total</li>
 <li>Con [%] aparecera un % del total</li>
@@ -194,14 +238,11 @@
    - Matematica
 </code></pre>
 
-<hr />
-<h3 id="crear-una-lista-de-seguimiento-con-checkboxes">Crear una lista de seguimiento con checkboxes</h3>
-<blockquote>
+<h4 id="16-crear-una-lista-de-seguimiento-con-checkboxes">1.6 Crear una lista de seguimiento con checkboxes</h4>
 <p>Para saber cuales y cuantas tareas se resolvieron y cuantas no</p>
-</blockquote>
 <ul>
-<li>Con [/] aparecera cuantas tareas se hicieron sobre el total</li>
-<li>Con [%] aparecera un % del total</li>
+<li>Con <strong>[/]</strong> aparecera cuantas tareas se hicieron sobre el total</li>
+<li>Con <strong>[%]</strong> aparecera un % del total</li>
 <li>Las tareas tengan <strong>checkbox</strong> deben comenzar con [ ] </li>
 <li>Para marcar las tareas como <strong>Finalizadas</strong> presionar <strong>C-c C-c</strong></li>
 </ul>
@@ -216,100 +257,144 @@
 </code></pre>
 
 <hr />
-<h1 id="atajos">Atajos</h1>
-<table>
+<h2 id="2-atajos">2. Atajos</h2>
+<table class="table">
 <thead>
 <tr>
-<th align="left">Comando</th>
-<th align="left">Descripción</th>
+<th align="left">Holy Mode</th>
+<th scope="col">Evil Mode</th>
+<th align="left">Descripcion</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td align="left">C-c C-s</td>
+<td></td>
 <td align="left">Agendar una fecha para una tarea (schedule)</td>
 </tr>
 <tr>
 <td align="left">C-c C-d</td>
+<td></td>
 <td align="left">Programar una fecha limite para finalizar una tarea (deadline)</td>
 </tr>
 <tr>
 <td align="left">Shift flechas Left/Right</td>
+<td></td>
 <td align="left">Elegir el dia del mes en el calendario</td>
 </tr>
 <tr>
+<td align="left"></td>
+<td></td>
+<td align="left"></td>
+</tr>
+<tr>
 <td align="left">g</td>
+<td></td>
 <td align="left">Actualiza los cambios del buffer de la agenda (igual que con <strong>dired</strong>)</td>
 </tr>
 <tr>
 <td align="left">M-x org-agenda-file-to-front</td>
+<td></td>
 <td align="left">Guardar el archivo .org actual en la agenda</td>
 </tr>
 <tr>
+<td align="left"></td>
+<td></td>
+<td align="left"></td>
+</tr>
+<tr>
 <td align="left">C-c C-q</td>
+<td></td>
 <td align="left">Agregar tags</td>
 </tr>
 <tr>
 <td align="left">C-RET</td>
+<td></td>
 <td align="left">Agregar nuevo item a la agenda</td>
 </tr>
 <tr>
+<td align="left"></td>
+<td></td>
+<td align="left"></td>
+</tr>
+<tr>
 <td align="left">M Flechas Up/Down</td>
+<td></td>
 <td align="left">Cambia el orden/prioridad de las tareas, moviendo hacia arriba/abajo</td>
 </tr>
 <tr>
 <td align="left">M flechas Left/Right</td>
+<td></td>
 <td align="left">Mueve el nivel(tabulacion) de la tarea</td>
 </tr>
 <tr>
+<td align="left"></td>
+<td></td>
+<td align="left"></td>
+</tr>
+<tr>
 <td align="left">Tab</td>
+<td></td>
 <td align="left">Expande/Oculta una lista que tiene elementos</td>
 </tr>
 <tr>
 <td align="left">Shift-Tab</td>
+<td></td>
 <td align="left">Expande/Oculta todas las listas que tengan elementos</td>
 </tr>
 <tr>
-<td align="left">Shift flechas Up/Down</td>
-<td align="left">Cambiar la prioridad de la tarea (Alta/Media/Baja)</td>
-</tr>
-<tr>
-<td align="left">Shift flechas Left/Right</td>
+<td align="left">Shift <Left><Right></td>
+<td></td>
 <td align="left">Cambiar el estado de la tarea (Pendiente/Finalizada/Revisar)</td>
 </tr>
 <tr>
+<td align="left">Shift <Up><Down></td>
+<td></td>
+<td align="left">Cambiar la prioridad de la tarea (Alta/Media/Baja)</td>
+</tr>
+<tr>
 <td align="left">C-c C-t</td>
+<td></td>
 <td align="left">Cambiar el estado de la tarea</td>
 </tr>
 <tr>
 <td align="left">M-x org-agenda m</td>
+<td></td>
 <td align="left"></td>
 </tr>
 <tr>
 <td align="left">C-x C-l</td>
+<td></td>
 <td align="left">Crear hipervinculos</td>
 </tr>
 <tr>
 <td align="left"></td>
-<td align="left"></td>
+<td>SPC m a</td>
+<td align="left">Abrir agenda</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h1 id="referencias">Referencias</h1>
-<h2 id="paginas-de-referencia">Paginas de referencia</h2>
-<h3 id="guias">Guias</h3>
+<h2 id="3-sitios-web-recomendados">3. Sitios web recomendados</h2>
+<h4 id="31-atajos">3.1 Atajos</h4>
+<ul>
+<li><a href="https://www.spacemacs.org/layers/+emacs/org/README.html">Atajos (Spacemacs.org)</a></li>
+<li>https://emacs.stackexchange.com/questions/33310/how-to-use-org-mode-speed-commands-speed-keys</li>
+<li>https://www.gnu.org/software/emacs/refcards/pdf/refcard.pdf</li>
+<li>https://www.spacemacs.org/layers/+emacs/org/README.html#key-bindings</li>
+</ul>
+<h4 id="32-guias">3.2 Guias</h4>
 <ul>
 <li>Guia basica - Emacslife - <a href="http://emacslife.com/baby-steps-org.html">Ver Pagina</a></li>
 <li>Guia basica - Orgmode - <a href="https://orgmode.org/worg/org-tutorials/orgtutorial_dto-es.html">Ver Pagina</a></li>
 <li>Guia completa - Norang - <a href="http://doc.norang.ca/org-mode.html">Ver Pagina</a></li>
 </ul>
-<h3 id="agregar-etiquetas-a-las-tareas">Agregar etiquetas a las tareas</h3>
+<h4 id="33-agregar-etiquetas-a-las-tareas">3.3 Agregar etiquetas a las tareas</h4>
 <ul>
 <li>Referencia #1 - <a href="https://www.youtube.com/watch?v=FJq__bBi0nI">Ver Video</a></li>
 <li>Referencia #2 - Orgmode.org - <a href="https://orgmode.org/manual/Setting-Tags.html">Ver Pagina</a></li>
 </ul>
-<h3 id="como-organizarse-con-el-modo-org">Como organizarse con el modo Org</h3>
+<h4 id="34-como-organizarse-con-el-modo-org">3.4 Como organizarse con el modo Org</h4>
 <ul>
 <li>Referencia #1 - <a href="https://www.youtube.com/watch?v=C6nbjqn5Uxw">Ver Video</a></li>
 <li>Referencia #2 - <a href="https://www.youtube.com/watch?v=QQSaDDVP__s">Ver Video - Parte 1</a></li>
@@ -320,35 +405,29 @@
 <li>Referencia #7 - <a href="https://www.youtube.com/watch?v=dljNabciEGg">Ver Video</a></li>
 <li>Referencia #8 - <a href="https://www.youtube.com/watch?v=fgizHHd7nOo">Ver Video</a></li>
 </ul>
-<h3 id="cambiar-las-prioridades-de-las-tareas">Cambiar las prioridades de las tareas</h3>
+<h4 id="35-cambiar-las-prioridades-de-las-tareas">3.5 Cambiar las prioridades de las tareas</h4>
 <ul>
 <li>Referencia #1 - <a href="https://www.youtube.com/watch?v=WSF4EgQqa3Q">Ver Video</a></li>
 <li>Referencia #2 - <a href="https://github.com/harrybournis/org-fancy-priorities">Ver Pagina</a></li>
 </ul>
-<h3 id="modificar-agenda-estados">Modificar Agenda estados</h3>
+<h4 id="36-modificar-agenda-estados">3.6 Modificar Agenda estados</h4>
 <ul>
 <li>Referencia #1 - Practicalli - <a href="https://practicalli.github.io/spacemacs/org-mode/todo-states-customise.html">Ver Pagina</a></li>
 <li>Referencia #2 - Sainathadapa - <a href="https://sainathadapa.github.io/emacs-spacemacs-config/org-config">Ver Pagina</a></li>
 <li>Referencia #3 - Orgmode.org  - <a href="https://orgmode.org/manual/TODO-Basics.html">Ver Pagina</a></li>
 <li>Referencia #4 - Orgmode.org -  <a href="https://orgmode.org/manual/Setting-Tags.html">Ver Pagina</a></li>
 </ul>
-<h3 id="otros">Otros</h3>
+<h4 id="35-otros">3.5 Otros</h4>
 <ul>
 <li>Comandos agenda-file - Orgmode.org <a href="https://orgmode.org/manual/Agenda-Files.html">Ver Pagina</a></li>
-<li>
-<p>Manejar los Hipervinculos - Orgmode.org - <a href="https://orgmode.org/manual/Handling-Links.html">Ver Pagina</a></p>
-</li>
-<li>
-<p>Como usar snippets -<a href="https://www.youtube.com/watch?v=UT1bcq_HIkE">Ver Video</a></p>
-</li>
+<li>Manejar los Hipervinculos - Orgmode.org - <a href="https://orgmode.org/manual/Handling-Links.html">Ver Pagina</a></li>
+<li>Como usar snippets -<a href="https://www.youtube.com/watch?v=UT1bcq_HIkE">Ver Video</a></li>
 <li>Agendar Fechas -<a href="https://www.youtube.com/watch?v=QQSaDDVP__s">Ver Video</a></li>
 <li>Crear presentaciones - <a href="https://www.youtube.com/watch?v=bRoSpJ23Kzk">Ver video</a></li>
 <li>Hacer gantt - <a href="https://www.youtube.com/watch?v=5ViUBaarsbw">Ver Video</a></li>
 </ul>
-<h3 id="integrar-archivos-org-con-dropbox">Integrar archivos ORG con dropbox</h3>
-<blockquote>
+<h4 id="36-integrar-archivos-org-con-dropbox">3.6 Integrar archivos ORG con dropbox</h4>
 <p>La referencia #1 me funciono</p>
-</blockquote>
 <ul>
 <li>Referencia #1 - Webdav - <a href="https://webdav.io/webdav/webdav-integrations/webdav-dropbox/">Ver Pagina</a></li>
 <li>Referencia #2 - Opensource.com - <a href="https://opensource.com/article/19/4/calendar-git">Ver Pagina</a></li>
@@ -400,6 +479,8 @@
 </div>
     <script>var base_url = '../..';</script>
     <script src="../../js/theme.js" defer></script>
+      <script src="../../js/jquery-3.5.0.min.js" defer></script>
+      <script src="../../js/customize.js" defer></script>
       <script src="../../search/main.js" defer></script>
     <script defer>
         window.onload = function () {

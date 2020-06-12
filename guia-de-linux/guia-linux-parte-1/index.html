@@ -15,6 +15,8 @@
   <link rel="stylesheet" href="../../css/theme.css" />
   <link rel="stylesheet" href="../../css/theme_extra.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  <link href="../../css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../../css/extra.css" rel="stylesheet" />
   
   <script>
     // Current page data
@@ -47,27 +49,9 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <p class="caption"><span class="caption-text">Off Topic</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Guia de Linux</span></p>
-                <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Lineas de comando (Parte 1)</a>
-    <ul class="current">
-    </ul>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../guia-linux-parte-2/">Lineas de comando (Parte 2)</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../guia-linux-personalizar/">Personalizar el Sistema</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../guia-linux-3/">Configuraciones</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../linux-configuracion-de-red/">Configuración de Red</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../guia-git/">Guia de Git</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../aboutme/">About me</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Guia de Emacs</span></p>
@@ -81,9 +65,38 @@
                     <li class="toctree-l1"><a class="reference internal" href="../../guia-de-emacs/guia-emacs-magit/">Integrando Git con MAGIT</a>
                     </li>
                 </ul>
-                <p class="caption"><span class="caption-text">Guia de Maquinas Virtuales</span></p>
+                <p class="caption"><span class="caption-text">Guia de Linux</span></p>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Lineas de comando (Parte 1)</a>
+    <ul class="current">
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-linux-parte-2/">Lineas de comando (Parte 2)</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-linux-problemas-comunes/">Problemas frecuentes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-linux-personalizar/">Personalizar el Sistema</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-linux-3/">Configuraciones</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-linux-particionamiento/">Particionamiento</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-linux-vagrant-ansible/">Vagrant y Ansible</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-linux-gestores-de-paquetes/">Gestores de paquetes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../guia-linux-expresiones-regulares/">Expresiones Regulares</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../linux-configuracion-de-red/">Configuración de Red</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Nuevas Guias</span></p>
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guia-git/">Guia de Git</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../virtualbox/">Configurando Virtualbox</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../navegadores-web-extensiones-utiles/">Extensiones utiles para los Navegadores Web</a>
                     </li>
                 </ul>
       </div>
@@ -127,7 +140,6 @@
               
                 <h1 id="guia-de-linux-lineas-de-comando-parte-1">Guia de Linux - Lineas de comando (Parte-1)</h1>
 <p><img src="/images/linux-terminal.png"></p>
-<h1 id="averiguar-por-doas-cmus-qutebrowser-emerge">averiguar por: doas, cmus, qutebrowser, emerge</h1>
 <hr />
 <h1 id="1-enlaces">1. Enlaces</h1>
 <blockquote>
@@ -193,65 +205,37 @@ gunzip - finanzas.txt.gz # otra manera de descomprimir sin pasar parametros
 <p>Esta herramienta incluye <strong>gzip</strong> y <strong>bzip2</strong> para comprimir multiples archivos, con el formato <strong>.tar.gz</strong> o <strong>.tar.bz</strong></p>
 </blockquote>
 <p>La lista de los parametros que se le pueden pasar son:</p>
-<table>
+<table class="table">
 <thead>
 <tr>
 <th align="left">Parametro</th>
 <th align="left">Descripción</th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td align="left">c</td>
 <td align="left">Crea el archivo</td>
-<td><td colspan=4></td>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td align="left">x</td>
 <td align="left">Extrae el contenido</td>
-<td><td colspan=4></td>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td align="left">v</td>
 <td align="left">Muestra el paso a paso</td>
-<td><td colspan=4></td>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td align="left">z</td>
 <td align="left">Comprime con gzip</td>
-<td><td colspan=4></td>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td align="left">j</td>
 <td align="left">Comprime con bzip2</td>
-<td><td colspan=4></td>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td align="left">f</td>
 <td align="left">Para indicar nombre del archivo</td>
-<td><td colspan=4></td>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 </tbody>
 </table>
@@ -292,41 +276,25 @@ gunzip - finanzas.txt.gz # otra manera de descomprimir sin pasar parametros
 En lo personal prefiero la <strong>simbólica</strong>.</p>
 </blockquote>
 <h3 id="431-numerica">4.3.1. Númerica</h3>
-<table>
+<table class="table">
 <thead>
 <tr>
 <th align="left">Permiso</th>
 <th align="left">Descripción</th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td align="left">1</td>
 <td align="left">Ejecución</td>
-<td><td colspan=4></td>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td align="left">2</td>
 <td align="left">Escritura</td>
-<td><td colspan=4></td>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td align="left">4</td>
 <td align="left">Lectura</td>
-<td><td colspan=4></td>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 </tbody>
 </table>
@@ -362,41 +330,25 @@ En lo personal prefiero la <strong>simbólica</strong>.</p>
 <blockquote>
 <p>Para agregar, eliminar permisos se agrega primero a quien (usuario, grupo, cualquier usuario) seguido del operador <strong>+</strong>, <strong>-</strong>, <strong>=</strong> que agrega, elimina, reemplaza los permisos respectivamente.</p>
 </blockquote>
-<table>
+<table class="table">
 <thead>
 <tr>
 <th align="center">Permiso</th>
 <th align="left">Descripción</th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td align="center">x</td>
 <td align="left">Ejecución</td>
-<td><td colspan=4></td>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td align="center">w</td>
 <td align="left">Escritura</td>
-<td><td colspan=4></td>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td align="center">r</td>
 <td align="left">Lectura</td>
-<td><td colspan=4></td>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 </tbody>
 </table>
@@ -685,57 +637,33 @@ ahora solo veremos el nombre del usuario seguido de la ruta.</p>
 <p>En caso que queramos entender un poco mas como funciona, y personalizarlo aun mas, esta te compartimos
 una lista de los parametros y que informacion imprime cada uno.</p>
 </blockquote>
-<table>
+<table class="table">
 <thead>
 <tr>
 <th align="center">Caracter</th>
 <th align="left">Descripción</th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td align="center">\u</td>
 <td align="left">Nombre del usuario de la sesion</td>
-<td><td colspan=4></td>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td align="center">\h</td>
 <td align="left">Nombre del host</td>
-<td><td colspan=4></td>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td align="center">\d</td>
 <td align="left">Fecha en formato mm/dd/YYYY</td>
-<td><td colspan=4></td>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td align="center">\A</td>
 <td align="left">Hora del sistema</td>
-<td><td colspan=4></td>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td align="center">\j</td>
 <td align="left">Cantidad de tareas en ejecucion por esa terminal</td>
-<td><td colspan=4></td>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 </tbody>
 </table>
@@ -804,7 +732,7 @@ PS1=”\A \u: \w\$ “
         <a href="../guia-linux-parte-2/" class="btn btn-neutral float-right" title="Lineas de comando (Parte 2)">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../.." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../guia-de-emacs/guia-emacs-magit/" class="btn btn-neutral" title="Integrando Git con MAGIT"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -832,7 +760,7 @@ PS1=”\A \u: \w\$ “
           <a href="https://github.com/neverkas/manu-doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../.." style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../../guia-de-emacs/guia-emacs-magit/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../guia-linux-parte-2/" style="color: #fcfcfc">Next &raquo;</a></span>
@@ -841,6 +769,8 @@ PS1=”\A \u: \w\$ “
 </div>
     <script>var base_url = '../..';</script>
     <script src="../../js/theme.js" defer></script>
+      <script src="../../js/jquery-3.5.0.min.js" defer></script>
+      <script src="../../js/customize.js" defer></script>
       <script src="../../search/main.js" defer></script>
     <script defer>
         window.onload = function () {
