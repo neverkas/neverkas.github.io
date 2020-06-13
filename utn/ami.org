@@ -1,0 +1,20 @@
+
+#+TITLE: Analisis de Sistemas
+#+AUTHOR:    Jelou 
+
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="themes/styles/readtheorg/css/htmlize.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="themes/styles/readtheorg/css/readtheorg.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="manu-theme/custom.css"/>
+
+#+HTML_HEAD: <script type="text/javascript" src="themes/styles/lib/js/jquery.min.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="themes/styles/lib/js/bootstrap.min.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="themes/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="themes/styles/readtheorg/js/readtheorg.js"></script>
+
+#+OPTIONS: num:nil p:t
+
+* Material
+  - [[https://www.campusvirtual.frba.utn.edu.ar/especialidad/course/view.php?id=2862][Ir al Aula Virtual (Gomez Eduardo)]]
+  - [[https://www.campusvirtual.frba.utn.edu.ar/especialidad/course/view.php?id=3107][Ir al Aula Virtual (Monica Blazquez)]] 
+  - [[https://drive.google.com/drive/u/0/folders/14HMtKoVGFtcroJzP4SxXb6LzTltbd4IC][Ir al Drive de AMI (Personal)]] 
+* Cronograma
