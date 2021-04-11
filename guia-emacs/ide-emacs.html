@@ -1,0 +1,1074 @@
+<!--?xml version="1.0" encoding="utf-8"?--><!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<!-- 2021-04-04 dom 20:29 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IDE Emacs</title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="jelou">
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/sass-style.css">
+<script type="text/javascript" src="/assets/js/all.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">IDE Emacs</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org6a11485">1. Programar con Emacs</a>
+<ul>
+<li><a href="#org8ddf741">1.1. Editar archivos desde la terminal de linux</a></li>
+<li><a href="#org7f991a2">1.2. Atajos</a></li>
+<li><a href="#org67a535b">1.3. Acciones</a></li>
+<li><a href="#org6a4c4ce">1.4. Comandos para Edición</a></li>
+<li><a href="#org6aa3b06">1.5. Comandos de Desplazamiento</a></li>
+<li><a href="#org2acb977">1.6. Control de Buffers</a></li>
+</ul>
+</li>
+<li><a href="#orge789b40">2. Otros</a>
+<ul>
+<li><a href="#org362a734">2.1. Modificar archivos con permisos root</a></li>
+<li><a href="#orge8aa9f4">2.2. Acciones sobre el listado de directorios</a></li>
+<li><a href="#orgc833d0c">2.3. Referencias</a>
+<ul>
+<li><a href="#org03f5db1">2.3.1. Referencias Web Extraoficiales</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orge1cc857">3. Configuración personalizada</a>
+<ul>
+<li><a href="#org4c43ba7">3.1. Configurar la indentación del código</a></li>
+<li><a href="#orgedc7eb0">3.2. Autoindentación</a></li>
+</ul>
+</li>
+<li><a href="#org6b5b7ef">4. Información Adicional</a>
+<ul>
+<li><a href="#orgf241d92">4.1. Cambiar de buffer</a></li>
+<li><a href="#orga327226">4.2. Guardar</a></li>
+<li><a href="#orgcf72613">4.3. Buffers</a></li>
+<li><a href="#org055d7f6">4.4. Auto guardado</a></li>
+</ul>
+</li>
+<li><a href="#org29b1a25">5. Referencias</a></li>
+<li><a href="#orgd942e8a">6. Referencias pendientes a revisar</a>
+<ul>
+<li><a href="#org2d989ba">6.1. Otros</a></li>
+<li><a href="#org62f9b3c">6.2. cedet</a></li>
+<li><a href="#org5344802">6.3. Neotree</a></li>
+<li><a href="#org35bbae4">6.4. View method, classes</a></li>
+<li><a href="#org1a88d23">6.5. ECB</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div class="figure">
+<p><img src="/img/emacs.gif" alt="emacs.gif" width="650">
+</p>
+</div>
+
+<div id="outline-container-org6a11485" class="outline-2">
+<h2 id="org6a11485"><span class="section-number-2">1</span> Programar con Emacs</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org8ddf741" class="outline-3">
+<h3 id="org8ddf741"><span class="section-number-3">1.1</span> Editar archivos desde la terminal de linux</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Si estamos apurados y queremos ver ó modificar un archivo sin entorno gráfico
+ejecutamos el ide pasando el parámetro <b><b>-nw</b></b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash" id="org73e85be">emacs -nw /etc/hosts <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">abrimos el archivo hosts</span>
+</pre>
+</div>
+
+<p>
+<b><b>Observación</b></b>:
+Si queremos evitar pasarle el parámetro, podemos crear un alias en linux
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7f991a2" class="outline-3">
+<h3 id="org7f991a2"><span class="section-number-3">1.2</span> Atajos</h3>
+<div class="outline-text-3" id="text-1-2">
+<table id="orgd4bfcb4" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Atajo</th>
+<th scope="col" class="org-left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C</td>
+<td class="org-left">Se refiere a la tecla Ctrl</td>
+</tr>
+
+<tr>
+<td class="org-left">X</td>
+<td class="org-left">Se refiere a la tecla Alt</td>
+</tr>
+
+<tr>
+<td class="org-left">SPC</td>
+<td class="org-left">Se refiere a la tecla Espacio</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org67a535b" class="outline-3">
+<h3 id="org67a535b"><span class="section-number-3">1.3</span> Acciones</h3>
+<div class="outline-text-3" id="text-1-3">
+<table id="org2a3cb92" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Holy mode</th>
+<th scope="col" class="org-left">Evil Mode</th>
+<th scope="col" class="org-left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-x C-c</td>
+<td class="org-left">SPC-q-q</td>
+<td class="org-left">Salir de Emacs</td>
+</tr>
+
+<tr>
+<td class="org-left">M-x dired</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Listar directorio</td>
+</tr>
+
+<tr>
+<td class="org-left">M-x shell</td>
+<td class="org-left">Spc-'</td>
+<td class="org-left">Abre la terminal</td>
+</tr>
+
+<tr>
+<td class="org-left">M-x list-packages</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Lista todos los paquetes</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org6a4c4ce" class="outline-3">
+<h3 id="org6a4c4ce"><span class="section-number-3">1.4</span> Comandos para Edición</h3>
+<div class="outline-text-3" id="text-1-4">
+<table id="org600dda8" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Holy Mode</th>
+<th scope="col" class="org-left">Evil Mode</th>
+<th scope="col" class="org-left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-w</td>
+<td class="org-left">d</td>
+<td class="org-left">Cortar texto</td>
+</tr>
+
+<tr>
+<td class="org-left">X-w</td>
+<td class="org-left">y</td>
+<td class="org-left">Copiar texto seleccionado</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Y</td>
+<td class="org-left">Copiar desde el cursor hasta final de linea</td>
+</tr>
+
+<tr>
+<td class="org-left">C-y</td>
+<td class="org-left">p</td>
+<td class="org-left">Pegar texto despues del cursor</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">P</td>
+<td class="org-left">Pegar texto antes del cursor</td>
+</tr>
+
+<tr>
+<td class="org-left">C-w u</td>
+<td class="org-left">u</td>
+<td class="org-left">Deshacer cambio</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Shift &lt; Arrow &gt;</td>
+<td class="org-left">v &lt; h/j/k/l &gt;</td>
+<td class="org-left">Seleccionar texto</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x h</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Seleccionar todo el texto</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x</td>
+<td class="org-left">ESC</td>
+<td class="org-left">Cancelar acción</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-s</td>
+<td class="org-left">SPC f s</td>
+<td class="org-left">Guardar archivo</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-v</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Actualizar buffer</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">o</td>
+<td class="org-left">Insertar linea debajo del cursor</td>
+</tr>
+
+<tr>
+<td class="org-left">C-k</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Borra desde el puntero hasta el final de linea</td>
+</tr>
+
+<tr>
+<td class="org-left">M-k</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Elimina texto hasta final del texto, parrafos</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">dd</td>
+<td class="org-left">Elimina linea</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">D</td>
+<td class="org-left">Elimina desde el principio al final de linea</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">x</td>
+<td class="org-left">Elimina caracter despues del cursor</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">X</td>
+<td class="org-left">Elimina caracter antes del cursor</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org6aa3b06" class="outline-3">
+<h3 id="org6aa3b06"><span class="section-number-3">1.5</span> Comandos de Desplazamiento</h3>
+<div class="outline-text-3" id="text-1-5">
+<table id="org17321bf" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Holy Mode</th>
+<th scope="col" class="org-left">Evil Mode</th>
+<th scope="col" class="org-left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-n</td>
+<td class="org-left">j</td>
+<td class="org-left">Mover cursor hacia abajo</td>
+</tr>
+
+<tr>
+<td class="org-left">C-p</td>
+<td class="org-left">k</td>
+<td class="org-left">Mover cursor hacia arriba</td>
+</tr>
+
+<tr>
+<td class="org-left">C-b</td>
+<td class="org-left">h</td>
+<td class="org-left">Mover cursor hacia la izquierda (backward)</td>
+</tr>
+
+<tr>
+<td class="org-left">C-f</td>
+<td class="org-left">l</td>
+<td class="org-left">Mover cursor hacia la derecha (foward)</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">M-AvPag</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Scrollear otra ventana, sin mover el cursor</td>
+</tr>
+
+<tr>
+<td class="org-left">M-RePag</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Scrollear otra ventana, sin mover el cursor</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-s</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Busqueda de texto, hacia adelante</td>
+</tr>
+
+<tr>
+<td class="org-left">C-r</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Busqueda de texto, hacia atras</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">/[patron] RET</td>
+<td class="org-left">Busqueda de texto hacia adelante (<b><b>n</b></b> para avanzar, <b><b>N</b></b> para retroceder)</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">?[patron] RET</td>
+<td class="org-left">Busqueda de texto hacia atras (<b><b>n</b></b> para avanzar, <b><b>N</b></b> para retroceder)</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">M-g</td>
+<td class="org-left">&lt; n &gt; gg</td>
+<td class="org-left">Ir a la linea n (Ej. 20gg va a la linea 20)</td>
+</tr>
+
+<tr>
+<td class="org-left">C-g</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Finaliza búsqueda</td>
+</tr>
+
+<tr>
+<td class="org-left">C-u 8 *</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Escribe el asterisco 8 veces</td>
+</tr>
+
+<tr>
+<td class="org-left">M-Delback</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Borra por palabras</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">C-k</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Borra desde el puntero hasta el final de linea</td>
+</tr>
+
+<tr>
+<td class="org-left">M-k</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Elimina texto hasta final del texto, parrafos</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">C-v</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Avanzar sig. Página</td>
+</tr>
+
+<tr>
+<td class="org-left">M-v</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Retroceder, anterior página</td>
+</tr>
+
+<tr>
+<td class="org-left">M-&lt;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Retroceder por palabras</td>
+</tr>
+
+<tr>
+<td class="org-left">M-&gt;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Avanzar por palabras</td>
+</tr>
+
+<tr>
+<td class="org-left">C-a</td>
+<td class="org-left">^</td>
+<td class="org-left">Principio de linea</td>
+</tr>
+
+<tr>
+<td class="org-left">C-e</td>
+<td class="org-left">$</td>
+<td class="org-left">Final de linea</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org2acb977" class="outline-3">
+<h3 id="org2acb977"><span class="section-number-3">1.6</span> Control de Buffers</h3>
+<div class="outline-text-3" id="text-1-6">
+<table id="org3adc5ac" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Comando</th>
+<th scope="col" class="org-left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">M-x eval-buffer</td>
+<td class="org-left">Cargar configuraciones sin cerrar emacs</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">C-x 1</td>
+<td class="org-left">Cierras las otras ventanas que no es la actual</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x 2</td>
+<td class="org-left">Divide la ventana en 2 (horizontal)</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x 3</td>
+<td class="org-left">Divide la ventana en 2 (vertical)</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x o</td>
+<td class="org-left">Mueve el cursor a la otra ventana</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x b</td>
+<td class="org-left">Cambiar a otro buffer</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-b</td>
+<td class="org-left">Listar buffers</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x k</td>
+<td class="org-left">Cerrar ventana (no emacs)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="outline-container-orge789b40" class="outline-2">
+<h2 id="orge789b40"><span class="section-number-2">2</span> Otros</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org362a734" class="outline-3">
+<h3 id="org362a734"><span class="section-number-3">2.1</span> Modificar archivos con permisos root</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Se procede de igual manera que cuando se abren los archivos,
+con la excepción que se agrega <code>/sudo::/</code> antes de la ruta de archivo
+</p>
+
+<p>
+Por tanto deberiamos realizar lo siguiente
+</p>
+<div class="org-src-container">
+<pre class="src src-bash" id="orgec8bf61">C-x C-f /sudo::/ruta/archivo.extension
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orge8aa9f4" class="outline-3">
+<h3 id="orge8aa9f4"><span class="section-number-3">2.2</span> Acciones sobre el listado de directorios</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+Luego de haber lanzar <code>M-x dired</code> se pueden ejecutar acciones estando dentro del listado
+</p>
+
+<table id="orgcf87295" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Acción</th>
+<th scope="col" class="org-left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">d</td>
+<td class="org-left">Seleccionar archivo para aplicarle una acción</td>
+</tr>
+
+<tr>
+<td class="org-left">x</td>
+<td class="org-left">Ejecutar acción</td>
+</tr>
+
+<tr>
+<td class="org-left">g</td>
+<td class="org-left">Actualizar cambios</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-f</td>
+<td class="org-left">Crear un archivo</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-q</td>
+<td class="org-left">Renombrar archivos (Finalizar con C-c C-c)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orgc833d0c" class="outline-3">
+<h3 id="orgc833d0c"><span class="section-number-3">2.3</span> Referencias</h3>
+<div class="outline-text-3" id="text-2-3">
+</div>
+<div id="outline-container-org03f5db1" class="outline-4">
+<h4 id="org03f5db1"><span class="section-number-4">2.3.1</span> Referencias Web Extraoficiales</h4>
+<div class="outline-text-4" id="text-2-3-1">
+<ul class="org-ul">
+<li>[Ver Pagina](<a href="https://caiorss.github.io/Emacs-Elisp-Programming/Keybindings.html">https://caiorss.github.io/Emacs-Elisp-Programming/Keybindings.html</a>)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orge1cc857" class="outline-2">
+<h2 id="orge1cc857"><span class="section-number-2">3</span> Configuración personalizada</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org4c43ba7" class="outline-3">
+<h3 id="org4c43ba7"><span class="section-number-3">3.1</span> Configurar la indentación del código</h3>
+<div class="outline-text-3" id="text-3-1">
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">Set Indentation (tabs)</span>
+<span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">https://www.gnu.org/software/emacs/manual/html_node/efaq/Changing-the-length-of-a-Tab.html</span>
+<span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">https://www.emacswiki.org/emacs/IndentationBasics</span>
+<span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">setq-default</span> tab-width <span style="color: #a45bad;">2</span><span style="color: #4f97d7;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgedc7eb0" class="outline-3">
+<h3 id="orgedc7eb0"><span class="section-number-3">3.2</span> Autoindentación</h3>
+<div class="outline-text-3" id="text-3-2">
+<div class="org-src-container">
+<pre class="src src-elisp" id="org58333d5"><span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">https://www.emacswiki.org/emacs/AutoIndentation</span>
+<span style="color: #4f97d7;">(</span>add-hook 'lisp-mode-hook '<span style="color: #bc6ec5;">(</span>lambda <span style="color: #2d9574;">()</span>
+  <span style="color: #2d9574;">(</span>local-set-key <span style="color: #67b11d;">(</span>kbd <span style="color: #2d9574;">"RET"</span><span style="color: #67b11d;">)</span> 'newline-and-indent<span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org6b5b7ef" class="outline-2">
+<h2 id="org6b5b7ef"><span class="section-number-2">4</span> Información Adicional</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-orgf241d92" class="outline-3">
+<h3 id="orgf241d92"><span class="section-number-3">4.1</span> Cambiar de buffer</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+Usando el comando <code>C+x b</code>
+Puede continuar usando C-x o para cambiar entre las ventanas.
+Cada ventana tiene su propia posición del cursor, pero únicamente una ventana actual 
+muestra el cursor.
+Todos los comandos de edición comunes se aplican a la ventana en que está el cursor.
+Llamaremos esto la "ventana seleccionada".
+</p>
+
+<p>
+El comando <code>C-M-v</code> es muy útil cuando está editando un texto en una ventana y 
+usando la otra ventana como referencia.
+Puede mantener el cursor siempre en la ventana donde está editando,
+y avanzar a la otra ventana secuencialmente con <code>C-M-v</code>
+</p>
+</div>
+</div>
+<div id="outline-container-orga327226" class="outline-3">
+<h3 id="orga327226"><span class="section-number-3">4.2</span> Guardar</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+“Esto copia el texto dentro de Emacs al archivo. La primera vez que haga esto, 
+Emacs renombrará el archivo original con un nuevo nombre para que éste no se pierda.
+El nuevo nombre se hace agregando <code>~</code> al final del nombre del archivo original.
+</p>
+
+<p>
+Cuando guardar haya terminado, Emacs mostrará el nombre del archivo escrito.
+Deberá guardar frecuentemente, para que no pierda mucho trabajo si el sistema falla.”
+Puede encontrar un archivo existente, para verlo o editarlo.
+</p>
+
+<p>
+También puede hacerlo con un archivo que no exista. Ésta es la forma de crear un archivo 
+en Emacs: encuentre el archivo, que comenzará vacío, luego comience a insertar el texto 
+para ese archivo.
+</p>
+
+<p>
+Cuando invoque "guardar" el archivo, Emacs creará realmente el archivo con el texto 
+que ha insertado.  De ahí en adelante, puede considerarse estar editando un archivo existente.
+</p>
+</div>
+</div>
+<div id="outline-container-orgcf72613" class="outline-3">
+<h3 id="orgcf72613"><span class="section-number-3">4.3</span> Buffers</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+CUALQUIER texto que vea en una ventana de Emacs siempre es parte de un buffer.
+Algunos buffers no corresponden a un archivo.
+</p>
+
+<p>
+Por ejemplo, el buffer llamado "<b>Buffer List</b>" no tiene ningún archivo.
+Es el buffer que contiene la lista de buffers que ha creado con <code>C-x C-b</code>
+</p>
+
+<p>
+El buffer llamado <b>Messages</b> tampoco tiene un archivo correspondiente;
+contiene los mensajes que han aparecido en la línea de abajo durante su sesión de Emacs.
+</p>
+</div>
+</div>
+<div id="outline-container-org055d7f6" class="outline-3">
+<h3 id="org055d7f6"><span class="section-number-3">4.4</span> Auto guardado</h3>
+<div class="outline-text-3" id="text-4-4">
+<p>
+Si ha hecho cambios en un archivo, pero no los ha guardado, éstos podrían perderse si su computadora falla.
+Para protegerlo de esto, Emacs periódicamente escribe un archivo "auto guardado" 
+para cada archivo que está editando.
+</p>
+
+<p>
+El nombre del archivo auto guardado tiene un <code>#</code> al principio y al final también.
+Por ejemplo, si su archivo se llama <b>hola.c</b>, su archivo auto guardado será <b>#hola.c#</b>
+</p>
+
+<p>
+Cuando guarda por la vía normal, Emacs borra su archivo de auto guardado.
+Si la computadora falla, puede recuperar su edición de auto guardado encontrando el 
+archivo normal (el archivo que estuvo editando, no el archivo de auto guardar) 
+y entonces si presionamos <code>M-x recover file&lt;Return&gt;</code>.
+</p>
+
+<p>
+Cuando le pregunte por la confirmación, presionamos <code>yes&lt;Return&gt;</code> para ir 
+y recuperar la información del auto guardado.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org29b1a25" class="outline-2">
+<h2 id="org29b1a25"><span class="section-number-2">5</span> Referencias</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li>Configuración del archivo Init, ErgoEmacs <a href="http://ergoemacs.org/emacs/emacs_make_modern.html">Ver Página</a></li>
+<li>Utilizando el Editor de Directorios, GNU <a href="http://dinasis.com/oliver/Learning_GNU_Emacs/gnu3-CHP-5-SECT-2.html">Ver Página</a></li>
+<li>Documentación Oficial, GNU.org <a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Exiting.html">Ver Página</a></li>
+<li>Referencia de comandos, EmacsWiki <a href="https://www.emacswiki.org/emacs/EmacsNewbieKeyReference">Ver Página</a></li>
+<li>Comando C-M-v Scroll-other-window, GNU.org <a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Other-Window.html">Ver Página</a></li>
+<li>Renombrar multiples archivos <a href="http://pragmaticemacs.com/emacs/dired-rename-multiple-files/">Ver Página</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd942e8a" class="outline-2">
+<h2 id="orgd942e8a"><span class="section-number-2">6</span> Referencias pendientes a revisar</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-org2d989ba" class="outline-3">
+<h3 id="org2d989ba"><span class="section-number-3">6.1</span> Otros</h3>
+<div class="outline-text-3" id="text-6-1">
+<ul class="org-ul">
+<li><a href="https://www.emacswiki.org/emacs/WhatAreTheNeedsOfProgrammers#toc6">https://www.emacswiki.org/emacs/WhatAreTheNeedsOfProgrammers#toc6</a></li>
+<li><a href="https://truongtx.me/2013/03/10/ecb-emacs-code-browser">https://truongtx.me/2013/03/10/ecb-emacs-code-browser</a></li>
+<li><a href="https://www.reddit.com/r/emacs/comments/931ogo/finally_a_decent_method_outline_for_my_emacs_ecb/">https://www.reddit.com/r/emacs/comments/931ogo/finally_a_decent_method_outline_for_my_emacs_ecb/</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org62f9b3c" class="outline-3">
+<h3 id="org62f9b3c"><span class="section-number-3">6.2</span> cedet</h3>
+<div class="outline-text-3" id="text-6-2">
+<ul class="org-ul">
+<li><a href="https://appsintheopen.com/articles/1-setting-up-emacs-for-rails-development/part/6-setting-up-the-emacs-code-browser">https://appsintheopen.com/articles/1-setting-up-emacs-for-rails-development/part/6-setting-up-the-emacs-code-browser</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5344802" class="outline-3">
+<h3 id="org5344802"><span class="section-number-3">6.3</span> Neotree</h3>
+<div class="outline-text-3" id="text-6-3">
+<ul class="org-ul">
+<li><a href="https://github.com/jaypei/emacs-neotree/blob/dev/README.md">https://github.com/jaypei/emacs-neotree/blob/dev/README.md</a></li>
+<li><a href="https://github.com/Alexander-Miller/treemacs">https://github.com/Alexander-Miller/treemacs</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org35bbae4" class="outline-3">
+<h3 id="org35bbae4"><span class="section-number-3">6.4</span> View method, classes</h3>
+<div class="outline-text-3" id="text-6-4">
+<ul class="org-ul">
+<li><a href="https://stackoverflow.com/questions/7497132/emacs-ecb-method-window-not-showing-all-methods">https://stackoverflow.com/questions/7497132/emacs-ecb-method-window-not-showing-all-methods</a></li>
+<li><a href="https://superuser.com/questions/629090/emacs-displaying-list-of-subroutines-functions-classes-in-a-source-file">https://superuser.com/questions/629090/emacs-displaying-list-of-subroutines-functions-classes-in-a-source-file</a></li>
+<li><a href="http://cedet.sourceforge.net/">http://cedet.sourceforge.net/</a></li>
+<li><a href="https://www.emacswiki.org/emacs/ImenuMode">https://www.emacswiki.org/emacs/ImenuMode</a></li>
+<li><a href="http://cedet.sourceforge.net/">http://cedet.sourceforge.net/</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1a88d23" class="outline-3">
+<h3 id="org1a88d23"><span class="section-number-3">6.5</span> ECB</h3>
+<div class="outline-text-3" id="text-6-5">
+<ul class="org-ul">
+<li><a href="http://ecb.sourceforge.net/docs/ecb_002dmethods.html">http://ecb.sourceforge.net/docs/ecb_002dmethods.html</a></li>
+<li><a href="http://www.xemacs.org/Documentation/sources/xemacs-packages/xemacs-packages/ecb/ecb_5.html">http://www.xemacs.org/Documentation/sources/xemacs-packages/xemacs-packages/ecb/ecb_5.html</a></li>
+<li><a href="http://ecb.sourceforge.net/docs/Interactive-ECB-commands.html">http://ecb.sourceforge.net/docs/Interactive-ECB-commands.html</a></li>
+<li><a href="https://elpy.readthedocs.io/en/latest/introduction.html#overview">https://elpy.readthedocs.io/en/latest/introduction.html#overview</a></li>
+<li><a href="http://ecb.sourceforge.net/">http://ecb.sourceforge.net/</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: jelou</p>
+<p class="date">Created: 2021-04-04 dom 20:29</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+
+
+</body></html>

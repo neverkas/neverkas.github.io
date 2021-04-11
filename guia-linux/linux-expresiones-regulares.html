@@ -1,0 +1,565 @@
+<!--?xml version="1.0" encoding="utf-8"?--><!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<!-- 2021-04-03 sáb 23:52 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guia Linux - Expresiones Regulares</title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="jelou">
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/sass-style.css">
+<script type="text/javascript" src="/assets/js/all.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Guia Linux - Expresiones Regulares</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orga789856">1. Conceptos</a></li>
+<li><a href="#org7204f81">2. Listar archivos que empiecen con un caracter</a></li>
+<li><a href="#orgae5e54d">3. Listar archivos que no comiencen con un caracter</a></li>
+<li><a href="#org3e86e4c">4. Listar archivos que empiecen y finalicen con un caracter</a></li>
+<li><a href="#org58e9757">5. Agrupando los conceptos anteriores</a></li>
+<li><a href="#org25ca218">6. Referencias</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga789856" class="outline-2">
+<h2 id="orga789856"><span class="section-number-2">1</span> Conceptos</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Cuando hacemos referencia a listar achivos, pueden ser tanto directorios como
+archivos de configuración, ejecutables, etc..
+</p>
+
+<p>
+Antes de comenzar comparto una tabla que sino la entienden, más tarde lo harán
+con los ejemplos que le sigan. No explico todos los ejemplos por el momento,
+quizás luego lo siga. Esto es solo una breve introducción al tema.
+</p>
+
+<table id="orgdd25868" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Operador Metacaracter</th>
+<th scope="col" class="org-left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">^</td>
+<td class="org-left">Indica con que comienza de la linea</td>
+</tr>
+
+<tr>
+<td class="org-left">$</td>
+<td class="org-left">Indica con que debe terminar la linea</td>
+</tr>
+
+<tr>
+<td class="org-left">.</td>
+<td class="org-left">Representa cualquier caracter (comodín)</td>
+</tr>
+
+<tr>
+<td class="org-left">[ ]</td>
+<td class="org-left">Los caracteres que estén entre los corchetes, será solo alguno de ellos</td>
+</tr>
+
+<tr>
+<td class="org-left">*</td>
+<td class="org-left">Lo que esté antes del asterisco se repite cero o más veces (clausura de kleene)</td>
+</tr>
+
+<tr>
+<td class="org-left">+</td>
+<td class="org-left">Lo que esté antes del operador suma, se repite 1 o más veces (clausura positiva)</td>
+</tr>
+
+<tr>
+<td class="org-left">?</td>
+<td class="org-left">Lo que esté antes del signo de interrogación, aparece ninguna o una vez</td>
+</tr>
+
+<tr>
+<td class="org-left">\</td>
+<td class="org-left">Escapa el caracter especial que le siga (punto,coma, guión, etc..)</td>
+</tr>
+
+<tr>
+<td class="org-left">[^]</td>
+<td class="org-left">Al estar entre corchetes, se interpreta como cualquier cosa menos lo que este entre ellos</td>
+</tr>
+
+<tr>
+<td class="org-left">{m,n}</td>
+<td class="org-left">Lo que esté antes tendrá una longitud de m a n (Ej. )</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Si investigan más acerca del tema, verán que hablan de <b>ocurrencias</b> o <b>coincidencias</b> que en 
+inglés significa <b>match</b>. La idea es que las expresiones regulares son un conjunto de caracteres
+que representan con patrón esto sería que tienen algo en común. (Ej. los archivos de texto empiezan con 
+un nombre seguido de un punto y finalizan con otro nombre que representa la extensión, el patrón 
+que coinciden con estos es nombre.extension)
+</p>
+
+<p>
+<b>Observación:</b>
+Algunos operadores ó metacaracteres como el <code>?</code>, <code>+</code> ó <code>{m,n}</code> cumplen la función que aparece
+en la tabla sólo cuando escribimos <b>expresiones regulares extendidas</b>, para eso solo debemos agregar el 
+parámetro <code>-E</code>. Pero si no lo llegamos a necesitar no es necesario. 
+</p>
+
+<p>
+<b>Sugerencia:</b>
+Cuando escriban las <b>expresiones regulares</b> se recomienda el uso de las comillas, para
+evitar la <b>expansión de shell</b>, para averiguar más de esto último al final de la página aparecen varias referencias
+que lo explican en detalle.
+</p>
+</div>
+</div>
+<div id="outline-container-org7204f81" class="outline-2">
+<h2 id="org7204f81"><span class="section-number-2">2</span> Listar archivos que empiecen con un caracter</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Utilizamos el operador <code>^</code> que significa "todo lo que empiece con", seguido entre <code>[ ]</code> los 
+caracteres de los archivos que buscamos, finalizando con <code>.*</code> que quiere decir "seguido de cualquier caracter"
+</p>
+
+<p>
+<b>Observación:</b>
+Si ponemos <code>^[doc]</code> no va a buscar esa palabra, sinó las palabras que comienzan con alguno de 
+esos caracteres <b>o</b>, con <b>d</b> ó con <b>c</b>
+</p>
+
+<p>
+Por ejemplo, filtremos los archivos que empiezan con letra <b>e</b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="orgeef11d0">ls | grep <span style="color: #2d9574;">"^[e].*"</span>
+</pre>
+</div>
+
+<p>
+Explicación de lo realizado
+</p>
+<ol class="org-ol">
+<li><b>^</b> todo lo que empiece con</li>
+<li><b>[ex]</b> el caracter <b>e</b> ó <b>x</b></li>
+<li><b>.</b> seguido cualquier caracter o palabras de cualquier longitud</li>
+</ol>
+
+<p>
+El resultado sería
+</p>
+
+<pre class="example">exercise1-10.c
+exercise1-10.c~
+exercise1-11.c
+exercise1-11.c~
+</pre>
+</div>
+</div>
+<div id="outline-container-orgae5e54d" class="outline-2">
+<h2 id="orgae5e54d"><span class="section-number-2">3</span> Listar archivos que no comiencen con un caracter</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Seria lo mismo que el anterior, con la diferencia que al principio de
+los caracteres que están entre los corchetes <code>[ ]</code> se debe agregar el <code>^</code> 
+que en este caso significa "que no comience con eso" se podria decir
+que es un <b>not</b>
+</p>
+
+
+<p>
+Por ejemplo, filtremos los archivos que <b>NO</b> inician con alguna de las letras <b>e</b> ó <b>x</b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="orgfce24cd">ls | grep <span style="color: #2d9574;">"^[^e].*"</span>
+</pre>
+</div>
+
+<p>
+Explicación de lo realizado
+</p>
+<ol class="org-ol">
+<li><b>^</b> todo lo que empiece con</li>
+<li><b>[<sup>ex</sup>]</b> cualquier palabra que no sea el caracter <b>e</b> ó <b>x</b></li>
+<li><b>.</b> seguido cualquier caracter o palabras de cualquier longitud</li>
+</ol>
+
+<p>
+El resultado sería el siguiente
+</p>
+<pre class="example">a.out
+#testing.c#
+testing.c
+testing.c~
+</pre>
+</div>
+</div>
+<div id="outline-container-org3e86e4c" class="outline-2">
+<h2 id="org3e86e4c"><span class="section-number-2">4</span> Listar archivos que empiecen y finalicen con un caracter</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Es similar al primer ejemplo, salvo que le agregamos el <code>$</code> al final, que indica
+que los nombres de los archivos deben "si o si" terminar con ese ultima palabra.
+En este caso pusimos <code>\.c</code> que hace referencia a los programas del lenguaje C 
+que tienen eso como extensión.
+</p>
+
+<p>
+<b>Observación:</b>
+El signo <code>\</code> sirve para escapar de caracteres especiales, que pueden ser simbolos 
+como los siguientes , . ? ¡ + ¿ 
+</p>
+
+<p>
+Por ejemplo, tratemos de listar los archivos que empiezan con "e" y terminan con ".c"
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="org36306e0">ls | grep <span style="color: #2d9574;">"^e.*\.c$"</span>
+</pre>
+</div>
+
+<p>
+El resultado seria el siguiente
+</p>
+
+<pre class="example">exercise1-10.c
+exercise1-11.c
+exercise1-12.c
+exercise1-3.c
+</pre>
+</div>
+</div>
+<div id="outline-container-org58e9757" class="outline-2">
+<h2 id="org58e9757"><span class="section-number-2">5</span> Agrupando los conceptos anteriores</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+Supongamos el caso que tengamos en un directorio multiples archivos con distintas extensiones,
+como pueden ser .jpg .xls .txt .hs .c pero solo queremos listar aquellos que empiezan con
+la letra <b>e</b> por "exercise" ó "ejercicio" ó "examen" seguido de o no de un guión, un rango de numeros
+del 1 al 9 y terminen en <b>.c</b>  (.c es la extensión de los programas del lenguaje C)
+</p>
+
+<p>
+Detallo como sería el paso a paso, colocando a la izquierda como iria avanzando la expresión regular,
+a la derecha una breve explicación, y al final toda la expresión regular completa.
+</p>
+
+<ol class="org-ol">
+<li><code>^e</code> Como empiezan con <b>e</b> sabemos que utilizaremos</li>
+<li><code>.*</code> Seguimos completando con letras hasta que llegue al rango de numeros del 1 al 19
+por tanto usaremos <code>.</code> para que complete con palabras de cualquier longitud. El <code>.</code> (el punto) 
+sirve de comodín y representa cualquier caracter, y el <code>*</code> asterisco quiere decir que el caracter 
+que lo preceda se repite cero o más veces (clausura de kleene).</li>
+<li><code>\-?</code>  con <code>\-</code> que le seguirá un guión, porque recordemos que la barra invertida <code>\</code> es para <b>escapar</b> de símbolos,
+y al tener el signo de interrogación <code>?</code> afirmamos que el guión puede estar <b>cero o una vez</b>
+(no confundir con el <code>*</code> que es cero más veces).</li>
+<li><code>[0-9]</code> representa a un rango de números de <b>un dígito</b> del 0 al 9</li>
+<li><code>\.c$</code>  el <code>\</code> ya explicamos que es para escapar los símbolos especiales, 
+en este caso el <code>.</code>, y con <code>c$</code> decimos que debe <b>si o si</b> terminar con una letra <b>c</b></li>
+</ol>
+
+<p>
+La expresión regular deberia ser la siguiente
+</p>
+<div class="org-src-container">
+<pre class="src src-shell" id="orgabf973f">ls | grep -E <span style="color: #2d9574;">"^e.*\-?[0-9]\.c$"</span>
+</pre>
+</div>
+
+<p>
+el resultado de escribir esto en la terminal sería
+</p>
+<pre class="example">exercise1.c
+exercise2.c
+exercise-1.c
+exercise-3.c
+</pre>
+
+<p>
+<b>Observación:</b>
+Notarás que a diferencia de los anteriores ejemplos, este tiene un parámetro <b>-E</b>
+esto quiere decir que es una <b>expresión regular extendida</b> donde agregaron el uso del operador <code>?</code>
+que en las <b>expresiones regulares simples</b> que estabamos usando antes no tenían.
+Podes tratar de hacer el intento sin este parámetro y verás que el resultado es distinto.
+</p>
+</div>
+</div>
+<div id="outline-container-org25ca218" class="outline-2">
+<h2 id="org25ca218"><span class="section-number-2">6</span> Referencias</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+Las referencias estan ordenadas por cuales son más relevantes
+</p>
+<ul class="org-ul">
+<li>[Expansiones de la Shell - Curso Sysadmin](<a href="http://persoal.citius.usc.es/tf.pena/ASR/Tema_2html/node15.html">http://persoal.citius.usc.es/tf.pena/ASR/Tema_2html/node15.html</a>)</li>
+<li>[Tilde Expansion, Brace Expansion, Arithmetic Expansion - Linuxcommand](<a href="http://linuxcommand.sourceforge.net/lc3_lts0080.php">http://linuxcommand.sourceforge.net/lc3_lts0080.php</a>)</li>
+<li>[Expansion de comodines - IT Swarm.dev](<a href="http://linuxcommand.sourceforge.net/lc3_lts0080.php">http://linuxcommand.sourceforge.net/lc3_lts0080.php</a>)</li>
+<li>[Cuando envolver las comillas alrededor de una variable de Shell - IT Swarm.dev](<a href="https://www.it-swarm.dev/es/linux/cuando-envolver-las-comillas-alrededor-de-una-variable-de-shell/1065766250/">https://www.it-swarm.dev/es/linux/cuando-envolver-las-comillas-alrededor-de-una-variable-de-shell/1065766250/</a>)</li>
+<li>[Busqueda de archivos de texto por Regexp - IBM](<a href="https://developer.ibm.com/es/tutorials/l-lpic1-v3-103-7/">https://developer.ibm.com/es/tutorials/l-lpic1-v3-103-7/</a>#)</li>
+<li>[Unix: Expresiones Regulares - Rm-rf.es](<a href="https://rm-rf.es/unix-expresiones-regulares/">https://rm-rf.es/unix-expresiones-regulares/</a>)</li>
+<li>[Expresiones Regulares - Curso Unix](<a href="https://bioinf.comav.upv.es/courses/unix/expresiones_regulares.html">https://bioinf.comav.upv.es/courses/unix/expresiones_regulares.html</a>)</li>
+<li>[Expresiones Regulares - Curso Sysadmin](<a href="http://persoal.citius.usc.es/tf.pena/ASR/Tema_2html/node22.html">http://persoal.citius.usc.es/tf.pena/ASR/Tema_2html/node22.html</a>)</li>
+<li>[Concepto generales POSIX, BRE ERE](<a href="https://blog.desdelinux.net/con-el-terminal-uso-de-expresiones-regulares/">https://blog.desdelinux.net/con-el-terminal-uso-de-expresiones-regulares/</a>)</li>
+<li>[Expresion REgular Extendida, Boost](<a href="https://www.boost.org/doc/libs/1_38_0/libs/regex/doc/html/boost_regex/syntax/basic_extended.html">https://www.boost.org/doc/libs/1_38_0/libs/regex/doc/html/boost_regex/syntax/basic_extended.html</a>)</li>
+<li>[Expresion Regular Basica vs Extendida](<a href="https://www.gnu.org/software/grep/manual/html_node/Basic-vs-Extended.html">https://www.gnu.org/software/grep/manual/html_node/Basic-vs-Extended.html</a>)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: jelou</p>
+<p class="date">Created: 2021-04-03 sáb 23:52</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+
+
+</body></html>

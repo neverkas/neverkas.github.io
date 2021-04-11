@@ -1,0 +1,814 @@
+<!--?xml version="1.0" encoding="utf-8"?--><!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<!-- 2021-03-31 mié 00:47 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>‎</title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="jelou">
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orge976395">1. Haskell ecuaciones algebraicas</a></li>
+<li><a href="#org08e1efb">2. Wallpapers</a></li>
+<li><a href="#org07129ed">3. Tinyurls</a></li>
+<li><a href="#orga43928d">4. Latex</a>
+<ul>
+<li><a href="#orgab436d3">4.1. Referencias</a></li>
+<li><a href="#org83cd059">4.2. Programas para ecuaciones en latex</a>
+<ul>
+<li><a href="#org6a87840">4.2.1. Programas</a></li>
+<li><a href="#orgcffec72">4.2.2. Usando Octave</a></li>
+<li><a href="#orgd626e34">4.2.3. Usando Texmacs</a></li>
+<li><a href="#org8fd0196">4.2.4. Comandos fundamentales</a></li>
+<li><a href="#orgf089355">4.2.5. Creando indices</a></li>
+<li><a href="#org65a2e6f">4.2.6. Referencias</a></li>
+</ul>
+</li>
+<li><a href="#org6674e2d">4.3. Programas para graficar</a></li>
+<li><a href="#org7249a4c">4.4. Github</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge976395" class="outline-2">
+<h2 id="orge976395"><span class="section-number-2">1</span> Haskell ecuaciones algebraicas</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Para hacer ecuaciones algebraicas para trabajos practicos como fisica:
+</p>
+<ol class="org-ol">
+<li>Podemos usar haskell para realizar los calculos de manera rapida</li>
+<li>Podemos usar latex para visualizar las ecuaciones en formato pdf</li>
+</ol>
+
+<p>
+Tips:
+</p>
+<ol class="org-ol">
+<li>Para usar coseno y seno tenes que pasar los grados a radianes</li>
+<li>Para hacer cuentas en la terminal, manera rapida de tipar las funciones
+es usar la misma sintaxis que al tipar funciones pero a la izquierda
+iran las operaciones
+Prelude&gt; 0.219 / (cos(radianes 58) * 10) :: CReal</li>
+
+<li>Para evitar resultados con notacion cientifica
+<ol class="org-ol">
+<li>Primera solucion:</li>
+<li>Importar en el archivo .hs el modulo Numeric</li>
+<li>Utilizar la siguiente funcion, para parsear los resultados
+de notacion cientifica
+ showFullPrecision :: Double -&gt; String
+ showFullPrecision x = showFFloat Nothing x ""</li>
+<li>Segunda solucion:
+<ol class="org-ol">
+<li>Agregar la dependencia numbers en package.yaml de stack</li>
+<li>Importar en el archivo .hs el modulo Data.Number.CReal</li>
+<li>Agregar en el tipado de las funciones :: CReal</li>
+</ol></li>
+</ol></li>
+</ol>
+
+<p>
+#+SRC<sub>BEGIN</sub> haskell
+ module TpFisicaPunteria where
+ import Data.Number.CReal
+</p>
+
+<p>
+ – Obs: Si no pasas a radianes el sin/cos devuelven otros numeros
+ radianes grados = (grados*2*pi) / 360
+ – Obs: Si no usas CReal devuelve el numero en notacion cientifica
+vMax :: CReal
+vMax = 0.219 / (cos(radianes 58) * 10)
+#+END<sub>SRC</sub>
+</p>
+
+<p>
+Referencias
+</p>
+<ol class="org-ol">
+<li><a href="https://stackoverflow.com/questions/37006362/haskell-how-to-avoid-scientific-notation-in-decimal-output">https://stackoverflow.com/questions/37006362/haskell-how-to-avoid-scientific-notation-in-decimal-output</a></li>
+<li><a href="https://www.reddit.com/r/haskell/comments/9v40jp/using_cos_and_sin/">https://www.reddit.com/r/haskell/comments/9v40jp/using_cos_and_sin/</a></li>
+<li><a href="https://stackoverflow.com/questions/58042134/problem-loading-module-data-number-creal-in-cabal-file">https://stackoverflow.com/questions/58042134/problem-loading-module-data-number-creal-in-cabal-file</a></li>
+<li><a href="https://downloads.haskell.org/~ghc/7.8.4/docs/html/users_guide/packages.html">https://downloads.haskell.org/~ghc/7.8.4/docs/html/users_guide/packages.html</a></li>
+<li><a href="https://hackage.haskell.org/package/exact-real-0.12.4/docs/Data-CReal.html">https://hackage.haskell.org/package/exact-real-0.12.4/docs/Data-CReal.html</a></li>
+<li><a href="https://stackoverflow.com/questions/17566768/haskell-sine-and-cosine-functions-not-working">https://stackoverflow.com/questions/17566768/haskell-sine-and-cosine-functions-not-working</a></li>
+<li><a href="https://xbuba.com/questions/37006362">https://xbuba.com/questions/37006362</a></li>
+<li><a href="http://rigaux.org/language-study/syntax-across-languages-per-language/Haskell.html">http://rigaux.org/language-study/syntax-across-languages-per-language/Haskell.html</a></li>
+<li><a href="https://hackage.haskell.org/package/ClassyPrelude-0.1/docs/Prelude-Math.html#t:Floating">https://hackage.haskell.org/package/ClassyPrelude-0.1/docs/Prelude-Math.html#t:Floating</a></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org08e1efb" class="outline-2">
+<h2 id="org08e1efb"><span class="section-number-2">2</span> Wallpapers</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li><a href="https://oswallpapers.com/parrot-security-os-4-3-default-desktop-wallpapers/">https://oswallpapers.com/parrot-security-os-4-3-default-desktop-wallpapers/</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org07129ed" class="outline-2">
+<h2 id="org07129ed"><span class="section-number-2">3</span> Tinyurls</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Los que considero por ahora como mejores, porque permiten ponerle un nombre 
+existen otros como bitly que te genera nombres aleatorios dificiles de recordar.
+</p>
+<ul class="org-ul">
+<li><a href="https://tiny.cc/">Tiny.cc</a></li>
+<li><a href="https://tinyurl.com/">Tinyurl.com</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga43928d" class="outline-2">
+<h2 id="orga43928d"><span class="section-number-2">4</span> Latex</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-orgab436d3" class="outline-3">
+<h3 id="orgab436d3"><span class="section-number-3">4.1</span> Referencias</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li><a href="https://wiki.lyx.org/Tips/KeyboardShortcuts">https://wiki.lyx.org/Tips/KeyboardShortcuts</a></li>
+<li><a href="https://wiki.lyx.org/Tips/CommandSequences">https://wiki.lyx.org/Tips/CommandSequences</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org83cd059" class="outline-3">
+<h3 id="org83cd059"><span class="section-number-3">4.2</span> Programas para ecuaciones en latex</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+Lyxx y texmacs tienen wrty o algo asi (? pero permite que se pueda previsualizar las ecuaciones
+en el momento que las escribis como si fuera live, en otros suele aparecer el codigo latex 
+y la previsualización por separado, que quizas no es tan comodo.
+</p>
+</div>
+
+<div id="outline-container-org6a87840" class="outline-4">
+<h4 id="org6a87840"><span class="section-number-4">4.2.1</span> Programas</h4>
+<div class="outline-text-4" id="text-4-2-1">
+<ul class="org-ul">
+<li>Lyxx</li>
+<li>TeXmacs</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgcffec72" class="outline-4">
+<h4 id="orgcffec72"><span class="section-number-4">4.2.2</span> Usando Octave</h4>
+<div class="outline-text-4" id="text-4-2-2">
+</div>
+<ol class="org-ol">
+<li><a id="org5e59232"></a>Ejemplos<br>
+<div class="outline-text-5" id="text-4-2-2-1">
+<pre class="example" id="Ejemplo 1 - Función exponencial"># estos ejemplos fueron probados en texmacs
+#
+
+# definimos el rango de la función de 1 a 25
+x=(1:25);
+
+# creamos la función a graficar
+# el operador potencia debe estar precedido de un punto
+y=x.^2
+
+# graficamos
+# debe tener ese tercer parámetro con punto y coma, si no a veces falla
+# ese tercer parámetro le agrega una etiqueta para diferenciar
+plot(x,y,";una funcion;")
+</pre>
+
+<pre class="example" id="Ejemplo 2 - Función intervalo abierto"># estos ejemplos fueron probados en texmacs
+#
+
+# definimos el rango de la función de 1 a 25
+x=[1:25];
+
+# creamos la función a graficar
+# el operador potencia debe estar precedido de un punto
+y=2.*x.*x.^2+3
+
+# graficamos
+# debe tener ese tercer parámetro con punto y coma, si no a veces falla
+# ese tercer parámetro le agrega una etiqueta para diferenciar
+plot(x,y,";una funcion;")
+</pre>
+
+<pre class="example" id="Ejemplo 3 - Graficar dos funciones"># estos ejemplos fueron probados en texmacs
+#
+
+# definimos el rango de la función de 1 a 25
+x=(1:25);
+
+# creamos la función "y" a graficar
+# el operador potencia debe estar precedido de un punto
+y=x.^2
+
+# creamos la función "g" a graficar
+# el operador potencia debe estar precedido de un punto
+g=5-x.^2
+
+
+# graficamos
+# debe tener ese tercer parámetro con punto y coma, si no a veces falla
+# ese tercer parámetro le agrega una etiqueta para diferenciar
+plot(x,y,";una funcion;", x, g, ";otra funcion;")
+</pre>
+</div>
+</li>
+
+<li><a id="org6c5b2d4"></a>Referencias<br>
+<div class="outline-text-5" id="text-4-2-2-2">
+<ul class="org-ul">
+<li><a href="https://www.famaf.unc.edu.ar/~menzaque/0795/2011/notas0310.pdf">Porque usar Octave?</a></li>
+<li><a href="http://materias.fi.uba.ar/6625/TPs/Tutoriales/Tutorial%20Rapido%20de%20Octave.pdf">Tutorial de Octave - fi.uba.ar</a></li>
+<li><a href="https://denklab.org/atix/atix15.pdf">Revisa de Software Libre ATIX</a></li>
+<li><a href="https://www.youtube.com/watch?v=jhTTD3QEYWo">Video #1 - octave-01: Graficación básica en octave</a></li>
+<li><a href="https://www.youtube.com/watch?v=jW4JDkXHUls">Video #2 - Tutorial para graficar funciones con programa octave</a></li>
+<li><a href="https://github.com/texmacs/octave">https://github.com/texmacs/octave</a></li>
+<li><a href="https://en.wikibooks.org/wiki/Octave_Programming_Tutorial/Getting_started">Octave Programming Tutorial/Getting started - wikibooks.org</a></li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-orgd626e34" class="outline-4">
+<h4 id="orgd626e34"><span class="section-number-4">4.2.3</span> Usando Texmacs</h4>
+<div class="outline-text-4" id="text-4-2-3">
+</div>
+<ol class="org-ol">
+<li><a id="orgd342c4d"></a>Tablas<br>
+<div class="outline-text-5" id="text-4-2-3-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Atajos Texmacs</th>
+<th scope="col" class="org-left">Comando LaTeX</th>
+<th scope="col" class="org-left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">@@</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Simbolo infinito</td>
+</tr>
+
+<tr>
+<td class="org-left">P TAB</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Simbolo PI</td>
+</tr>
+
+<tr>
+<td class="org-left">Alt Shift V</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Transforma en vector (agrega el acento flecha)</td>
+</tr>
+
+<tr>
+<td class="org-left">* TAB</td>
+<td class="org-left">×</td>
+<td class="org-left">Operador de Multiplicación</td>
+</tr>
+
+<tr>
+<td class="org-left">S TAB</td>
+<td class="org-left">Σ</td>
+<td class="org-left">Sigma (sumatoria)</td>
+</tr>
+
+<tr>
+<td class="org-left">D TAB</td>
+<td class="org-left">Δ</td>
+<td class="org-left">Delta (triangulo)</td>
+</tr>
+
+<tr>
+<td class="org-left">Alt F</td>
+<td class="org-left">\frac{m}{n}</td>
+<td class="org-left">Fracciones</td>
+</tr>
+
+<tr>
+<td class="org-left">Alt S</td>
+<td class="org-left">\sqrt</td>
+<td class="org-left">Raiz Cuadrada</td>
+</tr>
+
+<tr>
+<td class="org-left">Alt $</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Texto</td>
+</tr>
+
+<tr>
+<td class="org-left">Alt N</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Para tachar</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">letra TAB</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Para cambiar entre las letras griegas</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;=&gt; &lt;==&gt;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">El bicondicional "si solo si"</td>
+</tr>
+
+<tr>
+<td class="org-left">Alt &amp;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Bloque de ecuaciones</td>
+</tr>
+
+<tr>
+<td class="org-left">Shift $</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Linea de ecuación</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">⇧</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Shift</td>
+</tr>
+
+<tr>
+<td class="org-left">⌃</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Control</td>
+</tr>
+
+<tr>
+<td class="org-left">⌥</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">(ALT) Alternate</td>
+</tr>
+
+<tr>
+<td class="org-left">⌘</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Meta (windows)</td>
+</tr>
+
+<tr>
+<td class="org-left">⌘⌥ò ⇧F7</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">(TAB) Hyper</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-org8fd0196" class="outline-4">
+<h4 id="org8fd0196"><span class="section-number-4">4.2.4</span> Comandos fundamentales</h4>
+<div class="outline-text-4" id="text-4-2-4">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Comando</th>
+<th scope="col" class="org-left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Σ</td>
+<td class="org-left">sumatoria</td>
+</tr>
+
+<tr>
+<td class="org-left">Δ</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">cos</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">sin</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">∈</td>
+<td class="org-left">pertenece (un elemento a un conjunto)</td>
+</tr>
+
+<tr>
+<td class="org-left">\nin</td>
+<td class="org-left">no pertence (n representa a la negación not)</td>
+</tr>
+
+<tr>
+<td class="org-left">∃</td>
+<td class="org-left">existe</td>
+</tr>
+
+<tr>
+<td class="org-left">∀</td>
+<td class="org-left">para todo</td>
+</tr>
+
+<tr>
+<td class="org-left">≈</td>
+<td class="org-left">el operador igual (aproximado)</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">\frac{n}{m}</td>
+<td class="org-left">fraccion</td>
+</tr>
+
+<tr>
+<td class="org-left">2<sub>n</sub></td>
+<td class="org-left">subindice</td>
+</tr>
+
+<tr>
+<td class="org-left">2<sup>n</sup></td>
+<td class="org-left">exponente</td>
+</tr>
+
+<tr>
+<td class="org-left">×</td>
+<td class="org-left">producto</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Alt+1</td>
+<td class="org-left">Titulo</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">$</td>
+<td class="org-left">Linea de ecuación</td>
+</tr>
+
+<tr>
+<td class="org-left">Alt+&amp;</td>
+<td class="org-left">Bloque de ecuaciones</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgf089355" class="outline-4">
+<h4 id="orgf089355"><span class="section-number-4">4.2.5</span> Creando indices</h4>
+</div>
+<div id="outline-container-org65a2e6f" class="outline-4">
+<h4 id="org65a2e6f"><span class="section-number-4">4.2.6</span> Referencias</h4>
+<div class="outline-text-4" id="text-4-2-6">
+<ul class="org-ul">
+<li><a href="http://es.tldp.org/Presentaciones/200304curso-glisa/texmacs/curso-glisa-texmacs.pdf">Creación de textos científicos con TeXmacs - TLDP.org</a></li>
+<li><a href="http://www.texmacs.org/tmdoc/main/links/man-toc.es.html">Generar Tabla de Contenido - texmacs.org</a></li>
+<li><a href="http://www.texmacs.org/tmweb/manual/webman-math.en.html">Mathematical FOrmulas texmacs.org</a></li>
+<li><a href="http://www.texmacs.org/tmweb/documents/manuals/texmacs-manual.es.pdf">Manual de TeXmacs - texmacs.org</a></li>
+<li><a href="http://www.texmacs.org/tmdoc/devel/style/keyboard/env.es.html">Macros, Funciones, y variables de entorno - texmacs.org</a></li>
+<li><a href="http://btocastro.blogspot.com/2011/06/latex.html">Imagenes de los comandos, simbolos de Latex</a></li>
+<li><a href="https://www.texmacs.org/tmweb/manual/webman-start.en.html">Getting started</a></li>
+<li><a href="http://mira.um.es/maxima/Introduccion.html">Utilizando MAXIMA (para matemática)</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org6674e2d" class="outline-3">
+<h3 id="org6674e2d"><span class="section-number-3">4.3</span> Programas para graficar</h3>
+<div class="outline-text-3" id="text-4-3">
+<ul class="org-ul">
+<li>inkscape</li>
+</ul>
+</div>
+
+<ol class="org-ol">
+<li><a id="org362f56e"></a>Referencias<br>
+<div class="outline-text-5" id="text-4-3-0-1">
+<ul class="org-ul">
+<li><a href="http://www.texmacs.org/tmweb/documents/manuals/texmacs-manual.es.pdf">El manual de GNU Texmacs - texmacs.org</a></li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-org7249a4c" class="outline-3">
+<h3 id="org7249a4c"><span class="section-number-3">4.4</span> Github</h3>
+<div class="outline-text-3" id="text-4-4">
+<p>
+github Key is already in use
+<a href="https://github.com/neverkas/manu-docs/blob/master/TODO-linux.org">https://github.com/neverkas/manu-docs/blob/master/TODO-linux.org</a>
+</p>
+
+<p>
+<a href="https://www.it-swarm.dev/es/git/error-de-github-clave-ya-en-uso/1043769190/">https://www.it-swarm.dev/es/git/error-de-github-clave-ya-en-uso/1043769190/</a>
+<a href="https://docs.github.com/es/github/authenticating-to-github/error-key-already-in-use">https://docs.github.com/es/github/authenticating-to-github/error-key-already-in-use</a>
+<a href="https://www.sethserver.com/multi-key-github-deployments.html">https://www.sethserver.com/multi-key-github-deployments.html</a>
+<a href="https://stackoverflow.com/questions/21160774/github-error-key-already-in-use">https://stackoverflow.com/questions/21160774/github-error-key-already-in-use</a>
+</p>
+
+<p>
+<a href="https://docs.github.com/es/github/getting-started-with-github/fork-a-repo">https://docs.github.com/es/github/getting-started-with-github/fork-a-repo</a>
+<a href="https://www.youtube.com/watch?v=xl3nxfbGkzY">https://www.youtube.com/watch?v=xl3nxfbGkzY</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: jelou</p>
+<p class="date">Created: 2021-03-31 mié 00:47</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+
+
+</body></html>

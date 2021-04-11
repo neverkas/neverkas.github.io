@@ -1,0 +1,3052 @@
+<!--?xml version="1.0" encoding="utf-8"?--><!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<!-- 2021-04-01 jue 17:42 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guia GIT 2.0</title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="jelou">
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/sass-style.css">
+<script type="text/javascript" src="/assets/js/all.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Guia GIT 2.0</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org5534c3e">1. Libros</a></li>
+<li><a href="#orgc22966b">2. Comandos utiles</a></li>
+<li><a href="#orgb1d3ea6">3. Glosario</a>
+<ul>
+<li><a href="#orgdfc93c6">3.1. Head</a></li>
+<li><a href="#orgf35ddd1">3.2. Track</a>
+<ul>
+<li><a href="#org43532c3">3.2.1. Conceptos</a></li>
+<li><a href="#orgd438d8a">3.2.2. Posibles escenarios</a></li>
+<li><a href="#org4e2834d">3.2.3. Referencias Oficiales</a></li>
+<li><a href="#orge9a9698">3.2.4. Referencias Extraoficiales</a></li>
+</ul>
+</li>
+<li><a href="#org841ac44">3.3. Stage</a></li>
+<li><a href="#org344e2f3">3.4. Tracking Branch</a>
+<ul>
+<li><a href="#org32a5a3f">3.4.1. Conceptos</a></li>
+</ul>
+</li>
+<li><a href="#org3426d03">3.5. MERGE<sub>HEAD</sub></a>
+<ul>
+<li><a href="#org540834d">3.5.1. Conceptos</a></li>
+<li><a href="#orge23c044">3.5.2. Referencias Web Oficiales</a></li>
+</ul>
+</li>
+<li><a href="#org6fa0ea8">3.6. Detached Head</a>
+<ul>
+<li><a href="#org09a909b">3.6.1. Conceptos</a></li>
+<li><a href="#org1bcbd48">3.6.2. Posibles Escenarios</a></li>
+<li><a href="#orge150b48">3.6.3. Posibles Soluciones</a></li>
+<li><a href="#org4c03872">3.6.4. Referencias Web Extraoficiales</a></li>
+</ul>
+</li>
+<li><a href="#orgd7b6ec4">3.7. Master</a></li>
+<li><a href="#orgb64735b">3.8. Origin</a>
+<ul>
+<li><a href="#org4f19bfa">3.8.1. Conceptos</a></li>
+<li><a href="#org0b0d818">3.8.2. Ejemplos</a></li>
+<li><a href="#orgcc7e779">3.8.3. Fragmentos de Documentación</a></li>
+</ul>
+</li>
+<li><a href="#orge3c6ce4">3.9. Repositorio remoto Vs Repositorio local</a></li>
+<li><a href="#org3a6ff6a">3.10. Branches</a>
+<ul>
+<li><a href="#org197dbcc">3.10.1. Conceptos</a></li>
+<li><a href="#orgd72b365">3.10.2. Referencias Web Oficiales</a></li>
+<li><a href="#org5639511">3.10.3. Referencias Web Extraoficiales</a></li>
+</ul>
+</li>
+<li><a href="#org06b749f">3.11. Commits</a></li>
+<li><a href="#org1746bac">3.12. Tags</a></li>
+<li><a href="#orgbd5e1a4">3.13. Fetch</a>
+<ul>
+<li><a href="#org6ea3527">3.13.1. Conceptos</a></li>
+</ul>
+</li>
+<li><a href="#orge50d297">3.14. Reset Vs Checkout</a>
+<ul>
+<li><a href="#org2180c70">3.14.1. Reset</a></li>
+<li><a href="#orgf806c95">3.14.2. Checkout</a></li>
+<li><a href="#org9b23519">3.14.3. Ejemplos</a></li>
+<li><a href="#org2c5fd46">3.14.4. Referencias Extraoficiales</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgeb7f4d3">4. Interesante</a>
+<ul>
+<li><a href="#org4c9a1c6">4.1. Git garbage collection process</a></li>
+<li><a href="#org35dffc2">4.2. Git patch mode</a></li>
+<li><a href="#orgc35aaa1">4.3. Tool rerere</a></li>
+<li><a href="#org36c5979">4.4. Otros</a></li>
+</ul>
+</li>
+<li><a href="#orgd66e5d0">5. Workflows</a>
+<ul>
+<li><a href="#org91a67cb">5.1. Git flow</a>
+<ul>
+<li><a href="#org232e9e9">5.1.1. Conceptos</a></li>
+<li><a href="#org10dce72">5.1.2. Referencias Oficiales</a></li>
+<li><a href="#org778cd47">5.1.3. Referencias Extraoficiales</a></li>
+</ul>
+</li>
+<li><a href="#org2a879a4">5.2. Github flow</a>
+<ul>
+<li><a href="#org1720de0">5.2.1. Conceptos</a></li>
+<li><a href="#org9133d04">5.2.2. Referencias Oficiales</a></li>
+<li><a href="#org8282077">5.2.3. Referencias Extraoficiales</a></li>
+</ul>
+</li>
+<li><a href="#orgeafe15e">5.3. Trunk-based Development</a>
+<ul>
+<li><a href="#orgd624647">5.3.1. Conceptos</a></li>
+<li><a href="#org0b93602">5.3.2. Referencias Oficiales</a></li>
+<li><a href="#org5538474">5.3.3. Referencias Extraoficiales</a></li>
+</ul>
+</li>
+<li><a href="#orgb1f2b27">5.4. Referencias</a>
+<ul>
+<li><a href="#org186bed9">5.4.1. Referencias Extraoficiales</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org8a7a13d">6. Problemas Comunes</a>
+<ul>
+<li><a href="#org61ba45a">6.1. Deshacer cambios del Area de Unstaged</a>
+<ul>
+<li><a href="#org5d7ebb7">6.1.1. Conceptos aplicados</a></li>
+<li><a href="#orgfd70f55">6.1.2. Posible Escenario</a></li>
+<li><a href="#org41bd8e8">6.1.3. Posible Solución</a></li>
+<li><a href="#orgf893398">6.1.4. Referencias Oficiales</a></li>
+</ul>
+</li>
+<li><a href="#orgcfd7ea2">6.2. Deshacer cambios del Area de Staged</a>
+<ul>
+<li><a href="#orgb27e48f">6.2.1. Posible Escenario</a></li>
+<li><a href="#orgb927f4c">6.2.2. Posible Solución</a></li>
+<li><a href="#org8b6fcf9">6.2.3. Referencias Extraoficiales</a></li>
+</ul>
+</li>
+<li><a href="#org59b67a7">6.3. Mostrar diferencias previo confirmar cambios</a>
+<ul>
+<li><a href="#orgda46580">6.3.1. Conceptos</a></li>
+<li><a href="#orgf2bc698">6.3.2. Posible escenario</a></li>
+<li><a href="#org94120cd">6.3.3. Posible solución</a></li>
+</ul>
+</li>
+<li><a href="#orgf9b17d3">6.4. Pushear branches locales</a>
+<ul>
+<li><a href="#org9205497">6.4.1. Posible Escenario</a></li>
+<li><a href="#org03fdc53">6.4.2. Posibles Soluciones</a></li>
+<li><a href="#orgcee3767">6.4.3. Referencias Web Oficiales</a></li>
+<li><a href="#org5eb858f">6.4.4. Referencias Web Extraoficiales</a></li>
+</ul>
+</li>
+<li><a href="#org4c9bf27">6.5. Recuperar referencias de ramas sin modificar repositorio local</a>
+<ul>
+<li><a href="#orgd60aefa">6.5.1. Posible escenario</a></li>
+<li><a href="#orged6d709">6.5.2. Posibles soluciones</a></li>
+</ul>
+</li>
+<li><a href="#orgb734891">6.6. Actualizar referencias de branches locales</a>
+<ul>
+<li><a href="#org1653ee1">6.6.1. Tips</a></li>
+<li><a href="#org9d83d38">6.6.2. Posible Escenario</a></li>
+<li><a href="#org84f56ce">6.6.3. Posibles Soluciones</a></li>
+</ul>
+</li>
+<li><a href="#org247b3e3">6.7. Fusionar confirmaciones de branches remotos y branches locales</a>
+<ul>
+<li><a href="#orgf5ea867">6.7.1. Posible Escenario</a></li>
+<li><a href="#org2fefa88">6.7.2. Posibles Soluciones</a></li>
+</ul>
+</li>
+<li><a href="#org67f5d88">6.8. Confirmaciones pendientes por subir ó por recuperar</a>
+<ul>
+<li><a href="#orgf032b58">6.8.1. Posible Escenario</a></li>
+<li><a href="#org79d6ed7">6.8.2. Posibles Soluciones</a></li>
+</ul>
+</li>
+<li><a href="#org9f8badb">6.9. Eliminar branches</a>
+<ul>
+<li><a href="#org28276dd">6.9.1. Eliminar branches locales</a></li>
+<li><a href="#org03199a1">6.9.2. Eliminar branches remotos</a></li>
+<li><a href="#org2d17bb5">6.9.3. Referencias Web Extraoficiales</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org88000f2">7. Resolver Conflictos Elementales</a>
+<ul>
+<li><a href="#org05db1f6">7.1. Conceptos Elementales</a></li>
+<li><a href="#orga3380a1">7.2. Técnicas de Fusión</a>
+<ul>
+<li><a href="#orgd050b79">7.2.1. Fast Foward Merge</a></li>
+</ul>
+</li>
+<li><a href="#orga8fb56e">7.3. Marcadores de Conflicto</a>
+<ul>
+<li><a href="#orgd2d0615">7.3.1. Conceptos</a></li>
+<li><a href="#orge74a129">7.3.2. Formato diff3</a></li>
+<li><a href="#orge07bcf1">7.3.3. Referencias Web Oficiales</a></li>
+<li><a href="#org33e071c">7.3.4. Referencias Web Extraoficiales</a></li>
+</ul>
+</li>
+<li><a href="#orgbd6b182">7.4. Separar confirmaciones antes de una fusión (pendiente mejorar)</a>
+<ul>
+<li><a href="#org778ecec">7.4.1. Conceptos</a></li>
+<li><a href="#org90c09e9">7.4.2. Posibles Soluciones</a></li>
+<li><a href="#orgfebd9db">7.4.3. Referencias Web Oficiales</a></li>
+</ul>
+</li>
+<li><a href="#orgba71cdf">7.5. Reorganizar registro de confirmaciones</a>
+<ul>
+<li><a href="#org89ddaca">7.5.1. Conceptos</a></li>
+<li><a href="#orgdf3e5dc">7.5.2. Posible Escenario</a></li>
+<li><a href="#orge1845d2">7.5.3. Posibles Soluciones</a></li>
+</ul>
+</li>
+<li><a href="#orge063e2c">7.6. Archivos con diferencias</a></li>
+<li><a href="#orgb10038f">7.7. Deshacer fusión no publicada</a>
+<ul>
+<li><a href="#orgd628223">7.7.1. Posible Escenario</a></li>
+<li><a href="#org66b8911">7.7.2. Posible Solución</a></li>
+<li><a href="#org32c908d">7.7.3. Referencias Web Extraoficiales</a></li>
+</ul>
+</li>
+<li><a href="#orgbf946fe">7.8. Abortar Fusión</a>
+<ul>
+<li><a href="#org239ef88">7.8.1. Posible Escenario</a></li>
+<li><a href="#org43b9850">7.8.2. Posible solución</a></li>
+<li><a href="#orgd867298">7.8.3. Referencias Web Oficiales</a></li>
+</ul>
+</li>
+<li><a href="#org2d7ab38">7.9. Cambiar Archivos</a>
+<ul>
+<li><a href="#org7ad2eee">7.9.1. Posible Escenario</a></li>
+<li><a href="#org65be1e7">7.9.2. Posibles Soluciones</a></li>
+<li><a href="#orge174736">7.9.3. Referencias Web Extraoficiales</a></li>
+</ul>
+</li>
+<li><a href="#org5f1eb6a">7.10. Registro de Confirmaciones en conflicto</a></li>
+<li><a href="#orgedeb43f">7.11. Resolver Conflictos con MergeTools</a>
+<ul>
+<li><a href="#org0d49985">7.11.1. Conceptos</a></li>
+<li><a href="#org3fbb212">7.11.2. Ejecutar Mergetools</a></li>
+<li><a href="#org2dc8643">7.11.3. Configurar Mergetools con Emacs</a></li>
+<li><a href="#org3911687">7.11.4. Configurar Mergetools con Vim</a></li>
+<li><a href="#orgb67859f">7.11.5. Referencias Web Oficiales</a></li>
+<li><a href="#orgb967e55">7.11.6. Referencias Web Extraoficiales</a></li>
+</ul>
+</li>
+<li><a href="#orgec50e25">7.12. Referencias</a>
+<ul>
+<li><a href="#org90d38e0">7.12.1. Referencias Web Oficiales</a></li>
+<li><a href="#org1b8043a">7.12.2. Referencias Web Extraoficiales</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orga27a058">8. Resolver Conflictos Basicos</a>
+<ul>
+<li><a href="#org9e3cdb3">8.1. Fusionar rama y agrupar confirmaciones</a>
+<ul>
+<li><a href="#org9406de3">8.1.1. Posible Escenario</a></li>
+<li><a href="#orgd5f601b">8.1.2. Posible Solución</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org7922b40">9. Resolver Conflictos Complejos</a>
+<ul>
+<li><a href="#org544023c">9.1. Merge Vs Rebase</a>
+<ul>
+<li><a href="#org590fb70">9.1.1. Referencias</a></li>
+</ul>
+</li>
+<li><a href="#orgce2bfa9">9.2. Referencias Web Oficiales</a></li>
+<li><a href="#orga036fb5">9.3. Referencias Web Extraoficiales</a></li>
+</ul>
+</li>
+<li><a href="#org4fbe83e">10. Pendiente Revisar</a>
+<ul>
+<li><a href="#org53ee293">10.1. <span class="todo _TODO_">[TODO]</span> Como manejarse con los tags y las versiones</a></li>
+<li><a href="#org6000cfb">10.2. <span class="todo _TODO_">[TODO]</span> Cuando crear un branch (nuevas caracteristicas)</a></li>
+<li><a href="#org5ec251d">10.3. <span class="todo _TODO_">[TODO]</span> Cuando crear un tag (para armar releases)</a></li>
+<li><a href="#orgd047a7d">10.4. Cuando crear pull request</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5534c3e" class="outline-2">
+<h2 id="org5534c3e"><span class="section-number-2">1</span> Libros</h2>
+<div class="outline-text-2" id="text-1">
+<ol class="org-ol">
+<li><a href="http://dirac.df.uba.ar/_media/progit_v2.1.19.pdf">http://dirac.df.uba.ar/_media/progit_v2.1.19.pdf</a></li>
+<li><a href="https://progit2.s3.amazonaws.com/en/2016-03-22-f3531/progit-en.1084.pdf">https://progit2.s3.amazonaws.com/en/2016-03-22-f3531/progit-en.1084.pdf</a></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgc22966b" class="outline-2">
+<h2 id="orgc22966b"><span class="section-number-2">2</span> Comandos utiles</h2>
+<div class="outline-text-2" id="text-2">
+<div class="org-src-container">
+<pre class="src src-shell" id="org27940e3"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">mostrar todos las ramas (branches) del repositorio (local y remoto?)</span>
+git branch --all
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">mostrar los logs en una sola linea, y lo muestra de una manera entendible</span>
+git log --oneline --decorate -graph
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">apuntar a un cambio</span>
+git checkout hashCommit
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb1d3ea6" class="outline-2">
+<h2 id="orgb1d3ea6"><span class="section-number-2">3</span> Glosario</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-orgdfc93c6" class="outline-3">
+<h3 id="orgdfc93c6"><span class="section-number-3">3.1</span> Head</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li>Es un puntero que guarda la referencia del <b>branch</b> activo (el que se esté utilizando)</li>
+<li>En el repositorio remoto <b>origin</b> el puntero HEAD apunta a la rama <b>master</b></li>
+<li>En nuestro repositorio local, se puede cambiar la referencia haciendo <b>git checkout nombreRama</b></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf35ddd1" class="outline-3">
+<h3 id="orgf35ddd1"><span class="section-number-3">3.2</span> Track</h3>
+<div class="outline-text-3" id="text-3-2">
+</div>
+<div id="outline-container-org43532c3" class="outline-4">
+<h4 id="org43532c3"><span class="section-number-4">3.2.1</span> Conceptos</h4>
+<div class="outline-text-4" id="text-3-2-1">
+<ul class="org-ul">
+<li>Su traducción al español es <b>rastrear</b> ó podría ser también <b>en seguimiento</b></li>
+<li>Son todos los archivos (modificados/sin modificar) que aparecen en el <b>staging area</b> ó <b>area de stage</b></li>
+<li>Se hace un seguimiento de los cambios que sufran esos archivos</li>
+<li>Los <b>untracked files</b> son los que aún NO están en el <b>área de stage</b></li>
+</ul>
+
+<p>
+<b>Observaciones:</b>
+</p>
+<ol class="org-ol">
+<li>El mensaje <b>Cambios no rastreados para el commit</b> es igual a <b>Changes not staged for commit:</b>
+<ul class="org-ul">
+<li>hace referencia a los cambios de archivos que están en el <b>staging area</b></li>
+<li>son <b>tracked files</b> archivos rastreados</li>
+</ul></li>
+<li>El mensaje <b>Cambios a ser confirmados:</b> es igual a <b>Changes to be committed:</b>
+<ul class="org-ul">
+<li>hace referencia a los archivos que están en el <b>staging area</b></li>
+<li>son cambios pendientes a confirmar (commit)</li>
+</ul></li>
+<li>El mensaje <b>Archivos sin seguimiento:</b>
+<ul class="org-ul">
+<li>hace referencia a los archivos que NO están en el <b>staging area</b></li>
+</ul></li>
+</ol>
+
+<pre class="example" id="git-archivos-estados">1. Clonamos nuestro repositorio
+todos los archivos estarán por defecto *rastreados* (tracked) y sin modificar
+
+2. Modificamos los archivos del repositorio
+tendrán cambios "no rastreados" (se da cuenta, porque compara con el último commit)
+son cambios pendientes a agregar al *area de stage*
+piden a gritos agregar los cambios con git add
+
+3. Creamos nuevos archivos, y aún no ejecutamos *git add*
+los archivos NO estarán en el "area de stage" (unstaged files)
+(se da cuenta, porque compara con el último commit y ve que esos archivos NO estaban)
+por tanto los cambios de esos archivos no serán rastreados y serán (untracked files)
+
+4. Agregamos los archivos al "area de Stage" con git add
+los archivos serán rastreados, osea tendrán seguimiento de sus cambios
+(comparando con el último commit, para ver si hubo cambios)
+</pre>
+</div>
+</div>
+<div id="outline-container-orgd438d8a" class="outline-4">
+<h4 id="orgd438d8a"><span class="section-number-4">3.2.2</span> Posibles escenarios</h4>
+<div class="outline-text-4" id="text-3-2-2">
+<div class="org-src-container">
+<pre class="src src-shell" id="orgd8c808b"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">todos los archivos son "rastreados" y en "staging area"</span>
+git clone urlrepositorio
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">si creamos archivos, pero no los agregamos con "git add"</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">su estado es: untracked files (archivos sin seguimiento), y NO estarán en el "área de stage"</span>
+touch promociones.txt descuentos.txt
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">cambiamos el estado a "tracked files", y pasando al "área de stage"</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">cambios pendientes de confirmar (commit)</span>
+git add .
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">si modificamos un archivo rastreado</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">pasa a un estado "unstaged changes" osea "cambios no rastreados, pendientes a agregar al area de stage"</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Obs: no confundir con el archivo no rastreado osea "untracked file",</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">este nuevo estado hace referencia a los cambios</span>
+<span style="color: #4f97d7;">echo</span> <span style="color: #2d9574;">"descuentos para adultos"</span> &gt;&gt; descuentos.txt
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">si borramos un archivo rastreado,</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">cambia de estado a "untracked files", se borra del "staging area"</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">(el archivo no se borra del directorio)</span>
+git rm --cached promociones.txt
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org4e2834d" class="outline-4">
+<h4 id="org4e2834d"><span class="section-number-4">3.2.3</span> Referencias Oficiales</h4>
+<div class="outline-text-4" id="text-3-2-3">
+<ol class="org-ol">
+<li><a href="https://git-scm.com/book/es/v2/Fundamentos-de-Git-Guardando-cambios-en-el-Repositorio">https://git-scm.com/book/es/v2/Fundamentos-de-Git-Guardando-cambios-en-el-Repositorio</a></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orge9a9698" class="outline-4">
+<h4 id="orge9a9698"><span class="section-number-4">3.2.4</span> Referencias Extraoficiales</h4>
+<div class="outline-text-4" id="text-3-2-4">
+<ol class="org-ol">
+<li><a href="https://howtogit.archive.pieterdedecker.be/concepts/types-of-changes.html#:~:text=In%20a%20nutshell%3A%20Untracked%20changes,Git%20and%20marked%20for%20commit">https://howtogit.archive.pieterdedecker.be/concepts/types-of-changes.html#:~:text=In%20a%20nutshell%3A%20Untracked%20changes,Git%20and%20marked%20for%20commit</a>.</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-org841ac44" class="outline-3">
+<h3 id="org841ac44"><span class="section-number-3">3.3</span> Stage</h3>
+<div class="outline-text-3" id="text-3-3">
+<ul class="org-ul">
+<li>También conocido como <b>Index</b> ó <b>Staging Area</b></li>
+<li>Su traducción al español es <b>Area de preparación</b></li>
+<li>Es el paso previo a la confirmación (commit)</li>
+<li>Son los archivos que agregamos con el comando <b>git add</b> y sus cambios serán <b>rastreados</b> (se hará un seguimiento)</li>
+<li><p>
+Los archivos del <b>area de preparación</b> pueden tener dos estados
+</p>
+<ul class="org-ul">
+<li><b>Unstaged changes</b>: Si los modificamos</li>
+<li><b>Staged changes</b>: Si no los modificamos</li>
+<li>Unstaged changes y Staged changes (osea ambos estados):
+Si los modificamos, los agregamos con <b>git add</b> y los volvemos a modificar y NO hacemos <b>git add</b></li>
+</ul>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">History</th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">- commits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Stage (Index)</td>
+</tr>
+
+<tr>
+<td class="org-left">- staged files</td>
+</tr>
+
+<tr>
+<td class="org-left">- tracked files</td>
+</tr>
+
+<tr>
+<td class="org-left">- unstaged changes</td>
+</tr>
+
+<tr>
+<td class="org-left">- staged changes</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Working Directory/Tree</td>
+</tr>
+
+<tr>
+<td class="org-left">- unstaged files</td>
+</tr>
+
+<tr>
+<td class="org-left">- untracked files</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org344e2f3" class="outline-3">
+<h3 id="org344e2f3"><span class="section-number-3">3.4</span> Tracking Branch</h3>
+<div class="outline-text-3" id="text-3-4">
+</div>
+<div id="outline-container-org32a5a3f" class="outline-4">
+<h4 id="org32a5a3f"><span class="section-number-4">3.4.1</span> Conceptos</h4>
+<div class="outline-text-4" id="text-3-4-1">
+<ul class="org-ul">
+<li>Cuando creamos una <b>rama local</b> a partir de una <b>rama remota</b> con <b>git checkout</b>,
+la rama local se convierte en una <b>rama de seguimiento</b> porque guarda una referencia hacia la rama remota.</li>
+<li>Si queremos hacer un seguimiento de una rama remota se utiliza <b>git checkout –track remoto/nombreRama</b></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org3426d03" class="outline-3">
+<h3 id="org3426d03"><span class="section-number-3">3.5</span> MERGE<sub>HEAD</sub></h3>
+<div class="outline-text-3" id="text-3-5">
+</div>
+<div id="outline-container-org540834d" class="outline-4">
+<h4 id="org540834d"><span class="section-number-4">3.5.1</span> Conceptos</h4>
+<div class="outline-text-4" id="text-3-5-1">
+<ul class="org-ul">
+<li><b>MERGE<sub>HEAD</sub></b> está presente siempre que hay una fusión (merge) en curso.</li>
+<li>El comando <b>git merge –abort</b> es equivalente a <b>git reset –merge</b> cuando <b>MERGE<sub>HEAD</sub></b> está presente.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge23c044" class="outline-4">
+<h4 id="orge23c044"><span class="section-number-4">3.5.2</span> Referencias Web Oficiales</h4>
+<div class="outline-text-4" id="text-3-5-2">
+<ol class="org-ol">
+<li><a href="https://mirrors.edge.kernel.org/pub/software/scm/git/docs/git-merge.html">https://mirrors.edge.kernel.org/pub/software/scm/git/docs/git-merge.html</a></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-org6fa0ea8" class="outline-3">
+<h3 id="org6fa0ea8"><span class="section-number-3">3.6</span> Detached Head</h3>
+<div class="outline-text-3" id="text-3-6">
+</div>
+<div id="outline-container-org09a909b" class="outline-4">
+<h4 id="org09a909b"><span class="section-number-4">3.6.1</span> Conceptos</h4>
+<div class="outline-text-4" id="text-3-6-1">
+<ol class="org-ol">
+<li>El <b>detached head</b> ó <b>head desacoplado</b> sucede cuando el <b>head</b> apunta a una confirmación (commit) que no es la última,</li>
+</ol>
+<p>
+es decir alguna de las confirmaciones (commits) anteriores al  último (al que debería apuntar HEAD)
+</p>
+<ol class="org-ol">
+<li>Si queremos ir a una confirmación anterior podes utilizar <b>git checkout HEAD~n</b> (siendo n cualquier número natural,
+y representa cuantas confirmaciones hacia atrás queremos ir respecto de HEAD)</li>
+<li>Podemos llegar a <b>detached head</b> desde cualquier rama (osea, no importa que hagamos <b>git checkout fix/precios</b> 
+y no estemos en la rama master)</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org1bcbd48" class="outline-4">
+<h4 id="org1bcbd48"><span class="section-number-4">3.6.2</span> Posibles Escenarios</h4>
+<div class="outline-text-4" id="text-3-6-2">
+<div class="org-src-container">
+<pre class="src src-shell" id="org538f468"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">hacemos que HEAD apunte al commit anterior del último commit</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- alternativa sería agregar el hash del commit que mencionamos</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Obs: master^ es equivalente a master~ y HEAD^ y también HEAD~</span>
+git checkout master^
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">si revisamos el estado del directorio de trabajo</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">dirá "HEAD está desacoplada en b30b31"</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">(suponiendo que b30b31 es el hash del anteúltimo commit)</span>
+git status
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="org16dc02d"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">hacemos que HEAD apunte 3 commits atrás, respecto de donde apuntaba HEAD</span>
+git checkout HEAD~3
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">si revisamos el estado del directorio de trabajo, dirá que HEAD está desacoplado</span>
+git status
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">si revisamos el registro de commits, desaparecerán los últimos 3 cambios</span>
+git log --oneline --decorate --graph
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">hacemos que HEAD apunte 2 commits atrás, respecto del nuevo commit al que apuntaba HEAD</span>
+git checkout HEAD~2
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="org39e72b5"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">hacemos que HEAD del master apunte 2 commits atrás,</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">respecto del último al apuntaba HEAD en la rama master</span>
+git checkout master~2
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">si revisamos el estado del directorio de trabajo, dirá que HEAD está desacoplado</span>
+git status
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">si revisamos el registro de commits,</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">desaparecerán los últimos 2 cambios que hicimos en la rama master</span>
+git log --oneline --decorate --graph
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orge150b48" class="outline-4">
+<h4 id="orge150b48"><span class="section-number-4">3.6.3</span> Posibles Soluciones</h4>
+<div class="outline-text-4" id="text-3-6-3">
+<ul class="org-ul">
+<li>Si estamos en un <b>head desacoplado</b> se recomienda confirmar (commit) los cambios que hagamos, y crear una rama del cambio</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="orgc6a6cc6">git checkout HEAD~3
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">generamos algunos cambios</span>
+touch producto-<span style="color: #4f97d7;">{</span><span style="color: #a45bad;">1,2,3</span><span style="color: #4f97d7;">}</span>.txt
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">agregamos los cambios, y confirmamos</span>
+git add . &amp;&amp; git commit -m <span style="color: #2d9574;">"Agregamos cambios olvidados?"</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">creamos la rama y le asignamos el hash del commit 192abc3</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">(suponiendo que 192abc3 fue el hash que se generó con el commit)</span>
+git branch nombreNuevaRama <span style="color: #a45bad;">192abc3</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org4c03872" class="outline-4">
+<h4 id="org4c03872"><span class="section-number-4">3.6.4</span> Referencias Web Extraoficiales</h4>
+<div class="outline-text-4" id="text-3-6-4">
+<ol class="org-ol">
+<li><a href="https://loquemeinteresadelared.wordpress.com/2016/03/28/git-cookbook-que-es-el-estado-o-modo-detached-head/">https://loquemeinteresadelared.wordpress.com/2016/03/28/git-cookbook-que-es-el-estado-o-modo-detached-head/</a></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd7b6ec4" class="outline-3">
+<h3 id="orgd7b6ec4"><span class="section-number-3">3.7</span> Master</h3>
+<div class="outline-text-3" id="text-3-7">
+<ul class="org-ul">
+<li>es el nombre por defecto del <b>branch</b> inicial, se asigna en el momento que inicializamos el repositorio con <b>git init</b></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb64735b" class="outline-3">
+<h3 id="orgb64735b"><span class="section-number-3">3.8</span> Origin</h3>
+<div class="outline-text-3" id="text-3-8">
+</div>
+<div id="outline-container-org4f19bfa" class="outline-4">
+<h4 id="org4f19bfa"><span class="section-number-4">3.8.1</span> Conceptos</h4>
+<div class="outline-text-4" id="text-3-8-1">
+<ul class="org-ul">
+<li>es el nombre por defecto al <b>repositorio remoto</b>, cuando se hace el <b>git clone</b></li>
+<li>si quisieramos podriamos cambiar su nombre por otro con <b>git clone -o otroNombre</b></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0b0d818" class="outline-4">
+<h4 id="org0b0d818"><span class="section-number-4">3.8.2</span> Ejemplos</h4>
+<div class="outline-text-4" id="text-3-8-2">
+<div class="org-src-container">
+<pre class="src src-shell" id="org2ee501f"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">clonamos el repositorio remoto</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">que tendrá de nombre "origin"</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">y tendremos la rama inicial llamada origin/master que apunta al repositorio remoto</span>
+git clone urlRepositorioRemoto
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">clonamos el repositorio remoto</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">que tendrá de nombre "pomposo" en vez de "origin"</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">y tendremos la rama inicial llamada pomposo/master que apunta al repositorio remoto</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Obs: Podemos usar el atajo -o en vez de --origin</span>
+git clone --origin pomposo urlRepositorio
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">chequeamos el nombre que le asignamos al repositorio remoto</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">aparecerá en la primera columna</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Obs: Podemos usar el atajo -v en vez de --verbose</span>
+git remote --verbose
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcc7e779" class="outline-4">
+<h4 id="orgcc7e779"><span class="section-number-4">3.8.3</span> Fragmentos de Documentación</h4>
+<div class="outline-text-4" id="text-3-8-3">
+<blockquote id="git-comando-clone">
+<p>
+OPTIONS:
+</p>
+
+<p>
+-v, –verbose
+Run verbosely. Does not affect the reporting of progress status to the standard
+error stream.
+</p>
+
+<p>
+-o &lt;name&gt;, –origin &lt;name&gt;
+Instead of using the remote name origin to keep track of the upstream repository,
+use &lt;name&gt;. Overrides clone.defaultRemoteName from the config.
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div id="outline-container-orge3c6ce4" class="outline-3">
+<h3 id="orge3c6ce4"><span class="section-number-3">3.9</span> Repositorio remoto Vs Repositorio local</h3>
+<div class="outline-text-3" id="text-3-9">
+<ul class="org-ul">
+<li>El <b>repositorio remoto</b> que se encuentra en la nube ó en una red (al que se suben los cambios)</li>
+<li>El <b>repositorio local</b>, es el que tenemos en nuestro ordenador</li>
+</ul>
+
+<pre class="example" id="diferencias-repositorio-remoto-local">origin/master es una rama que hace referencia (ó apunta) al repositorio remoto (donde todos suben sus cambios)
+master es una rama que hace referencia (ó apunta) al repositorio local (cambios locales, de nuestro ordenador)
+</pre>
+</div>
+</div>
+<div id="outline-container-org3a6ff6a" class="outline-3">
+<h3 id="org3a6ff6a"><span class="section-number-3">3.10</span> Branches</h3>
+<div class="outline-text-3" id="text-3-10">
+</div>
+<div id="outline-container-org197dbcc" class="outline-4">
+<h4 id="org197dbcc"><span class="section-number-4">3.10.1</span> Conceptos</h4>
+<div class="outline-text-4" id="text-3-10-1">
+<p>
+Se utilizan para representar nuevas características (features) a agregar, ó errores (bugs) a resolver.
+</p>
+
+<p>
+Están separadas de la rama principal <b>master</b> (se ramifican de esta), para poder enfocarnos sólo en esos nuevos cambios.
+Si alguno del equipo hace cambios en la rama <b>master</b> y los sube al <b>repositorio remoto</b>, no se verá alterado nuestro branch.
+</p>
+
+<p>
+Al terminar los cambios en el branch, se debe ir a la rama master (checkout master)
+y fusionar los cambios (merge master:nombreBranch)
+</p>
+</div>
+</div>
+<div id="outline-container-orgd72b365" class="outline-4">
+<h4 id="orgd72b365"><span class="section-number-4">3.10.2</span> Referencias Web Oficiales</h4>
+<div class="outline-text-4" id="text-3-10-2">
+<ol class="org-ol">
+<li><a href="https://docs.github.com/es/github/collaborating-with-issues-and-pull-requests/about-branches">https://docs.github.com/es/github/collaborating-with-issues-and-pull-requests/about-branches</a></li>
+<li><a href="https://docs.github.com/es/desktop/contributing-and-collaborating-using-github-desktop/managing-branches">https://docs.github.com/es/desktop/contributing-and-collaborating-using-github-desktop/managing-branches</a></li>
+<li><a href="https://git-scm.com/book/es/v2/Ramificaciones-en-Git-Procedimientos-B%C3%A1sicos-para-Ramificar-y-Fusionar">https://git-scm.com/book/es/v2/Ramificaciones-en-Git-Procedimientos-B%C3%A1sicos-para-Ramificar-y-Fusionar</a></li>
+<li><a href="https://git-scm.com/book/es/v2/Ramificaciones-en-Git-Ramas-Remotas">https://git-scm.com/book/es/v2/Ramificaciones-en-Git-Ramas-Remotas</a></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org5639511" class="outline-4">
+<h4 id="org5639511"><span class="section-number-4">3.10.3</span> Referencias Web Extraoficiales</h4>
+<div class="outline-text-4" id="text-3-10-3">
+<ol class="org-ol">
+<li><a href="https://www.atlassian.com/es/git/tutorials/using-branches/git-checkout">https://www.atlassian.com/es/git/tutorials/using-branches/git-checkout</a></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-org06b749f" class="outline-3">
+<h3 id="org06b749f"><span class="section-number-3">3.11</span> Commits</h3>
+<div class="outline-text-3" id="text-3-11">
+<ul class="org-ul">
+<li>Representan cambios/confirmaciones realizadas en una o varias ramas</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1746bac" class="outline-3">
+<h3 id="org1746bac"><span class="section-number-3">3.12</span> Tags</h3>
+</div>
+<div id="outline-container-orgbd5e1a4" class="outline-3">
+<h3 id="orgbd5e1a4"><span class="section-number-3">3.13</span> Fetch</h3>
+<div class="outline-text-3" id="text-3-13">
+</div>
+<div id="outline-container-org6ea3527" class="outline-4">
+<h4 id="org6ea3527"><span class="section-number-4">3.13.1</span> Conceptos</h4>
+<div class="outline-text-4" id="text-3-13-1">
+<p>
+Actualiza las <b>referencias</b> (ó punteros) del repositorio local, que apuntan a las que apuntan ramas del repositorio remoto,
+que pueden apuntar al mismo repositorio remoto (que suele ser origin por defecto), ó a otro repositorio remoto
+que agreguemos.
+</p>
+
+<p>
+Si hay cambios en el repositorio remoto, y queremos traer las referencias/punteros a esas ramas remotas
+pero sin modificar nuestro directorio de trabajo. Es decir si varios modificaron el branch master,
+otros branches (con nuevas características, funcionalidades, bugs resueltos, etc..)
+pero aún no queremos que esos cambios se apliquen a nuestras ramas locales, sólo queremos traernos las referencias
+y luego integralos/fusionarlos (merge) con lo que tenemos nosotros.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orge50d297" class="outline-3">
+<h3 id="orge50d297"><span class="section-number-3">3.14</span> Reset Vs Checkout</h3>
+<div class="outline-text-3" id="text-3-14">
+</div>
+<div id="outline-container-org2180c70" class="outline-4">
+<h4 id="org2180c70"><span class="section-number-4">3.14.1</span> Reset</h4>
+<div class="outline-text-4" id="text-3-14-1">
+<ul class="org-ul">
+<li>Modifica el <b>área de stage</b> (Index) sin tocar el <b>árbol de trabajo</b> (the working tree)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf806c95" class="outline-4">
+<h4 id="orgf806c95"><span class="section-number-4">3.14.2</span> Checkout</h4>
+<div class="outline-text-4" id="text-3-14-2">
+<ul class="org-ul">
+<li>Modifica el <b>árbol de trabajo</b> (the working tree) sin modificar el <b>área de stage</b> (Index)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9b23519" class="outline-4">
+<h4 id="org9b23519"><span class="section-number-4">3.14.3</span> Ejemplos</h4>
+<div class="outline-text-4" id="text-3-14-3">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">agregamos el archivo al "Stage" (ó Index)</span>
+git add productos.csv
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">agregamos archivos al Stage (ó Index)</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-p: lo hace de manera interactiva</span>
+git add -p
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">sacamos los archivos del "Stage" (Area de stage)</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-p: lo hace de manera interactiva</span>
+git reset -p
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">sacamos los archivos del árbol de trabajo "Working Tree"</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-p: lo hace de manera interactiva</span>
+git checkout -p
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2c5fd46" class="outline-4">
+<h4 id="org2c5fd46"><span class="section-number-4">3.14.4</span> Referencias Extraoficiales</h4>
+<div class="outline-text-4" id="text-3-14-4">
+<ol class="org-ol">
+<li><a href="https://stackoverflow.com/questions/3639342/whats-the-difference-between-git-reset-and-git-checkout#:~:text=git%20reset%20is%20specifically%20about,up%20with%20a%20detached%20HEAD">https://stackoverflow.com/questions/3639342/whats-the-difference-between-git-reset-and-git-checkout#:~:text=git%20reset%20is%20specifically%20about,up%20with%20a%20detached%20HEAD</a>).</li>
+<li><a href="https://marklodato.github.io/visual-git-guide/index-es.html">https://marklodato.github.io/visual-git-guide/index-es.html</a></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgeb7f4d3" class="outline-2">
+<h2 id="orgeb7f4d3"><span class="section-number-2">4</span> Interesante</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org4c9a1c6" class="outline-3">
+<h3 id="org4c9a1c6"><span class="section-number-3">4.1</span> Git garbage collection process</h3>
+<div class="outline-text-3" id="text-4-1">
+<ol class="org-ol">
+<li>git garbage collection process</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org35dffc2" class="outline-3">
+<h3 id="org35dffc2"><span class="section-number-3">4.2</span> Git patch mode</h3>
+<div class="outline-text-3" id="text-4-2">
+<ol class="org-ol">
+<li><a href="https://paritosh-pundir.medium.com/take-control-of-your-commits-with-git-adds-patch-mode-2a5187590c3#:~:text=You%20can%20use%20the%20patch,adding%20the%20files%20for%20commit.&amp;text=After%20you%20run%20thi,of%20the%20code%20as%20hunk">https://paritosh-pundir.medium.com/take-control-of-your-commits-with-git-adds-patch-mode-2a5187590c3#:~:text=You%20can%20use%20the%20patch,adding%20the%20files%20for%20commit.&amp;text=After%20you%20run%20thi,of%20the%20code%20as%20hunk</a>.</li>
+<li><a href="https://css-tricks.com/git-add-patch-mode/">https://css-tricks.com/git-add-patch-mode/</a></li>
+<li><a href="https://nuclearsquid.com/writings/git-add/">https://nuclearsquid.com/writings/git-add/</a></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgc35aaa1" class="outline-3">
+<h3 id="orgc35aaa1"><span class="section-number-3">4.3</span> Tool rerere</h3>
+<div class="outline-text-3" id="text-4-3">
+<ol class="org-ol">
+<li><a href="https://git-scm.com/book/en/v2/Git-Tools-Rerere">https://git-scm.com/book/en/v2/Git-Tools-Rerere</a></li>
+<li><a href="https://git-scm.com/docs/git-rerere">https://git-scm.com/docs/git-rerere</a></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org36c5979" class="outline-3">
+<h3 id="org36c5979"><span class="section-number-3">4.4</span> Otros</h3>
+<div class="outline-text-3" id="text-4-4">
+<ol class="org-ol">
+<li><a href="https://git-scm.com/book/es/v2/Herramientas-de-Git-Revisi%C3%B3n-por-selecci%C3%B3n">https://git-scm.com/book/es/v2/Herramientas-de-Git-Revisi%C3%B3n-por-selecci%C3%B3n</a></li>
+<li><a href="https://sparkbox.com/foundry/better_pull_requests_merge_requests_with_templates">https://sparkbox.com/foundry/better_pull_requests_merge_requests_with_templates</a></li>
+<li><a href="https://dzone.com/articles/a-tutorial-on-git-merge">https://dzone.com/articles/a-tutorial-on-git-merge</a> (para agregar sobre los marcadores)</li>
+<li><a href="https://learngitbranching.js.org/">https://learngitbranching.js.org/</a></li>
+<li><a href="https://www.vogella.com/tutorials/Git/article.html">https://www.vogella.com/tutorials/Git/article.html</a></li>
+</ol>
+
+<p>
+no tan interesante como para documentar.., solo para dejar de referencia
+</p>
+<ol class="org-ol">
+<li><a href="https://docs.microsoft.com/en-us/azure/devops/repos/git/pull-requests?view=azure-devops">https://docs.microsoft.com/en-us/azure/devops/repos/git/pull-requests?view=azure-devops</a></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd66e5d0" class="outline-2">
+<h2 id="orgd66e5d0"><span class="section-number-2">5</span> Workflows</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-org91a67cb" class="outline-3">
+<h3 id="org91a67cb"><span class="section-number-3">5.1</span> Git flow</h3>
+<div class="outline-text-3" id="text-5-1">
+</div>
+<div id="outline-container-org232e9e9" class="outline-4">
+<h4 id="org232e9e9"><span class="section-number-4">5.1.1</span> Conceptos</h4>
+</div>
+<div id="outline-container-org10dce72" class="outline-4">
+<h4 id="org10dce72"><span class="section-number-4">5.1.2</span> Referencias Oficiales</h4>
+<div class="outline-text-4" id="text-5-1-2">
+<ol class="org-ol">
+<li><a href="https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow">https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow</a></li>
+<li><a href="https://www.atlassian.com/git/tutorials/comparing-workflows">https://www.atlassian.com/git/tutorials/comparing-workflows</a></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org778cd47" class="outline-4">
+<h4 id="org778cd47"><span class="section-number-4">5.1.3</span> Referencias Extraoficiales</h4>
+<div class="outline-text-4" id="text-5-1-3">
+<ol class="org-ol">
+<li><a href="https://raygun.com/blog/git-workflow/">https://raygun.com/blog/git-workflow/</a></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-org2a879a4" class="outline-3">
+<h3 id="org2a879a4"><span class="section-number-3">5.2</span> Github flow</h3>
+<div class="outline-text-3" id="text-5-2">
+</div>
+<div id="outline-container-org1720de0" class="outline-4">
+<h4 id="org1720de0"><span class="section-number-4">5.2.1</span> Conceptos</h4>
+</div>
+<div id="outline-container-org9133d04" class="outline-4">
+<h4 id="org9133d04"><span class="section-number-4">5.2.2</span> Referencias Oficiales</h4>
+<div class="outline-text-4" id="text-5-2-2">
+<ol class="org-ol">
+<li><a href="https://guides.github.com/introduction/flow/">https://guides.github.com/introduction/flow/</a></li>
+<li><a href="https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/github-flow">https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/github-flow</a></li>
+<li><a href="https://githubflow.github.io/">https://githubflow.github.io/</a></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org8282077" class="outline-4">
+<h4 id="org8282077"><span class="section-number-4">5.2.3</span> Referencias Extraoficiales</h4>
+<div class="outline-text-4" id="text-5-2-3">
+<ol class="org-ol">
+<li><a href="https://hackernoon.com/15-tips-to-enhance-your-github-flow-6af7ceb0d8a3">https://hackernoon.com/15-tips-to-enhance-your-github-flow-6af7ceb0d8a3</a></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-orgeafe15e" class="outline-3">
+<h3 id="orgeafe15e"><span class="section-number-3">5.3</span> Trunk-based Development</h3>
+<div class="outline-text-3" id="text-5-3">
+</div>
+<div id="outline-container-orgd624647" class="outline-4">
+<h4 id="orgd624647"><span class="section-number-4">5.3.1</span> Conceptos</h4>
+</div>
+<div id="outline-container-org0b93602" class="outline-4">
+<h4 id="org0b93602"><span class="section-number-4">5.3.2</span> Referencias Oficiales</h4>
+<div class="outline-text-4" id="text-5-3-2">
+<ol class="org-ol">
+<li><a href="https://www.atlassian.com/continuous-delivery/continuous-integration/trunk-based-development">https://www.atlassian.com/continuous-delivery/continuous-integration/trunk-based-development</a></li>
+<li><a href="https://trunkbaseddevelopment.com/">https://trunkbaseddevelopment.com/</a></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org5538474" class="outline-4">
+<h4 id="org5538474"><span class="section-number-4">5.3.3</span> Referencias Extraoficiales</h4>
+<div class="outline-text-4" id="text-5-3-3">
+<ol class="org-ol">
+<li><a href="https://dev.to/malvarezcr/por-que-trunk-based-development-i5n">https://dev.to/malvarezcr/por-que-trunk-based-development-i5n</a></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb1f2b27" class="outline-3">
+<h3 id="orgb1f2b27"><span class="section-number-3">5.4</span> Referencias</h3>
+<div class="outline-text-3" id="text-5-4">
+</div>
+<div id="outline-container-org186bed9" class="outline-4">
+<h4 id="org186bed9"><span class="section-number-4">5.4.1</span> Referencias Extraoficiales</h4>
+<div class="outline-text-4" id="text-5-4-1">
+<ol class="org-ol">
+<li><a href="https://dev.to/arbitrarybytes/comparing-git-branching-strategies-dl4">https://dev.to/arbitrarybytes/comparing-git-branching-strategies-dl4</a></li>
+<li><a href="https://www.toptal.com/software/trunk-based-development-git-flow">https://www.toptal.com/software/trunk-based-development-git-flow</a></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org8a7a13d" class="outline-2">
+<h2 id="org8a7a13d"><span class="section-number-2">6</span> Problemas Comunes</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-org61ba45a" class="outline-3">
+<h3 id="org61ba45a"><span class="section-number-3">6.1</span> Deshacer cambios del Area de Unstaged</h3>
+<div class="outline-text-3" id="text-6-1">
+</div>
+<div id="outline-container-org5d7ebb7" class="outline-4">
+<h4 id="org5d7ebb7"><span class="section-number-4">6.1.1</span> Conceptos aplicados</h4>
+<div class="outline-text-4" id="text-6-1-1">
+</div>
+<ol class="org-ol">
+<li><a id="orgdf06239"></a>Stage files<br>
+<div class="outline-text-5" id="text-6-1-1-1">
+<ul class="org-ul">
+<li>Archivos guardados en el <b>area de stage</b> (area de preparado) paso previo a confirmación (commit)</li>
+<li>Estado de los archivos luego de <b>git add</b></li>
+</ul>
+</div>
+</li>
+<li><a id="orga6504ad"></a>Unstage files<br>
+<div class="outline-text-5" id="text-6-1-1-2">
+<ul class="org-ul">
+<li>Archivos que se agregaron ó que se sacaron con <b>git rm</b></li>
+</ul>
+</div>
+</li>
+<li><a id="org1ba14dd"></a>Tracked files<br>
+<div class="outline-text-5" id="text-6-1-1-3">
+<ul class="org-ul">
+<li>Archivos que están en el <b>area de stage</b></li>
+<li>Concepto de <b>seguimiento</b> ó <b>rastreo</b> de las modificaciones de los archivos que están en <b>área de stage</b></li>
+</ul>
+</div>
+</li>
+<li><a id="orgade52d4"></a>Untracked files<br>
+<div class="outline-text-5" id="text-6-1-1-4">
+<ul class="org-ul">
+<li>Archivos que NO están en el <b>area de stage</b>, no se hace un seguimiento de sus modificaciones</li>
+</ul>
+</div>
+</li>
+<li><a id="org88a23f1"></a>Unstaged changes<br>
+<div class="outline-text-5" id="text-6-1-1-5">
+<ul class="org-ul">
+<li>Aplica sólo a los archivos que están en el área de stage</li>
+<li>Concepto de que los archivos <b>rastreados</b> (que están en el area de stage) fueron modificados
+y se necesita que se agregen los cambios al area de stage con <b>git add</b></li>
+<li>Si hacemos una confirmación (commit) de los cambios, estos no serán confirmados, por tanto tampoco se publicarán (push)
+a menos que los agregemos con <b>git add</b></li>
+</ul>
+</div>
+</li>
+<li><a id="orgd5609fd"></a>Staged changes<br>
+<div class="outline-text-5" id="text-6-1-1-6">
+<ul class="org-ul">
+<li>Aplica sólo a los archivos que están en el área de stage</li>
+<li>Los archivos <b>rastreados</b> o en seguimiento del area de stage, no fueron modificados</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-orgfd70f55" class="outline-4">
+<h4 id="orgfd70f55"><span class="section-number-4">6.1.2</span> Posible Escenario</h4>
+<div class="outline-text-4" id="text-6-1-2">
+<ol class="org-ol">
+<li>Estamos en una rama <b>feature-horarios</b> e hicimos varios cambios pero no hicimos <b>git add</b></li>
+<li>Queremos deshacer los cambios actuales</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org41bd8e8" class="outline-4">
+<h4 id="org41bd8e8"><span class="section-number-4">6.1.3</span> Posible Solución</h4>
+<div class="outline-text-4" id="text-6-1-3">
+<div class="org-src-container">
+<pre class="src src-shell" id="org184ccfe"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Eliminamos del árbol de trabajo todos los archivos</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">que no están bajo el control de versiones</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">situandonos del directorio actual</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Observación:</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Se sugiere tener CUIDADO con el uso de este comando,</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">porque también puede borrar archivos que están en el .gitignore (aquellos que no queremos subir al remoto)</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-d: Elimina los directorios  y archivos sin seguimiento (untracked files)</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-f: Forzar la acción de limpiar el directorio</span>
+git clean -df
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf893398" class="outline-4">
+<h4 id="orgf893398"><span class="section-number-4">6.1.4</span> Referencias Oficiales</h4>
+<div class="outline-text-4" id="text-6-1-4">
+<ol class="org-ol">
+<li><a href="https://git-scm.com/book/es/v2/Fundamentos-de-Git-Guardando-cambios-en-el-Repositorio">https://git-scm.com/book/es/v2/Fundamentos-de-Git-Guardando-cambios-en-el-Repositorio</a></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcfd7ea2" class="outline-3">
+<h3 id="orgcfd7ea2"><span class="section-number-3">6.2</span> Deshacer cambios del Area de Staged</h3>
+<div class="outline-text-3" id="text-6-2">
+</div>
+<div id="outline-container-orgb27e48f" class="outline-4">
+<h4 id="orgb27e48f"><span class="section-number-4">6.2.1</span> Posible Escenario</h4>
+<div class="outline-text-4" id="text-6-2-1">
+<ol class="org-ol">
+<li>Hacemos modificaciones en varios archivos y los agregamos al área de staged con <b>git add</b></li>
+<li>Queremos deshacer esos cambios (el estado cambiará a <b>unstaged changes</b>)</li>
+</ol>
+
+<p>
+<b>Observaciones:</b>
+Los cambios que pasan al estado <b>unstaged changes</b> NO se agregarán al <b>commit</b> (confirmación de cambios)
+</p>
+</div>
+</div>
+<div id="outline-container-orgb927f4c" class="outline-4">
+<h4 id="orgb927f4c"><span class="section-number-4">6.2.2</span> Posible Solución</h4>
+<div class="outline-text-4" id="text-6-2-2">
+<div class="org-src-container">
+<pre class="src src-shell" id="orgd292dad"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">creamos el archivo</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- estado del archivo: unstaged, por tanto también untracked (sin seguimiento de los cambios)</span>
+touch productos.csv
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">agregamos el archivo al "area de staged"</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- estado del archivo: staged, por tanto también tracked (en seguimiento de los cambios)</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- estado de los cambios: unstaged (porque no se modificó)</span>
+git add productos.csv
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">agregamos algunos cambios</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- estado del archivo: staged</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- estado de los cambios: unstaged (porque se modificó, pero ahora hay que agregarlos con git add)</span>
+<span style="color: #4f97d7;">echo</span> <span style="color: #2d9574;">"banana, $500"</span> &gt;&gt; productos.csv
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">agregamos ambos</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- estado del archivo: staged</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- estado de los cambios: staged</span>
+git add .
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">deshacemos los cambios de los archivos que estén en el "area de staged"</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- estado del archivo: staged</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- estado de los cambios del archivo: unstaged</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Observación:</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Deshace los cambios que estén en "area de staged"</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">pero aún se conservan en el árbol de trabajo (the working tree)</span>
+git reset --patch
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">OJO..! WARNING "podemos perder los cambios, y no los recuperamos"</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">deshacemos los cambios de los archivos del árbol de trabajo</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">a diferencia del "git reset --patch", estos cambios se perderán</span>
+git checkout --patch
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="org844c187"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Deshacemos los cambios de manera "interactiva"</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">git nos pregunta que cambios queremos deshacer ó conservar</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">y muestra las diferencias de las modificaciones</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Observación:</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- Cuando nos pregunte si queremos deshacer los cambios, elegimos yes</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- NO sirve si el estado del cambio es "unstaged changes" (cambios que no se agregaron con git add)</span>
+git reset --patch
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="orgae0ed22"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Sólo sirve para archivos del "area de staged" que fueron modificados</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">pero que tienen estado "unstaged" (osea piden que hagas un git add)</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Git nos pregunta de cuales archivos queremos deshacer los cambios</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">de manera interactiva (esto es gracias al parámetro --patch)</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">ATENCIÓN..!</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Esto modifica el árbol de trabajo, los cambios que deshagamos no se pueden recuperar</span>
+git checkout --patch
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="orgb936ac9"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Deshacemos los cambios de TODOS los archivos del árbol de trabajo (the working tree)</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">que fueron modificados</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#</span>
+git checkout -- .
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org8b6fcf9" class="outline-4">
+<h4 id="org8b6fcf9"><span class="section-number-4">6.2.3</span> Referencias Extraoficiales</h4>
+<div class="outline-text-4" id="text-6-2-3">
+<ol class="org-ol">
+<li><a href="https://howtogit.archive.pieterdedecker.be/recipes/prevent-change-from-being-committed.html">https://howtogit.archive.pieterdedecker.be/recipes/prevent-change-from-being-committed.html</a></li>
+<li><a href="https://stackoverflow.com/questions/3639342/whats-the-difference-between-git-reset-and-git-checkout#:~:text=git%20reset%20is%20specifically%20about,up%20with%20a%20detached%20HEAD">https://stackoverflow.com/questions/3639342/whats-the-difference-between-git-reset-and-git-checkout#:~:text=git%20reset%20is%20specifically%20about,up%20with%20a%20detached%20HEAD</a></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-org59b67a7" class="outline-3">
+<h3 id="org59b67a7"><span class="section-number-3">6.3</span> Mostrar diferencias previo confirmar cambios</h3>
+<div class="outline-text-3" id="text-6-3">
+</div>
+<div id="outline-container-orgda46580" class="outline-4">
+<h4 id="orgda46580"><span class="section-number-4">6.3.1</span> Conceptos</h4>
+<div class="outline-text-4" id="text-6-3-1">
+<ul class="org-ul">
+<li>Cuando confirmamos cambios nos referimos a hacer un <b>commit</b></li>
+<li>En el <b>área de stage</b> aparecen los archivos <b>rastreados</b> los que agregamos con <b>git add</b></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf2bc698" class="outline-4">
+<h4 id="orgf2bc698"><span class="section-number-4">6.3.2</span> Posible escenario</h4>
+<div class="outline-text-4" id="text-6-3-2">
+<ol class="org-ol">
+<li>Realizamos modificaciones en los archivos en el <b>área de stage</b></li>
+<li>Queremos ver QUE modificaciones hicimos previo a confirmar (commit) los cambios</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org94120cd" class="outline-4">
+<h4 id="org94120cd"><span class="section-number-4">6.3.3</span> Posible solución</h4>
+<div class="outline-text-4" id="text-6-3-3">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">mostramos las diferencia de los archivos del area de staged</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">contra la última confirmacion (commit)</span>
+git diff --staged
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf9b17d3" class="outline-3">
+<h3 id="orgf9b17d3"><span class="section-number-3">6.4</span> Pushear branches locales</h3>
+<div class="outline-text-3" id="text-6-4">
+</div>
+<div id="outline-container-org9205497" class="outline-4">
+<h4 id="org9205497"><span class="section-number-4">6.4.1</span> Posible Escenario</h4>
+<div class="outline-text-4" id="text-6-4-1">
+<p>
+Queremos hacer un <b>push</b> para publicar los cambios/confirmaciones de una rama local,
+al repositorio remoto (que suele tener el nombre de origin)
+</p>
+</div>
+</div>
+<div id="outline-container-org03fdc53" class="outline-4">
+<h4 id="org03fdc53"><span class="section-number-4">6.4.2</span> Posibles Soluciones</h4>
+<div class="outline-text-4" id="text-6-4-2">
+<p>
+Usamos el push de la siguiente manera <b>git push (remoto) (rama)</b> suponiendo que la rama local
+y la rama remota tienen el mismo nombre.
+</p>
+
+<p>
+Pero si queremos que el nombre de la rama remota, se suba con un nombre distinto al repositorio remoto
+ya sea porque en el remoto tiene otro nombre o porque así lo queremos,
+procedemos con lo siguiente <b>git push (remoto) ramaLocal:ramaRemota</b>
+</p>
+
+<p>
+Si queremos saber a que rama local apunta <b>HEAD</b> (apuntará a la rama con que hicimos git checkout nombreRama)
+ó el historial de cambio de referencias de las ramas locales, ejecutamos <b>git reflog</b>
+</p>
+
+<p>
+Si queremos conocer las referencias de las ramas locales, ejecutamos <b>git branch -vv</b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="org482e6b0"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Creamos un nuevo branch,</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">y hacemos que HEAD cambie su referencia (apunte) al nuevo branch</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- Al cambiar la referencia de HEAD, los nuevos commits (cambios) se aplicarán al branch que apunte HEAD</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- Al pasar el parámetro --branch, git crea primero el branch y luego el checkout a ese branch</span>
+git checkout -b nombreNuevoBranch
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">luego de hacer los cambios</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">pusheamos el branch al repositorio remoto</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">git push origin -u origin new_feature_name # yo usé este, pero la -u que hace?</span>
+git push origin nombreBranch
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="org2629351"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Si queremos que el branch local tenga otro nombre en el repositorio remoto</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">1. nos traemos los cambios del servidor, sin modificar nuestro directorio de trabajo</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para luego fusionarlo/integrarlo cuando queramos (merge)</span>
+git fetch origin
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">2. listamos todos los branches (locales y remotos) por si queremos subir los cambios a otro branch remoto</span>
+git branch --all
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">3. subimos los cambios</span>
+git push origin branchLocal:branchRemoto
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Cambiamos la referencia de HEAD, apuntando al branch principal (osea master)</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- Los commits (cambios) que hagamos, se aplicaran al branch al que apunta HEAD</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- Al cambiar de branch, se verán cambios en la ruta del repositorio local (nueva estructura, archivos modificados, ...)</span>
+git checkout master
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Integramos/fusionamos los cambios del branch, a la rama actual (a la que apunte HEAD)</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- en nuestro caso sería master, porque habiamos hecho el checkout master</span>
+git merge origin/nombreBranch
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">subimos los cambios (el master fusionado con el branch)</span>
+git push
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcee3767" class="outline-4">
+<h4 id="orgcee3767"><span class="section-number-4">6.4.3</span> Referencias Web Oficiales</h4>
+<div class="outline-text-4" id="text-6-4-3">
+<ol class="org-ol">
+<li><a href="https://git-scm.com/book/es/v2/Ramificaciones-en-Git-Ramas-Remotas">https://git-scm.com/book/es/v2/Ramificaciones-en-Git-Ramas-Remotas</a></li>
+<li><a href="https://git-scm.com/book/es/v2/Ramificaciones-en-Git-Procedimientos-B%C3%A1sicos-para-Ramificar-y-Fusionar#r_basic_merge_conflicts">https://git-scm.com/book/es/v2/Ramificaciones-en-Git-Procedimientos-B%C3%A1sicos-para-Ramificar-y-Fusionar#r_basic_merge_conflicts</a></li>
+<li><a href="https://git-scm.com/docs/git-checkout">https://git-scm.com/docs/git-checkout</a></li>
+<li><a href="https://www.atlassian.com/es/git/tutorials/using-branches/git-checkout">https://www.atlassian.com/es/git/tutorials/using-branches/git-checkout</a></li>
+<li><a href="https://www.atlassian.com/es/git/tutorials/using-branches/git-checkout">https://www.atlassian.com/es/git/tutorials/using-branches/git-checkout</a></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org5eb858f" class="outline-4">
+<h4 id="org5eb858f"><span class="section-number-4">6.4.4</span> Referencias Web Extraoficiales</h4>
+<div class="outline-text-4" id="text-6-4-4">
+<ol class="org-ol">
+<li><a href="https://stackoverflow.com/questions/2765421/how-do-i-push-a-new-local-branch-to-a-remote-git-repository-and-track-it-too">https://stackoverflow.com/questions/2765421/how-do-i-push-a-new-local-branch-to-a-remote-git-repository-and-track-it-too</a></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-org4c9bf27" class="outline-3">
+<h3 id="org4c9bf27"><span class="section-number-3">6.5</span> Recuperar referencias de ramas sin modificar repositorio local</h3>
+<div class="outline-text-3" id="text-6-5">
+</div>
+<div id="outline-container-orgd60aefa" class="outline-4">
+<h4 id="orgd60aefa"><span class="section-number-4">6.5.1</span> Posible escenario</h4>
+<div class="outline-text-4" id="text-6-5-1">
+<p>
+Cuando existen ramas remotas que queremos <b>recuperar</b> (fetch) a nuestro directorio de trabajo, podemos
+actualizar los punteros/referencias "no editables" que apuntan esas ramas remotas, y fusionarlas con
+las ramas locales cuando queramos.
+</p>
+</div>
+</div>
+<div id="outline-container-orged6d709" class="outline-4">
+<h4 id="orged6d709"><span class="section-number-4">6.5.2</span> Posibles soluciones</h4>
+<div class="outline-text-4" id="text-6-5-2">
+<div class="org-src-container">
+<pre class="src src-shell" id="orgbdc5d8b"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Recuperamos (fetch) las referencias/punteros de las ramas de repositorio remoto, sin modificar nuestro directorio de trabajo</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- los cambios que se hayan realizado en las ramas remotas, no alteran las nuestras</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- solo nos traemos y actualizamos los punteros/referencias no editables, que podemos ver con "git branch --remotes"</span>
+git fetch origin
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">integramos/fusionamos (merge) los confirmaciones/cambios de la rama remota "serverfix" a la rama actual</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- si querés cambiar el branch actual a otro, debemos hacer "git checkout nombreRama"</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- si queres saber en que rama estás ejecutamos "git branches --all"</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- decimos que "serverfix" es una rama remota porque "origin" es el nombre por defecto del repositorio remoto</span>
+git merge origin/serverfix
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb734891" class="outline-3">
+<h3 id="orgb734891"><span class="section-number-3">6.6</span> Actualizar referencias de branches locales</h3>
+<div class="outline-text-3" id="text-6-6">
+</div>
+<div id="outline-container-org1653ee1" class="outline-4">
+<h4 id="org1653ee1"><span class="section-number-4">6.6.1</span> Tips</h4>
+<div class="outline-text-4" id="text-6-6-1">
+<p>
+Para ver las ramas de seguimiento (track) asignadas,
+es decir la referencia que guardan nuestras ramas locales (si es que tienen referencias)
+podemos utilizar <b>git branch -vv</b>
+</p>
+
+<p>
+Las referencias tienen el formato (remoto)/(rama)
+pudiendo cambiar el repositorio remoto <b>origin</b> por otro (si es que tenemos varios repositorios)
+</p>
+
+<pre class="example" id="ejemplo-branches-referencias">si tenemos "origin/serverFix"
+el repositorio al que apunta es el por defecto "origin"
+y a la rama "serverFix"
+
+si tenemos "servidor2/serverFix"
+estamos apuntando a otro repositorio remoto, 
+que previamente habiamos agregado con *git remote add servidor2 urlRepositorioRemoto*
+si no recordamos el nombre, podemos listar los repositorios con *git remote --verbose*
+</pre>
+</div>
+</div>
+<div id="outline-container-org9d83d38" class="outline-4">
+<h4 id="org9d83d38"><span class="section-number-4">6.6.2</span> Posible Escenario</h4>
+<div class="outline-text-4" id="text-6-6-2">
+<p>
+Si ya tenemos un branch local llamado "serverfix" pero no tiene una referencia/puntero apuntando a una rama remota
+se la podemos asignar con <b>git branch -u nombreRemoto/nombreBranch</b>
+</p>
+<ul class="org-ul">
+<li>con esto estamos haciendo un seguimiento (track) de una rama remota</li>
+<li>la referencia puede apuntar a una rama remota con el mismo nombre, ó a otra rama remota</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org84f56ce" class="outline-4">
+<h4 id="org84f56ce"><span class="section-number-4">6.6.3</span> Posibles Soluciones</h4>
+<div class="outline-text-4" id="text-6-6-3">
+<div class="org-src-container">
+<pre class="src src-shell" id="orgfee0b69"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Cambiamos de rama local a "serverfix"</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- la referencia de "HEAD" apuntará a esa rama a la que cambiamos, osea "serverfix"</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- el directorio de trabajo cambiará o no, segun las confirmaciones/cambios aplicados que tenga esta rama</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- los cambios/confirmaciones que hagamos se harán en esta rama local</span>
+git checkout serverfix
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Le agregamos a la rama local la referencia/puntero hacia la rama remota "serverfix" del repositorio remoto "origin"</span>
+git branch -u origin/serverfix
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="org8d2b1fd"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Si tenemos más repositorios remotos aparte del origin,</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">podemos hacer seguimiento de una rama hacia ese otro repositorio remoto</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Es decir cambiamos la referencia/puntero del repositorio por defecto "origin", por otro distinto que es servidor2</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">(suponiendo que ese servidor2 aparece en el listado de "git remote --verbose")</span>
+git branch -u servidor2/serverfix
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org247b3e3" class="outline-3">
+<h3 id="org247b3e3"><span class="section-number-3">6.7</span> Fusionar confirmaciones de branches remotos y branches locales</h3>
+<div class="outline-text-3" id="text-6-7">
+</div>
+<div id="outline-container-orgf5ea867" class="outline-4">
+<h4 id="orgf5ea867"><span class="section-number-4">6.7.1</span> Posible Escenario</h4>
+<div class="outline-text-4" id="text-6-7-1">
+<p>
+Cuando existen ramas remotas que queremos <b>recuperar</b> (fetch) a nuestro directorio de trabajo, podemos:
+</p>
+<ol class="org-ol">
+<li>Integrar/fusionar (merge) con nuestras ramas locales existentes</li>
+<li>Crear nuevas ramas locales, y que tengan los cambios de esas ramas remotas (para no modificar las nuestras)</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org2fefa88" class="outline-4">
+<h4 id="org2fefa88"><span class="section-number-4">6.7.2</span> Posibles Soluciones</h4>
+<div class="outline-text-4" id="text-6-7-2">
+<p>
+Es importante respetar el siguiente formato para crear un branch local, y traer los cambios de una rama remota
+git checkout -b (ramaLocal) (nombreRemoto)/(rama)
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="orgb2e2d0c"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Fusionamos/Integramos (merge) nuestra rama local "serverfix" con la rama remota "serverfix"</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">1. Creamos un branch llamado "severfix"</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">2. Traemos los cambios del branch remoto "serverfix"</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#    </span><span style="color: #2aa1ae; background-color: #292e34;">- Es una rama remota, porque "origin" apunta al repositorio remoto (servidor) por defecto</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#    </span><span style="color: #2aa1ae; background-color: #292e34;">- Aunque diga checkout, al tener el parámetro -b se crea primero el branch local, y luego hace el checkout</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#      </span><span style="color: #2aa1ae; background-color: #292e34;">a esa rama</span>
+git checkout -b serverfix origin/serverfix
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="orgda0761a"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Si queremos que se agreguen los cambios en otra rama local,</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">modificamos el primer argumento, en este caso le pusimos el nombre "issuefix01"</span>
+git checkout -b issuefix01 origin/serverfix
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org67f5d88" class="outline-3">
+<h3 id="org67f5d88"><span class="section-number-3">6.8</span> Confirmaciones pendientes por subir ó por recuperar</h3>
+<div class="outline-text-3" id="text-6-8">
+</div>
+<div id="outline-container-orgf032b58" class="outline-4">
+<h4 id="orgf032b58"><span class="section-number-4">6.8.1</span> Posible Escenario</h4>
+<div class="outline-text-4" id="text-6-8-1">
+<p>
+Realizamos varios cambios en un branch (local) que aún no hemos subido (push) al repositorio remoto,
+otros colaboradores han realizado cambios en el mismo branch (remoto).
+</p>
+
+<p>
+Si hacemos <b>git branch -vv</b> nos devolverá las <b>ramas de seguimiento</b> y su estado (ahead ó behind).
+</p>
+<ul class="org-ul">
+<li>Si dice <b>(remoto)/nombreRama detrás 3</b> es porque hay 3 confirmaciones (commits) en la rama remota que
+no hemos recuperado (fetch) aún, es decir pendiente de fusionar/integrar (merge) con la rama local.</li>
+<li>Si dice <b>(remoto)/(nombreRama) delante 2</b> es porque hay 2 confirmaciones (commits) en nuestra rama local que
+aún no hemos subido (push).</li>
+<li>Si NO dice delante, ni detrás, es porque está actualizada.</li>
+</ul>
+
+<p>
+<b>Importante</b>
+Los números del estado ahead ó behind de las ramas de seguimiento, se actualizan
+cuando recuperamos (fetch) los datos del servidor con <b>git fetch</b>
+</p>
+
+<p>
+<b>Observación</b>
+Cuando ejecutamos <b>git pull</b> por detrás está haciendo un <b>git fetch</b> y luego <b>git merge</b>
+que puede NO tener los resultados esperados, no se recomienda del todo usar <b>git pull</b>
+porque trae los cambios y ya nos modifica el directorio de trabajo.
+</p>
+
+<pre class="example" id="ejemplo1-confirmaciones-estados">[jelou@jelou-pc test-conflictos]$ git branch -vv
+features/org-files 8beab19 Probando cambios en una ramita nueva
+fix/estructura     1471f2f [origin/fix/estructura] cambiamos estructura
+master             3db94eb [origin/master: delante 2, detrás 3] Nuevos cambios
+</pre>
+</div>
+</div>
+<div id="outline-container-org79d6ed7" class="outline-4">
+<h4 id="org79d6ed7"><span class="section-number-4">6.8.2</span> Posibles Soluciones</h4>
+<div class="outline-text-4" id="text-6-8-2">
+<div class="org-src-container">
+<pre class="src src-shell" id="org36d4146"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">recuperamos los datos del servidor</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">aunque no los aplica en el repositorio remoto, nosotros</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">decidimos si subir los cambios (push) ó fusionar/integrar los cambios (merge)</span>
+git fetch origin
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">si decidimos subir los cambios</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">suponiendo que la rama de seguimiento tiene N confirmaciones delante</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">(esas N confirmaciones delante, representan cambios locales que queremos subir al servidor)</span>
+git push nombreRemoto nombreRama
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">si decidimos fusionar los cambios</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">suponiendo que la rama de segumiento tiene N confirmaciones detrás</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">(esas N confirmaciones detrás, representan cambios en el servidor, que debemos recuperar a nuestro entorno)</span>
+git merge nombreRemoto/nombreRama
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org9f8badb" class="outline-3">
+<h3 id="org9f8badb"><span class="section-number-3">6.9</span> Eliminar branches</h3>
+<div class="outline-text-3" id="text-6-9">
+</div>
+<div id="outline-container-org28276dd" class="outline-4">
+<h4 id="org28276dd"><span class="section-number-4">6.9.1</span> Eliminar branches locales</h4>
+<div class="outline-text-4" id="text-6-9-1">
+<div class="org-src-container">
+<pre class="src src-shell" id="orgedf286a"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">actualizamos las referencias</span>
+git fetch origin
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">listamos todos los branches (locales y remotos)</span>
+git branch -a
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">eliminamos una rama local</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Obs: podemos cambiar --delete por su forma abreviada -d</span>
+git branch --delete nombreRama
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">eliminamos de manera forzosa</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-D sería similar a --force --delete</span>
+git branch -D nombreRama
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org03199a1" class="outline-4">
+<h4 id="org03199a1"><span class="section-number-4">6.9.2</span> Eliminar branches remotos</h4>
+<div class="outline-text-4" id="text-6-9-2">
+<div class="org-src-container">
+<pre class="src src-shell" id="orgf5c0d02"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">actualizamos las referencias</span>
+git fetch origin
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">listamos todos los branches (locales y remotos)</span>
+git branch -a
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">borramos la rama remota</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">git push (remoto) (rama)</span>
+git push origin --delete nombreRama
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2d17bb5" class="outline-4">
+<h4 id="org2d17bb5"><span class="section-number-4">6.9.3</span> Referencias Web Extraoficiales</h4>
+<div class="outline-text-4" id="text-6-9-3">
+<ol class="org-ol">
+<li><a href="https://www.educative.io/edpresso/how-to-delete-remote-branches-in-git">https://www.educative.io/edpresso/how-to-delete-remote-branches-in-git</a></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org88000f2" class="outline-2">
+<h2 id="org88000f2"><span class="section-number-2">7</span> Resolver Conflictos Elementales</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+git diff –check
+</p>
+</div>
+<div id="outline-container-org05db1f6" class="outline-3">
+<h3 id="org05db1f6"><span class="section-number-3">7.1</span> Conceptos Elementales</h3>
+<div class="outline-text-3" id="text-7-1">
+<blockquote id="git-merge-commit">
+<p>
+Si hay cambios NO confirmados (commits) cuando comenzó la fusión (merge)
+el comando <b>git merge –abort</b> puede que no pueda reconstruir los cambios.
+</p>
+
+<p>
+Por tanto, se recomienda siempre confirmar (commit) ó guardar los cambios
+previo a ejecutar el <b>git merge</b>
+</p>
+</blockquote>
+
+<p>
+<a href="https://dzone.com/articles/a-tutorial-on-git-merge">https://dzone.com/articles/a-tutorial-on-git-merge</a>
+<a href="https://learngitbranching.js.org/">https://learngitbranching.js.org/</a> (forma interactiva, ver que agarrar)
+<a href="https://sparkbox.com/foundry/better_pull_requests_merge_requests_with_templates">https://sparkbox.com/foundry/better_pull_requests_merge_requests_with_templates</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga3380a1" class="outline-3">
+<h3 id="orga3380a1"><span class="section-number-3">7.2</span> Técnicas de Fusión</h3>
+<div class="outline-text-3" id="text-7-2">
+</div>
+<div id="outline-container-orgd050b79" class="outline-4">
+<h4 id="orgd050b79"><span class="section-number-4">7.2.1</span> Fast Foward Merge</h4>
+<div class="outline-text-4" id="text-7-2-1">
+</div>
+<ol class="org-ol">
+<li><a id="org2fd0a67"></a>Conceptos<br>
+<div class="outline-text-5" id="text-7-2-1-1">
+<p>
+A fast-forward merge can occur when there is a linear path between branches 
+that we want to merge. If a master has not diverged, instead of creating a new commit,
+it will just point the master to the latest commit of the hotfix branch. 
+All commits from the hotfix branch are now available in the master branch.
+</p>
+
+<p>
+Ocurre cuando el registro (log) de confirmaciones (commits) entre las ramas que queremos fusionar
+no diverge (osea es lineal), se fusionarán las ramas y <b>HEAD</b> apuntará al último commit 
+de la rama a fusionada.
+</p>
+</div>
+</li>
+<li><a id="orgad47493"></a>Posibles Escenarios<br>
+<div class="outline-text-5" id="text-7-2-1-2">
+<ol class="org-ol">
+<li>Creamos una rama <b>feature/horarios</b>, generamos cambios en los archivos y hacemos una confirmacion (la llamaremos c3).</li>
+<li>Queremos fusionar los cambios de la confirmación (c3) en la rama principal <b>master</b> que apunta a (c2)</li>
+<li>Como no existen diferencias, ni conflictos, git hace el <b>fast foward merge</b> y HEAD apuntará a c3</li>
+</ol>
+
+<table id="orgc96e3da" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&nbsp;</th>
+<th scope="col" class="org-left">&nbsp;</th>
+<th scope="col" class="org-left">master</th>
+<th scope="col" class="org-left">feature-horarios</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">c0</td>
+<td class="org-left">c1</td>
+<td class="org-left">c2</td>
+<td class="org-left">c3</td>
+</tr>
+</tbody>
+</table>
+
+<table id="org4225c46" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&nbsp;</th>
+<th scope="col" class="org-left">&nbsp;</th>
+<th scope="col" class="org-left">&nbsp;</th>
+<th scope="col" class="org-left">master</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">c0</td>
+<td class="org-left">c1</td>
+<td class="org-left">c2</td>
+<td class="org-left">c3</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="orgf9fa199">git checkout master
+touch README.md
+git add README.md &amp;&amp; git commit -m <span style="color: #2d9574;">"Primer commit"</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">creamos una nueva rama, y la activamos para trabajar en ella</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">las confirmaciones (commits) que hagamos, se harán en esta rama</span>
+git checkout -b features/horarios
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">generamos algunos cambios</span>
+<span style="color: #4f97d7;">echo</span> <span style="color: #2d9574;">"El nuevo horario es de 10 a 19hs"</span> &gt;&gt; README.md
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">agregamos el archivo alterado</span>
+git add README.md
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">hacemos la confirmación del cambio</span>
+git commit -m <span style="color: #2d9574;">"Agregamos el nuevo horario"</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">volvemos a nuestra rama principal</span>
+git checkout master
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">y hacemos una fusión con la rama que modificamos</span>
+git merge features/horarios
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orga8fb56e" class="outline-3">
+<h3 id="orga8fb56e"><span class="section-number-3">7.3</span> Marcadores de Conflicto</h3>
+<div class="outline-text-3" id="text-7-3">
+</div>
+<div id="outline-container-orgd2d0615" class="outline-4">
+<h4 id="orgd2d0615"><span class="section-number-4">7.3.1</span> Conceptos</h4>
+<div class="outline-text-4" id="text-7-3-1">
+<p>
+Cuando hacemos un <b>git merge</b> ó <b>git rebase</b> para fusionar cambios de branches,
+git nos avisa que hubo un conflicto porque se modificaron las mismas lineas 
+en uno o varios archivos en ambas ramas.
+</p>
+
+<p>
+Entonces los archivos que tengan conflictos serán modificados por git,
+y se agregarán los <b>marcadores de conflictos</b> que delimitan las lineas 
+que debemos resolver.
+</p>
+
+<table id="org7e9989e" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Marcador</th>
+<th scope="col" class="org-left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</td>
+<td class="org-left">Delimita el inicio del conflicto</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>=====</code></td>
+<td class="org-left">Separa los cambios de las ramas en conflicto</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</td>
+<td class="org-left">Delimita el fin del conflicto</td>
+</tr>
+</tbody>
+</table>
+
+<ol class="org-ol">
+<li>Lo que está entre &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD y <code>=====</code>, son los cambios actuales del último commit al que apunta <b>HEAD</b></li>
+<li>Lo que está entre <code>=====</code> y &gt;&gt;&gt;&gt;&gt;&gt;&gt; fix/promociones, son los cambios de la rama que vamos a fusionar</li>
+</ol>
+
+<pre class="example" id="git-marcadores-conflicto-ejemplo1">Agregamos promociones
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+cambiamos descuentos
+=======
+agregamos promociones
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; fix/promociones
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orge74a129" class="outline-4">
+<h4 id="orge74a129"><span class="section-number-4">7.3.2</span> Formato diff3</h4>
+<div class="outline-text-4" id="text-7-3-2">
+<p>
+En este se agrega un nuevo marcador que es <b>||||||</b> que nos trae también al <b>ancestro en común</b>
+de las ramas que estamos fusionando, antes que hubiese un conflicto.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="org220ba6e"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">configuramos por defecto diff3</span>
+git config --global merge.conflictstyle diff3
+</pre>
+</div>
+
+
+<div class="org-src-container">
+<pre class="src src-shell">git checkout master
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">creamos y agregamos contenido al archivo</span>
+vim productos.csv
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">agregamos el archivo modificado, y confirmamos el cambio</span>
+git add productos.csv &amp;&amp; git commit -m <span style="color: #2d9574;">"Agregamos los productos"</span>
+
+git checkout -b feature-precios
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">modificamos el archivo, agregamos una columna con los precios</span>
+vim productos.csv
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">agregamos el archivo modificado, y confirmamos el cambio</span>
+git add productos.csv &amp;&amp; git commit -m <span style="color: #2d9574;">"Agregamos los productos"</span>
+
+git checkout master
+
+git checkout -b feature-descuentos
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">modificamos el archivo, modificamos columna con los descuentos</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">y borramos una de las filas</span>
+vim productos.csv
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">agregamos el archivo modificado, y confirmamos el cambio</span>
+git add productos.csv &amp;&amp; git commit -m <span style="color: #2d9574;">"Agregamos los precios y borramos un producto"</span>
+
+git checkout master
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">fusionamos</span>
+git merge feature-precios
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">fusionamos una segunda vez (tendrá un conflicto)</span>
+git merge feature-descuentos
+</pre>
+</div>
+
+<p>
+Explicación sobre los marcadores
+</p>
+<ol class="org-ol">
+<li>Lo que está entre <b>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</b> y <b>|||||||</b>
+<ul class="org-ul">
+<li>HEAD apunta a este commit</li>
+<li>fueron los primeros cambios fusionados</li>
+<li>se le suele decir OURS ó "nuestros cambios"</li>
+<li>son los cambios de la rama <b>feature-precios</b></li>
+</ul></li>
+<li>Lo que está entre <b>|||||||</b> y <b><code>=====</code></b>
+<ul class="org-ul">
+<li>es el contenido al principio, previo a los cambios de las ramas</li>
+<li>es el commit antes de fusionar las ramas <b>feature-precios</b> y <b>feature-descuentos</b></li>
+<li>es el commit antes que se bifurque el arbol de trabajo en las dos ramas que le agregan los precios/descuentos</li>
+</ul></li>
+<li>Lo que está entre <b><code>=====</code></b> y <b>&gt;&gt;&gt;&gt;&gt;&gt;&gt; features-descuentos</b>
+<ul class="org-ul">
+<li>Son los cambios de la rama que estamos tratando de fusionar (el segundo merge)</li>
+<li>Se le suele decir THEIRS ó "cambios de ellos"</li>
+</ul></li>
+</ol>
+
+<p>
+Explicación de los cambios realizados
+</p>
+<ol class="org-ol">
+<li>Estamos en la rama principal, y creamos un listado de formato csv de una columna, con los productos</li>
+<li>Creamos una rama precios en base a la rama principal, y agregamos una columna con los precios</li>
+<li>Creamos una rama descuentos en base a la rama principal, y agregamos una columna con los descuentos
+y además le sacamos el último producto "kiwi"</li>
+</ol>
+
+<pre class="example" id="git-diff3">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+Producto,Precio
+Banana,$3
+Kiwi,$2
+||||||| 7f9b53f
+Producto
+Banana
+Kiwi
+=======
+Producto,Descuento
+Banana,5%
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; features-descuentos
+</pre>
+</div>
+</div>
+<div id="outline-container-orge07bcf1" class="outline-4">
+<h4 id="orge07bcf1"><span class="section-number-4">7.3.3</span> Referencias Web Oficiales</h4>
+<div class="outline-text-4" id="text-7-3-3">
+<ol class="org-ol">
+<li><a href="https://git-scm.com/docs/merge-config">https://git-scm.com/docs/merge-config</a></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org33e071c" class="outline-4">
+<h4 id="org33e071c"><span class="section-number-4">7.3.4</span> Referencias Web Extraoficiales</h4>
+<div class="outline-text-4" id="text-7-3-4">
+<ol class="org-ol">
+<li><a href="https://dzone.com/articles/a-tutorial-on-git-merge">https://dzone.com/articles/a-tutorial-on-git-merge</a></li>
+<li><a href="https://blog.nilbus.com/take-the-pain-out-of-git-conflict-resolution-use-diff3/">https://blog.nilbus.com/take-the-pain-out-of-git-conflict-resolution-use-diff3/</a></li>
+<li><a href="https://blog.nilbus.com/temporary-merge-branch-in-diff3-conflict-markers/">https://blog.nilbus.com/temporary-merge-branch-in-diff3-conflict-markers/</a></li>
+<li><a href="https://stackoverflow.com/questions/457927/git-workflow-and-rebase-vs-merge-questions/11219380#11219380">https://stackoverflow.com/questions/457927/git-workflow-and-rebase-vs-merge-questions/11219380#11219380</a></li>
+<li><a href="http://psung.blogspot.com/2011/02/reducing-merge-headaches-git-meets.html">http://psung.blogspot.com/2011/02/reducing-merge-headaches-git-meets.html</a></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-orgbd6b182" class="outline-3">
+<h3 id="orgbd6b182"><span class="section-number-3">7.4</span> Separar confirmaciones antes de una fusión (pendiente mejorar)</h3>
+<div class="outline-text-3" id="text-7-4">
+</div>
+<div id="outline-container-org778ecec" class="outline-4">
+<h4 id="org778ecec"><span class="section-number-4">7.4.1</span> Conceptos</h4>
+<div class="outline-text-4" id="text-7-4-1">
+<p>
+Si tenemos cambios que NO queremos confirmar (commit) antes de comenzar una fusión (merge)
+se recomienda realizar <b>git stash</b> de los cambios.
+Luego de terminar la fusión <b>git merge</b> ó cancelarla <b>git merge –abort</b>
+se sugiere ejecutar <b>git stash pop</b>
+</p>
+</div>
+</div>
+<div id="outline-container-org90c09e9" class="outline-4">
+<h4 id="org90c09e9"><span class="section-number-4">7.4.2</span> Posibles Soluciones</h4>
+<div class="outline-text-4" id="text-7-4-2">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">separamos los últimos cambios no confirmados (que no hicimos commit)</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">(se podria decir que se guarda en una pila de cambios)</span>
+git stash
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">abortamos la fusión</span>
+git merge --abort
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">podemos revisar el listado (opcional)</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">(vemos la pila de cambios)</span>
+git stash list
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">retomamos los cambios que habiamos separado</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">(sacamos los últimos cambios separados de la pila de cambios)</span>
+git stash pop
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfebd9db" class="outline-4">
+<h4 id="orgfebd9db"><span class="section-number-4">7.4.3</span> Referencias Web Oficiales</h4>
+<div class="outline-text-4" id="text-7-4-3">
+<ol class="org-ol">
+<li><a href="https://mirrors.edge.kernel.org/pub/software/scm/git/docs/git-stash.html">https://mirrors.edge.kernel.org/pub/software/scm/git/docs/git-stash.html</a></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-orgba71cdf" class="outline-3">
+<h3 id="orgba71cdf"><span class="section-number-3">7.5</span> Reorganizar registro de confirmaciones</h3>
+<div class="outline-text-3" id="text-7-5">
+</div>
+<div id="outline-container-org89ddaca" class="outline-4">
+<h4 id="org89ddaca"><span class="section-number-4">7.5.1</span> Conceptos</h4>
+<div class="outline-text-4" id="text-7-5-1">
+<ul class="org-ul">
+<li>Si utilizamos el comando <b>git rebase</b> es posible alterar el registro/historial de confirmaciones</li>
+<li>El uso del <b>git rebase</b> se recomienda usar con <b>CUIDADO</b> tal como con <b>git reset –hard</b></li>
+<li>NO se recomienda usar <b>git rebase</b> en repositorios públicos, podemos arruinar el trabajo de los demás.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgdf3e5dc" class="outline-4">
+<h4 id="orgdf3e5dc"><span class="section-number-4">7.5.2</span> Posible Escenario</h4>
+<div class="outline-text-4" id="text-7-5-2">
+<ol class="org-ol">
+<li>Creamos una rama <b>feature/precios</b> y generamos varias confirmaciones c1, c2, c3  (commits)</li>
+<li>Creamos una rama <b>feature/promociones</b> y generamos varias confirmaciones c4, c5, c6  (commits)</li>
+<li>Queremos traernos las confirmaciones de ambas ramas, pero si hubiese algun conflicto
+no queremos que figure un <b>merged</b> en el registro de confirmacion <b>git log</b></li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="orge1c0e2b"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">activamos la rama master (por si acaso que estémos en otra rama)</span>
+git checkout master
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">creamos una rama para agregar los precios</span>
+git checkout -b feature/precios
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">generamos algunos cambios</span>
+<span style="color: #4f97d7;">echo</span> <span style="color: #2d9574;">"prod1 $500"</span> &gt; productos.txt
+<span style="color: #4f97d7;">echo</span> <span style="color: #2d9574;">"prod1 $300"</span> &gt;&gt; productos.txt
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">agregamos el archivo modificado y confirmamos los cambios</span>
+git add productos.txt &amp;&amp; git commit -m <span style="color: #2d9574;">"agregamos los precios"</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">volvemos a activar la rama master</span>
+git checkout master
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">nos creamos una nueva rama basada en la rama master</span>
+git checkout -b feature/promociones
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">modificamos los datos</span>
+vim productos.txt
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">agregamos el archivo modificado y confirmamos los cambios</span>
+git add productos.txt &amp;&amp; git commit -m <span style="color: #2d9574;">"agregamos las promociones"</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orge1845d2" class="outline-4">
+<h4 id="orge1845d2"><span class="section-number-4">7.5.3</span> Posibles Soluciones</h4>
+<div class="outline-text-4" id="text-7-5-3">
+<p>
+<b>Observaciones:</b>
+Quizás se podría hacer el rebase directo en el master, pero esto podría alterar el registro de confirmaciones
+y no habría vuelta atrás. Por eso lo hacemos en las ramas <b>feature/descuentos</b> y <b>feature/promociones</b>
+para reorganizarlas y luego traerlas a la rama <b>master</b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="orgd4dc211"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">activamos la rama de los descuentos</span>
+git checkout feature/descuentos
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">sobreescribimos el registro de confirmaciones</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para que la última confirmación sea la de feature/descuentos</span>
+git rebase master
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">retomamos la rama master</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">y nos traemos los cambios reorganizados de la rama feature/descuentos</span>
+git checkout master
+git rebase feature/descuentos
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">repetimos las operaciones anteriores</span>
+git checkout feature/promociones
+git rebase master
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">si aparece un conflicto, lo solucionamos</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">y le avisamos a git que siga con el rebase</span>
+git rebase --continue <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">esto es solo si aparece un conflicto</span>
+
+git checkout master
+git rebase feature/descuentos
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orge063e2c" class="outline-3">
+<h3 id="orge063e2c"><span class="section-number-3">7.6</span> Archivos con diferencias</h3>
+<div class="outline-text-3" id="text-7-6">
+<p>
+Para remover del directorio de trabajo los archivos con diferencias
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="org66b57df"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-f hace referencia a --force</span>
+git clean -f
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb10038f" class="outline-3">
+<h3 id="orgb10038f"><span class="section-number-3">7.7</span> Deshacer fusión no publicada</h3>
+<div class="outline-text-3" id="text-7-7">
+</div>
+<div id="outline-container-orgd628223" class="outline-4">
+<h4 id="orgd628223"><span class="section-number-4">7.7.1</span> Posible Escenario</h4>
+<div class="outline-text-4" id="text-7-7-1">
+<ul class="org-ul">
+<li>Si resolvimos un conflicto pero queremos deshacer el merge, podemos usar el comando <b>git reset</b></li>
+<li>Con No publicada nos referimos al haber ejecutado el comando <b>git push</b></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org66b8911" class="outline-4">
+<h4 id="org66b8911"><span class="section-number-4">7.7.2</span> Posible Solución</h4>
+<div class="outline-text-4" id="text-7-7-2">
+<ul class="org-ul">
+<li>Cuando se trata de resolver conflictos, no podemos usar el <b>git reset –soft</b> que mantiene los cambios</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="org9ba98d5"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">al usar el parámetro --hard</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">deshacemos los cambios, y no mantenemos los cambios</span>
+git reset --hard HEAD~1
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org32c908d" class="outline-4">
+<h4 id="org32c908d"><span class="section-number-4">7.7.3</span> Referencias Web Extraoficiales</h4>
+<div class="outline-text-4" id="text-7-7-3">
+<ol class="org-ol">
+<li><a href="https://midu.dev/como-deshacer-el-ultimo-commit-git/">https://midu.dev/como-deshacer-el-ultimo-commit-git/</a></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-orgbf946fe" class="outline-3">
+<h3 id="orgbf946fe"><span class="section-number-3">7.8</span> Abortar Fusión</h3>
+<div class="outline-text-3" id="text-7-8">
+</div>
+<div id="outline-container-org239ef88" class="outline-4">
+<h4 id="org239ef88"><span class="section-number-4">7.8.1</span> Posible Escenario</h4>
+<div class="outline-text-4" id="text-7-8-1">
+<ul class="org-ul">
+<li>Fusionamos branches ejecutando el comando <b>git merge</b> y nos salta un warning de conflicto</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org43b9850" class="outline-4">
+<h4 id="org43b9850"><span class="section-number-4">7.8.2</span> Posible solución</h4>
+<div class="outline-text-4" id="text-7-8-2">
+<ul class="org-ul">
+<li>Podemos volver a ejecutar el comando <b>git merge</b> pero con el parámetro <b>–abort</b></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">deshacemos el merge anterior</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">restauramos el directorio y los archivos que se modificaron con el merge anterior</span>
+git merge --abort
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd867298" class="outline-4">
+<h4 id="orgd867298"><span class="section-number-4">7.8.3</span> Referencias Web Oficiales</h4>
+<div class="outline-text-4" id="text-7-8-3">
+<ol class="org-ol">
+<li><a href="https://www.atlassian.com/es/git/tutorials/using-branches/merge-conflicts">https://www.atlassian.com/es/git/tutorials/using-branches/merge-conflicts</a></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-org2d7ab38" class="outline-3">
+<h3 id="org2d7ab38"><span class="section-number-3">7.9</span> Cambiar Archivos</h3>
+<div class="outline-text-3" id="text-7-9">
+</div>
+<div id="outline-container-org7ad2eee" class="outline-4">
+<h4 id="org7ad2eee"><span class="section-number-4">7.9.1</span> Posible Escenario</h4>
+<div class="outline-text-4" id="text-7-9-1">
+<ol class="org-ol">
+<li>Hacemos un merge y tenemos un conflicto</li>
+<li>Nos informan que nos quedemos con nuestro cambio, porque el cambio de nuestro colega estaba mal</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #2aa1ae; background-color: #292e34;">#</span>
+git checkout merge-into-ours
+
+<span style="color: #2aa1ae; background-color: #292e34;">#</span>
+git merge from-theirs
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org65be1e7" class="outline-4">
+<h4 id="org65be1e7"><span class="section-number-4">7.9.2</span> Posibles Soluciones</h4>
+<div class="outline-text-4" id="text-7-9-2">
+<div class="org-src-container">
+<pre class="src src-shell" id="org403318f"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">nos evitamos buscar las diferencias con "git mergetool"</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">nos quedamos solo con nuestro cambio</span>
+git checkout --ours README.md
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">suponiendo que cambian de parecer</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">y nos dicen que la revisión correcta, NO es la nuestra</span>
+git checkout --theirs README.md
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">agregamos el archivo modificado</span>
+git add README.md
+
+git commit -am <span style="color: #2d9574;">"Conflicto solucionado"</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="org69053b2"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Mostramos las confirmaciones que tienen conflicto</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">más en detalle de un archivo específico (suponiendo que ese archivo generó el conflicto)</span>
+git log --merge -p README.md
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="orga8ee2c3"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Stage #1 is the common ancestor of the files</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Common base version of the file.</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">archivo ancestro en común</span>
+git show :1:README.md
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Stage #2 is the target-branch version</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">'Ours' version of the file.</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">archivo del repositorio local, el nuestro</span>
+git show :2:README.md
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Es el MERGE_HEAD</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Stage #3 is the version you are merging from</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">'Theirs' version of the file.</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">archivo del repositorio remoto (aunque puede ser local y venir de otra rama local)</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">archivo que queremos fusionar</span>
+git show :3:README.md
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orge174736" class="outline-4">
+<h4 id="orge174736"><span class="section-number-4">7.9.3</span> Referencias Web Extraoficiales</h4>
+<div class="outline-text-4" id="text-7-9-3">
+<ol class="org-ol">
+<li><a href="https://nitaym.github.io/ourstheirs/">https://nitaym.github.io/ourstheirs/</a></li>
+<li><a href="https://qastack.mx/programming/161813/how-to-resolve-merge-conflicts-in-git">https://qastack.mx/programming/161813/how-to-resolve-merge-conflicts-in-git</a></li>
+<li><a href="https://stackoverflow.com/questions/25576415/what-is-the-precise-meaning-of-ours-and-theirs-in-git">https://stackoverflow.com/questions/25576415/what-is-the-precise-meaning-of-ours-and-theirs-in-git</a></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-org5f1eb6a" class="outline-3">
+<h3 id="org5f1eb6a"><span class="section-number-3">7.10</span> Registro de Confirmaciones en conflicto</h3>
+<div class="outline-text-3" id="text-7-10">
+<p>
+Si queremos ver el registro de confirmaciones, pero sólo de aquellas confirmaciones en conflicto
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="org6b814f9">git log --merge
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgedeb43f" class="outline-3">
+<h3 id="orgedeb43f"><span class="section-number-3">7.11</span> Resolver Conflictos con MergeTools</h3>
+<div class="outline-text-3" id="text-7-11">
+</div>
+<div id="outline-container-org0d49985" class="outline-4">
+<h4 id="org0d49985"><span class="section-number-4">7.11.1</span> Conceptos</h4>
+<div class="outline-text-4" id="text-7-11-1">
+<p>
+Cuando tenemos conflictos en distintas partes de un archivo, revisar las diferencias
+desde la terminal sin herramientas puede ser confuso.
+Con mergetools de git podemos configurar la herramienta (vimdiff, emacs,…) el formato (ediff, diff3,..)
+y facilitar la corrección del conflicto.
+</p>
+
+<table id="orgad76b5d" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">LOCAL (ours)</th>
+<th scope="col" class="org-left">BASE</th>
+<th scope="col" class="org-left">REMOTE (theirs)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">MERGED</td>
+</tr>
+</tbody>
+</table>
+
+<table id="org466ecb6" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">LOCAL (A)</th>
+<th scope="col" class="org-left">BASE</th>
+<th scope="col" class="org-left">REMOTE (B)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">MERGED (C)</td>
+</tr>
+</tbody>
+</table>
+
+<table id="org77d4be8" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">(A) OLD VERSION</th>
+<th scope="col" class="org-left">ANCESTOR</th>
+<th scope="col" class="org-left">(B) NEW VERSION</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">MERGED (C)</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<b>Observaciones:</b>
+</p>
+<ul class="org-ul">
+<li>Las letras en paréntesis es como lo suelen denotar otros también, con menos detalle.</li>
+</ul>
+
+<p>
+Con cualquiera de las herramientas que usemos como mergetool, tanto vim como emacs
+veremos las siguientes secciones
+</p>
+<ul class="org-ul">
+<li><b>LOCAL:</b> archivo de la rama actual, último commit antes del conflicto (al que apunta HEAD)</li>
+<li><b>REMOTO:</b> archivo que estamos fusionando con la rama actual</li>
+<li><b>BASE:</b> ancestro común, cómo se veía el archivo antes de ambos cambios</li>
+<li><b>FUSIONADO:</b> resultado de fusión, esto es lo que se guarda en el repositorio</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3fbb212" class="outline-4">
+<h4 id="org3fbb212"><span class="section-number-4">7.11.2</span> Ejecutar Mergetools</h4>
+<div class="outline-text-4" id="text-7-11-2">
+<div class="org-src-container">
+<pre class="src src-shell" id="org463fe5c">git mergetool
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2dc8643" class="outline-4">
+<h4 id="org2dc8643"><span class="section-number-4">7.11.3</span> Configurar Mergetools con Emacs</h4>
+<div class="outline-text-4" id="text-7-11-3">
+</div>
+<ol class="org-ol">
+<li><a id="org5cba3f0"></a>Introducción<br></li>
+<li><a id="org5817d39"></a>Configuración<br>
+<div class="outline-text-5" id="text-7-11-3-2">
+<div class="org-src-container">
+<pre class="src src-shell" id="org6f6c66c"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Configuramos emacs como difftool</span>
+git config --global diff.tool emacs
+git config --global difftool.prompt false
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">the result of the following command is:</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">cmd = emacs -nw --eval \"(progn (setq vc-handled-backends ()) (ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\"))\"</span>
+git config --global difftool.emacs.cmd <span style="color: #2d9574;">\</span>
+    <span style="color: #2d9574;">'emacs -nw --eval "(progn (setq vc-handled-backends ()) (ediff-files \"$LOCAL\" \"$REMOTE\"))"'</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="org93b1cbe"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Configuramos emacs como mergetool</span>
+git config --global merge.tool emacs
+git config --global mergetool.prompt false
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">the result of the following command is:</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">cmd =  emacs -nw --eval \"(progn (setq vc-handled-backends ()) (ediff-merge-files-with-ancestor \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" nil \\\"$MERGED\\\"))\"</span>
+git config --global mergetool.emacs.cmd <span style="color: #2d9574;">\</span>
+    <span style="color: #2d9574;">'emacs -nw --eval "(progn (setq vc-handled-backends ()) (ediff-merge-files-with-ancestor \"$LOCAL\" \"$REMOTE\" \"$BASE\" nil \"$MERGED\"))"'</span>
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org4448f9f"></a>Teclas atajo<br>
+<div class="outline-text-5" id="text-7-11-3-3">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Atajo</th>
+<th scope="col" class="org-left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">k,p</td>
+<td class="org-left">siguiente diferencia (cambio)</td>
+</tr>
+
+<tr>
+<td class="org-left">j,n</td>
+<td class="org-left">anterior diferencia (cambio)</td>
+</tr>
+
+<tr>
+<td class="org-left">q</td>
+<td class="org-left">salir</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">a</td>
+<td class="org-left">Agrega los cambios de (A) en (C) osea en la fusión</td>
+</tr>
+
+<tr>
+<td class="org-left">b</td>
+<td class="org-left">Agrega los cambios de (B) a (C) osea en la fusión</td>
+</tr>
+
+<tr>
+<td class="org-left">r</td>
+<td class="org-left">Vuelve al cambio anterior (A ó B)</td>
+</tr>
+
+<tr>
+<td class="org-left">+</td>
+<td class="org-left">Agrega las diferencias de ambos, con los símbolos &lt;&lt; y &gt;&gt;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+
+<li><a id="org23af92e"></a>Referencias<br>
+<div class="outline-text-5" id="text-7-11-3-4">
+<ol class="org-ol">
+<li><a href="http://www.campisano.org/wiki/en/Emacs_(Application)">http://www.campisano.org/wiki/en/Emacs_(Application)</a></li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-org3911687" class="outline-4">
+<h4 id="org3911687"><span class="section-number-4">7.11.4</span> Configurar Mergetools con Vim</h4>
+<div class="outline-text-4" id="text-7-11-4">
+</div>
+<ol class="org-ol">
+<li><a id="org6c34501"></a>Configuración<br>
+<div class="outline-text-5" id="text-7-11-4-1">
+<div class="org-src-container">
+<pre class="src src-shell" id="org1f0b5d8">git config merge.tool vimdiff
+git config merge.conflictstyle diff3
+git config mergetool.prompt false
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org26afa03"></a>Comandos y Teclas de atajo<br>
+<div class="outline-text-5" id="text-7-11-4-2">
+<table id="orgb8615b5" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Comando</th>
+<th scope="col" class="org-left">Comando Corto</th>
+<th scope="col" class="org-left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">:diffget N</td>
+<td class="org-left">:diffg N</td>
+<td class="org-left">Agrega los cambios de la ventana N en Merged</td>
+</tr>
+
+<tr>
+<td class="org-left">:diffoff</td>
+<td class="org-left">:diffo</td>
+<td class="org-left">Desactiva las diferencias</td>
+</tr>
+
+<tr>
+<td class="org-left">:difft</td>
+<td class="org-left">:difft</td>
+<td class="org-left">Activa las diferencias</td>
+</tr>
+
+<tr>
+<td class="org-left">:diffupdate</td>
+<td class="org-left">:diffu</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">:diffput</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+
+<table id="org4534967" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Comando</th>
+<th scope="col" class="org-left">Comando Corto</th>
+<th scope="col" class="org-left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">:set relativenumber</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Agrega los números de las lineas</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+
+<table id="orgccefee2" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Atajo</th>
+<th scope="col" class="org-left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">]c</td>
+<td class="org-left">siguiente cambio</td>
+</tr>
+
+<tr>
+<td class="org-left">[c</td>
+<td class="org-left">anterior cambio</td>
+</tr>
+
+<tr>
+<td class="org-left">C w w</td>
+<td class="org-left">siguiente ventana</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+
+<li><a id="org64c1bcf"></a>Referencias Youtube<br>
+<div class="outline-text-5" id="text-7-11-4-3">
+<ol class="org-ol">
+<li><a href="https://www.youtube.com/watch?v=wxh-AOxPX_A&amp;ab_channel=AltitudeAirspeedAndIdeas">https://www.youtube.com/watch?v=wxh-AOxPX_A&amp;ab_channel=AltitudeAirspeedAndIdeas</a></li>
+</ol>
+</div>
+</li>
+<li><a id="org118aaca"></a>Referencias Web Extraoficiales<br>
+<div class="outline-text-5" id="text-7-11-4-4">
+<ol class="org-ol">
+<li><a href="https://qastack.mx/programming/161813/how-to-resolve-merge-conflicts-in-git">https://qastack.mx/programming/161813/how-to-resolve-merge-conflicts-in-git</a></li>
+<li><a href="https://www.rosipov.com/blog/use-vimdiff-as-git-mergetool/#fromHistor">https://www.rosipov.com/blog/use-vimdiff-as-git-mergetool/#fromHistor</a></li>
+<li><a href="https://qastack.mx/programming/4556184/vim-move-window-left-right">https://qastack.mx/programming/4556184/vim-move-window-left-right</a></li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-orgb67859f" class="outline-4">
+<h4 id="orgb67859f"><span class="section-number-4">7.11.5</span> Referencias Web Oficiales</h4>
+<div class="outline-text-4" id="text-7-11-5">
+<ol class="org-ol">
+<li><a href="https://mirrors.edge.kernel.org/pub/software/scm/git/docs/git-merge.html#_how_to_resolve_conflicts">https://mirrors.edge.kernel.org/pub/software/scm/git/docs/git-merge.html#_how_to_resolve_conflicts</a></li>
+<li><a href="https://www.atlassian.com/es/git/tutorials/using-branches/merge-conflicts">https://www.atlassian.com/es/git/tutorials/using-branches/merge-conflicts</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/vim">https://wiki.archlinux.org/index.php/vim</a></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgb967e55" class="outline-4">
+<h4 id="orgb967e55"><span class="section-number-4">7.11.6</span> Referencias Web Extraoficiales</h4>
+<div class="outline-text-4" id="text-7-11-6">
+<ol class="org-ol">
+<li><a href="https://psung.blogspot.com/2011/02/reducing-merge-headaches-git-meets.html">https://psung.blogspot.com/2011/02/reducing-merge-headaches-git-meets.html</a></li>
+<li><a href="https://nitaym.github.io/ourstheirs/">https://nitaym.github.io/ourstheirs/</a></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-orgec50e25" class="outline-3">
+<h3 id="orgec50e25"><span class="section-number-3">7.12</span> Referencias</h3>
+<div class="outline-text-3" id="text-7-12">
+</div>
+<div id="outline-container-org90d38e0" class="outline-4">
+<h4 id="org90d38e0"><span class="section-number-4">7.12.1</span> Referencias Web Oficiales</h4>
+<div class="outline-text-4" id="text-7-12-1">
+<ol class="org-ol">
+<li><a href="https://docs.github.com/es/enterprise-server@2.21/github/collaborating-with-issues-and-pull-requests/resolving-a-merge-conflict-using-the-command-line">https://docs.github.com/es/enterprise-server@2.21/github/collaborating-with-issues-and-pull-requests/resolving-a-merge-conflict-using-the-command-line</a></li>
+<li><a href="http://git-scm.com/docs/git-merge#_how_conflicts_are_presented">http://git-scm.com/docs/git-merge#_how_conflicts_are_presented</a></li>
+<li><a href="http://www.git-scm.com/docs/git-merge">http://www.git-scm.com/docs/git-merge</a></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org1b8043a" class="outline-4">
+<h4 id="org1b8043a"><span class="section-number-4">7.12.2</span> Referencias Web Extraoficiales</h4>
+<div class="outline-text-4" id="text-7-12-2">
+<ol class="org-ol">
+<li><a href="https://qastack.mx/programming/161813/how-to-resolve-merge-conflicts-in-git">https://qastack.mx/programming/161813/how-to-resolve-merge-conflicts-in-git</a></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orga27a058" class="outline-2">
+<h2 id="orga27a058"><span class="section-number-2">8</span> Resolver Conflictos Basicos</h2>
+<div class="outline-text-2" id="text-8">
+</div>
+<div id="outline-container-org9e3cdb3" class="outline-3">
+<h3 id="org9e3cdb3"><span class="section-number-3">8.1</span> Fusionar rama y agrupar confirmaciones</h3>
+<div class="outline-text-3" id="text-8-1">
+</div>
+<div id="outline-container-org9406de3" class="outline-4">
+<h4 id="org9406de3"><span class="section-number-4">8.1.1</span> Posible Escenario</h4>
+<div class="outline-text-4" id="text-8-1-1">
+<ol class="org-ol">
+<li>Creamos una rama <b>feature/anuncios</b> con nuevas características</li>
+<li>Hacemos varias modificaciones, por tanto varias confirmaciones (commits)</li>
+<li>Queremos fusionar <b>feature/anuncios</b> con la rama <b>master</b> pero sin todas las confirmaciones de esa rama
+es decir queremos que la fusión tenga sólo una confirmación (commit)</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">creamos la rama, y la activamos</span>
+git checkout -b feature/anuncios
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">hacemos varios cambios</span>
+mkdir anuncios &amp;&amp; <span style="color: #4f97d7;">cd</span> anuncios &amp;&amp; touch anuncio<span style="color: #4f97d7;">{</span><span style="color: #a45bad;">1..5</span><span style="color: #4f97d7;">}</span>.txt &amp;&amp; <span style="color: #4f97d7;">cd</span> ..
+git commit -am <span style="color: #2d9574;">"agregamos varios anuncios"</span>
+
+mkdir imagenes &amp;&amp; touch imagenes/imagen<span style="color: #4f97d7;">{</span><span style="color: #a45bad;">1,3,7</span><span style="color: #4f97d7;">}</span>.png
+git commit -am <span style="color: #2d9574;">"agregamos imagenes de los anuncios"</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">publicamos nuestra rama (opcional)</span>
+git push origin feature/anuncios
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd5f601b" class="outline-4">
+<h4 id="orgd5f601b"><span class="section-number-4">8.1.2</span> Posible Solución</h4>
+<div class="outline-text-4" id="text-8-1-2">
+<p>
+Utilizamos <b>git merge</b> con el parámetro <b>–squash</b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">activamos la rama master</span>
+git checkout master
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">fusionamos los cambios de la rama feature/anuncios en la rama master</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- pero todos los commits de esa rama, aparecerán como un solo commit</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- si no le pasamos squash, el master tendrá todos los commits que hicimos en esa rama</span>
+git merge --squash feature/anuncios
+
+git commit -m <span style="color: #2d9574;">"Agregamos varios anuncios"</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org7922b40" class="outline-2">
+<h2 id="org7922b40"><span class="section-number-2">9</span> Resolver Conflictos Complejos</h2>
+<div class="outline-text-2" id="text-9">
+<div class="org-src-container">
+<pre class="src src-shell">git pull --strategy=theirs remote_branch
+
+git diff ..@<span style="color: #4f97d7;">{</span>upstream<span style="color: #4f97d7;">}</span>
+
+git log ..@<span style="color: #4f97d7;">{</span>upstream<span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+</div>
+<div id="outline-container-org544023c" class="outline-3">
+<h3 id="org544023c"><span class="section-number-3">9.1</span> Merge Vs Rebase</h3>
+<div class="outline-text-3" id="text-9-1">
+</div>
+<div id="outline-container-org590fb70" class="outline-4">
+<h4 id="org590fb70"><span class="section-number-4">9.1.1</span> Referencias</h4>
+<div class="outline-text-4" id="text-9-1-1">
+<ol class="org-ol">
+<li><a href="https://stackoverflow.com/questions/457927/git-workflow-and-rebase-vs-merge-questions/11219380#11219380">https://stackoverflow.com/questions/457927/git-workflow-and-rebase-vs-merge-questions/11219380#11219380</a></li>
+<li><a href="https://randyfay.com/content/rebase-workflow-git">https://randyfay.com/content/rebase-workflow-git</a></li>
+<li><a href="http://www.randyfay.com/node/89">http://www.randyfay.com/node/89</a></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-orgce2bfa9" class="outline-3">
+<h3 id="orgce2bfa9"><span class="section-number-3">9.2</span> Referencias Web Oficiales</h3>
+<div class="outline-text-3" id="text-9-2">
+<ol class="org-ol">
+<li><a href="https://git-scm.com/book/es/v2/Herramientas-de-Git-Fusi%C3%B3n-Avanzada">https://git-scm.com/book/es/v2/Herramientas-de-Git-Fusi%C3%B3n-Avanzada</a></li>
+<li><a href="https://git-scm.com/book/es/v2/Ramificaciones-en-Git-Reorganizar-el-Trabajo-Realizado#r_rebase_peril">https://git-scm.com/book/es/v2/Ramificaciones-en-Git-Reorganizar-el-Trabajo-Realizado#r_rebase_peril</a></li>
+<li><a href="https://git-scm.com/book/es/v2/Herramientas-de-Git-Reiniciar-Desmitificado#r_git_reset">https://git-scm.com/book/es/v2/Herramientas-de-Git-Reiniciar-Desmitificado#r_git_reset</a></li>
+<li><a href="https://git-scm.com/book/en/v2/Git-Tools-Advanced-Merging">https://git-scm.com/book/en/v2/Git-Tools-Advanced-Merging</a></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orga036fb5" class="outline-3">
+<h3 id="orga036fb5"><span class="section-number-3">9.3</span> Referencias Web Extraoficiales</h3>
+<div class="outline-text-3" id="text-9-3">
+<ol class="org-ol">
+<li><a href="https://gitolite.com/git-pull--rebase">https://gitolite.com/git-pull--rebase</a></li>
+<li></li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4fbe83e" class="outline-2">
+<h2 id="org4fbe83e"><span class="section-number-2">10</span> Pendiente Revisar</h2>
+<div class="outline-text-2" id="text-10">
+</div>
+<div id="outline-container-org53ee293" class="outline-3">
+<h3 id="org53ee293"><span class="section-number-3">10.1</span> <span class="todo _TODO_">[TODO]</span> Como manejarse con los tags y las versiones</h3>
+<div class="outline-text-3" id="text-10-1">
+<p>
+Algunas preguntas que se me ocurren
+</p>
+<ul class="org-ul">
+<li>Deberia hacer una lista de nuevas caracteristicas/funcionalidades por cada version?</li>
+<li>Por correcciones de tantos bugs pasaria de v0.1.0 a v0.1.1 ?</li>
+</ul>
+<p>
+Pagina: <a href="https://github.com/org-trello/org-trello/blob/master/TODO.org">Org-Trello</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org6000cfb" class="outline-3">
+<h3 id="org6000cfb"><span class="section-number-3">10.2</span> <span class="todo _TODO_">[TODO]</span> Cuando crear un branch (nuevas caracteristicas)</h3>
+<div class="outline-text-3" id="text-10-2">
+<p>
+github branches para separar nuevas caracteristicas y para separar resolución de bugs
+<b>OFICIALES</b>
+</p>
+<ol class="org-ol">
+<li><a href="https://git-scm.com/book/es/v2/Herramientas-de-Git-Guardado-r%C3%A1pido-y-Limpieza#r_git_stashing">https://git-scm.com/book/es/v2/Herramientas-de-Git-Guardado-r%C3%A1pido-y-Limpieza#r_git_stashing</a></li>
+<li><a href="https://git-scm.com/book/es/v2/Fundamentos-de-Git-Deshacer-Cosas">https://git-scm.com/book/es/v2/Fundamentos-de-Git-Deshacer-Cosas</a></li>
+<li><a href="https://git-scm.com/book/es/v2/Herramientas-de-Git-Fusi%C3%B3n-Avanzada">https://git-scm.com/book/es/v2/Herramientas-de-Git-Fusi%C3%B3n-Avanzada</a></li>
+<li><a href="https://docs.github.com/es/github/collaborating-with-issues-and-pull-requests/resolving-a-merge-conflict-using-the-command-line">https://docs.github.com/es/github/collaborating-with-issues-and-pull-requests/resolving-a-merge-conflict-using-the-command-line</a></li>
+<li><a href="https://www.atlassian.com/git/tutorials/comparing-workflows">https://www.atlassian.com/git/tutorials/comparing-workflows</a></li>
+<li><a href="https://www.atlassian.com/es/git/tutorials/undoing-changes">https://www.atlassian.com/es/git/tutorials/undoing-changes</a></li>
+<li><a href="https://git-scm.com/book/es/v2/Herramientas-de-Git-Reescribiendo-la-Historia">https://git-scm.com/book/es/v2/Herramientas-de-Git-Reescribiendo-la-Historia</a></li>
+</ol>
+
+<p>
+<b>OTROS</b>
+</p>
+<ol class="org-ol">
+<li><a href="https://www.genbeta.com/desarrollo/manejo-de-ramas-de-desarrollo-con-git">https://www.genbeta.com/desarrollo/manejo-de-ramas-de-desarrollo-con-git</a></li>
+<li><a href="https://www.valenciatech.com/formacion/online/git/puntero-head-git/">https://www.valenciatech.com/formacion/online/git/puntero-head-git/</a></li>
+<li><a href="https://carlossanchezperez.wordpress.com/2012/12/31/mi-guia-esencial-de-git-segunda-parte/">https://carlossanchezperez.wordpress.com/2012/12/31/mi-guia-esencial-de-git-segunda-parte/</a></li>
+<li><a href="https://www.hostinger.es/tutoriales/que-es-github">https://www.hostinger.es/tutoriales/que-es-github</a></li>
+<li><a href="https://www.hostinger.es/tutoriales/como-usar-git-branch">https://www.hostinger.es/tutoriales/como-usar-git-branch</a></li>
+<li><a href="https://gist.github.com/jelcaf/1404619">https://gist.github.com/jelcaf/1404619</a></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org5ec251d" class="outline-3">
+<h3 id="org5ec251d"><span class="section-number-3">10.3</span> <span class="todo _TODO_">[TODO]</span> Cuando crear un tag (para armar releases)</h3>
+</div>
+<div id="outline-container-orgd047a7d" class="outline-3">
+<h3 id="orgd047a7d"><span class="section-number-3">10.4</span> Cuando crear pull request</h3>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: jelou</p>
+<p class="date">Created: 2021-04-01 jue 17:42</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+
+
+</body></html>

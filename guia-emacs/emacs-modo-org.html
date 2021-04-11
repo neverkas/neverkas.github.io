@@ -1,0 +1,837 @@
+<!--?xml version="1.0" encoding="utf-8"?--><!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<!-- 2021-04-04 dom 13:52 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guia Emacs - Intgrando el Modo Org</title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="jelou">
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/sass-style.css">
+<script type="text/javascript" src="/assets/js/all.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Guia Emacs - Intgrando el Modo Org</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org39f4ac4">1. Tareas basicas para empezar</a>
+<ul>
+<li><a href="#orgc4a7f89">1.1. Para iniciar Emacs con un archivo .org"</a></li>
+<li><a href="#org45a4206">1.2. Crear una lista de tareas</a></li>
+<li><a href="#org42fecd6">1.3. Crear una sublista de tareas</a></li>
+<li><a href="#orgace94b0">1.4. Crear tareas con viñetas</a></li>
+<li><a href="#org6cfa35a">1.5. Crear una lista de seguimiento con TO-DO</a></li>
+<li><a href="#org6ccbd38">1.6. Crear una lista de seguimiento con checkboxes</a></li>
+</ul>
+</li>
+<li><a href="#org89511d7">2. Atajos</a>
+<ul>
+<li><a href="#orga44d93b">2.1. Tabla comparativa</a></li>
+<li><a href="#org4a6cfe1">2.2. Referencias</a>
+<ul>
+<li><a href="#orgdb396c7">2.2.1. Referencias Web Oficiales</a></li>
+<li><a href="#orgf8fc5b1">2.2.2. Referencias Web Extraoficiales</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orge4cce90">3. Integrar archivos ORG con dropbox</a></li>
+<li><a href="#org33d9382">4. Sitios web recomendados</a>
+<ul>
+<li><a href="#org1068878">4.1. Guias</a>
+<ul>
+<li><a href="#org91401c3">4.1.1. Referencias Web Oficiales</a></li>
+<li><a href="#orgd87f5e1">4.1.2. Referencias Web Extraoficiales</a></li>
+</ul>
+</li>
+<li><a href="#org8ac12e9">4.2. Agregar etiquetas a las tareas</a>
+<ul>
+<li><a href="#org79440ec">4.2.1. Referencias Web Oficiales</a></li>
+<li><a href="#org4ef6f7f">4.2.2. Referencias Youtube</a></li>
+</ul>
+</li>
+<li><a href="#org000c42f">4.3. Como organizarse con el modo Org</a>
+<ul>
+<li><a href="#org1a336ee">4.3.1. Referencias Youtube</a></li>
+</ul>
+</li>
+<li><a href="#org2eabc55">4.4. Cambiar las prioridades de las tareas</a>
+<ul>
+<li><a href="#orgf97ecbd">4.4.1. Referencias Youtube</a></li>
+<li><a href="#orgc7464a8">4.4.2. Referencias Web Extraoficiales</a></li>
+</ul>
+</li>
+<li><a href="#org4f755de">4.5. Modificar Agenda estados</a>
+<ul>
+<li><a href="#orga7ca773">4.5.1. Referencias Web Oficiales</a></li>
+<li><a href="#org4bb679b">4.5.2. Referencias Web Extraoficiales</a></li>
+</ul>
+</li>
+<li><a href="#org6985f7d">4.6. Otros</a>
+<ul>
+<li><a href="#org09be693">4.6.1. Referencias Web Oficiales</a></li>
+<li><a href="#orga192bc8">4.6.2. Referencias Youtube</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div class="figure">
+<p><img src="/img/orgmode2.png" alt="orgmode2.png" width="450">
+</p>
+</div>
+
+
+<div id="outline-container-org39f4ac4" class="outline-2">
+<h2 id="org39f4ac4"><span class="section-number-2">1</span> Tareas basicas para empezar</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-orgc4a7f89" class="outline-3">
+<h3 id="orgc4a7f89"><span class="section-number-3">1.1</span> Para iniciar Emacs con un archivo .org"</h3>
+<div class="outline-text-3" id="text-1-1">
+<ol class="org-ol">
+<li>Modificar el archivo de configuracion &lt;kbd&gt;C-x C-f&lt;/kbd&gt; ~/.emacs.d/init.el</li>
+<li>Ir al final del archivo &lt;kbd&gt;C-Fin&lt;/kbd&gt; y agregar la siguiente linea</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">cambiar por la ruta que desees</span>
+<span style="color: #4f97d7;">(</span>find-file <span style="color: #2d9574;">"~/Dropbox/orgfiles/agenda1.org"</span><span style="color: #4f97d7;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org45a4206" class="outline-3">
+<h3 id="org45a4206"><span class="section-number-3">1.2</span> Crear una lista de tareas</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Escribimos el simbolo * asterisco seguido del texto
+</p>
+
+<p>
+Hagamos un ejemplo de algunos días de la semana
+</p>
+
+<pre class="example">* Lunes
+* Martes
+* Miércoles
+* Jueves
+* Viernes
+</pre>
+</div>
+</div>
+<div id="outline-container-org42fecd6" class="outline-3">
+<h3 id="org42fecd6"><span class="section-number-3">1.3</span> Crear una sublista de tareas</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+Escribimos el símbolo * asterisco dos veces, y se agrega como sublista de la lista que tenga antes.
+</p>
+
+<p>
+Retomando el ejemplo anterior, vamos a anidar algunas tareas a los dias de la semana
+</p>
+
+<pre class="example">* Lunes
+** Preguntar fechas de parciales
+** Terminar resumen de Fisica
+** Terminar resumen de Qúimica
+* Martes
+** Empezar ejercicios de Matemática
+</pre>
+</div>
+</div>
+<div id="outline-container-orgace94b0" class="outline-3">
+<h3 id="orgace94b0"><span class="section-number-3">1.4</span> Crear tareas con viñetas</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+Escribimos un <b>guion</b> seguido del texto que queramos seguido de <code>M-RET</code>
+</p>
+
+<ul class="org-ul">
+<li>Para agregar nuevos elementos en el mismo nivel (tabulacion) presionar <code>M-RET</code></li>
+<li>Para cambiar el tipo de viñeta presionar <code>Shift</code> y las flechas Up/Down</li>
+</ul>
+
+<p>
+Volviendo al ejemplo anterior, podrías reescribirlo de la siguiente manera
+</p>
+
+<pre class="example">* Lunes
+** Preguntar fechas de parciales de
+   - Algebra
+   - Física
+** Terminar resumen
+   - Física
+   - Química
+</pre>
+</div>
+</div>
+<div id="outline-container-org6cfa35a" class="outline-3">
+<h3 id="org6cfa35a"><span class="section-number-3">1.5</span> Crear una lista de seguimiento con TO-DO</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+Para saber cuales y cuantas tareas se resolvieron y cuantas no
+</p>
+
+<p>
+Al comienzo de las listas agregar <code>[0/0]</code> ó <code>[0%]</code>
+</p>
+<ul class="org-ul">
+<li>Con <code>[0/0]</code> aparecera cuantas tareas se hicieron sobre el total</li>
+<li>Con <code>[0%]</code> aparecera un % del total</li>
+<li>Para cambiar el estado como <b>Pendiente/Finalizada</b> presionar <code>Shift</code> y las flechas <b>Left/Right</b></li>
+</ul>
+
+<p>
+Llevemos esto a un ejemplo para controlar cuantas tareas realizamos, y cuantas no
+</p>
+
+<pre class="example">* [0/0] Lunes
+** Estudiar para mañana
+   - Algebra
+   - Fisica
+** Terminar resumen
+   - Quimica
+   - Matematica
+</pre>
+
+<p>
+<b>Observación:</b>
+Recordemos que estos valores se irán actualizando a medida que cambiemos el estado
+de tareas
+</p>
+</div>
+</div>
+<div id="outline-container-org6ccbd38" class="outline-3">
+<h3 id="org6ccbd38"><span class="section-number-3">1.6</span> Crear una lista de seguimiento con checkboxes</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+Para saber cuales y cuantas tareas se resolvieron y cuantas no
+</p>
+
+<ul class="org-ul">
+<li>Con <code>[0/0]</code> aparecera cuantas tareas se hicieron sobre el total</li>
+<li>Con <code>[0%]</code> aparecera un <code>%</code> del total</li>
+<li>Las tareas tengan <b>checkbox</b> deben comenzar con <code>[ ]</code></li>
+<li>Para marcar las tareas como <b>Finalizadas</b> presionar <code>C-c C-c</code></li>
+</ul>
+
+<p>
+Ampliamos esto con un ejemplo
+</p>
+
+<pre class="example">* Lunes
+** [/] Parciales rendidos
+   1. [ ] Algebra
+   2. [ ] Fisica
+** [%] Tareas Pendientes
+   - [ ] Limpiar cuarto
+   - [ ] Llamar a mi jefe
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org89511d7" class="outline-2">
+<h2 id="org89511d7"><span class="section-number-2">2</span> Atajos</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-orga44d93b" class="outline-3">
+<h3 id="orga44d93b"><span class="section-number-3">2.1</span> Tabla comparativa</h3>
+<div class="outline-text-3" id="text-2-1">
+<table id="org071fced" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Evil Mode</th>
+<th scope="col" class="org-left">Holy Mode</th>
+<th scope="col" class="org-left">Descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">C-c C-s</td>
+<td class="org-left">Agendar una fecha para una tarea (schedule)</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">C-c C-d</td>
+<td class="org-left">Programar una fecha limite para finalizar una tarea (deadline)</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Shift flechas Left/Right</td>
+<td class="org-left">Elegir el dia del mes en el calendario</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">g</td>
+<td class="org-left">Actualiza los cambios del buffer de la agenda (igual que con <b><b>dired</b></b>)</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">M-x org-agenda-file-to-front</td>
+<td class="org-left">Guardar el archivo .org actual en la agenda</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">C-c C-q</td>
+<td class="org-left">Agregar tags</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">C-RET</td>
+<td class="org-left">Agregar nuevo item a la agenda</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">M Flechas Up/Down</td>
+<td class="org-left">Cambia el orden/prioridad de las tareas, moviendo hacia arriba/abajo</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">M flechas Left/Right</td>
+<td class="org-left">Mueve el nivel(tabulacion) de la tarea</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Tab</td>
+<td class="org-left">Expande/Oculta una lista que tiene elementos</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Shift-Tab</td>
+<td class="org-left">Expande/Oculta todas las listas que tengan elementos</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Shift &lt;Left&gt;&lt;Right&gt;</td>
+<td class="org-left">Cambiar el estado de la tarea (Pendiente/Finalizada/Revisar)</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Shift &lt;Up&gt;&lt;Down&gt;</td>
+<td class="org-left">Cambiar la prioridad de la tarea (Alta/Media/Baja)</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">C-c C-t</td>
+<td class="org-left">Cambiar el estado de la tarea</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">M-x org-agenda m</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">C-x C-l</td>
+<td class="org-left">Crear hipervinculos</td>
+</tr>
+
+<tr>
+<td class="org-left">SPC m a</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Abrir agenda</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org4a6cfe1" class="outline-3">
+<h3 id="org4a6cfe1"><span class="section-number-3">2.2</span> Referencias</h3>
+<div class="outline-text-3" id="text-2-2">
+</div>
+<div id="outline-container-orgdb396c7" class="outline-4">
+<h4 id="orgdb396c7"><span class="section-number-4">2.2.1</span> Referencias Web Oficiales</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<ul class="org-ul">
+<li>[Atajos (Spacemacs.org)](<a href="https://www.spacemacs.org/layers/+emacs/org/README.html">https://www.spacemacs.org/layers/+emacs/org/README.html</a>)</li>
+<li><a href="https://www.gnu.org/software/emacs/refcards/pdf/refcard.pdf">https://www.gnu.org/software/emacs/refcards/pdf/refcard.pdf</a></li>
+<li><a href="https://www.spacemacs.org/layers/+emacs/org/README.html#key-bindings">https://www.spacemacs.org/layers/+emacs/org/README.html#key-bindings</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf8fc5b1" class="outline-4">
+<h4 id="orgf8fc5b1"><span class="section-number-4">2.2.2</span> Referencias Web Extraoficiales</h4>
+<div class="outline-text-4" id="text-2-2-2">
+<ul class="org-ul">
+<li><a href="https://emacs.stackexchange.com/questions/33310/how-to-use-org-mode-speed-commands-speed-keys">https://emacs.stackexchange.com/questions/33310/how-to-use-org-mode-speed-commands-speed-keys</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orge4cce90" class="outline-2">
+<h2 id="orge4cce90"><span class="section-number-2">3</span> Integrar archivos ORG con dropbox</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+La referencia #1 me funciono solo necesitas realizar
+</p>
+
+<ol class="org-ol">
+<li>Escribis en la terminal `git clone <a href="https://aur.archlinux.org/dropbox.git">https://aur.archlinux.org/dropbox.git</a>`</li>
+<li>Entras al directorio `cd dropbox`</li>
+<li>Lo compilas con `makepkg -si`</li>
+</ol>
+
+<p>
+Luego de bajarse el paquete se te creara un directorio `~\Dropbox`
+</p>
+
+<ul class="org-ul">
+<li>Referencia #1 - LinuxHint [Ver Pagina-](<a href="https://linuxhint.com/install_dropbox_manjaro_linux/">https://linuxhint.com/install_dropbox_manjaro_linux/</a>)</li>
+<li>Referencia #2 - Webdav - [Ver Pagina](<a href="https://webdav.io/webdav/webdav-integrations/webdav-dropbox/">https://webdav.io/webdav/webdav-integrations/webdav-dropbox/</a>)</li>
+<li>Referencia #3 - Opensource.com - [Ver Pagina](<a href="https://opensource.com/article/19/4/calendar-git">https://opensource.com/article/19/4/calendar-git</a>)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org33d9382" class="outline-2">
+<h2 id="org33d9382"><span class="section-number-2">4</span> Sitios web recomendados</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org1068878" class="outline-3">
+<h3 id="org1068878"><span class="section-number-3">4.1</span> Guias</h3>
+<div class="outline-text-3" id="text-4-1">
+</div>
+<div id="outline-container-org91401c3" class="outline-4">
+<h4 id="org91401c3"><span class="section-number-4">4.1.1</span> Referencias Web Oficiales</h4>
+<div class="outline-text-4" id="text-4-1-1">
+<ul class="org-ul">
+<li>Guia basica - Orgmode - [Ver Pagina](<a href="https://orgmode.org/worg/org-tutorials/orgtutorial_dto-es.html">https://orgmode.org/worg/org-tutorials/orgtutorial_dto-es.html</a>)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd87f5e1" class="outline-4">
+<h4 id="orgd87f5e1"><span class="section-number-4">4.1.2</span> Referencias Web Extraoficiales</h4>
+<div class="outline-text-4" id="text-4-1-2">
+<ul class="org-ul">
+<li>Guia basica - Emacslife - [Ver Pagina](<a href="http://emacslife.com/baby-steps-org.html">http://emacslife.com/baby-steps-org.html</a>)</li>
+<li>Guia completa - Norang - [Ver Pagina](<a href="http://doc.norang.ca/org-mode.html">http://doc.norang.ca/org-mode.html</a>)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org8ac12e9" class="outline-3">
+<h3 id="org8ac12e9"><span class="section-number-3">4.2</span> Agregar etiquetas a las tareas</h3>
+<div class="outline-text-3" id="text-4-2">
+</div>
+<div id="outline-container-org79440ec" class="outline-4">
+<h4 id="org79440ec"><span class="section-number-4">4.2.1</span> Referencias Web Oficiales</h4>
+<div class="outline-text-4" id="text-4-2-1">
+<ul class="org-ul">
+<li>Referencia #2 - Orgmode.org - [Ver Pagina](<a href="https://orgmode.org/manual/Setting-Tags.html">https://orgmode.org/manual/Setting-Tags.html</a>)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4ef6f7f" class="outline-4">
+<h4 id="org4ef6f7f"><span class="section-number-4">4.2.2</span> Referencias Youtube</h4>
+<div class="outline-text-4" id="text-4-2-2">
+<ul class="org-ul">
+<li>Referencia #1 - [Ver Video](<a href="https://www.youtube.com/watch?v=FJq__bBi0nI">https://www.youtube.com/watch?v=FJq__bBi0nI</a>)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org000c42f" class="outline-3">
+<h3 id="org000c42f"><span class="section-number-3">4.3</span> Como organizarse con el modo Org</h3>
+<div class="outline-text-3" id="text-4-3">
+</div>
+<div id="outline-container-org1a336ee" class="outline-4">
+<h4 id="org1a336ee"><span class="section-number-4">4.3.1</span> Referencias Youtube</h4>
+<div class="outline-text-4" id="text-4-3-1">
+<ul class="org-ul">
+<li>Referencia #1 - [Ver Video](<a href="https://www.youtube.com/watch?v=C6nbjqn5Uxw">https://www.youtube.com/watch?v=C6nbjqn5Uxw</a>)</li>
+<li>Referencia #2 - [Ver Video - Parte 1](<a href="https://www.youtube.com/watch?v=QQSaDDVP__s">https://www.youtube.com/watch?v=QQSaDDVP__s</a>)</li>
+<li>Referencia #2 - [Ver Video - Parte 2](<a href="https://www.youtube.com/watch?v=sXTtDiLXr48">https://www.youtube.com/watch?v=sXTtDiLXr48</a>)</li>
+<li>Referencia #4 - [Ver Video](<a href="https://www.youtube.com/watch?v=PVsSOmUB7ic">https://www.youtube.com/watch?v=PVsSOmUB7ic</a>)</li>
+<li>Referencia #5 - [Ver Video](<a href="https://www.youtube.com/watch?v=gDHE23vl9E0">https://www.youtube.com/watch?v=gDHE23vl9E0</a>)</li>
+<li>Referencia #6 - [Ver Video](<a href="https://www.youtube.com/watch?v=LFO2UbzbZhA">https://www.youtube.com/watch?v=LFO2UbzbZhA</a>)</li>
+<li>Referencia #7 - [Ver Video](<a href="https://www.youtube.com/watch?v=dljNabciEGg">https://www.youtube.com/watch?v=dljNabciEGg</a>)</li>
+<li>Referencia #8 - [Ver Video](<a href="https://www.youtube.com/watch?v=fgizHHd7nOo">https://www.youtube.com/watch?v=fgizHHd7nOo</a>)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org2eabc55" class="outline-3">
+<h3 id="org2eabc55"><span class="section-number-3">4.4</span> Cambiar las prioridades de las tareas</h3>
+<div class="outline-text-3" id="text-4-4">
+</div>
+<div id="outline-container-orgf97ecbd" class="outline-4">
+<h4 id="orgf97ecbd"><span class="section-number-4">4.4.1</span> Referencias Youtube</h4>
+<div class="outline-text-4" id="text-4-4-1">
+<ul class="org-ul">
+<li>Referencia #1 - [Ver Video](<a href="https://www.youtube.com/watch?v=WSF4EgQqa3Q">https://www.youtube.com/watch?v=WSF4EgQqa3Q</a>)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc7464a8" class="outline-4">
+<h4 id="orgc7464a8"><span class="section-number-4">4.4.2</span> Referencias Web Extraoficiales</h4>
+<div class="outline-text-4" id="text-4-4-2">
+<ul class="org-ul">
+<li>Referencia #2 - [Ver Pagina](<a href="https://github.com/harrybournis/org-fancy-priorities">https://github.com/harrybournis/org-fancy-priorities</a>)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org4f755de" class="outline-3">
+<h3 id="org4f755de"><span class="section-number-3">4.5</span> Modificar Agenda estados</h3>
+<div class="outline-text-3" id="text-4-5">
+</div>
+<div id="outline-container-orga7ca773" class="outline-4">
+<h4 id="orga7ca773"><span class="section-number-4">4.5.1</span> Referencias Web Oficiales</h4>
+<div class="outline-text-4" id="text-4-5-1">
+<ul class="org-ul">
+<li>Referencia #3 - Orgmode.org  - [Ver Pagina](<a href="https://orgmode.org/manual/TODO-Basics.html">https://orgmode.org/manual/TODO-Basics.html</a>)</li>
+<li>Referencia #4 - Orgmode.org -  [Ver Pagina](<a href="https://orgmode.org/manual/Setting-Tags.html">https://orgmode.org/manual/Setting-Tags.html</a>)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4bb679b" class="outline-4">
+<h4 id="org4bb679b"><span class="section-number-4">4.5.2</span> Referencias Web Extraoficiales</h4>
+<div class="outline-text-4" id="text-4-5-2">
+<ul class="org-ul">
+<li>Referencia #1 - Practicalli - [Ver Pagina](<a href="https://practicalli.github.io/spacemacs/org-mode/todo-states-customise.html">https://practicalli.github.io/spacemacs/org-mode/todo-states-customise.html</a>)</li>
+<li>Referencia #2 - Sainathadapa - [Ver Pagina](<a href="https://sainathadapa.github.io/emacs-spacemacs-config/org-config">https://sainathadapa.github.io/emacs-spacemacs-config/org-config</a>)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org6985f7d" class="outline-3">
+<h3 id="org6985f7d"><span class="section-number-3">4.6</span> Otros</h3>
+<div class="outline-text-3" id="text-4-6">
+</div>
+<div id="outline-container-org09be693" class="outline-4">
+<h4 id="org09be693"><span class="section-number-4">4.6.1</span> Referencias Web Oficiales</h4>
+<div class="outline-text-4" id="text-4-6-1">
+<ul class="org-ul">
+<li>Comandos agenda-file - Orgmode.org [Ver Pagina](<a href="https://orgmode.org/manual/Agenda-Files.html">https://orgmode.org/manual/Agenda-Files.html</a>)</li>
+<li>Manejar los Hipervinculos - Orgmode.org - [Ver Pagina](<a href="https://orgmode.org/manual/Handling-Links.html">https://orgmode.org/manual/Handling-Links.html</a>)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga192bc8" class="outline-4">
+<h4 id="orga192bc8"><span class="section-number-4">4.6.2</span> Referencias Youtube</h4>
+<div class="outline-text-4" id="text-4-6-2">
+<ul class="org-ul">
+<li>Como usar snippets -[Ver Video](<a href="https://www.youtube.com/watch?v=UT1bcq_HIkE">https://www.youtube.com/watch?v=UT1bcq_HIkE</a>)</li>
+<li>Agendar Fechas -[Ver Video](<a href="https://www.youtube.com/watch?v=QQSaDDVP__s">https://www.youtube.com/watch?v=QQSaDDVP__s</a>)</li>
+<li>Crear presentaciones - [Ver video](<a href="https://www.youtube.com/watch?v=bRoSpJ23Kzk">https://www.youtube.com/watch?v=bRoSpJ23Kzk</a>)</li>
+<li>Hacer gantt - [Ver Video](<a href="https://www.youtube.com/watch?v=5ViUBaarsbw">https://www.youtube.com/watch?v=5ViUBaarsbw</a>)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: jelou</p>
+<p class="date">Created: 2021-04-04 dom 13:52</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+
+
+</body></html>

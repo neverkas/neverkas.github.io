@@ -1,0 +1,580 @@
+<!--?xml version="1.0" encoding="utf-8"?--><!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<!-- 2021-04-02 vie 19:19 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guia Linux - Conceptos Particionamiento</title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="jelou">
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/sass-style.css">
+<script type="text/javascript" src="/assets/js/all.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Guia Linux - Conceptos Particionamiento</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org7ab95d3">1. Particionar Disco</a>
+<ul>
+<li><a href="#org111eda9">1.1. Partición para Almacenamiento</a></li>
+<li><a href="#org1cab054">1.2. Listar las particiones</a></li>
+<li><a href="#orgfb3d73d">1.3. Montar la particion de Almacenamiento NTFS</a>
+<ul>
+<li><a href="#orgf83b2fa">1.3.1. Crear directorio de almacenamiento a compartir</a></li>
+<li><a href="#org301ee92">1.3.2. Montar la partición del directorio</a></li>
+</ul>
+</li>
+<li><a href="#org22f3fbe">1.4. Anclar un directorio al Gestor de archivos</a></li>
+<li><a href="#orga0e8691">1.5. Referencias Web Extraoficiales</a></li>
+<li><a href="#orgd90aaa3">1.6. Referencias Youtube</a></li>
+</ul>
+</li>
+<li><a href="#orgeaf44d9">2. Bootear Multiples Sistemas Operativos</a>
+<ul>
+<li><a href="#org9b6cb14">2.1. Conceptos</a></li>
+<li><a href="#org0803121">2.2. Conocer versión del GRUB</a></li>
+<li><a href="#org96eb71e">2.3. Referencias Web Extraoficiales</a></li>
+</ul>
+</li>
+<li><a href="#orged04c20">3. Particionar con GParted</a>
+<ul>
+<li><a href="#org3728142">3.1. Conceptos</a></li>
+<li><a href="#org146fd1e">3.2. Referencias Web Oficiales</a></li>
+<li><a href="#orgf36c340">3.3. Referencias Youtube</a></li>
+</ul>
+</li>
+<li><a href="#org2b59e8a">4. Instalar un file manager</a>
+<ul>
+<li><a href="#org5e0e2b3">4.1. Conceptos</a></li>
+<li><a href="#orgd6f38be">4.2. Referencias Youtube</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7ab95d3" class="outline-2">
+<h2 id="org7ab95d3"><span class="section-number-2">1</span> Particionar Disco</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org111eda9" class="outline-3">
+<h3 id="org111eda9"><span class="section-number-3">1.1</span> Partición para Almacenamiento</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Creamos una partición primaria del tipo NTFS y le asignamos los permisos al usuario
+Con el comando ``id -u -n`` obtenemos el nombre de usuario, mientras que con ``chown`` 
+le damos acceso a un usuario especifico a un directorio/archivo
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="org197c89f"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para saber el nombre de usuario</span>
+id -u -n
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para asignarle los permisos de ese usuario</span>
+sudo chown nombreUsuario /storage/
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org1cab054" class="outline-3">
+<h3 id="org1cab054"><span class="section-number-3">1.2</span> Listar las particiones</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Podemos usar el comando ``lsblk`` o ``fdisk``
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="org2a45255"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">listar particiones (no pide permisos administrador)</span>
+lsblk
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">listar particiones (pide permisos administrador)</span>
+sudo fdisk -l /dev/sda
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfb3d73d" class="outline-3">
+<h3 id="orgfb3d73d"><span class="section-number-3">1.3</span> Montar la particion de Almacenamiento NTFS</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+Si la partición va interactuar entre Windows y Linux, se recomienda que sea NTFS.
+Si sólo va a ser entre distribuciones Linux, se recomienda Ext4
+</p>
+
+<p>
+Destacamos un comentario de otro usuario linux 
+</p>
+
+<blockquote>
+<p>
+A good practice for some static mounted storage system like you are doing is 
+to add a permanent mount point to /etc/fstab.
+There are several ways to do it, but I just wanted you to be aware.
+</p>
+</blockquote>
+</div>
+<div id="outline-container-orgf83b2fa" class="outline-4">
+<h4 id="orgf83b2fa"><span class="section-number-4">1.3.1</span> Crear directorio de almacenamiento a compartir</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<p>
+Recordando que la ruta <b>/</b> es la raiz y <b>mnt</b> el directorio que se 
+se suele utilizar por defecto para acceder desde los demas distribuciones
+</p>
+
+<p>
+Tambien que con el comando ``mkdir`` seguido del parametro <b>-p</b> nos facilita
+un directorio A con subdirectorio B (dentro del directorio A)
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="org9e2833f"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Creamos el directorio mnt y dentro mystorage</span>
+sudo mkdir -p /mnt/mystorage
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org301ee92" class="outline-4">
+<h4 id="org301ee92"><span class="section-number-4">1.3.2</span> Montar la partición del directorio</h4>
+<div class="outline-text-4" id="text-1-3-2">
+<ul class="org-ul">
+<li>Con ``id -u`` nos permite obtener el nombre de usuario que esta en la sesion actual de la terminal</li>
+<li>Los parametros del comando ``mount``
+<ol class="org-ol">
+<li><b><b>-uid</b></b> le pasamos el usuario que nos devuelve ``id -u``</li>
+<li><b><b>dmask</b></b></li>
+<li><b><b>fmask</b></b></li>
+<li><b><b>/dev/sda10</b></b> es la particion de almacenamiento</li>
+</ol></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="orga41cb22"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">nos devuelve el id del usuario con el que iniciamos la sesion</span>
+id -u
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">solo cambiamos el 1001 por lo que nos devuelve id -u</span>
+sudo mount -o rw,user,<span style="color: #7590db;">uid</span>=<span style="color: #a45bad;">1001,dmask</span>=<span style="color: #a45bad;">007,fmask</span>=<span style="color: #a45bad;">117</span> /dev/sda10 /mnt/mystorage
+
+<span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">sudo mount -t ntfs -o ro /dev/sda10 /mnt/mystorage</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org22f3fbe" class="outline-3">
+<h3 id="org22f3fbe"><span class="section-number-3">1.4</span> Anclar un directorio al Gestor de archivos</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+El File manager por defecto de Ubuntu es Nautilus
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="org00848c3"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">presionar Control+D</span>
+<span style="color: #4f97d7;">cd</span> /mnt/mystorage
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orga0e8691" class="outline-3">
+<h3 id="orga0e8691"><span class="section-number-3">1.5</span> Referencias Web Extraoficiales</h3>
+<div class="outline-text-3" id="text-1-5">
+<ul class="org-ul">
+<li>[Referencia #2 - Ver Pagina](<a href="https://linuxconfig.org/how-to-mount-partition-with-ntfs-file-system-and-read-write-access">https://linuxconfig.org/how-to-mount-partition-with-ntfs-file-system-and-read-write-access</a>)</li>
+<li>[Referencia #3 - Ver Página](<a href="https://askubuntu.com/questions/11840/how-do-i-use-chmod-on-an-ntfs-or-fat32-partition/956072#956072">https://askubuntu.com/questions/11840/how-do-i-use-chmod-on-an-ntfs-or-fat32-partition/956072#956072</a>)</li>
+<li>[Agregar carpetas al Nautilus - Ver Página](<a href="https://askubuntu.com/questions/1109247/how-do-i-add-folder-to-ubuntu-18-04-1-nautilus-bookmark-list">https://askubuntu.com/questions/1109247/how-do-i-add-folder-to-ubuntu-18-04-1-nautilus-bookmark-list</a>)</li>
+<li>[Opciones de Montaje - Ver Pagina (it-swarm.dev)](<a href="https://www.it-swarm.dev/es/mount/opciones-de-montaje-dmask-y-fmask/961637140/">https://www.it-swarm.dev/es/mount/opciones-de-montaje-dmask-y-fmask/961637140/</a>)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd90aaa3" class="outline-3">
+<h3 id="orgd90aaa3"><span class="section-number-3">1.6</span> Referencias Youtube</h3>
+<div class="outline-text-3" id="text-1-6">
+<ul class="org-ul">
+<li>[Referencia #1 - Ver Video](<a href="https://www.youtube.com/watch?v=mPDhoYNao1o">https://www.youtube.com/watch?v=mPDhoYNao1o</a>)</li>
+<li>[Referencia #4 - Ver Video](<a href="https://www.youtube.com/watch?v=hIq1dIgZrOc">https://www.youtube.com/watch?v=hIq1dIgZrOc</a>)</li>
+<li>[Referencia #5 - Ver Video](<a href="https://www.youtube.com/watch?v=ZlIbGnvTEDI">https://www.youtube.com/watch?v=ZlIbGnvTEDI</a>)</li>
+<li>[Particiones primarias/logicas/extendidas - Ver Video](<a href="https://www.youtube.com/watch?v=CSbUiK2pytE">https://www.youtube.com/watch?v=CSbUiK2pytE</a>)</li>
+<li>[Recuperar Tabla de Particiones - Ver Video](<a href="https://www.youtube.com/watch?v=I1-0cpPO3e8">https://www.youtube.com/watch?v=I1-0cpPO3e8</a>)</li>
+<li>[Redimensionar Particiones en Ubuntu - Ver Video](<a href="https://www.youtube.com/watch?v=EQMWKwvsltY">https://www.youtube.com/watch?v=EQMWKwvsltY</a>)</li>
+<li>[Redimensionar particiones - Ver Videos](<a href="https://www.youtube.com/watch?v=OSkK_lgSCzk">https://www.youtube.com/watch?v=OSkK_lgSCzk</a>)</li>
+<li>[Particionar disco duro en Ubuntu - Ver Video](<a href="https://www.youtube.com/watch?v=xuYhjtpWZuc">https://www.youtube.com/watch?v=xuYhjtpWZuc</a>)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgeaf44d9" class="outline-2">
+<h2 id="orgeaf44d9"><span class="section-number-2">2</span> Bootear Multiples Sistemas Operativos</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org9b6cb14" class="outline-3">
+<h3 id="org9b6cb14"><span class="section-number-3">2.1</span> Conceptos</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Si tenes un sistema operativo por defecto por ejemplo Windows, y lo queres mantener
+podemos recurrir a como dicen "bootear" varios sistemas operativos, en este caso seria 
+varias distribuciones de linux.
+</p>
+
+<p>
+Por lo general se suele crear un GRUB el que se ira modificando
+</p>
+
+<p>
+Comentarios a destacar de uno de los artículos de las referencias que hemos agregado
+</p>
+
+<blockquote>
+<p>
+I install Ubuntu GNOME (mount point: / ) into /dev/sda5.
+I remember to give mount points to /work (ext4) and /storage (NTFS) like mentioned 
+in the 2.3 section of this article. Be careful not to mark them as to be formatted.
+The Swap partition gets automatically recognized, no need to worry about that.
+</p>
+</blockquote>
+
+<blockquote>
+<p>
+I install Manjaro XFCE to /dev/sda6 partition. And once again, 
+I remember to give mount points to /work (ext4) and /storage (NTFS) and to NOT format them.
+</p>
+</blockquote>
+
+<blockquote>
+<p>
+I install Kubuntu ( / ) to /dev/sda8. Mount points also to /work (ext4) 
+and /storage (NTFS), again. And, the Swap partition gets automatically recognized, again.
+And finally, after installation is successfully finished, one last time to install the 
+</p>
+
+<p>
+Refind boot manager in Terminal in Xubuntu:
+sudo dpkg -i ~/Downloads/refind<sub>0.10.4</sub>-1<sub>amd64.deb</sub>
+</p>
+</blockquote>
+
+<p>
+<b>Observación:</b>
+Por el momento sólo recomendamos ver las referencias Web que adjuntamos
+</p>
+</div>
+</div>
+<div id="outline-container-org0803121" class="outline-3">
+<h3 id="org0803121"><span class="section-number-3">2.2</span> Conocer versión del GRUB</h3>
+<div class="outline-text-3" id="text-2-2">
+<div class="org-src-container">
+<pre class="src src-shell" id="org44d6e70"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">saber la version de grub</span>
+grub-install -v
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org96eb71e" class="outline-3">
+<h3 id="org96eb71e"><span class="section-number-3">2.3</span> Referencias Web Extraoficiales</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li>[Referencia #1 - Ver Página](<a href="https://medium.com/@manujarvinen/setting-up-a-multi-boot-of-5-linux-distributions-ca1fcf8d502">https://medium.com/@manujarvinen/setting-up-a-multi-boot-of-5-linux-distributions-ca1fcf8d502</a>)</li>
+<li>[Referencia # 2 - Ver Página](<a href="https://www.maketecheasier.com/how-to-run-multiple-linux-distros-without-virtualization/">https://www.maketecheasier.com/how-to-run-multiple-linux-distros-without-virtualization/</a>)</li>
+<li>[MultipleLInuxONe - Ver Página](<a href="https://itsfoss.com/multiple-linux-one-usb/">https://itsfoss.com/multiple-linux-one-usb/</a>)</li>
+<li>[Referencia #3 - Ver Página](<a href="https://www.solvetic.com/tutoriales/article/5859-como-crear-usb-booteable-linux-con-iso/">https://www.solvetic.com/tutoriales/article/5859-como-crear-usb-booteable-linux-con-iso/</a>)</li>
+<li>[Referencia #4 - Ver Página](<a href="https://linuxmint-installation-guide.readthedocs.io/es/latest/burn.html">https://linuxmint-installation-guide.readthedocs.io/es/latest/burn.html</a>)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orged04c20" class="outline-2">
+<h2 id="orged04c20"><span class="section-number-2">3</span> Particionar con GParted</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org3728142" class="outline-3">
+<h3 id="org3728142"><span class="section-number-3">3.1</span> Conceptos</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Es el que se recomienda para particionar el disco
+</p>
+</div>
+</div>
+<div id="outline-container-org146fd1e" class="outline-3">
+<h3 id="org146fd1e"><span class="section-number-3">3.2</span> Referencias Web Oficiales</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li>[Pagina Oficial - Ver Página](<a href="https://gparted.org/download.php">https://gparted.org/download.php</a>)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf36c340" class="outline-3">
+<h3 id="orgf36c340"><span class="section-number-3">3.3</span> Referencias Youtube</h3>
+<div class="outline-text-3" id="text-3-3">
+<ul class="org-ul">
+<li>[Redimensionar con Gparted en Ubuntu - Ver Video](<a href="https://www.youtube.com/watch?v=PBHFud-Dva8">https://www.youtube.com/watch?v=PBHFud-Dva8</a>)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org2b59e8a" class="outline-2">
+<h2 id="org2b59e8a"><span class="section-number-2">4</span> Instalar un file manager</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org5e0e2b3" class="outline-3">
+<h3 id="org5e0e2b3"><span class="section-number-3">4.1</span> Conceptos</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+Si aún no estás familiarizado a usar por completo la terminal para la gestión de archivos,
+te sugerimos instalar un programa con interfaz gráfica (GUI) que facilita dicha tarea.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="orgc657488">sudo apt-get install thunar
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd6f38be" class="outline-3">
+<h3 id="orgd6f38be"><span class="section-number-3">4.2</span> Referencias Youtube</h3>
+<div class="outline-text-3" id="text-4-2">
+<ul class="org-ul">
+<li>Como funciona el Filesystem de Linux - # Referencia 1  [Ver Video](<a href="https://www.youtube.com/watch?v=HIXzJ3Rz9po">https://www.youtube.com/watch?v=HIXzJ3Rz9po</a>)</li>
+<li>Como funciona el Filesystem de Linux - # Referencia 1  [Ver Video](<a href="https://www.youtube.com/watch?v=HbgzrKJvDRw">https://www.youtube.com/watch?v=HbgzrKJvDRw</a>)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: jelou</p>
+<p class="date">Created: 2021-04-02 vie 19:19</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+
+
+</body></html>

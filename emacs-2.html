@@ -1,0 +1,2224 @@
+<!--?xml version="1.0" encoding="utf-8"?--><!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<!-- 2021-04-01 jue 15:04 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guia Emacs v2.0</title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="jelou">
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+<link rel="stylesheet" type="text/css" href="assets/css/sass-style.css">
+<script type="text/javascript" src="assets/js/all.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Guia Emacs v2.0</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org0b4d393">1. <span class="todo _TODO_">[TODO]</span> Guia de Emacs <code>[0%]</code></a>
+<ul>
+<li><a href="#org4a8f84a">1.1. Aprendiendo Elisp</a>
+<ul>
+<li><a href="#org97dcdb9">1.1.1. Atajos</a></li>
+<li><a href="#org9df052d">1.1.2. Paginas de Referencia</a></li>
+<li><a href="#orgfdfc8a0">1.1.3. Videos de Referencia</a></li>
+</ul>
+</li>
+<li><a href="#org90520c1">1.2. Guia de Lisp</a>
+<ul>
+<li><a href="#org5eb86af">1.2.1. Conceptos</a></li>
+<li><a href="#orge4d1b20">1.2.2. Comandos basicos</a></li>
+<li><a href="#org7efed76">1.2.3. Comandos para listas</a></li>
+<li><a href="#org46292d1">1.2.4. Comandos para funciones</a></li>
+<li><a href="#org97de657">1.2.5. Buffers</a></li>
+</ul>
+</li>
+<li><a href="#orgb1f2ab9">1.3. [CHECK] Empezando con Emacs <code>[0%]</code></a>
+<ul>
+<li><a href="#org65670e2">1.3.1. <span class="todo _TODO_">[TODO]</span> Comandos importantes</a></li>
+<li><a href="#orge43bb7c">1.3.2. Canales favoritos</a></li>
+<li><a href="#org6ffb728">1.3.3. <span class="todo _TODO_">[TODO]</span> Modo artista, crear imagenes con texto</a></li>
+<li><a href="#orge22227d">1.3.4. Configuraciones personalizadas</a></li>
+<li><a href="#org2e0456f">1.3.5. PLugins/Extensiones</a></li>
+</ul>
+</li>
+<li><a href="#orgf4e2d77">1.4. <span class="todo _TODO_">[TODO]</span> Avanzando con Spacemacs <code>[50%]</code></a>
+<ul>
+<li><a href="#org7fb4697">1.4.1. Layers de Spacemacs</a></li>
+<li><a href="#org584310f">1.4.2. Nuevo modo cua-mode</a></li>
+<li><a href="#org0a5d6e0">1.4.3. Atajos en Hybrid Mod</a></li>
+<li><a href="#orgaee8f72">1.4.4. Ver historial de cambios, comando undo-tree</a></li>
+<li><a href="#org065ad32">1.4.5. <span class="done _DONE_">[DONE]</span> Tips</a></li>
+<li><a href="#orgb24a48c">1.4.6. Errores frecuentes</a></li>
+<li><a href="#org960728f">1.4.7. <span class="done _DONE_">[DONE]</span> Gestionar archivos, proyectos</a></li>
+<li><a href="#orgd893681">1.4.8. <span class="todo _TODO_">[TODO]</span> Referencias</a></li>
+<li><a href="#orga86ed58">1.4.9. <span class="todo _TODO_">[TODO]</span> Agregar snippets</a></li>
+<li><a href="#org3c227e1">1.4.10. Utilizando el buffer scratch</a></li>
+<li><a href="#orgdde0fea">1.4.11. Utilizando Swiper</a></li>
+</ul>
+</li>
+<li><a href="#org83805f3">1.5. <span class="todo _TODO_">[TODO]</span> Integrando el Modo Org <code>[47%]</code></a>
+<ul>
+<li><a href="#org79c7f92">1.5.1. TODO Configuracion para bloques de codigo</a></li>
+<li><a href="#org2d53c31">1.5.2. NUevo - Bloques de codigo</a></li>
+<li><a href="#orgef73049">1.5.3. <span class="todo _TODO_">[TODO]</span> Creando tablas</a></li>
+<li><a href="#org54f096c">1.5.4. TODO Usando Latex</a></li>
+<li><a href="#org57fee0a">1.5.5. Agregando imagenes</a></li>
+<li><a href="#org9c3ad49">1.5.6. TODO Utilizando columnas</a></li>
+<li><a href="#orgccf0c9f">1.5.7. Creando presentaciones con beamer</a></li>
+<li><a href="#orgd88fb86">1.5.8. <span class="todo _TODO_">[TODO]</span> Agenda</a></li>
+<li><a href="#org46b0639">1.5.9. Creando un html moderno</a></li>
+<li><a href="#org304c1b9">1.5.10. Atajos dentro de la agenda</a></li>
+<li><a href="#org41cfeb7">1.5.11. Formato</a></li>
+<li><a href="#orgf19d2f0">1.5.12. Uso profesional</a></li>
+<li><a href="#org511df83">1.5.13. <span class="done _DONE_">[DONE]</span> Iniciar emacs con un archivo .org</a></li>
+<li><a href="#orgd303fa4">1.5.14. <span class="done _DONE_">[DONE]</span> Crear una lista de tareas</a></li>
+<li><a href="#org61dca26">1.5.15. <span class="done _DONE_">[DONE]</span> Crear una sub-lista de tareas</a></li>
+<li><a href="#org29bbca7">1.5.16. <span class="done _DONE_">[DONE]</span> Crear tareas con viñetas</a></li>
+<li><a href="#org07fb316">1.5.17. <span class="done _DONE_">[DONE]</span> Crear una lista de seguimiento con to-do</a></li>
+<li><a href="#org15775b5">1.5.18. <span class="done _DONE_">[DONE]</span> Crear una lista de seguimiento con checkboxes</a></li>
+<li><a href="#org283a971">1.5.19. <span class="done _DONE_">[DONE]</span> Atajos</a></li>
+<li><a href="#orgdb62c64">1.5.20. <span class="todo _TODO_">[TODO]</span> Asociar con Trello</a></li>
+<li><a href="#org43f957e">1.5.21. Ahorra tiempo de trabajo con Modo Captura    https://elblogdelazaro.gitlab.io/posts/2019-11-04-org-mode-capturas-rapidas-con-org-capture/</a></li>
+<li><a href="#orgdca8381">1.5.22. <span class="todo _TODO_">[TODO]</span> Crear hojas de calculo</a></li>
+<li><a href="#orgd154527">1.5.23. <span class="todo _TODO_">[TODO]</span> Agenda y Fechas</a></li>
+<li><a href="#org7da6d9d">1.5.24. <span class="todo _TODO_">[TODO]</span> Properties (No le encontre mucho uso por ahora)</a></li>
+<li><a href="#org25ddb8f">1.5.25. <span class="todo _TODO_">[TODO]</span> Crear links internos/externos</a></li>
+<li><a href="#org6acac69">1.5.26. <span class="todo _TODO_">[TODO]</span> Estado/prioridad de las tareas</a></li>
+<li><a href="#orgb990911">1.5.27. <span class="todo _TODO_">[TODO]</span> Exportar archivos a markdown (.md)</a></li>
+<li><a href="#org324e690">1.5.28. Sincronizar Google Calendar con Org Agenda</a></li>
+<li><a href="#org53eb9e4">1.5.29. <span class="done _DONE_">[DONE]</span> Referencias</a></li>
+<li><a href="#org4841cfe">1.5.30. Revisar</a></li>
+<li><a href="#org937b8be">1.5.31. Configuraciones para Exportar</a></li>
+</ul>
+</li>
+<li><a href="#org9a59099">1.6. <span class="todo _TODO_">[TODO]</span> Integrando Git con MAGIT <code>[75%]</code></a>
+<ul>
+<li><a href="#orgfaf9916">1.6.1. Nuevas funcionalidades</a></li>
+<li><a href="#org994a76c">1.6.2. <span class="todo _TODO_">[TODO]</span> Tips <code>[75%]</code></a></li>
+<li><a href="#org103671f">1.6.3. <span class="done _DONE_">[DONE]</span> Atajos</a></li>
+<li><a href="#org9fb9eed">1.6.4. <span class="done _DONE_">[DONE]</span> Posibles situaciones</a></li>
+<li><a href="#orgda66636">1.6.5. <span class="done _DONE_">[DONE]</span> Referencias</a></li>
+</ul>
+</li>
+<li><a href="#org1029d5e">1.7. <span class="todo _TODO_">[TODO]</span> Comentarios de Trello <code>[0%]</code></a>
+<ul>
+<li><a href="#org9c59a60">1.7.1. <span class="todo _TODO_">[TODO]</span> Powerline estructura</a></li>
+<li><a href="#orgbbfea38">1.7.2. <span class="todo _TODO_">[TODO]</span> Personalizar la shell y terminal</a></li>
+</ul>
+</li>
+<li><a href="#org17bc073">1.8. Addons</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org0b4d393" class="outline-2">
+<h2 id="org0b4d393"><span class="section-number-2">1</span> <span class="todo _TODO_">[TODO]</span> Guia de Emacs <code>[0%]</code></h2>
+<div class="outline-text-2" id="text-1">
+<p>
+La mejor guia de configuración <a href="https://config.phundrak.com/spacemacs">https://config.phundrak.com/spacemacs</a>
+<a href="https://blog.8bitzen.com/posts/27-02-2019-using-orgmode-babel/">https://blog.8bitzen.com/posts/27-02-2019-using-orgmode-babel/</a>
+<a href="https://xgarrido.github.io/emacs-starter-kit/starter-kit-org.html">https://xgarrido.github.io/emacs-starter-kit/starter-kit-org.html</a>
+</p>
+</div>
+
+<div id="outline-container-org4a8f84a" class="outline-3">
+<h3 id="org4a8f84a"><span class="section-number-3">1.1</span> Aprendiendo Elisp</h3>
+<div class="outline-text-3" id="text-1-1">
+</div>
+<div id="outline-container-org97dcdb9" class="outline-4">
+<h4 id="org97dcdb9"><span class="section-number-4">1.1.1</span> Atajos</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<p>
+M-x eval-buffer para ejecutar codigo
+C-x C-e evaluar la ultima expresion
+</p>
+</div>
+</div>
+<div id="outline-container-org9df052d" class="outline-4">
+<h4 id="org9df052d"><span class="section-number-4">1.1.2</span> Paginas de Referencia</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<ul class="org-ul">
+<li><a href="https://learnxinyminutes.com/docs/es-es/elisp-es/">Referencia #1 - (learn x in minutes)</a></li>
+<li><a href="https://blog.8bitzen.com/posts/27-02-2019-using-orgmode-babel/">Using OrgMode Babel (8bitzen)</a></li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_node/eintr/">Referencia #2 (Gnu.org)</a></li>
+<li><a href="https://www.gnu.org/software/emacs/tour/">Referencia #3 - Guia en general (Gnu.org)</a></li>
+<li><a href="https://www.davidam.com/docu/emacs-lisp-intro-es.html">Referencia #4 - Davidam</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgfdfc8a0" class="outline-4">
+<h4 id="orgfdfc8a0"><span class="section-number-4">1.1.3</span> Videos de Referencia</h4>
+<div class="outline-text-4" id="text-1-1-3">
+<p>
+Es el que usa emacs internamente
+</p>
+<ul class="org-ul">
+<li><a href="https://www.youtube.com/watch?v=NQhud2ZNd1w">Tutorial (Mike Zamanasky)</a></li>
+<li><a href="https://www.youtube.com/watch?v=FppjUvUDO4o">Referencia #2 - (Linuxhint)</a></li>
+<li><a href="https://www.youtube.com/watch?v=8Zkte37UOnA&amp;t=571s">Referencia #3 - (Uncle Dave)</a></li>
+<li>Serie de videos por Daniel Gopar
+<ol class="org-ol">
+<li><a href="https://www.youtube.com/watch?v=CH0RUrO_oww">Elisp Tutorial Intro</a></li>
+<li><a href="https://www.youtube.com/watch?v=lmTPJB0Musk">Elisp Tutorial - Variables, Booleanos</a></li>
+<li><a href="https://www.youtube.com/watch?v=VqCSbDqHziM">Elisp Tutorial - Variables locales, bucles</a></li>
+<li><a href="https://www.youtube.com/watch?v=KwBRpS9Bs4U">Elisp Tutorial - Funciones</a></li>
+<li><a href="https://www.youtube.com/watch?v=QaX3AaK3_Lk">Elisp Tutorial - nose</a></li>
+</ol></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org90520c1" class="outline-3">
+<h3 id="org90520c1"><span class="section-number-3">1.2</span> Guia de Lisp</h3>
+<div class="outline-text-3" id="text-1-2">
+</div>
+<div id="outline-container-org5eb86af" class="outline-4">
+<h4 id="org5eb86af"><span class="section-number-4">1.2.1</span> Conceptos</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+Para reforzar un poco el paradigma funcional e integrarlo con elisp que
+es lo que utiliza emacs por dentro, se puede ejecutar tambien en la terminal eshell
+</p>
+
+<p>
+-Para mostrar los bloques de codigo en otro buffer presionar &lt;bdk&gt;, '&lt;/bdk&gt; o &lt;bdk&gt;C-x '&lt;/bdk&gt;
+-Para ejecutar el codigo presionar &lt;bdk&gt;, ,&lt;/bdk&gt; o &lt;bdk&gt;C-c C-c&lt;/bdk&gt;
+</p>
+
+<p>
+Referencias:
+</p>
+<ul class="org-ul">
+<li><a href="http://cl-cookbook.sourceforge.net/emacs-ide.html">Using emacs as LISP IDE (cl-cookbook)</a></li>
+<li><a href="https://www.youtube.com/watch?v=-J_xL4IGhJA">Overview and Introduction to Lisp - Part 1</a></li>
+<li><a href="https://www.youtube.com/watch?v=-J_xL4IGhJA&amp;list=PLE18841CABEA24090">Playlist - Structure and Interpretation (MIT 1986)</a></li>
+<li><a href="https://www.youtube.com/watch?v=QFbJKWhzhtU">Introduccion Lisp - Parte 1 (javierbravoudima) - Ver Video</a></li>
+</ul>
+<p>
+-<a href="https://www.youtube.com/watch?v=Fz9Rig9lG50"> Intro Lisp - Parte 2 - Ver Video</a>
+</p>
+<ul class="org-ul">
+<li><a href="https://www.youtube.com/watch?v=Jx8riNWKe14">Intro Emacs (javier) - Ver Video</a></li>
+<li><a href="https://www.youtube.com/watch?v=9aI7ZAEbiF0">Common LISP (Prof. Javier)</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge4d1b20" class="outline-4">
+<h4 id="orge4d1b20"><span class="section-number-4">1.2.2</span> Comandos basicos</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Comando</td>
+<td class="org-left">Descripcion</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-e</td>
+<td class="org-left">Ejecuta un comando (Con el cursor al final de linea)</td>
+</tr>
+
+<tr>
+<td class="org-left">M-x eval-last-sexp</td>
+<td class="org-left">Ejecuta un comando (Con el cursor al final de linea)</td>
+</tr>
+
+<tr>
+<td class="org-left">setq</td>
+<td class="org-left">Cambia el valor de una variable local</td>
+</tr>
+
+<tr>
+<td class="org-left">print</td>
+<td class="org-left">Imprimir los datos de una variable</td>
+</tr>
+
+<tr>
+<td class="org-left">setf</td>
+<td class="org-left">Cambia el valor de una variable global</td>
+</tr>
+
+<tr>
+<td class="org-left">length</td>
+<td class="org-left">Devuelve la longitud de una lista (una cadena es una lista de caracteres)</td>
+</tr>
+
+<tr>
+<td class="org-left">read</td>
+<td class="org-left">Pide ingresar datos</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org7efed76" class="outline-4">
+<h4 id="org7efed76"><span class="section-number-4">1.2.3</span> Comandos para listas</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">(1 2 3)</td>
+<td class="org-left">Representa una lista, se forman con los ()</td>
+</tr>
+
+<tr>
+<td class="org-left">append</td>
+<td class="org-left">Inserta un elemento en una lista</td>
+</tr>
+
+<tr>
+<td class="org-left">cons</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">first,car</td>
+<td class="org-left">Devuelve primer elemento de una lista</td>
+</tr>
+
+<tr>
+<td class="org-left">second</td>
+<td class="org-left">Devuelve el segundo elemento de una lista</td>
+</tr>
+
+<tr>
+<td class="org-left">nth &lt;n&gt;</td>
+<td class="org-left">Devuelve el elemento en la posicion n de la lista</td>
+</tr>
+
+<tr>
+<td class="org-left">rest, cdr</td>
+<td class="org-left">Devuelve la lista sin el primer elemento</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org46292d1" class="outline-4">
+<h4 id="org46292d1"><span class="section-number-4">1.2.4</span> Comandos para funciones</h4>
+<div class="outline-text-4" id="text-1-2-4">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">prog1</td>
+<td class="org-left">Evalua todas las sentencias compuestas y devuelve la primer sentencia</td>
+</tr>
+
+<tr>
+<td class="org-left">progn</td>
+<td class="org-left">Evalua todas las sentencias compuestas y devuelve la ultima</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">progn</span>
+  <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">creamos un lista</span>
+  <span style="color: #bc6ec5;">(</span><span style="color: #4f97d7; font-weight: bold;">setf</span> lista '<span style="color: #2d9574;">(</span>A B C<span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span>
+
+  <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">creamos la funcion saludo,</span>
+  <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">que tiene solo un argumento</span>
+  <span style="color: #bc6ec5;">(</span><span style="color: #4f97d7; font-weight: bold;">defun</span> <span style="color: #bc6ec5; font-weight: bold;">saludo</span><span style="color: #2d9574;">(</span>msg<span style="color: #2d9574;">)</span>
+    <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">imprimimos el argumento usando el comando print</span>
+    <span style="color: #2d9574;">(</span>print msg<span style="color: #2d9574;">)</span>
+    <span style="color: #bc6ec5;">)</span>
+
+  <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">llamamos a la funcion saludo y le pasamos como parametro una cadena</span>
+  <span style="color: #bc6ec5;">(</span>saludo <span style="color: #2d9574;">"hola"</span><span style="color: #bc6ec5;">)</span>
+  <span style="color: #4f97d7;">)</span>
+
+<span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">progn</span>
+  <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">abro un buffer nuevo lamado test</span>
+  <span style="color: #bc6ec5;">(</span>switch-to-buffer-other-window <span style="color: #2d9574;">"*test"</span><span style="color: #bc6ec5;">)</span>
+  <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">limpio el contenido si lo tuviese</span>
+  <span style="color: #bc6ec5;">(</span>erase-buffer<span style="color: #bc6ec5;">)</span>
+  <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">declaro una variable unNombre</span>
+  <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">y llamamos al comando read para que ingresen datos</span>
+  <span style="color: #bc6ec5;">(</span><span style="color: #4f97d7; font-weight: bold;">setf</span> unNombre <span style="color: #2d9574;">(</span>read<span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span>
+  <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">imprimimos lo que se escribio</span>
+  <span style="color: #bc6ec5;">(</span>print unNombre<span style="color: #bc6ec5;">)</span>
+  <span style="color: #4f97d7;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org97de657" class="outline-4">
+<h4 id="org97de657"><span class="section-number-4">1.2.5</span> Buffers</h4>
+<div class="outline-text-4" id="text-1-2-5">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">BUffer</td>
+<td class="org-left">Descripcion</td>
+</tr>
+
+<tr>
+<td class="org-left">backtrace</td>
+<td class="org-left">Es el depurador de emacs</td>
+</tr>
+
+<tr>
+<td class="org-left">scratch</td>
+<td class="org-left">Para depurar codigo lisp</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Algunas diferencias
+</p>
+
+<ul class="org-ul">
+<li>Con setq y setf podemos cambiar el valor a las variables, pero el primero es de mas bajo nivel que setf. Este segundo es de mas alto nivel, e incorpora dentro a setq.</li>
+<li>Con setq no podemos cambiar el valor de una lista</li>
+</ul>
+
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">Correr cada linea con M-x  C-x C-e   </span>
+
+<span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">ejecuto una funcion prefija</span>
+<span style="color: #4f97d7;">(</span>+ <span style="color: #a45bad;">1</span> <span style="color: #a45bad;">2</span><span style="color: #4f97d7;">)</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">declaro una variable local y le asigno una lista</span>
+<span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">setq</span> dias '<span style="color: #bc6ec5;">(</span>lunes martes<span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">setq</span> letras '<span style="color: #bc6ec5;">(</span>A B C<span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">declaro una variable global</span>
+<span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">setf</span> dias '<span style="color: #bc6ec5;">(</span>lunes martes<span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">pido el primer elemento de la lista (a b c)</span>
+<span style="color: #4f97d7;">(</span>first '<span style="color: #bc6ec5;">(</span>a b c<span style="color: #bc6ec5;">)</span>
+
+       <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">imprimo la variable dias</span>
+       <span style="color: #bc6ec5;">(</span>print dias<span style="color: #bc6ec5;">)</span>
+
+       <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">Le cambio el valor del primer elemento a una lista</span>
+       <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">si probara con setq devolveria error</span>
+       <span style="color: #bc6ec5;">(</span><span style="color: #4f97d7; font-weight: bold;">setf</span> <span style="color: #2d9574;">(</span>first dias<span style="color: #2d9574;">)</span> 'viernes<span style="color: #bc6ec5;">)</span>
+       <span style="color: #bc6ec5;">(</span>print dias<span style="color: #bc6ec5;">)</span> <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">ahora deberia devolver (viernes martes)</span>
+
+       <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">Creo una funcion last (le resto 1 para no excederme de la cantidad de elementos)</span>
+       <span style="color: #bc6ec5;">(</span>nth <span style="color: #2d9574;">(</span>- <span style="color: #67b11d;">(</span>length dias<span style="color: #67b11d;">)</span> <span style="color: #a45bad;">1</span><span style="color: #2d9574;">)</span> dias<span style="color: #bc6ec5;">)</span>
+
+       <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">Une dos listas en una</span>
+       <span style="color: #bc6ec5;">(</span>append '<span style="color: #2d9574;">(</span>a b<span style="color: #2d9574;">)</span> '<span style="color: #2d9574;">(</span>c d<span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span>
+       <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">Insertamos una sublista al principio de otra lista</span>
+       <span style="color: #bc6ec5;">(</span>cons '<span style="color: #2d9574;">(</span>a b<span style="color: #2d9574;">)</span> '<span style="color: #2d9574;">(</span>c d<span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span>
+
+       <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">Creo una funcion que imprima el argumento</span>
+       <span style="color: #bc6ec5;">(</span><span style="color: #4f97d7; font-weight: bold;">defun</span> <span style="color: #bc6ec5; font-weight: bold;">saludo</span><span style="color: #2d9574;">(</span>mensaje<span style="color: #2d9574;">)</span>
+         <span style="color: #2d9574;">(</span>print mensaje<span style="color: #2d9574;">)</span>
+         <span style="color: #bc6ec5;">)</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">defvar</span> <span style="color: #7590db;">nombre</span> <span style="color: #2d9574;">"jorgito"</span><span style="color: #4f97d7;">)</span>
+
+<span style="color: #4f97d7;">(</span>print nombre<span style="color: #4f97d7;">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb1f2ab9" class="outline-3">
+<h3 id="orgb1f2ab9"><span class="section-number-3">1.3</span> [CHECK] Empezando con Emacs <code>[0%]</code></h3>
+<div class="outline-text-3" id="text-1-3">
+</div>
+<div id="outline-container-org65670e2" class="outline-4">
+<h4 id="org65670e2"><span class="section-number-4">1.3.1</span> <span class="todo _TODO_">[TODO]</span> Comandos importantes</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Comando</th>
+<th scope="col" class="org-left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">w</td>
+<td class="org-left">Ir a la siguiente palabra (word) a la derecha</td>
+</tr>
+
+<tr>
+<td class="org-left">b</td>
+<td class="org-left">Ir a la palabra anterior (back) a la izquierda</td>
+</tr>
+</tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Comando</th>
+<th scope="col" class="org-left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">M-u</td>
+<td class="org-left">Convertir a mayuscula (upper case) la siguiente palabra</td>
+</tr>
+
+<tr>
+<td class="org-left">M-l</td>
+<td class="org-left">Convertir a minuscula (lower case) la siguiente palabra</td>
+</tr>
+
+<tr>
+<td class="org-left">M-c</td>
+<td class="org-left">Convertir a letra capital (capitalize) la siguiente palabra</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">C-x C-u</td>
+<td class="org-left">Convertir a mayuscula una región de texto seleccionada (Varias palabras)</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-l</td>
+<td class="org-left">Convertir a minuscula una región de texto seleccionada (varias palabras)</td>
+</tr>
+
+<tr>
+<td class="org-left">capitalize-region</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<b>Referencias</b>
+</p>
+<ul class="org-ul">
+<li><a href="http://ergoemacs.org/emacs/modernization_upcase-word.html">Toggle Letter case - ergoemacs.org</a></li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Case.html">Case Conversion Commands -  gnu.org</a></li>
+<li><a href="https://kb.iu.edu/d/abis">Change de case and capitalization of words and regions - Knowlege Base</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge43bb7c" class="outline-4">
+<h4 id="orge43bb7c"><span class="section-number-4">1.3.2</span> Canales favoritos</h4>
+<div class="outline-text-4" id="text-1-3-2">
+<ul class="org-ul">
+<li><a href="https://www.youtube.com/watch?v=49kBWM3RQQ8&amp;list=PL9KxKa8NpFxIcNQa9js7dQQIHc81b0-Xg">https://www.youtube.com/watch?v=49kBWM3RQQ8&amp;list=PL9KxKa8NpFxIcNQa9js7dQQIHc81b0-Xg</a> (te falto agregar este, que es muy completo)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6ffb728" class="outline-4">
+<h4 id="org6ffb728"><span class="section-number-4">1.3.3</span> <span class="todo _TODO_">[TODO]</span> Modo artista, crear imagenes con texto</h4>
+<div class="outline-text-4" id="text-1-3-3">
+<p>
+Para crear diseños uml con texto
+</p>
+<ul class="org-ul">
+<li><a href="https://www.youtube.com/watch?v=cIuX87Xo8Fc">https://www.youtube.com/watch?v=cIuX87Xo8Fc</a></li>
+<li><a href="https://ondahostil.wordpress.com/2017/12/06/lo-que-he-aprendido-diagramas-en-org-mode-con-ditaa/">https://ondahostil.wordpress.com/2017/12/06/lo-que-he-aprendido-diagramas-en-org-mode-con-ditaa/</a></li>
+<li><a href="https://lapipaplena.wordpress.com/2017/02/05/graficos-con-org-mode-ditaa-y-plantuml/">https://lapipaplena.wordpress.com/2017/02/05/graficos-con-org-mode-ditaa-y-plantuml/</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge22227d" class="outline-4">
+<h4 id="orge22227d"><span class="section-number-4">1.3.4</span> Configuraciones personalizadas</h4>
+<div class="outline-text-4" id="text-1-3-4">
+<p>
+<a href="http://home.thep.lu.se/~karlf/emacs.html#sec-7-10-1">http://home.thep.lu.se/~karlf/emacs.html#sec-7-10-1</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org2e0456f" class="outline-4">
+<h4 id="org2e0456f"><span class="section-number-4">1.3.5</span> PLugins/Extensiones</h4>
+<div class="outline-text-4" id="text-1-3-5">
+<ul class="org-ul">
+<li><a href="https://company-mode.github.io/">https://company-mode.github.io/</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf4e2d77" class="outline-3">
+<h3 id="orgf4e2d77"><span class="section-number-3">1.4</span> <span class="todo _TODO_">[TODO]</span> Avanzando con Spacemacs <code>[50%]</code></h3>
+<div class="outline-text-3" id="text-1-4">
+</div>
+<div id="outline-container-org7fb4697" class="outline-4">
+<h4 id="org7fb4697"><span class="section-number-4">1.4.1</span> Layers de Spacemacs</h4>
+<div class="outline-text-4" id="text-1-4-1">
+</div>
+<ol class="org-ol">
+<li><a id="org0598a42"></a>Treemacs<br>
+<div class="outline-text-5" id="text-1-4-1-1">
+<p>
+Es un gestor de archivos
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Comando</td>
+<td class="org-left">Descripcion</td>
+</tr>
+
+<tr>
+<td class="org-left">SPC g r</td>
+<td class="org-left">Refrescar cambios</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Referencias
+</p>
+<ul class="org-ul">
+<li><a href="https://github.com/Alexander-Miller/treemacs/blob/master/README.org">https://github.com/Alexander-Miller/treemacs/blob/master/README.org</a></li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-org584310f" class="outline-4">
+<h4 id="org584310f"><span class="section-number-4">1.4.2</span> Nuevo modo cua-mode</h4>
+<div class="outline-text-4" id="text-1-4-2">
+<p>
+No conozco aun todas las funcionalidades, pero te deja seleccionar 
+multiples lineas y editarlas al mismo tiempo. Ademas agregar incrementales.
+Se activa con &lt;kbd&gt;M-x cua-mode&lt;/kbd&gt; 
+</p>
+
+<p>
+Funcionalidades:
+</p>
+<ul class="org-ul">
+<li>Seleccionar multiples lineas
+Presionar C-RET &lt;keyUp&gt; &lt;keyDown&gt; y escribir</li>
+<li>Agregar numeros de forma incremental
+Presionar &lt;kbd&gt;M-n&lt;/kbd&gt; y debajo elegir a partir de que numero, de a cuanto incrementar, y el formato
+seguido de RET</li>
+</ul>
+
+<p>
+Referencias:
+</p>
+<ol class="org-ol">
+<li><a href="https://www.youtube.com/watch?v=uGLjkZxaFkw">Referencia #1 - Ver Video</a></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org0a5d6e0" class="outline-4">
+<h4 id="org0a5d6e0"><span class="section-number-4">1.4.3</span> Atajos en Hybrid Mod</h4>
+<div class="outline-text-4" id="text-1-4-3">
+</div>
+<ol class="org-ol">
+<li><a id="org27478fa"></a>Nuevos atajos que uso mas frecuente<br>
+<div class="outline-text-5" id="text-1-4-3-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">:------</td>
+<td class="org-left">:----------------------------------------------------</td>
+</tr>
+
+<tr>
+<td class="org-left">Comando</td>
+<td class="org-left">Descripcion</td>
+</tr>
+
+<tr>
+<td class="org-left">-------</td>
+<td class="org-left">-----------------------------------------------------</td>
+</tr>
+
+<tr>
+<td class="org-left">g c</td>
+<td class="org-left">Comentar un linea o bloque seleccionado (difiere entre lenguaje de programacion)</td>
+</tr>
+
+<tr>
+<td class="org-left">SPC b b</td>
+<td class="org-left">Muestra un listado de buffers, para cambiar el actual</td>
+</tr>
+
+<tr>
+<td class="org-left">SPC '</td>
+<td class="org-left">Carga el buffer de la terminal</td>
+</tr>
+
+<tr>
+<td class="org-left">SPC f r</td>
+<td class="org-left">Lista los archivos abiertos recientemente</td>
+</tr>
+
+<tr>
+<td class="org-left">SPC f f</td>
+<td class="org-left">Para abrir un archivo</td>
+</tr>
+
+<tr>
+<td class="org-left">SPC f e R</td>
+<td class="org-left">Recarga las configuraciones de .spacemacs</td>
+</tr>
+
+<tr>
+<td class="org-left">SPC q q</td>
+<td class="org-left">Cerrar emacs</td>
+</tr>
+
+<tr>
+<td class="org-left">SPC q r</td>
+<td class="org-left">Reiniciar emacs</td>
+</tr>
+
+<tr>
+<td class="org-left">SPC g r</td>
+<td class="org-left">Cargar magit</td>
+</tr>
+
+<tr>
+<td class="org-left">SPC a o o</td>
+<td class="org-left">Carga menu org-agenda</td>
+</tr>
+
+<tr>
+<td class="org-left">, '</td>
+<td class="org-left">Carga modo edicion especial para bloques de codigo</td>
+</tr>
+
+<tr>
+<td class="org-left">, ,</td>
+<td class="org-left">Ejecuta codigo de un bloque de codigo</td>
+</tr>
+
+<tr>
+<td class="org-left">SPC &lt;numero&gt;</td>
+<td class="org-left">Mueve cursor hacia el numero de buffer indicado</td>
+</tr>
+
+<tr>
+<td class="org-left">SPC p f</td>
+<td class="org-left">Cambiar carpeta de proyecto</td>
+</tr>
+
+<tr>
+<td class="org-left">SPC f p</td>
+<td class="org-left">Listar y abrir archivos del proyecto actual</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x 1</td>
+<td class="org-left">Cierra todos los buffers excepto donde esta el cursor</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x 2</td>
+<td class="org-left">Abre un buffer horizontal al actual</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x 3</td>
+<td class="org-left">Abre un buffer vertical al actual</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x 0</td>
+<td class="org-left">Cierra buffer actual</td>
+</tr>
+
+<tr>
+<td class="org-left">gg</td>
+<td class="org-left">Mueve el cursor a la primera linea del archivo</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;numero&gt; gg</td>
+<td class="org-left">Mueve el cursora la linea &lt;numero&gt; que indiquemos</td>
+</tr>
+
+<tr>
+<td class="org-left">:wq</td>
+<td class="org-left">Guarda los cambios y cierra</td>
+</tr>
+
+<tr>
+<td class="org-left">/texto RET</td>
+<td class="org-left">Para buscar texto</td>
+</tr>
+
+<tr>
+<td class="org-left">d</td>
+<td class="org-left">Borra una linea</td>
+</tr>
+
+<tr>
+<td class="org-left">y</td>
+<td class="org-left">Copiar texto seleccionado</td>
+</tr>
+
+<tr>
+<td class="org-left">p</td>
+<td class="org-left">Pegar texto</td>
+</tr>
+
+<tr>
+<td class="org-left">v &lt;h&gt; &lt;l&gt;</td>
+<td class="org-left">Seleccionar texto</td>
+</tr>
+
+<tr>
+<td class="org-left">V</td>
+<td class="org-left">Seleccionar toda la linea</td>
+</tr>
+
+<tr>
+<td class="org-left">x</td>
+<td class="org-left">Borra el caracter por caracter</td>
+</tr>
+
+<tr>
+<td class="org-left">n</td>
+<td class="org-left">Avanza a la siguiente palabra de la busqueda (realizada con /texto)</td>
+</tr>
+
+<tr>
+<td class="org-left">^</td>
+<td class="org-left">Ir al principio de linea</td>
+</tr>
+
+<tr>
+<td class="org-left">$</td>
+<td class="org-left">Ir al final de linea</td>
+</tr>
+
+<tr>
+<td class="org-left">&lt;sr RET</td>
+<td class="org-left">Carga snippet de bloque de codigo</td>
+</tr>
+
+<tr>
+<td class="org-left">V g c</td>
+<td class="org-left">Selecciona toda una linea y la comenta</td>
+</tr>
+
+<tr>
+<td class="org-left">v Arrow-Up/Down g c</td>
+<td class="org-left">Seleccionar bloques de codigo y comentarlos</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+
+
+<li><a id="org60a7368"></a><span class="done _DONE_">[DONE]</span> Atajos en Evil Mode<br>
+<div class="outline-text-5" id="text-1-4-3-2">
+</div>
+</li>
+<li><a id="orge76262d"></a><span class="done _DONE_">[DONE]</span> Atajos en Holy Mode<br>
+<div class="outline-text-5" id="text-1-4-3-3">
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-orgaee8f72" class="outline-4">
+<h4 id="orgaee8f72"><span class="section-number-4">1.4.4</span> Ver historial de cambios, comando undo-tree</h4>
+<div class="outline-text-4" id="text-1-4-4">
+<p>
+"Tratar de mejorar con mas investigacion y desarrollo"
+Utilizamos undo-tree, se va a abrir un buffer <b>undo-tree</b>
+</p>
+
+<p>
+Algunos comandos:
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Holy Mode</td>
+<td class="org-left">Evil Mode</td>
+<td class="org-left">Descripcion</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x u</td>
+<td class="org-left">SPC a u</td>
+<td class="org-left">Abrir arbol de cambios</td>
+</tr>
+
+<tr>
+<td class="org-left">C-g</td>
+<td class="org-left">q</td>
+<td class="org-left">Salir</td>
+</tr>
+
+<tr>
+<td class="org-left">C-q</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Cancelar cambios</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">j,k</td>
+<td class="org-left">Moverse entre los nodos</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">h,l</td>
+<td class="org-left">Moverse entre las ramas</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Referencias:
+</p>
+<ul class="org-ul">
+<li><a href="https://emacs.stackexchange.com/questions/27339/how-to-operate-the-undo-redo-tree-in-spacemacs">Algunos comandos (emacs.stackexchange.com)</a></li>
+<li><a href="http://pragmaticemacs.com/emacs/advanced-undoredo-with-undo-tree/">Algunas configuraciones (pragmaticemacs.com)</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org065ad32" class="outline-4">
+<h4 id="org065ad32"><span class="section-number-4">1.4.5</span> <span class="done _DONE_">[DONE]</span> Tips</h4>
+<div class="outline-text-4" id="text-1-4-5">
+</div>
+</div>
+<div id="outline-container-orgb24a48c" class="outline-4">
+<h4 id="orgb24a48c"><span class="section-number-4">1.4.6</span> Errores frecuentes</h4>
+<div class="outline-text-4" id="text-1-4-6">
+<ul class="org-ul">
+<li>No carga la org-agenda y muestra como error
+"Invalid function: org-preserve-local-variables"
+Solucion:
+1.Borrar los archivos org
+cd ~/.emacs.d/elpa/develop
+find org*/*.elc -print0 | xargs -0 rm
+<ol class="org-ol">
+<li>Ejecutar el comando dentro de spacemacs
+spacemacs/recompile-elpa</li>
+</ol></li>
+</ul>
+<p>
+Referencia:
+<a href="https://github.com/syl20bnr/spacemacs/issues/11801">https://github.com/syl20bnr/spacemacs/issues/11801</a>
+</p>
+
+<ul class="org-ul">
+<li><a href="https://develop.spacemacs.org/doc/FAQ.html#why-are-packages-installed-with-package-install-automatically-deleted-by-spacemacs-when-it-boots">Preguntas frecuentes (develop.spacemacs.org)</a></li>
+<li>- Que se quiera borrar yasnippet-snippets porque tiene un package huerfano (company-tern)
+Solucion: ir a la linea que dice <b><b>dotspacemacs-install-packages 'used-only))</b></b>
+y cambiar el <b><b>used-only</b></b> por <b><b>used-but-keep-unused</b></b> esto lo que hace es conservar el
+package <b><b>yasnippet-snippets</b></b> por mas que tenga packages huerfanos (con la opcion anterior lo borraba)
+<a href="https://github.com/syl20bnr/spacemacs/issues/1538">https://github.com/syl20bnr/spacemacs/issues/1538</a>
+<a href="https://github.com/syl20bnr/spacemacs/issues/1538#issuecomment-317241460">https://github.com/syl20bnr/spacemacs/issues/1538#issuecomment-317241460</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org960728f" class="outline-4">
+<h4 id="org960728f"><span class="section-number-4">1.4.7</span> <span class="done _DONE_">[DONE]</span> Gestionar archivos, proyectos</h4>
+<div class="outline-text-4" id="text-1-4-7">
+</div>
+<ol class="org-ol">
+<li><a id="org8464d97"></a><span class="done _DONE_">[DONE]</span> Atajos con Treemacs/Neotree<br>
+<div class="outline-text-5" id="text-1-4-7-1">
+</div>
+</li>
+<li><a id="org1ec4eaa"></a><span class="done _DONE_">[DONE]</span> Atajos con Projectfile<br>
+<div class="outline-text-5" id="text-1-4-7-2">
+</div>
+</li>
+<li><a id="orgfa2990c"></a><span class="done _DONE_">[DONE]</span> Referencias<br>
+<div class="outline-text-5" id="text-1-4-7-3">
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-orgd893681" class="outline-4">
+<h4 id="orgd893681"><span class="section-number-4">1.4.8</span> <span class="todo _TODO_">[TODO]</span> Referencias</h4>
+<div class="outline-text-4" id="text-1-4-8">
+</div>
+<ol class="org-ol">
+<li><a id="org98dbff0"></a><span class="todo _TODO_">[TODO]</span> Videos<br>
+<div class="outline-text-5" id="text-1-4-8-1">
+<p>
+Quedaron algunos videos pendientes por mirar/revisar
+</p>
+<ul class="org-ul">
+<li><a href="https://www.youtube.com/watch?v=8k7BTIqufqQ">https://www.youtube.com/watch?v=8k7BTIqufqQ</a></li>
+<li><a href="https://orgmode.org/guide/Hyperlinks.html">https://orgmode.org/guide/Hyperlinks.html</a></li>
+<li><a href="https://www.youtube.com/watch?v=I2C6QTtxfe8">https://www.youtube.com/watch?v=I2C6QTtxfe8</a></li>
+<li><a href="https://www.youtube.com/watch?v=39u8K12rXHE">https://www.youtube.com/watch?v=39u8K12rXHE</a></li>
+<li><a href="https://orgmode.org/manual/Initial-visibility.html">https://orgmode.org/manual/Initial-visibility.html</a></li>
+<li><a href="https://www.youtube.com/watch?v=S4f-GUxu3CY">https://www.youtube.com/watch?v=S4f-GUxu3CY</a></li>
+</ul>
+</div>
+</li>
+
+<li><a id="orgace386a"></a><span class="done _DONE_">[DONE]</span> Guias basicas<br>
+<div class="outline-text-5" id="text-1-4-8-2">
+</div>
+</li>
+<li><a id="org0e4f6b9"></a><span class="done _DONE_">[DONE]</span> Guias avanzadas<br>
+<div class="outline-text-5" id="text-1-4-8-3">
+</div>
+</li>
+<li><a id="orgc0f20bd"></a><span class="done _DONE_">[DONE]</span> Configuraciones<br>
+<div class="outline-text-5" id="text-1-4-8-4">
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-orga86ed58" class="outline-4">
+<h4 id="orga86ed58"><span class="section-number-4">1.4.9</span> <span class="todo _TODO_">[TODO]</span> Agregar snippets</h4>
+<div class="outline-text-4" id="text-1-4-9">
+<p>
+Crear snippets
+</p>
+<ol class="org-ol">
+<li>Presionar SPC SPC yas-new-snippet  o M-x yas-new-sippet</li>
+<li>Crear un snippet</li>
+<li>Llamarlo escribiendolo y presionar tab o presioar M-/ o M-x hippie-expand o SPC SPC hippie-expand</li>
+</ol>
+
+<p>
+Posibles error:
+</p>
+<ul class="org-ul">
+<li>Que se quiera borrar yasnippet-snippets porque tiene un package huerfano (company-tern)
+Solucion: ir a la linea que dice <b><b>dotspacemacs-install-packages 'used-only))</b></b>
+y cambiar el <b><b>used-only</b></b> por <b><b>used-but-keep-unused</b></b> esto lo que hace es conservar el
+package <b><b>yasnippet-snippets</b></b> por mas que tenga packages huerfanos (con la opcion anterior lo borraba)
+<a href="https://github.com/syl20bnr/spacemacs/issues/1538">https://github.com/syl20bnr/spacemacs/issues/1538</a>
+<a href="https://github.com/syl20bnr/spacemacs/issues/1538#issuecomment-317241460">https://github.com/syl20bnr/spacemacs/issues/1538#issuecomment-317241460</a></li>
+</ul>
+<p>
+Solucion:
+1.Agregar en user-config las sig tres lineas
+(global-set-key (kbd "TAB") 'hippie-expand)
+(global-set-key (kbd "&lt;tab&gt;") 'hippie-expand)
+(global-set-key (kbd "\t") 'hippie-expand)
+2.Agregar en dotspacemacs-configuration-layers
+auto-completion
+(auto-completion :variables
+auto-completion-return-key-behavior nil
+auto-completion-tab-key-behavior 'complete
+auto-completion-enable-sort-by-usage t
+;;auto-completion-tab-key-behavior nil
+auto-completion-enable-snippets-in-popup t)
+</p>
+
+
+<p>
+Referencias
+</p>
+<ul class="org-ul">
+<li><a href="http://jr0cket.co.uk/2016/07/spacemacs-adding-your-own-yasnippets.html">Referencia #1 - Ver Pagina</a></li>
+<li><a href="https://www.youtube.com/watch?v=5kPrOs2ftN8">Referencia #1 - Ver Video</a></li>
+<li><a href="https://www.youtube.com/watch?v=51as0UrssLM">Referencia #2 - Ver Video</a></li>
+<li><a href="https://www.youtube.com/watch?v=lsYdK0C2RvQ">Referencia #3 - Ver Vide</a></li>
+<li><a href="https://github.com/syl20bnr/spacemacs/issues/10316">https://github.com/syl20bnr/spacemacs/issues/10316</a></li>
+<li><a href="https://jaketrent.com/post/code-snippets-spacemacs/">https://jaketrent.com/post/code-snippets-spacemacs/</a></li>
+<li><a href="https://www.reddit.com/r/spacemacs/comments/apye26/is_there_a_better_way_of_using_snippets_yasnippet/">https://www.reddit.com/r/spacemacs/comments/apye26/is_there_a_better_way_of_using_snippets_yasnippet/</a></li>
+<li><a href="https://github.com/syl20bnr/spacemacs/issues/4245">https://github.com/syl20bnr/spacemacs/issues/4245</a></li>
+<li><a href="https://www.emacswiki.org/emacs/HippieExpand">https://www.emacswiki.org/emacs/HippieExpand</a></li>
+<li><a href="https://develop.spacemacs.org/layers/+completion/auto-completion/README.html">https://develop.spacemacs.org/layers/+completion/auto-completion/README.html</a></li>
+<li><a href="https://github.com/joaotavora/yasnippet#where-are-the-snippets">https://github.com/joaotavora/yasnippet#where-are-the-snippets</a></li>
+<li><a href="https://practicalli.github.io/spacemacs/snippets/add-your-own-snippets.html">https://practicalli.github.io/spacemacs/snippets/add-your-own-snippets.html</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3c227e1" class="outline-4">
+<h4 id="org3c227e1"><span class="section-number-4">1.4.10</span> Utilizando el buffer scratch</h4>
+<div class="outline-text-4" id="text-1-4-10">
+<p>
+Referencias:
+</p>
+<ul class="org-ul">
+<li><a href="https://dev.to/huytd/emacs-from-scratch-1cg6">https://dev.to/huytd/emacs-from-scratch-1cg6</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgdde0fea" class="outline-4">
+<h4 id="orgdde0fea"><span class="section-number-4">1.4.11</span> Utilizando Swiper</h4>
+<div class="outline-text-4" id="text-1-4-11">
+<p>
+Al parecer sirve como buscador (parece que se pueden usar expresiones regulares),
+con un buffer debajo que indica las coincidencias
+Referencias:
+</p>
+<ul class="org-ul">
+<li><a href="https://github.com/abo-abo/swiper/issues/1550">https://github.com/abo-abo/swiper/issues/1550</a></li>
+<li><a href="https://writequit.org/denver-emacs/presentations/2017-04-11-ivy.html">https://writequit.org/denver-emacs/presentations/2017-04-11-ivy.html</a></li>
+<li><a href="https://www.youtube.com/watch?v=AaUlOH4GTCs">https://www.youtube.com/watch?v=AaUlOH4GTCs</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org83805f3" class="outline-3">
+<h3 id="org83805f3"><span class="section-number-3">1.5</span> <span class="todo _TODO_">[TODO]</span> Integrando el Modo Org <code>[47%]</code></h3>
+<div class="outline-text-3" id="text-1-5">
+</div>
+<div id="outline-container-org79c7f92" class="outline-4">
+<h4 id="org79c7f92"><span class="section-number-4">1.5.1</span> TODO Configuracion para bloques de codigo</h4>
+<div class="outline-text-4" id="text-1-5-1">
+<p>
+<b><b>Para abrir el bloque de codigo en un nuevo buffer</b></b>
+</p>
+<ol class="org-ol">
+<li>Ejecutar C-c ' o SPC , . para cerrar el buffer SPC , ,</li>
+<li>Otra manera si no funciona C-c ' podes probar con C-x n b  
+para volver a ver el resto del contenido C-x n w</li>
+</ol>
+
+<p>
+<b><b>Para autoindentar el codigo</b></b>
+Para auto indentar el codigo correr en ese buffer M-x aggressive-indent-mode 
+volver a ejecutar para desactivar
+</p>
+
+<p>
+<b><b>Algunos ejemplos</b></b>
+</p>
+<ul class="org-ul">
+<li>Con :var podemos agregar variables que usaremos en el codigo con $</li>
+<li>Con :results podemos cambiar como imprimir el resultado osea el output
+<ul class="org-ul">
+<li>drawer, aparece el inicio y fin del codigo, si no queremos que se 
+acumule el codigo, solo que se actualice esta bueno</li>
+<li>raw, se va a acumular por cada ejecucion</li>
+</ul></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-sh" id="org7801097"><span style="color: #4f97d7;">pwd</span> <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para ver ruta actual</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">ls | grep "mumuki"</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">ls | grep "$nombre" # filtro directorio actual por un nombre</span>
+
+
+</pre>
+</div>
+
+
+<p>
+Referencias:
+</p>
+<ul class="org-ul">
+<li><a href="http://www.howardism.org/Technical/Emacs/literate-devops.html">Varios tips - Howardism.org</a></li>
+<li><a href="https://maciaschain.gitlab.io/gnutas/eliminar_drawers.html">Eliminar los encabezados - By MaciasChain</a></li>
+<li><a href="https://org-babel.readthedocs.io/en/latest/header-args/">Header args - By OrgBabel</a></li>
+<li><a href="https://flipboard.com/@ipp/emacs-tricks-stuff-g7r2eiq2z">https://flipboard.com/@ipp/emacs-tricks-stuff-g7r2eiq2z</a></li>
+</ul>
+
+<p>
+<b><b>Configuacion</b></b>
+</p>
+
+<ol class="org-ol">
+<li>Modificar el archivo de configuracion de spacemacs con `SPC f e d`</li>
+<li>Buscar la linea que diga `org-babel-do-load-languages` y agregar
+una linea por cada lenguaje entre parentesis (nombreLenguaje . t)</li>
+<li><p>
+Si no aparece agregar el siguiente bloque de codigo y modificar a gusto
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #4f97d7;">(</span>org-babel-do-load-languages 'org-babel-load-languages
+                             <span style="color: #bc6ec5;">(</span>append org-babel-load-languages
+                                     '<span style="color: #2d9574;">(</span><span style="color: #67b11d;">(</span>python     . t<span style="color: #67b11d;">)</span>
+                                       <span style="color: #67b11d;">(</span>ruby       . t<span style="color: #67b11d;">)</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span>
+</pre>
+</div></li>
+</ol>
+
+<p>
+Paso a paso:
+</p>
+<ol class="org-ol">
+<li>Para encapsular bloques de codigo empezar con #+BEGIN<sub>SRC</sub> seguido de nombre de lenguaje,</li>
+</ol>
+<p>
+escribir el codigo deseado y finalizar con la siguiente linea #+END<sub>SRC</sub>
+</p>
+<ol class="org-ol">
+<li>Para ejecutar bloque de codigo ejecutar &lt;bdk&gt;C-c C-c&lt;/bdk&gt;</li>
+</ol>
+
+
+
+<p>
+Referencias para configuracion y resolver errores:
+</p>
+<ul class="org-ul">
+<li><a href="https://www.reddit.com/r/emacs/comments/4wm4y2/appending_to_orgbabelloadlanguages/">Referencia #1 - Reddit.com</a></li>
+<li><a href="https://github.com/syl20bnr/spacemacs/issues/9867">Referencia #2 - Github.com</a></li>
+<li><a href="https://orgmode.org/manual/Using-Header-Arguments.html">Using Header Arguments (orgmode.org)</a></li>
+<li><a href="https://orgmode.org/worg/org-contrib/babel/header-args.html">Header Arguments and result types (orgmode.org)</a></li>
+<li><a href="https://www.offerzen.com/blog/literate-programming-empower-your-writing-with-emacs-org-mode">Literate Programming (offerzen.com)</a></li>
+<li><a href="https://steemit.com/spacemacs/@shark8me/indenting-code-blocks-in-spacemacs-org-mode">Indentar (tabular) codigo (steemit.com)</a></li>
+<li><a href="https://emacs.stackexchange.com/questions/18273/tell-org-to-treat-block-quotes-as-a-special-environment">Modificar bloques de codigo en otro buffer (emacs.stackexchange.com)</a></li>
+<li><a href="https://blog.8bitzen.com/posts/27-02-2019-using-orgmode-babel/">Using orgmode babel (8bitzen)</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2d53c31" class="outline-4">
+<h4 id="org2d53c31"><span class="section-number-4">1.5.2</span> NUevo - Bloques de codigo</h4>
+<div class="outline-text-4" id="text-1-5-2">
+</div>
+<ol class="org-ol">
+<li><a id="org2d31e3e"></a>Referencias<br>
+<div class="outline-text-5" id="text-1-5-2-1">
+<ul class="org-ul">
+<li><a href="https://emacs.stackexchange.com/questions/15065/org-mode-babel-interactive-code-block-evaluation">Ingresar datos - Input - Stackoverflow</a></li>
+<li><a href="https://kitchingroup.cheme.cmu.edu/blog/2019/02/12/Using-results-from-one-code-block-in-another-org-mode/">Ingresar datos, input -</a></li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-orgef73049" class="outline-4">
+<h4 id="orgef73049"><span class="section-number-4">1.5.3</span> <span class="todo _TODO_">[TODO]</span> Creando tablas</h4>
+<div class="outline-text-4" id="text-1-5-3">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Comando</th>
+<th scope="col" class="org-left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-c -</td>
+<td class="org-left">Agrega una linea divisoria</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c TAB</td>
+<td class="org-left">Oculta/Expande una columna</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-c</td>
+<td class="org-left">Ajusta las columnas (por si se deforma)</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c SPC</td>
+<td class="org-left">Borra el texto de una celda</td>
+</tr>
+
+<tr>
+<td class="org-left">M-LEFT/RIGHT</td>
+<td class="org-left">Mover columnas (izquierda/derecha)</td>
+</tr>
+
+<tr>
+<td class="org-left">M-UP/DOWN</td>
+<td class="org-left">Mover filas (arriba/abajo)</td>
+</tr>
+</tbody>
+</table>
+
+<ul class="org-ul">
+<li>Referencias
+<ul class="org-ul">
+<li><a href="https://www.gnu.org/software/emacs/manual/html_node/org/Built_002din-table-editor.html">The built-in table editor - gnu.org</a></li>
+<li><a href="https://orgmode.org/manual/Built_002din-Table-Editor.html">Built-in Table Editor - orgmode.org</a></li>
+<li><a href="https://orgmode.org/manual/Column-Width-and-Alignment.html">Column width and alignment - orgmode.org</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org54f096c" class="outline-4">
+<h4 id="org54f096c"><span class="section-number-4">1.5.4</span> TODO Usando Latex</h4>
+<div class="outline-text-4" id="text-1-5-4">
+</div>
+<ol class="org-ol">
+<li><a id="org63e271f"></a>1. Instalación<br>
+<div class="outline-text-5" id="text-1-5-4-1">
+<div class="org-src-container">
+<pre class="src src-sh" id="orgdabde51"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">1. primero instalar algunos paquetes de latex</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Existe otro textlive-common que instala todo pero esa 2Gb</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">me pareció innecesario, con esos dos es más que suficiente</span>
+pacman -S texlive-core texlive-science texlive-latexextra
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">2. instalar un editor de latex</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Me pareció que es el más sencillo y fácil de usar</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">la otra alternativa es utilizar spacemacs (pero no es tan completo)</span>
+pacman -S gummi
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="org36d1e13"></a>2. Configuración Spacemacs para Latex<br>
+<div class="outline-text-5" id="text-1-5-4-2">
+<ol class="org-ol">
+<li>En los archivos .org</li>
+</ol>
+
+<pre class="example">Para previsualizar al abrir los archivos .org agregar  #+STARTUP: latexpreview
+Para que no previsualizar agregar      #+STARTUP: nolatexpreview
+</pre>
+
+<ol class="org-ol">
+<li><p>
+En el archivo de configuración de spacemacs
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp" id="orga5a969a"><span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">abrir la configuración de spacemacs SPC f e d</span>
+<span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">o sinó SPC f f RET ~/.spacemacs</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">Para agrandar el tamaño de la fuente de los preview de latex</span>
+<span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">en los archivos .org que se previsualizan con C-c C-x C-l</span>
+<span style="color: #4f97d7;">(</span>plist-put org-format-latex-options <span style="color: #4f97d7;">:scale</span> <span style="color: #a45bad;">1.5</span><span style="color: #4f97d7;">)</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">Encontrar una linea que diga dotspacemacs-configuration-layers</span>
+<span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">y agregar el layer latex</span>
+<span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">deberia quedar de la siguiente manera</span>
+dotspacemacs-configuration-layers
+'<span style="color: #4f97d7;">(</span>markdown
+  latex <span style="color: #2aa1ae; background-color: #292e34;">;; </span><span style="color: #2aa1ae; background-color: #292e34;">&lt;&lt; Agregar esta linea</span>
+  python
+  auto-completion
+  emacs-lisp
+  git
+  helm
+  prolog
+  org
+  treemacs
+  <span style="color: #4f97d7;">)</span>
+</pre>
+</div></li>
+</ol>
+</div>
+</li>
+
+<li><a id="org92072f0"></a>3. Escribir código en org mode y previsualizarlo<br>
+<div class="outline-text-5" id="text-1-5-4-3">
+<ul class="org-ul">
+<li>Si queremos previsualizar la ecuación ejecutamos <b>C-c C-x C-l</b></li>
+<li>Supongamos que estamos en un archivo .org y escribimos algunas formulas que queremos previsualizar</li>
+</ul>
+
+<pre class="example" id="Escribir texto con pequeñas ecuaciones con $">Estamos escribiendo una ecuación $1+1=2$ mientras que $1+1=2$
+</pre>
+
+<pre class="example" id="Escribir una ecuacion enumerada con {equation}">\begin{equation}
+1+1 = 2 
+\end{equation}
+</pre>
+
+<pre class="example" id="Escribir bloques con varias ecuaciones con {align}">\begin{align}
+1+1 = 2 \\
+2+2 = 4 \\
+3+3 = 6 \\
+\end{align}
+</pre>
+
+<pre class="example" id="Escribir un bloque con varias ecuaciones enumeradas con {align*}">\begin{align*}
+1+1 = 2 \\
+2+2 = 4 \\
+3+3 = 6 \\
+\end{align*}
+</pre>
+</div>
+</li>
+
+<li><a id="org9fbfeec"></a>Referencias<br>
+<div class="outline-text-5" id="text-1-5-4-4">
+<ul class="org-ul">
+<li><a href="https://orgmode.org/manual/Previewing-LaTeX-fragments.html">Previewing latex fragments - orgmode.org</a></li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_node/org/Previewing-LaTeX-fragments.html">Previewing latex fragments - gnu.org</a></li>
+<li><a href="https://www.overleaf.com/learn/latex/Mathematical_expressions">Mathematical expressions - Overleaf</a></li>
+<li><a href="https://www.overleaf.com/learn/latex/List_of_Greek_letters_and_math_symbols">List of Greek letters and math symbols - Overleaf</a></li>
+<li><a href="https://www1.cmc.edu/pages/faculty/aaksoy/latex/latexthree.html">Latex Tutorial Math Mode</a></li>
+<li><a href="https://www.overleaf.com/learn/latex/aligning_equations_with_amsmath">Aligning equations with amsmath</a></li>
+<li><a href="http://www.tug.org/teTeX/tetex-texmfdist/doc/latex/amsmath/amsldoc.pdf">User's Guide for the amsmath Package</a></li>
+<li><a href="https://itsfoss.com/latex-editors-linux/">9 Best latex editors for Linux</a></li>
+<li><a href="https://www.ugr.es/~mmartins/material/latex_basico.pdf">Introducción de Latex</a></li>
+<li><a href="http://nokyotsu.com/latex/curso.html">Curso básico de Latex</a></li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-org57fee0a" class="outline-4">
+<h4 id="org57fee0a"><span class="section-number-4">1.5.5</span> Agregando imagenes</h4>
+<div class="outline-text-4" id="text-1-5-5">
+</div>
+<ol class="org-ol">
+<li><a id="orge72890f"></a>Comandos<br></li>
+<li><a id="org7b4a7a4"></a>Redimensionar imagenes<br>
+<div class="outline-text-5" id="text-1-5-5-2">
+<p>
+#+BEGIN<sub>EXAMPLE</sub> 
+</p>
+<p>
+<a href="RUTA_DE_LA_IMAGEN">RUTA_DE_LA_IMAGEN</a>
+#+BEGIN<sub>EXAMPLE</sub>
+</p>
+
+
+<ul class="org-ul">
+<li>Para agregar una imagen ejecuta <b>C-c C-l</b> elegis la ruta de la imagen
+pero no le pongas una descripción, porque sino no hace la vista preliminar</li>
+<li>Para ver una vista preliminar ejecuta <b>C-c C-x C-v</b></li>
+<li>Para cambiar el tamaño de las imagenes</li>
+</ul>
+
+
+<p>
+<b>Referencias</b>
+</p>
+<ul class="org-ul">
+<li><a href="https://emacs.stackexchange.com/questions/10114/org-mode-no-images-to-display-inline">No images to display inline - Stackexchange.com</a></li>
+<li><a href="https://ondahostil.wordpress.com/2017/12/26/lo-que-he-aprendido-imagenes-inline-en-org/">imagenes inline en org mode - Blog OndaHostil</a></li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-org9c3ad49" class="outline-4">
+<h4 id="org9c3ad49"><span class="section-number-4">1.5.6</span> TODO Utilizando columnas</h4>
+<div class="outline-text-4" id="text-1-5-6">
+<p>
+Pendiente a revisar mas..
+</p>
+
+<p>
+Referencias:
+</p>
+<ul class="org-ul">
+<li><a href="https://orgmode.org/worg/org-tutorials/org-column-view-tutorial.html">Org Column Tutorial - orgmode.org</a></li>
+<li><a href="https://correl.phoenixinquis.net/2014/11/25/getting-organized-with-org-mode.html">Getting organized - By Correl Roush</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgccf0c9f" class="outline-4">
+<h4 id="orgccf0c9f"><span class="section-number-4">1.5.7</span> Creando presentaciones con beamer</h4>
+<div class="outline-text-4" id="text-1-5-7">
+<p>
+Errores comunes:
+</p>
+<ol class="org-ol">
+<li>No me aparece la opcion para exportar beamer</li>
+</ol>
+<p>
+Solucion
+Escribir al principio del archivo la siguiente linea
+</p>
+<pre class="example">#+STARTUP: beamer#+STARTUP: beamer
+</pre>
+
+<p>
+Referencias:
+</p>
+<ul class="org-ul">
+<li><a href="https://www.reddit.com/r/emacs/comments/60tmkl/no_latexbeamer_export_available/">https://www.reddit.com/r/emacs/comments/60tmkl/no_latexbeamer_export_available/</a></li>
+<li><a href="https://notxor.nueva-actitud.org/blog/2019/04/29/presentaciones-con-org-beamer-mode/">https://notxor.nueva-actitud.org/blog/2019/04/29/presentaciones-con-org-beamer-mode/</a></li>
+<li><a href="https://orgmode.org/worg/exporters/beamer/tutorial.html">https://orgmode.org/worg/exporters/beamer/tutorial.html</a></li>
+<li><a href="https://orgmode.org/worg/exporters/beamer/ox-beamer.html">https://orgmode.org/worg/exporters/beamer/ox-beamer.html</a></li>
+<li><a href="https://orgmode.org/worg/exporters/beamer/presentation.html">https://orgmode.org/worg/exporters/beamer/presentation.html</a></li>
+<li><a href="https://cestlaz.github.io/posts/using-emacs-50-presentations/">https://cestlaz.github.io/posts/using-emacs-50-presentations/</a></li>
+<li><a href="https://www.youtube.com/watch?v=Ho6nMWGtepY">https://www.youtube.com/watch?v=Ho6nMWGtepY</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd88fb86" class="outline-4">
+<h4 id="orgd88fb86"><span class="section-number-4">1.5.8</span> <span class="todo _TODO_">[TODO]</span> Agenda</h4>
+<div class="outline-text-4" id="text-1-5-8">
+<ul class="org-ul">
+<li><a href="https://es.wikipedia.org/wiki/CalDAV">https://es.wikipedia.org/wiki/CalDAV</a></li>
+<li><a href="https://es.wikipedia.org/wiki/ICalendar">https://es.wikipedia.org/wiki/ICalendar</a></li>
+<li><a href="https://es.wikipedia.org/wiki/HCalendar">https://es.wikipedia.org/wiki/HCalendar</a></li>
+<li><a href="https://es.wikipedia.org/wiki/WebDAV">https://es.wikipedia.org/wiki/WebDAV</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org46b0639" class="outline-4">
+<h4 id="org46b0639"><span class="section-number-4">1.5.9</span> Creando un html moderno</h4>
+<div class="outline-text-4" id="text-1-5-9">
+<p>
+Referencias:
+</p>
+<ul class="org-ul">
+<li><a href="https://github.com/fniessen/org-html-themes">https://github.com/fniessen/org-html-themes</a></li>
+<li><a href="https://gongzhitaao.org/orgcss/">https://gongzhitaao.org/orgcss/</a></li>
+<li><a href="https://orgmode.org/manual/Export-Settings.html#Export-settings">https://orgmode.org/manual/Export-Settings.html#Export-settings</a></li>
+<li><a href="https://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html">https://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html</a></li>
+<li><a href="http://snarvaez.poweredbygnulinux.com/notes/org-mode-publishing-system.html">http://snarvaez.poweredbygnulinux.com/notes/org-mode-publishing-system.html</a></li>
+<li><a href="https://orgmode.org/manual/Include-Files.html">https://orgmode.org/manual/Include-Files.html</a></li>
+<li><a href="https://orgmode.org/manual/Publishing.html">https://orgmode.org/manual/Publishing.html</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org304c1b9" class="outline-4">
+<h4 id="org304c1b9"><span class="section-number-4">1.5.10</span> Atajos dentro de la agenda</h4>
+<div class="outline-text-4" id="text-1-5-10">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Atajo</td>
+<td class="org-left">Descripcion</td>
+</tr>
+
+<tr>
+<td class="org-left">SPC-a o o</td>
+<td class="org-left">Abrir agenda</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c a</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">q</td>
+<td class="org-left">Cerrar buffer de agenda</td>
+</tr>
+
+<tr>
+<td class="org-left">f</td>
+<td class="org-left">(foward) siguiente semana</td>
+</tr>
+
+<tr>
+<td class="org-left">b</td>
+<td class="org-left">(back) semana anterior</td>
+</tr>
+
+<tr>
+<td class="org-left">m</td>
+<td class="org-left">filtrar por keywords</td>
+</tr>
+
+<tr>
+<td class="org-left">, d</td>
+<td class="org-left">Cambiar desde la agenda la fecha programada (Schedule/deadline)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org41cfeb7" class="outline-4">
+<h4 id="org41cfeb7"><span class="section-number-4">1.5.11</span> Formato</h4>
+<div class="outline-text-4" id="text-1-5-11">
+</div>
+<ol class="org-ol">
+<li><a id="orgd38153d"></a>Cambiar la fecha<br></li>
+<li><a id="org8cbed5f"></a>Repetir fechas (hobbies, cursos semanales, ..)<br>
+<div class="outline-text-5" id="text-1-5-11-2">
+<p>
+Seguido de la fecha agregar +1w que significa repetir la tarea todas las semanas
+Si es cada dos dias +2d
+Referencias
+</p>
+<ul class="org-ul">
+<li><a href="https://www.youtube.com/watch?v=nbC-gL5wcf4">Referencia #1 - Ver Video (Rainer Konig)</a></li>
+<li><a href="https://www.youtube.com/watch?v=IofHvutUWV0&amp;t=8s">Referencia #2 - Ver VIdeo</a></li>
+<li><a href="https://www.youtube.com/watch?v=u00pglDfgX4">Referencia #3 - Ver Video</a></li>
+<li><a href="https://www.youtube.com/watch?v=PJ3qHIl-eOM">Personalizar Agenda View - Referencia #4 - Ver Video</a></li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-orgf19d2f0" class="outline-4">
+<h4 id="orgf19d2f0"><span class="section-number-4">1.5.12</span> Uso profesional</h4>
+<div class="outline-text-4" id="text-1-5-12">
+<ul class="org-ul">
+<li><a href="https://www.youtube.com/watch?v=7ybg3vjLQJM">Referencia #1 - Ver Video (GDQuest)</a></li>
+<li><a href="https://www.youtube.com/watch?v=cRUCiF2MwP4">Referencia #1 - Ver Video (John Kitchin)</a></li>
+<li><a href="https://www.youtube.com/watch?v=2t925KRBbFc">Referencia #2 - Ver Video</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org511df83" class="outline-4">
+<h4 id="org511df83"><span class="section-number-4">1.5.13</span> <span class="done _DONE_">[DONE]</span> Iniciar emacs con un archivo .org</h4>
+<div class="outline-text-4" id="text-1-5-13">
+</div>
+</div>
+<div id="outline-container-orgd303fa4" class="outline-4">
+<h4 id="orgd303fa4"><span class="section-number-4">1.5.14</span> <span class="done _DONE_">[DONE]</span> Crear una lista de tareas</h4>
+<div class="outline-text-4" id="text-1-5-14">
+</div>
+</div>
+<div id="outline-container-org61dca26" class="outline-4">
+<h4 id="org61dca26"><span class="section-number-4">1.5.15</span> <span class="done _DONE_">[DONE]</span> Crear una sub-lista de tareas</h4>
+<div class="outline-text-4" id="text-1-5-15">
+</div>
+</div>
+<div id="outline-container-org29bbca7" class="outline-4">
+<h4 id="org29bbca7"><span class="section-number-4">1.5.16</span> <span class="done _DONE_">[DONE]</span> Crear tareas con viñetas</h4>
+<div class="outline-text-4" id="text-1-5-16">
+</div>
+</div>
+<div id="outline-container-org07fb316" class="outline-4">
+<h4 id="org07fb316"><span class="section-number-4">1.5.17</span> <span class="done _DONE_">[DONE]</span> Crear una lista de seguimiento con to-do</h4>
+<div class="outline-text-4" id="text-1-5-17">
+</div>
+</div>
+<div id="outline-container-org15775b5" class="outline-4">
+<h4 id="org15775b5"><span class="section-number-4">1.5.18</span> <span class="done _DONE_">[DONE]</span> Crear una lista de seguimiento con checkboxes</h4>
+<div class="outline-text-4" id="text-1-5-18">
+</div>
+</div>
+<div id="outline-container-org283a971" class="outline-4">
+<h4 id="org283a971"><span class="section-number-4">1.5.19</span> <span class="done _DONE_">[DONE]</span> Atajos</h4>
+<div class="outline-text-4" id="text-1-5-19">
+</div>
+</div>
+<div id="outline-container-orgdb62c64" class="outline-4">
+<h4 id="orgdb62c64"><span class="section-number-4">1.5.20</span> <span class="todo _TODO_">[TODO]</span> Asociar con Trello</h4>
+<div class="outline-text-4" id="text-1-5-20">
+<p>
+Para pasar los archivos .org a trello
+<a href="http://org-trello.github.io/demo.html">http://org-trello.github.io/demo.html</a>
+<a href="https://github.com/org-trello/org-trello/blob/master/TODO.org">https://github.com/org-trello/org-trello/blob/master/TODO.org</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org43f957e" class="outline-4">
+<h4 id="org43f957e"><span class="section-number-4">1.5.21</span> Ahorra tiempo de trabajo con Modo Captura    <a href="https://elblogdelazaro.gitlab.io/posts/2019-11-04-org-mode-capturas-rapidas-con-org-capture/">https://elblogdelazaro.gitlab.io/posts/2019-11-04-org-mode-capturas-rapidas-con-org-capture/</a></h4>
+</div>
+<div id="outline-container-orgdca8381" class="outline-4">
+<h4 id="orgdca8381"><span class="section-number-4">1.5.22</span> <span class="todo _TODO_">[TODO]</span> Crear hojas de calculo</h4>
+<div class="outline-text-4" id="text-1-5-22">
+<p>
+<b><b>C-c C-c</b></b> realinea la tabla sin mover el cursor
+<b><b>C-c -</b></b> inserta una linea horizontal debajo de la fila actual
+<b><b>M-a</b></b> se mueve al campo anterior
+<b><b>M-e</b></b> se mueve al campo siguiente
+</p>
+<ul class="org-ul">
+<li><a href="http://www.blackhats.es/wordpress/?p=83">http://www.blackhats.es/wordpress/?p=83</a></li>
+<li><a href="https://www.blackhats.es/wordpress/?p=84">https://www.blackhats.es/wordpress/?p=84</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd154527" class="outline-4">
+<h4 id="orgd154527"><span class="section-number-4">1.5.23</span> <span class="todo _TODO_">[TODO]</span> Agenda y Fechas</h4>
+<div class="outline-text-4" id="text-1-5-23">
+<p>
+<b><b>C-c .</b></b> inserta un timestamp plano
+</p>
+<ul class="org-ul">
+<li><a href="https://elblogdelazaro.gitlab.io/posts/2019-03-19-vista_de_agenda_personalizada/">https://elblogdelazaro.gitlab.io/posts/2019-03-19-vista_de_agenda_personalizada/</a></li>
+<li><a href="https://www.blackhats.es/wordpress/?p=214">https://www.blackhats.es/wordpress/?p=214</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7da6d9d" class="outline-4">
+<h4 id="org7da6d9d"><span class="section-number-4">1.5.24</span> <span class="todo _TODO_">[TODO]</span> Properties (No le encontre mucho uso por ahora)</h4>
+<div class="outline-text-4" id="text-1-5-24">
+<ul class="org-ul">
+<li><a href="https://bzg.fr/en/org-column-view-tutorial.html/">https://bzg.fr/en/org-column-view-tutorial.html/</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org25ddb8f" class="outline-4">
+<h4 id="org25ddb8f"><span class="section-number-4">1.5.25</span> <span class="todo _TODO_">[TODO]</span> Crear links internos/externos</h4>
+<div class="outline-text-4" id="text-1-5-25">
+<p>
+Por el momento podes usar el shortcut <b><b>C-c C-l</b></b>
+Paginas pendientes
+</p>
+<ul class="org-ul">
+<li><a href="https://orgmode.org/manual/Link-Format.html">Link-Format (orgmode.org)</a></li>
+<li><a href="https://orgmode.org/guide/Hyperlinks.html">Hyperlink (orgemode.org)</a></li>
+<li><a href="https://orgmode.org/manual/External-Links.html">External-links (orgmode.org)</a></li>
+<li><a href="https://www.blackhats.es/wordpress/?p=86">Hiperenlaces (blackhats.es)</a></li>
+<li><a href="https://nasciiboy.land/emacs/org-mode/">https://nasciiboy.land/emacs/org-mode/</a></li>
+<li><a href="https://elbauldelprogramador.com/chuleta-org-mode/">https://elbauldelprogramador.com/chuleta-org-mode/</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6acac69" class="outline-4">
+<h4 id="org6acac69"><span class="section-number-4">1.5.26</span> <span class="todo _TODO_">[TODO]</span> Estado/prioridad de las tareas</h4>
+<div class="outline-text-4" id="text-1-5-26">
+</div>
+<ol class="org-ol">
+<li><a id="org371d12b"></a><span class="todo _TODO_">[TODO]</span> Como cambiar el estado/prioridad de cada tarea<br></li>
+<li><a id="orgdbb5447"></a><span class="todo _TODO_">[TODO]</span> Personalizar el color y texto del estado/prioridad<br></li>
+<li><a id="orgf763e8a"></a><span class="todo _TODO_">[TODO]</span> Agregar tareas con el estado TODO de forma predeterminada<br>
+<div class="outline-text-5" id="text-1-5-26-3">
+<p>
+Para no estar cambiando a cada tarea el estado a <b><b>TODO</b></b>
+</p>
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-orgb990911" class="outline-4">
+<h4 id="orgb990911"><span class="section-number-4">1.5.27</span> <span class="todo _TODO_">[TODO]</span> Exportar archivos a markdown (.md)</h4>
+<div class="outline-text-4" id="text-1-5-27">
+<p>
+Presionar el atajo &lt;kbd&gt;C-c C-e&lt;/kbd&gt; o &lt;kbd&gt;, , e&lt;/kbd&gt; o &lt;kbd&gt;SPC org-export-dispatch&lt;kbd&gt;
+Por el momento agregamos el siguiente script en el archivo de configuracion de .spacemacs
+</p>
+
+<p>
+Algunos paginas de referencia:
+</p>
+<ul class="org-ul">
+<li><a href="https://stackoverflow.com/questions/22988092/emacs-org-mode-export-markdown">Agregar script en la configuracion de emacs/spacemacs (stackoverflow.com)</a></li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_node/org/Markdown-export.html">Markdown export (gnu.org)</a></li>
+<li><a href="https://orgmode.org/worg/exporters/ox-overview.html">List of Org-mode exporters (orgmode.org)</a></li>
+<li><a href="https://orgmode.org/org.html#Markdown-Export">Markdown export (orgmode.org)</a></li>
+<li><a href="https://orgmode.org/manual/Exporting.html">Exporting (orgmode.org)</a></li>
+<li><a href="https://daringfireball.net/projects/markdown/">Plugin Markdown (daringfireball.net)</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org324e690" class="outline-4">
+<h4 id="org324e690"><span class="section-number-4">1.5.28</span> Sincronizar Google Calendar con Org Agenda</h4>
+<div class="outline-text-4" id="text-1-5-28">
+<ul class="org-ul">
+<li><a href="https://www.youtube.com/watch?v=RyNBtfu9AJ4">https://www.youtube.com/watch?v=RyNBtfu9AJ4</a></li>
+<li><a href="https://www.youtube.com/watch?v=vO_RF2dK7M0">https://www.youtube.com/watch?v=vO_RF2dK7M0</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org53eb9e4" class="outline-4">
+<h4 id="org53eb9e4"><span class="section-number-4">1.5.29</span> <span class="done _DONE_">[DONE]</span> Referencias</h4>
+<div class="outline-text-4" id="text-1-5-29">
+</div>
+<ol class="org-ol">
+<li><a id="org12b5a99"></a><span class="done _DONE_">[DONE]</span> Guias Basicas<br>
+<div class="outline-text-5" id="text-1-5-29-1">
+</div>
+</li>
+<li><a id="org0b539f8"></a><span class="done _DONE_">[DONE]</span> Guias Completas<br>
+<div class="outline-text-5" id="text-1-5-29-2">
+</div>
+</li>
+<li><a id="org9166344"></a><span class="done _DONE_">[DONE]</span> Como organizarse con el modo org<br>
+<div class="outline-text-5" id="text-1-5-29-3">
+</div>
+</li>
+<li><a id="orgc8136cc"></a><span class="done _DONE_">[DONE]</span> Cambiar las prioridades de las tareas<br>
+<div class="outline-text-5" id="text-1-5-29-4">
+</div>
+</li>
+<li><a id="org57521e1"></a><span class="done _DONE_">[DONE]</span> Modificar la agenda de estados<br>
+<div class="outline-text-5" id="text-1-5-29-5">
+</div>
+</li>
+<li><a id="orgccb3a59"></a><span class="done _DONE_">[DONE]</span> Otros<br>
+<div class="outline-text-5" id="text-1-5-29-6">
+</div>
+</li>
+<li><a id="org7faefc4"></a><span class="done _DONE_">[DONE]</span> Integrar archivos .org en Dropbox<br>
+<div class="outline-text-5" id="text-1-5-29-7">
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-org4841cfe" class="outline-4">
+<h4 id="org4841cfe"><span class="section-number-4">1.5.30</span> Revisar</h4>
+<div class="outline-text-4" id="text-1-5-30">
+<p>
+proyectos
+</p>
+<ul class="org-ul">
+<li><a href="https://www.youtube.com/watch?v=3iHRZzEcBIY">https://www.youtube.com/watch?v=3iHRZzEcBIY</a></li>
+<li><a href="https://hiepph.github.io/post/2017-11-24-emacs-org-syncthing/">https://hiepph.github.io/post/2017-11-24-emacs-org-syncthing/</a></li>
+<li><a href="https://www.youtube.com/watch?v=37onM0bjNDg">https://www.youtube.com/watch?v=37onM0bjNDg</a></li>
+<li><a href="https://awesomeopensource.com/projects/org-mode">https://awesomeopensource.com/projects/org-mode</a></li>
+</ul>
+
+<p>
+Otros
+</p>
+<ul class="org-ul">
+<li><a href="http://doc.norang.ca/org-mode.html">http://doc.norang.ca/org-mode.html</a></li>
+</ul>
+
+<p>
+Programming with emacs
+</p>
+<ul class="org-ul">
+<li><a href="https://www.youtube.com/watch?v=GK3fij-D1G8">https://www.youtube.com/watch?v=GK3fij-D1G8</a></li>
+<li><a href="https://www.youtube.com/watch?v=dljNabciEGg&amp;t=587s">https://www.youtube.com/watch?v=dljNabciEGg&amp;t=587s</a></li>
+
+<li><a href="https://dynalist.io/pricing">https://dynalist.io/pricing</a></li>
+</ul>
+<p>
+-<a href="https://news.ycombinator.com/item?id=20477740">https://news.ycombinator.com/item?id=20477740</a>
+-<a href="https://www.meetup.com/New-York-Emacs-Meetup/">https://www.meetup.com/New-York-Emacs-Meetup/</a>
+-<a href="https://plaintextproject.online/2018/03/27/orgmode.html">https://plaintextproject.online/2018/03/27/orgmode.html</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org937b8be" class="outline-4">
+<h4 id="org937b8be"><span class="section-number-4">1.5.31</span> Configuraciones para Exportar</h4>
+<div class="outline-text-4" id="text-1-5-31">
+<ul class="org-ul">
+<li><a href="https://orgmode.org/guide/Export-Settings.html">Referencia #1 (orgmode.org)</a></li>
+<li><a href="https://orgmode.org/manual/Export-Settings.html">Referencia #2 (orgmode.org)</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org9a59099" class="outline-3">
+<h3 id="org9a59099"><span class="section-number-3">1.6</span> <span class="todo _TODO_">[TODO]</span> Integrando Git con MAGIT <code>[75%]</code></h3>
+<div class="outline-text-3" id="text-1-6">
+</div>
+<div id="outline-container-orgfaf9916" class="outline-4">
+<h4 id="orgfaf9916"><span class="section-number-4">1.6.1</span> Nuevas funcionalidades</h4>
+<div class="outline-text-4" id="text-1-6-1">
+<p>
+<a href="http://jr0cket.co.uk/2017/02/spacemacs-using-magit-with-github.html">Magithub, by jr0cket</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org994a76c" class="outline-4">
+<h4 id="org994a76c"><span class="section-number-4">1.6.2</span> <span class="todo _TODO_">[TODO]</span> Tips <code>[75%]</code></h4>
+<div class="outline-text-4" id="text-1-6-2">
+</div>
+<ol class="org-ol">
+<li><a id="org2305356"></a><span class="todo _TODO_">[TODO]</span> Diferencia entre push remote y upstream<br>
+<div class="outline-text-5" id="text-1-6-2-1">
+<ul class="org-ul">
+<li>Lo mismo para pull</li>
+<li>Algunas referencias</li>
+<li><a href="https://help.github.com/es/github/using-git/pushing-commits-to-a-remote-repository">https://help.github.com/es/github/using-git/pushing-commits-to-a-remote-repository</a></li>
+<li><a href="https://stackoverflow.com/questions/13751319/git-push-current-vs-push-upstream-tracking">https://stackoverflow.com/questions/13751319/git-push-current-vs-push-upstream-tracking</a></li>
+<li><a href="https://www.reddit.com/r/emacs/comments/8ficmj/magit_upstream_vs_pushremote/">https://www.reddit.com/r/emacs/comments/8ficmj/magit_upstream_vs_pushremote/</a></li>
+<li><a href="https://fluca1978.github.io/2017/06/11/magit-spin-offs-anothew-way-to-name.html">https://fluca1978.github.io/2017/06/11/magit-spin-offs-anothew-way-to-name.html</a></li>
+</ul>
+</div>
+</li>
+<li><a id="org5d2b4f3"></a><span class="done _DONE_">[DONE]</span> Traer cambios de un branch al master<br>
+<div class="outline-text-5" id="text-1-6-2-2">
+</div>
+</li>
+<li><a id="org5103a36"></a><span class="done _DONE_">[DONE]</span> Guardar cambios de forma temporal (stash)<br>
+<div class="outline-text-5" id="text-1-6-2-3">
+</div>
+</li>
+<li><a id="orge96204a"></a><span class="done _DONE_">[DONE]</span> Listar historial de commits de un archivo<br>
+<div class="outline-text-5" id="text-1-6-2-4">
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-org103671f" class="outline-4">
+<h4 id="org103671f"><span class="section-number-4">1.6.3</span> <span class="done _DONE_">[DONE]</span> Atajos</h4>
+<div class="outline-text-4" id="text-1-6-3">
+</div>
+</div>
+<div id="outline-container-org9fb9eed" class="outline-4">
+<h4 id="org9fb9eed"><span class="section-number-4">1.6.4</span> <span class="done _DONE_">[DONE]</span> Posibles situaciones</h4>
+<div class="outline-text-4" id="text-1-6-4">
+</div>
+<ol class="org-ol">
+<li><a id="orga2cf207"></a><span class="done _DONE_">[DONE]</span> Hacer cambios, subirlos y actualizar<br>
+<div class="outline-text-5" id="text-1-6-4-1">
+</div>
+</li>
+<li><a id="orgc1f17ac"></a><span class="done _DONE_">[DONE]</span> Resolver conflicto, diferencia entre archivos<br>
+<div class="outline-text-5" id="text-1-6-4-2">
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-orgda66636" class="outline-4">
+<h4 id="orgda66636"><span class="section-number-4">1.6.5</span> <span class="done _DONE_">[DONE]</span> Referencias</h4>
+<div class="outline-text-4" id="text-1-6-5">
+</div>
+<ol class="org-ol">
+<li><a id="org96f82d3"></a><span class="done _DONE_">[DONE]</span> Paginas de referencia<br>
+<div class="outline-text-5" id="text-1-6-5-1">
+<ul class="org-ul">
+<li><a href="https://develop.spacemacs.org/layers/+source-control/git/README.html">Git - Spacemacs.org</a></li>
+</ul>
+</div>
+</li>
+
+<li><a id="org96d80e1"></a><span class="done _DONE_">[DONE]</span> Videos de referencia<br>
+<div class="outline-text-5" id="text-1-6-5-2">
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org1029d5e" class="outline-3">
+<h3 id="org1029d5e"><span class="section-number-3">1.7</span> <span class="todo _TODO_">[TODO]</span> Comentarios de Trello <code>[0%]</code></h3>
+<div class="outline-text-3" id="text-1-7">
+<p>
+Quedaron algunos tips en <a href="https://trello.com/b/ktG3yyQS/xmanudocs">XManuDocs (trello.com)</a>
+</p>
+</div>
+<div id="outline-container-org9c59a60" class="outline-4">
+<h4 id="org9c59a60"><span class="section-number-4">1.7.1</span> <span class="todo _TODO_">[TODO]</span> Powerline estructura</h4>
+</div>
+<div id="outline-container-orgbbfea38" class="outline-4">
+<h4 id="orgbbfea38"><span class="section-number-4">1.7.2</span> <span class="todo _TODO_">[TODO]</span> Personalizar la shell y terminal</h4>
+</div>
+</div>
+<div id="outline-container-org17bc073" class="outline-3">
+<h3 id="org17bc073"><span class="section-number-3">1.8</span> Addons</h3>
+<div class="outline-text-3" id="text-1-8">
+<p>
+CLiente de telegram
+<a href="https://github.com/zevlg/telega.el">https://github.com/zevlg/telega.el</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: jelou</p>
+<p class="date">Created: 2021-04-01 jue 15:04</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+
+
+</body></html>

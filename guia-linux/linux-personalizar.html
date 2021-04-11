@@ -1,0 +1,1555 @@
+<!--?xml version="1.0" encoding="utf-8"?--><!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<!-- 2021-04-03 sáb 02:28 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guia Linux - Personalizar</title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="jelou">
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/sass-style.css">
+<script type="text/javascript" src="/assets/js/all.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Guia Linux - Personalizar</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgf8cb83e">1. Zsh y Powerline</a>
+<ul>
+<li><a href="#org9c84a48">1.1. Instalación</a></li>
+<li><a href="#org8cb7ae0">1.2. Activar Zsh desde Bash</a></li>
+<li><a href="#org29d2c7b">1.3. Configuración Zsh</a>
+<ul>
+<li><a href="#orgfac4570">1.3.1. Cambiar de theme</a></li>
+<li><a href="#org2c891ab">1.3.2. Cambiar el prompt (símbolo del sistema)</a></li>
+</ul>
+</li>
+<li><a href="#orgc763306">1.4. Referencias</a>
+<ul>
+<li><a href="#orgf2775c4">1.4.1. Referencias Oficiales</a></li>
+<li><a href="#org08c566c">1.4.2. Referencias Web Extraoficiales</a></li>
+<li><a href="#orge2e0927">1.4.3. Referencias Youtube</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org389d8ea">2. Terminal RXVT Unicode</a>
+<ul>
+<li><a href="#orgc095fca">2.1. Conceptos</a></li>
+<li><a href="#org7796b41">2.2. Instalación</a></li>
+<li><a href="#org11419d8">2.3. Configuración</a></li>
+<li><a href="#orgd8b5490">2.4. Configuración Personal</a></li>
+<li><a href="#org25913c7">2.5. Atajos Terminal RXVT</a></li>
+<li><a href="#org0a76eb6">2.6. Referencias</a>
+<ul>
+<li><a href="#org56ee8f8">2.6.1. Referencias Web Extraoficiales</a></li>
+<li><a href="#org4386a72">2.6.2. Referencias Youtube</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgeaded71">3. Windows Manager i3wm</a>
+<ul>
+<li><a href="#org89177fe">3.1. Conceptos</a></li>
+<li><a href="#org569b73e">3.2. Instalación</a></li>
+<li><a href="#org3ee3af2">3.3. Configuración</a></li>
+<li><a href="#orgf1351aa">3.4. Atajos de i3</a></li>
+<li><a href="#orgf72fef5">3.5. Modo Resize</a></li>
+<li><a href="#org4ed759c">3.6. Modo Widescreen</a></li>
+<li><a href="#orge01844b">3.7. Observaciones de Teclas</a></li>
+<li><a href="#org6b07e1c">3.8. Referencias</a>
+<ul>
+<li><a href="#org73c52cc">3.8.1. Referencias Web Oficiales</a></li>
+<li><a href="#org3abd16b">3.8.2. Referencias Web Extraoficiales</a></li>
+<li><a href="#org633fa59">3.8.3. Referencias Youtube</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org2b5ad1f">4. Usando w3m y w3m-img</a></li>
+<li><a href="#orgce6323d">5. Rofi</a>
+<ul>
+<li><a href="#org6c3c294">5.1. Conceptos</a></li>
+<li><a href="#orgf9674b8">5.2. Instalación</a></li>
+<li><a href="#orga30ac99">5.3. Configuración - Cambiar Theme</a></li>
+<li><a href="#org95b971b">5.4. Referencias Youtube</a></li>
+</ul>
+</li>
+<li><a href="#org15557f4">6. Nitrogen</a>
+<ul>
+<li><a href="#org10f168b">6.1. Conceptos</a></li>
+<li><a href="#org40330b4">6.2. Instalación</a></li>
+<li><a href="#org09f5052">6.3. Configuración</a></li>
+</ul>
+</li>
+<li><a href="#orgd3c7055">7. Compton</a>
+<ul>
+<li><a href="#org4e35932">7.1. Conceptos</a></li>
+<li><a href="#org8cfb0f5">7.2. Instalación</a></li>
+<li><a href="#org8aaca70">7.3. Configuración</a></li>
+<li><a href="#org95d4deb">7.4. Referencias Youtube</a></li>
+</ul>
+</li>
+<li><a href="#org5c18497">8. Polybar</a>
+<ul>
+<li><a href="#orgef76b86">8.1. Conceptos</a></li>
+<li><a href="#org5644db9">8.2. Referencias</a>
+<ul>
+<li><a href="#orge5267c3">8.2.1. Referencias Web Oficiales</a></li>
+<li><a href="#org1068abc">8.2.2. Referencias Youtube</a></li>
+<li><a href="#org52e4bed">8.2.3. Referencias Web Extraoficiales</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgd09954c">9. i3Blocks</a>
+<ul>
+<li><a href="#org172c49f">9.1. Conceptos</a></li>
+<li><a href="#orge1ccbc0">9.2. Instalación</a></li>
+<li><a href="#org28ab804">9.3. Configuración</a></li>
+</ul>
+</li>
+<li><a href="#org0fde145">10. Ranger File Manager</a>
+<ul>
+<li><a href="#org667e2ee">10.1. Conceptos</a></li>
+<li><a href="#org687b63c">10.2. Instalación</a></li>
+<li><a href="#orge8a974c">10.3. Atajos</a></li>
+<li><a href="#org58d8d16">10.4. Configuración</a></li>
+<li><a href="#org065e6b0">10.5. Referencias</a>
+<ul>
+<li><a href="#orgdb1b8e7">10.5.1. Referencias Web Oficiales</a></li>
+<li><a href="#orgfabc34c">10.5.2. Referencias Web Extraoficiales</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgff2ed10">11. Neofetch</a>
+<ul>
+<li><a href="#orgcbb893a">11.1. Conceptos</a></li>
+<li><a href="#orgcbc925b">11.2. Instalación</a></li>
+<li><a href="#org8e112af">11.3. Configuración</a></li>
+<li><a href="#org6ccf365">11.4. Referencias Web Extraoficiales</a></li>
+</ul>
+</li>
+<li><a href="#orgb5d821a">12. Dar color a la Terminal</a>
+<ul>
+<li><a href="#org39c63b9">12.1. Conceptos</a></li>
+<li><a href="#org8b514b1">12.2. Referencias</a></li>
+</ul>
+</li>
+<li><a href="#org1a0508f">13. Font Manager</a>
+<ul>
+<li><a href="#orgfadd022">13.1. Conceptos</a></li>
+<li><a href="#org32720b1">13.2. Referencias Web Extraoficiales</a></li>
+</ul>
+</li>
+<li><a href="#orgd872424">14. Configuraciones de otros usuarios</a></li>
+</ul>
+</div>
+</div>
+
+<div class="figure">
+<p><img src="/img/i3wm-gnome.png" alt="i3wm-gnome.png" width="650">
+</p>
+</div>
+
+<div id="outline-container-orgf8cb83e" class="outline-2">
+<h2 id="orgf8cb83e"><span class="section-number-2">1</span> Zsh y Powerline</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org9c84a48" class="outline-3">
+<h3 id="org9c84a48"><span class="section-number-3">1.1</span> Instalación</h3>
+<div class="outline-text-3" id="text-1-1">
+<div class="org-src-container">
+<pre class="src src-shell" id="org4fdfe34">sudo apt-get install zsh git
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para instalar las fuentes</span>
+sudo apt-get install fonts-powerline powerline
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org8cb7ae0" class="outline-3">
+<h3 id="org8cb7ae0"><span class="section-number-3">1.2</span> Activar Zsh desde Bash</h3>
+<div class="outline-text-3" id="text-1-2">
+<div class="org-src-container">
+<pre class="src src-shell" id="orgb7c0941"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para cambiar de bash a zshell</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">quedando como shell por defecto</span>
+chsh -s $<span style="color: #4f97d7;">(</span><span style="color: #fa8072;">which</span> zsh<span style="color: #4f97d7;">)</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Observación:</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Esta otra manera podría servir, aunque el comando "which" sería más efectivo</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">chsh -s /usr/bin/zsh</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org29d2c7b" class="outline-3">
+<h3 id="org29d2c7b"><span class="section-number-3">1.3</span> Configuración Zsh</h3>
+<div class="outline-text-3" id="text-1-3">
+</div>
+<div id="outline-container-orgfac4570" class="outline-4">
+<h4 id="orgfac4570"><span class="section-number-4">1.3.1</span> Cambiar de theme</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<p>
+Podemos cambiar el estilo, y el diseño de la terminal cambiando el theme
+en el perfil de zsh en ~/.zshrc y cambiar el valor de la variable por el nombre de theme
+revisar en las página oficial la variedad de themes. 
+El más conocido es <b>agnoster</b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="org9397dcc"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Modificamos el perfil de zsh</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- Cambiamos el valor de la variable ZSH_THEME por el theme que queramos</span>
+nano ~/.zshrc
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">luego de guardar los cambios en el perfil de zsh</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">aplicamos los cambios con el siguiente comando</span>
+<span style="color: #4f97d7;">source</span> ~/.zshrc
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2c891ab" class="outline-4">
+<h4 id="org2c891ab"><span class="section-number-4">1.3.2</span> Cambiar el prompt (símbolo del sistema)</h4>
+<div class="outline-text-4" id="text-1-3-2">
+<p>
+Modificamos el archivo ~/.zshrc y agregamos la función <b>prompt<sub>context</sub>()</b> que aparece debajo
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash" id="org6da25ce"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">agregar la siguiente función en el archivo ~/.zshrc</span>
+<span style="color: #bc6ec5; font-weight: bold;">prompt_context</span><span style="color: #4f97d7;">()</span> <span style="color: #4f97d7;">{</span>
+    <span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #bc6ec5;">[</span><span style="color: #2d9574;">[</span> <span style="color: #2d9574;">"$USER"</span> != <span style="color: #2d9574;">"$DEFAULT_USER"</span> || -n <span style="color: #2d9574;">"$SSH_CLIENT"</span> <span style="color: #2d9574;">]</span><span style="color: #bc6ec5;">]</span>; <span style="color: #4f97d7; font-weight: bold;">then</span>
+        <span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">prompt_segment black default "%(!.%{%F{yellow}%}.)%n@%m" # este tiene user@hostname</span>
+        prompt_segment black default <span style="color: #2d9574;">"%(!.%{%F{yellow}%}.)%n"</span> <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">este tiene user</span>
+    <span style="color: #4f97d7; font-weight: bold;">fi</span>
+<span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc763306" class="outline-3">
+<h3 id="orgc763306"><span class="section-number-3">1.4</span> Referencias</h3>
+<div class="outline-text-3" id="text-1-4">
+</div>
+<div id="outline-container-orgf2775c4" class="outline-4">
+<h4 id="orgf2775c4"><span class="section-number-4">1.4.1</span> Referencias Oficiales</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<ul class="org-ul">
+<li><a href="https://powerline.readthedocs.io/en/latest/configuration.html">https://powerline.readthedocs.io/en/latest/configuration.html</a></li>
+<li><a href="https://ohmyz.sh/">https://ohmyz.sh/</a></li>
+<li><a href="https://github.com/robbyrussell/oh-my-zsh/wiki/Themes">https://github.com/robbyrussell/oh-my-zsh/wiki/Themes</a></li>
+<li><a href="https://github.com/powerline/fonts/tree/master/Inconsolata">https://github.com/powerline/fonts/tree/master/Inconsolata</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org08c566c" class="outline-4">
+<h4 id="org08c566c"><span class="section-number-4">1.4.2</span> Referencias Web Extraoficiales</h4>
+<div class="outline-text-4" id="text-1-4-2">
+<ul class="org-ul">
+<li>Personalizar Theme Agnoster [Ver Página](<a href="https://charles4code.blogspot.com/2018/07/show-username-only-without-hostname-in.html">https://charles4code.blogspot.com/2018/07/show-username-only-without-hostname-in.html</a>)</li>
+<li><a href="https://levien.com/type/myfonts/inconsolata.html">https://levien.com/type/myfonts/inconsolata.html</a></li>
+<li><a href="https://aaronwinters.com/getting-started-with-the-zsh-shell/">https://aaronwinters.com/getting-started-with-the-zsh-shell/</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge2e0927" class="outline-4">
+<h4 id="orge2e0927"><span class="section-number-4">1.4.3</span> Referencias Youtube</h4>
+<div class="outline-text-4" id="text-1-4-3">
+<ul class="org-ul">
+<li>Referencia #1 - [Ver Vídeo](<a href="https://www.youtube.com/watch?v=ADytC9a2g2Y">https://www.youtube.com/watch?v=ADytC9a2g2Y</a>)</li>
+<li>Referencia #2 - [Ver Video](<a href="https://www.youtube.com/watch?v=4KBuPCeF9Gc">https://www.youtube.com/watch?v=4KBuPCeF9Gc</a>)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org389d8ea" class="outline-2">
+<h2 id="org389d8ea"><span class="section-number-2">2</span> Terminal RXVT Unicode</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-orgc095fca" class="outline-3">
+<h3 id="orgc095fca"><span class="section-number-3">2.1</span> Conceptos</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Existe una gran variedad de terminales, entre las más conocidas son:
+</p>
+<ul class="org-ul">
+<li>Rxvt</li>
+<li>Terminator</li>
+<li>Tilix</li>
+<li>Gnome</li>
+<li>Xterm</li>
+</ul>
+
+
+<div class="figure">
+<p><img src="/img/urxvt-unicode-terminal.jpg" alt="urxvt-unicode-terminal.jpg" with="650">
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org7796b41" class="outline-3">
+<h3 id="org7796b41"><span class="section-number-3">2.2</span> Instalación</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+Si queremos cambiar a una terminal más personalizada y sin limitaciones,
+podemos hacer uso de <b><b>rxvt</b></b> que a diferencia de la predeterminada gnome de ubuntu
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="org6557476">sudo apt install rxvt-unicode
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org11419d8" class="outline-3">
+<h3 id="org11419d8"><span class="section-number-3">2.3</span> Configuración</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+En el archivo oculto `.Xresources` guardaremos las configuraciones que luego aplicaremos los
+cambios colocando en la terminal `xrdb .Xresources` suponiendo que estamos ubicados en el
+directorio `~/`
+</p>
+
+<p>
+Ejecutamos las siguientes comandos en la terminal
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="org511b84e"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">creamos el archivo de configuración</span>
+touch ~/.Xresources
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">creamos directorio donde guardaremos plugins</span>
+mkdir ~/.rxvt/ext
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd8b5490" class="outline-3">
+<h3 id="orgd8b5490"><span class="section-number-3">2.4</span> Configuración Personal</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+Les comparto la configuración que fui adaptando con lo que iba investigando, pueden personalizarlo a gusto.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash" id="org5177f5d"><span style="color: #a45bad;">!</span>Para aplicar cambios ejecutar en la terminal la sig linea de comando
+<span style="color: #a45bad;">!</span>xrdb ~/.Xresources
+
+<span style="color: #a45bad;">!</span>Configuramos la ruta donde agregamos las extensiones
+URxvt.perl-lib: ~/.urxvt/ext/
+
+<span style="color: #a45bad;">!</span>Configuramos la fuente
+<span style="color: #a45bad;">!</span>URxvt.font: xft:DejaVu Sans Mono:<span style="color: #7590db;">size</span>=<span style="color: #a45bad;">11</span>
+URxvt.font: xft:Meslo LG L DZ for Powerline:<span style="color: #7590db;">size</span>=<span style="color: #a45bad;">11</span> !la necesita theme agnoster de zshell
+
+<span style="color: #a45bad;">!</span>! URxvt Appearance
+URxvt.letterSpace: <span style="color: #a45bad;">0</span>
+URxvt.lineSpace: <span style="color: #a45bad;">0</span>
+URxvt.geometry: <span style="color: #a45bad;">92x24</span>
+URxvt.internalBorder: <span style="color: #a45bad;">24</span>
+URxvt.cursorBlink: true
+URxvt.cursorUnderline: false
+URxvt.saveline: <span style="color: #a45bad;">2048</span>
+URxvt.scrollBar: false
+URxvt.scrollBar_right: false
+URxvt.urgentOnBell: true
+URxvt.depth: <span style="color: #a45bad;">32</span>
+URxvt.iso14755: false
+
+<span style="color: #a45bad;">!</span>! Common Keybinds for Navigations
+URxvt.keysym.Shift-Up: command:\<span style="color: #a45bad;">033</span><span style="color: #e0211d; text-decoration: overline;">]</span><span style="color: #a45bad;">720</span>;<span style="color: #a45bad;">1</span>\<span style="color: #a45bad;">007</span>
+URxvt.keysym.Shift-Down: command:\<span style="color: #a45bad;">033</span><span style="color: #e0211d; text-decoration: overline;">]</span><span style="color: #a45bad;">721</span>;<span style="color: #a45bad;">1</span>\<span style="color: #a45bad;">007</span>
+URxvt.keysym.Control-Up: \<span style="color: #a45bad;">033</span><span style="color: #e0211d; text-decoration: overline;">[</span><span style="color: #a45bad;">1</span>;<span style="color: #a45bad;">5A</span>
+URxvt.keysym.Control-Down: \<span style="color: #a45bad;">033</span><span style="color: #e0211d; text-decoration: overline;">[</span><span style="color: #a45bad;">1</span>;<span style="color: #a45bad;">5B</span>
+URxvt.keysym.Control-Right: \<span style="color: #a45bad;">033</span><span style="color: #4f97d7;">[</span><span style="color: #a45bad;">1</span>;<span style="color: #a45bad;">5C</span>
+URxvt.keysym.Control-Left: \<span style="color: #a45bad;">033</span><span style="color: #bc6ec5;">[</span><span style="color: #a45bad;">1</span>;<span style="color: #a45bad;">5D</span>
+
+<span style="color: #a45bad;">!</span>! Copy Paste &amp; Other Extensions
+<span style="color: #a45bad;">!</span>URxvt.perl-ext-common: default,selection-to-clipboard,pasta,matcher,keyboard-select
+URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select
+URxvt.copyCommand: xclip -i -selection clipboard
+URxvt.pasteCommand: xclip -o -selection clipboard
+URxvt.keysym.M-c: perl:clipboard:copy
+URxvt.keysym.M-v: perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keysym.M-s: perl:keyboard-select:search
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.urlLauncher: firefox
+URxvt.underlineURLs: true
+URxvt.urlButton: <span style="color: #a45bad;">1</span>
+
+<span style="color: #a45bad;">!</span>! Colorscheme
+<span style="color: #a45bad;">!</span>! Para cambiar a otros diseños podemos elegir en  https://terminal.sexy/
+<span style="color: #a45bad;">!</span> special
+*.foreground: <span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">93a1a1</span>
+*.background: <span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">141c21</span>
+*.cursorColor: <span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">afbfbf</span>
+
+<span style="color: #a45bad;">!</span> black
+*.color0: <span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">263640</span>
+*.color8: <span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">4a697d</span>
+
+<span style="color: #a45bad;">!</span> red
+*.color1: <span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">d12f2c</span>
+*.color9: <span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">fa3935</span>
+
+<span style="color: #a45bad;">!</span> green
+*.color2: <span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">819400</span>
+*.color10: <span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">a4bd00</span>
+
+<span style="color: #a45bad;">!</span> yellow
+*.color3: <span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">b08500</span>
+*.color11: <span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">d9a400</span>
+
+<span style="color: #a45bad;">!</span> blue
+*.color4: <span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">2587cc</span>
+*.color12: <span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">2ca2f5</span>
+
+<span style="color: #a45bad;">!</span> magenta
+*.color5: <span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">696ebf</span>
+*.color13: <span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">8086e8</span>
+
+<span style="color: #a45bad;">!</span> cyan
+*.color6: <span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">289c93</span>
+*.color14: <span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">33c5ba</span>
+
+<span style="color: #a45bad;">!</span> white
+*.color7: <span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">bfbaac</span>
+*.color15: <span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">fdf6e3</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org25913c7" class="outline-3">
+<h3 id="org25913c7"><span class="section-number-3">2.5</span> Atajos Terminal RXVT</h3>
+<div class="outline-text-3" id="text-2-5">
+<table id="orgf1c4f81" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Comando</th>
+<th scope="col" class="org-left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Shift+ArrowUp</td>
+<td class="org-left">Scroll hacia arriba</td>
+</tr>
+
+<tr>
+<td class="org-left">Shift+ArrowDown</td>
+<td class="org-left">Scroll hacia abajo</td>
+</tr>
+
+<tr>
+<td class="org-left">C+ArrowLeft</td>
+<td class="org-left">Desplazar el cursor palabra por palabra</td>
+</tr>
+
+<tr>
+<td class="org-left">C+ArrowRight</td>
+<td class="org-left">Desplazar el cursor palabra por palabra</td>
+</tr>
+
+<tr>
+<td class="org-left">M-w</td>
+<td class="org-left">Copia texto seleccionado hacia el portapapeles</td>
+</tr>
+
+<tr>
+<td class="org-left">C-y</td>
+<td class="org-left">Pega el texto del portapapeles</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<b>Observaciones:</b>
+</p>
+<ul class="org-ul">
+<li>Con <b>M</b>  nos referimos a MetaKey, que es la tecla Alt</li>
+<li>Con <b>C</b> hacemos referencia a la tecla Control</li>
+<li>Los shortcuts de copiar y pegar, los adapte por costumbre de usar Emacs</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0a76eb6" class="outline-3">
+<h3 id="org0a76eb6"><span class="section-number-3">2.6</span> Referencias</h3>
+<div class="outline-text-3" id="text-2-6">
+</div>
+<div id="outline-container-org56ee8f8" class="outline-4">
+<h4 id="org56ee8f8"><span class="section-number-4">2.6.1</span> Referencias Web Extraoficiales</h4>
+<div class="outline-text-4" id="text-2-6-1">
+<ul class="org-ul">
+<li>Documentación #1 por ArchLinux [Ver Pagina](<a href="https://wiki.archlinux.org/index.php/Rxvt-unicode_(Espa%C3%B1ol)">https://wiki.archlinux.org/index.php/Rxvt-unicode_(Espa%C3%B1ol)</a>)</li>
+<li>Documentación #2 por Gentoo [Ver Página](<a href="https://wiki.gentoo.org/wiki/Rxvt-unicode">https://wiki.gentoo.org/wiki/Rxvt-unicode</a>)</li>
+<li>Configuración #1 por Addy [Ver Pagina](<a href="https://addy-dclxvi.github.io/post/configuring-urxvt/">https://addy-dclxvi.github.io/post/configuring-urxvt/</a>)</li>
+<li>Pugins [Ver Página](<a href="https://github.com/muennich/urxvt-perls">https://github.com/muennich/urxvt-perls</a>)</li>
+<li>Habilitar transparencia [Ver Pagina](<a href="https://wiki.archlinux.org/index.php/Rxvt-unicode/Tips_and_tricks#Transparency">https://wiki.archlinux.org/index.php/Rxvt-unicode/Tips_and_tricks#Transparency</a>)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4386a72" class="outline-4">
+<h4 id="org4386a72"><span class="section-number-4">2.6.2</span> Referencias Youtube</h4>
+<div class="outline-text-4" id="text-2-6-2">
+<ul class="org-ul">
+<li>Configuración #2 [Ver Vídeo](<a href="https://www.youtube.com/watch?v=_kjbj-Ez1vU">https://www.youtube.com/watch?v=_kjbj-Ez1vU</a>)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgeaded71" class="outline-2">
+<h2 id="orgeaded71"><span class="section-number-2">3</span> Windows Manager i3wm</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org89177fe" class="outline-3">
+<h3 id="org89177fe"><span class="section-number-3">3.1</span> Conceptos</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Podemos usar el <b>i3</b> que no se refiere al procesador, sino al nombre del
+programa que nos permite manejar las terminales de una manera más eficiente
+mediante atajos (shortcuts)
+</p>
+</div>
+</div>
+<div id="outline-container-org569b73e" class="outline-3">
+<h3 id="org569b73e"><span class="section-number-3">3.2</span> Instalación</h3>
+<div class="outline-text-3" id="text-3-2">
+<table id="org4bd58dd" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Paquete</th>
+<th scope="col" class="org-left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">i3</td>
+<td class="org-left">Gestiona ventanas</td>
+</tr>
+
+<tr>
+<td class="org-left">i3status</td>
+<td class="org-left">Representa la Barra de estado que muestra la hora, espacios de trabajo, …</td>
+</tr>
+
+<tr>
+<td class="org-left">i3lock</td>
+<td class="org-left">Cuando se bloquea la sesión</td>
+</tr>
+
+<tr>
+<td class="org-left">compton</td>
+<td class="org-left">Agrega efectos a las ventanas (Ej. transparencia entre transiciones)</td>
+</tr>
+
+<tr>
+<td class="org-left">nitrogen</td>
+<td class="org-left">Cambia el wallpaper del espacio de trabajo</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="org6bdcba0"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">al agregar el parámetro -y se instalan los paquetes de forma directa</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">nos evitamos que nos pregunte si queremos instalar con el si/no</span>
+sudo apt-get install -y i3 i3status i3lock compton nitrogen
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org3ee3af2" class="outline-3">
+<h3 id="org3ee3af2"><span class="section-number-3">3.3</span> Configuración</h3>
+<div class="outline-text-3" id="text-3-3">
+<ol class="org-ol">
+<li>Debemos modificar el archivo de i3wm con `sudo nano ~/.config/i3/config`</li>
+<li>Agregamos a la configuración `bindsym $mod+Return exec rxvt` para abra la terminal <b><b>rxvt unicode</b></b>
+y presionamos el shortcut `Super+Shift+r` para reiniciar <b><b>i3wm</b></b></li>
+<li>Modificamos la configuración de bash con `sudo nano ~./.bashrc/`</li>
+<li>Agregamos las siguientes lineas</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="org82899fe"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">ejecuto neofetch</span>
+neofetch --w3m $<span style="color: #7590db;">HOME</span>/Pictures/Wallpapers/wallpaper-hacksign3.jpg
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">habilito la zshell</span>
+zsh
+</pre>
+</div>
+
+<p>
+<b>Observación</b>:
+Cada vez que se abra una terminal con `Super+Ret` se abrirá con la terminal rxvt unicode,
+con el programa neofetch y con la zshell habilitada
+</p>
+</div>
+</div>
+<div id="outline-container-orgf1351aa" class="outline-3">
+<h3 id="orgf1351aa"><span class="section-number-3">3.4</span> Atajos de i3</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+Hay ciertos atajos que nos facilitan desplazarnos entre las ventanas, espacios de trabajo, etc..
+sin la necesidad de utilizar el mouse.
+</p>
+
+<table id="orgfff5f64" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Comando</th>
+<th scope="col" class="org-left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Super-RET</td>
+<td class="org-left">Abre una terminal</td>
+</tr>
+
+<tr>
+<td class="org-left">Super Shift e</td>
+<td class="org-left">Cerrar sesion de i3</td>
+</tr>
+
+<tr>
+<td class="org-left">Super-d</td>
+<td class="org-left">Despliega un menu para ejecutar lineas de comando</td>
+</tr>
+
+<tr>
+<td class="org-left">Super Shift r</td>
+<td class="org-left">Reinicia el entorno, mantiene los espacios detrabajo</td>
+</tr>
+
+<tr>
+<td class="org-left">Super Shift c</td>
+<td class="org-left">Recarga archivos de configuración de i3</td>
+</tr>
+
+<tr>
+<td class="org-left">SUper Shift Q</td>
+<td class="org-left">Cierra la ventana</td>
+</tr>
+
+<tr>
+<td class="org-left">Super-ArrowKey</td>
+<td class="org-left">Cambiar cursor a otra ventana</td>
+</tr>
+
+<tr>
+<td class="org-left">Super Shift ArrowKey</td>
+<td class="org-left">Mueve la ventana</td>
+</tr>
+
+<tr>
+<td class="org-left">Super-n</td>
+<td class="org-left">Cambia el espacio de trabajo (Siendo <b><b>n</b></b> un número)</td>
+</tr>
+
+<tr>
+<td class="org-left">Super v Super Ret</td>
+<td class="org-left">Las próximas ventanas se abren en vertical</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+La combinación de comandos `Super+v Super+Ret`, quiere decir que luego de presionar `Super+v` presionamos  `Super+Ret`
+y las proximas nuevas ventanas que se abran con `Super+Ret` se apilaran debajo de la que estemos posicionados.
+</p>
+</div>
+</div>
+<div id="outline-container-orgf72fef5" class="outline-3">
+<h3 id="orgf72fef5"><span class="section-number-3">3.5</span> Modo Resize</h3>
+<div class="outline-text-3" id="text-3-5">
+<p>
+Para cambiar el tamaño de las ventanas
+</p>
+<ol class="org-ol">
+<li>Super+r Activa el modo Resize</li>
+<li>ArrowKey (para ajustar el tamaño)</li>
+<li>Ret (para aplicar el cambio)</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org4ed759c" class="outline-3">
+<h3 id="org4ed759c"><span class="section-number-3">3.6</span> Modo Widescreen</h3>
+<div class="outline-text-3" id="text-3-6">
+<p>
+Para agrupar varias pestañas que estan una debajo de la otra en una sola con tantas pestañas como ventanas tuviera debajo
+</p>
+
+<table id="orgad95bb8" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Comando</th>
+<th scope="col" class="org-left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Super-w</td>
+<td class="org-left">Superpone la ventana a las que tenga arriba y debajo</td>
+</tr>
+
+<tr>
+<td class="org-left">Super-ArrowKey</td>
+<td class="org-left">Desplazarse entre las pestañas</td>
+</tr>
+
+<tr>
+<td class="org-left">Super+e</td>
+<td class="org-left">Desactiva el modo Widescreen</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orge01844b" class="outline-3">
+<h3 id="orge01844b"><span class="section-number-3">3.7</span> Observaciones de Teclas</h3>
+<div class="outline-text-3" id="text-3-7">
+<ul class="org-ul">
+<li><b><b>Super</b></b> es la tecla que asignamos al configurar i3 (suele ser Windows ó Alt).</li>
+<li><b><b>Ret</b></b> se suele referir a la tecla <b><b>Enter</b></b></li>
+<li><b><b>ArrowKey</b></b> es cualquiera de las flechas del teclado</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6b07e1c" class="outline-3">
+<h3 id="org6b07e1c"><span class="section-number-3">3.8</span> Referencias</h3>
+<div class="outline-text-3" id="text-3-8">
+</div>
+<div id="outline-container-org73c52cc" class="outline-4">
+<h4 id="org73c52cc"><span class="section-number-4">3.8.1</span> Referencias Web Oficiales</h4>
+<div class="outline-text-4" id="text-3-8-1">
+<ul class="org-ul">
+<li><a href="https://i3wm.org/docs/userguide.html">https://i3wm.org/docs/userguide.html</a></li>
+<li>Documentación Oficial #1 [Ver Página](<a href="https://i3wm.org/">https://i3wm.org/</a>)</li>
+<li>Documentación Oficial #2 [Ver Página](<a href="https://i3wm.org/docs/userguide.html#_configuring_i3bar">https://i3wm.org/docs/userguide.html#_configuring_i3bar</a>)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3abd16b" class="outline-4">
+<h4 id="org3abd16b"><span class="section-number-4">3.8.2</span> Referencias Web Extraoficiales</h4>
+<div class="outline-text-4" id="text-3-8-2">
+<ul class="org-ul">
+<li>Entendiendo i3 [Ver Pagina](<a href="https://github.com/Airblader/i3">https://github.com/Airblader/i3</a>)</li>
+<li><a href="https://www.maketecheasier.com/install-use-i3-window-manager-ubuntu/">https://www.maketecheasier.com/install-use-i3-window-manager-ubuntu/</a></li>
+<li><a href="https://www.dagorret.com.ar/instalar-utilizar-i3-window-manager-ubuntu/">https://www.dagorret.com.ar/instalar-utilizar-i3-window-manager-ubuntu/</a></li>
+<li><a href="https://opensource.com/article/18/8/getting-started-i3-window-manager">https://opensource.com/article/18/8/getting-started-i3-window-manager</a></li>
+<li><a href="https://ericren.me/posts/2019-01-27-minimal-ubuntu-tiling-wm-setup/">https://ericren.me/posts/2019-01-27-minimal-ubuntu-tiling-wm-setup/</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org633fa59" class="outline-4">
+<h4 id="org633fa59"><span class="section-number-4">3.8.3</span> Referencias Youtube</h4>
+<div class="outline-text-4" id="text-3-8-3">
+<ul class="org-ul">
+<li>Opcion #1 [Ver Video](<a href="https://www.youtube.com/watch?v=8-S0cWnLBKg">https://www.youtube.com/watch?v=8-S0cWnLBKg</a>)</li>
+<li>Opcion #2 [Ver Vídeo](<a href="https://www.youtube.com/watch?v=CREit-6_IgI&amp;t=928s">https://www.youtube.com/watch?v=CREit-6_IgI&amp;t=928s</a>)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org2b5ad1f" class="outline-2">
+<h2 id="org2b5ad1f"><span class="section-number-2">4</span> Usando w3m y w3m-img</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Con el programa `w3m` podemos navegar via internet mediante la terminal de comandos,
+mientras que con `w3m-img` nos permite visualizar imagenes desde la terminal.
+</p>
+</div>
+</div>
+<div id="outline-container-orgce6323d" class="outline-2">
+<h2 id="orgce6323d"><span class="section-number-2">5</span> Rofi</h2>
+<div class="outline-text-2" id="text-5">
+
+<div class="figure">
+<p><img src="/img/rufi-menu.png" alt="rufi-menu.png" width="650">
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6c3c294" class="outline-3">
+<h3 id="org6c3c294"><span class="section-number-3">5.1</span> Conceptos</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+Es un <b>lanzador de aplicaciones</b> (launchers) utilizados en los <b>gestores de ventanas</b> (WMs) como <b>iw3m</b>
+</p>
+
+<p>
+Este programa nos despliega un menu (parecido al dmenu) y facilita la ejecución de
+programas mediante lineas de comando, evitando tener que abrir una terminal.
+</p>
+</div>
+</div>
+<div id="outline-container-orgf9674b8" class="outline-3">
+<h3 id="orgf9674b8"><span class="section-number-3">5.2</span> Instalación</h3>
+<div class="outline-text-3" id="text-5-2">
+<div class="org-src-container">
+<pre class="src src-shell" id="orgb9f98ab"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">instalamos el paquete</span>
+sudo apt-get install -y rofi
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para probar que se instaló con éxito, deberia desplegar un menú</span>
+rofi -show run
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orga30ac99" class="outline-3">
+<h3 id="orga30ac99"><span class="section-number-3">5.3</span> Configuración - Cambiar Theme</h3>
+<div class="outline-text-3" id="text-5-3">
+<p>
+Suponiendo que ya tenemos instalado y configurado con i3
+</p>
+<ol class="org-ol">
+<li>Desplegamos el menú de lineas de comandos con `Super+d`  (Por default abre dmenu, pero en mi configuración ejecuta Rofi)</li>
+<li>Escribimos `rofi-theme-selector` y luego seleccionamos el theme que querramos (Monokai, Solarized, etc..)</li>
+<li>Para ver la lista de themes instalados escribimos `ls /usr/share/rofi/themes`</li>
+<li>Modificamos el archivo de configuración de <b><b>i3wm</b></b></li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="org68748c6">sudo nano ~/.config/i3/config
+</pre>
+</div>
+
+<p>
+5 . Agregamos la siguiente linea en el archivo del paso anterior
+</p>
+<div class="org-src-container">
+<pre class="src src-bash" id="org2434350"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Una descripción del comando utilizado</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- $mod+d: es el atajo de teclas</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- exec rofi: ejecutamos el programa Rofi</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Detallamos los parámetros del comando</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- show run: despliega el menu de Rofi</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- opacity "80": le agrega transparencia a la ventana del menu</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- columns 2: separa la lista de comandos en 2 columnas</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- theme Monokai: le asigna el theme Monokai que instalamos previamente</span>
+bindsym $<span style="color: #7590db;">mod</span>+d exec rofi -show run -opacity <span style="color: #2d9574;">"80"</span> -columns <span style="color: #a45bad;">2</span> -theme Monokai
+</pre>
+</div>
+
+<p>
+6 . Reiniciamos el <b><b>i3wm</b></b> con `Mod+Shift+R`
+Por último podemos probar si los cambios surtieron efectos ejecutando `Mod+d`
+</p>
+</div>
+</div>
+<div id="outline-container-org95b971b" class="outline-3">
+<h3 id="org95b971b"><span class="section-number-3">5.4</span> Referencias Youtube</h3>
+<div class="outline-text-3" id="text-5-4">
+<ul class="org-ul">
+<li>Referencia #1 [Ver Video](<a href="https://www.youtube.com/watch?v=wcMyH3o5FMg">https://www.youtube.com/watch?v=wcMyH3o5FMg</a>)</li>
+<li>Referencia #2 [Ver Video](<a href="https://www.youtube.com/watch?v=Sa9SWMvAMIU">https://www.youtube.com/watch?v=Sa9SWMvAMIU</a>)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org15557f4" class="outline-2">
+<h2 id="org15557f4"><span class="section-number-2">6</span> Nitrogen</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-org10f168b" class="outline-3">
+<h3 id="org10f168b"><span class="section-number-3">6.1</span> Conceptos</h3>
+<div class="outline-text-3" id="text-6-1">
+<p>
+Nos da la opción de elegir y agregar fondos de pantalla al sistema
+</p>
+
+
+<div class="figure">
+<p><img src="/img/nitrogen.jpg" alt="nitrogen.jpg" width="650">
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org40330b4" class="outline-3">
+<h3 id="org40330b4"><span class="section-number-3">6.2</span> Instalación</h3>
+<div class="outline-text-3" id="text-6-2">
+<div class="org-src-container">
+<pre class="src src-shell" id="orge363e4b">sudo apt-get install -y nitrogen
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org09f5052" class="outline-3">
+<h3 id="org09f5052"><span class="section-number-3">6.3</span> Configuración</h3>
+<div class="outline-text-3" id="text-6-3">
+<p>
+Para seleccionar los wallpaper es necesario indicar en donde
+estan localizados, por tanto en la terminal escribimos lo siguiente
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="org33efc9c"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">luego de ejecutar la siguiente linea</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">nos aparecerá una interfáz gráfica para elegir el wallpaper</span>
+nitrogen $<span style="color: #7590db;">HOME</span>/Pictures/Wallpapers
+</pre>
+</div>
+
+<p>
+Luego aparecerá una pantalla con las imágenes guardadas en esa ruta,
+elegimos la imagen preferida aplicamos los cambios presionando en <b><b>Apply</b></b>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd3c7055" class="outline-2">
+<h2 id="orgd3c7055"><span class="section-number-2">7</span> Compton</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-org4e35932" class="outline-3">
+<h3 id="org4e35932"><span class="section-number-3">7.1</span> Conceptos</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+Es un compositor de ventanas, que agrega efectos como animación
+de desvanecimiento cuando nos movemos entre ventanas.
+</p>
+
+
+<div class="figure">
+<p><img src="/img/mrHacmk.png" alt="mrHacmk.png" width="650">
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org8cfb0f5" class="outline-3">
+<h3 id="org8cfb0f5"><span class="section-number-3">7.2</span> Instalación</h3>
+<div class="outline-text-3" id="text-7-2">
+<p>
+Ejecutamos la siguiente linea de comando en la terminal
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="org07962f5">sudo apt-get install -y compton
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org8aaca70" class="outline-3">
+<h3 id="org8aaca70"><span class="section-number-3">7.3</span> Configuración</h3>
+<div class="outline-text-3" id="text-7-3">
+<p>
+Suponiendo que tenemos instalado y configurado <b><b>i3wm</b></b>, agregamos en el
+archivo de configuración la siguiente linea
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash" id="org9c81168"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">este comando se ejecutará cada vez que inicie i3wm</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Observación: recorda que hay que agregarlo en la configuración de iw3m</span>
+exec_always compton -f
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org95d4deb" class="outline-3">
+<h3 id="org95d4deb"><span class="section-number-3">7.4</span> Referencias Youtube</h3>
+<div class="outline-text-3" id="text-7-4">
+<ul class="org-ul">
+<li>Compton [Ver Vídeo](<a href="https://www.youtube.com/watch?v=5GpyaSEe0VY">https://www.youtube.com/watch?v=5GpyaSEe0VY</a>)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org5c18497" class="outline-2">
+<h2 id="org5c18497"><span class="section-number-2">8</span> Polybar</h2>
+<div class="outline-text-2" id="text-8">
+</div>
+<div id="outline-container-orgef76b86" class="outline-3">
+<h3 id="orgef76b86"><span class="section-number-3">8.1</span> Conceptos</h3>
+<div class="outline-text-3" id="text-8-1">
+<p>
+El <b><b>Polybar</b></b> es para crear un <b>statusbar</b> (barra de estado) que muestra
+la información del sistema con una interfáz gráfica
+</p>
+</div>
+</div>
+<div id="outline-container-org5644db9" class="outline-3">
+<h3 id="org5644db9"><span class="section-number-3">8.2</span> Referencias</h3>
+<div class="outline-text-3" id="text-8-2">
+</div>
+<div id="outline-container-orge5267c3" class="outline-4">
+<h4 id="orge5267c3"><span class="section-number-4">8.2.1</span> Referencias Web Oficiales</h4>
+<div class="outline-text-4" id="text-8-2-1">
+<ul class="org-ul">
+<li><a href="https://polybar.github.io/">https://polybar.github.io/</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/Polybar">https://wiki.archlinux.org/index.php/Polybar</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1068abc" class="outline-4">
+<h4 id="org1068abc"><span class="section-number-4">8.2.2</span> Referencias Youtube</h4>
+<div class="outline-text-4" id="text-8-2-2">
+<ul class="org-ul">
+<li>Polybar [Ver Vídeo](<a href="https://www.youtube.com/watch?v=7RNgpvBMua0">https://www.youtube.com/watch?v=7RNgpvBMua0</a>)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org52e4bed" class="outline-4">
+<h4 id="org52e4bed"><span class="section-number-4">8.2.3</span> Referencias Web Extraoficiales</h4>
+<div class="outline-text-4" id="text-8-2-3">
+<ul class="org-ul">
+<li><a href="http://entornosgnulinux.com/tag/polybar/">http://entornosgnulinux.com/tag/polybar/</a></li>
+<li><a href="https://goto-linux.com/es/2020/6/11/polybar-un-mejor-panel-wm-para-su-sistema-linux/">https://goto-linux.com/es/2020/6/11/polybar-un-mejor-panel-wm-para-su-sistema-linux/</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd09954c" class="outline-2">
+<h2 id="orgd09954c"><span class="section-number-2">9</span> i3Blocks</h2>
+<div class="outline-text-2" id="text-9">
+</div>
+<div id="outline-container-org172c49f" class="outline-3">
+<h3 id="org172c49f"><span class="section-number-3">9.1</span> Conceptos</h3>
+<div class="outline-text-3" id="text-9-1">
+<p>
+Muestra la información de la barra de estado en formato json,
+y nos facilita decirle al i3wm que datos mostrar.
+</p>
+</div>
+</div>
+<div id="outline-container-orge1ccbc0" class="outline-3">
+<h3 id="orge1ccbc0"><span class="section-number-3">9.2</span> Instalación</h3>
+<div class="outline-text-3" id="text-9-2">
+<p>
+Ejecutamos la siguiente linea de comando en la terminal
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="org5380965">apt-get install -y i3blocks
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org28ab804" class="outline-3">
+<h3 id="org28ab804"><span class="section-number-3">9.3</span> Configuración</h3>
+<div class="outline-text-3" id="text-9-3">
+<ol class="org-ol">
+<li>Copiamos la configuración al directorio de <b><b>i3wm</b></b> `cp <i>etc/i3blocks.conf ~</i>.config/i3/`</li>
+<li>Modificamos en `~/.config/i3/i3blocks.conf` lo que queremos que aparezca en la barra de estado</li>
+<li>Reiniciamos el <b><b>i3wm</b></b> con `Super+Shift+R`</li>
+<li>Modificamos la configuración de <b><b>i3wm</b></b> con `sudo nano ~/.config/i3/config` y buscamos la linea que diga <b><b>bar</b></b></li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-bash" id="org6ce1e15">bar<span style="color: #4f97d7;">{</span>
+    <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para modificar la barra de estado</span>
+    status_command i3blocks ~/.config/i3/i3blocks.conf
+
+    <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">con esto se posiciona arriba de la pantalla</span>
+    position top
+<span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org0fde145" class="outline-2">
+<h2 id="org0fde145"><span class="section-number-2">10</span> Ranger File Manager</h2>
+<div class="outline-text-2" id="text-10">
+</div>
+<div id="outline-container-org667e2ee" class="outline-3">
+<h3 id="org667e2ee"><span class="section-number-3">10.1</span> Conceptos</h3>
+<div class="outline-text-3" id="text-10-1">
+<p>
+Para navegar de forma didáctica por los directorios mediante la terminal,
+además del manejo de archivos (Copiar, mover, borrar, etc..)
+</p>
+</div>
+</div>
+<div id="outline-container-org687b63c" class="outline-3">
+<h3 id="org687b63c"><span class="section-number-3">10.2</span> Instalación</h3>
+<div class="outline-text-3" id="text-10-2">
+<p>
+En la terminal solo ejecutamos la siguiente linea de codigo
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="orgaa9e393"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para instalar en ubuntu</span>
+sudo apt-get install -y ranger
+</pre>
+</div>
+
+<p>
+<b>Observación:</b>
+Para iniciarlo ejecutamos desde la terminal con `ranger`
+</p>
+</div>
+</div>
+<div id="outline-container-orge8a974c" class="outline-3">
+<h3 id="orge8a974c"><span class="section-number-3">10.3</span> Atajos</h3>
+<div class="outline-text-3" id="text-10-3">
+<table id="org121c336" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Atajo</th>
+<th scope="col" class="org-left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Shift+q</td>
+<td class="org-left">Salir de la terminal</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org58d8d16" class="outline-3">
+<h3 id="org58d8d16"><span class="section-number-3">10.4</span> Configuración</h3>
+<div class="outline-text-3" id="text-10-4">
+<ol class="org-ol">
+<li>Modificamos el archivo de configuración con `sudo nano ~/.config/ranger/rc.conf`</li>
+<li>Buscar las lineas que dejamos comentadas con <b><b>#</b></b> y cambiar por la que aparece debajo</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-bash" id="org35d5922"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">set preview_images false</span>
+<span style="color: #4f97d7;">set</span> preview_images true
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">set draw_borders false</span>
+<span style="color: #4f97d7;">set</span> draw_borders true
+
+<span style="color: #4f97d7;">set</span> preview_images_method w3m
+</pre>
+</div>
+
+<ol class="org-ol">
+<li>Nos aseguramos de tener instalado w3m ejecutando `sudo apt-get install w3m -y`</li>
+<li>Aplicamos los cambios de la configuración `source ~/.config/ranger/rc.conf`</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org065e6b0" class="outline-3">
+<h3 id="org065e6b0"><span class="section-number-3">10.5</span> Referencias</h3>
+<div class="outline-text-3" id="text-10-5">
+</div>
+<div id="outline-container-orgdb1b8e7" class="outline-4">
+<h4 id="orgdb1b8e7"><span class="section-number-4">10.5.1</span> Referencias Web Oficiales</h4>
+<div class="outline-text-4" id="text-10-5-1">
+<p>
+-Documentacion Oficial [Ver Pagina](<a href="https://github.com/ranger/ranger">https://github.com/ranger/ranger</a>)
+-Wiki, por ArchLinux [Ver Pagina](<a href="https://wiki.archlinux.org/index.php/Ranger">https://wiki.archlinux.org/index.php/Ranger</a>)
+</p>
+</div>
+</div>
+<div id="outline-container-orgfabc34c" class="outline-4">
+<h4 id="orgfabc34c"><span class="section-number-4">10.5.2</span> Referencias Web Extraoficiales</h4>
+<div class="outline-text-4" id="text-10-5-2">
+<p>
+-Referencia 1, por Vitux [Ver Pagina](<a href="https://vitux.com/how-to-install-ranger-terminal-file-manager-on-linux/">https://vitux.com/how-to-install-ranger-terminal-file-manager-on-linux/</a>)
+-Referencia 2, por Vultr [Ver Pagina](<a href="https://www.vultr.com/docs/how-to-install-ranger-terminal-file-manager-on-linux">https://www.vultr.com/docs/how-to-install-ranger-terminal-file-manager-on-linux</a>)
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgff2ed10" class="outline-2">
+<h2 id="orgff2ed10"><span class="section-number-2">11</span> Neofetch</h2>
+<div class="outline-text-2" id="text-11">
+</div>
+<div id="outline-container-orgcbb893a" class="outline-3">
+<h3 id="orgcbb893a"><span class="section-number-3">11.1</span> Conceptos</h3>
+<div class="outline-text-3" id="text-11-1">
+<p>
+Para ver información del sistema operativo
+</p>
+</div>
+</div>
+<div id="outline-container-orgcbc925b" class="outline-3">
+<h3 id="orgcbc925b"><span class="section-number-3">11.2</span> Instalación</h3>
+<div class="outline-text-3" id="text-11-2">
+<div class="org-src-container">
+<pre class="src src-shell" id="org394124f">sudo add-apt-repository ppa:dawidd0811/neofetch
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org8e112af" class="outline-3">
+<h3 id="org8e112af"><span class="section-number-3">11.3</span> Configuración</h3>
+<div class="outline-text-3" id="text-11-3">
+<ol class="org-ol">
+<li>Modificamos el archivo de configuración de bash con `sudo nano ~/.bashrc`</li>
+<li>Agregamos la siguiente configuración</li>
+</ol>
+
+<div class="org-src-container">
+<pre class="src src-bash" id="orgbd0350f"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Cada vez que se abra la terminal aparecerá la información del sistema</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">y además la imagen que aparece en esa ruta</span>
+neofetch --w3m $<span style="color: #7590db;">HOME</span>/Pictures/Wallpapers/wallpaper-hacksign3.jpg
+</pre>
+</div>
+
+<p>
+<b>Observación</b>:
+Se debe tener cuidado al modificar el archivo `.bashrc`
+</p>
+</div>
+</div>
+<div id="outline-container-org6ccf365" class="outline-3">
+<h3 id="org6ccf365"><span class="section-number-3">11.4</span> Referencias Web Extraoficiales</h3>
+<div class="outline-text-3" id="text-11-4">
+<ul class="org-ul">
+<li>Referencia #1 - DylanRaps [Ver Página](<a href="https://github.com/dylanaraps/neofetch/wiki/Image-Backends">https://github.com/dylanaraps/neofetch/wiki/Image-Backends</a>)</li>
+<li>Referencia #2 - DesdeLinux [Ver Página](<a href="https://blog.desdelinux.net/neofetch-obten-informacion-de-tu-equipo-y-sistema-en-la-terminal/">https://blog.desdelinux.net/neofetch-obten-informacion-de-tu-equipo-y-sistema-en-la-terminal/</a>)</li>
+<li>Referencia #3 - OsTechnix [Ver Página](<a href="https://www.ostechnix.com/neofetch-display-linux-systems-information/">https://www.ostechnix.com/neofetch-display-linux-systems-information/</a>)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb5d821a" class="outline-2">
+<h2 id="orgb5d821a"><span class="section-number-2">12</span> Dar color a la Terminal</h2>
+<div class="outline-text-2" id="text-12">
+</div>
+<div id="outline-container-org39c63b9" class="outline-3">
+<h3 id="org39c63b9"><span class="section-number-3">12.1</span> Conceptos</h3>
+<div class="outline-text-3" id="text-12-1">
+<p>
+Con la ayuda de la página <b>Gogh</b> podemos darle color a la terminal
+</p>
+
+<p>
+Para más información sugerimos revisar las referencias
+</p>
+</div>
+</div>
+<div id="outline-container-org8b514b1" class="outline-3">
+<h3 id="org8b514b1"><span class="section-number-3">12.2</span> Referencias</h3>
+<div class="outline-text-3" id="text-12-2">
+<ul class="org-ul">
+<li>[Ir a Página](<a href="https://www.linuxuprising.com/2019/07/179-color-schemes-for-your-gtk-based.html">https://www.linuxuprising.com/2019/07/179-color-schemes-for-your-gtk-based.html</a>)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org1a0508f" class="outline-2">
+<h2 id="org1a0508f"><span class="section-number-2">13</span> Font Manager</h2>
+<div class="outline-text-2" id="text-13">
+</div>
+<div id="outline-container-orgfadd022" class="outline-3">
+<h3 id="orgfadd022"><span class="section-number-3">13.1</span> Conceptos</h3>
+<div class="outline-text-3" id="text-13-1">
+<p>
+Con el <b><b>Font manager</b></b> podemos elegir entre varias fuentes para cambiar la tipografía 
+</p>
+
+<p>
+Para más información sugerimos revisar las referencias
+Además agregamos algunas fuentes que se suelen recomendar para programar
+</p>
+</div>
+</div>
+<div id="outline-container-org32720b1" class="outline-3">
+<h3 id="org32720b1"><span class="section-number-3">13.2</span> Referencias Web Extraoficiales</h3>
+<div class="outline-text-3" id="text-13-2">
+<ul class="org-ul">
+<li>[Ir a Página](<a href="https://itsfoss.com/install-fonts-ubuntu/#targetText=To%20install%20several%20fonts%20at,show%20hidden%20files%20in%20Ubuntu">https://itsfoss.com/install-fonts-ubuntu/#targetText=To%20install%20several%20fonts%20at,show%20hidden%20files%20in%20Ubuntu</a>.)</li>
+<li>Fuentes por Webos [Ver Página](<a href="https://wesbos.com/programming-fonts/">https://wesbos.com/programming-fonts/</a>)</li>
+<li>Referencia #1 Hivellogic [Ver Página](<a href="http://hivelogic.com/articles/top-10-programming-fonts/">http://hivelogic.com/articles/top-10-programming-fonts/</a>)</li>
+<li>Referencia #2 Narga [Ver Página](<a href="https://www.narga.net/top-best-programing-fonts/">https://www.narga.net/top-best-programing-fonts/</a>)</li>
+<li>Referencia #3 Slant [Ver Página](<a href="https://www.slant.co/topics/7014/~fonts-to-use-in-a-terminal-emulator">https://www.slant.co/topics/7014/~fonts-to-use-in-a-terminal-emulator</a>)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd872424" class="outline-2">
+<h2 id="orgd872424"><span class="section-number-2">14</span> Configuraciones de otros usuarios</h2>
+<div class="outline-text-2" id="text-14">
+<ul class="org-ul">
+<li>Referencia #1 - Gerardbm [Ver Página](<a href="https://github.com/gerardbm/dotfiles">https://github.com/gerardbm/dotfiles</a>)</li>
+<li>Referencia #2 - HackerNoon [Ver Página](<a href="https://hackernoon.com/how-to-trick-out-terminal-287c0e93fce0">https://hackernoon.com/how-to-trick-out-terminal-287c0e93fce0</a>)</li>
+<li>Referencia #3 - Reddit [Ver Página](<a href="https://www.reddit.com/r/unixporn/">https://www.reddit.com/r/unixporn/</a>)</li>
+<li>Referencia #4 - Reddit [Ver Página](<a href="https://www.reddit.com/r/unixporn/comments/baz6j0/bspwm_rxvtunicode_redgreenblueshift/">https://www.reddit.com/r/unixporn/comments/baz6j0/bspwm_rxvtunicode_redgreenblueshift/</a></li>
+<li>Referencia #5 - Manjaro [Ver Página](<a href="https://forum.manjaro.org/t/noteworthy-november-2016-screenshots/11997/7">https://forum.manjaro.org/t/noteworthy-november-2016-screenshots/11997/7</a>)</li>
+<li>Referencia #6 - BrianCaffey [Ver Página](<a href="https://briancaffey.github.io/2017/10/17/moving-from-gnome-to-i3-on-arch-linux.html">https://briancaffey.github.io/2017/10/17/moving-from-gnome-to-i3-on-arch-linux.html</a>)</li>
+<li><a href="https://github.com/notthebee/dotfiles">https://github.com/notthebee/dotfiles</a></li>
+<li><a href="https://github.com/bookercodes/dotfiles/tree/arch">https://github.com/bookercodes/dotfiles/tree/arch</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: jelou</p>
+<p class="date">Created: 2021-04-03 sáb 02:28</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+
+
+</body></html>

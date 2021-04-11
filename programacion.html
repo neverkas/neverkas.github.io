@@ -1,0 +1,1051 @@
+<!--?xml version="1.0" encoding="utf-8"?--><!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<!-- 2021-03-31 mié 00:47 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>‎</title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="jelou">
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org680ea0c">1. Depurar Código (Debugging)</a>
+<ul>
+<li><a href="#org43c31f3">1.1. (GCC) GNU Compiler Collection</a>
+<ul>
+<li><a href="#org475d38c">1.1.1. Parámetros</a></li>
+<li><a href="#org674f01c">1.1.2. Ejemplos</a></li>
+<li><a href="#org20aa5a0">1.1.3. Referencias</a></li>
+</ul>
+</li>
+<li><a href="#orge3f64a8">1.2. (GDB) GNU Debugger</a>
+<ul>
+<li><a href="#org55febc8">1.2.1. Introducción</a></li>
+<li><a href="#org33fea86">1.2.2. Comandos</a></li>
+<li><a href="#orgad28a02">1.2.3. Colocar breakpoints condicionales</a></li>
+<li><a href="#orgad6f78f">1.2.4. Comparar el cambio valor de una o varias Variables</a></li>
+<li><a href="#org97173cb">1.2.5. Ver el valor de distintas variables al mismo tiempo</a></li>
+<li><a href="#orgf4fa97f">1.2.6. Colocar breakpoint en un número de linea</a></li>
+<li><a href="#orgf7274c4">1.2.7. Problemas frecuentes</a></li>
+<li><a href="#org7f14200">1.2.8. Referencias</a></li>
+<li><a href="#orge24e1c2">1.2.9. Videos</a></li>
+</ul>
+</li>
+<li><a href="#org266cd94">1.3. (DDD) Data Display Debugger</a>
+<ul>
+<li><a href="#org2020aec">1.3.1. Introducción</a></li>
+<li><a href="#org4aecc25">1.3.2. Referencias</a></li>
+</ul>
+</li>
+<li><a href="#org5d3372f">1.4. Depurador Nemiver</a>
+<ul>
+<li><a href="#orgffebf56">1.4.1. Ejemplos</a></li>
+<li><a href="#org9f4a164">1.4.2. Referencias</a></li>
+</ul>
+</li>
+<li><a href="#org63c91af">1.5. Depurador GDBGUI</a>
+<ul>
+<li><a href="#org3f910c8">1.5.1. Instalación y Configuración</a></li>
+<li><a href="#orgb0976ac">1.5.2. Referencias</a></li>
+</ul>
+</li>
+<li><a href="#orgb9d4d84">1.6. Cosas</a></li>
+<li><a href="#orga621049">1.7. Referencias</a></li>
+</ul>
+</li>
+<li><a href="#orgf43647f">2. Programar y Depurar en C</a>
+<ul>
+<li><a href="#orge81e01b">2.1. Comandos útiles en Emacs con GDB</a></li>
+<li><a href="#orgfa9d8e7">2.2. Referencias</a></li>
+<li><a href="#orgf5d07c6">2.3. Videos</a></li>
+</ul>
+</li>
+<li><a href="#orgfe503e1">3. Desarrollar Videojuegos en C++</a>
+<ul>
+<li><a href="#org5e06824">3.1. Referencias</a></li>
+</ul>
+</li>
+<li><a href="#org220aeba">4. Desarrollar videojuegos en Ensamblador</a>
+<ul>
+<li><a href="#org5c8a74f">4.1. Referencias</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+Mirando ahora
+</p>
+<ul class="org-ul">
+<li><a href="https://www.youtube.com/watch?v=RCVNMRcefUk&amp;list=PLw8RQJQ8K1ySN6bVHYEpDoh-CKVkL_uOF&amp;index=27">https://www.youtube.com/watch?v=RCVNMRcefUk&amp;list=PLw8RQJQ8K1ySN6bVHYEpDoh-CKVkL_uOF&amp;index=27</a></li>
+<li><a href="https://www.youtube.com/watch?v=QV_6_aKH9G8">https://www.youtube.com/watch?v=QV_6_aKH9G8</a></li>
+<li><a href="https://www.youtube.com/watch?v=7g1YmOXsCCU">https://www.youtube.com/watch?v=7g1YmOXsCCU</a></li>
+<li><a href="https://www.youtube.com/watch?v=4fc-QRl8_QQ">https://www.youtube.com/watch?v=4fc-QRl8_QQ</a></li>
+<li><a href="https://www.youtube.com/watch?v=w_P3rE73Hk8">https://www.youtube.com/watch?v=w_P3rE73Hk8</a></li>
+</ul>
+
+<div id="outline-container-org680ea0c" class="outline-2">
+<h2 id="org680ea0c"><span class="section-number-2">1</span> Depurar Código (Debugging)</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org43c31f3" class="outline-3">
+<h3 id="org43c31f3"><span class="section-number-3">1.1</span> (GCC) GNU Compiler Collection</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+<b>GCC</b> se conoce como <b>GNU Compiler collection</b> que quiere decir <b>colección de compiladores</b>
+</p>
+</div>
+
+<div id="outline-container-org475d38c" class="outline-4">
+<h4 id="org475d38c"><span class="section-number-4">1.1.1</span> Parámetros</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Parametro</th>
+<th scope="col" class="org-left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">g</td>
+<td class="org-left">El compilador incluye información sobre las variables (útil para GDB)</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org674f01c" class="outline-4">
+<h4 id="org674f01c"><span class="section-number-4">1.1.2</span> Ejemplos</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<div class="org-src-container">
+<pre class="src src-shell" id="org344cfc7"># compilamos el codigo fuente unArchivo.c
+# creando un archivo ejecutable llamado miprograma
+gcc -g unArchivo.c -o miprograma
+
+# si queremos depurar el programa con el Depurador DDD
+# que tiene GUI (con interfáz gráfica)
+ddd miprograma
+
+# si queremos depurar el programa con el Depurador GDB
+# sin GUI (se utiliza la terminal de comandos)
+gdb miprograma
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org20aa5a0" class="outline-4">
+<h4 id="org20aa5a0"><span class="section-number-4">1.1.3</span> Referencias</h4>
+<div class="outline-text-4" id="text-1-1-3">
+<ul class="org-ul">
+<li><a href="https://gcc.gnu.org/">Pagina Oficial - gcc.gnu.org</a></li>
+<li><a href="https://sourceware.org/gdb/onlinedocs/gdb/Variables.html">Program Variables - sourceware.org</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge3f64a8" class="outline-3">
+<h3 id="orge3f64a8"><span class="section-number-3">1.2</span> (GDB) GNU Debugger</h3>
+<div class="outline-text-3" id="text-1-2">
+</div>
+<div id="outline-container-org55febc8" class="outline-4">
+<h4 id="org55febc8"><span class="section-number-4">1.2.1</span> Introducción</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<ul class="org-ul">
+<li>Este es el depurador estándar para el compilador GNU</li>
+<li>Se utiliza mediante la terminal de comandos de linux</li>
+<li>Se puede complementar con el depurador DDD que tiene interfaz gráfica</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org33fea86" class="outline-4">
+<h4 id="org33fea86"><span class="section-number-4">1.2.2</span> Comandos</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Comando</th>
+<th scope="col" class="org-left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">gdb</td>
+<td class="org-left">Para iniciar el depurador</td>
+</tr>
+
+<tr>
+<td class="org-left">gcc -g archivo.c -o archivo</td>
+<td class="org-left">Para compilar programa para depurar</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Comando</th>
+<th scope="col" class="org-left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">file nombreArchivo</td>
+<td class="org-left">Abrir otro programa a depurar</td>
+</tr>
+
+<tr>
+<td class="org-left">run</td>
+<td class="org-left">Ejecutar el programa de manera normal (si está en ejecución, lo reinicia)</td>
+</tr>
+
+<tr>
+<td class="org-left">start</td>
+<td class="org-left">Ejecuta el paso a paso del programa desde el principio del código fuente</td>
+</tr>
+
+<tr>
+<td class="org-left">quit</td>
+<td class="org-left">Salir del programa</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">display unaVariable</td>
+<td class="org-left">Muestra el valor de las variables cada vez que se ejecuta un comando</td>
+</tr>
+
+<tr>
+<td class="org-left">print unaVariable</td>
+<td class="org-left">Imprime el valor de una variable</td>
+</tr>
+
+<tr>
+<td class="org-left">break</td>
+<td class="org-left">Para colocar un breakpoint (donde se detiene el debugger)</td>
+</tr>
+
+<tr>
+<td class="org-left">watch unaVariable</td>
+<td class="org-left">Para colocar un watchpoint (observar cambios en variables)</td>
+</tr>
+
+<tr>
+<td class="org-left">next</td>
+<td class="org-left">Avanza al siguiente paso</td>
+</tr>
+
+<tr>
+<td class="org-left">continue</td>
+<td class="org-left">Continua la ejecución del programa y vuelve al Breakpoint</td>
+</tr>
+
+<tr>
+<td class="org-left">step</td>
+<td class="org-left">(step into) Entrar en una función y avanzar al siguiente paso</td>
+</tr>
+
+<tr>
+<td class="org-left">list</td>
+<td class="org-left">Imprime lineas del programa</td>
+</tr>
+
+<tr>
+<td class="org-left">list n,m</td>
+<td class="org-left">Imprime rango de lineas (Ej. list 1,50)</td>
+</tr>
+
+<tr>
+<td class="org-left">list unaFuncion</td>
+<td class="org-left">Imprime las lineas de una función específica</td>
+</tr>
+
+<tr>
+<td class="org-left">set unaVariable=nuevoValor</td>
+<td class="org-left">Cambia el valor de una variable</td>
+</tr>
+
+<tr>
+<td class="org-left">info break</td>
+<td class="org-left">Imprime el listado de breakpoints y watchpoints agregados</td>
+</tr>
+
+<tr>
+<td class="org-left">info local</td>
+<td class="org-left">Imprime las variables locales</td>
+</tr>
+
+<tr>
+<td class="org-left">delete numeroDelBreakpoint</td>
+<td class="org-left">Elimina el breakpoint con ese numero (con info se conoce el numero)</td>
+</tr>
+</tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Comando corto</th>
+<th scope="col" class="org-left">Comando verboso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">r</td>
+<td class="org-left">run</td>
+</tr>
+
+<tr>
+<td class="org-left">b</td>
+<td class="org-left">break</td>
+</tr>
+
+<tr>
+<td class="org-left">w</td>
+<td class="org-left">watch</td>
+</tr>
+
+<tr>
+<td class="org-left">l</td>
+<td class="org-left">list</td>
+</tr>
+
+<tr>
+<td class="org-left">n</td>
+<td class="org-left">next</td>
+</tr>
+
+<tr>
+<td class="org-left">s</td>
+<td class="org-left">step</td>
+</tr>
+
+<tr>
+<td class="org-left">c</td>
+<td class="org-left">continue</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgad28a02" class="outline-4">
+<h4 id="orgad28a02"><span class="section-number-4">1.2.3</span> Colocar breakpoints condicionales</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<p>
+Esto es interesante cuando queremos crear un breakpoint en un momento específico.
+</p>
+
+<pre class="example">Un for que itera, y sólo queremos agregar el breakpoint cuando el contador es i=5
+para analizar el comportamiento
+</pre>
+
+<pre class="example">Un while que se ejecuta hasta que no se cumpla su centinela, pero no sucede, 
+entonces evaluamos el centinela cuando tiene ese valor.
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-sh" id="org34d9867"># suponiendo que queremos agregar un breakpoint en una función llamada unaFuncion
+# cuando la variable i equivale a 5
+(gdb) break unaFuncion if(i==5)
+
+# agrega un breakpoint en la linea 5 de esa función
+# cuenta el número de linea dentro del bloque
+(gdb) break unaFuncion:5 if(nombre=='carlos')
+
+# agrega un breakpoint en la variable centinela
+# cuando este equivale a -1
+(gdb) break centinela if(centinela==-1)
+
+# otras variantes
+(gdb) break centinela if(contador&gt;5)
+(gdb) break otraFuncion if(nombreIngresado=='pepe')
+(gdb) break unaVariable if(otraVariable==2)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgad6f78f" class="outline-4">
+<h4 id="orgad6f78f"><span class="section-number-4">1.2.4</span> Comparar el cambio valor de una o varias Variables</h4>
+<div class="outline-text-4" id="text-1-2-4">
+<ul class="org-ul">
+<li>Para esto utilizamos el comando <b>watch</b> que agrega <b>watchpoint</b></li>
+<li>Nos muestra el valor anterior antes que cambie, y el nuevo.</li>
+</ul>
+
+<pre class="example">Si hay operaciones aritméticas y quizás el resultado no es correcto porque su valor anterior daba mal,
+ó para visualizar si se están asignando bien los valores a las variables
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-sh" id="orgd02f45d"># compilamos el codigo fuente
+gcc -g miArchivo.c -o miArchivo
+# depuramos el archivo ejecutable con GDB
+gdb miArchivo
+
+# estando dentro
+(gdb) break main
+(gdb) run
+(gdb) display sumar
+(gdb) display restar
+(gdb) watch x
+(gdb) watch y
+(gdb) next
+# y.. 
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-C" id="orgaa8b929">#include &lt;stdio.h&gt;
+
+int main(void){
+  int x,y,z;
+
+  int sumar, restar, multiplicar;
+
+  // al no estar inicializadas las variables x,y
+  // va a estar sumando valores al azar (se les dice valor basura)
+  // al depurar por ejemplo podriamos usar el comando watch y display en esas variables
+  // para ver que valores van tomando, y si es el comportamiento deseado o no
+  for(int i=0; i &lt; 5; i++){
+    sumar = x+y;
+    restar = x-y;
+    multiplicar = x*y;
+  }
+
+  z = sumar+restar+multiplicar;
+
+  return 0;
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org97173cb" class="outline-4">
+<h4 id="org97173cb"><span class="section-number-4">1.2.5</span> Ver el valor de distintas variables al mismo tiempo</h4>
+<div class="outline-text-4" id="text-1-2-5">
+<ul class="org-ul">
+<li>Con el comando <b>display</b> podemos generando una lista de que variables queremos ver</li>
+<li>Se visualizan cada vez que se ejecute un comando</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf4fa97f" class="outline-4">
+<h4 id="orgf4fa97f"><span class="section-number-4">1.2.6</span> Colocar breakpoint en un número de linea</h4>
+<div class="outline-text-4" id="text-1-2-6">
+<div class="org-src-container">
+<pre class="src src-sh" id="orge33f9be"># compilamos el archivo de esta manera para depurar
+gcc -g unArchivo.c -o unArchivo
+
+# iniciamos el GNU Debugger (GDB)
+gdb unArchivo
+
+# cargamos otro archivo a depurar
+file otroArchivo
+
+# agregamos un breakpoint en la linea 15 del archivo actual
+# (en una linea del archivo actual)
+break 15
+
+# agregamos un breakpoint en la linea 11 del archivo unArchivo.c
+# (si usamos esta notación hay que poner la extensión)
+break unArchivo.c:11
+
+# agregamos otro breakpoint en la función suma
+# (en una función)
+break suma
+
+# agregamos otro breakpoint en la función principal main
+# (en una función)
+break main
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf7274c4" class="outline-4">
+<h4 id="orgf7274c4"><span class="section-number-4">1.2.7</span> Problemas frecuentes</h4>
+<div class="outline-text-4" id="text-1-2-7">
+<div class="org-src-container">
+<pre class="src src-shell" id="orgf2f09b9"># Si al intentar imprimir o vigilar una variable
+# y nos muestra "No symbol in current context"
+# es porque no le estamos dando suficiente contexto para
+# acceder a esas variables.
+
+(gdb) print i
+No symbol "i" in current context.
+
+(gdb) watch sum
+No symbol "sum" in current context.
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="org90df188"># Posible solución, suponiendo que es un programa básico
+
+# colocar un Breakpoint en el main, y volver a intentar
+# (de esa manera le estamos dando un contexto, es decir
+# en donde se encuentran)
+
+# 1. colocamos un Breakpoint en el main
+# (que es donde tenemos las variables, son locales dentro del main)
+(gdb) break main
+
+# 2. ejecutamos el programa
+(gdb) run
+
+# 3. ahora tiene un contexto de donde se encuentran las variables
+# (osea dentro del main, son variables locales del main)
+(gdb) watch i
+Hardware watchpoint 2: i
+
+(gdb) print i
+$1 = 0
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7f14200" class="outline-4">
+<h4 id="org7f14200"><span class="section-number-4">1.2.8</span> Referencias</h4>
+<div class="outline-text-4" id="text-1-2-8">
+<ul class="org-ul">
+<li><a href="https://servicios.algoritmos7540mendez.com.ar/apuntes/08_-_debugging.pdf">Debugging - Dr Mariano Mendez (UBA)</a></li>
+<li><a href="https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_gdb.php">Guide GDB and DDD - Swarthmore College</a></li>
+<li><a href="https://lihuen.linti.unlp.edu.ar/index.php/C%C3%B3mo_usar_GDB">Cómo usar GDB - Lihuen - UNPL</a></li>
+<li><a href="http://www.lsi.us.es/~javierj/ssoo_ficheros/GuiaGDB.htm">Primeros pasos con GDB	- jjrodriguez</a></li>
+<li><a href="https://www.ibm.com/developerworks/systems/library/es-debug/index.html">Debugging tools and techniques for Linux - IBM</a></li>
+<li><a href="https://www.tecmint.com/debug-source-code-in-linux-using-gdb/">Debug source code in linux using GDB - Tecmint.com</a></li>
+<li><a href="https://www.classes.cs.uchicago.edu/archive/2017/winter/51081-1/LabFAQ/lab2/gdb.html">Debugging C and C++ using GDB - Classes UChicago</a></li>
+<li><a href="https://www.bennetyee.org/ucsd-pages/Courses/cse127.w02/gdbtutorial.html">GDB Tutorial - bennetye.org</a></li>
+<li><a href="https://beej.us/guide/bggdb/">Quick guide to GDB - Beej.us</a></li>
+<li><a href="https://sourceware.org/gdb/onlinedocs/gdb/Set-Watchpoints.html">Setting Watchpoints - Sourceware.org</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge24e1c2" class="outline-4">
+<h4 id="orge24e1c2"><span class="section-number-4">1.2.9</span> Videos</h4>
+<div class="outline-text-4" id="text-1-2-9">
+<ul class="org-ul">
+<li><a href="https://www.youtube.com/watch?v=xQ0ONbt-qPs">Quick Intro to GDB</a></li>
+<li><a href="https://www.youtube.com/watch?v=sCtY--xRUyI">Introduction to GDB - Hardvard CS50</a></li>
+<li><a href="https://www.youtube.com/watch?v=Vn1kDWVxq4s">Debugging with GDB in Emacs</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org266cd94" class="outline-3">
+<h3 id="org266cd94"><span class="section-number-3">1.3</span> (DDD) Data Display Debugger</h3>
+<div class="outline-text-3" id="text-1-3">
+</div>
+<div id="outline-container-org2020aec" class="outline-4">
+<h4 id="org2020aec"><span class="section-number-4">1.3.1</span> Introducción</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<ul class="org-ul">
+<li></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4aecc25" class="outline-4">
+<h4 id="org4aecc25"><span class="section-number-4">1.3.2</span> Referencias</h4>
+<div class="outline-text-4" id="text-1-3-2">
+<ul class="org-ul">
+<li><a href="https://www.gnu.org/software/ddd/">What is DDD? - gnu.org</a></li>
+<li><a href="http://www.linuxfocus.org/Castellano/January1998/article20.html">Depurando código con ddd - linuxfocus.org</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5d3372f" class="outline-3">
+<h3 id="org5d3372f"><span class="section-number-3">1.4</span> Depurador Nemiver</h3>
+<div class="outline-text-3" id="text-1-4">
+</div>
+<div id="outline-container-orgffebf56" class="outline-4">
+<h4 id="orgffebf56"><span class="section-number-4">1.4.1</span> Ejemplos</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<div class="org-src-container">
+<pre class="src src-sh" id="orgbd85099"># - compilamos el codigo fuente probando1.c
+# - creando el archivo ejecutable llamado probando1
+# - se recomienda usar el parámetro -g para no tener problemas con el depurador
+gcc -g probando1.c -o probando1
+
+# depuramos el archivo ejecutable probando1 con nemiver
+nemiver probando1
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9f4a164" class="outline-4">
+<h4 id="org9f4a164"><span class="section-number-4">1.4.2</span> Referencias</h4>
+<div class="outline-text-4" id="text-1-4-2">
+<ul class="org-ul">
+<li><a href="http://personals.ac.upc.edu/guerrero/fo2015/Trucos_Nemiver_Mario_New.pdf">Depurar programas con Nemiver - Mario Macias</a></li>
+<li><a href="https://developer.gnome.org/nemiver/0.9/nemiver.html">https://developer.gnome.org/nemiver/0.9/nemiver.html</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org63c91af" class="outline-3">
+<h3 id="org63c91af"><span class="section-number-3">1.5</span> Depurador GDBGUI</h3>
+<div class="outline-text-3" id="text-1-5">
+</div>
+<div id="outline-container-org3f910c8" class="outline-4">
+<h4 id="org3f910c8"><span class="section-number-4">1.5.1</span> Instalación y Configuración</h4>
+<div class="outline-text-4" id="text-1-5-1">
+<div class="org-src-container">
+<pre class="src src-shell"># instalamos el paquete gdbgui
+# con el gestor de paquetes "pip" de python
+pip install gdbgui --upgrade
+
+# ejecutamos el depurador gdbgui
+# se iniciará un servidor web, para acceder desde un navegador web
+# http://localhost:5000
+gdbgui
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb0976ac" class="outline-4">
+<h4 id="orgb0976ac"><span class="section-number-4">1.5.2</span> Referencias</h4>
+<div class="outline-text-4" id="text-1-5-2">
+<ul class="org-ul">
+<li><a href="https://pypi.org/project/gdbgui/0.9.1.1/">Repositorio Oficial, Manual, Ejemplos - pypi.org</a></li>
+<li><a href="https://www.tecmint.com/install-pip-in-linux/">How to install PIP to Manage Python packages - tecmint.com</a></li>
+<li><a href="https://pip.pypa.io/en/stable/installing/">Do I need to install pip? - PyPA</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb9d4d84" class="outline-3">
+<h3 id="orgb9d4d84"><span class="section-number-3">1.6</span> Cosas</h3>
+<div class="outline-text-3" id="text-1-6">
+<div class="org-src-container">
+<pre class="src src-sh"># para debugear C desde la terminal
+
+sudo pacman -S gdb
+# para debugear C/C++ con entorno grafico
+sudo pacman -S nemiver
+
+# parece que está mas enfocado para php
+sudo pacman -S xdebug
+</pre>
+</div>
+
+<p>
+Otras a revisar
+</p>
+<ul class="org-ul">
+<li><a href="https://undo.io/resources/gdb-watchpoint/gdb-wizardry/">https://undo.io/resources/gdb-watchpoint/gdb-wizardry/</a></li>
+<li><a href="https://linoxide.com/linux-how-to/user-space-debugging-tools-linux/">https://linoxide.com/linux-how-to/user-space-debugging-tools-linux/</a></li>
+</ul>
+<p>
+<a href="https://www.youtube.com/watch?v=J7L2x1ATOgk">https://www.youtube.com/watch?v=J7L2x1ATOgk</a>
+</p>
+</div>
+</div>
+<div id="outline-container-orga621049" class="outline-3">
+<h3 id="orga621049"><span class="section-number-3">1.7</span> Referencias</h3>
+<div class="outline-text-3" id="text-1-7">
+<p>
+<b>Referencias</b>
+</p>
+<ul class="org-ul">
+<li><a href="https://www.tecmint.com/debug-source-code-in-linux-using-gdb/">debug source code in linux using gdb</a></li>
+<li><a href="https://www.cs.yale.edu/homes/aspnes/pinewiki/C(2f)Debugging.html">C/Debugging - cs.yale.edu</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/Debugging">Debugging - wiki.archlinux.org</a></li>
+<li><a href="https://www.linuxlinks.com/debuggers/">Linux Debuggers</a></li>
+<li><a href="https://www.ubuntupit.com/best-linux-debuggers-for-modern-software-engineers/#9-bugzilla">Best linux debuggers</a></li>
+<li><a href="https://www.onlinegdb.com/online_c_debugger">Onlinegdb.com</a></li>
+<li><a href="https://www.youtube.com/watch?v=bWH-nL7v5F4">Video - Debugging - GDB TUtorial</a></li>
+</ul>
+
+<p>
+COn emacs
+<a href="https://www.cs.odu.edu/~zeil/cs252/latest/Public/debugging/index.html">https://www.cs.odu.edu/~zeil/cs252/latest/Public/debugging/index.html</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf43647f" class="outline-2">
+<h2 id="orgf43647f"><span class="section-number-2">2</span> Programar y Depurar en C</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-orge81e01b" class="outline-3">
+<h3 id="orge81e01b"><span class="section-number-3">2.1</span> Comandos útiles en Emacs con GDB</h3>
+<div class="outline-text-3" id="text-2-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Comando</th>
+<th scope="col" class="org-left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">M-x gdb</td>
+<td class="org-left">Para iniciar el modo depuración con GDB en el buffer actual</td>
+</tr>
+
+<tr>
+<td class="org-left">M-x gdb-many-windows</td>
+<td class="org-left">Abre los buffers necesarios de GDB</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orgfa9d8e7" class="outline-3">
+<h3 id="orgfa9d8e7"><span class="section-number-3">2.2</span> Referencias</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li><a href="https://www.programiz.com/c-programming/c-input-output">https://www.programiz.com/c-programming/c-input-output</a></li>
+<li><a href="https://fresh2refresh.com/c-programming/c-printf-and-scanf/">https://fresh2refresh.com/c-programming/c-printf-and-scanf/</a></li>
+<li><a href="https://www.geeksforgeeks.org/use-fflushstdin-c/">https://www.geeksforgeeks.org/use-fflushstdin-c/</a></li>
+<li><a href="https://sourceware.org/gdb/onlinedocs/gdb/Emacs.html">Using GDB under GNU Emacs - sourceware.org</a></li>
+<li><a href="https://u.osu.edu/cstutorials/2018/09/28/how-to-debug-c-program-using-gdb-in-6-simple-steps/">Debug C Program using gdb, Simple Steps - The Ohio State UNiversity</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf5d07c6" class="outline-3">
+<h3 id="orgf5d07c6"><span class="section-number-3">2.3</span> Videos</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li><a href="https://www.youtube.com/playlist?list=PLTd5ehIj0goOAWdpCpghXiRCmEOrJJLEW">Playlist - Curso de C - Makigas.es</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PLTd5ehIj0goMZ33qJ7JmuXjSO8RoefiZS">Playlist - Desarrollando en C - Makigas.es</a></li>
+<li><a href="https://www.youtube.com/watch?v=bRAthoxbVyA&amp;list=PLw8RQJQ8K1ySN6bVHYEpDoh-CKVkL_uOF&amp;index=19">Playlist - Empieza a Programar en C</a></li>
+<li><a href="https://www.youtube.com/watch?v=9ijhlPfxFnk&amp;list=PLMDLYpoZkTxNARxzB3-FcqcXoEOExyxe7">Playlist - Curso de C desde Cero - Codeando</a></li>
+<li><a href="https://www.youtube.com/watch?v=YJgnqMCg0-Y&amp;list=PLs1sXiNvW4OyBpsI1gcEG6yQJlRPx5hhC">Programacion en C - Codigo Compilado</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfe503e1" class="outline-2">
+<h2 id="orgfe503e1"><span class="section-number-2">3</span> Desarrollar Videojuegos en C++</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org5e06824" class="outline-3">
+<h3 id="org5e06824"><span class="section-number-3">3.1</span> Referencias</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li><a href="https://www.youtube.com/watch?v=7YBzHJJYpZo&amp;list=PLmxqg54iaXrhTqZxylLPo0nov0OoyJqiS">Playlist - Programación de Videojuegos en C++ - Prof. Retroman</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PLEtcGQaT56cgt9IcNjn86O-zI3aZmv5Oo">Aprender C++ con Unreal Engine - Jesus Conde</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org220aeba" class="outline-2">
+<h2 id="org220aeba"><span class="section-number-2">4</span> Desarrollar videojuegos en Ensamblador</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org5c8a74f" class="outline-3">
+<h3 id="org5c8a74f"><span class="section-number-3">4.1</span> Referencias</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li><a href="https://www.youtube.com/watch?v=6Z8pWxTbF0g&amp;list=PLmxqg54iaXrgXYrAo_s4d7z1X13jooFTk&amp;index=1">Playlist - Programación de Videojuegos Ensamblador Z80 - Prof. Retroman</a></li>
+<li><a href="https://www.youtube.com/watch?v=5aGiwhEVKMA">Video - Dinousaurio de Chrome</a></li>
+<li><a href="https://www.youtube.com/watch?v=h9KqifgNpwY">Video - Como graficar un circulo en assembler</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: jelou</p>
+<p class="date">Created: 2021-03-31 mié 00:47</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+
+
+</body></html>

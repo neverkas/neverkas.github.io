@@ -1,0 +1,520 @@
+<!--?xml version="1.0" encoding="utf-8"?--><!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<!-- 2021-04-03 sáb 17:12 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guia Linux - Gestores de Paquetes</title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="jelou">
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/sass-style.css">
+<script type="text/javascript" src="/assets/js/all.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Guia Linux - Gestores de Paquetes</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org517758a">1. Pacman</a>
+<ul>
+<li><a href="#org033d67f">1.1. Comandos Basicos</a></li>
+<li><a href="#org50a16ee">1.2. Instalar paquetes y evitar confirmar la instalación</a></li>
+<li><a href="#orgb2cbd8b">1.3. AUR Helpers</a>
+<ul>
+<li><a href="#org9168fce">1.3.1. AURMAN</a></li>
+</ul>
+</li>
+<li><a href="#org82bca9b">1.4. Posibles errores</a>
+<ul>
+<li><a href="#org54f9889">1.4.1. Permisos para instalar paquetes</a></li>
+<li><a href="#org4341ac1">1.4.2. No funciona Pacstrap</a></li>
+<li><a href="#orga38b14e">1.4.3. Referencias</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgc14b9e5">2. Referencias</a>
+<ul>
+<li><a href="#org7fc16a7">2.1. Referencias Web Oficiales</a></li>
+<li><a href="#orga8e2dd3">2.2. Referencias Web Extraoficiales</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org517758a" class="outline-2">
+<h2 id="org517758a"><span class="section-number-2">1</span> Pacman</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org033d67f" class="outline-3">
+<h3 id="org033d67f"><span class="section-number-3">1.1</span> Comandos Basicos</h3>
+<div class="outline-text-3" id="text-1-1">
+<div class="org-src-container">
+<pre class="src src-shell" id="org2aa37c7"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Install a package(s)</span>
+pacman -S
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Remove a package(s)</span>
+pacman -Rs
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Search for package(s</span>
+pacman -Ss
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Upgrade Packages</span>
+pacman -Syu
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org50a16ee" class="outline-3">
+<h3 id="org50a16ee"><span class="section-number-3">1.2</span> Instalar paquetes y evitar confirmar la instalación</h3>
+<div class="outline-text-3" id="text-1-2">
+<div class="org-src-container">
+<pre class="src src-shell" id="org2078dde">pacman -S --noconfirm apache
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">otra alternativa seria la siguiente</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">yes | pacman -S apache</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb2cbd8b" class="outline-3">
+<h3 id="orgb2cbd8b"><span class="section-number-3">1.3</span> AUR Helpers</h3>
+<div class="outline-text-3" id="text-1-3">
+</div>
+<div id="outline-container-org9168fce" class="outline-4">
+<h4 id="org9168fce"><span class="section-number-4">1.3.1</span> AURMAN</h4>
+<div class="outline-text-4" id="text-1-3-1">
+</div>
+<ol class="org-ol">
+<li><a id="org1ef3f36"></a>Instalación<br>
+<div class="outline-text-5" id="text-1-3-1-1">
+<p>
+Para instalar ingresar lo siguiente en la terminal
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="org1414fbd">git clone https://aur.archlinux.org/aurman.git
+<span style="color: #4f97d7;">cd</span> aurman &amp;&amp; makepkg -si
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org5af308a"></a>Buscar Paquetes<br>
+<div class="outline-text-5" id="text-1-3-1-2">
+<div class="org-src-container">
+<pre class="src src-shell" id="org4934dc9">aurman -Ss nombre_paquete
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org355043b"></a>Instalar Paquetes<br>
+<div class="outline-text-5" id="text-1-3-1-3">
+<div class="org-src-container">
+<pre class="src src-shell" id="org4174bb2">aurman -S nombre_paquete
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org7b263be"></a>Problemas frecuentes<br>
+<div class="outline-text-5" id="text-1-3-1-4">
+<p>
+Si al intentar compilar con <b>makepkg -si</b> y nos lanza el siguiente error,
+debemos copiar la <b>clave pública desconocida</b> que nos aparece.
+Luego la importarmos con <b>gpg –recv-key</b> (que la descagará del servidor que tengamos
+por defecto), si queremos especificar de que servidor agregamos el parámetro <b>-keyserver</b>
+seguido de la ruta del servidor
+</p>
+
+<p>
+<b>Posible Problema:</b>
+</p>
+
+<pre class="example" id="aurman-error">==&gt; Validando los archivos source con md5sums...
+aurman_sources ... Omitido
+==&gt; Verificando las firmas de las fuentes con gpg...
+aurman_sources git repo ... HA FALLADO (clave pública desconocida 465022E743D71E39)
+==&gt; ERROR: ¡No se ha podido verificar alguna de las firmas PGP!
+</pre>
+
+<p>
+<b>Posible Solucion:</b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="orgbf02f3d"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">importamos la clave</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Observación:</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Si se omite el parámetro -keyserver, usará el servidor que tengamos por defecto</span>
+gpg --recv-key CLAVE_PUBLICA_ERROR
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Intentamos compilar nuevamente</span>
+makepkg -si
+</pre>
+</div>
+</div>
+</li>
+<li><a id="orgfcd02aa"></a>Referencias Web Oficiales<br>
+<div class="outline-text-5" id="text-1-3-1-5">
+<ul class="org-ul">
+<li><a href="https://wiki.archlinux.org/index.php/GnuPG_(Espa%C3%B1ol)">https://wiki.archlinux.org/index.php/GnuPG_(Espa%C3%B1ol)</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/AUR_helpers_(Espa%C3%B1ol)">https://wiki.archlinux.org/index.php/AUR_helpers_(Espa%C3%B1ol)</a></li>
+</ul>
+</div>
+</li>
+<li><a id="orgb5612f9"></a>Referencias Web Extraoficiales<br>
+<div class="outline-text-5" id="text-1-3-1-6">
+<ul class="org-ul">
+<li><a href="https://www.fossmint.com/best-aur-helpers-for-arch-linux/">https://www.fossmint.com/best-aur-helpers-for-arch-linux/</a></li>
+<li><a href="https://denovatoanovato.net/gestores-de-paquetes-aur-helpers-archlinux/">https://denovatoanovato.net/gestores-de-paquetes-aur-helpers-archlinux/</a></li>
+<li><a href="https://blog.desdelinux.net/yay-una-excelente-ayudante-para-aur-y-una-alternativa-a-yaourt/">https://blog.desdelinux.net/yay-una-excelente-ayudante-para-aur-y-una-alternativa-a-yaourt/</a></li>
+<li><a href="https://www.evaristogz.com/crear-publicar-firmar-claves-gpg-pgp/">https://www.evaristogz.com/crear-publicar-firmar-claves-gpg-pgp/</a></li>
+<li><a href="https://www.genbeta.com/desarrollo/manual-de-gpg-cifra-y-envia-datos-de-forma-segura">https://www.genbeta.com/desarrollo/manual-de-gpg-cifra-y-envia-datos-de-forma-segura</a></li>
+<li>[Problemas al instalar Aurman (forum.manjaro.org)](<a href="https://forum.manjaro.org/t/aur-package-fails-to-verify-pgp-gpg-key-unknown-public-key-one-or-more-pgp-signatures-could-not-be-verified/42687">https://forum.manjaro.org/t/aur-package-fails-to-verify-pgp-gpg-key-unknown-public-key-one-or-more-pgp-signatures-could-not-be-verified/42687</a>)</li>
+<li>[Alternativas para reemplazar yaourt (linuxadictos.com)](<a href="https://www.linuxadictos.com/las-mejores-alternativas-para-reemplazar-yaourt-en-arch-linux.html">https://www.linuxadictos.com/las-mejores-alternativas-para-reemplazar-yaourt-en-arch-linux.html</a>)</li>
+<li>[Yaourt esta deprecado en Arch Linux (maslinux.net)](<a href="https://maslinux.es/yaourt-esta-muerto-utiliza-estas-alternativas-para-aur-en-arch-linux/">https://maslinux.es/yaourt-esta-muerto-utiliza-estas-alternativas-para-aur-en-arch-linux/</a>)</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org82bca9b" class="outline-3">
+<h3 id="org82bca9b"><span class="section-number-3">1.4</span> Posibles errores</h3>
+<div class="outline-text-3" id="text-1-4">
+</div>
+<div id="outline-container-org54f9889" class="outline-4">
+<h4 id="org54f9889"><span class="section-number-4">1.4.1</span> Permisos para instalar paquetes</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<p>
+<b>Problema:</b>
+</p>
+<pre class="example">fdisk: cannot open /dev/sda: Permission denied
+</pre>
+
+<p>
+<b>Solución:</b>
+Escribir en la terminal <b>su</b> presionar Enter, y escribir la password
+</p>
+</div>
+</div>
+<div id="outline-container-org4341ac1" class="outline-4">
+<h4 id="org4341ac1"><span class="section-number-4">1.4.2</span> No funciona Pacstrap</h4>
+<div class="outline-text-4" id="text-1-4-2">
+<p>
+Esto puede suceder en el proceso de instalación de <b>arch linux</b>
+</p>
+
+<p>
+<b>Problema:</b>
+</p>
+<pre class="example">[root@archlinux vagrant]# pacstrap
+bash: pacstrap: command not found
+</pre>
+
+<p>
+<b><b>Solución:</b></b>
+</p>
+<div class="org-src-container">
+<pre class="src src-shell" id="org30d8996"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">instalamos pkgfile</span>
+yes | pacman -S pkgfile
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">lo actualizamos</span>
+pkgfile --update
+
+pkgfile pacstrap
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">instalamos los scripts faltantes</span>
+yes | pacman -S extra/arch-install-scripts
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orga38b14e" class="outline-4">
+<h4 id="orga38b14e"><span class="section-number-4">1.4.3</span> Referencias</h4>
+<div class="outline-text-4" id="text-1-4-3">
+</div>
+<ol class="org-ol">
+<li><a id="orgd710ae7"></a>Referencias Web Oficiales<br>
+<div class="outline-text-5" id="text-1-4-3-1">
+<ol class="org-ol">
+<li><a href="https://git.archlinux.org/arch-install-scripts.git/tree/pacstrap.in">https://git.archlinux.org/arch-install-scripts.git/tree/pacstrap.in</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/Pacman">https://wiki.archlinux.org/index.php/Pacman</a></li>
+<li>[Referencia #1 - Arch Linux Arm](<a href="https://archlinuxarm.org/forum/viewtopic.php?f=60&amp;t=8529">https://archlinuxarm.org/forum/viewtopic.php?f=60&amp;t=8529</a>)</li>
+</ol>
+</div>
+</li>
+<li><a id="orgee24d1f"></a>Referencias Web Extraoficiales<br>
+<div class="outline-text-5" id="text-1-4-3-2">
+<ol class="org-ol">
+<li><a href="https://www.muylinux.com/2012/08/01/arch-linux-instalador/">https://www.muylinux.com/2012/08/01/arch-linux-instalador/</a></li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc14b9e5" class="outline-2">
+<h2 id="orgc14b9e5"><span class="section-number-2">2</span> Referencias</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org7fc16a7" class="outline-3">
+<h3 id="org7fc16a7"><span class="section-number-3">2.1</span> Referencias Web Oficiales</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>[Pacman Comandos - Documentación Oficial ](<a href="https://wiki.archlinux.org/index.php/Pacman">https://wiki.archlinux.org/index.php/Pacman</a>)</li>
+<li>[USB Flash Installation Media - Wiki ArchLinux](<a href="https://wiki.archlinux.org/index.php/USB_flash_installation_medium_(Espa%C3%B1ol)">https://wiki.archlinux.org/index.php/USB_flash_installation_medium_(Espa%C3%B1ol)</a>)</li>
+<li>[Multiboot Usb Drive - Wiki ArchLinux](<a href="https://wiki.archlinux.org/index.php/Multiboot_USB_drive_(Espa%C3%B1ol)">https://wiki.archlinux.org/index.php/Multiboot_USB_drive_(Espa%C3%B1ol)</a>)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga8e2dd3" class="outline-3">
+<h3 id="orga8e2dd3"><span class="section-number-3">2.2</span> Referencias Web Extraoficiales</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li>[Referencia #1 - StackOverflow](<a href="https://stackoverflow.com/questions/35343707/linux-apt-get-command-not-found-how-to-install-a-package-in-arch-linux">https://stackoverflow.com/questions/35343707/linux-apt-get-command-not-found-how-to-install-a-package-in-arch-linux</a>)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: jelou</p>
+<p class="date">Created: 2021-04-03 sáb 17:12</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+
+
+</body></html>

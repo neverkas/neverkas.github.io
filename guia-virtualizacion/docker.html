@@ -1,0 +1,1953 @@
+<!--?xml version="1.0" encoding="utf-8"?--><!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<!-- 2021-04-04 dom 02:07 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guia Virtualización - Docker</title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="jelou">
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/sass-style.css">
+<script type="text/javascript" src="/assets/js/all.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Guia Virtualización - Docker</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgc0a41e3">1. Docker</a>
+<ul>
+<li><a href="#org0bb7528">1.1. Conceptos</a>
+<ul>
+<li><a href="#org577bf16">1.1.1. Imagen</a></li>
+<li><a href="#org46d8d3f">1.1.2. Contenedor</a></li>
+</ul>
+</li>
+<li><a href="#org139678f">1.2. Instalación</a></li>
+<li><a href="#org97d49c6">1.3. Comandos básicos</a>
+<ul>
+<li><a href="#org81272c9">1.3.1. Lista de Comandos</a></li>
+<li><a href="#orgcf1de06">1.3.2. Lista de parámetros</a></li>
+<li><a href="#org7c2b305">1.3.3. Observaciones importantes</a></li>
+<li><a href="#org00e1a3c">1.3.4. Crear Contenedores en primer y segundo plano</a></li>
+<li><a href="#org0c023cb">1.3.5. Crear Imagenes</a></li>
+<li><a href="#org8545222">1.3.6. Eliminar multiples Contenedores</a></li>
+<li><a href="#orgc917fb0">1.3.7. Eliminar multiples imagenes</a></li>
+<li><a href="#org343e7bf">1.3.8. Descargar ó Actualizar un Contenedor</a></li>
+<li><a href="#orgf908ec0">1.3.9. Listar contenedores en ejecución e inactivos</a></li>
+<li><a href="#org8b91710">1.3.10. Acceder ó Iniciar/Detener ejecución de contenedores</a></li>
+<li><a href="#orgaa3c2fc">1.3.11. Versionar containers</a></li>
+<li><a href="#org3e7f444">1.3.12. Abrir Puertos</a></li>
+<li><a href="#org56bb338">1.3.13. Referencias Web</a></li>
+</ul>
+</li>
+<li><a href="#orgbd32182">1.4. Estados</a></li>
+<li><a href="#org9369a32">1.5. Configurando Puertos</a></li>
+<li><a href="#orgb99aecf">1.6. Configurando Volumenes</a>
+<ul>
+<li><a href="#orgf9b27dd">1.6.1. Conceptos</a></li>
+<li><a href="#orge251490">1.6.2. Ejemplos</a></li>
+<li><a href="#org0644e05">1.6.3. Referencias Youtube</a></li>
+</ul>
+</li>
+<li><a href="#org73577cc">1.7. Probando Distribuciones Linux</a>
+<ul>
+<li><a href="#orgfcba308">1.7.1. Probando Alpine Edge</a></li>
+<li><a href="#org0d4c40f">1.7.2. Probando Debian Buster</a></li>
+<li><a href="#org2c48c4b">1.7.3. Probando Ubuntu Trusty</a></li>
+<li><a href="#orgc28c195">1.7.4. Ubuntu</a></li>
+</ul>
+</li>
+<li><a href="#org16c7d13">1.8. Configurando Redes Docker</a>
+<ul>
+<li><a href="#orgce3004f">1.8.1. Conceptos</a></li>
+<li><a href="#org74a8ead">1.8.2. Crear Red</a></li>
+<li><a href="#org85a78fa">1.8.3. Referencias</a></li>
+</ul>
+</li>
+<li><a href="#org6ebd409">1.9. Ejemplos</a></li>
+<li><a href="#orgb2e7de8">1.10. Referencias</a>
+<ul>
+<li><a href="#org0795692">1.10.1. Referencias Web Extraoficiales</a></li>
+<li><a href="#orgfc9fa14">1.10.2. Referencias Youtube</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org45fb488">2. Dockerfile</a>
+<ul>
+<li><a href="#org40f6e62">2.1. Conceptos</a></li>
+<li><a href="#orgc973437">2.2. Comandos básicos</a>
+<ul>
+<li><a href="#orgc8f7de8">2.2.1. (BUILD) Crear Imagen</a></li>
+<li><a href="#org0a6603c">2.2.2. (COPY) Copiar archivos</a></li>
+<li><a href="#org4ee024f">2.2.3. (ADD) Descargar y Descomprimir archivos</a></li>
+<li><a href="#org2d21ff8">2.2.4. (ENTRYPOINT) Pasar scripts por parámetro</a></li>
+<li><a href="#org31df005">2.2.5. (CMD) Comandos por defecto</a></li>
+<li><a href="#orgaa201f0">2.2.6. (RUN) Ejecutar comandos</a></li>
+</ul>
+</li>
+<li><a href="#orgd7d24e6">2.3. Ejemplos</a></li>
+</ul>
+</li>
+<li><a href="#orga49b0c9">3. Docker Compose</a>
+<ul>
+<li><a href="#orgee40442">3.1. Conceptos</a></li>
+<li><a href="#org408cfe1">3.2. Instalación y Configuración</a></li>
+<li><a href="#org45dcfd1">3.3. Comandos Básicos</a></li>
+<li><a href="#orga9b790d">3.4. Ejemplos</a></li>
+<li><a href="#org31178e7">3.5. Referencias</a>
+<ul>
+<li><a href="#org9516398">3.5.1. Referencias Web Oficiales</a></li>
+<li><a href="#orgf548adc">3.5.2. Referencias Youtube</a></li>
+<li><a href="#org5cc4d8d">3.5.3. Issues Comunes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org4bc7315">4. Docker Tips</a>
+<ul>
+<li><a href="#orga553f2a">4.1. Ejecutar contenedores al iniciar el sistema</a></li>
+<li><a href="#org280ba7a">4.2. Conocer el timestamp de los logs</a></li>
+</ul>
+</li>
+<li><a href="#org4e60a4c">5. Servicios Básicos</a>
+<ul>
+<li><a href="#orgebf453f">5.1. Nginx</a></li>
+<li><a href="#org220d711">5.2. Duckdns</a>
+<ul>
+<li><a href="#orgb2fa38a">5.2.1. Conceptos</a></li>
+<li><a href="#org35fe140">5.2.2. Referencias</a></li>
+</ul>
+</li>
+<li><a href="#org465e186">5.3. Inspircd</a>
+<ul>
+<li><a href="#orgaf3b49e">5.3.1. Conceptos</a></li>
+<li><a href="#orgb28ef14">5.3.2. Referencias Web Oficiales</a></li>
+<li><a href="#org5cb30f3">5.3.3. Referencias Youtube</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org144395b">6. Glosario</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc0a41e3" class="outline-2">
+<h2 id="orgc0a41e3"><span class="section-number-2">1</span> Docker</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org0bb7528" class="outline-3">
+<h3 id="org0bb7528"><span class="section-number-3">1.1</span> Conceptos</h3>
+<div class="outline-text-3" id="text-1-1">
+</div>
+<div id="outline-container-org577bf16" class="outline-4">
+<h4 id="org577bf16"><span class="section-number-4">1.1.1</span> Imagen</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<ul class="org-ul">
+<li>Es como una plantilla que se usa de modelo para crear <b>contenedores</b></li>
+<li>Pueden crearse varios contenedores a partir de una imagen</li>
+<li>No se pueden modificar</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org46d8d3f" class="outline-4">
+<h4 id="org46d8d3f"><span class="section-number-4">1.1.2</span> Contenedor</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<ul class="org-ul">
+<li>Se crean a partir de una imagen</li>
+<li>Puede ser una aplicación, un sistema operativo, …</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org139678f" class="outline-3">
+<h3 id="org139678f"><span class="section-number-3">1.2</span> Instalación</h3>
+<div class="outline-text-3" id="text-1-2">
+<div class="org-src-container">
+<pre class="src src-shell" id="org2536920"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">en manjaro</span>
+sudo pacman -S docker
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">en ubuntu</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">apt install docker</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Create the docker group.</span>
+sudo groupadd docker
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Add your user to the docker group.</span>
+sudo usermod -aG docker $<span style="color: #4f97d7;">{</span><span style="color: #7590db;">USER</span><span style="color: #4f97d7;">}</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">relogear ò reiniciar</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">verificamos si anda</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">descargando la imagen de hello-world</span>
+docker run hello-world
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="org2f45bef"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para listar los contenedores en ejecución</span>
+docker ps
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para correr o descargar &amp;&amp; instalar una version ligera de linux con el tag 3.12</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- Si ya teniamos la imagen de la distribución Alpine, se creará un nuevo contenedor</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">por cada vez que ejecutemos esta linea</span>
+docker run alpine:3.12
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">podemos asignar un nombre a cada nuevo contenedor</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- facilita tener varios contenedores de la misma distribución</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- nos evitamos utilizar los ID de los contenedores, y usar solo el nombre</span>
+docker run --name miLinux alpine:3.12
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">iniciar en modo "interactivo" en la terminal al contenedor alpine</span>
+docker exec -it alpine:3.12 sh
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">si el contenedor tenia algun nombre</span>
+docker exec -it miLinux sh
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para listar archivos de la imagen</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">seguido al nombre del container y del tag, puedo mandarle comandos al container</span>
+docker exec alpine:3.12 ls -l
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">muestra los containers instalados</span>
+docker image ls | head
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">muestra los ultimos comandos de todos los containers (y su hash en la 1ra columna para versionar)</span>
+docker ps -a | head
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">comitear un container (suponiendo que copiaste el hash al ejecutar "docker ps -a")</span>
+docker commit elHashDelContainer
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">podemos verlo (copiamos el id)</span>
+docker image ls | head
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">le asignamos un tag para diferenciar (suponiendo que asdasd123123 es el id)</span>
+docker image tag asdasd123123 miPrimerDocker
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org97d49c6" class="outline-3">
+<h3 id="org97d49c6"><span class="section-number-3">1.3</span> Comandos básicos</h3>
+<div class="outline-text-3" id="text-1-3">
+<ul class="org-ul">
+<li>El parámetro <b>ps</b> es como en linux normal, muestra los procesos en ejecución por tanto mostrará los containers activos (en ejecución)</li>
+</ul>
+</div>
+<div id="outline-container-org81272c9" class="outline-4">
+<h4 id="org81272c9"><span class="section-number-4">1.3.1</span> Lista de Comandos</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<table id="org6fc47a7" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Comando</th>
+<th scope="col" class="org-left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">docker start</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">docker stop</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">docker restart</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">docker images</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">docker run</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">docker exec</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">docker search algunContainer</td>
+<td class="org-left">Buscar un container</td>
+</tr>
+
+<tr>
+<td class="org-left">docker images</td>
+<td class="org-left">Listar containers ya instalados (entorno local)</td>
+</tr>
+
+<tr>
+<td class="org-left">docker ps</td>
+<td class="org-left">Listar containers en ejecución</td>
+</tr>
+
+<tr>
+<td class="org-left">docker ps -a # -all</td>
+<td class="org-left">Listar (all) todos los containers (activos/inactivos)</td>
+</tr>
+
+<tr>
+<td class="org-left">docker ps -l # -list</td>
+<td class="org-left">Listar (list) últimos containers creados</td>
+</tr>
+
+<tr>
+<td class="org-left">docker restart IDdeAlgun</td>
+<td class="org-left">Reiniciar un container (como si reiniciaras la maquina y sus servicios)</td>
+</tr>
+
+<tr>
+<td class="org-left">docker start IDdeAlgunContainer</td>
+<td class="org-left">Iniciar el Container como proceso(y sus servicios)</td>
+</tr>
+
+<tr>
+<td class="org-left">docker stop IDdeAlgunContainer</td>
+<td class="org-left">Detiene el Container como proceso(y sus servicios)</td>
+</tr>
+
+<tr>
+<td class="org-left">docker exec IdDeAlgunContainer</td>
+<td class="org-left">Ejecuta un comando en un container (NO CREA UNO NUEVO)</td>
+</tr>
+
+<tr>
+<td class="org-left">docker run algunContainer algunComando</td>
+<td class="org-left">Para ejecutar una linea comandos (y crea otro container)</td>
+</tr>
+
+<tr>
+<td class="org-left">docker rm -f IDdeAlgunContainer</td>
+<td class="org-left">Para eliminar un container</td>
+</tr>
+
+<tr>
+<td class="org-left">docker rmi IDdeAlgunaImagen</td>
+<td class="org-left">Para eliminar una imagen</td>
+</tr>
+
+<tr>
+<td class="org-left">docker run -it algunContainer /bin/bash</td>
+<td class="org-left">Modo interactivo (via terminal) (Y CREA OTRO CONTAINER)</td>
+</tr>
+
+<tr>
+<td class="org-left">docker exec -it algunContainer /bin/bash</td>
+<td class="org-left">Modo Interactivo (via terminal  (NO CREA UNO NUEVO)</td>
+</tr>
+
+<tr>
+<td class="org-left">docker pull algunContainer</td>
+<td class="org-left">Descargar o actualizarlo</td>
+</tr>
+
+<tr>
+<td class="org-left">docker pull algunContainer:unTag</td>
+<td class="org-left">El tag puede ser una version especifica</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">docker inspect IDdeAlgunContainer</td>
+<td class="org-left">Da información COMPLETA en formato JSON</td>
+</tr>
+
+<tr>
+<td class="org-left">docker rm $(docker ps -a -q)</td>
+<td class="org-left">Remover todos los contenedores detenido</td>
+</tr>
+
+<tr>
+<td class="org-left">docker rm $(docker images -q)</td>
+<td class="org-left">Remover todas las imagenes</td>
+</tr>
+
+<tr>
+<td class="org-left">docker kill $(docker ps -q)</td>
+<td class="org-left">Mata el proceso de todos los contenedores en ejecución</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Referencias:
+</p>
+<ol class="org-ol">
+<li><a href="https://docs.docker.com/engine/reference/commandline/container_prune/">https://docs.docker.com/engine/reference/commandline/container_prune/</a></li>
+<li><a href="https://hub.docker.com/repository/docker/neverkas/distroalpine">https://hub.docker.com/repository/docker/neverkas/distroalpine</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/como-instalar-y-usar-docker-en-ubuntu-18-04-1-es">https://www.digitalocean.com/community/tutorials/como-instalar-y-usar-docker-en-ubuntu-18-04-1-es</a></li>
+<li><a href="https://www.ionos.es/digitalguide/servidores/configuracion/tutorial-docker-instalacion-y-primeros-pasos/">https://www.ionos.es/digitalguide/servidores/configuracion/tutorial-docker-instalacion-y-primeros-pasos/</a></li>
+<li><a href="https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/">https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/</a></li>
+<li><a href="https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/">https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/</a></li>
+<li><a href="https://platzi.com/blog/desplegar-contenedores-docker/">Desplegar contenedores - platzi.com</a></li>
+<li><a href="https://pandorafms.com/blog/es/docker-run/">Docker run - pandorafms.com</a></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgcf1de06" class="outline-4">
+<h4 id="orgcf1de06"><span class="section-number-4">1.3.2</span> Lista de parámetros</h4>
+<div class="outline-text-4" id="text-1-3-2">
+<table id="orgd998c25" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Parametro</th>
+<th scope="col" class="org-left">Forma Abreviada</th>
+<th scope="col" class="org-left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">detach</td>
+<td class="org-left">d</td>
+<td class="org-left">Correr contenedor en segundo plano</td>
+</tr>
+
+<tr>
+<td class="org-left">tty</td>
+<td class="org-left">t</td>
+<td class="org-left">(tty) Asigna una pseudo terminal al proceso</td>
+</tr>
+
+<tr>
+<td class="org-left">interactive</td>
+<td class="org-left">i</td>
+<td class="org-left">(STDIN) Mantiene el buffer de entrada abierto</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">it</td>
+<td class="org-left">Combinamos los parámetros para interactuar con con una pseudoterminal</td>
+</tr>
+
+<tr>
+<td class="org-left">port</td>
+<td class="org-left">p</td>
+<td class="org-left">Abrir puertos del contenedor</td>
+</tr>
+
+<tr>
+<td class="org-left">publish</td>
+<td class="org-left">(?)</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">volume</td>
+<td class="org-left">v</td>
+<td class="org-left">(Volumenes) Compartir directorios en el contenedor</td>
+</tr>
+
+<tr>
+<td class="org-left">mount</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">link</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Enlaza un contenedor con otro (ideal para servidores web)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org7c2b305" class="outline-4">
+<h4 id="org7c2b305"><span class="section-number-4">1.3.3</span> Observaciones importantes</h4>
+<div class="outline-text-4" id="text-1-3-3">
+<ul class="org-ul">
+<li>Si queremos acceder al container (NO CREAR UNO NUEVO) usamos "docker exec -it IDdeAlgunaImagen bash" (si usamos run se creará un nuevo container)</li>
+<li>Siempre se crea un contenedor distinto cuando ejecutas una imagen con "docker run -it IdAlgunaImagen bash"</li>
+<li>Podemos usar el comando "docker run -it IDdeAlgunaImagen bash" para crear un nuevo contenedor</li>
+<li>Si queremos guardar cambios de un container, podemos versionarlo comiteando y pusheando los cambios en algun repositorio</li>
+</ul>
+
+<pre class="example" id="docker-crear-imagen">Supongamos que tenemos un container de un ubuntu trusty (14.04) que ya tiene varios packages porque es el que usamos
+(Ej. haskell, prolog, git, etc...) pero queremos probar un nuevo package o configuración
+como sería instalar mysql, mongodb, etc.. sin que se vea afectado el que solemos usar.
+Osea queremos uno de prueba, que sea idéntico al que usamos, donde instalemos cosas o probemos configuraciones del sistema operativo.
+
+Entonces podemos correr el comando "docker run -it nombreImagen" para crear un nuevo container que tiene
+lo mismo que al que apuntamos con el ID, si no funciona lo que queriamos instalar o no era
+lo que necesitabamos borramos ese nuevo container y nos quedamos con el anterior
+
+Observaciones:
+Si estamos diciendo que esa imagen ya dispone de varios programas que nosotros instalamos,
+es porque nosotros previamente hicimos un build de una imagen que disponga esos programas.
+Para más información nos toca investigar sobre Dockerfile.
+</pre>
+</div>
+</div>
+<div id="outline-container-org00e1a3c" class="outline-4">
+<h4 id="org00e1a3c"><span class="section-number-4">1.3.4</span> Crear Contenedores en primer y segundo plano</h4>
+<div class="outline-text-4" id="text-1-3-4">
+</div>
+<ol class="org-ol">
+<li><a id="orgf8b9b90"></a>Conceptos<br>
+<div class="outline-text-5" id="text-1-3-4-1">
+<ul class="org-ul">
+<li>Para crear contenedores que corran en segundo plano pasamos el parámetro -d al comando <b>docker run</b></li>
+<li>Para ejecutar contenedores que corran en segundo plano pasamos el parámetro -d al comando <b>docker exec</b></li>
+</ul>
+
+<blockquote id="docker-diferencias-primer-segundo-plano">
+<p>
+Al crear un contenedor en segundo plano, se ejecutará de fondo (osea por detrás de la terminal)
+de donde ejecutemos el comando <b>docker run</b>, pudiendo seguir utilizando esa terminal donde lo ejecutamos.
+(particularmente útil para correr servidores linux, base de datos, ….)
+</p>
+
+<p>
+Si no lo creamos en segundo plano, nos aparecerá en la terminal el resultado de ejecutar el contenedor.
+Si el contenedor era un servidor linux ó una base de datos, el ciclo de ciclo de vida del contenedor finalizará
+luego de ejecutar el sevidor o la base de datos.
+Sería como encenderlo, y luego apagarlo, sin poder darle uso. Teniendo que iniciar el contenedor nuevamente.
+</p>
+
+<p>
+Es decir si creamos un contenedor en primer plano (no le pasamos el parámetro -d)
+que ejecuta un comando ó tarea. Luego que esta tarea/comando se ejecutó, se detendrá la ejecución del contenedor.
+Por tanto no podremos ejecutar otro comando, a menos que iniciemos el contenedor con el comando <b>docker start</b>
+</p>
+</blockquote>
+
+<blockquote id="docker-diferencias-comandos-run-exec">
+<p>
+El comando <b>docker run</b> crea un contenedor que corra una tarea/comando 
+El comando <b>docker exec</b> ejecuta en un contenedor ya existente una tarea/comando
+</p>
+
+<p>
+Si queremos crear un contenedor que tenga una distribución de linux,
+y podamos mandarle via terminal a ese linux comandos (ls, ps, …) 
+ó acceder al linux con una pseudoterminal (modo interactivo)
+</p>
+
+<p>
+debemos habilitar en el comando <b>docker run</b> el modo de "pseudoterminal" con el parámetro -t (hace referencia a tty)
+para que luego podamos acceder con <b>docker exec</b> a la pseudoterminal de forma interactiva con el parámetro -i -t
+ó solo enviarle comandos (sin usar -i -t)
+</p>
+
+<p>
+Si usamos los parámetros -i -t en el comando <b>docker run</b>,
+habilitará la terminal, ejecutará el comando que le pasemos y entrará en el contenedor de manera interactiva
+</p>
+</blockquote>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="orgb8d8486"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Creamos un contenedor con las siguientes características</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-El puerto 8000 habilitado, y podamos acceder a ese puerto desde nuestro ordenador desde puerto 80 (se redirecciona)</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-Con el nombre "miservidor"</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-Que sea un linux con la distribución Debian booster</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-Que podamos via terminal mandarles comandos (ls,ps,...), ó también acceder de manera interactiva</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-Que se ejecute en segundo plano</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Parámetros utilizados:</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- t: Habilita la pseudoterminal, para enviar comandos o acceder de manera interactiva</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- d: Corre el contenedor en segundo parámetro,</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-- name: le asignamos un nombre para usar de referencia</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- p puertoHost:puertoContenedor, abre un puerto para el contenedor</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#  </span><span style="color: #2aa1ae; background-color: #292e34;">(el segundo puerto es el que usa el contenedor, y el primero el que usaremos fuera de docker en nuestro ordenador)</span>
+docker run --name miservidor -t -d -p <span style="color: #a45bad;">8000:80</span> debian:booster
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">ejecutamos un comando para listar los directorios de miservidor</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">sin necesidad de acceder al contenedor de manera interactiva (osea sin los parámetros -t -i)</span>
+docker exec miservidor ls
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">accedemos al servidor de manera interactiva (parámetro -i) mediante una pseudoterminal (parámetro -t)</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Observaciones:</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- Según la distribución de linux, puede que en vez de escribir "bash" debas escribir "sh"</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- Para salir del contenedor utilizar el comando "exit"</span>
+docker exec -ti miservidor bash
+</pre>
+</div>
+</div>
+</li>
+<li><a id="orgd7f2fb5"></a>Referencias (de Issues)<br>
+<div class="outline-text-5" id="text-1-3-4-2">
+<ol class="org-ol">
+<li><a href="https://mkyong.com/docker/docker-exec-bash-executable-file-not-found-in-path/">Docker -exec: Executable file not found - mkyong.com/docker</a></li>
+<li><a href="https://stackoverflow.com/questions/29599632/docker-container-is-not-running/45270860#45270860">Docker Container is not running - stackoverflow.com</a></li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-org0c023cb" class="outline-4">
+<h4 id="org0c023cb"><span class="section-number-4">1.3.5</span> Crear Imagenes</h4>
+<div class="outline-text-4" id="text-1-3-5">
+</div>
+<ol class="org-ol">
+<li><a id="orga62d444"></a>Conceptos<br>
+<div class="outline-text-5" id="text-1-3-5-1">
+<blockquote id="docker-crear-imagenes">
+<p>
+Podemos crear una imagen de un servidor web que tenga por defecto algunos lenguajes de programación
+como haskell, php, etc.. Ó que también tenga servicios de base de datos como sql, mysql, mongodb, etc..
+y a partir de esas imagenes podemos crear contenedores.
+</p>
+
+<p>
+Tiene como ventaja no tener que configurar manualmente ni tampoco instalar todos los paquetes uno por uno,
+porque la imagen lo automatiza, y cada nuevo contenedor será idéntico.
+</p>
+
+<p>
+Además podemos crear contenedores para probar nuevos paquetes, que desconocemos si pueden generar alguna falla
+con el sistema operativo que tiene el contenedor.
+</p>
+
+<p>
+Por tanto si algo fallara, sólo tendriamos que borrar el contenedor y crear uno nuevo a partir de la imagen base
+de la que partimos para crear los contenedores.
+</p>
+</blockquote>
+</div>
+</li>
+
+<li><a id="org56677e8"></a>Referencias<br>
+<div class="outline-text-5" id="text-1-3-5-2">
+<ol class="org-ol">
+<li><a href="https://aulasoftwarelibre.github.io/taller-de-docker/dockerfile/">Crear imágenes propias - aulasoftwarelibre</a></li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-org8545222" class="outline-4">
+<h4 id="org8545222"><span class="section-number-4">1.3.6</span> Eliminar multiples Contenedores</h4>
+<div class="outline-text-4" id="text-1-3-6">
+</div>
+<ol class="org-ol">
+<li><a id="orge4bf2d6"></a>Ejemplos<br>
+<div class="outline-text-5" id="text-1-3-6-1">
+<div class="org-src-container">
+<pre class="src src-sh" id="org016c00d"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">listamos los contenedores en ejecución</span>
+docker ps
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">otra manera de listar los contenedores en ejecución</span>
+docker container ls
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">listamos TODOS los contenedores (también los inactivos)</span>
+docker ps -a
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">otra manera de listar TODOS los contenedores</span>
+docker container ls -a
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para detener todos los contenedores</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- el parámetro -aq genera y devuelve un listado de contenedores</span>
+docker container stop $<span style="color: #4f97d7;">(</span><span style="color: #fa8072;">docker</span> container ls -aq<span style="color: #4f97d7;">)</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">eliminamos uno o varios contenedores por id</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">(El id lo podemos conocer cuando listamos los contenedores, es la primera columna)</span>
+docker container rm idDeUnContenedor idOtroContenedor
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">eliminamos todos los contenedores inactivos</span>
+docker container prune
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">eliminamos contenedores por uno o varios criterios</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- borrar los que fueron creados hace mas de 12 horas</span>
+docker container prune --filter <span style="color: #2d9574;">"until=12h"</span>
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org3068d36"></a>Referencias<br>
+<div class="outline-text-5" id="text-1-3-6-2">
+<ol class="org-ol">
+<li><a href="https://phoenixnap.com/kb/remove-docker-images-containers-networks-volumes">Remove Docker images containers networks volumes - phoenix.com</a></li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-orgc917fb0" class="outline-4">
+<h4 id="orgc917fb0"><span class="section-number-4">1.3.7</span> Eliminar multiples imagenes</h4>
+<div class="outline-text-4" id="text-1-3-7">
+<p>
+Recordemos que para eliminar contenedores usamos el comando <b>rm</b>
+mientras que para remover imagenes es <b>rmi</b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh" id="orgae05f06"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">listamos las imagenes para revisar el ID</span>
+docker images ls
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">suponiendo que son varias imagenes se pueden agrupar en una linea</span>
+docker rmi a23bb4013216 a341b4013200 a24bb422226
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org343e7bf" class="outline-4">
+<h4 id="org343e7bf"><span class="section-number-4">1.3.8</span> Descargar ó Actualizar un Contenedor</h4>
+<div class="outline-text-4" id="text-1-3-8">
+<div class="org-src-container">
+<pre class="src src-sh" id="org0d41152"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para descargar una imagen ó actualizar un container local ya existente</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">el uso de tag es opcional</span>
+docker pull nombreAlgunContainer:tag
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">usamos los tags para descargar ó actualizar a una versión específica</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">sino especificamos, nos suele traer por defecto la última vesión (latest)</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">usamos de tag el número de la versión</span>
+docker pull ubuntu:14.04 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">es la distribución trusty de ubuntu</span>
+docker pull debian:10 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">es la distribución buster de debian</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">usamos de tag el nombre de la versión</span>
+docker pull ubuntu:trusty <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">14.x</span>
+docker pull debian:buster <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">10.x</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf908ec0" class="outline-4">
+<h4 id="orgf908ec0"><span class="section-number-4">1.3.9</span> Listar contenedores en ejecución e inactivos</h4>
+<div class="outline-text-4" id="text-1-3-9">
+<div class="org-src-container">
+<pre class="src src-sh" id="org00770b3"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">listar containers en ejecución</span>
+docker ps
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-l se refiere a "list"</span>
+docker ps -l <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">tiene el mismo resultado que no pasarle el parámetro -l</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">lista todos los containers (los inactivos también)</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-a se refiere a "all"</span>
+docker ps -a
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org8b91710" class="outline-4">
+<h4 id="org8b91710"><span class="section-number-4">1.3.10</span> Acceder ó Iniciar/Detener ejecución de contenedores</h4>
+<div class="outline-text-4" id="text-1-3-10">
+</div>
+<ol class="org-ol">
+<li><a id="org39a5a3a"></a>Conceptos<br>
+<div class="outline-text-5" id="text-1-3-10-1">
+<ul class="org-ul">
+<li>Iniciamos el contenedor ejecutando en la terminal <b>docker start</b></li>
+<li>Detenemos la ejecución con <b>docker stop</b></li>
+</ul>
+
+<pre class="example" id="docker-ejemplo1-iniciar-contenedor">Si al crear el contenedor mediante *docker run*
+no le pasamos el parámetro -it, entonces no podremos acceder por terminal
+mediante este otro comando *docker exec -it IDdeAlgunContenedor bash*
+
+Porque el comando *run* como dice su nombre, ejecuta un comando cuando se inicie el contenedor
+si no le decimos que lo haga con el modo interactivo mediante una pseudoterminal (parámetros -i y -t)
+tampoco lo hará cuando se lo pasemos al comando *exec*
+</pre>
+
+<pre class="example" id="docker-ejemplo2-iniciar-contenedor">Usando de referencia el ejemplo1, una vez que salgamos del modo interactivo con la pseudoterminal
+el contenedor se detendrá, y deberemos de iniciarlo nuevamente. 
+
+Si no queremos estar iniciando a cada rato el contenedor
+podemos adicionar el parámetro -d para ejecutarlo en un segundo plano
+
+Observación:
+Tenenemos un apartado que detalle un poco más sobre el parámetro d,
+esto es solo a modo de aclaración, de que se detendrá el contenedor una vez que salgamos del modo interactivo.
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-sh" id="orgcd6b728"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">iniciar un container</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">se le puede pasar el nombre, o el ID</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">docker start nombreContainer</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">docker start idContainer</span>
+docker start miUbuntu
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">detener un container en ejecución</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">docker stop nombreContainer</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">docker stop idContainer</span>
+docker stop miDebian
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">entrar al modo interactivo via terminal</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">docker exec -it nombreContainer</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">docker exec -it idContainer</span>
+docker exec -it alpine sh
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Según la distribución de Linux puede que la ruta /bin/bash no aparezca</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">docker exec -it algunContainer sh</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">docker exec -it algunContainer /bin/bash</span>
+docker exec -it ubuntu bin/bash
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-orgaa3c2fc" class="outline-4">
+<h4 id="orgaa3c2fc"><span class="section-number-4">1.3.11</span> Versionar containers</h4>
+<div class="outline-text-4" id="text-1-3-11">
+</div>
+<ol class="org-ol">
+<li><a id="org829cc3f"></a>Conceptos<br>
+<div class="outline-text-5" id="text-1-3-11-1">
+<p>
+Suponiendo que ya habiamos creado en la página de <b>dockerhub</b> un repositorio llamado <b>distroalpine</b>
+podemos realizar los ejemplos de crear tag, o subir los cambios.
+</p>
+</div>
+</li>
+<li><a id="org20d5db8"></a>Crear un tag a nuestro container local<br>
+<div class="outline-text-5" id="text-1-3-11-2">
+<div class="org-src-container">
+<pre class="src src-sh" id="org325b58b">docker tag a24bb4013296 neverkas/distroalpine:3.12
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">los datos que aparecen son</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- usuario (dueño) del repositorio: neverkas</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- nombre del repositorio: distroalpine</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- tag (version en este caso): 3.12</span>
+</pre>
+</div>
+</div>
+</li>
+<li><a id="orgc5e0255"></a>Subir los cambios<br>
+<div class="outline-text-5" id="text-1-3-11-3">
+<div class="org-src-container">
+<pre class="src src-sh" id="org9ab49d9">docker push neverkas/distroalpine:3.12
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">los datos que aparecen son</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- usuario (dueño) del repositorio: neverkas</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- nombre del repositorio: distroalpine</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- tag (version en este caso): 3.12</span>
+</pre>
+</div>
+
+<p>
+docker tag local-image:tagname new-repo:tagname
+docker push new-repo:tagname
+</p>
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-org3e7f444" class="outline-4">
+<h4 id="org3e7f444"><span class="section-number-4">1.3.12</span> Abrir Puertos</h4>
+<div class="outline-text-4" id="text-1-3-12">
+<p>
+Usamos el parámetro -p
+</p>
+</div>
+</div>
+<div id="outline-container-org56bb338" class="outline-4">
+<h4 id="org56bb338"><span class="section-number-4">1.3.13</span> Referencias Web</h4>
+<div class="outline-text-4" id="text-1-3-13">
+<ol class="org-ol">
+<li><a href="https://es.linux-console.net/?p=1181">Contenedor en segundo plano - linux-console.com</a></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-orgbd32182" class="outline-3">
+<h3 id="orgbd32182"><span class="section-number-3">1.4</span> Estados</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+Los estados que puede tener un contenedor son dos <b>exited</b> (inactivo) ó <b>up</b> (en ejecución)
+</p>
+
+<table id="org03714ea" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Estado</th>
+<th scope="col" class="org-left">Descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">exited</td>
+<td class="org-left">Inactivo</td>
+</tr>
+
+<tr>
+<td class="org-left">up</td>
+<td class="org-left">En ejecución</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org9369a32" class="outline-3">
+<h3 id="org9369a32"><span class="section-number-3">1.5</span> Configurando Puertos</h3>
+</div>
+<div id="outline-container-orgb99aecf" class="outline-3">
+<h3 id="orgb99aecf"><span class="section-number-3">1.6</span> Configurando Volumenes</h3>
+<div class="outline-text-3" id="text-1-6">
+</div>
+<div id="outline-container-orgf9b27dd" class="outline-4">
+<h4 id="orgf9b27dd"><span class="section-number-4">1.6.1</span> Conceptos</h4>
+<div class="outline-text-4" id="text-1-6-1">
+<p>
+Los volumenes por defecto se crean en la ruta /var/lib/docker/volumes
+</p>
+</div>
+</div>
+<div id="outline-container-orge251490" class="outline-4">
+<h4 id="orge251490"><span class="section-number-4">1.6.2</span> Ejemplos</h4>
+<div class="outline-text-4" id="text-1-6-2">
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">creamos un nuevo volumen</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">/datos es una ruta nuestro ordenador</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">/www es una ruta que está dentro del contenedor</span>
+docker run -it -v /datos:/www/ --name mi-server alpine:latest sh
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org0644e05" class="outline-4">
+<h4 id="org0644e05"><span class="section-number-4">1.6.3</span> Referencias Youtube</h4>
+<div class="outline-text-4" id="text-1-6-3">
+<ol class="org-ol">
+<li><a href="https://www.youtube.com/watch?v=GfL_Ltu-eyw">https://www.youtube.com/watch?v=GfL_Ltu-eyw</a></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-org73577cc" class="outline-3">
+<h3 id="org73577cc"><span class="section-number-3">1.7</span> Probando Distribuciones Linux</h3>
+<div class="outline-text-3" id="text-1-7">
+</div>
+<div id="outline-container-orgfcba308" class="outline-4">
+<h4 id="orgfcba308"><span class="section-number-4">1.7.1</span> Probando Alpine Edge</h4>
+<div class="outline-text-4" id="text-1-7-1">
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">https://www.emacswiki.org/emacs/Evil</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">https://orgmode.org/manual/Installation.html</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">corremos el container la version Edge (el tag)</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">si no existe lo descarga</span>
+docker run alpine:edge
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">instalar git</span>
+apk add git
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">instalar emacs</span>
+apk add emacs
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">1. listar packages (entrar al emacs)</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">M-x packages-list</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">2. instalar org mode (entrar a emacs )</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">M-x package-install RET org RET</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">3. instalar evil mode (tratè con el list-packages pero no aparecìa)</span>
+git clone https://github.com/emacs-evil/evil.git
+mv evil ~/emacs.d/
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">descargar el theme dark dracula</span>
+https://github.com/dracula/emacs.git
+mv /emacs/dracula-theme.el ~/emacs.d/themes/dracula-theme.el
+</pre>
+</div>
+
+<p>
+Agregar lo sig al ~/.emacs para activar el vim mod y el theme dark dracula
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">con esto agregamos el modo vim</span>
+<span style="color: #4f97d7;">(</span>add-to-list 'load-path <span style="color: #2d9574;">"~/.emacs.d/evil"</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">require</span> '<span style="color: #a45bad;">evil</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span>evil-mode <span style="color: #a45bad;">1</span><span style="color: #4f97d7;">)</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">cargamos el theme dracula dark</span>
+<span style="color: #4f97d7;">(</span>add-to-list 'custom-theme-load-path <span style="color: #2d9574;">"~/.emacs.d/themes"</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">(</span>load-theme 'dracula t<span style="color: #4f97d7;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org0d4c40f" class="outline-4">
+<h4 id="org0d4c40f"><span class="section-number-4">1.7.2</span> Probando Debian Buster</h4>
+<div class="outline-text-4" id="text-1-7-2">
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">1. Descargamos el OS Debian</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- Si ya lo teniamos lo actualizará</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- Seguido de los dos puntos se puede escribir o no una etiqueta/tag</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para especificar una distribución ó versión ó característica</span>
+docker run debian:buster
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">2. Accedemos al container</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- el parámetro "i" hace referencia a "Modo Interactivo"</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- el parámetro "t" hace referencia a "tty" una pseudo-terminal</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">osea interactuar de forma directa con el SO, via terminal y ejecutar instrucciones</span>
+docker run -it debian:buster /bin/bash
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2c48c4b" class="outline-4">
+<h4 id="org2c48c4b"><span class="section-number-4">1.7.3</span> Probando Ubuntu Trusty</h4>
+<div class="outline-text-4" id="text-1-7-3">
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">entramos a la terminal (se creará un nuevo contenedor "distinto" cada vez que ejecutamos este comando)</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">docker run -it ubuntu:trusty bin/bash</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">descargamos la distribución ubuntu versión trusty (14.04)</span>
+docker pull ubuntu:trusty
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">creamos una carpeta en nuestro HOST y la compartimos</span>
+mkdir ~/Docker
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Hacemos un punto de montaje</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">1.Para asignar el nombre al contenedor usamos --name</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">2.Para referirnos al volumen usamos -v</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">3.La ruta (debe ser absoluta agregando ~) del HOST a compartir será ~/Docker</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#   </span><span style="color: #2aa1ae; background-color: #292e34;">(si no es absoluta, se creará un volumen que se comparte entre los demás containers, a docker volume)</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">4.La nueva ruta que se creará en el Container /opt/share</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">5.La imagen a utilizar es ubuntu:trusty</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">6.En la bash shell</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">docker run -v ~/Docker:/opt/share -it ubuntu:trusty /bin/bash</span>
+docker run -it --name test1 -v ~/Docker:/opt/share ubuntu:trusty bash
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">IMPORTANTE:</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Recorda que cada vez que ejecutes "run" se creará un nuevo contenedor</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">en este caso se montará un punto de montaje entre Host/Un nuevo Contenedor llamado "test1"</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">cada vez que quieras hacer cambios en ese "contenedor"</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">acceder con docker exec -it test /bin/bash</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">comprobamos</span>
+docker ps -a | grep test1
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">iniciamos el proceso del container</span>
+docker start test1
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">corremos el comando "modo interactivo" en el container "test1" y accedemos a la bash shell</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">(si usamos run, se creará un nuevo contenedor, la idea es utilizar este y no se creará otro)</span>
+docker exec -it test1 /bin/bash
+
+apt-get update
+apt-get install swi-prolog -y
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">versionamos para guardar el estado del container</span>
+docker ps -a <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para revisar el id del container</span>
+docker commit <span style="color: #a45bad;">5b13ee15d1f1</span> neverkas/ubuntu-trusty <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">suponiendo que ese es el ID</span>
+docker push neverkas/ubuntu-trusty
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">revisamos el nuevo contenedor</span>
+docker ps -a
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">salimos del contenedor</span>
+<span style="color: #4f97d7; font-weight: bold;">exit</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">si queremos revisar la version de prolog instalada sin entrar al container</span>
+docker exec test1 swipl -v
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">si queremos acceder al container y ejecutar prolog</span>
+docker exec -it test1 swipl
+<span style="color: #4f97d7; font-weight: bold;">exit</span> <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">salimos</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">si queremos acceder solo como en la bash shell</span>
+docker exec -it test1 /bin/bash
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">IMPORTANTE:</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- Al hacer commit se creará una nueva imagen, que apunta al repositorio publico "neverkas/ubuntu-trusty"</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">el usuario seria neverkas (LA PRIMERA VEZ, LAS PROXIMAS APUNTARAN SIEMPRE AL MISMO CONTAINER)</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">seguido del nombre de container que se guardará como local (sería una imagen)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc28c195" class="outline-4">
+<h4 id="orgc28c195"><span class="section-number-4">1.7.4</span> Ubuntu</h4>
+<div class="outline-text-4" id="text-1-7-4">
+<p>
+Cada versión de la distribución lleva un nombre distinto
+</p>
+
+<table id="org108c467" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-right">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">Version</th>
+<th scope="col" class="org-left">Nombre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">14.04</td>
+<td class="org-left">Trusty</td>
+</tr>
+
+<tr>
+<td class="org-right">16.04</td>
+<td class="org-left">Xenial</td>
+</tr>
+
+<tr>
+<td class="org-right">18.04</td>
+<td class="org-left">Bionic</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<b>Referencias</b>
+</p>
+<ul class="org-ul">
+<li><a href="https://releases.ubuntu.com/">Ubuntu releases - ubuntu.com</a></li>
+<li><a href="https://hub.docker.com/_/ubuntu?tab=tags">Ubuntu Tags - hub.docker.com</a></li>
+<li><a href="https://wwu-pi.github.io/tutorials/lectures/lsp/010_install_swi_prolog.html">Installing SWI-Prolog - pi-github.io</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org16c7d13" class="outline-3">
+<h3 id="org16c7d13"><span class="section-number-3">1.8</span> Configurando Redes Docker</h3>
+<div class="outline-text-3" id="text-1-8">
+</div>
+<div id="outline-container-orgce3004f" class="outline-4">
+<h4 id="orgce3004f"><span class="section-number-4">1.8.1</span> Conceptos</h4>
+</div>
+<div id="outline-container-org74a8ead" class="outline-4">
+<h4 id="org74a8ead"><span class="section-number-4">1.8.2</span> Crear Red</h4>
+<div class="outline-text-4" id="text-1-8-2">
+<div class="org-src-container">
+<pre class="src src-sh">docker network create mi-red
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">crea una red con un rango </span>
+docker network create --subnet=<span style="color: #a45bad;">192.168.0.0/16</span> mi-red2
+
+nmcli con
+ip a | more
+docker inspect mi-red &gt; mi-red.txt
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org85a78fa" class="outline-4">
+<h4 id="org85a78fa"><span class="section-number-4">1.8.3</span> Referencias</h4>
+</div>
+</div>
+<div id="outline-container-org6ebd409" class="outline-3">
+<h3 id="org6ebd409"><span class="section-number-3">1.9</span> Ejemplos</h3>
+<div class="outline-text-3" id="text-1-9">
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Creamos una red para conectar el contenedor</span>
+docker network create --driver=bridge red-jelou
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">creamos el contenedor llamado prueba1 que tenga linux alpine edge</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">montamos un volumen llamado datos-jelou que usará</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">le asignamos la red que creamos previamente</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">y que ejecute el comando "sh" al iniciar (caso contrario no podemos acceder)</span>
+docker run --name=prueba1 -it -v datos-jelou:/opt --network=red-jelou alpine:edge sh
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">analizamos el punto de montaje, osea donde se creó el volumen en el Host</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- el volumen se puede compartir entre otros contenedores</span>
+docker volume inspect datos-jelou
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">analizamos la red,</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">que otros contenedores la utilizan</span>
+docker network red-jelou
+
+</pre>
+</div>
+
+<p>
+Una breve explicación de los comandos ejecutados
+</p>
+<blockquote>
+<p>
+run
+</p>
+
+<p>
+-it
+</p>
+
+<p>
+-v jelou:/opt
+</p>
+
+<p>
+–network=red-jelou
+</p>
+
+<p>
+alpine:edge
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-orgb2e7de8" class="outline-3">
+<h3 id="orgb2e7de8"><span class="section-number-3">1.10</span> Referencias</h3>
+<div class="outline-text-3" id="text-1-10">
+</div>
+<div id="outline-container-org0795692" class="outline-4">
+<h4 id="org0795692"><span class="section-number-4">1.10.1</span> Referencias Web Extraoficiales</h4>
+<div class="outline-text-4" id="text-1-10-1">
+<ul class="org-ul">
+<li><a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/">Best practices for writing Dockerfiles - docs.docker.com</a></li>
+<li><a href="https://docs.docker.com/engine/reference/commandline/container_prune/">https://docs.docker.com/engine/reference/commandline/container_prune/</a></li>
+<li><a href="https://github.com/rocker-org/rocker/wiki/How-to-save-data">How to save data - github.com/rocker-org</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/como-instalar-y-usar-docker-en-ubuntu-18-04-1-es">Como instalar y usar Docker en Ubuntu 18.04 - Digitalocean.com</a></li>
+<li><a href="https://www.ionos.es/digitalguide/servidores/configuracion/tutorial-docker-instalacion-y-primeros-pasos/">Tutorial Docker - Instalación y primeros pasos - Ionos.es</a></li>
+<li><a href="https://colorfield.be/blog/cleaning-lando-containers">Cleaning up containers - colorfield.de</a></li>
+<li><a href="https://blog.hipolabs.com/understanding-docker-without-losing-your-shit-cf2b30307c63">Understanding Docker - Blog hipolabs</a></li>
+<li><a href="https://docs.docker.com/engine/reference/commandline/commit/">Docker commit - Docker.com</a></li>
+
+<li><a href="https://stackoverflow.com/questions/21871479/docker-cant-connect-to-docker-daemon">https://stackoverflow.com/questions/21871479/docker-cant-connect-to-docker-daemon</a></li>
+<li><a href="https://www.digitalocean.com/community/questions/how-to-fix-docker-got-permission-denied-while-trying-to-connect-to-the-docker-daemon-socket">https://www.digitalocean.com/community/questions/how-to-fix-docker-got-permission-denied-while-trying-to-connect-to-the-docker-daemon-socket</a></li>
+<li><a href="https://manjaro.site/how-to-install-docker-on-manjaro-18-0/">https://manjaro.site/how-to-install-docker-on-manjaro-18-0/</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgfc9fa14" class="outline-4">
+<h4 id="orgfc9fa14"><span class="section-number-4">1.10.2</span> Referencias Youtube</h4>
+<div class="outline-text-4" id="text-1-10-2">
+<ol class="org-ol">
+<li><a href="https://www.youtube.com/watch?v=r6bxsuDq6wY&amp;list=PLmBbXLdrZ-O3B3rsLOVHufTL_wmickgLf&amp;ab_channel=ServersforHackers">Playlist #1</a></li>
+<li><a href="https://www.youtube.com/watch?v=jjuIEHhXX7k&amp;list=PLmBbXLdrZ-O0GxzRkPdY6zUe9XRYNt38A&amp;ab_channel=ServersforHackers">Playlist #2</a></li>
+<li><a href="https://www.youtube.com/watch?v=PbiYll21Jxg&amp;list=PLZdsdjcJ44WU_cY2Y1LFLnmsSjFD5BZLZ">Playlist - DOcker container course (el mejor por ahora)</a></li>
+<li><a href="https://www.youtube.com/watch?v=vjnOIE-CwMU&amp;list=PLqRCtm0kbeHAep1hc7yW-EZQoAJqSTgD-&amp;index=2">Video - DOcker - primeros pasos</a></li>
+<li><a href="https://www.youtube.com/watch?v=6idFknRIOp4&amp;t=201s">Video - Aprender docker en 14min</a></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org45fb488" class="outline-2">
+<h2 id="org45fb488"><span class="section-number-2">2</span> Dockerfile</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org40f6e62" class="outline-3">
+<h3 id="org40f6e62"><span class="section-number-3">2.1</span> Conceptos</h3>
+</div>
+<div id="outline-container-orgc973437" class="outline-3">
+<h3 id="orgc973437"><span class="section-number-3">2.2</span> Comandos básicos</h3>
+<div class="outline-text-3" id="text-2-2">
+</div>
+<div id="outline-container-orgc8f7de8" class="outline-4">
+<h4 id="orgc8f7de8"><span class="section-number-4">2.2.1</span> (BUILD) Crear Imagen</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<p>
+La idea del dockerfile es crear imagenes, para luego crear contenedores
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh" id="org71fea7d"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">usamos el comando build</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">seguido del parámetro -t</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">seguido de la imagen y un tag que especifique la versión (opcional)</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">por último la ruta donde está el Dockerfile, si se deja el punto se refiere a la ruta actual</span>
+docker build -t nombreImagen:algunTag .
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org0a6603c" class="outline-4">
+<h4 id="org0a6603c"><span class="section-number-4">2.2.2</span> (COPY) Copiar archivos</h4>
+<div class="outline-text-4" id="text-2-2-2">
+<ul class="org-ul">
+<li>A diferencia del comando <b>ADD</b> no descomprime los archivos (Ej. .jar, .gz,..) que quizás no es la intención,</li>
+</ul>
+<p>
+y los mueve a la ruta destino.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh" id="orga0a2d75">FROM debian
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">resources/app.jar es una ruta que pertenece al host, son los archivos y directorios que queremos copiar</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">/app es una ruta que está dentro del contenedor de docker, es donde se copiarán los archivos</span>
+COPY resources/app.jar /app
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">este comando se ejecuta al iniciar el contenedor</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">y ejecuta el archivo .jar que copiamos al contenedor</span>
+CMD <span style="color: #4f97d7;">[</span><span style="color: #2d9574;">"java"</span>, <span style="color: #2d9574;">"-jar"</span>, <span style="color: #2d9574;">"app/app.jar"</span><span style="color: #4f97d7;">]</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org4ee024f" class="outline-4">
+<h4 id="org4ee024f"><span class="section-number-4">2.2.3</span> (ADD) Descargar y Descomprimir archivos</h4>
+<div class="outline-text-4" id="text-2-2-3">
+<ul class="org-ul">
+<li>Puede descargar archivos de url de internet y agregarlos a una ruta del contenedor</li>
+<li>Permite descomprimir archivos (comportamiento quizás no deseado si se confunde con el comando <b>COPY</b>)</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-sh" id="org7f983b7">FROM alpine:edge
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">ADD rutaDelHost rutaEnElDocker</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">1. La primera ruta puede ser de un archivo, o directorio del Host,</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">es el que vamos a copiar al Contenedor</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">2. La segunda ruta, está dentro del contenedor, y es donde copiaremos los archivos</span>
+ADD default /etc/ngnix/sites-available/default
+ADD php-conf.conf /etc/php/7.2/php-conf.conf
+</pre>
+</div>
+
+<pre class="example">Una breve explicación del código anterior
+
+1. El primer parámetro de ADD es la ruta origen del HOST, es decir el ordendor donde ejecutamos nuestro docker
+2. El segundo parámetro es la ruta destino al Contenedor, donde se agregarán los directorios/archivos
+</pre>
+</div>
+</div>
+<div id="outline-container-org2d21ff8" class="outline-4">
+<h4 id="org2d21ff8"><span class="section-number-4">2.2.4</span> (ENTRYPOINT) Pasar scripts por parámetro</h4>
+<div class="outline-text-4" id="text-2-2-4">
+<ul class="org-ul">
+<li>Podemos ejecutar scripts que ejecuten comandos de configuración (Ej. apache, php, …)</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-sh" id="orge703a54">FROM alpine:edge
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">no es necesario especificar la extensión .sh</span>
+ENTRYPOINT <span style="color: #4f97d7;">[</span><span style="color: #2d9574;">"start-container"</span><span style="color: #4f97d7;">]</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-sh" id="orgca2ceb2"><span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">!/usr/bin/</span><span style="color: #4f97d7; font-weight: bold;">env</span><span style="color: #2aa1ae; background-color: #292e34;"> bash</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">este script será ejecutado por la linea ENTRYPOINT en el Dockerfile</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">1. Verificamos si existe el directorio composer en la ruta actual</span>
+<span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #4f97d7;">[</span> <span style="color: #a45bad;">!</span> -d ./composer <span style="color: #4f97d7;">]</span>; <span style="color: #4f97d7; font-weight: bold;">then</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">2. Si no existe, lo creamos</span>
+    mkdir ./composer
+<span style="color: #4f97d7; font-weight: bold;">fi</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">3. Le asignamos permisos de lectura y escritura</span>
+chmod -R ugo+rw ./composer
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org31df005" class="outline-4">
+<h4 id="org31df005"><span class="section-number-4">2.2.5</span> (CMD) Comandos por defecto</h4>
+<div class="outline-text-4" id="text-2-2-5">
+<ul class="org-ul">
+<li>Se ejecuta mientras corre el contenedor</li>
+<li>Para ejecutar varios comandos por defecto utilizar un arreglo entre corchetes</li>
+<li>Si pasamos un parámetro al docker run o por la terminal, pisará el de CMD</li>
+</ul>
+
+<p>
+El siguiente sería un archivo Dockerfile con las configuraciones
+</p>
+<div class="org-src-container">
+<pre class="src src-sh" id="orgc349822">FROM alpine:edge
+
+CMD echo <span style="color: #2d9574;">"Hola"</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">CMD ["/bin/echo", "hola"]</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">CMD ["echo", "hola"]</span>
+</pre>
+</div>
+
+<p>
+Y luego desde la terminal podemos ejecutar los siguientes comandos
+</p>
+<div class="org-src-container">
+<pre class="src src-sh" id="orgd6a7a41"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para crear la imagen</span>
+docker build -t miservidor .
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para correr el contenedor en base a la imagen creada</span>
+docker run -it miservidor
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgaa201f0" class="outline-4">
+<h4 id="orgaa201f0"><span class="section-number-4">2.2.6</span> (RUN) Ejecutar comandos</h4>
+<div class="outline-text-4" id="text-2-2-6">
+<ul class="org-ul">
+<li>Por cada linea que repitamos RUN, se creará una capa de..?</li>
+<li>Para escribir varios comandos en una capa, utiliza el slash invertido</li>
+</ul>
+
+<p>
+Supongamos que queremos un linux con la distribución ubuntu
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">FROM ubuntu:trusty
+
+RUN apt-get install -y emacs
+</pre>
+</div>
+
+<p>
+Supongamos que queremos un linux con la distribución alpine
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">FROM alpine:edge
+
+RUN apk add --force emacs
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd7d24e6" class="outline-3">
+<h3 id="orgd7d24e6"><span class="section-number-3">2.3</span> Ejemplos</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+Cada linea del Dockerfile es <b>cacheada</b> en memoria, por lo que si en una linea decimos que
+</p>
+
+<p>
+Utilidad del <b>slash invertido</b> es evitar tener varias <b>capas</b> que se guardan en caché, y luego generan problemas.
+</p>
+
+<p>
+Si por ejemplo en una linea hacemos que instale algunos paquetes (Ej. apt-get install git emacs vim) y 
+encima de esta linea agregamos que instale otros paquetes (Ej. apt-get install java haskell) 
+es posible que no se ejecute esta segunda
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh" id="org1df5ce4">FROM ubuntu:trusty
+
+MANTAINER jelou
+
+RUN apt-get install -y <span style="color: #2d9574;">\</span>
+    git emacs <span style="color: #2d9574;">\</span>
+    &amp;&amp; apt-get clean <span style="color: #2d9574;">\</span>
+    &amp;&amp; rm -rf /tmp/* /var/tmp/* <span style="color: #2d9574;">\</span>
+          &amp;&amp; <span style="color: #4f97d7;">echo</span> <span style="color: #2d9574;">"8.8.8.8 # google dns"</span> &gt;&gt; /etc/hosts
+ADD ./images www/html/images
+
+EXPOSE <span style="color: #a45bad;">80</span>
+CMD <span style="color: #4f97d7;">[</span><span style="color: #2d9574;">"Hola"</span><span style="color: #4f97d7;">]</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orga49b0c9" class="outline-2">
+<h2 id="orga49b0c9"><span class="section-number-2">3</span> Docker Compose</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-orgee40442" class="outline-3">
+<h3 id="orgee40442"><span class="section-number-3">3.1</span> Conceptos</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li>Manejar varios contenedores en un archivo</li>
+<li>Se puede combinar con Dockerfile</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org408cfe1" class="outline-3">
+<h3 id="org408cfe1"><span class="section-number-3">3.2</span> Instalación y Configuración</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+<b>Observación</b>:
+En la distribución Manjaro, intenté de instalar con <b>pacman -S docker-compose</b>
+pero tiraba error por falta de packages. 
+Por tanto decidi realizar la instalación mediante <b>pip install docker-compose</b>
+que tuvo éxito.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-yaml" id="org34df830"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">ES IMPORTANTE LA TABULACION, si no crashea</span>
+<span style="color: #7590db;">version</span>: <span style="color: #2d9574;">"2.1"</span>
+<span style="color: #7590db;">services</span>:
+  <span style="color: #7590db;">irc</span>:
+    <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">imagen que usará de base</span>
+    <span style="color: #7590db;">image</span>: inspircd/inspircd-docker
+    <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">le asignamos un nombre de referencia</span>
+    <span style="color: #7590db;">container_name</span>: irc
+    <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">puertos que usaremos</span>
+    <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">puertoHost:puertoContenedor</span>
+    <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- puertoHost es el que usaremos en el host, donde corremos docker</span>
+    <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- puertoContenedor el que usa la aplicación dentro del contenedor</span>
+    <span style="color: #7590db;">ports</span>:
+      - <span style="color: #2d9574;">"6667:6667"</span>
+    <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">montamos un volumen, con directorios/archivos que apareceran en el contenedor</span>
+    <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">carpetaDelHost:rutaDelContenedor</span>
+    <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- carpetaDelHost, contiene lo que aparecerá en el contenedor</span>
+    <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- carpetaDelContenedor, es la carpeta que se creará y aparecerá en el contenedor</span>
+    <span style="color: #7590db;">volumes</span>:
+      - configs:/CONFIGURACIONES/
+    <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para configuraciones personalizadas</span>
+    <span style="color: #7590db;">environment</span>:
+      <span style="color: #7590db;">INSPIRCD_SERVER_NAME</span>: <span style="color: #2d9574;">"irc.localhost"</span>
+      <span style="color: #7590db;">INSPIRCD_SERVER_DESCRIPTION</span>: <span style="color: #2d9574;">"Probando..."</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span>
+<span style="color: #7590db;">volumes</span>:
+  <span style="color: #7590db;">configs</span>:
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org45dcfd1" class="outline-3">
+<h3 id="org45dcfd1"><span class="section-number-3">3.3</span> Comandos Básicos</h3>
+<div class="outline-text-3" id="text-3-3">
+<div class="org-src-container">
+<pre class="src src-sh" id="orgc9d126a"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">corremos el docker-compose.yml de la ruta actual</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">up: crea el contenedor y lo ejecuta</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-d: lo ejecuta en segundo plano</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">si no usamos -d, no podremos seguir utilizando la sesión de la terminal</span>
+docker-compose up -d
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">acceder via terminal</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">en compose-docker los contenedores son servicios</span>
+docker-compose exec nombreDelServicio sh
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">alternativa</span>
+docker-compose exec nombreDelServicio bash
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">muestra los contenedores (en la ruta actual)</span>
+docker-composer ps
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orga9b790d" class="outline-3">
+<h3 id="orga9b790d"><span class="section-number-3">3.4</span> Ejemplos</h3>
+<div class="outline-text-3" id="text-3-4">
+<div class="org-src-container">
+<pre class="src src-yaml"><span style="color: #7590db;">version</span>: <span style="color: #2d9574;">"2.1"</span>
+<span style="color: #7590db;">services</span>:
+  <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">entramos con docker exec -it miServidorAlpine sh</span>
+  <span style="color: #7590db;">ngnix</span>:
+    <span style="color: #7590db;">image</span>: nginx:alpine
+    <span style="color: #7590db;">container_name</span>: miServidorAlpine
+    <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">restart: always</span>
+    <span style="color: #7590db;">ports</span>:
+      - <span style="color: #2d9574;">"81:80"</span>
+    <span style="color: #7590db;">volumes</span>:
+      <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- este volumen, se crea dentro de /var/lib/docker/volumes</span>
+      <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">y apunta a la ruta del contenedor que aparece seguido de los dos puntos </span>
+      <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- data hace referencia al volumen que configuramos al final de este archivo</span>
+       - data:/usr/share/nginx/html:ro
+      <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">el directorio "application" tiene que estar en la misma ruta</span>
+      <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">que este archivo Docker-compose.yml</span>
+      <span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">- ./application:/usr/share/nginx/html:ro</span>
+  <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">redis:</span>
+  <span style="color: #2aa1ae; background-color: #292e34;">#   </span><span style="color: #2aa1ae; background-color: #292e34;">image: redis:alpine</span>
+  <span style="color: #2aa1ae; background-color: #292e34;">#   </span><span style="color: #2aa1ae; background-color: #292e34;">networks:</span>
+  <span style="color: #2aa1ae; background-color: #292e34;">#     </span><span style="color: #2aa1ae; background-color: #292e34;">- appnet</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">networks:</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#   </span><span style="color: #2aa1ae; background-color: #292e34;">appnet:</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#     </span><span style="color: #2aa1ae; background-color: #292e34;">driver: "bridge"</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">se va a montar un volumen en la ruta de docker del host</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">el nombre tendrá como prefijo el nombre del directorio donde está este docker-compose</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">seguido del nombre que le asignemos, en este caso data</span>
+<span style="color: #7590db;">volumes</span>:
+  <span style="color: #7590db;">data</span>:
+    <span style="color: #7590db;">driver</span>: <span style="color: #2d9574;">"local"</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org31178e7" class="outline-3">
+<h3 id="org31178e7"><span class="section-number-3">3.5</span> Referencias</h3>
+<div class="outline-text-3" id="text-3-5">
+</div>
+<div id="outline-container-org9516398" class="outline-4">
+<h4 id="org9516398"><span class="section-number-4">3.5.1</span> Referencias Web Oficiales</h4>
+<div class="outline-text-4" id="text-3-5-1">
+<ol class="org-ol">
+<li><a href="https://docs.docker.com/compose/gettingstarted/">Getting Started - docs.docker.com</a></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgf548adc" class="outline-4">
+<h4 id="orgf548adc"><span class="section-number-4">3.5.2</span> Referencias Youtube</h4>
+<div class="outline-text-4" id="text-3-5-2">
+<ol class="org-ol">
+<li><a href="https://www.youtube.com/watch?v=pxMCpYrnzwM">Todo sobre docker compose - Webinars con Agilia</a></li>
+<li><a href="https://www.youtube.com/watch?v=G_-R2dz6T5U">Introduccion a Docker</a></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org5cc4d8d" class="outline-4">
+<h4 id="org5cc4d8d"><span class="section-number-4">3.5.3</span> Issues Comunes</h4>
+<div class="outline-text-4" id="text-3-5-3">
+<ol class="org-ol">
+<li><a href="https://stackoverflow.com/questions/36249744/interactive-shell-using-docker-compose">Interactive Shell - stackoverflow.com</a></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org4bc7315" class="outline-2">
+<h2 id="org4bc7315"><span class="section-number-2">4</span> Docker Tips</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-orga553f2a" class="outline-3">
+<h3 id="orga553f2a"><span class="section-number-3">4.1</span> Ejecutar contenedores al iniciar el sistema</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+Si tenemos algún problema en nuestro ordenador (se reinicia, se apaga, cuelga, error, etc..)
+podemos usar el parámetro <b>always</b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-yaml" id="orgf1debee"><span style="color: #7590db;">version</span>: <span style="color: #2d9574;">"3.9"</span>
+<span style="color: #7590db;">services</span>:
+  <span style="color: #7590db;">redis</span>:
+    <span style="color: #7590db;">image</span>: redis:alpine
+    <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">se reinicia con un máximo de 10 intentos</span>
+    <span style="color: #7590db;">restart</span>: on-failure:10
+  <span style="color: #7590db;">ngnix</span>:
+    <span style="color: #7590db;">image</span>: ngnix:alpine
+    <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">se reinicia siempre</span>
+    <span style="color: #7590db;">restart</span>: always
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org280ba7a" class="outline-3">
+<h3 id="org280ba7a"><span class="section-number-3">4.2</span> Conocer el timestamp de los logs</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+Con el comando <b>docker logs nombreContenedor</b> nos muestra un historial de logs del contenedor,
+pero podemos conocer en detalle cuando sucedió utilizando el parámetro <b>t</b>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh" id="orgfb58130">docker logs --tail=<span style="color: #a45bad;">10</span> -t nombreAlgunContenedor
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">con --tail=10, indicamos que nos muestre los últimos 10 eventos del historial de logs</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">con -t, indicamos que queremos conocer el timestamp de cada evento sucedido</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org4e60a4c" class="outline-2">
+<h2 id="org4e60a4c"><span class="section-number-2">5</span> Servicios Básicos</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-orgebf453f" class="outline-3">
+<h3 id="orgebf453f"><span class="section-number-3">5.1</span> Nginx</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+para servidor http, similar a apache2 pero con menos configuración
+</p>
+</div>
+</div>
+<div id="outline-container-org220d711" class="outline-3">
+<h3 id="org220d711"><span class="section-number-3">5.2</span> Duckdns</h3>
+<div class="outline-text-3" id="text-5-2">
+</div>
+<div id="outline-container-orgb2fa38a" class="outline-4">
+<h4 id="orgb2fa38a"><span class="section-number-4">5.2.1</span> Conceptos</h4>
+<div class="outline-text-4" id="text-5-2-1">
+<ul class="org-ul">
+<li>duckdns para enmascarar por asi decir la ip, como no-ip</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org35fe140" class="outline-4">
+<h4 id="org35fe140"><span class="section-number-4">5.2.2</span> Referencias</h4>
+<div class="outline-text-4" id="text-5-2-2">
+<ul class="org-ul">
+<li><a href="https://www.duckdns.org/">Duckdns - Sitio Oficial</a></li>
+<li><a href="https://hub.docker.com/r/linuxserver/duckdns/">DuckDns - hub.docker.com</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org465e186" class="outline-3">
+<h3 id="org465e186"><span class="section-number-3">5.3</span> Inspircd</h3>
+<div class="outline-text-3" id="text-5-3">
+</div>
+<div id="outline-container-orgaf3b49e" class="outline-4">
+<h4 id="orgaf3b49e"><span class="section-number-4">5.3.1</span> Conceptos</h4>
+<div class="outline-text-4" id="text-5-3-1">
+<p>
+Para crear un servidor irc
+</p>
+</div>
+</div>
+<div id="outline-container-orgb28ef14" class="outline-4">
+<h4 id="orgb28ef14"><span class="section-number-4">5.3.2</span> Referencias Web Oficiales</h4>
+<div class="outline-text-4" id="text-5-3-2">
+<ol class="org-ol">
+<li><a href="https://github.com/inspircd/inspircd-docker">Inspircd Docker - hub.docker.com</a></li>
+<li><a href="https://github.com/inspircd/inspircd-docker">Inspircd - github.com</a></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org5cb30f3" class="outline-4">
+<h4 id="org5cb30f3"><span class="section-number-4">5.3.3</span> Referencias Youtube</h4>
+<div class="outline-text-4" id="text-5-3-3">
+<ol class="org-ol">
+<li><a href="https://www.youtube.com/watch?v=67f9iptWqt0&amp;t=492s">Host a Deep web IRC Server - youtube.com</a></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org144395b" class="outline-2">
+<h2 id="org144395b"><span class="section-number-2">6</span> Glosario</h2>
+<div class="outline-text-2" id="text-6">
+<ol class="org-ol">
+<li>Daemon</li>
+<li>Curl</li>
+<li>Sandbox</li>
+<li>Kubernetes</li>
+<li>Timestamp</li>
+<li>Runtime cpu</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: jelou</p>
+<p class="date">Created: 2021-04-04 dom 02:07</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+
+
+</body></html>
