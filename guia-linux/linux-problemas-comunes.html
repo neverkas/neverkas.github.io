@@ -1,5 +1,5 @@
 <!--?xml version="1.0" encoding="utf-8"?--><!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<!-- 2021-04-02 vie 18:48 -->
+<!-- 2021-09-13 lun 12:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Guia Linux - Herramientas para resolver problemas frecuentes</title>
@@ -36,7 +36,7 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
+    overflow: auto;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -48,7 +48,7 @@
     padding: 3px;
     border: 1px solid black;
   }
-  pre.src:hover:before { display: inline;}
+  pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
@@ -193,50 +193,26 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/sass-style.css">
 <script type="text/javascript" src="/assets/js/all.js"></script>
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2020 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 </head>
 <body>
@@ -246,48 +222,48 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgde71a28">1. Capturas de pantalla (Screenshot)</a></li>
-<li><a href="#org1b33593">2. Errores de la terminal</a></li>
-<li><a href="#orgd1a96da">3. Archivos en la Nube (Cloud Storage)</a>
+<li><a href="#orgbd4d605">1. Capturas de pantalla (Screenshot)</a></li>
+<li><a href="#orgda05713">2. Errores de la terminal</a></li>
+<li><a href="#org8a21690">3. Archivos en la Nube (Cloud Storage)</a>
 <ul>
-<li><a href="#orgaac7782">3.1. Conceptos</a></li>
-<li><a href="#org02d5bca">3.2. Instalar Dropbox en la Distribucion Manjaro</a></li>
-<li><a href="#org9061178">3.3. Problemas al instalar</a></li>
-<li><a href="#orgb99121a">3.4. Referencias Web Extraoficiales</a></li>
+<li><a href="#org4e223f7">3.1. Conceptos</a></li>
+<li><a href="#org2c890a1">3.2. Instalar Dropbox en la Distribucion Manjaro</a></li>
+<li><a href="#orge94b150">3.3. Problemas al instalar</a></li>
+<li><a href="#org7ba59b1">3.4. Referencias Web Extraoficiales</a></li>
 </ul>
 </li>
-<li><a href="#org14a69bf">4. Soporte en Canales IRC Configurar Cliente IRC (Weechat)</a>
+<li><a href="#orge084010">4. Soporte en Canales IRC Configurar Cliente IRC (Weechat)</a>
 <ul>
-<li><a href="#org12f3afa">4.1. Configuración de Weechat</a>
+<li><a href="#org9785b7a">4.1. Configuración de Weechat</a>
 <ul>
-<li><a href="#org38934e1">4.1.1. Agregar el servidor</a></li>
-<li><a href="#orge0adce2">4.1.2. Cambiar el nick predeterminado del servidor agregado</a></li>
-<li><a href="#org01f5a46">4.1.3. Conectar al servidor</a></li>
-<li><a href="#orgc896d42">4.1.4. Crear cuenta en el servidor conectado</a></li>
-<li><a href="#org9295960">4.1.5. Confirmar la cuenta</a></li>
-<li><a href="#org2bc5bb1">4.1.6. Conectar a un canal</a></li>
-<li><a href="#orgefb615d">4.1.7. Configurar para que se autoconecte al servidor agregado</a></li>
-<li><a href="#org7de4c1e">4.1.8. Agregar seguridad SSL</a></li>
-<li><a href="#org858055b">4.1.9. Autoconectar a varios canales</a></li>
+<li><a href="#org63d8f3e">4.1.1. Agregar el servidor</a></li>
+<li><a href="#orgb445061">4.1.2. Cambiar el nick predeterminado del servidor agregado</a></li>
+<li><a href="#orgcc7cb3c">4.1.3. Conectar al servidor</a></li>
+<li><a href="#orge34bf4e">4.1.4. Crear cuenta en el servidor conectado</a></li>
+<li><a href="#orgfee2b50">4.1.5. Confirmar la cuenta</a></li>
+<li><a href="#orga03074d">4.1.6. Conectar a un canal</a></li>
+<li><a href="#org9ea3651">4.1.7. Configurar para que se autoconecte al servidor agregado</a></li>
+<li><a href="#orgaf1bef9">4.1.8. Agregar seguridad SSL</a></li>
+<li><a href="#orgfc03e2c">4.1.9. Autoconectar a varios canales</a></li>
 </ul>
 </li>
-<li><a href="#orga89fe91">4.2. Otras Configuraciones</a>
+<li><a href="#org0f56d66">4.2. Otras Configuraciones</a>
 <ul>
-<li><a href="#org3218367">4.2.1. Modificar opciones</a></li>
-<li><a href="#org0ca0e2e">4.2.2. Mostrar configuraciones</a></li>
+<li><a href="#orga7f5b2b">4.2.1. Modificar opciones</a></li>
+<li><a href="#orge5c96ca">4.2.2. Mostrar configuraciones</a></li>
 </ul>
 </li>
-<li><a href="#org5f9a2c2">4.3. Canales Sugeridos</a></li>
-<li><a href="#org4fddf8e">4.4. Atajos Weechat</a></li>
-<li><a href="#org0c7ac63">4.5. Referencias Web Oficiales</a></li>
-<li><a href="#orgabbb872">4.6. Referencias Web Extraoficiales</a></li>
+<li><a href="#org13bfbf3">4.3. Canales Sugeridos</a></li>
+<li><a href="#orgdc88767">4.4. Atajos Weechat</a></li>
+<li><a href="#orgc2e29b1">4.5. Referencias Web Oficiales</a></li>
+<li><a href="#org945a470">4.6. Referencias Web Extraoficiales</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div class="figure">
+<div id="orga44c8f2" class="figure">
 <p><img src="/img/error.jpg" alt="error.jpg" width="450">
 </p>
 </div>
@@ -300,8 +276,8 @@ algun software que necesitas pero tu distribucion de linux no la soporta, y dive
 problematicas que pudiesen llegar a aparecer.
 </p>
 
-<div id="outline-container-orgde71a28" class="outline-2">
-<h2 id="orgde71a28"><span class="section-number-2">1</span> Capturas de pantalla (Screenshot)</h2>
+<div id="outline-container-orgbd4d605" class="outline-2">
+<h2 id="orgbd4d605"><span class="section-number-2">1.</span> Capturas de pantalla (Screenshot)</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 No siempre podemos transcribir el mensaje de error y/o no mostramos el escenario
@@ -313,8 +289,8 @@ Recomendamos utilizar el sitio de <b>Paste Board</b> (<a href="https://pasteboar
 </p>
 </div>
 </div>
-<div id="outline-container-org1b33593" class="outline-2">
-<h2 id="org1b33593"><span class="section-number-2">2</span> Errores de la terminal</h2>
+<div id="outline-container-orgda05713" class="outline-2">
+<h2 id="orgda05713"><span class="section-number-2">2.</span> Errores de la terminal</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Si tenes inconvenientes al capturar la pantalla, otra manera seria enviar el error 
@@ -326,12 +302,12 @@ Recomendamos utilizar el sitio de <b>Paste Debian</b> (<a href="https://paste.de
 </p>
 </div>
 </div>
-<div id="outline-container-orgd1a96da" class="outline-2">
-<h2 id="orgd1a96da"><span class="section-number-2">3</span> Archivos en la Nube (Cloud Storage)</h2>
+<div id="outline-container-org8a21690" class="outline-2">
+<h2 id="org8a21690"><span class="section-number-2">3.</span> Archivos en la Nube (Cloud Storage)</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-orgaac7782" class="outline-3">
-<h3 id="orgaac7782"><span class="section-number-3">3.1</span> Conceptos</h3>
+<div id="outline-container-org4e223f7" class="outline-3">
+<h3 id="org4e223f7"><span class="section-number-3">3.1.</span> Conceptos</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 Conocido por <b><b>Cloud Storage</b></b> tenemos varias opciones para subir nuestros archivos
@@ -340,15 +316,15 @@ dispositivo (tablet, celular, ..)
 </p>
 </div>
 </div>
-<div id="outline-container-org02d5bca" class="outline-3">
-<h3 id="org02d5bca"><span class="section-number-3">3.2</span> Instalar Dropbox en la Distribucion Manjaro</h3>
+<div id="outline-container-org2c890a1" class="outline-3">
+<h3 id="org2c890a1"><span class="section-number-3">3.2.</span> Instalar Dropbox en la Distribucion Manjaro</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 Para la instalación nos basamos en la primer referencia, que es la que nos funcionó.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell" id="orga0ba8cb"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">clonamos el repositorio</span>
+<pre class="src src-shell" id="orgc193d57"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">clonamos el repositorio</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">traerá los archivos a nuestro ordenador, en una carpeta llamada dropbox</span>
 <span style="color: #2aa1ae; background-color: #292e34;">#</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Observación: Se recomienda tener cuidado con los paquetes que elijamos de (AUR),</span>
@@ -371,15 +347,15 @@ install -dm0 ~/.dropbox-dist
 </div>
 </div>
 </div>
-<div id="outline-container-org9061178" class="outline-3">
-<h3 id="org9061178"><span class="section-number-3">3.3</span> Problemas al instalar</h3>
+<div id="outline-container-orge94b150" class="outline-3">
+<h3 id="orge94b150"><span class="section-number-3">3.3.</span> Problemas al instalar</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 Si nos arroja algún error al momento de compilar deberemos copiar la clave con la que tira error
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell" id="orgffb9772"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">si nos arroja algun error</span>
+<pre class="src src-shell" id="org8831cc6"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">si nos arroja algun error</span>
 gpg — — recv -keys escribi_clave_aca
 
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">intentamos nuevamente de compilar el programa</span>
@@ -388,18 +364,18 @@ makepkg -si
 </div>
 </div>
 </div>
-<div id="outline-container-orgb99121a" class="outline-3">
-<h3 id="orgb99121a"><span class="section-number-3">3.4</span> Referencias Web Extraoficiales</h3>
+<div id="outline-container-org7ba59b1" class="outline-3">
+<h3 id="org7ba59b1"><span class="section-number-3">3.4.</span> Referencias Web Extraoficiales</h3>
 <div class="outline-text-3" id="text-3-4">
-<ul class="org-ul">
-<li>[Referencia #1 - Ver Pagina](<a href="https://medium.com/@mahekarim/install-dropbox-on-arch-linux-or-manjaro-kde-fa06be45d550">https://medium.com/@mahekarim/install-dropbox-on-arch-linux-or-manjaro-kde-fa06be45d550</a>)</li>
-<li>[Referencia #2 - Ver Pagina](<a href="https://www.gestionatuweb.net/instalar-dropbox-en-manjaro-18-illyria/">https://www.gestionatuweb.net/instalar-dropbox-en-manjaro-18-illyria/</a>)</li>
-</ul>
+<ol class="org-ol">
+<li>Referencia #1 - <a href="https://medium.com/@mahekarim/install-dropbox-on-arch-linux-or-manjaro-kde-fa06be45d550">[Ver Pagina]​</a></li>
+<li>Referencia #2 - <a href="https://www.gestionatuweb.net/instalar-dropbox-en-manjaro-18-illyria/">[Ver Pagina]​</a></li>
+</ol>
 </div>
 </div>
 </div>
-<div id="outline-container-org14a69bf" class="outline-2">
-<h2 id="org14a69bf"><span class="section-number-2">4</span> Soporte en Canales IRC Configurar Cliente IRC (Weechat)</h2>
+<div id="outline-container-orge084010" class="outline-2">
+<h2 id="orge084010"><span class="section-number-2">4.</span> Soporte en Canales IRC Configurar Cliente IRC (Weechat)</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 Para solucionar problemas a veces (no siempre) se puede recurrir a los canales de soporte de irc
@@ -416,95 +392,95 @@ que se puede abrir desde la terminal
 No se recomienda ejecutar este programa con el comando sudo
 </p>
 </div>
-<div id="outline-container-org12f3afa" class="outline-3">
-<h3 id="org12f3afa"><span class="section-number-3">4.1</span> Configuración de Weechat</h3>
+<div id="outline-container-org9785b7a" class="outline-3">
+<h3 id="org9785b7a"><span class="section-number-3">4.1.</span> Configuración de Weechat</h3>
 <div class="outline-text-3" id="text-4-1">
 </div>
-<div id="outline-container-org38934e1" class="outline-4">
-<h4 id="org38934e1"><span class="section-number-4">4.1.1</span> Agregar el servidor</h4>
+<div id="outline-container-org63d8f3e" class="outline-4">
+<h4 id="org63d8f3e"><span class="section-number-4">4.1.1.</span> Agregar el servidor</h4>
 <div class="outline-text-4" id="text-4-1-1">
 <div class="org-src-container">
-<pre class="src src-shell" id="org6a10ffd">/server add freenode chat.freenode.net/6667 -autoconnect
+<pre class="src src-shell" id="org1588cc4">/server add freenode chat.freenode.net/6667 -autoconnect
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orge0adce2" class="outline-4">
-<h4 id="orge0adce2"><span class="section-number-4">4.1.2</span> Cambiar el nick predeterminado del servidor agregado</h4>
+<div id="outline-container-orgb445061" class="outline-4">
+<h4 id="orgb445061"><span class="section-number-4">4.1.2.</span> Cambiar el nick predeterminado del servidor agregado</h4>
 <div class="outline-text-4" id="text-4-1-2">
 <div class="org-src-container">
-<pre class="src src-shell" id="org2aacb02">/set irc.server.freenode.nicks escribirUnNick
+<pre class="src src-shell" id="org7c7f09b">/set irc.server.freenode.nicks escribirUnNick
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org01f5a46" class="outline-4">
-<h4 id="org01f5a46"><span class="section-number-4">4.1.3</span> Conectar al servidor</h4>
+<div id="outline-container-orgcc7cb3c" class="outline-4">
+<h4 id="orgcc7cb3c"><span class="section-number-4">4.1.3.</span> Conectar al servidor</h4>
 <div class="outline-text-4" id="text-4-1-3">
 <p>
 Suponiendo que ya habiamos agregado el servidor a la lista de servidores de weechat
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell" id="org5aff800">/connect freenode
+<pre class="src src-shell" id="org645e0e3">/connect freenode
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgc896d42" class="outline-4">
-<h4 id="orgc896d42"><span class="section-number-4">4.1.4</span> Crear cuenta en el servidor conectado</h4>
+<div id="outline-container-orge34bf4e" class="outline-4">
+<h4 id="orge34bf4e"><span class="section-number-4">4.1.4.</span> Crear cuenta en el servidor conectado</h4>
 <div class="outline-text-4" id="text-4-1-4">
 <p>
 Algunos servidores piden que estés registrado en su canal para tener permisos para escribir en su canal
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell" id="org26267cd">/msg NickServ REGISTER escribirUnaClave escribirUnCorreo@gmail.com
+<pre class="src src-shell" id="orgee01347">/msg NickServ REGISTER escribirUnaClave escribirUnCorreo@gmail.com
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org9295960" class="outline-4">
-<h4 id="org9295960"><span class="section-number-4">4.1.5</span> Confirmar la cuenta</h4>
+<div id="outline-container-orgfee2b50" class="outline-4">
+<h4 id="orgfee2b50"><span class="section-number-4">4.1.5.</span> Confirmar la cuenta</h4>
 <div class="outline-text-4" id="text-4-1-5">
 <p>
 Te llegará un correo con el código de confirmación
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell" id="org6002c8a">/msg NickServ VERIFY REGISTER escribirUnNick escribi_codigo_confirmacion
+<pre class="src src-shell" id="orge3fdf84">/msg NickServ VERIFY REGISTER escribirUnNick escribi_codigo_confirmacion
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org2bc5bb1" class="outline-4">
-<h4 id="org2bc5bb1"><span class="section-number-4">4.1.6</span> Conectar a un canal</h4>
+<div id="outline-container-orga03074d" class="outline-4">
+<h4 id="orga03074d"><span class="section-number-4">4.1.6.</span> Conectar a un canal</h4>
 <div class="outline-text-4" id="text-4-1-6">
 <p>
 Suponiendo que ya estamos conectados a un servidor
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell" id="org876e30d">/join <span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">nombre-canal</span>
+<pre class="src src-shell" id="org65b45b5">/join <span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">nombre-canal</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgefb615d" class="outline-4">
-<h4 id="orgefb615d"><span class="section-number-4">4.1.7</span> Configurar para que se autoconecte al servidor agregado</h4>
+<div id="outline-container-org9ea3651" class="outline-4">
+<h4 id="org9ea3651"><span class="section-number-4">4.1.7.</span> Configurar para que se autoconecte al servidor agregado</h4>
 <div class="outline-text-4" id="text-4-1-7">
 <p>
 Si usamos algún servidor por defecto, y queremos evitar conectarnos de forma manual
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell" id="orga52f289">/set irc.server.freenode.autoconnect on
+<pre class="src src-shell" id="org23b049f">/set irc.server.freenode.autoconnect on
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org7de4c1e" class="outline-4">
-<h4 id="org7de4c1e"><span class="section-number-4">4.1.8</span> Agregar seguridad SSL</h4>
+<div id="outline-container-orgaf1bef9" class="outline-4">
+<h4 id="orgaf1bef9"><span class="section-number-4">4.1.8.</span> Agregar seguridad SSL</h4>
 <div class="outline-text-4" id="text-4-1-8">
 <p>
 Recordemos que <b>SSL</b> significa <b>Secure Sockets Layers</b> es decir <b>Capa de Sockets seguros</b>
@@ -514,15 +490,15 @@ entre dos sistemas (cliente y servidor).
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell" id="org29ee7ff">/set irc.server_default.sasl_mechanism dh-blowfish
+<pre class="src src-shell" id="org5891e5a">/set irc.server_default.sasl_mechanism dh-blowfish
 /set irc.server.freenode.sasl_username <span style="color: #2d9574;">"mynick"</span>
 /set irc.server.freenode.sasl_password <span style="color: #2d9574;">"xxxxxxx"</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org858055b" class="outline-4">
-<h4 id="org858055b"><span class="section-number-4">4.1.9</span> Autoconectar a varios canales</h4>
+<div id="outline-container-orgfc03e2c" class="outline-4">
+<h4 id="orgfc03e2c"><span class="section-number-4">4.1.9.</span> Autoconectar a varios canales</h4>
 <div class="outline-text-4" id="text-4-1-9">
 <p>
 Si los programas que utilizamos tienen canales oficiales, puede resultar útil
@@ -536,18 +512,18 @@ se podría decir que sería similar a usar <b>stackoverflow</b> pero con tiempo 
 ó quizás no, depende del canal.
 </p>
 <div class="org-src-container">
-<pre class="src src-shell" id="org7aec5c3">/set irc.server.freenode.autojoin <span style="color: #2d9574;">"#channel1,#channel2"</span>
+<pre class="src src-shell" id="orgd435dcd">/set irc.server.freenode.autojoin <span style="color: #2d9574;">"#channel1,#channel2"</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orga89fe91" class="outline-3">
-<h3 id="orga89fe91"><span class="section-number-3">4.2</span> Otras Configuraciones</h3>
+<div id="outline-container-org0f56d66" class="outline-3">
+<h3 id="org0f56d66"><span class="section-number-3">4.2.</span> Otras Configuraciones</h3>
 <div class="outline-text-3" id="text-4-2">
 </div>
-<div id="outline-container-org3218367" class="outline-4">
-<h4 id="org3218367"><span class="section-number-4">4.2.1</span> Modificar opciones</h4>
+<div id="outline-container-orga7f5b2b" class="outline-4">
+<h4 id="orga7f5b2b"><span class="section-number-4">4.2.1.</span> Modificar opciones</h4>
 <div class="outline-text-4" id="text-4-2-1">
 <p>
 Si encontramos nuevos parámetros a configurar como hicimos con los certificados <b>SSL</b> 
@@ -555,28 +531,28 @@ el patrón a seguir sería el siguiente
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell" id="orgb13d890">/set irc.server.freenode.nombreOpcion unValor
+<pre class="src src-shell" id="org0be5757">/set irc.server.freenode.nombreOpcion unValor
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org0ca0e2e" class="outline-4">
-<h4 id="org0ca0e2e"><span class="section-number-4">4.2.2</span> Mostrar configuraciones</h4>
+<div id="outline-container-orge5c96ca" class="outline-4">
+<h4 id="orge5c96ca"><span class="section-number-4">4.2.2.</span> Mostrar configuraciones</h4>
 <div class="outline-text-4" id="text-4-2-2">
 <p>
 Si no estamos seguros del valor de algunas configuraciones por defecto, o nuevas que hicieramos.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell" id="orgdd5ecc5">/fset weechat.*
+<pre class="src src-shell" id="orga8b314d">/fset weechat.*
 /fset irc.*
 </pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org5f9a2c2" class="outline-3">
-<h3 id="org5f9a2c2"><span class="section-number-3">4.3</span> Canales Sugeridos</h3>
+<div id="outline-container-org13bfbf3" class="outline-3">
+<h3 id="org13bfbf3"><span class="section-number-3">4.3.</span> Canales Sugeridos</h3>
 <div class="outline-text-3" id="text-4-3">
 <p>
 Estos son algunos de los que más utilizado, claramente hay una gran variedad de canales por elegir.
@@ -592,10 +568,10 @@ Recordemos que para conectar utilizamos <b>/join #nombre-canal</b>
 </ul>
 </div>
 </div>
-<div id="outline-container-org4fddf8e" class="outline-3">
-<h3 id="org4fddf8e"><span class="section-number-3">4.4</span> Atajos Weechat</h3>
+<div id="outline-container-orgdc88767" class="outline-3">
+<h3 id="orgdc88767"><span class="section-number-3">4.4.</span> Atajos Weechat</h3>
 <div class="outline-text-3" id="text-4-4">
-<table id="orgec7e67c" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org6c91b3a" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -623,35 +599,35 @@ Recordemos que para conectar utilizamos <b>/join #nombre-canal</b>
 </table>
 </div>
 </div>
-<div id="outline-container-org0c7ac63" class="outline-3">
-<h3 id="org0c7ac63"><span class="section-number-3">4.5</span> Referencias Web Oficiales</h3>
+<div id="outline-container-orgc2e29b1" class="outline-3">
+<h3 id="orgc2e29b1"><span class="section-number-3">4.5.</span> Referencias Web Oficiales</h3>
 <div class="outline-text-3" id="text-4-5">
-<ul class="org-ul">
-<li>[Referencia #2 - Ver Pagina](<a href="https://freenode.net/kb/answer/registration">https://freenode.net/kb/answer/registration</a>)</li>
-<li>[Referencia #3 - Ver Pagina](<a href="https://wiki.archlinux.org/index.php/WeeChat">https://wiki.archlinux.org/index.php/WeeChat</a>)</li>
-<li>[Referencia #4 - Ver Pagina](<a href="https://freenode.net/kb/answer/weechat">https://freenode.net/kb/answer/weechat</a>)</li>
-<li>[Referencia #5 - Ver Pagina](<a href="https://weechat.org/files/doc/stable/weechat_quickstart.en.html">https://weechat.org/files/doc/stable/weechat_quickstart.en.html</a>)</li>
-<li>[Referencia #6 - Ver Pagina](<a href="https://weechat.org/files/doc/devel/weechat_quickstart.en.html">https://weechat.org/files/doc/devel/weechat_quickstart.en.html</a>)</li>
-<li>[Referencia #7 - Ver Pagina](<a href="https://weechat.org/files/doc/stable/weechat_quickstart.es.html">https://weechat.org/files/doc/stable/weechat_quickstart.es.html</a>)</li>
-<li>[Referencia #8 - Primeros pasos (weechat.org)](<a href="https://weechat.org/files/doc/stable/weechat_quickstart.en.html">https://weechat.org/files/doc/stable/weechat_quickstart.en.html</a>)</li>
-</ul>
+<ol class="org-ol">
+<li>Referencia #2 - <a href="https://freenode.net/kb/answer/registration">[Ver Pagina]​</a></li>
+<li>Referencia #3 - <a href="https://wiki.archlinux.org/index.php/WeeChat">[Ver Pagina]​</a></li>
+<li>Referencia #4 - <a href="https://freenode.net/kb/answer/weechat">[Ver Pagina]​</a></li>
+<li>Referencia #5 - <a href="https://weechat.org/files/doc/stable/weechat_quickstart.en.html">[Ver Pagina]​</a></li>
+<li>Referencia #6 - <a href="https://weechat.org/files/doc/devel/weechat_quickstart.en.html">[Ver Pagina]​</a></li>
+<li>Referencia #7 - <a href="https://weechat.org/files/doc/stable/weechat_quickstart.es.html">[Ver Pagina]​</a></li>
+<li>Referencia #8 - <a href="https://weechat.org/files/doc/stable/weechat_quickstart.en.html">[Ver Pagina]​</a></li>
+</ol>
 </div>
 </div>
-<div id="outline-container-orgabbb872" class="outline-3">
-<h3 id="orgabbb872"><span class="section-number-3">4.6</span> Referencias Web Extraoficiales</h3>
+<div id="outline-container-org945a470" class="outline-3">
+<h3 id="org945a470"><span class="section-number-3">4.6.</span> Referencias Web Extraoficiales</h3>
 <div class="outline-text-3" id="text-4-6">
-<ul class="org-ul">
-<li>[Referencia #1 - Ver Pagina](<a href="http://www.chiark.greenend.org.uk/doc/weechat-doc/html/weechat_quickstart.en.html">http://www.chiark.greenend.org.uk/doc/weechat-doc/html/weechat_quickstart.en.html</a>)</li>
-<li>[Referencia #9 - Configuracion (szorfein.github.io)](<a href="https://szorfein.github.io/weechat/tor/configure-weechat/">https://szorfein.github.io/weechat/tor/configure-weechat/</a>)</li>
-</ul>
+<ol class="org-ol">
+<li>Referencia #1 - <a href="http://www.chiark.greenend.org.uk/doc/weechat-doc/html/weechat_quickstart.en.html">[Ver Pagina]​</a></li>
+<li>Referencia #9 - <a href="https://szorfein.github.io/weechat/tor/configure-weechat/">[Ver Pagina - Configuración (szorfein.github.io)]​</a></li>
+</ol>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: jelou</p>
-<p class="date">Created: 2021-04-02 vie 18:48</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+<p class="date">Created: 2021-09-13 lun 12:24</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 
 

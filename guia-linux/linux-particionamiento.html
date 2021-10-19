@@ -1,5 +1,5 @@
 <!--?xml version="1.0" encoding="utf-8"?--><!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<!-- 2021-04-02 vie 19:19 -->
+<!-- 2021-09-13 lun 13:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Guia Linux - Conceptos Particionamiento</title>
@@ -36,7 +36,7 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
+    overflow: auto;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -48,7 +48,7 @@
     padding: 3px;
     border: 1px solid black;
   }
-  pre.src:hover:before { display: inline;}
+  pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
@@ -193,50 +193,26 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/sass-style.css">
 <script type="text/javascript" src="/assets/js/all.js"></script>
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2020 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 </head>
 <body>
@@ -246,141 +222,822 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org7ab95d3">1. Particionar Disco</a>
+<li><a href="#orga0670cb">1. Conceptos Básicos</a>
 <ul>
-<li><a href="#org111eda9">1.1. Partición para Almacenamiento</a></li>
-<li><a href="#org1cab054">1.2. Listar las particiones</a></li>
-<li><a href="#orgfb3d73d">1.3. Montar la particion de Almacenamiento NTFS</a>
+<li><a href="#orga6873b4">1.1. MBR vs GPT</a>
 <ul>
-<li><a href="#orgf83b2fa">1.3.1. Crear directorio de almacenamiento a compartir</a></li>
-<li><a href="#org301ee92">1.3.2. Montar la partición del directorio</a></li>
+<li><a href="#org7ba75b7">1.1.1. Conceptos</a></li>
+<li><a href="#org6f45957">1.1.2. Estructuras</a></li>
+<li><a href="#org3cdec74">1.1.3. MBR (Master Boot Record)</a></li>
+<li><a href="#org12621dc">1.1.4. GPT (GUID Partition Table)</a></li>
+<li><a href="#org5999c83">1.1.5. Referencias Web</a></li>
+<li><a href="#orgf9fcc97">1.1.6. Cuanto Espacio Asignar</a></li>
 </ul>
 </li>
-<li><a href="#org22f3fbe">1.4. Anclar un directorio al Gestor de archivos</a></li>
-<li><a href="#orga0e8691">1.5. Referencias Web Extraoficiales</a></li>
-<li><a href="#orgd90aaa3">1.6. Referencias Youtube</a></li>
+<li><a href="#orge3a9a39">1.2. Modo BIOS Legacy Vs Modo UEFI</a>
+<ul>
+<li><a href="#org7735022">1.2.1. Conceptos</a></li>
+<li><a href="#orgffa649e">1.2.2. Problemas de Cambio de Modo</a></li>
+<li><a href="#orgae10982">1.2.3. BIOS Legacy (Basic Input/Output System)</a></li>
+<li><a href="#org3f9446c">1.2.4. UEFI (Unified Extensible Firmware Interface)</a></li>
+<li><a href="#org5403ce5">1.2.5. Referencias</a></li>
 </ul>
 </li>
-<li><a href="#orgeaf44d9">2. Bootear Multiples Sistemas Operativos</a>
+<li><a href="#org4cbd054">1.3. <span class="todo _TODO_">[TODO]</span> Tabla de Particiones</a>
 <ul>
-<li><a href="#org9b6cb14">2.1. Conceptos</a></li>
-<li><a href="#org0803121">2.2. Conocer versión del GRUB</a></li>
-<li><a href="#org96eb71e">2.3. Referencias Web Extraoficiales</a></li>
+<li><a href="#orgd9da66a">1.3.1. Conceptos</a></li>
 </ul>
 </li>
-<li><a href="#orged04c20">3. Particionar con GParted</a>
+<li><a href="#org7bc765d">1.4. <span class="todo _TODO_">[TODO]</span> Firma de unidad arrancable</a>
 <ul>
-<li><a href="#org3728142">3.1. Conceptos</a></li>
-<li><a href="#org146fd1e">3.2. Referencias Web Oficiales</a></li>
-<li><a href="#orgf36c340">3.3. Referencias Youtube</a></li>
+<li><a href="#org3a65742">1.4.1. Conceptos</a></li>
 </ul>
 </li>
-<li><a href="#org2b59e8a">4. Instalar un file manager</a>
+<li><a href="#org6352e17">1.5. <span class="todo _DOING_">[DOING]</span> Gestores de Arranque</a>
 <ul>
-<li><a href="#org5e0e2b3">4.1. Conceptos</a></li>
-<li><a href="#orgd6f38be">4.2. Referencias Youtube</a></li>
+<li><a href="#org39e3aff">1.5.1. Conceptos</a></li>
+<li><a href="#org218440e">1.5.2. GRUB</a></li>
+<li><a href="#org31b9a4d">1.5.3. LILO</a></li>
+</ul>
+</li>
+<li><a href="#org29b051d">1.6. Particiones</a>
+<ul>
+<li><a href="#org3760427">1.6.1. Conceptos</a></li>
+<li><a href="#orgc7076b9">1.6.2. Partición Primaria</a></li>
+<li><a href="#org25bb787">1.6.3. Partición Extendida</a></li>
+<li><a href="#org725b665">1.6.4. Unidades Lógicas</a></li>
+</ul>
+</li>
+<li><a href="#orgb10f09c">1.7. <span class="todo _TODO_">[TODO]</span> Sistemas de Archivos - FileSystems</a>
+<ul>
+<li><a href="#orgb65ec84">1.7.1. Conceptos</a></li>
+<li><a href="#orga4919ef">1.7.2. Linux</a></li>
+<li><a href="#org44c524f">1.7.3. Windows</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgdeb41f0">2. <span class="todo _DOING_">[DOING]</span> Particionamiento</a>
+<ul>
+<li><a href="#org77e1f1e">2.1. Listar/Crear/Eliminar partición</a>
+<ul>
+<li><a href="#orgd126566">2.1.1. Conceptos</a></li>
+<li><a href="#org8598039">2.1.2. Comando fdisk</a></li>
+<li><a href="#org743bced">2.1.3. Comando parted</a></li>
+<li><a href="#org0a2e1c9">2.1.4. Listar particiones</a></li>
+</ul>
+</li>
+<li><a href="#org905e796">2.2. Tipo de Partición</a>
+<ul>
+<li><a href="#org8839cd0">2.2.1. Conceptos</a></li>
+<li><a href="#org9dabba3">2.2.2. Comando mkfs (make file system)</a></li>
+</ul>
+</li>
+<li><a href="#org1952f21">2.3. Montar/Desmontar Partición</a>
+<ul>
+<li><a href="#org04ec238">2.3.1. Punto de Montaje (Mountpoint)</a></li>
+<li><a href="#org020f232">2.3.2. Comando mount</a></li>
+<li><a href="#orgdb51a52">2.3.3. Comando umount</a></li>
+<li><a href="#org14c87b6">2.3.4. Ejemplo 1 - Basico</a></li>
+<li><a href="#org26eaa7e">2.3.5. Ejemplo 2 - Asignando usuario y permisos</a></li>
+</ul>
+</li>
+<li><a href="#orge9f0c77">2.4. Asignar permisos</a></li>
+<li><a href="#orgc16a212">2.5. Partición para Windows-Linux</a></li>
+<li><a href="#org339c3ae">2.6. Anclar un directorio al Gestor de archivos</a></li>
+<li><a href="#orgd78c0d2">2.7. Referencias</a>
+<ul>
+<li><a href="#org42990b0">2.7.1. Referencias Web Extraoficiales</a></li>
+<li><a href="#orga4869c2">2.7.2. Referencias Youtube</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org5790001">3. <span class="todo _DOING_">[DOING]</span> Comandos para FileSystems</a>
+<ul>
+<li><a href="#org5a3f56b">3.1. Comando df (file system disk space usage)</a>
+<ul>
+<li><a href="#orge2c8d2d">3.1.1. Conceptos</a></li>
+<li><a href="#org7acdf9e">3.1.2. Ejemplo (1)</a></li>
+</ul>
+</li>
+<li><a href="#org5df293b">3.2. Comando du (estimate file space usage)</a>
+<ul>
+<li><a href="#orgc6c24ec">3.2.1. Conceptos</a></li>
+<li><a href="#orgf451119">3.2.2. Ejemplo (1)</a></li>
+<li><a href="#org58137fb">3.2.3. Ejemplo (2)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org227422c">4. <span class="todo _DOING_">[DOING]</span> Información de particiones y dispositivos</a>
+<ul>
+<li><a href="#org51b4e03">4.1. Comando lsblk (list block devices)</a></li>
+<li><a href="#orgf1631e8">4.2. Comando hdparm</a></li>
+<li><a href="#org6135e55">4.3. Comando blkid</a></li>
+</ul>
+</li>
+<li><a href="#org836dfc8">5. Bootear Multiples Sistemas Operativos</a>
+<ul>
+<li><a href="#org7c5a0ec">5.1. Conceptos</a></li>
+<li><a href="#orgf10711f">5.2. Conocer versión del GRUB</a></li>
+<li><a href="#orgfa213b8">5.3. Referencias Web Extraoficiales</a></li>
+</ul>
+</li>
+<li><a href="#orgd889bef">6. File Manager</a>
+<ul>
+<li><a href="#org9de4275">6.1. Conceptos</a></li>
+<li><a href="#orgb4a5abb">6.2. Instalación</a></li>
+<li><a href="#org1a8faf6">6.3. Referencias Youtube</a></li>
+</ul>
+</li>
+<li><a href="#orgcbbaf26">7. Glosario</a>
+<ul>
+<li><a href="#org6dfd75e">7.1. Rutas</a></li>
+<li><a href="#org0c3e0b6">7.2. Comandos</a></li>
+<li><a href="#org7c1b50c">7.3. Otros</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org7ab95d3" class="outline-2">
-<h2 id="org7ab95d3"><span class="section-number-2">1</span> Particionar Disco</h2>
+<div id="outline-container-orga0670cb" class="outline-2">
+<h2 id="orga0670cb"><span class="section-number-2">1.</span> Conceptos Básicos</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org111eda9" class="outline-3">
-<h3 id="org111eda9"><span class="section-number-3">1.1</span> Partición para Almacenamiento</h3>
+<div id="outline-container-orga6873b4" class="outline-3">
+<h3 id="orga6873b4"><span class="section-number-3">1.1.</span> MBR vs GPT</h3>
 <div class="outline-text-3" id="text-1-1">
+</div>
+<div id="outline-container-org7ba75b7" class="outline-4">
+<h4 id="org7ba75b7"><span class="section-number-4">1.1.1.</span> Conceptos</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<ul class="org-ul">
+<li>Ambos son <b>esquemas de partición</b> y sólo se puede elegir uno u el otro (<i>cambiar de un esquema al otro, implíca perder datos y los SO instalados</i>)</li>
+<li><b>MBR</b> es más antiguo (<i>usa el modo BIOS</i>) y limitado (<i>hasta 4 particiones primarias, discos de hasta 2TB</i>)</li>
+<li><b>GPT</b> es más moderno (<i>usa el modo UEFI</i>) y no tan limitado (<i>128 particiones primarias, discos de más de 2 TB</i>)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6f45957" class="outline-4">
+<h4 id="org6f45957"><span class="section-number-4">1.1.2.</span> Estructuras</h4>
+<div class="outline-text-4" id="text-1-1-2">
+
+<div id="org9d7328c" class="figure">
+<p><img src="/img/mbr-gpt-scheme.png" alt="mbr-gpt-scheme.png">
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org3cdec74" class="outline-4">
+<h4 id="org3cdec74"><span class="section-number-4">1.1.3.</span> MBR (Master Boot Record)</h4>
+<div class="outline-text-4" id="text-1-1-3">
+<ul class="org-ul">
+<li>Las siglas (MBR) refieren a <b>Registro Maestro de Arranque</b></li>
+<li>Es el primer sector del disco (<i>el sector cero</i>) en donde la <b>BIOS</b> busca si hay algún <b>Sistema Operativo</b></li>
+<li>Sólo trabaja en <b>Modo BIOS Legacy</b></li>
+<li>Solo trabaja con Sistemas Operativos de <code>32 bits</code> (<i>porque permite hasta 32 bits por c/sector de la unidad de almacenamiento</i>)</li>
+<li>Permite hasta <b>4 particiones primarias</b> y reconoce discos duros de hasta <code>2 TB</code></li>
+<li>NO comprueba la seguridad e integridad de los discos duros</li>
+</ul>
+
+<blockquote>
 <p>
-Creamos una partición primaria del tipo NTFS y le asignamos los permisos al usuario
-Con el comando ``id -u -n`` obtenemos el nombre de usuario, mientras que con ``chown`` 
-le damos acceso a un usuario especifico a un directorio/archivo
+El sector MBR, que es el primer sector del disco ocupa <code>512 bytes</code> donde
+</p>
+<ul class="org-ul">
+<li><code>446bytes</code> son para el <b>Código de Arranque Maestro</b></li>
+<li><code>64 bytes</code> son para la (DPT) <b>Tabla Partición del disco</b></li>
+<li><code>2 bytes</code> son para la <b>firma de arranque</b> (<i>marca el fin del sector MBR</i>)</li>
+</ul>
+
+<p>
+La limitante de solo tener hasta 4 <b>Particiones primarias</b> es porque
+hay <code>64 bytes</code> de espacio para la (DPT) <b>Tabla de partición del disco</b>,
+y sólo puede haber 4 <b>Entradas a la Tabla de Partición</b> cada una de <code>16 bytes</code>.
+Estas últimas son las que guardan información de alguna <b>Partición Primaria</b>.
 </p>
 
-<div class="org-src-container">
-<pre class="src src-shell" id="org197c89f"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para saber el nombre de usuario</span>
-id -u -n
+<p>
+Gestionar la limitante de las 4 particiones primarias, podriamos
+</p>
+<ol class="org-ol">
+<li>Crear <b>3 particiones primarias</b> y <b>1 partición extendida</b></li>
+<li>La <b>partición extendida</b> la podemos dividir en <b>particiones lógicas</b> para grabar archivos.</li>
+<li>En las <b>particiones primarias</b> podriamos instalar sistemas operativos,</li>
+</ol>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-org12621dc" class="outline-4">
+<h4 id="org12621dc"><span class="section-number-4">1.1.4.</span> GPT (GUID Partition Table)</h4>
+<div class="outline-text-4" id="text-1-1-4">
+<ul class="org-ul">
+<li>(GPT) su traducción es <b>Tabla de particiones GUID</b></li>
+<li>Requiere que la <b>placa madre</b> (<i>motherboard</i>) tenga <b>UEFI</b></li>
+<li>Trabaja con Sistemas Opeativos de <code>32 bits</code> y <code>64 bits</code> (<i>porque permite hasta 64 bits por c/sector de la unidad de almacenamiento</i>)</li>
+<li>Trabaja en <code>Modo UEFI</code> (<i>se habilita en la configuración de la BIOS</i>)</li>
+<li>Permite hasta de <b>128 particiones</b> por disco, y reconoce discos duros de más de <code>2TB</code></li>
+<li>Se debe crear una partición <code>EFI</code> (<i>de 500-600mb</i>) que
+<ol class="org-ol">
+<li>se ponen los <b>módulos de arranque</b> de todas las particiones</li>
+<li>permite listar todos los (SO)</li>
+</ol></li>
+</ul>
 
-<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para asignarle los permisos de ese usuario</span>
-sudo chown nombreUsuario /storage/
-</pre>
+<blockquote>
+<p>
+Otros datos relevantes son
+</p>
+<ul class="org-ul">
+<li>Para crear discos en la terminal de linux, se utilizan los comandos <code>gdisk</code> ó <code>parted</code></li>
+<li>Se debe habilitar el <b>Modo UEFI</b> en la configuración de la <b>BIOS</b></li>
+<li>Se asegura de la <b>integridad de los datos</b> del disco, mediante una suma de <b>comprobación de redundancia cíclica</b> <code>CRC32</code>
+<ol class="org-ol">
+<li>Chequea la integridad de la cabecera GPT</li>
+<li>Si el <code>CRC</code> detecta daños en los datos =&gt; intenta recuperarlos con los respaldos de seguridad al final del disco</li>
+</ol></li>
+</ul>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-org5999c83" class="outline-4">
+<h4 id="org5999c83"><span class="section-number-4">1.1.5.</span> Referencias Web</h4>
+<div class="outline-text-4" id="text-1-1-5">
+<ol class="org-ol">
+<li><a href="https://unix.stackexchange.com/questions/120221/gpt-or-mbr-how-do-i-know">GPT or MBR: How do I know? - unix.stackexchange.com</a></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgf9fcc97" class="outline-4">
+<h4 id="orgf9fcc97"><span class="section-number-4">1.1.6.</span> Cuanto Espacio Asignar</h4>
+<div class="outline-text-4" id="text-1-1-6">
+<ul class="org-ul">
+<li>La partición de booteo (<i>que debe ser primaria</i>) suele asignarse <code>/boot</code> como <b>punto de montaje</b></li>
+<li>Si el disco utiliza <b>MBR</b> se sugiere <code>300mb</code></li>
+<li>Si el disco utiliza <b>UEFI</b> se sugiere <code>600mb</code></li>
+</ul>
 </div>
 </div>
 </div>
-<div id="outline-container-org1cab054" class="outline-3">
-<h3 id="org1cab054"><span class="section-number-3">1.2</span> Listar las particiones</h3>
+<div id="outline-container-orge3a9a39" class="outline-3">
+<h3 id="orge3a9a39"><span class="section-number-3">1.2.</span> Modo BIOS Legacy Vs Modo UEFI</h3>
 <div class="outline-text-3" id="text-1-2">
+</div>
+<div id="outline-container-org7735022" class="outline-4">
+<h4 id="org7735022"><span class="section-number-4">1.2.1.</span> Conceptos</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<ul class="org-ul">
+<li>Tanto <b>BIOS Legacy</b> como <b>UEFI</b> son software a bajo nivel, que inician al encender el ordenador</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgffa649e" class="outline-4">
+<h4 id="orgffa649e"><span class="section-number-4">1.2.2.</span> Problemas de Cambio de Modo</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<blockquote>
 <p>
-Podemos usar el comando ``lsblk`` o ``fdisk``
+Podemos cambiar la forma de booteo de <b>Modo BIOS</b> al <b>Modo UEFI</b>
+en la configuración de la BIOS, pero esto implíca perder datos 
+y volver reinstalar los <b>sistemas operativos</b>
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-orgae10982" class="outline-4">
+<h4 id="orgae10982"><span class="section-number-4">1.2.3.</span> BIOS Legacy (Basic Input/Output System)</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<ul class="org-ul">
+<li>Es un software de bajo nivel que se encuentra en un chip de la placa base del ordenador</li>
+<li>Utiliza una memoria <b>CMOS</b></li>
+</ul>
+
+<blockquote>
+<p>
+La estructura básica de arranque sería
+<code>Bios -&gt; MBR -&gt; (Boot Loader -&gt; Kernel) -&gt; Sistema Operativo</code>
 </p>
 
-<div class="org-src-container">
-<pre class="src src-shell" id="org2a45255"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">listar particiones (no pide permisos administrador)</span>
-lsblk
-
-<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">listar particiones (pide permisos administrador)</span>
-sudo fdisk -l /dev/sda
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-orgfb3d73d" class="outline-3">
-<h3 id="orgfb3d73d"><span class="section-number-3">1.3</span> Montar la particion de Almacenamiento NTFS</h3>
-<div class="outline-text-3" id="text-1-3">
 <p>
-Si la partición va interactuar entre Windows y Linux, se recomienda que sea NTFS.
-Si sólo va a ser entre distribuciones Linux, se recomienda Ext4
+El proceso de arranque de la BIOS más en detalle sería
 </p>
-
-<p>
-Destacamos un comentario de otro usuario linux 
+<ol class="org-ol">
+<li>Se enciende, se carga el BIOS</li>
+<li>Identifica el <b>dispositivo de arranque</b> (<i>en la configuración de la placa madre se puede cambiar</i>)</li>
+<li>Detecta el código almacenado en el sector <b>MBR</b> (<i>el código maestro de arranque</i>)</li>
+<li>El <b>MBR</b> carga el <b>código de sector de arranque</b> de la partición activa (<i>se puede activar en la terminal con fdisk ó con un gestor de particiones</i>)</li>
+<li>El <b>sector de arranque</b> carga y ejecuta el <b>cargador de arranque</b> (<i>boot loader</i>)</li>
+</ol>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-org3f9446c" class="outline-4">
+<h4 id="org3f9446c"><span class="section-number-4">1.2.4.</span> UEFI (Unified Extensible Firmware Interface)</h4>
+<div class="outline-text-4" id="text-1-2-4">
+<ul class="org-ul">
+<li>Las siglas (UEFI) significan <b>Interfaz de Firmware Extensible Unificada</b></li>
+<li>Es un software intermedio entre el <b>firmware</b> y el <b>sistema operativo</b></li>
+<li>Reemplaza al antiguo <b>Modo BIOS Legacy</b></li>
+<li>Tiene un tiempo de arranque más rápido comparado con el <b>Modo BIOS Legacy</b></li>
+<li>Permite recuperación de datos dañados (<i>los respaldos están en los ultimos sectores del disco gpt</i>)</li>
+<li>Aporta más seguridad, protege el proceso previo al arranque del SO</li>
+<li>Tienen interfaz gráfica más moderna y soporte para mouse</li>
+<li><p>
+Utiliza una <b>memoria flash</b>
 </p>
 
 <blockquote>
 <p>
-A good practice for some static mounted storage system like you are doing is 
-to add a permanent mount point to /etc/fstab.
-There are several ways to do it, but I just wanted you to be aware.
+La estructura básica de arranque sería
+ <code>UEFI -&gt; EFI+Boot+Loader -&gt; Kernel -&gt; Sistema Operativo</code>
 </p>
-</blockquote>
+
+<p>
+El proceso de arranque de la UEFI más en detalle sería
+</p>
+<ol class="org-ol">
+<li>El <b>gestor de arranque en la UEFI</b> chequea la <b>configuración de arranque</b></li>
+<li>El <b>gestor de arranque</b> se carga en la Memoria, y ejecuta el (loader) <b>cargador del Sistema operativo</b> ó su <b>kernel</b></li>
+</ol>
+</blockquote></li>
+</ul>
 </div>
-<div id="outline-container-orgf83b2fa" class="outline-4">
-<h4 id="orgf83b2fa"><span class="section-number-4">1.3.1</span> Crear directorio de almacenamiento a compartir</h4>
+</div>
+<div id="outline-container-org5403ce5" class="outline-4">
+<h4 id="org5403ce5"><span class="section-number-4">1.2.5.</span> Referencias</h4>
+<div class="outline-text-4" id="text-1-2-5">
+<ol class="org-ol">
+<li><a href="https://itsfoss.com/check-uefi-or-bios/">How to check if your computer uses UEFI or BIOS - itfoss.com</a></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-org4cbd054" class="outline-3">
+<h3 id="org4cbd054"><span class="section-number-3">1.3.</span> <span class="todo _TODO_">[TODO]</span> Tabla de Particiones</h3>
+<div class="outline-text-3" id="text-1-3">
+</div>
+<div id="outline-container-orgd9da66a" class="outline-4">
+<h4 id="orgd9da66a"><span class="section-number-4">1.3.1.</span> Conceptos</h4>
 <div class="outline-text-4" id="text-1-3-1">
 <p>
-Recordando que la ruta <b>/</b> es la raiz y <b>mnt</b> el directorio que se 
-se suele utilizar por defecto para acceder desde los demas distribuciones
+Contiene información sobre las particiones
+</p>
+<ul class="org-ul">
+<li>Formato (<i>Ej. NTFS, ext2, ext3, FAT32,…</i>)</li>
+<li>Tamaño</li>
+<li>Ubicación del Sector</li>
+<li>Si es arrancable o no</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org7bc765d" class="outline-3">
+<h3 id="org7bc765d"><span class="section-number-3">1.4.</span> <span class="todo _TODO_">[TODO]</span> Firma de unidad arrancable</h3>
+<div class="outline-text-3" id="text-1-4">
+</div>
+<div id="outline-container-org3a65742" class="outline-4">
+<h4 id="org3a65742"><span class="section-number-4">1.4.1.</span> Conceptos</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<ul class="org-ul">
+<li>Indica la posición del volumen de arranque</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org6352e17" class="outline-3">
+<h3 id="org6352e17"><span class="section-number-3">1.5.</span> <span class="todo _DOING_">[DOING]</span> Gestores de Arranque</h3>
+<div class="outline-text-3" id="text-1-5">
+</div>
+<div id="outline-container-org39e3aff" class="outline-4">
+<h4 id="org39e3aff"><span class="section-number-4">1.5.1.</span> Conceptos</h4>
+<div class="outline-text-4" id="text-1-5-1">
+<ul class="org-ul">
+<li>Permiten elegir el <b>sistema operativo</b> a iniciar</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org218440e" class="outline-4">
+<h4 id="org218440e"><span class="section-number-4">1.5.2.</span> GRUB</h4>
+</div>
+<div id="outline-container-org31b9a4d" class="outline-4">
+<h4 id="org31b9a4d"><span class="section-number-4">1.5.3.</span> LILO</h4>
+</div>
+</div>
+<div id="outline-container-org29b051d" class="outline-3">
+<h3 id="org29b051d"><span class="section-number-3">1.6.</span> Particiones</h3>
+<div class="outline-text-3" id="text-1-6">
+</div>
+<div id="outline-container-org3760427" class="outline-4">
+<h4 id="org3760427"><span class="section-number-4">1.6.1.</span> Conceptos</h4>
+<div class="outline-text-4" id="text-1-6-1">
+<ul class="org-ul">
+<li>Las <b>particiones</b> son discos duros virtuales/lógicos que se crean en un <b>disco físico</b></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc7076b9" class="outline-4">
+<h4 id="orgc7076b9"><span class="section-number-4">1.6.2.</span> Partición Primaria</h4>
+<div class="outline-text-4" id="text-1-6-2">
+<ul class="org-ul">
+<li>Se pueden poner <b>sector de arranque</b> para bootear un SO</li>
+<li>Se pueden grabar datos</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org25bb787" class="outline-4">
+<h4 id="org25bb787"><span class="section-number-4">1.6.3.</span> Partición Extendida</h4>
+<div class="outline-text-4" id="text-1-6-3">
+<ul class="org-ul">
+<li>Sólo son necesarias en discos con <b>MBR</b></li>
+<li>Cosas que NO se pueden hacer en una <b>partición extendida</b>
+<ul class="org-ul">
+<li>NO se puede instalar Sistemas Operativos</li>
+<li>NO se puede grabar ficheros</li>
+<li>NO se puede poner un sector de arranque</li>
+</ul></li>
+<li>Se pueden partir en <b>particiones lógicas</b></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org725b665" class="outline-4">
+<h4 id="org725b665"><span class="section-number-4">1.6.4.</span> Unidades Lógicas</h4>
+<div class="outline-text-4" id="text-1-6-4">
+<ul class="org-ul">
+<li>Solo se pueden grabar datos</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb10f09c" class="outline-3">
+<h3 id="orgb10f09c"><span class="section-number-3">1.7.</span> <span class="todo _TODO_">[TODO]</span> Sistemas de Archivos - FileSystems</h3>
+<div class="outline-text-3" id="text-1-7">
+</div>
+<div id="outline-container-orgb65ec84" class="outline-4">
+<h4 id="orgb65ec84"><span class="section-number-4">1.7.1.</span> Conceptos</h4>
+<div class="outline-text-4" id="text-1-7-1">
+<ul class="org-ul">
+<li>Para linux tenemos ext2,ext3,ex4</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga4919ef" class="outline-4">
+<h4 id="orga4919ef"><span class="section-number-4">1.7.2.</span> Linux</h4>
+<div class="outline-text-4" id="text-1-7-2">
+<ul class="org-ul">
+<li>ext2,ext3,ext4 para datos</li>
+<li>swap para la zona swap,</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org44c524f" class="outline-4">
+<h4 id="org44c524f"><span class="section-number-4">1.7.3.</span> Windows</h4>
+<div class="outline-text-4" id="text-1-7-3">
+<ul class="org-ul">
+<li>FAT32 para los datos</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgdeb41f0" class="outline-2">
+<h2 id="orgdeb41f0"><span class="section-number-2">2.</span> <span class="todo _DOING_">[DOING]</span> Particionamiento</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org77e1f1e" class="outline-3">
+<h3 id="org77e1f1e"><span class="section-number-3">2.1.</span> Listar/Crear/Eliminar partición</h3>
+<div class="outline-text-3" id="text-2-1">
+</div>
+<div id="outline-container-orgd126566" class="outline-4">
+<h4 id="orgd126566"><span class="section-number-4">2.1.1.</span> Conceptos</h4>
+<div class="outline-text-4" id="text-2-1-1">
+<p>
+Posibles herramientas para particionar via terminal son
+</p>
+<ol class="org-ol">
+<li>fdisk</li>
+<li>parted</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org8598039" class="outline-4">
+<h4 id="org8598039"><span class="section-number-4">2.1.2.</span> Comando fdisk</h4>
+<div class="outline-text-4" id="text-2-1-2">
+<ul class="org-ul">
+<li>Para listar/crear/borrar particiones seleccionamos las letras de las operaciones una vez dentro</li>
+<li>Los cambios persisten en memoria como lectura hasta que decidamos persistirlos en disco</li>
+<li>Para guardar los cambios elegimos la operación <b>write</b> con <code>w</code></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">gestionamos el disco a particionar</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">(dev=device, sda=primer disco detectado)</span>
+fdisk /dev/sda
+</pre>
+</div>
+
+<p>
+Algunas operaciones que podemos encontrar son
+</p>
+<table id="orgbe9d73b" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">operación</th>
+<th scope="col" class="org-left">Descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">n</td>
+<td class="org-left">Crear una partición (opción <code>p</code> para primaria y <code>e</code> para extendida)</td>
+</tr>
+
+<tr>
+<td class="org-left">w</td>
+<td class="org-left">Escribir/Guardar los cambios</td>
+</tr>
+
+<tr>
+<td class="org-left">m</td>
+<td class="org-left">Listar menú de operaciones (<i>actúa como un –help</i>)</td>
+</tr>
+
+<tr>
+<td class="org-left">p</td>
+<td class="org-left">Listar particiones primarias</td>
+</tr>
+
+<tr>
+<td class="org-left">d</td>
+<td class="org-left">Eliminar una partición seleccionada</td>
+</tr>
+
+<tr>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Listar los tipos de particiones (<i>Ej. SWAP, Ext2,Ext3,Ext4,…</i>)</td>
+</tr>
+
+<tr>
+<td class="org-left">t</td>
+<td class="org-left">Cambiar el tipo de una partición</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">o</td>
+<td class="org-left">Crear tabla de partición DOS</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org743bced" class="outline-4">
+<h4 id="org743bced"><span class="section-number-4">2.1.3.</span> Comando parted</h4>
+<div class="outline-text-4" id="text-2-1-3">
+<p>
+Para gestionar las particiones iniciamos con el comando <code>parted /dev/sda</code> (<i>cambiamos "sda" por el dispositivo que queramos</i>)
 </p>
 
 <p>
-Tambien que con el comando ``mkdir`` seguido del parametro <b>-p</b> nos facilita
-un directorio A con subdirectorio B (dentro del directorio A)
+Algunas operaciones que podemos encontrar son
 </p>
+<table id="orgd7c3634" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">operación</th>
+<th scope="col" class="org-left">Descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">mkpart</td>
+<td class="org-left">Crear una partición</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org0a2e1c9" class="outline-4">
+<h4 id="org0a2e1c9"><span class="section-number-4">2.1.4.</span> Listar particiones</h4>
+<div class="outline-text-4" id="text-2-1-4">
 <div class="org-src-container">
-<pre class="src src-shell" id="org9e2833f"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Creamos el directorio mnt y dentro mystorage</span>
-sudo mkdir -p /mnt/mystorage
+<pre class="src src-shell"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">con permisos root - tool parted</span>
+sudo parted /dev/sda print
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">con permisos root - tool fdisk</span>
+sudo fdisk --list /dev/sda
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">sin permisos root</span>
+lsblk -S
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org301ee92" class="outline-4">
-<h4 id="org301ee92"><span class="section-number-4">1.3.2</span> Montar la partición del directorio</h4>
-<div class="outline-text-4" id="text-1-3-2">
+</div>
+<div id="outline-container-org905e796" class="outline-3">
+<h3 id="org905e796"><span class="section-number-3">2.2.</span> Tipo de Partición</h3>
+<div class="outline-text-3" id="text-2-2">
+</div>
+<div id="outline-container-org8839cd0" class="outline-4">
+<h4 id="org8839cd0"><span class="section-number-4">2.2.1.</span> Conceptos</h4>
+<div class="outline-text-4" id="text-2-2-1">
 <ul class="org-ul">
-<li>Con ``id -u`` nos permite obtener el nombre de usuario que esta en la sesion actual de la terminal</li>
-<li>Los parametros del comando ``mount``
-<ol class="org-ol">
-<li><b><b>-uid</b></b> le pasamos el usuario que nos devuelve ``id -u``</li>
-<li><b><b>dmask</b></b></li>
-<li><b><b>fmask</b></b></li>
-<li><b><b>/dev/sda10</b></b> es la particion de almacenamiento</li>
-</ol></li>
+<li>El comando <code>mkfs</code> significa <b>make filesystem</b></li>
+<li>El formato <b>swap</b> se refiere al <b>área de swap</b> (memoria en disco)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9dabba3" class="outline-4">
+<h4 id="org9dabba3"><span class="section-number-4">2.2.2.</span> Comando mkfs (make file system)</h4>
+<div class="outline-text-4" id="text-2-2-2">
+<ul class="org-ul">
+<li>Crea un <b>file system</b> en una partición (<i>debe estar montada, es decir tener asociado un punto de montaje</i>)</li>
 </ul>
 
+<table id="org39d305b" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Parámetro</th>
+<th scope="col" class="org-left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Q</td>
+<td class="org-left">Quick, para formatear rápido</td>
+</tr>
+
+<tr>
+<td class="org-left">L</td>
+<td class="org-left">Label, para asignarle una etiqueta al volumen</td>
+</tr>
+</tbody>
+</table>
+
 <div class="org-src-container">
-<pre class="src src-shell" id="orga41cb22"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">nos devuelve el id del usuario con el que iniciamos la sesion</span>
+<pre class="src src-shell"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Formateamos el disco sda1</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- le asignamos el tipo "ext3" (para linux)</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- le decimos que se haga "rápido" (parámetro Q)</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- le asignamos la etiqueta "manjarito" (parámetro L)</span>
+sudo mkfs.ext3 -QL manjarito /dev/sda1
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org1952f21" class="outline-3">
+<h3 id="org1952f21"><span class="section-number-3">2.3.</span> Montar/Desmontar Partición</h3>
+<div class="outline-text-3" id="text-2-3">
+</div>
+<div id="outline-container-org04ec238" class="outline-4">
+<h4 id="org04ec238"><span class="section-number-4">2.3.1.</span> Punto de Montaje (Mountpoint)</h4>
+<div class="outline-text-4" id="text-2-3-1">
+<ul class="org-ul">
+<li>Ruta donde vamos a montar una partición (<i>Ej. /mnt/boot, /mnt/usb</i>)</li>
+<li>Si queremos utilizar una partición como gestor de archivos =&gt; debemos asociarle un punto de montaje</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org020f232" class="outline-4">
+<h4 id="org020f232"><span class="section-number-4">2.3.2.</span> Comando mount</h4>
+<div class="outline-text-4" id="text-2-3-2">
+<ul class="org-ul">
+<li>Si queremos utilizar una partición como gestor de archivos =&gt; debemos asociarle un punto de montaje</li>
+</ul>
+
+<p>
+Algunos parámetros que podemos pasarle a <code>mount</code> son
+</p>
+
+<table id="org41eaea6" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Parámetro</th>
+<th scope="col" class="org-left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>-t tipoParticion</code></td>
+<td class="org-left">Especificar el tipo de partición a montar</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>-o ro</code></td>
+<td class="org-left">Cambia los permisos de acceso a sólo lectura "read only"</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orgdb51a52" class="outline-4">
+<h4 id="orgdb51a52"><span class="section-number-4">2.3.3.</span> Comando umount</h4>
+<div class="outline-text-4" id="text-2-3-3">
+<ul class="org-ul">
+<li>Si queremos formatear una partición =&gt; debemos desmontarla</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org14c87b6" class="outline-4">
+<h4 id="org14c87b6"><span class="section-number-4">2.3.4.</span> Ejemplo 1 - Basico</h4>
+<div class="outline-text-4" id="text-2-3-4">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-&gt; Montamos un dispositivo usb, llamado "sdb2"</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-&gt; Especificamos el formato NTFS</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-&gt; Punto de montaje será la ruta "/mnt/usb1"</span>
+sudo mount -t ntfs /dev/sdb2 /mnt/usb1
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-&gt; Desmontamos el dispositivo</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-&gt; Previo a desmontar, debemos cerrar los archivos que tengamos abiertos de este dispositivo</span>
+sudo umount /mnt/usb1
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-&gt; Montamos un disco duro como dispositivo, llamado "sda2"</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-&gt; Especificamos el formato NTFS</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-&gt; Punto de montaje será la ruta "/mnt/storage"</span>
+sudo mount -t ntfs /dev/sda2 /mnt/storage
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-&gt; Montamos un disco duro como dispositivo, llamado "sda5"</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-&gt; Tiene previamente instalado Windows10</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-&gt; Especificamos el formato FAT32</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-&gt; Punto de montaje será la ruta "/mnt/win10"</span>
+sudo mount -t fat32 /dev/sda5 /mnt/win10
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-&gt; Montamos un disco duro como dispositivo, llamado "sda6"</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-&gt; Tiene previamente instalado Debian</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-&gt; Especificamos el formato ext4 (requisito para distribuciones Linux)</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-&gt; Punto de montaje será la ruta "/mnt/debian"</span>
+sudo mount -t ext4 /dev/sda6 /mnt/debian
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org26eaa7e" class="outline-4">
+<h4 id="org26eaa7e"><span class="section-number-4">2.3.5.</span> Ejemplo 2 - Asignando usuario y permisos</h4>
+<div class="outline-text-4" id="text-2-3-5">
+<p>
+Los parametros del comando <code>mount</code>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Parámetro</th>
+<th scope="col" class="org-left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>uid</code></td>
+<td class="org-left">Le pasamos nuestro usuario, que nos lo devuelve <code>id -u</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>dmask</code></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>fmask</code></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<div class="org-src-container">
+<pre class="src src-shell" id="org3606817"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">nos devuelve el id del usuario con el que iniciamos la sesion actual de la terminal</span>
 id -u
 
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">solo cambiamos el 1001 por lo que nos devuelve id -u</span>
@@ -392,54 +1049,363 @@ sudo mount -o rw,user,<span style="color: #7590db;">uid</span>=<span style="colo
 </div>
 </div>
 </div>
-<div id="outline-container-org22f3fbe" class="outline-3">
-<h3 id="org22f3fbe"><span class="section-number-3">1.4</span> Anclar un directorio al Gestor de archivos</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-orge9f0c77" class="outline-3">
+<h3 id="orge9f0c77"><span class="section-number-3">2.4.</span> Asignar permisos</h3>
+<div class="outline-text-3" id="text-2-4">
+<blockquote>
+<p>
+Creamos una partición primaria del tipo NTFS y le asignamos los permisos al usuario
+Con el comando <code>id -u -n</code> obtenemos el nombre de usuario, mientras que con <code>chown</code>
+le damos acceso a un usuario especifico a un directorio/archivo
+</p>
+</blockquote>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="org56e3611"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para saber el nombre de usuario</span>
+id -u -n
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para asignarle los permisos de ese usuario</span>
+sudo chown nombreUsuario /storage/
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc16a212" class="outline-3">
+<h3 id="orgc16a212"><span class="section-number-3">2.5.</span> Partición para Windows-Linux</h3>
+<div class="outline-text-3" id="text-2-5">
+<p>
+Si la partición va interactuar entre Windows y Linux, se recomienda que sea NTFS.
+Si sólo va a ser entre distribuciones Linux, se recomienda Ext4
+</p>
+
+<blockquote>
+<p>
+A good practice for some static mounted storage system like you are doing is 
+to add a permanent mount point to /etc/fstab.
+There are several ways to do it, but I just wanted you to be aware.
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-org339c3ae" class="outline-3">
+<h3 id="org339c3ae"><span class="section-number-3">2.6.</span> Anclar un directorio al Gestor de archivos</h3>
+<div class="outline-text-3" id="text-2-6">
 <p>
 El File manager por defecto de Ubuntu es Nautilus
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell" id="org00848c3"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">presionar Control+D</span>
+<pre class="src src-shell" id="org8a95c3a"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">luego de ingresar a la ruta, presionar Control+D</span>
 <span style="color: #4f97d7;">cd</span> /mnt/mystorage
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orga0e8691" class="outline-3">
-<h3 id="orga0e8691"><span class="section-number-3">1.5</span> Referencias Web Extraoficiales</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-orgd78c0d2" class="outline-3">
+<h3 id="orgd78c0d2"><span class="section-number-3">2.7.</span> Referencias</h3>
+<div class="outline-text-3" id="text-2-7">
+</div>
+<div id="outline-container-org42990b0" class="outline-4">
+<h4 id="org42990b0"><span class="section-number-4">2.7.1.</span> Referencias Web Extraoficiales</h4>
+<div class="outline-text-4" id="text-2-7-1">
+<ol class="org-ol">
+<li><a href="https://linuxconfig.org/how-to-mount-partition-with-ntfs-file-system-and-read-write-access">Como montar una partición NTFS - linuxconfig.org</a></li>
+<li><a href="https://askubuntu.com/questions/11840/how-do-i-use-chmod-on-an-ntfs-or-fat32-partition/956072#956072">Como usar el comando chmod en una partición NTFS ó FAT32 - askubuntu.com</a></li>
+<li><a href="https://askubuntu.com/questions/1109247/how-do-i-add-folder-to-ubuntu-18-04-1-nautilus-bookmark-list">Agregar carpetas al Nautilus - askubuntu.com</a></li>
+<li><a href="https://www.it-swarm.dev/es/mount/opciones-de-montaje-dmask-y-fmask/961637140/">Opciones de Montaje - it-swarm.dev</a></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orga4869c2" class="outline-4">
+<h4 id="orga4869c2"><span class="section-number-4">2.7.2.</span> Referencias Youtube</h4>
+<div class="outline-text-4" id="text-2-7-2">
+<ol class="org-ol">
+<li><a href="https://www.youtube.com/watch?v=PBHFud-Dva8">Redimensionar con Gparted en Ubuntu</a></li>
+<li><a href="https://www.youtube.com/watch?v=mPDhoYNao1o">Como automontar un disco en linux - By OhHeyItsLou</a></li>
+<li><a href="https://www.youtube.com/watch?v=hIq1dIgZrOc&amp;ab_channel=DevTechSolutions">Como montar una partición con Windows en Ubuntu - By DevTechSolutions</a></li>
+<li><a href="https://www.youtube.com/watch?v=ZlIbGnvTEDI">Como montar automaticamente particiones NTFS en Linux - By Root Tech</a></li>
+<li><a href="https://www.youtube.com/watch?v=CSbUiK2pytE">Particiones primarias/logicas/extendidas</a></li>
+<li><a href="https://www.youtube.com/watch?v=I1-0cpPO3e8">Recuperar Tabla de Particiones</a></li>
+<li><a href="https://www.youtube.com/watch?v=EQMWKwvsltY">Redimensionar Particiones en Ubuntu</a></li>
+<li><a href="https://www.youtube.com/watch?v=OSkK_lgSCzk">Redimensionar particiones</a></li>
+<li><a href="https://www.youtube.com/watch?v=xuYhjtpWZuc">Particionar disco duro en Ubuntu</a></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org5790001" class="outline-2">
+<h2 id="org5790001"><span class="section-number-2">3.</span> <span class="todo _DOING_">[DOING]</span> Comandos para FileSystems</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org5a3f56b" class="outline-3">
+<h3 id="org5a3f56b"><span class="section-number-3">3.1.</span> Comando df (file system disk space usage)</h3>
+<div class="outline-text-3" id="text-3-1">
+</div>
+<div id="outline-container-orge2c8d2d" class="outline-4">
+<h4 id="orge2c8d2d"><span class="section-number-4">3.1.1.</span> Conceptos</h4>
+<div class="outline-text-4" id="text-3-1-1">
 <ul class="org-ul">
-<li>[Referencia #2 - Ver Pagina](<a href="https://linuxconfig.org/how-to-mount-partition-with-ntfs-file-system-and-read-write-access">https://linuxconfig.org/how-to-mount-partition-with-ntfs-file-system-and-read-write-access</a>)</li>
-<li>[Referencia #3 - Ver Página](<a href="https://askubuntu.com/questions/11840/how-do-i-use-chmod-on-an-ntfs-or-fat32-partition/956072#956072">https://askubuntu.com/questions/11840/how-do-i-use-chmod-on-an-ntfs-or-fat32-partition/956072#956072</a>)</li>
-<li>[Agregar carpetas al Nautilus - Ver Página](<a href="https://askubuntu.com/questions/1109247/how-do-i-add-folder-to-ubuntu-18-04-1-nautilus-bookmark-list">https://askubuntu.com/questions/1109247/how-do-i-add-folder-to-ubuntu-18-04-1-nautilus-bookmark-list</a>)</li>
-<li>[Opciones de Montaje - Ver Pagina (it-swarm.dev)](<a href="https://www.it-swarm.dev/es/mount/opciones-de-montaje-dmask-y-fmask/961637140/">https://www.it-swarm.dev/es/mount/opciones-de-montaje-dmask-y-fmask/961637140/</a>)</li>
+<li>NO necesita del comando <code>sudo</code></li>
+<li>El filesystem debe estar montado para utilizar el comando en él</li>
+<li>Muestra estadísticas de cada filesystem (<i>ruta de punto de montaje, el tamaño utilizado/disponible, ..</i>)</li>
+<li>Si no especificamos el punto de montaje, lista todos los <b>file system</b> montados</li>
+<li>Seguido al comando podemos especificar el <b>punto de montaje</b></li>
+<li>Seguido al comando podemos poner una ruta, y dará información del <b>fs</b> donde está incluida</li>
 </ul>
+
+<table id="org29b6f29" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Parámetro</th>
+<th scope="col" class="org-left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>h</code></td>
+<td class="org-left">Muestra la información en un formato humanizado (más entendible)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>T</code></td>
+<td class="org-left">Muestra el <b>tipo de filesystem</b> (<i>Ej. NTFS, FAT32, ext3, ext4, …</i>)</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
-<div id="outline-container-orgd90aaa3" class="outline-3">
-<h3 id="orgd90aaa3"><span class="section-number-3">1.6</span> Referencias Youtube</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-org7acdf9e" class="outline-4">
+<h4 id="org7acdf9e"><span class="section-number-4">3.1.2.</span> Ejemplo (1)</h4>
+<div class="outline-text-4" id="text-3-1-2">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-&gt; listamos todos los filesystem</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-&gt; parámetro h: en un formato más humanizado</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-&gt; parámeto T: agrega la columna del tipo de filesystem</span>
+df -hT
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-&gt; especificamos el punto de montaje</span>
+df -hT /dev/sda10
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">posible respuesta</span>
+S.ficheros     Tipo Tamaño Usados  Disp Uso% Montado en
+/dev/sda10     ext4    <span style="color: #a45bad;">88G</span>    <span style="color: #a45bad;">81G</span>  <span style="color: #a45bad;">2,8G</span>  <span style="color: #a45bad;">97%</span> /
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org5df293b" class="outline-3">
+<h3 id="org5df293b"><span class="section-number-3">3.2.</span> Comando du (estimate file space usage)</h3>
+<div class="outline-text-3" id="text-3-2">
+</div>
+<div id="outline-container-orgc6c24ec" class="outline-4">
+<h4 id="orgc6c24ec"><span class="section-number-4">3.2.1.</span> Conceptos</h4>
+<div class="outline-text-4" id="text-3-2-1">
 <ul class="org-ul">
-<li>[Referencia #1 - Ver Video](<a href="https://www.youtube.com/watch?v=mPDhoYNao1o">https://www.youtube.com/watch?v=mPDhoYNao1o</a>)</li>
-<li>[Referencia #4 - Ver Video](<a href="https://www.youtube.com/watch?v=hIq1dIgZrOc">https://www.youtube.com/watch?v=hIq1dIgZrOc</a>)</li>
-<li>[Referencia #5 - Ver Video](<a href="https://www.youtube.com/watch?v=ZlIbGnvTEDI">https://www.youtube.com/watch?v=ZlIbGnvTEDI</a>)</li>
-<li>[Particiones primarias/logicas/extendidas - Ver Video](<a href="https://www.youtube.com/watch?v=CSbUiK2pytE">https://www.youtube.com/watch?v=CSbUiK2pytE</a>)</li>
-<li>[Recuperar Tabla de Particiones - Ver Video](<a href="https://www.youtube.com/watch?v=I1-0cpPO3e8">https://www.youtube.com/watch?v=I1-0cpPO3e8</a>)</li>
-<li>[Redimensionar Particiones en Ubuntu - Ver Video](<a href="https://www.youtube.com/watch?v=EQMWKwvsltY">https://www.youtube.com/watch?v=EQMWKwvsltY</a>)</li>
-<li>[Redimensionar particiones - Ver Videos](<a href="https://www.youtube.com/watch?v=OSkK_lgSCzk">https://www.youtube.com/watch?v=OSkK_lgSCzk</a>)</li>
-<li>[Particionar disco duro en Ubuntu - Ver Video](<a href="https://www.youtube.com/watch?v=xuYhjtpWZuc">https://www.youtube.com/watch?v=xuYhjtpWZuc</a>)</li>
+<li>Muestra estadísticas de uno o varios archivos/directorios (<i>tamaño, nombre</i>)</li>
+<li>NO necesita del comando <code>sudo</code></li>
 </ul>
+
+<table id="org1ea5557" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="org-left">
+
+<col class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Parámetro</th>
+<th scope="col" class="org-left">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>h</code></td>
+<td class="org-left">Muestra la información en un formato humanizado (más entendible)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>c</code></td>
+<td class="org-left">Agrega el tamaño total de todos los archivos/directorios</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>s</code></td>
+<td class="org-left">Da un resumen de cada directorio, caso contrario será recursivo</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orgf451119" class="outline-4">
+<h4 id="orgf451119"><span class="section-number-4">3.2.2.</span> Ejemplo (1)</h4>
+<div class="outline-text-4" id="text-3-2-2">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-&gt; El asterisco actúa como comodín, representa todos los archivos/sub-directorios de la ruta</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-&gt;</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-&gt; parámetro "h": muestra los datos en un formato humanizado (más entendible)</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-&gt; parámetro "c": muestra el tamaño total de todos los archivos</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-&gt; parámetro "s": da un resumen de cada directorio, sin listar cada archivo/subdirectorio</span>
+du -hcs /tmp/pepe/*
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-&gt; Obtenemos información de todos los archivos/sub-directorios de la ruta en la que estemos</span>
+du -hcs ./*
+</pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgeaf44d9" class="outline-2">
-<h2 id="orgeaf44d9"><span class="section-number-2">2</span> Bootear Multiples Sistemas Operativos</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-org58137fb" class="outline-4">
+<h4 id="org58137fb"><span class="section-number-4">3.2.3.</span> Ejemplo (2)</h4>
+<div class="outline-text-4" id="text-3-2-3">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">No es necesario poner el ~./~ antes del asterisco, funciona igual.</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Lo agregamos con fines practicos, para entender que lo hacemos en la ruta donde estamos parados.</span>
+
+<span style="color: #4f97d7;">[</span>jelou@jelou-pc Descargas<span style="color: #4f97d7;">]</span>$ du -hcs ./*
+<span style="color: #a45bad;">4,0K</span>    ./agenda.txt
+<span style="color: #a45bad;">4,0K</span>    ./almendras
+<span style="color: #a45bad;">0</span>       ./chau
+<span style="color: #a45bad;">0</span>       ./hola
+<span style="color: #a45bad;">0</span>       ./pedro
+<span style="color: #a45bad;">0</span>       ./productos
+<span style="color: #a45bad;">8,0K</span>    total
+
+<span style="color: #4f97d7;">[</span>jelou@jelou-pc Descargas<span style="color: #4f97d7;">]</span>$ du ./*
+<span style="color: #a45bad;">4</span>       ./agenda.txt
+<span style="color: #a45bad;">4</span>       ./almendras
+<span style="color: #a45bad;">0</span>       ./chau
+<span style="color: #a45bad;">0</span>       ./hola
+<span style="color: #a45bad;">0</span>       ./pedro
+<span style="color: #a45bad;">0</span>       ./productos/farmacia/siempre
+<span style="color: #a45bad;">0</span>       ./productos/farmacia
+<span style="color: #a45bad;">0</span>       ./productos
+</pre>
 </div>
-<div id="outline-container-org9b6cb14" class="outline-3">
-<h3 id="org9b6cb14"><span class="section-number-3">2.1</span> Conceptos</h3>
-<div class="outline-text-3" id="text-2-1">
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org227422c" class="outline-2">
+<h2 id="org227422c"><span class="section-number-2">4.</span> <span class="todo _DOING_">[DOING]</span> Información de particiones y dispositivos</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org51b4e03" class="outline-3">
+<h3 id="org51b4e03"><span class="section-number-3">4.1.</span> Comando lsblk (list block devices)</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>Muestra un listado de los dispositivos en formato de árbol</li>
+<li>Si queremos información resumida ejecutamos <code>lsblk -S</code></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">ejecutamos el comando</span>
+lsblk
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">el resultado es el siguiente</span>
+NAME    MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sda       <span style="color: #a45bad;">8:0</span>    <span style="color: #a45bad;">0</span> <span style="color: #a45bad;">465,8G</span>  <span style="color: #a45bad;">0</span> disk
+├─sda1    <span style="color: #a45bad;">8:1</span>    <span style="color: #a45bad;">0</span>  <span style="color: #a45bad;">1000M</span>  <span style="color: #a45bad;">0</span> part
+├─sda2    <span style="color: #a45bad;">8:2</span>    <span style="color: #a45bad;">0</span>   <span style="color: #a45bad;">260M</span>  <span style="color: #a45bad;">0</span> part /boot/efi
+├─sda3    <span style="color: #a45bad;">8:3</span>    <span style="color: #a45bad;">0</span>  <span style="color: #a45bad;">1000M</span>  <span style="color: #a45bad;">0</span> part
+├─sda4    <span style="color: #a45bad;">8:4</span>    <span style="color: #a45bad;">0</span>   <span style="color: #a45bad;">128M</span>  <span style="color: #a45bad;">0</span> part
+├─sda5    <span style="color: #a45bad;">8:5</span>    <span style="color: #a45bad;">0</span> <span style="color: #a45bad;">247,9G</span>  <span style="color: #a45bad;">0</span> part
+├─sda6    <span style="color: #a45bad;">8:6</span>    <span style="color: #a45bad;">0</span>   <span style="color: #a45bad;">452M</span>  <span style="color: #a45bad;">0</span> part
+├─sda7    <span style="color: #a45bad;">8:7</span>    <span style="color: #a45bad;">0</span>    <span style="color: #a45bad;">25G</span>  <span style="color: #a45bad;">0</span> part
+├─sda8    <span style="color: #a45bad;">8:8</span>    <span style="color: #a45bad;">0</span>    <span style="color: #a45bad;">12G</span>  <span style="color: #a45bad;">0</span> part
+├─sda9    <span style="color: #a45bad;">8:9</span>    <span style="color: #a45bad;">0</span>   <span style="color: #a45bad;">5,9G</span>  <span style="color: #a45bad;">0</span> part <span style="color: #4f97d7;">[</span>SWAP<span style="color: #4f97d7;">]</span>
+├─sda10   <span style="color: #a45bad;">8:10</span>   <span style="color: #a45bad;">0</span>  <span style="color: #a45bad;">89,8G</span>  <span style="color: #a45bad;">0</span> part /
+└─sda11   <span style="color: #a45bad;">8:11</span>   <span style="color: #a45bad;">0</span>  <span style="color: #a45bad;">53,2G</span>  <span style="color: #a45bad;">0</span> part
+sr0      <span style="color: #a45bad;">11:0</span>    <span style="color: #a45bad;">1</span>  <span style="color: #a45bad;">1024M</span>  <span style="color: #a45bad;">0</span> rom
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf1631e8" class="outline-3">
+<h3 id="orgf1631e8"><span class="section-number-3">4.2.</span> Comando hdparm</h3>
+<div class="outline-text-3" id="text-4-2">
+<ul class="org-ul">
+<li>Requiere del comando <code>sudo</code></li>
+<li>Parte de la información que imprime es
+<ol class="org-ol">
+<li>Modelo de disco</li>
+<li>Número de serie</li>
+<li>Firmware</li>
+<li>Configuración (<i>cilindros, cabeceras, sectores, …</i>)</li>
+<li>Características (<i>host protected area, write cache, …</i>)</li>
+<li>Seguridad</li>
+</ol></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- el parámetro "I" solicita información de las especificaciones de hardware del disco duro</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- con la ruta "/dev/sda" indicamos que dispositivo, en este caso el disco *sda*</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">pd: acortamos la cant. de información</span>
+<span style="color: #4f97d7;">[</span>jelou@jelou-pc ~<span style="color: #4f97d7;">]</span>$ sudo hdparm -I /dev/sda | less
+ATA device, with non-removable media
+Model Number:       HGST HTF525050A7E320
+Serial Number:      TFA55A3R29JH7J
+Firmware Revision:  GC2Z2D91
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">también podemos evaluar el rendimiento</span>
+<span style="color: #4f97d7;">[</span>jelou@jelou-pc ~<span style="color: #4f97d7;">]</span>$ sudo hdparm -tT /dev/sda
+Timing cached reads:   <span style="color: #a45bad;">10408</span> MB<span style="color: #4f97d7; font-weight: bold;"> in</span>  <span style="color: #a45bad;">1.99</span> seconds = <span style="color: #a45bad;">5220.06</span> MB/sec
+Timing buffered disk reads: <span style="color: #a45bad;">222</span> MB<span style="color: #4f97d7; font-weight: bold;"> in</span>  <span style="color: #a45bad;">3.02</span> seconds =  <span style="color: #a45bad;">73.47</span> MB/sec
+
+<span style="color: #4f97d7;">[</span>jelou@jelou-pc ~<span style="color: #4f97d7;">]</span>$ sudo hdparm -tT /dev/sda
+Timing cached reads:   <span style="color: #a45bad;">10776</span> MB<span style="color: #4f97d7; font-weight: bold;"> in</span>  <span style="color: #a45bad;">1.99</span> seconds = <span style="color: #a45bad;">5405.44</span> MB/sec
+Timing buffered disk reads: <span style="color: #a45bad;">288</span> MB<span style="color: #4f97d7; font-weight: bold;"> in</span>  <span style="color: #a45bad;">3.01</span> seconds =  <span style="color: #a45bad;">95.65</span> MB/sec
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org6135e55" class="outline-3">
+<h3 id="org6135e55"><span class="section-number-3">4.3.</span> Comando blkid</h3>
+<div class="outline-text-3" id="text-4-3">
+<ul class="org-ul">
+<li>NO necesita del comando <code>sudo</code></li>
+<li>Podemos especificar la partición (<i>Ej. blkid /dev/sda1</i>) caso contrario muestra sobre todas las particiones</li>
+<li>La información por defecto que imprime es
+<ol class="org-ol">
+<li>UUID (<i>son los identificadores universales únicos que identifican a las particiones</i>)</li>
+<li>Nombre del dispositivo (<i>sda1, sda2, sdb1, sdb2, …</i>)</li>
+<li>Etiqueta (<i>Windows8<sub>OS</sub>, Windows10, Manjaro, Debian, …</i>)</li>
+<li>Tipo de partición (<i>ntfs, vfat, ext3, ext4, swap, …</i>)</li>
+<li>Tamaño del bloque</li>
+</ol></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">podemos consultar por todas las particiones</span>
+<span style="color: #4f97d7;">[</span>jelou@jelou-pc ~<span style="color: #4f97d7;">]</span>$ blkid
+/dev/sda1: <span style="color: #7590db;">LABEL</span>=<span style="color: #2d9574;">"Windows8_OS"</span> <span style="color: #7590db;">BLOCK_SIZE</span>=<span style="color: #2d9574;">"512"</span> <span style="color: #7590db;">UUID</span>=<span style="color: #2d9574;">"160252C68156AA3F"</span> <span style="color: #7590db;">TYPE</span>=<span style="color: #2d9574;">"ntfs"</span> <span style="color: #7590db;">PARTLABEL</span>=<span style="color: #2d9574;">"Basic data partition"</span> <span style="color: #7590db;">PARTUUID</span>=<span style="color: #2d9574;">"1d5cf7f1-411c-4784-ba21-f4aa45dd646e"</span>
+/dev/sda2: <span style="color: #7590db;">LABEL</span>=<span style="color: #2d9574;">"RAM"</span> <span style="color: #7590db;">UUID</span>=<span style="color: #2d9574;">"37c62451-7261-2c90-ac93-26f8108ff43a"</span> <span style="color: #7590db;">TYPE</span>=<span style="color: #2d9574;">"swap"</span> <span style="color: #7590db;">PARTUUID</span>=<span style="color: #2d9574;">"11bee604-5954-45b2-a235-ab2862b22f35"</span>
+/dev/sda3: <span style="color: #7590db;">LABEL</span>=<span style="color: #2d9574;">"Storage"</span> <span style="color: #7590db;">UUID</span>=<span style="color: #2d9574;">"212b83f5-3e5g-417c-a21d-35cd7gfa6245"</span> <span style="color: #7590db;">BLOCK_SIZE</span>=<span style="color: #2d9574;">"4096"</span> <span style="color: #7590db;">TYPE</span>=<span style="color: #2d9574;">"ext4"</span> <span style="color: #7590db;">PARTUUID</span>=<span style="color: #2d9574;">"c21e230f-30db-401c-a211-33f2b2fg9bf2"</span>
+/dev/sda4: <span style="color: #7590db;">LABEL</span>=<span style="color: #2d9574;">"Manjarito"</span> <span style="color: #7590db;">UUID</span>=<span style="color: #2d9574;">"282f2b60-36ad-162c-c191-e2c2cb17c786"</span> <span style="color: #7590db;">BLOCK_SIZE</span>=<span style="color: #2d9574;">"4096"</span> <span style="color: #7590db;">TYPE</span>=<span style="color: #2d9574;">"ext4"</span> <span style="color: #7590db;">PARTUUID</span>=<span style="color: #2d9574;">"a522ed53-3b6b-4b3e-127a-e52d40dfb5fb"</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">si preguntamos por una partición específica</span>
+<span style="color: #4f97d7;">[</span>jelou@jelou-pc ~<span style="color: #4f97d7;">]</span>$ blkid /dev/sda1
+/dev/sda1: <span style="color: #7590db;">LABEL</span>=<span style="color: #2d9574;">"Windows8_OS"</span> <span style="color: #7590db;">BLOCK_SIZE</span>=<span style="color: #2d9574;">"512"</span> <span style="color: #7590db;">UUID</span>=<span style="color: #2d9574;">"160252C68156AA3F"</span> <span style="color: #7590db;">TYPE</span>=<span style="color: #2d9574;">"ntfs"</span> <span style="color: #7590db;">PARTLABEL</span>=<span style="color: #2d9574;">"Basic data partition"</span> <span style="color: #7590db;">PARTUUID</span>=<span style="color: #2d9574;">"1d5cf7f1-411c-4784-ba21-f4aa45dd646e"</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org836dfc8" class="outline-2">
+<h2 id="org836dfc8"><span class="section-number-2">5.</span> Bootear Multiples Sistemas Operativos</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-org7c5a0ec" class="outline-3">
+<h3 id="org7c5a0ec"><span class="section-number-3">5.1.</span> Conceptos</h3>
+<div class="outline-text-3" id="text-5-1">
 <p>
 Si tenes un sistema operativo por defecto por ejemplo Windows, y lo queres mantener
 podemos recurrir a como dicen "bootear" varios sistemas operativos, en este caso seria 
@@ -448,10 +1414,6 @@ varias distribuciones de linux.
 
 <p>
 Por lo general se suele crear un GRUB el que se ira modificando
-</p>
-
-<p>
-Comentarios a destacar de uno de los artículos de las referencias que hemos agregado
 </p>
 
 <blockquote>
@@ -489,82 +1451,91 @@ Por el momento sólo recomendamos ver las referencias Web que adjuntamos
 </p>
 </div>
 </div>
-<div id="outline-container-org0803121" class="outline-3">
-<h3 id="org0803121"><span class="section-number-3">2.2</span> Conocer versión del GRUB</h3>
-<div class="outline-text-3" id="text-2-2">
+<div id="outline-container-orgf10711f" class="outline-3">
+<h3 id="orgf10711f"><span class="section-number-3">5.2.</span> Conocer versión del GRUB</h3>
+<div class="outline-text-3" id="text-5-2">
 <div class="org-src-container">
-<pre class="src src-shell" id="org44d6e70"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">saber la version de grub</span>
+<pre class="src src-shell" id="orgcf04e1f"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">saber la version de grub</span>
 grub-install -v
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org96eb71e" class="outline-3">
-<h3 id="org96eb71e"><span class="section-number-3">2.3</span> Referencias Web Extraoficiales</h3>
-<div class="outline-text-3" id="text-2-3">
-<ul class="org-ul">
-<li>[Referencia #1 - Ver Página](<a href="https://medium.com/@manujarvinen/setting-up-a-multi-boot-of-5-linux-distributions-ca1fcf8d502">https://medium.com/@manujarvinen/setting-up-a-multi-boot-of-5-linux-distributions-ca1fcf8d502</a>)</li>
-<li>[Referencia # 2 - Ver Página](<a href="https://www.maketecheasier.com/how-to-run-multiple-linux-distros-without-virtualization/">https://www.maketecheasier.com/how-to-run-multiple-linux-distros-without-virtualization/</a>)</li>
-<li>[MultipleLInuxONe - Ver Página](<a href="https://itsfoss.com/multiple-linux-one-usb/">https://itsfoss.com/multiple-linux-one-usb/</a>)</li>
-<li>[Referencia #3 - Ver Página](<a href="https://www.solvetic.com/tutoriales/article/5859-como-crear-usb-booteable-linux-con-iso/">https://www.solvetic.com/tutoriales/article/5859-como-crear-usb-booteable-linux-con-iso/</a>)</li>
-<li>[Referencia #4 - Ver Página](<a href="https://linuxmint-installation-guide.readthedocs.io/es/latest/burn.html">https://linuxmint-installation-guide.readthedocs.io/es/latest/burn.html</a>)</li>
-</ul>
+<div id="outline-container-orgfa213b8" class="outline-3">
+<h3 id="orgfa213b8"><span class="section-number-3">5.3.</span> Referencias Web Extraoficiales</h3>
+<div class="outline-text-3" id="text-5-3">
+<ol class="org-ol">
+<li><a href="https://medium.com/@manujarvinen/setting-up-a-multi-boot-of-5-linux-distributions-ca1fcf8d502">Setting up a Multiboot - medium.com</a></li>
+<li><a href="https://www.maketecheasier.com/how-to-run-multiple-linux-distros-without-virtualization/">How to run multiple linux distros - maketecheasier.com</a></li>
+<li><a href="https://itsfoss.com/multiple-linux-one-usb/">Mulitple linux one usb</a></li>
+<li><a href="https://www.solvetic.com/tutoriales/article/5859-como-crear-usb-booteable-linux-con-iso/">Como crear USB Booteable LINUX</a></li>
+<li><a href="https://linuxmint-installation-guide.readthedocs.io/es/latest/burn.html">Burn - linuxmint Readthedocs</a></li>
+</ol>
 </div>
 </div>
 </div>
-<div id="outline-container-orged04c20" class="outline-2">
-<h2 id="orged04c20"><span class="section-number-2">3</span> Particionar con GParted</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-orgd889bef" class="outline-2">
+<h2 id="orgd889bef"><span class="section-number-2">6.</span> File Manager</h2>
+<div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-org3728142" class="outline-3">
-<h3 id="org3728142"><span class="section-number-3">3.1</span> Conceptos</h3>
-<div class="outline-text-3" id="text-3-1">
-<p>
-Es el que se recomienda para particionar el disco
-</p>
-</div>
-</div>
-<div id="outline-container-org146fd1e" class="outline-3">
-<h3 id="org146fd1e"><span class="section-number-3">3.2</span> Referencias Web Oficiales</h3>
-<div class="outline-text-3" id="text-3-2">
-<ul class="org-ul">
-<li>[Pagina Oficial - Ver Página](<a href="https://gparted.org/download.php">https://gparted.org/download.php</a>)</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-orgf36c340" class="outline-3">
-<h3 id="orgf36c340"><span class="section-number-3">3.3</span> Referencias Youtube</h3>
-<div class="outline-text-3" id="text-3-3">
-<ul class="org-ul">
-<li>[Redimensionar con Gparted en Ubuntu - Ver Video](<a href="https://www.youtube.com/watch?v=PBHFud-Dva8">https://www.youtube.com/watch?v=PBHFud-Dva8</a>)</li>
-</ul>
-</div>
-</div>
-</div>
-<div id="outline-container-org2b59e8a" class="outline-2">
-<h2 id="org2b59e8a"><span class="section-number-2">4</span> Instalar un file manager</h2>
-<div class="outline-text-2" id="text-4">
-</div>
-<div id="outline-container-org5e0e2b3" class="outline-3">
-<h3 id="org5e0e2b3"><span class="section-number-3">4.1</span> Conceptos</h3>
-<div class="outline-text-3" id="text-4-1">
+<div id="outline-container-org9de4275" class="outline-3">
+<h3 id="org9de4275"><span class="section-number-3">6.1.</span> Conceptos</h3>
+<div class="outline-text-3" id="text-6-1">
 <p>
 Si aún no estás familiarizado a usar por completo la terminal para la gestión de archivos,
 te sugerimos instalar un programa con interfaz gráfica (GUI) que facilita dicha tarea.
 </p>
-
+</div>
+</div>
+<div id="outline-container-orgb4a5abb" class="outline-3">
+<h3 id="orgb4a5abb"><span class="section-number-3">6.2.</span> Instalación</h3>
+<div class="outline-text-3" id="text-6-2">
 <div class="org-src-container">
-<pre class="src src-shell" id="orgc657488">sudo apt-get install thunar
+<pre class="src src-shell" id="orge86d0c4">sudo apt-get install thunar
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgd6f38be" class="outline-3">
-<h3 id="orgd6f38be"><span class="section-number-3">4.2</span> Referencias Youtube</h3>
-<div class="outline-text-3" id="text-4-2">
+<div id="outline-container-org1a8faf6" class="outline-3">
+<h3 id="org1a8faf6"><span class="section-number-3">6.3.</span> Referencias Youtube</h3>
+<div class="outline-text-3" id="text-6-3">
+<ol class="org-ol">
+<li><a href="https://www.youtube.com/watch?v=HIXzJ3Rz9po">Como funciona el Filesystem de Linux - By Joe Collins</a></li>
+<li><a href="https://www.youtube.com/watch?v=HbgzrKJvDRw">Como funciona el Filesystem de Linux - By DorianDotSlash</a></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcbbaf26" class="outline-2">
+<h2 id="orgcbbaf26"><span class="section-number-2">7.</span> Glosario</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-org6dfd75e" class="outline-3">
+<h3 id="org6dfd75e"><span class="section-number-3">7.1.</span> Rutas</h3>
+<div class="outline-text-3" id="text-7-1">
 <ul class="org-ul">
-<li>Como funciona el Filesystem de Linux - # Referencia 1  [Ver Video](<a href="https://www.youtube.com/watch?v=HIXzJ3Rz9po">https://www.youtube.com/watch?v=HIXzJ3Rz9po</a>)</li>
-<li>Como funciona el Filesystem de Linux - # Referencia 1  [Ver Video](<a href="https://www.youtube.com/watch?v=HbgzrKJvDRw">https://www.youtube.com/watch?v=HbgzrKJvDRw</a>)</li>
+<li>dev: se refieren a device IO (dispositivo de entrada/salida)</li>
+<li>mnt: se refiere "mountpoint" (punto de montaje) donde se montan particiones)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0c3e0b6" class="outline-3">
+<h3 id="org0c3e0b6"><span class="section-number-3">7.2.</span> Comandos</h3>
+<div class="outline-text-3" id="text-7-2">
+<ul class="org-ul">
+<li>mkfs: significa "make filesystem" crear el "sistema de ficheros"</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7c1b50c" class="outline-3">
+<h3 id="org7c1b50c"><span class="section-number-3">7.3.</span> Otros</h3>
+<div class="outline-text-3" id="text-7-3">
+<ul class="org-ul">
+<li>sda/sdb: hacen referencia a los dispositivos de almacenamiento masivo (disco duro)
+<ol class="org-ol">
+<li>sda: al primer disco detectado</li>
+<li>sdb: al segundo disco detectado</li>
+</ol></li>
 </ul>
 </div>
 </div>
@@ -572,8 +1543,8 @@ te sugerimos instalar un programa con interfaz gráfica (GUI) que facilita dicha
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: jelou</p>
-<p class="date">Created: 2021-04-02 vie 19:19</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+<p class="date">Created: 2021-09-13 lun 13:24</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 
 

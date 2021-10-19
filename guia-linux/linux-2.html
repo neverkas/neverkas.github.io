@@ -1,5 +1,5 @@
 <!--?xml version="1.0" encoding="utf-8"?--><!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<!-- 2021-04-01 jue 17:45 -->
+<!-- 2021-09-13 lun 12:18 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Guia Linux 2.0</title>
@@ -36,7 +36,7 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
+    overflow: auto;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -48,7 +48,7 @@
     padding: 3px;
     border: 1px solid black;
   }
-  pre.src:hover:before { display: inline;}
+  pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
@@ -193,50 +193,26 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/sass-style.css">
 <script type="text/javascript" src="/assets/js/all.js"></script>
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2020 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -267,101 +243,125 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgb090f80">1. Imprimir en la terminal con formato</a></li>
-<li><a href="#org4e1e135">2. Multimedia - Musica/Videos/Youtube</a>
+<li><a href="#org1970171">1. Imprimir en la terminal con formato</a></li>
+<li><a href="#orgb368ef1">2. Multimedia - Musica/Videos/Youtube</a>
 <ul>
-<li><a href="#org31e1745">2.1. Bajar audios/videos de youtube</a></li>
-<li><a href="#org1ff94aa">2.2. Reproducir música</a></li>
-<li><a href="#org06814cd">2.3. Referencias</a></li>
+<li><a href="#org49e344e">2.1. Bajar audios/videos de youtube</a></li>
+<li><a href="#orgd7d8126">2.2. Reproducir música</a></li>
+<li><a href="#org37e2fec">2.3. Referencias Web</a></li>
+<li><a href="#org250014e">2.4. Referencias Youtube</a></li>
 </ul>
 </li>
-<li><a href="#orgb49158e">3. <span class="todo _TODO_">[TODO]</span> Comandos Importantes</a>
+<li><a href="#orgcc8de6d">3. <span class="todo _TODO_">[TODO]</span> Comandos Importantes</a>
 <ul>
-<li><a href="#orgebfd7b0">3.1. Saber ultimo archivo descargado con el comando ls</a></li>
+<li><a href="#orga0bc06e">3.1. Saber ultimo archivo descargado con el comando ls</a></li>
+<li><a href="#orgbe7235f">3.2. Referencias Web</a></li>
 </ul>
 </li>
-<li><a href="#orgd088d0a">4. Manipular el Historial de comandos</a>
+<li><a href="#org2694034">4. Manipular el Historial de comandos</a>
 <ul>
-<li><a href="#org44eb8ee">4.1. Comandos</a></li>
-<li><a href="#org484791e">4.2. Ejemplos</a></li>
-<li><a href="#orgcf656ff">4.3. Referencias</a></li>
+<li><a href="#org5d0843e">4.1. Comandos</a></li>
+<li><a href="#orge420599">4.2. Ejemplos</a></li>
+<li><a href="#org03a4d68">4.3. Referencias Web</a></li>
 </ul>
 </li>
-<li><a href="#org1d45515">5. <span class="todo _TODO_">[TODO]</span> Comando awk</a>
+<li><a href="#org83ba431">5. <span class="todo _TODO_">[TODO]</span> Comando awk</a>
 <ul>
-<li><a href="#org130f393">5.1. Ejemplos</a></li>
-<li><a href="#orge144f49">5.2. Referencias</a></li>
+<li><a href="#org69c151a">5.1. Ejemplos</a></li>
+<li><a href="#org8f5616a">5.2. Referencias</a></li>
 </ul>
 </li>
-<li><a href="#orgc30dd97">6. Utilidades Interesantes</a>
+<li><a href="#org4dd6d6c">6. Utilidades Interesantes</a>
 <ul>
-<li><a href="#orga3273c9">6.1. Crear animaciones de captura de pantalla</a></li>
-<li><a href="#orgbd279d7">6.2. Calculadora con notación polaca inversa (rpn - reverse polish notation)</a>
+<li><a href="#orgaea3806">6.1. Crear animaciones de captura de pantalla</a></li>
+<li><a href="#org206ce2c">6.2. Referencias Web</a></li>
+<li><a href="#org42cd0eb">6.3. Calculadora con notación polaca inversa (rpn - reverse polish notation)</a>
 <ul>
-<li><a href="#orge18e9de">6.2.1. Conceptos</a></li>
-<li><a href="#org3f8b38c">6.2.2. Ejemplos sencillos</a></li>
-<li><a href="#orgc0d016c">6.2.3. Ejemplos de ecuaciones con LaTeX y el comando dc</a></li>
+<li><a href="#orgfeac60e">6.3.1. Conceptos</a></li>
+<li><a href="#org7b691c4">6.3.2. Ejemplo 1</a></li>
+<li><a href="#org8e2d637">6.3.3. Ejemplo 2</a></li>
+<li><a href="#orga52dc12">6.3.4. Ejemplo 3</a></li>
+<li><a href="#org51050bc">6.3.5. Ejemplo 4</a></li>
+<li><a href="#org228f231">6.3.6. Referencias Web</a></li>
+<li><a href="#org5266e3f">6.3.7. Ejemplos de ecuaciones con LaTeX y el comando dc</a></li>
 </ul>
 </li>
-<li><a href="#org87136d0">6.3. Calculadora</a></li>
-</ul>
-</li>
-<li><a href="#org01830cc">7. <span class="todo _TODO_">[TODO]</span> Errores de Manjaro</a>
+<li><a href="#org5287d04">6.4. Calculadora</a>
 <ul>
-<li><a href="#org9d6a378">7.1. Problemas al instalar paquetes</a>
+<li><a href="#orgd1be4ca">6.4.1. Conceptos</a></li>
+<li><a href="#org204fc6a">6.4.2. Referencias Web</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgcdf34bf">7. <span class="todo _TODO_">[TODO]</span> Errores de Manjaro</a>
 <ul>
-<li><a href="#org43ba8f7">7.1.1. Comandos</a></li>
-<li><a href="#org9081af8">7.1.2. Referencias</a></li>
-</ul>
-</li>
-<li><a href="#orgedfa112">7.2. Pasos a organizar</a></li>
-</ul>
-</li>
-<li><a href="#org7b1d6a2">8. <span class="todo _TODO_">[TODO]</span> Guia Linux Que hacer luego de Instalar Linux</a>
+<li><a href="#org65a5e7a">7.1. Problemas al instalar paquetes</a>
 <ul>
-<li><a href="#orga77fc4f">8.1. 1. Comandos Utiles</a></li>
-<li><a href="#org7a114ef">8.2. 2. Instalamos Paquetes</a></li>
-<li><a href="#orgbb731e4">8.3. 3. Configuramos Github</a></li>
-<li><a href="#orgc12bf71">8.4. 4. Instalar y Configurar Emacs</a>
+<li><a href="#org5f2481d">7.1.1. Comandos</a></li>
+<li><a href="#org0e2ad21">7.1.2. Referencias</a></li>
+</ul>
+</li>
+<li><a href="#org87e3be6">7.2. Pasos a organizar</a></li>
+<li><a href="#orgd721464">7.3. Referencias Web</a></li>
+</ul>
+</li>
+<li><a href="#orgbe93057">8. <span class="todo _TODO_">[TODO]</span> Guia Linux Que hacer luego de Instalar Linux</a>
 <ul>
-<li><a href="#org217e1a9">8.4.1. 4.1 Instalar y Configurar</a></li>
-<li><a href="#org0b3899b">8.4.2. 4.2  Activar el modo hibrido</a></li>
-<li><a href="#orgc55594a">8.4.3. 4.3 Activamos layers</a></li>
-</ul>
-</li>
-<li><a href="#orgbe6131f">8.5. <span class="todo _TODO_">[TODO]</span> Versionar Dotfiles (PENDIENTE)</a></li>
-</ul>
-</li>
-<li><a href="#orge60b3c7">9. Guia del Gestor de Archivos Ranger</a>
+<li><a href="#org92d77dd">8.1. 1. Comandos Utiles</a></li>
+<li><a href="#orgd1a4a51">8.2. 2. Instalamos Paquetes</a></li>
+<li><a href="#org8e5a4c1">8.3. 3. Configuramos Github</a></li>
+<li><a href="#org582d1cf">8.4. 4. Instalar y Configurar Emacs</a>
 <ul>
-<li><a href="#org0bc8429">9.1. Filtrar archivos</a></li>
-<li><a href="#org4fb1f3f">9.2. Atajos</a></li>
+<li><a href="#org719646f">8.4.1. 4.1 Instalar y Configurar</a></li>
+<li><a href="#org4f905e5">8.4.2. 4.2 Activar el modo hibrido</a></li>
+<li><a href="#org806bda5">8.4.3. 4.3 Activamos layers</a></li>
+<li><a href="#org9c7a334">8.4.4. Referencias Web</a></li>
 </ul>
 </li>
-<li><a href="#org10f6d6f">10. Guia Linux Personalizar</a>
+<li><a href="#org064b2f8">8.5. <span class="todo _TODO_">[TODO]</span> Versionar Dotfiles</a></li>
+</ul>
+</li>
+<li><a href="#orgdf6c0b1">9. Guia del Gestor de Archivos Ranger</a>
 <ul>
-<li><a href="#org7126a36">10.1. Cambiar el cursor y el theme</a></li>
-<li><a href="#org367fe7e">10.2. Escritorios Virtuales</a>
+<li><a href="#org1fd2c27">9.1. Filtrar archivos</a></li>
+<li><a href="#org686677f">9.2. Atajos</a></li>
+<li><a href="#org3e6cea7">9.3. Referencias Web</a></li>
+</ul>
+</li>
+<li><a href="#orgd3b4a7c">10. Guia Linux Personalizar</a>
 <ul>
-<li><a href="#org84340d2">10.2.1. Atajos personalizados</a></li>
-<li><a href="#org3b144f0">10.2.2. Referencias</a></li>
+<li><a href="#org6ca4ab4">10.1. Cambiar el cursor y el theme</a></li>
+<li><a href="#org56f8938">10.2. Escritorios Virtuales</a>
+<ul>
+<li><a href="#orgb2fb83d">10.2.1. Atajos personalizados</a></li>
+<li><a href="#org9bfcdcb">10.2.2. Referencias Web</a></li>
 </ul>
 </li>
-<li><a href="#orgc13d1cd">10.3. Ocultar el Hostname del prompt</a></li>
-<li><a href="#orga52211d">10.4. Guia de Linux - Particionamiento</a></li>
-<li><a href="#org32b9fa4">10.5. Sincronizar Archivos en Google Drive</a></li>
-<li><a href="#orge1a9bfa">10.6. Nuevos comandos</a></li>
-<li><a href="#org81fd2af">10.7. Herramientas de Seguridad</a></li>
+<li><a href="#org7477460">10.3. Ocultar el Hostname del prompt</a></li>
+<li><a href="#orgd306abd">10.4. Guia de Linux - Particionamiento</a></li>
+<li><a href="#org3e72e12">10.5. Sincronizar Archivos en Google Drive</a></li>
+<li><a href="#org61e3ed2">10.6. Comandos Interesantes</a>
+<ul>
+<li><a href="#orgbb9ea6e">10.6.1. Conceptos</a></li>
+<li><a href="#org8507c9b">10.6.2. Referencias Web</a></li>
 </ul>
 </li>
-<li><a href="#orgd848cf0">11. Comando Sed (Manipular Texto)</a></li>
-<li><a href="#org3133d10">12. Pendiente</a></li>
+<li><a href="#org07f01d0">10.7. Herramientas de Seguridad</a></li>
+</ul>
+</li>
+<li><a href="#org8491f77">11. Comando Sed (Manipular Texto)</a>
+<ul>
+<li><a href="#orgca12ee8">11.1. Conceptos</a></li>
+<li><a href="#org115bbda">11.2. Referencias Web</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgb090f80" class="outline-2">
-<h2 id="orgb090f80"><span class="section-number-2">1</span> Imprimir en la terminal con formato</h2>
+<div id="outline-container-org1970171" class="outline-2">
+<h2 id="org1970171"><span class="section-number-2">1.</span> Imprimir en la terminal con formato</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>Se debe usar el comando echo como siempre, pero se le pasa el parámetro -en</li>
@@ -374,20 +374,19 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-
-<div id="outline-container-org4e1e135" class="outline-2">
-<h2 id="org4e1e135"><span class="section-number-2">2</span> Multimedia - Musica/Videos/Youtube</h2>
+<div id="outline-container-orgb368ef1" class="outline-2">
+<h2 id="orgb368ef1"><span class="section-number-2">2.</span> Multimedia - Musica/Videos/Youtube</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org31e1745" class="outline-3">
-<h3 id="org31e1745"><span class="section-number-3">2.1</span> Bajar audios/videos de youtube</h3>
+<div id="outline-container-org49e344e" class="outline-3">
+<h3 id="org49e344e"><span class="section-number-3">2.1.</span> Bajar audios/videos de youtube</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>El package <b>youtube-dl</b> nos sirve para descargar videos, musica, playlist y contenido de youtube</li>
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="orgb400d31"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">descargamos el package</span>
+<pre class="src src-sh" id="org4eca13b"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">descargamos el package</span>
 sudo pacman -S youtube-dl
 
 <span style="color: #2aa1ae; background-color: #292e34;">#</span>
@@ -429,9 +428,8 @@ youtube-dl -f <span style="color: #a45bad;">251+299</span> unaUrlDeYoutube
 </div>
 </div>
 </div>
-
-<div id="outline-container-org1ff94aa" class="outline-3">
-<h3 id="org1ff94aa"><span class="section-number-3">2.2</span> Reproducir música</h3>
+<div id="outline-container-orgd7d8126" class="outline-3">
+<h3 id="orgd7d8126"><span class="section-number-3">2.2.</span> Reproducir música</h3>
 <div class="outline-text-3" id="text-2-2">
 <ul class="org-ul">
 <li>Con el package <b>cmus</b> podemos reproducir música desde la terminal</li>
@@ -439,7 +437,7 @@ youtube-dl -f <span style="color: #a45bad;">251+299</span> unaUrlDeYoutube
 <li>Carga las carpetas de música más rápido al no utilizar interfaz gráfica</li>
 </ul>
 
-<table id="orgecd3406" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orgcecb114" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -540,7 +538,7 @@ youtube-dl -f <span style="color: #a45bad;">251+299</span> unaUrlDeYoutube
 </table>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="orgd92717e"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">descargamos</span>
+<pre class="src src-sh" id="org90b657c"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">descargamos</span>
 sudo pacman -S cmus
 
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">ejecutamos</span>
@@ -549,22 +547,27 @@ cmus
 </div>
 </div>
 </div>
-
-<div id="outline-container-org06814cd" class="outline-3">
-<h3 id="org06814cd"><span class="section-number-3">2.3</span> Referencias</h3>
+<div id="outline-container-org37e2fec" class="outline-3">
+<h3 id="org37e2fec"><span class="section-number-3">2.3.</span> Referencias Web</h3>
 <div class="outline-text-3" id="text-2-3">
-<ul class="org-ul">
+<ol class="org-ol">
+<li><a href="https://blog.desdelinux.net/youtube-dl-tips-que-no-sabias/">Tips de Youtube-dl - Blog DesdeLinux</a></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org250014e" class="outline-3">
+<h3 id="org250014e"><span class="section-number-3">2.4.</span> Referencias Youtube</h3>
+<div class="outline-text-3" id="text-2-4">
+<ol class="org-ol">
 <li><a href="https://www.youtube.com/watch?v=9A-HLSvtBWc">Video #1 - Downloading videos, music with Youtube-dl</a></li>
 <li><a href="https://www.youtube.com/watch?v=fOjP-7-gI4Y">Video #2 - Command line app for downloading youtube videos</a></li>
 <li><a href="https://www.youtube.com/watch?v=tvUs6LdLa1c">Video #3 CMUS | Reproductor de Musica de Terminal</a></li>
-<li><a href="https://blog.desdelinux.net/youtube-dl-tips-que-no-sabias/">Tips de Youtube-dl - Blog DesdeLinux</a></li>
-</ul>
+</ol>
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgb49158e" class="outline-2">
-<h2 id="orgb49158e"><span class="section-number-2">3</span> <span class="todo _TODO_">[TODO]</span> Comandos Importantes</h2>
+<div id="outline-container-orgcc8de6d" class="outline-2">
+<h2 id="orgcc8de6d"><span class="section-number-2">3.</span> <span class="todo _TODO_">[TODO]</span> Comandos Importantes</h2>
 <div class="outline-text-2" id="text-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -574,17 +577,13 @@ cmus
 
 <col class="org-left">
 </colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Comando</th>
+<th scope="col" class="org-left">Descripcion</th>
+</tr>
+</thead>
 <tbody>
-<tr>
-<td class="org-left">Comando</td>
-<td class="org-left">Descripcion</td>
-</tr>
-
-<tr>
-<td class="org-left">:------</td>
-<td class="org-left">:----------</td>
-</tr>
-
 <tr>
 <td class="org-left">mhwd-kernel</td>
 <td class="org-left">&nbsp;</td>
@@ -597,7 +596,7 @@ cmus
 
 <tr>
 <td class="org-left">ls -ltr</td>
-<td class="org-left">r de reverse ?</td>
+<td class="org-left">r de reverse</td>
 </tr>
 </tbody>
 </table>
@@ -607,24 +606,25 @@ cmus
 </pre>
 </div>
 </div>
-
-<div id="outline-container-orgebfd7b0" class="outline-3">
-<h3 id="orgebfd7b0"><span class="section-number-3">3.1</span> Saber ultimo archivo descargado con el comando ls</h3>
-<div class="outline-text-3" id="text-3-1">
-<ul class="org-ul">
+<div id="outline-container-orga0bc06e" class="outline-3">
+<h3 id="orga0bc06e"><span class="section-number-3">3.1.</span> Saber ultimo archivo descargado con el comando ls</h3>
+</div>
+<div id="outline-container-orgbe7235f" class="outline-3">
+<h3 id="orgbe7235f"><span class="section-number-3">3.2.</span> Referencias Web</h3>
+<div class="outline-text-3" id="text-3-2">
+<ol class="org-ol">
 <li><a href="https://www.tecmint.com/sort-ls-output-by-last-modified-date-and-time/">https://www.tecmint.com/sort-ls-output-by-last-modified-date-and-time/</a></li>
 <li><a href="https://osxdaily.com/2017/02/02/ls-sort-by-date/">https://osxdaily.com/2017/02/02/ls-sort-by-date/</a></li>
-</ul>
+</ol>
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgd088d0a" class="outline-2">
-<h2 id="orgd088d0a"><span class="section-number-2">4</span> Manipular el Historial de comandos</h2>
+<div id="outline-container-org2694034" class="outline-2">
+<h2 id="org2694034"><span class="section-number-2">4.</span> Manipular el Historial de comandos</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org44eb8ee" class="outline-3">
-<h3 id="org44eb8ee"><span class="section-number-3">4.1</span> Comandos</h3>
+<div id="outline-container-org5d0843e" class="outline-3">
+<h3 id="org5d0843e"><span class="section-number-3">4.1.</span> Comandos</h3>
 <div class="outline-text-3" id="text-4-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -664,9 +664,8 @@ cmus
 </table>
 </div>
 </div>
-
-<div id="outline-container-org484791e" class="outline-3">
-<h3 id="org484791e"><span class="section-number-3">4.2</span> Ejemplos</h3>
+<div id="outline-container-orge420599" class="outline-3">
+<h3 id="orge420599"><span class="section-number-3">4.2.</span> Ejemplos</h3>
 <div class="outline-text-3" id="text-4-2">
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">listamos el historial para navegar con los atajos de vim</span>
@@ -687,42 +686,41 @@ cmus
 </div>
 </div>
 </div>
-<div id="outline-container-orgcf656ff" class="outline-3">
-<h3 id="orgcf656ff"><span class="section-number-3">4.3</span> Referencias</h3>
+<div id="outline-container-org03a4d68" class="outline-3">
+<h3 id="org03a4d68"><span class="section-number-3">4.3.</span> Referencias Web</h3>
 <div class="outline-text-3" id="text-4-3">
-<ul class="org-ul">
+<ol class="org-ol">
 <li><a href="https://www.tldp.org/LDP/GNU-Linux-Tools-Summary/html/x1712.htm">The command line history - (TLDP) The Linux Documentation Project</a></li>
 <li><a href="https://www.gnu.org/software/bash/manual/html_node/Bash-History-Builtins.html">Bash history builtins - gnu.org</a></li>
 <li><a href="https://opensource.com/article/18/6/history-command">How to use the history command -  opensource.com</a></li>
 <li><a href="https://mediatemple.net/community/products/dv/204404624/using-the-history-command">Using the history command - mediatemple.net</a></li>
 <li><a href="https://www.thegeekstuff.com/2008/08/15-examples-to-master-linux-command-line-history/">15 examples to master linux command line history - thegeekstuff.com</a></li>
-</ul>
+</ol>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org1d45515" class="outline-2">
-<h2 id="org1d45515"><span class="section-number-2">5</span> <span class="todo _TODO_">[TODO]</span> Comando awk</h2>
+<div id="outline-container-org83ba431" class="outline-2">
+<h2 id="org83ba431"><span class="section-number-2">5.</span> <span class="todo _TODO_">[TODO]</span> Comando awk</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-org130f393" class="outline-3">
-<h3 id="org130f393"><span class="section-number-3">5.1</span> Ejemplos</h3>
+<div id="outline-container-org69c151a" class="outline-3">
+<h3 id="org69c151a"><span class="section-number-3">5.1.</span> Ejemplos</h3>
 </div>
-<div id="outline-container-orge144f49" class="outline-3">
-<h3 id="orge144f49"><span class="section-number-3">5.2</span> Referencias</h3>
+<div id="outline-container-org8f5616a" class="outline-3">
+<h3 id="org8f5616a"><span class="section-number-3">5.2.</span> Referencias</h3>
 <div class="outline-text-3" id="text-5-2">
-<ul class="org-ul">
+<ol class="org-ol">
 <li><a href="https://likegeeks.com/es/comando-awk/">Comando awk - likegeeks.com</a></li>
-</ul>
+</ol>
 </div>
 </div>
 </div>
-<div id="outline-container-orgc30dd97" class="outline-2">
-<h2 id="orgc30dd97"><span class="section-number-2">6</span> Utilidades Interesantes</h2>
+<div id="outline-container-org4dd6d6c" class="outline-2">
+<h2 id="org4dd6d6c"><span class="section-number-2">6.</span> Utilidades Interesantes</h2>
 <div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-orga3273c9" class="outline-3">
-<h3 id="orga3273c9"><span class="section-number-3">6.1</span> Crear animaciones de captura de pantalla</h3>
+<div id="outline-container-orgaea3806" class="outline-3">
+<h3 id="orgaea3806"><span class="section-number-3">6.1.</span> Crear animaciones de captura de pantalla</h3>
 <div class="outline-text-3" id="text-6-1">
 <p>
 Algunos packages útiles: 
@@ -740,7 +738,7 @@ Algunas páginas útiles:
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="org7a0e5ec"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para saber el tamaño de una ventana</span>
+<pre class="src src-sh" id="org6dd055d"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para saber el tamaño de una ventana</span>
 sudo pacman -S xrectsel
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para capturar la pantalla y generar un gif</span>
 sudo pacman -S byzanz-record
@@ -750,7 +748,7 @@ sudo pacman -S byzanz-record
 </div>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="org75857fe"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">WINDOWS_SIZE=$(</span><span style="color: #fa8072;">gdialog</span><span style="color: #2aa1ae; background-color: #292e34;"> --title "Elegir ventana o tamanio" --yesno "Grabar una ventana o elegir tamanio?" 0 0)</span>
+<pre class="src src-sh" id="org4bd7a56"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">WINDOWS_SIZE=$(</span><span style="color: #bc6ec5;">gdialog</span><span style="color: #2aa1ae; background-color: #292e34;"> --title "Elegir ventana o tamanio" --yesno "Grabar una ventana o elegir tamanio?" 0 0)</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">if $WINDOWS_SIZE; then</span>
 <span style="color: #2aa1ae; background-color: #292e34;">#     </span><span style="color: #2aa1ae; background-color: #292e34;">notify-send "elegiste si"</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">else</span>
@@ -758,10 +756,10 @@ sudo pacman -S byzanz-record
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">fi</span>
 
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Name</span>
-<span style="color: #7590db;">TITLE</span>=$<span style="color: #4f97d7;">(</span><span style="color: #fa8072;">gdialog</span> --title <span style="color: #2d9574;">"TITLE?"</span> --inputbox <span style="color: #2d9574;">"Elija un titulo para la animación"</span> <span style="color: #a45bad;">200</span> <span style="color: #a45bad;">100</span> <span style="color: #a45bad;">2</span>&gt;&amp;<span style="color: #a45bad;">1</span><span style="color: #4f97d7;">)</span>
+<span style="color: #7590db;">TITLE</span>=$<span style="color: #4f97d7;">(</span><span style="color: #bc6ec5;">gdialog</span> --title <span style="color: #2d9574;">"TITLE?"</span> --inputbox <span style="color: #2d9574;">"Elija un titulo para la animación"</span> <span style="color: #a45bad;">200</span> <span style="color: #a45bad;">100</span> <span style="color: #a45bad;">2</span>&gt;&amp;<span style="color: #a45bad;">1</span><span style="color: #4f97d7;">)</span>
 
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Time and date</span>
-<span style="color: #7590db;">TIME</span>=$<span style="color: #4f97d7;">(</span><span style="color: #fa8072;">date</span> +<span style="color: #2d9574;">"%Y-%m-%d_%H%M%S"</span><span style="color: #4f97d7;">)</span>
+<span style="color: #7590db;">TIME</span>=$<span style="color: #4f97d7;">(</span><span style="color: #bc6ec5;">date</span> +<span style="color: #2d9574;">"%Y-%m-%d_%H%M%S"</span><span style="color: #4f97d7;">)</span>
 
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Delay before starting</span>
 <span style="color: #7590db;">DELAY</span>=<span style="color: #a45bad;">10</span>
@@ -778,7 +776,7 @@ sudo pacman -S byzanz-record
 <span style="color: #4f97d7;">}</span>
 
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Custom recording duration as set by user</span>
-<span style="color: #7590db;">DURATION</span>=$<span style="color: #4f97d7;">(</span><span style="color: #fa8072;">gdialog</span> --title <span style="color: #2d9574;">"Duration?"</span> --inputbox <span style="color: #2d9574;">"Please enter the screencast duration in seconds"</span> <span style="color: #a45bad;">200</span> <span style="color: #a45bad;">100</span> <span style="color: #a45bad;">2</span>&gt;&amp;<span style="color: #a45bad;">1</span><span style="color: #4f97d7;">)</span>
+<span style="color: #7590db;">DURATION</span>=$<span style="color: #4f97d7;">(</span><span style="color: #bc6ec5;">gdialog</span> --title <span style="color: #2d9574;">"Duration?"</span> --inputbox <span style="color: #2d9574;">"Please enter the screencast duration in seconds"</span> <span style="color: #a45bad;">200</span> <span style="color: #a45bad;">100</span> <span style="color: #a45bad;">2</span>&gt;&amp;<span style="color: #a45bad;">1</span><span style="color: #4f97d7;">)</span>
 
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Duration and output file</span>
 <span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #4f97d7;">[</span> $<span style="color: #7590db;">DURATION</span> -gt <span style="color: #a45bad;">0</span> <span style="color: #4f97d7;">]</span>; <span style="color: #4f97d7; font-weight: bold;">then</span>
@@ -789,7 +787,7 @@ sudo pacman -S byzanz-record
 
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Window geometry</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">No funciona...</span>
-<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">XWININFO=$(</span><span style="color: #fa8072;">xwininfo</span><span style="color: #2aa1ae; background-color: #292e34;">)</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">XWININFO=$(</span><span style="color: #bc6ec5;">xwininfo</span><span style="color: #2aa1ae; background-color: #292e34;">)</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">read X &lt;&lt;(awk -F: '/Absolute upper-left X/{print $2}' &lt;&lt;&lt; "$XWININFO")</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">read Y &lt;&lt;(awk -F: '/Absolute upper-left Y/{print $2}' &lt;&lt;&lt; "$XWININFO")</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">read W &lt;&lt;(awk -F: '/Width/{print $2}' &lt;&lt;&lt; "$XWININFO")</span>
@@ -812,35 +810,35 @@ beep
 notify-send <span style="color: #2d9574;">"GIFRecorder"</span> <span style="color: #2d9574;">"Screencast saved to $FOLDER/GIFrecord_$NAME_$TIME.gif"</span>
 </pre>
 </div>
-
-<p>
-<b>Referencias</b>
-</p>
-<ul class="org-ul">
+</div>
+</div>
+<div id="outline-container-org206ce2c" class="outline-3">
+<h3 id="org206ce2c"><span class="section-number-3">6.2.</span> Referencias Web</h3>
+<div class="outline-text-3" id="text-6-2">
+<ol class="org-ol">
 <li><a href="https://gfycat.com/upload">Sitio para subir animaciones - Gfycat.com</a></li>
 <li><a href="http://zenon.en-getafe.org/2007/11/27/xdialog-ventanas-en-scripts">Xdialog ventanas en scripts - Blog Zenon</a></li>
 <li><a href="https://www.it-swarm.dev/es/linux/como-solicito-la-entrada-sinocancelar-en-un-script-de-shell-de-linux/958436319/">Como usar xdialog - it-swarm.dev</a></li>
 <li><a href="https://aur.archlinux.org/packages/xrectsel/">Package xrectsel - AUR Arch Linux</a></li>
 <li><a href="https://wiki.ubuntu.com/CreatingScreencasts">CreatingScreenScasts - Wiki Ubuntu</a></li>
 <li><a href="https://www.archlinuxuser.com/2013/01/how-to-record-desktop-into-gif-using.html">How to record desktop into GIF using byzanz - ArchLinuxUser.com</a></li>
-</ul>
+</ol>
 </div>
 </div>
-
-<div id="outline-container-orgbd279d7" class="outline-3">
-<h3 id="orgbd279d7"><span class="section-number-3">6.2</span> Calculadora con notación polaca inversa (rpn - reverse polish notation)</h3>
-<div class="outline-text-3" id="text-6-2">
+<div id="outline-container-org42cd0eb" class="outline-3">
+<h3 id="org42cd0eb"><span class="section-number-3">6.3.</span> Calculadora con notación polaca inversa (rpn - reverse polish notation)</h3>
+<div class="outline-text-3" id="text-6-3">
 </div>
-<div id="outline-container-orge18e9de" class="outline-4">
-<h4 id="orge18e9de"><span class="section-number-4">6.2.1</span> Conceptos</h4>
-<div class="outline-text-4" id="text-6-2-1">
+<div id="outline-container-orgfeac60e" class="outline-4">
+<h4 id="orgfeac60e"><span class="section-number-4">6.3.1.</span> Conceptos</h4>
+<div class="outline-text-4" id="text-6-3-1">
 <ul class="org-ul">
 <li>El comando para ejecutar es <b>dc</b> es nativo de linux</li>
 <li>El orden de la pila se puede interpretar de derecha a izquierda,
 siendo el la derecha un valor que fue ingresado más reciente que el de la izquierda.</li>
 </ul>
 
-<pre class="example" id="Orden en que ingresan los valores">3 16 11 2
+<pre class="example" id="orgafe2380">3 16 11 2
 
 1. el 3 fue el primero en ingresar,
 2. el 16 se ingresó después que el 3,
@@ -854,7 +852,7 @@ siendo el la derecha un valor que fue ingresado más reciente que el de la izqui
 3
 </pre>
 
-<pre class="example" id="Orden en que operan los valores">3 2 11 2 + * /
+<pre class="example" id="org9bab979">3 2 11 2 + * /
 
 1. Primero opera 11 2 +  el resultado será 13, quedando la pila asi 3 2 13 * /
 2. Segundo opera 2 13 * que resulta en 26, quedando la pila asi 3 26 /
@@ -870,17 +868,13 @@ siendo el la derecha un valor que fue ingresado más reciente que el de la izqui
 
 <col class="org-left">
 </colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Comando</th>
+<th scope="col" class="org-left">Descripción</th>
+</tr>
+</thead>
 <tbody>
-<tr>
-<td class="org-left">Comando</td>
-<td class="org-left">Descripción</td>
-</tr>
-
-<tr>
-<td class="org-left">:------</td>
-<td class="org-left">:-------------------------------------------------------</td>
-</tr>
-
 <tr>
 <td class="org-left">dc</td>
 <td class="org-left">Ejecuta la calculadora</td>
@@ -925,17 +919,13 @@ Algunos ejemplos con la notación infija y polaca inversa
 
 <col class="org-left">
 </colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Notación Infija</th>
+<th scope="col" class="org-left">Notación Polaca inversa</th>
+</tr>
+</thead>
 <tbody>
-<tr>
-<td class="org-left">Notación Infija</td>
-<td class="org-left">Notación Polaca inversa</td>
-</tr>
-
-<tr>
-<td class="org-left">:-------------</td>
-<td class="org-left">:----------------------</td>
-</tr>
-
 <tr>
 <td class="org-left">(3+5)*10</td>
 <td class="org-left">3 5 + 10 *</td>
@@ -969,12 +959,11 @@ Algunos ejemplos con la notación infija y polaca inversa
 </table>
 </div>
 </div>
-
-<div id="outline-container-org3f8b38c" class="outline-4">
-<h4 id="org3f8b38c"><span class="section-number-4">6.2.2</span> Ejemplos sencillos</h4>
-<div class="outline-text-4" id="text-6-2-2">
+<div id="outline-container-org7b691c4" class="outline-4">
+<h4 id="org7b691c4"><span class="section-number-4">6.3.2.</span> Ejemplo 1</h4>
+<div class="outline-text-4" id="text-6-3-2">
 <div class="org-src-container">
-<pre class="src src-sh" id="orgc69b19d">dc
+<pre class="src src-sh" id="orgb2e29f9">dc
 
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">hagamos 3 11 5 + -</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">si agregamos parentesis para entender el orden de operación</span>
@@ -1004,9 +993,13 @@ c <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style=
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Pila: Vacía, ya no está el -13</span>
 </pre>
 </div>
-
+</div>
+</div>
+<div id="outline-container-org8e2d637" class="outline-4">
+<h4 id="org8e2d637"><span class="section-number-4">6.3.3.</span> Ejemplo 2</h4>
+<div class="outline-text-4" id="text-6-3-3">
 <div class="org-src-container">
-<pre class="src src-sh" id="org6b3e90f">dc
+<pre class="src src-sh" id="org631e733">dc
 
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">hagamos 3 11 5 + -</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">si le agregamos parentesis quedaría [3 (11 5 +) -]</span>
@@ -1026,9 +1019,13 @@ r <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style=
 f <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Pila: -13</span>
 </pre>
 </div>
-
+</div>
+</div>
+<div id="outline-container-orga52dc12" class="outline-4">
+<h4 id="orga52dc12"><span class="section-number-4">6.3.4.</span> Ejemplo 3</h4>
+<div class="outline-text-4" id="text-6-3-4">
 <div class="org-src-container">
-<pre class="src src-sh" id="org7d731ee">dc
+<pre class="src src-sh" id="orgf8a2ec1">dc
 
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">hagamos 2 3 11 + 5 - *</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">si agregamos parentesis para entender el orden sería {2 [(3 11 +) 5 -] *}</span>
@@ -1063,9 +1060,13 @@ p  <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style
 
 </pre>
 </div>
-
+</div>
+</div>
+<div id="outline-container-org51050bc" class="outline-4">
+<h4 id="org51050bc"><span class="section-number-4">6.3.5.</span> Ejemplo 4</h4>
+<div class="outline-text-4" id="text-6-3-5">
 <div class="org-src-container">
-<pre class="src src-sh" id="org1670102">dc
+<pre class="src src-sh" id="org73c3161">dc
 
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">hagamos 9 5 3 + 2 4 ^ - +</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">si agregaramos parentesis para ver el orden sería {9 [(5 3 +) (2 4 ^) -] +}</span>
@@ -1095,26 +1096,27 @@ f <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style=
 p <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">devuelve 1 (es el resultado más reciente)</span>
 </pre>
 </div>
-
-
-<p>
-<b>Referencias</b>
-</p>
-<ul class="org-ul">
+</div>
+</div>
+<div id="outline-container-org228f231" class="outline-4">
+<h4 id="org228f231"><span class="section-number-4">6.3.6.</span> Referencias Web</h4>
+<div class="outline-text-4" id="text-6-3-6">
+<ol class="org-ol">
 <li><a href="https://www.computerhope.com/unix/udc.htm">https://www.computerhope.com/unix/udc.htm</a></li>
-</ul>
+</ol>
 </div>
 </div>
-<div id="outline-container-orgc0d016c" class="outline-4">
-<h4 id="orgc0d016c"><span class="section-number-4">6.2.3</span> Ejemplos de ecuaciones con LaTeX y el comando dc</h4>
-<div class="outline-text-4" id="text-6-2-3">
+<div id="outline-container-org5266e3f" class="outline-4">
+<h4 id="org5266e3f"><span class="section-number-4">6.3.7.</span> Ejemplos de ecuaciones con LaTeX y el comando dc</h4>
+<div class="outline-text-4" id="text-6-3-7">
+<blockquote>
 \begin{align*}
   \frac{3 + \sqrt{4- \frac{2}{3} }}{(2+7 \times \sqrt{3} )^2} = 0.3
 \end{align*}
-
+</blockquote>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="org8c696c1">dc
+<pre class="src src-sh" id="orge875f8d">dc
 <span style="color: #a45bad;">3</span>   <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Pila: 3</span>
 <span style="color: #a45bad;">4</span>   <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Pila: 3 4</span>
 <span style="color: #a45bad;">2</span>   <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Pila: 3 4 2</span>
@@ -1148,39 +1150,48 @@ p   <span style="color: #2aa1ae; background-color: #292e34;"># </span><span styl
 </div>
 </div>
 </div>
-<div id="outline-container-org87136d0" class="outline-3">
-<h3 id="org87136d0"><span class="section-number-3">6.3</span> Calculadora</h3>
-<div class="outline-text-3" id="text-6-3">
+<div id="outline-container-org5287d04" class="outline-3">
+<h3 id="org5287d04"><span class="section-number-3">6.4.</span> Calculadora</h3>
+<div class="outline-text-3" id="text-6-4">
+</div>
+<div id="outline-container-orgd1be4ca" class="outline-4">
+<h4 id="orgd1be4ca"><span class="section-number-4">6.4.1.</span> Conceptos</h4>
+<div class="outline-text-4" id="text-6-4-1">
 <ul class="org-ul">
-<li>En manjaro probé bc y qalac.</li>
 <li>Otra manera es usando el comando <b>expr</b> pero hay que separar los operandos de los operadores</li>
 </ul>
-<p>
-<b>NOTA:</b> Me pareció que la mejor fué qalac
-</p>
 
 <p>
-<b>Referencias</b>
+<b>Observación:</b>
 </p>
+<ul class="org-ul">
+<li>Considero que es mejor <b>qalac</b> comparado con <b>bc</b></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org204fc6a" class="outline-4">
+<h4 id="org204fc6a"><span class="section-number-4">6.4.2.</span> Referencias Web</h4>
+<div class="outline-text-4" id="text-6-4-2">
 <ul class="org-ul">
 <li><a href="https://ubunlog.com/calculadora-en-la-terminal-ubuntu/">https://ubunlog.com/calculadora-en-la-terminal-ubuntu/</a></li>
 </ul>
 </div>
 </div>
 </div>
-<div id="outline-container-org01830cc" class="outline-2">
-<h2 id="org01830cc"><span class="section-number-2">7</span> <span class="todo _TODO_">[TODO]</span> Errores de Manjaro</h2>
+</div>
+<div id="outline-container-orgcdf34bf" class="outline-2">
+<h2 id="orgcdf34bf"><span class="section-number-2">7.</span> <span class="todo _TODO_">[TODO]</span> Errores de Manjaro</h2>
 <div class="outline-text-2" id="text-7">
 </div>
-<div id="outline-container-org9d6a378" class="outline-3">
-<h3 id="org9d6a378"><span class="section-number-3">7.1</span> Problemas al instalar paquetes</h3>
+<div id="outline-container-org65a5e7a" class="outline-3">
+<h3 id="org65a5e7a"><span class="section-number-3">7.1.</span> Problemas al instalar paquetes</h3>
 <div class="outline-text-3" id="text-7-1">
 </div>
-<div id="outline-container-org43ba8f7" class="outline-4">
-<h4 id="org43ba8f7"><span class="section-number-4">7.1.1</span> Comandos</h4>
+<div id="outline-container-org5f2481d" class="outline-4">
+<h4 id="org5f2481d"><span class="section-number-4">7.1.1.</span> Comandos</h4>
 <div class="outline-text-4" id="text-7-1-1">
 <div class="org-src-container">
-<pre class="src src-shell" id="org1517673"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">descargamos un depurador con interfaz gráfica</span>
+<pre class="src src-shell" id="orgdba8a28"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">descargamos un depurador con interfaz gráfica</span>
 git clone https://aur.archlinux.org/ddd.git
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">ingresamos a la carpeta del programa</span>
 <span style="color: #4f97d7;">cd</span> ddd
@@ -1190,7 +1201,7 @@ makepkg -sci
 </div>
 
 <div class="org-src-container">
-<pre class="src src-shell" id="orgf2d3194"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">si el error menciona la clave 0FC3042E345AD05D</span>
+<pre class="src src-shell" id="org2443abe"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">si el error menciona la clave 0FC3042E345AD05D</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">entonces</span>
 gpg --recv-keys <span style="color: #a45bad;">0FC3042E345AD05D</span>
 
@@ -1207,11 +1218,10 @@ makepkg -sic -skippgpcheck
 </div>
 </div>
 </div>
-
-<div id="outline-container-org9081af8" class="outline-4">
-<h4 id="org9081af8"><span class="section-number-4">7.1.2</span> Referencias</h4>
+<div id="outline-container-org0e2ad21" class="outline-4">
+<h4 id="org0e2ad21"><span class="section-number-4">7.1.2.</span> Referencias</h4>
 <div class="outline-text-4" id="text-7-1-2">
-<ul class="org-ul">
+<ol class="org-ol">
 <li><a href="http://pgp.key-server.io/">PGP Public Key Server</a></li>
 <li><a href="https://www.genbeta.com/desarrollo/manual-de-gpg-cifra-y-envia-datos-de-forma-segura">Manual de GPG, cifra, firma y envía datos de forma segura - genbeta.com</a></li>
 <li><a href="https://medium.com/@btc_lovera/gu%C3%ADa-openpgp-pgp-y-gpg-lin-53766809f6d1">Guia OpenPGP, PGP, GPG - medium.com</a></li>
@@ -1221,18 +1231,13 @@ makepkg -sic -skippgpcheck
 <li><a href="https://forum.manjaro.org/t/error-failed-to-commit-transaction-invalid-or-corrupted-package-pgp-signature-errors-occurred-no-packages-were-upgraded/112792/3">https://forum.manjaro.org/t/error-failed-to-commit-transaction-invalid-or-corrupted-package-pgp-signature-errors-occurred-no-packages-were-upgraded/112792/3</a></li>
 <li><a href="https://forum.manjaro.org/t/aur-package-fails-to-verify-pgp-gpg-key-unknown-public-key-one-or-more-pgp-signatures-could-not-be-verified/42687">https://forum.manjaro.org/t/aur-package-fails-to-verify-pgp-gpg-key-unknown-public-key-one-or-more-pgp-signatures-could-not-be-verified/42687</a></li>
 <li><a href="https://bbs.archlinux.org/viewtopic.php?id=233480">https://bbs.archlinux.org/viewtopic.php?id=233480</a></li>
-</ul>
+</ol>
 </div>
 </div>
 </div>
-<div id="outline-container-orgedfa112" class="outline-3">
-<h3 id="orgedfa112"><span class="section-number-3">7.2</span> Pasos a organizar</h3>
+<div id="outline-container-org87e3be6" class="outline-3">
+<h3 id="org87e3be6"><span class="section-number-3">7.2.</span> Pasos a organizar</h3>
 <div class="outline-text-3" id="text-7-2">
-<p>
-Mezclar con la parte de particionamiento
-manjaro error: you need to load the kernel first
-</p>
-
 <div class="org-src-container">
 <pre class="src src-bash">cat /etc/lsb-release <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para saber la version de manjaro</span>
 
@@ -1252,15 +1257,15 @@ mhwd-kernel -li <span style="color: #2aa1ae; background-color: #292e34;"># </spa
 efibootmgr -v
 </pre>
 </div>
+</div>
+</div>
+<div id="outline-container-orgd721464" class="outline-3">
+<h3 id="orgd721464"><span class="section-number-3">7.3.</span> Referencias Web</h3>
+<div class="outline-text-3" id="text-7-3">
+<ol class="org-ol">
+<li></li>
 
-<p>
-para saber las particiones
-I went to BIOS for another look at what you mention:Secure Boot: disabled.Fast Boot: I see no such option in my BIOS.UEFI: Yes: “Boot Mode” is set to “UEFI”.Selected grub2 bootloader: I’m not quite sure what you mean by this. Is there a place I can go to select it?
-</p>
-
-<ul class="org-ul">
 <li><a href="https://instintobinario.com/rescatar-el-arranque-de-linux-con-la-consola-de-grub2/">https://instintobinario.com/rescatar-el-arranque-de-linux-con-la-consola-de-grub2/</a></li>
-
 <li><a href="https://forum.manjaro.org/t/howto-rescue-your-system-error-hook-invalid-value-path/123226">https://forum.manjaro.org/t/howto-rescue-your-system-error-hook-invalid-value-path/123226</a></li>
 <li><a href="https://forum.manjaro.org/t/you-need-to-load-kernel-first-after-failed-update/132141/3">https://forum.manjaro.org/t/you-need-to-load-kernel-first-after-failed-update/132141/3</a></li>
 <li><a href="https://forum.manjaro.org/t/using-livecd-v17-0-1-and-above-as-grub-to-boot-os-with-broken-bootloader/24916">https://forum.manjaro.org/t/using-livecd-v17-0-1-and-above-as-grub-to-boot-os-with-broken-bootloader/24916</a></li>
@@ -1277,45 +1282,21 @@ I went to BIOS for another look at what you mention:Secure Boot: disabled.Fast B
 <li><a href="https://forum.manjaro.org/t/manjaro-error-file-boot-vmlinuz-5-5-x86-64-not-found-after-update/131538/5">https://forum.manjaro.org/t/manjaro-error-file-boot-vmlinuz-5-5-x86-64-not-found-after-update/131538/5</a></li>
 <li><a href="https://forum.manjaro.org/t/error-file-vmlinuz-5-4-x86-64-not-found/131502/4">https://forum.manjaro.org/t/error-file-vmlinuz-5-4-x86-64-not-found/131502/4</a></li>
 <li><a href="https://forum.manjaro.org/t/error-file-vmlinuz-5-4-x86-64-not-found/131502/6">https://forum.manjaro.org/t/error-file-vmlinuz-5-4-x86-64-not-found/131502/6</a></li>
-
 <li><a href="https://deblinux.wordpress.com/2012/09/22/como-crear-un-live-usb-de-manjaro-linux-y-no-morir-en-el-intento/">https://deblinux.wordpress.com/2012/09/22/como-crear-un-live-usb-de-manjaro-linux-y-no-morir-en-el-intento/</a></li>
 <li><a href="https://wiki.manjaro.org/index.php?title=Burn_an_ISO_File#Writing_to_a_USB_Stick_in_Linux">https://wiki.manjaro.org/index.php?title=Burn_an_ISO_File#Writing_to_a_USB_Stick_in_Linux</a></li>
 <li><a href="https://www.linuxadictos.com/17781.html">https://www.linuxadictos.com/17781.html</a></li>
 <li><a href="https://archlinuxlatinoamerica.wordpress.com/2016/10/08/crear-pendriveusb-booteable-desde-nuestra-terminal-en-gnulinux/">https://archlinuxlatinoamerica.wordpress.com/2016/10/08/crear-pendriveusb-booteable-desde-nuestra-terminal-en-gnulinux/</a></li>
 <li><a href="https://wiki.manjaro.org/index.php?title=Burn_an_ISO_File">https://wiki.manjaro.org/index.php?title=Burn_an_ISO_File</a></li>
-</ul>
-
-
-<p>
-The issue is usually provoked when you don't maintain your system at regular intervals - and I am not thinking yearly - because such neglect will often result in similar problems.As the issue stems from a change in pacman code - you may be affected if you install from an ISO previous to 18.1.5.More technical it is a change to pacman and libalpm from 5.1 to 5.2. Users keeping their system up-to-date are not affected - users neglecting updates or installing from an older ISO are affected.1ra Solucion
-You need an ISO. Boot your system using the ISO and chroot into the installation.# manjaro-chroot -a
-Update pacmanFirst step is to update pacman - this may succeed or it may not# pacman -S pacman
-</p>
-
-<p>
-Otraou might also suffer from a faulty kernel-initramfs image. So enter your installation with chroot and update your packages.
-sudo pacman -SyuThen recreate the kernel
-sudo mkinitcpio -p linux
-And then redo the grub.cfg
-sudo update-grub2da SolucionOnce you booted in Live media and you chroot the installed system, then you run:manjaro-chroot -asudo pacman -Syyu - to complete the update
-sudo pacman -S grub
-sudo grub-install /dev/sda - for this you have to make sure the installed system is on sda
-sudo update-grub
-then reboot into your system, after you removed the live media install USB.
-ARREGLAR GRUBhttps://wiki.manjaro.org/index.php/Restore<sub>the</sub><sub>GRUB</sub><sub>Bootloader2</sub>.) Create the /boot/efi directorysudo mkdir /boot/efi
-3.) Mount the EFI partition as /boot/efisudo mount /dev/sdXY /boot/efiX = Alphabet of the drive = a,b,c …Y = Partition number of the EFI partition = 1,2,3,4…Example - /dev/sda4
-4.) Re-install Grub.sudo grub-install –target=x86<sub>64</sub>-efi –efi-directory=/boot/efi –bootloader-id=manjaro –recheck
-5.) Update Grub configuration file.sudo update-grub
-</p>
+</ol>
 </div>
 </div>
 </div>
-<div id="outline-container-org7b1d6a2" class="outline-2">
-<h2 id="org7b1d6a2"><span class="section-number-2">8</span> <span class="todo _TODO_">[TODO]</span> Guia Linux Que hacer luego de Instalar Linux</h2>
+<div id="outline-container-orgbe93057" class="outline-2">
+<h2 id="orgbe93057"><span class="section-number-2">8.</span> <span class="todo _TODO_">[TODO]</span> Guia Linux Que hacer luego de Instalar Linux</h2>
 <div class="outline-text-2" id="text-8">
 </div>
-<div id="outline-container-orga77fc4f" class="outline-3">
-<h3 id="orga77fc4f"><span class="section-number-3">8.1</span> 1. Comandos Utiles</h3>
+<div id="outline-container-org92d77dd" class="outline-3">
+<h3 id="org92d77dd"><span class="section-number-3">8.1.</span> 1. Comandos Utiles</h3>
 <div class="outline-text-3" id="text-8-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1345,8 +1326,8 @@ ARREGLAR GRUBhttps://wiki.manjaro.org/index.php/Restore<sub>the</sub><sub>GRUB</
 </table>
 </div>
 </div>
-<div id="outline-container-org7a114ef" class="outline-3">
-<h3 id="org7a114ef"><span class="section-number-3">8.2</span> 2. Instalamos Paquetes</h3>
+<div id="outline-container-orgd1a4a51" class="outline-3">
+<h3 id="orgd1a4a51"><span class="section-number-3">8.2.</span> 2. Instalamos Paquetes</h3>
 <div class="outline-text-3" id="text-8-2">
 <div class="org-src-container">
 <pre class="src src-sh"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Navegador web minimalista que utiliza comandos de vim</span>
@@ -1361,8 +1342,8 @@ sudo pacman -S telegram-desktop
 </div>
 </div>
 </div>
-<div id="outline-container-orgbb731e4" class="outline-3">
-<h3 id="orgbb731e4"><span class="section-number-3">8.3</span> 3. Configuramos Github</h3>
+<div id="outline-container-org8e5a4c1" class="outline-3">
+<h3 id="org8e5a4c1"><span class="section-number-3">8.3.</span> 3. Configuramos Github</h3>
 <div class="outline-text-3" id="text-8-3">
 <ul class="org-ul">
 <li>Para evitar escribir usuario y clave en cada push trabajos con la clave publica y privada.</li>
@@ -1382,13 +1363,12 @@ ssh -T git@github.com
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgc12bf71" class="outline-3">
-<h3 id="orgc12bf71"><span class="section-number-3">8.4</span> 4. Instalar y Configurar Emacs</h3>
+<div id="outline-container-org582d1cf" class="outline-3">
+<h3 id="org582d1cf"><span class="section-number-3">8.4.</span> 4. Instalar y Configurar Emacs</h3>
 <div class="outline-text-3" id="text-8-4">
 </div>
-<div id="outline-container-org217e1a9" class="outline-4">
-<h4 id="org217e1a9"><span class="section-number-4">8.4.1</span> 4.1 Instalar y Configurar</h4>
+<div id="outline-container-org719646f" class="outline-4">
+<h4 id="org719646f"><span class="section-number-4">8.4.1.</span> 4.1 Instalar y Configurar</h4>
 <div class="outline-text-4" id="text-8-4-1">
 <div class="org-src-container">
 <pre class="src src-sh"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">instalamos emacs</span>
@@ -1401,8 +1381,8 @@ git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 </div>
 </div>
 </div>
-<div id="outline-container-org0b3899b" class="outline-4">
-<h4 id="org0b3899b"><span class="section-number-4">8.4.2</span> 4.2  Activar el modo hibrido</h4>
+<div id="outline-container-org4f905e5" class="outline-4">
+<h4 id="org4f905e5"><span class="section-number-4">8.4.2.</span> 4.2 Activar el modo hibrido</h4>
 <div class="outline-text-4" id="text-8-4-2">
 <ul class="org-ul">
 <li>Modificar en el archivo de configuracion de spacemacs en `~/.spacemacs““;; encontrar la siguiente linea, debe quedar de esta manera con hybrid</li>
@@ -1414,8 +1394,8 @@ git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 </div>
 </div>
 </div>
-<div id="outline-container-orgc55594a" class="outline-4">
-<h4 id="orgc55594a"><span class="section-number-4">8.4.3</span> 4.3 Activamos layers</h4>
+<div id="outline-container-org806bda5" class="outline-4">
+<h4 id="org806bda5"><span class="section-number-4">8.4.3.</span> 4.3 Activamos layers</h4>
 <div class="outline-text-4" id="text-8-4-3">
 <ul class="org-ul">
 <li>Activar algunos layers utilesBuscar la linea `dotspacemacs-configuration-layers` del archivo `~/.spacemacs` y agregar o descomentar las siguientes lineas“`</li>
@@ -1428,55 +1408,48 @@ git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
    org
 </pre>
 </div>
+</div>
+</div>
 
-<p>
-<b><b>Referencias</b></b>
-</p>
-<ul class="org-ul">
+<div id="outline-container-org9c7a334" class="outline-4">
+<h4 id="org9c7a334"><span class="section-number-4">8.4.4.</span> Referencias Web</h4>
+<div class="outline-text-4" id="text-8-4-4">
+<ol class="org-ol">
 <li><a href="https://github.com/Alexander-Miller/treemacs/blob/master/README.org">https://github.com/Alexander-Miller/treemacs/blob/master/README.org</a></li>
-</ul>
+</ol>
 </div>
 </div>
 </div>
-<div id="outline-container-orgbe6131f" class="outline-3">
-<h3 id="orgbe6131f"><span class="section-number-3">8.5</span> <span class="todo _TODO_">[TODO]</span> Versionar Dotfiles (PENDIENTE)</h3>
+<div id="outline-container-org064b2f8" class="outline-3">
+<h3 id="org064b2f8"><span class="section-number-3">8.5.</span> <span class="todo _TODO_">[TODO]</span> Versionar Dotfiles</h3>
 </div>
 </div>
-
-<div id="outline-container-orge60b3c7" class="outline-2">
-<h2 id="orge60b3c7"><span class="section-number-2">9</span> Guia del Gestor de Archivos Ranger</h2>
+<div id="outline-container-orgdf6c0b1" class="outline-2">
+<h2 id="orgdf6c0b1"><span class="section-number-2">9.</span> Guia del Gestor de Archivos Ranger</h2>
 <div class="outline-text-2" id="text-9">
 </div>
-<div id="outline-container-org0bc8429" class="outline-3">
-<h3 id="org0bc8429"><span class="section-number-3">9.1</span> Filtrar archivos</h3>
+<div id="outline-container-org1fd2c27" class="outline-3">
+<h3 id="org1fd2c27"><span class="section-number-3">9.1.</span> Filtrar archivos</h3>
 <div class="outline-text-3" id="text-9-1">
 <ol class="org-ol">
 <li>Presionar zf seguido de la expresion regular</li>
 <li>Presionar v para seleccionar los archivos y luego accion que quieras (copiar, cortar)</li>
 <li>Presionar nuevamente zf para volver a ver todos los archivos</li>
 </ol>
-
-<p>
-<b>Referencias</b>
-</p>
-<ul class="org-ul">
-<li><a href="https://unix.stackexchange.com/questions/568899/search-and-select-all-matching-files-in-ranger">https://unix.stackexchange.com/questions/568899/search-and-select-all-matching-files-in-ranger</a></li>
-</ul>
 </div>
 </div>
-<div id="outline-container-org4fb1f3f" class="outline-3">
-<h3 id="org4fb1f3f"><span class="section-number-3">9.2</span> Atajos</h3>
+<div id="outline-container-org686677f" class="outline-3">
+<h3 id="org686677f"><span class="section-number-3">9.2.</span> Atajos</h3>
 <div class="outline-text-3" id="text-9-2">
 <p>
 Ranger, tiene los mismos atajos que vim
 </p>
-
-<ul class="org-ul">
+<ol class="org-ol">
 <li>h,l para moverse entre los niveles de los directorios</li>
 <li>dd para cortar</li>
 <li>y para copiar</li>
 <li>p para pegar</li>
-</ul>
+</ol>
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1519,26 +1492,27 @@ Ranger, tiene los mismos atajos que vim
 </tr>
 </tbody>
 </table>
-
-<p>
-<b>Referencias</b>
-</p>
-<ul class="org-ul">
+</div>
+</div>
+<div id="outline-container-org3e6cea7" class="outline-3">
+<h3 id="org3e6cea7"><span class="section-number-3">9.3.</span> Referencias Web</h3>
+<div class="outline-text-3" id="text-9-3">
+<ol class="org-ol">
 <li><a href="https://www.atareao.es/software/utilidades/administrador-de-archivos-para-el-terminal/">https://www.atareao.es/software/utilidades/administrador-de-archivos-para-el-terminal/</a></li>
 <li><a href="https://openwebinars.net/blog/vim-manual-de-uso-basico/">https://openwebinars.net/blog/vim-manual-de-uso-basico/</a></li>
 <li><a href="https://unix.stackexchange.com/questions/384325/how-to-create-a-new-file-directory-using-ranger">https://unix.stackexchange.com/questions/384325/how-to-create-a-new-file-directory-using-ranger</a></li>
 <li><a href="https://linuxconfig.org/manage-your-files-from-the-command-line-with-ranger">https://linuxconfig.org/manage-your-files-from-the-command-line-with-ranger</a></li>
-</ul>
+<li><a href="https://unix.stackexchange.com/questions/568899/search-and-select-all-matching-files-in-ranger">https://unix.stackexchange.com/questions/568899/search-and-select-all-matching-files-in-ranger</a></li>
+</ol>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org10f6d6f" class="outline-2">
-<h2 id="org10f6d6f"><span class="section-number-2">10</span> Guia Linux Personalizar</h2>
+<div id="outline-container-orgd3b4a7c" class="outline-2">
+<h2 id="orgd3b4a7c"><span class="section-number-2">10.</span> Guia Linux Personalizar</h2>
 <div class="outline-text-2" id="text-10">
 </div>
-<div id="outline-container-org7126a36" class="outline-3">
-<h3 id="org7126a36"><span class="section-number-3">10.1</span> Cambiar el cursor y el theme</h3>
+<div id="outline-container-org6ca4ab4" class="outline-3">
+<h3 id="org6ca4ab4"><span class="section-number-3">10.1.</span> Cambiar el cursor y el theme</h3>
 <div class="outline-text-3" id="text-10-1">
 <ul class="org-ul">
 <li><a href="https://gitlab.com/cscs/matcha-hacked-cursor">Matcha cursor hacked</a></li>
@@ -1549,12 +1523,12 @@ Ranger, tiene los mismos atajos que vim
 </ul>
 </div>
 </div>
-<div id="outline-container-org367fe7e" class="outline-3">
-<h3 id="org367fe7e"><span class="section-number-3">10.2</span> Escritorios Virtuales</h3>
+<div id="outline-container-org56f8938" class="outline-3">
+<h3 id="org56f8938"><span class="section-number-3">10.2.</span> Escritorios Virtuales</h3>
 <div class="outline-text-3" id="text-10-2">
 </div>
-<div id="outline-container-org84340d2" class="outline-4">
-<h4 id="org84340d2"><span class="section-number-4">10.2.1</span> Atajos personalizados</h4>
+<div id="outline-container-orgb2fb83d" class="outline-4">
+<h4 id="orgb2fb83d"><span class="section-number-4">10.2.1.</span> Atajos personalizados</h4>
 <div class="outline-text-4" id="text-10-2-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1605,42 +1579,33 @@ Ranger, tiene los mismos atajos que vim
 </table>
 </div>
 </div>
-
-<div id="outline-container-org3b144f0" class="outline-4">
-<h4 id="org3b144f0"><span class="section-number-4">10.2.2</span> Referencias</h4>
+<div id="outline-container-org9bfcdcb" class="outline-4">
+<h4 id="org9bfcdcb"><span class="section-number-4">10.2.2.</span> Referencias Web</h4>
 <div class="outline-text-4" id="text-10-2-2">
-<ul class="org-ul">
+<ol class="org-ol">
 <li><a href="https://ubunlog.com/configuracion-de-los-escritorios-virtuales-en-kde/">Configuracion de los escritorios virtuales - ubunblog.com</a></li>
 <li><a href="https://docs.kde.org/trunk5/es/applications/fundamentals/kbd.html">Accesos rápidos de teclados comunes - docs.kde.org</a></li>
-</ul>
+</ol>
 </div>
 </div>
 </div>
-<div id="outline-container-orgc13d1cd" class="outline-3">
-<h3 id="orgc13d1cd"><span class="section-number-3">10.3</span> Ocultar el Hostname del prompt</h3>
+<div id="outline-container-org7477460" class="outline-3">
+<h3 id="org7477460"><span class="section-number-3">10.3.</span> Ocultar el Hostname del prompt</h3>
 <div class="outline-text-3" id="text-10-3">
-<p>
-<a href="https://charles4code.blogspot.com/2018/07/show-username-only-without-hostname-in.html">https://charles4code.blogspot.com/2018/07/show-username-only-without-hostname-in.html</a>
-</p>
+<ol class="org-ol">
+<li><a href="https://charles4code.blogspot.com/2018/07/show-username-only-without-hostname-in.html">https://charles4code.blogspot.com/2018/07/show-username-only-without-hostname-in.html</a></li>
+</ol>
 </div>
 </div>
-<div id="outline-container-orga52211d" class="outline-3">
-<h3 id="orga52211d"><span class="section-number-3">10.4</span> Guia de Linux - Particionamiento</h3>
+<div id="outline-container-orgd306abd" class="outline-3">
+<h3 id="orgd306abd"><span class="section-number-3">10.4.</span> Guia de Linux - Particionamiento</h3>
 <div class="outline-text-3" id="text-10-4">
-<p>
-Pendiente en revisar
-</p>
-<ul class="org-ul">
-<li><a href="https://unix.stackexchange.com/questions/466625/cp-cannot-create-regular-file-permission-denied">Referencia #1</a></li>
-<li><a href="https://www.linuxadictos.com/solucion-al-error-read-only-file-system.html">Referencia #2</a></li>
-</ul>
 </div>
 </div>
-
-<div id="outline-container-org32b9fa4" class="outline-3">
-<h3 id="org32b9fa4"><span class="section-number-3">10.5</span> Sincronizar Archivos en Google Drive</h3>
+<div id="outline-container-org3e72e12" class="outline-3">
+<h3 id="org3e72e12"><span class="section-number-3">10.5.</span> Sincronizar Archivos en Google Drive</h3>
 <div class="outline-text-3" id="text-10-5">
-<ul class="org-ul">
+<ol class="org-ol">
 <li><a href="https://www.youtube.com/watch?v=vPs9K_VC-lg">https://www.youtube.com/watch?v=vPs9K_VC-lg</a></li>
 <li><a href="https://www.youtube.com/watch?v=HblhrGIotFo">https://www.youtube.com/watch?v=HblhrGIotFo</a></li>
 <li><a href="https://rclone.org/drive/">https://rclone.org/drive/</a></li>
@@ -1649,83 +1614,68 @@ Pendiente en revisar
 <li><a href="https://snapcraft.io/install/rclone/arch">https://snapcraft.io/install/rclone/arch</a></li>
 <li><a href="https://www.youtube.com/watch?v=ARGU4HFUxq8">https://www.youtube.com/watch?v=ARGU4HFUxq8</a></li>
 <li><a href="https://www.youtube.com/watch?v=G8YMspboIXs">https://www.youtube.com/watch?v=G8YMspboIXs</a></li>
-</ul>
+</ol>
 </div>
 </div>
-<div id="outline-container-orge1a9bfa" class="outline-3">
-<h3 id="orge1a9bfa"><span class="section-number-3">10.6</span> Nuevos comandos</h3>
+<div id="outline-container-org61e3ed2" class="outline-3">
+<h3 id="org61e3ed2"><span class="section-number-3">10.6.</span> Comandos Interesantes</h3>
 <div class="outline-text-3" id="text-10-6">
-<ul class="org-ul">
-<li><p>
-Crear directorios con subdirectorios, usando el parametro -p en mkdir
-mkdir -p
-</p>
-
-<p>
-Referencias:
-</p>
-<ul class="org-ul">
-<li><a href="https://techlandia.com/crear-nuevo-directorio-linux-como_44793/">https://techlandia.com/crear-nuevo-directorio-linux-como_44793/</a></li>
-</ul></li>
-<li><p>
-Conocer la particion de un archivo
-Con el comando df
-</p>
-
-<p>
-Referencias
-</p>
-<ul class="org-ul">
+</div>
+<div id="outline-container-orgbb9ea6e" class="outline-4">
+<h4 id="orgbb9ea6e"><span class="section-number-4">10.6.1.</span> Conceptos</h4>
+<div class="outline-text-4" id="text-10-6-1">
+<ol class="org-ol">
+<li>Crear directorios con subdirectorios, usando el parametro -p en mkdir <code>mkdir -p carpeta1/carpeta2</code></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org8507c9b" class="outline-4">
+<h4 id="org8507c9b"><span class="section-number-4">10.6.2.</span> Referencias Web</h4>
+<div class="outline-text-4" id="text-10-6-2">
+<ol class="org-ol">
 <li><a href="https://elbauldelprogramador.com/como-saber-que-particion-pertenece-un/">https://elbauldelprogramador.com/como-saber-que-particion-pertenece-un/</a></li>
+<li><a href="https://techlandia.com/crear-nuevo-directorio-linux-como_44793/">https://techlandia.com/crear-nuevo-directorio-linux-como_44793/</a></li>
 <li><a href="https://www.profesionalreview.com/2018/03/04/saber-particion-esta-instalado-ubuntu/">https://www.profesionalreview.com/2018/03/04/saber-particion-esta-instalado-ubuntu/</a></li>
-</ul></li>
-</ul>
+</ol>
 </div>
 </div>
-<div id="outline-container-org81fd2af" class="outline-3">
-<h3 id="org81fd2af"><span class="section-number-3">10.7</span> Herramientas de Seguridad</h3>
+</div>
+<div id="outline-container-org07f01d0" class="outline-3">
+<h3 id="org07f01d0"><span class="section-number-3">10.7.</span> Herramientas de Seguridad</h3>
 <div class="outline-text-3" id="text-10-7">
-<ul class="org-ul">
-<li>Averiguar si el Bitwarden del escritorio funciona en las demas distribuciones ok</li>
-<li>Comentar lo de la encriptacion de contenido con rclone</li>
-</ul>
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgd848cf0" class="outline-2">
-<h2 id="orgd848cf0"><span class="section-number-2">11</span> Comando Sed (Manipular Texto)</h2>
+<div id="outline-container-org8491f77" class="outline-2">
+<h2 id="org8491f77"><span class="section-number-2">11.</span> Comando Sed (Manipular Texto)</h2>
 <div class="outline-text-2" id="text-11">
+</div>
+<div id="outline-container-orgca12ee8" class="outline-3">
+<h3 id="orgca12ee8"><span class="section-number-3">11.1.</span> Conceptos</h3>
+<div class="outline-text-3" id="text-11-1">
 <p>
-Al parecer es bastante parecido al reemplazar de vim
+Es bastante parecido al de reemplazar de vim
 </p>
-
-<p>
-Referencias:
-</p>
-<ul class="org-ul">
+</div>
+</div>
+<div id="outline-container-org115bbda" class="outline-3">
+<h3 id="org115bbda"><span class="section-number-3">11.2.</span> Referencias Web</h3>
+<div class="outline-text-3" id="text-11-2">
+<ol class="org-ol">
 <li><a href="http://www.sromero.org/wiki/linux/aplicaciones/uso_de_sed">http://www.sromero.org/wiki/linux/aplicaciones/uso_de_sed</a></li>
 <li><a href="https://likegeeks.com/es/sed-de-linux/">https://likegeeks.com/es/sed-de-linux/</a></li>
 <li><a href="https://www.tecmint.com/linux-sed-command-tips-tricks/">https://www.tecmint.com/linux-sed-command-tips-tricks/</a></li>
 <li><a href="https://www.linuxadictos.com/sed-ejemplos-del-comando-magico-para-gnu-linux.html">https://www.linuxadictos.com/sed-ejemplos-del-comando-magico-para-gnu-linux.html</a></li>
 <li><a href="https://blog.desdelinux.net/sed-shell-scripting-comando/">https://blog.desdelinux.net/sed-shell-scripting-comando/</a></li>
-</ul>
+</ol>
 </div>
-</div>
-
-<div id="outline-container-org3133d10" class="outline-2">
-<h2 id="org3133d10"><span class="section-number-2">12</span> Pendiente</h2>
-<div class="outline-text-2" id="text-12">
-<ul class="org-ul">
-<li># averiguar por: doas, cmus, qutebrowser, emerge</li>
-</ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: jelou</p>
-<p class="date">Created: 2021-04-01 jue 17:45</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+<p class="date">Created: 2021-09-13 lun 12:18</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 
 
