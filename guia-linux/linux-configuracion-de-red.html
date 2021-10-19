@@ -1,5 +1,5 @@
 <!--?xml version="1.0" encoding="utf-8"?--><!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<!-- 2021-04-04 dom 01:51 -->
+<!-- 2021-10-18 lun 18:26 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Guia Linux - Configuración de Red</title>
@@ -36,7 +36,7 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
+    overflow: auto;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -48,7 +48,7 @@
     padding: 3px;
     border: 1px solid black;
   }
-  pre.src:hover:before { display: inline;}
+  pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
@@ -193,50 +193,26 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/sass-style.css">
 <script type="text/javascript" src="/assets/js/all.js"></script>
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2020 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 </head>
 <body>
@@ -246,53 +222,64 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org3f9078d">1. Proxy (Squid) y Firewall (Ufw)</a>
+<li><a href="#org6e06f4d">1. Proxy (Squid) y Firewall (Ufw)</a>
 <ul>
-<li><a href="#orgc0e1d42">1.1. Comandos básicos</a></li>
-<li><a href="#orgd778462">1.2. Referencias</a></li>
-</ul>
-</li>
-<li><a href="#org7d2e219">2. Configuración de red</a>
+<li><a href="#org3ba491e">1.1. Comandos básicos</a></li>
+<li><a href="#orge09a212">1.2. Referencias</a>
 <ul>
-<li><a href="#org6edef40">2.1. Conceptos</a></li>
-<li><a href="#org94c4bc2">2.2. Comandos básicos</a>
-<ul>
-<li><a href="#org9553bd7">2.2.1. Listar interfaces de red</a></li>
-<li><a href="#org2d41f56">2.2.2. Mostrar IP de las interfaces</a></li>
-<li><a href="#orgdae15ef">2.2.3. Mostrar tablas de enrutamiento</a></li>
-<li><a href="#org2fd18d0">2.2.4. Otros comandos</a></li>
-</ul>
-</li>
-<li><a href="#orgde27408">2.3. Referencias</a>
-<ul>
-<li><a href="#org9bc3f9a">2.3.1. Referencias Web Oficiales</a></li>
-<li><a href="#orgeca8323">2.3.2. Referencias Web Extraoficiales</a></li>
+<li><a href="#org5ea109e">1.2.1. Referencias Web Oficiales</a></li>
+<li><a href="#org7bec7db">1.2.2. Referencias Web Extraoficiales</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org5bba8ae">3. Configurar Proxy</a>
+<li><a href="#org19ca82a">2. Configuración de red</a>
 <ul>
-<li><a href="#orge2951b1">3.1. Configuración</a></li>
-<li><a href="#orgc1f2b19">3.2. Configurar Navegador Web</a></li>
-<li><a href="#org9a15f19">3.3. Mostrar Errores de Squid</a></li>
-<li><a href="#org989e832">3.4. Referencias Web</a></li>
+<li><a href="#org34d3a16">2.1. Conceptos</a></li>
+<li><a href="#org081b240">2.2. Comandos básicos</a>
+<ul>
+<li><a href="#org9cd73ad">2.2.1. Listar interfaces de red</a></li>
+<li><a href="#org3ec1bed">2.2.2. Mostrar IP de las interfaces</a></li>
+<li><a href="#orgda584e7">2.2.3. Mostrar tablas de enrutamiento</a></li>
+<li><a href="#org5817f68">2.2.4. Otros comandos</a></li>
 </ul>
 </li>
-<li><a href="#org9f1d133">4. Iptables</a>
+<li><a href="#orgd68f4ae">2.3. Referencias</a>
 <ul>
-<li><a href="#org9ea6e64">4.1. Referencias Youtube</a></li>
+<li><a href="#org3fccdf9">2.3.1. Referencias Web Oficiales</a></li>
+<li><a href="#org3f55320">2.3.2. Referencias Web Extraoficiales</a></li>
 </ul>
 </li>
-<li><a href="#orge99e257">5. Proxy Squid y Tor</a>
-<ul>
-<li><a href="#orgd556d5d">5.1. Referencias Youtube</a></li>
 </ul>
 </li>
-<li><a href="#org726abb3">6. Referencias</a>
+<li><a href="#orgab5dc6f">3. Configurar Proxy</a>
 <ul>
-<li><a href="#orgcb2eb28">6.1. Referencias Web Oficiales</a></li>
-<li><a href="#org455e6fc">6.2. Referencias Web Extraoficiales</a></li>
+<li><a href="#orgb837921">3.1. Configuración</a></li>
+<li><a href="#org40dcf5f">3.2. Configurar Navegador Web</a></li>
+<li><a href="#org79e421b">3.3. Mostrar Errores de Squid</a></li>
+<li><a href="#orge2e66c5">3.4. Referencias</a>
+<ul>
+<li><a href="#orgd685ad6">3.4.1. Referencias Youtube</a></li>
+<li><a href="#org136cd31">3.4.2. Referencias Web Extraoficiales</a></li>
+<li><a href="#org2347209">3.4.3. Referencias Issues</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org79f05b1">4. Iptables</a>
+<ul>
+<li><a href="#orgb5cf0f3">4.1. Referencias Youtube</a></li>
+</ul>
+</li>
+<li><a href="#org5a61f47">5. Proxy Squid y Tor</a>
+<ul>
+<li><a href="#org082658c">5.1. Referencias Youtube</a></li>
+</ul>
+</li>
+<li><a href="#org246e0d2">6. Referencias</a>
+<ul>
+<li><a href="#org93b26ee">6.1. Referencias Web Oficiales</a></li>
+<li><a href="#org853a27a">6.2. Referencias Web Extraoficiales</a></li>
 </ul>
 </li>
 </ul>
@@ -300,16 +287,16 @@ for the JavaScript code in this tag.
 </div>
 <p>
 <b>Aviso:</b>
-Por el momento no pude documentar por completo documentacion de este tipo
+Por el momento esta sección no está del todo completa,
 pero debajo dejo algunas referencias importantes para entrar en tema.
 </p>
 
-<div id="outline-container-org3f9078d" class="outline-2">
-<h2 id="org3f9078d"><span class="section-number-2">1</span> Proxy (Squid) y Firewall (Ufw)</h2>
+<div id="outline-container-org6e06f4d" class="outline-2">
+<h2 id="org6e06f4d"><span class="section-number-2">1.</span> Proxy (Squid) y Firewall (Ufw)</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orgc0e1d42" class="outline-3">
-<h3 id="orgc0e1d42"><span class="section-number-3">1.1</span> Comandos básicos</h3>
+<div id="outline-container-org3ba491e" class="outline-3">
+<h3 id="org3ba491e"><span class="section-number-3">1.1.</span> Comandos básicos</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 Comandos utilizados en la distribución <b><b>ArchLinux</b></b> puede llegar a diferir según cual tengan instalado.
@@ -323,100 +310,111 @@ Comandos utilizados en la distribución <b><b>ArchLinux</b></b> puede llegar a d
 </ol>
 </div>
 </div>
-<div id="outline-container-orgd778462" class="outline-3">
-<h3 id="orgd778462"><span class="section-number-3">1.2</span> Referencias</h3>
+<div id="outline-container-orge09a212" class="outline-3">
+<h3 id="orge09a212"><span class="section-number-3">1.2.</span> Referencias</h3>
 <div class="outline-text-3" id="text-1-2">
-<ul class="org-ul">
-<li>Página Oficial de Squid [Ver Página](<a href="http://www.squid-cache.org">http://www.squid-cache.org</a>)</li>
-<li>Configurar Squid en Ubuntu - Ajpsoft [Ver Página](<a href="https://www.ajpdsoft.com/modules.php?name=News&amp;file=article&amp;sid=441">https://www.ajpdsoft.com/modules.php?name=News&amp;file=article&amp;sid=441</a>)</li>
-<li>Conceptos de Proxy con Squid - Educacion ITE [Ver Página](<a href="http://www.ite.educacion.es/formacion/materiales/85/cd/linux/m6/proxy_squid.html">http://www.ite.educacion.es/formacion/materiales/85/cd/linux/m6/proxy_squid.html</a>)</li>
-<li>Configurar Squid en Ubuntu - Kacharreando [Ver Página](<a href="http://www.kacharreando.com/ubuntu/configurar-proxy-squid/">http://www.kacharreando.com/ubuntu/configurar-proxy-squid/</a>)</li>
-<li>Que es Squid - Wiki [Ver Página](<a href="https://es.wikipedia.org/wiki/Squid_(programa)">https://es.wikipedia.org/wiki/Squid_(programa)</a>)</li>
-<li>Configurar Servicios Linux con Proxy [Ver Página](<a href="https://www.sysadminsdecuba.com/2017/11/tips-configuracion-de-proxy-para-los-servicios-de-linux/">https://www.sysadminsdecuba.com/2017/11/tips-configuracion-de-proxy-para-los-servicios-de-linux/</a>)</li>
-<li>[Manual de Configuración](<a href="https://www.pks.mpg.de/~mueller/docs/suse10.2/html/opensuse-manual_en/manual/sec.squid.configfile.html">https://www.pks.mpg.de/~mueller/docs/suse10.2/html/opensuse-manual_en/manual/sec.squid.configfile.html</a>)</li>
-<li>[Breve introducción a Squid Server](<a href="https://doxfer.webmin.com/Webmin/Squid_Proxy_Server">https://doxfer.webmin.com/Webmin/Squid_Proxy_Server</a>)</li>
+</div>
+<div id="outline-container-org5ea109e" class="outline-4">
+<h4 id="org5ea109e"><span class="section-number-4">1.2.1.</span> Referencias Web Oficiales</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<ol class="org-ol">
+<li><a href="http://www.squid-cache.org">Página Oficial de Squid</a></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org7bec7db" class="outline-4">
+<h4 id="org7bec7db"><span class="section-number-4">1.2.2.</span> Referencias Web Extraoficiales</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<ol class="org-ol">
+<li><a href="https://www.ajpdsoft.com/modules.php?name=News&amp;file=article&amp;sid=441">Configurar Squid en Ubuntu - Ajpsoft.com</a></li>
+<li><a href="http://www.ite.educacion.es/formacion/materiales/85/cd/linux/m6/proxy_squid.html">Conceptos de Proxy con Squid - Educacion ITE</a></li>
+<li><a href="http://www.kacharreando.com/ubuntu/configurar-proxy-squid/">Configurar Squid en Ubuntu - Kacharreando.com</a></li>
+<li><a href="https://www.sysadminsdecuba.com/2017/11/tips-configuracion-de-proxy-para-los-servicios-de-linux/">Configurar Servicios Linux con Proxy - SysadminsDeCuba.com</a></li>
+<li><a href="https://doxfer.webmin.com/Webmin/Squid_Proxy_Server">Breve introducción a Squid Server - Webmin.com</a></li>
 <li><a href="https://esgeeks.com/abrir-cerrar-puertos-linux/">Abrir y cerrar puertos - esgeeks.com</a></li>
-</ul>
+</ol>
 </div>
 </div>
 </div>
-<div id="outline-container-org7d2e219" class="outline-2">
-<h2 id="org7d2e219"><span class="section-number-2">2</span> Configuración de red</h2>
+</div>
+<div id="outline-container-org19ca82a" class="outline-2">
+<h2 id="org19ca82a"><span class="section-number-2">2.</span> Configuración de red</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org6edef40" class="outline-3">
-<h3 id="org6edef40"><span class="section-number-3">2.1</span> Conceptos</h3>
+<div id="outline-container-org34d3a16" class="outline-3">
+<h3 id="org34d3a16"><span class="section-number-3">2.1.</span> Conceptos</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
-Podemos identificar las interfaces de red de la siguiente forma: 
+Podemos identificar las interfaces de red de la siguiente forma
 </p>
-<ul class="org-ul">
+<ol class="org-ol">
 <li><b>Adaptadores Ethernet:</b> eth0, eth1, eth2, eth3, …</li>
 <li><b>Adaptadores Inalambricos:</b> wlan0, wlan1, wlan2, wlan3, …</li>
 <li><b>Adaptador de LoopBack:</b> lo</li>
-</ul>
+</ol>
 
+<blockquote>
 <p>
-<b>Nota:</b>
-El adaptador o interfaz de loopback es un adaptador virtual de la misma maquina y 
+El adaptador o <b>interfaz de loopback</b> es un adaptador virtual de la misma maquina y 
 se accede de a traves de la direccion 127.0.0.1 o del nombre de dominio localhost
 </p>
+</blockquote>
 </div>
 </div>
-<div id="outline-container-org94c4bc2" class="outline-3">
-<h3 id="org94c4bc2"><span class="section-number-3">2.2</span> Comandos básicos</h3>
+<div id="outline-container-org081b240" class="outline-3">
+<h3 id="org081b240"><span class="section-number-3">2.2.</span> Comandos básicos</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 Según la distribución de Linux los comandos pueden variar, estos se hacen en ArchLinux
 </p>
 </div>
 
-<div id="outline-container-org9553bd7" class="outline-4">
-<h4 id="org9553bd7"><span class="section-number-4">2.2.1</span> Listar interfaces de red</h4>
+<div id="outline-container-org9cd73ad" class="outline-4">
+<h4 id="org9cd73ad"><span class="section-number-4">2.2.1.</span> Listar interfaces de red</h4>
 <div class="outline-text-4" id="text-2-2-1">
 <div class="org-src-container">
-<pre class="src src-shell" id="orgf2a5ff4"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">listar interfaces</span>
+<pre class="src src-shell" id="orgac31355"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">listar interfaces</span>
 ip link
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org2d41f56" class="outline-4">
-<h4 id="org2d41f56"><span class="section-number-4">2.2.2</span> Mostrar IP de las interfaces</h4>
+<div id="outline-container-org3ec1bed" class="outline-4">
+<h4 id="org3ec1bed"><span class="section-number-4">2.2.2.</span> Mostrar IP de las interfaces</h4>
 <div class="outline-text-4" id="text-2-2-2">
 <div class="org-src-container">
-<pre class="src src-shell" id="org07d8151">ip address show
+<pre class="src src-shell" id="org8ee1326">ip address show
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgdae15ef" class="outline-4">
-<h4 id="orgdae15ef"><span class="section-number-4">2.2.3</span> Mostrar tablas de enrutamiento</h4>
+<div id="outline-container-orgda584e7" class="outline-4">
+<h4 id="orgda584e7"><span class="section-number-4">2.2.3.</span> Mostrar tablas de enrutamiento</h4>
 <div class="outline-text-4" id="text-2-2-3">
 </div>
 <ol class="org-ol">
-<li><a id="orge44347d"></a>Procedimiento<br>
+<li><a id="org0d8e3a3"></a>Procedimiento<br>
 <div class="outline-text-5" id="text-2-2-3-1">
 <div class="org-src-container">
-<pre class="src src-shell" id="orgf5ea7ad">ip route show
+<pre class="src src-shell" id="org31a79c9">ip route show
 </pre>
 </div>
 </div>
 </li>
-<li><a id="org21e1202"></a>Referencias Extraoficiales<br>
+<li><a id="org51a3c79"></a>Referencias Extraoficiales<br>
 <div class="outline-text-5" id="text-2-2-3-2">
-<ul class="org-ul">
-<li><a href="https://www.sololinux.es/uso-del-comando-route-en-linux/">https://www.sololinux.es/uso-del-comando-route-en-linux/</a></li>
-</ul>
+<ol class="org-ol">
+<li><a href="https://www.sololinux.es/uso-del-comando-route-en-linux/">Como usar el comando route en linux - Sololinux.es</a></li>
+</ol>
 </div>
 </li>
 </ol>
 </div>
-<div id="outline-container-org2fd18d0" class="outline-4">
-<h4 id="org2fd18d0"><span class="section-number-4">2.2.4</span> Otros comandos</h4>
+<div id="outline-container-org5817f68" class="outline-4">
+<h4 id="org5817f68"><span class="section-number-4">2.2.4.</span> Otros comandos</h4>
 <div class="outline-text-4" id="text-2-2-4">
 <div class="org-src-container">
-<pre class="src src-shell" id="org0c61ee7"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para ver las conexiones</span>
+<pre class="src src-shell" id="org5181111"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para ver las conexiones</span>
 nmcli
 
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">editar conexiones via terminal</span>
@@ -429,41 +427,41 @@ nm-connection-editor
 </div>
 </div>
 </div>
-<div id="outline-container-orgde27408" class="outline-3">
-<h3 id="orgde27408"><span class="section-number-3">2.3</span> Referencias</h3>
+<div id="outline-container-orgd68f4ae" class="outline-3">
+<h3 id="orgd68f4ae"><span class="section-number-3">2.3.</span> Referencias</h3>
 <div class="outline-text-3" id="text-2-3">
 </div>
-<div id="outline-container-org9bc3f9a" class="outline-4">
-<h4 id="org9bc3f9a"><span class="section-number-4">2.3.1</span> Referencias Web Oficiales</h4>
+<div id="outline-container-org3fccdf9" class="outline-4">
+<h4 id="org3fccdf9"><span class="section-number-4">2.3.1.</span> Referencias Web Oficiales</h4>
 <div class="outline-text-4" id="text-2-3-1">
-<ul class="org-ul">
-<li>Documentación Oficial de Redes -TLDP [Ver Página](<a href="http://www.tldp.org/LDP/nag2/">http://www.tldp.org/LDP/nag2/</a>)</li>
-<li>Configuración de red - Wiki Arch [Ver Página](<a href="https://wiki.archlinux.org/index.php/Network_configuration">https://wiki.archlinux.org/index.php/Network_configuration</a>)</li>
-</ul>
+<ol class="org-ol">
+<li><a href="http://www.tldp.org/LDP/nag2/">Documentación Oficial de Redes - Guía Sysadmin - TLDP.org</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/Network_configuration">Configuración de red - Wiki ArchLinux.org</a></li>
+<li><a href="https://www.ibiblio.org/pub/Linux/docs/LuCaS/Presentaciones/200103hispalinux/eric/html/rutas.html">Tablas de routing - tldp-es</a></li>
+</ol>
 </div>
 </div>
-<div id="outline-container-orgeca8323" class="outline-4">
-<h4 id="orgeca8323"><span class="section-number-4">2.3.2</span> Referencias Web Extraoficiales</h4>
+<div id="outline-container-org3f55320" class="outline-4">
+<h4 id="org3f55320"><span class="section-number-4">2.3.2.</span> Referencias Web Extraoficiales</h4>
 <div class="outline-text-4" id="text-2-3-2">
-<ul class="org-ul">
-<li><a href="https://www.redeszone.net/tutoriales/servidores/configurar-linux-comando-ip-iproute2-suite/">https://www.redeszone.net/tutoriales/servidores/configurar-linux-comando-ip-iproute2-suite/</a></li>
-<li><a href="https://www.ibiblio.org/pub/Linux/docs/LuCaS/Presentaciones/200103hispalinux/eric/html/rutas.html">https://www.ibiblio.org/pub/Linux/docs/LuCaS/Presentaciones/200103hispalinux/eric/html/rutas.html</a></li>
-<li>Como usar NetworkManager [Ver Página](<a href="https://linuxhint.com/arch_linux_network_manager/">https://linuxhint.com/arch_linux_network_manager/</a>)</li>
-<li>Configurar Red - CetemRedes [Ver Página](<a href="http://cetemredes2.blogspot.com/2014/04/configurar-adaptador-de-red.html">http://cetemredes2.blogspot.com/2014/04/configurar-adaptador-de-red.html</a>)</li>
-<li>Configurar Red en Ubuntu - Danjared [Ver Página](<a href="https://danjared.wordpress.com/2011/03/09/configurar-el-proxy-en-ubuntu/">https://danjared.wordpress.com/2011/03/09/configurar-el-proxy-en-ubuntu/</a>)</li>
-<li>Configurar Proxy con Tor [Ver Página](<a href="https://securityhacklabs.net/articulo/enrutando-todo-tu-trafico-bajo-la-red-tor-como-un-proxy-transparente-en-linux">https://securityhacklabs.net/articulo/enrutando-todo-tu-trafico-bajo-la-red-tor-como-un-proxy-transparente-en-linux</a>)</li>
-<li>Conceptos de Redes [Ver Página](<a href="http://www.nexolinux.com/configurar-red-en-linux/">http://www.nexolinux.com/configurar-red-en-linux/</a>)</li>
-</ul>
+<ol class="org-ol">
+<li><a href="https://www.redeszone.net/tutoriales/servidores/configurar-linux-comando-ip-iproute2-suite/">Comando ip - IPRoute 2 - RedesZone.net</a></li>
+<li><a href="https://linuxhint.com/arch_linux_network_manager/">Como usar NetworkManager - LinuxHint.com</a></li>
+<li><a href="http://cetemredes2.blogspot.com/2014/04/configurar-adaptador-de-red.html">Configurar Adaptador de Red - Blog CetemRedes</a></li>
+<li><a href="https://danjared.wordpress.com/2011/03/09/configurar-el-proxy-en-ubuntu/">Configurar Poxy en Ubuntu - Blog Danjared</a></li>
+<li><a href="https://securityhacklabs.net/articulo/enrutando-todo-tu-trafico-bajo-la-red-tor-como-un-proxy-transparente-en-linux">Enrutar tráfico con Proxy+Tor - SecurityHackLabs.net</a></li>
+<li><a href="http://www.nexolinux.com/configurar-red-en-linux/">Conceptos de Redes - NexoLinux.com</a></li>
+</ol>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org5bba8ae" class="outline-2">
-<h2 id="org5bba8ae"><span class="section-number-2">3</span> Configurar Proxy</h2>
+<div id="outline-container-orgab5dc6f" class="outline-2">
+<h2 id="orgab5dc6f"><span class="section-number-2">3.</span> Configurar Proxy</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-orge2951b1" class="outline-3">
-<h3 id="orge2951b1"><span class="section-number-3">3.1</span> Configuración</h3>
+<div id="outline-container-orgb837921" class="outline-3">
+<h3 id="orgb837921"><span class="section-number-3">3.1.</span> Configuración</h3>
 <div class="outline-text-3" id="text-3-1">
 <ol class="org-ol">
 <li>Abrir el archivo de configuración <b>enviroment</b> con <code>sudo nano /etc/environment</code></li>
@@ -471,7 +469,7 @@ nm-connection-editor
 Agregar la siguiente configuración
 </p>
 <div class="org-src-container">
-<pre class="src src-bash" id="org46c9b8d"><span style="color: #7590db;">http_proxy</span>=<span style="color: #2d9574;">"http://192.168.1.89:3128/"</span>
+<pre class="src src-bash" id="org74a90c3"><span style="color: #7590db;">http_proxy</span>=<span style="color: #2d9574;">"http://192.168.1.89:3128/"</span>
 <span style="color: #7590db;">https_proxy</span>=<span style="color: #2d9574;">"https://192.168.1.89:3128/"</span>
 <span style="color: #7590db;">no_proxy</span>=<span style="color: #2d9574;">"localhost,127.0.0.1,::1</span>
 </pre>
@@ -486,33 +484,33 @@ El puerto 3128 es el predeterminado por squid, esta modificación solo afecta a 
 </p>
 </div>
 </div>
-<div id="outline-container-orgc1f2b19" class="outline-3">
-<h3 id="orgc1f2b19"><span class="section-number-3">3.2</span> Configurar Navegador Web</h3>
+<div id="outline-container-org40dcf5f" class="outline-3">
+<h3 id="org40dcf5f"><span class="section-number-3">3.2.</span> Configurar Navegador Web</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 Cada navegador puede tomar diferente los proxy, en este caso mostraremos con Opera
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell" id="orgc817bfb">opera --proxy-server=<span style="color: #2d9574;">"http://192.168.1.89.3128/"</span>
+<pre class="src src-shell" id="org0fb6d96">opera --proxy-server=<span style="color: #2d9574;">"http://192.168.1.89.3128/"</span>
 </pre>
 </div>
 
 <p>
 <b>Observación:</b>
-Para más información ingresar lo siguiente en la barra de direcciones `opera://linux-proxy-config`
+Para más información ingresar lo siguiente en la barra de direcciones <code>opera://linux-proxy-config</code>
 </p>
 </div>
 </div>
-<div id="outline-container-org9a15f19" class="outline-3">
-<h3 id="org9a15f19"><span class="section-number-3">3.3</span> Mostrar Errores de Squid</h3>
+<div id="outline-container-org79e421b" class="outline-3">
+<h3 id="org79e421b"><span class="section-number-3">3.3.</span> Mostrar Errores de Squid</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 Para ver los errores de squid antes de correr del servicio 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell" id="org18e78f6">sudo squid -k check
+<pre class="src src-shell" id="orgb81396f">sudo squid -k check
 
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">lanza error si hay algo mal configurado</span>
 sudo squid -k reconfigure
@@ -520,89 +518,102 @@ sudo squid -k reconfigure
 </div>
 </div>
 </div>
-<div id="outline-container-org989e832" class="outline-3">
-<h3 id="org989e832"><span class="section-number-3">3.4</span> Referencias Web</h3>
+<div id="outline-container-orge2e66c5" class="outline-3">
+<h3 id="orge2e66c5"><span class="section-number-3">3.4.</span> Referencias</h3>
 <div class="outline-text-3" id="text-3-4">
-<ul class="org-ul">
-<li>[Configurar Proxy en la Shell ZSH](<a href="https://ketansingh.net/setting-proxy-for-archlinux/">https://ketansingh.net/setting-proxy-for-archlinux/</a></li>
+</div>
+<div id="outline-container-orgd685ad6" class="outline-4">
+<h4 id="orgd685ad6"><span class="section-number-4">3.4.1.</span> Referencias Youtube</h4>
+<div class="outline-text-4" id="text-3-4-1">
+<ol class="org-ol">
 <li>Configurar en Ubuntu [Ver Video](<a href="https://www.youtube.com/watch?v=6qLRHDXPda8">https://www.youtube.com/watch?v=6qLRHDXPda8</a>)</li>
-<li>[Configurar Proxy - Garron](<a href="https://www.garron.me/es/gnu-linux/configurar-proxy-ubuntu-desktop-server.html">https://www.garron.me/es/gnu-linux/configurar-proxy-ubuntu-desktop-server.html</a>)</li>
-<li>[Configurar en Ubuntu](<a href="https://www.sololinux.es/instalar-squid-proxy-server-en-ubuntu-18-04/">https://www.sololinux.es/instalar-squid-proxy-server-en-ubuntu-18-04/</a>)</li>
-<li>[Configurar Enviroment](<a href="https://medium.com/@krish.raghuram/setting-up-proxy-in-ubuntu-95058da0b2d4">https://medium.com/@krish.raghuram/setting-up-proxy-in-ubuntu-95058da0b2d4</a>)</li>
-<li>[User Agent](<a href="http://www.user-agents.org">http://www.user-agents.org</a>)</li>
-<li>[Conocer user agente](<a href="https://www.whoishostingthis.com/tools/user-agent/">https://www.whoishostingthis.com/tools/user-agent/</a>)</li>
-<li>[Block a Browser in Squid](<a href="https://www.linuxquestions.org/questions/linux-server-73/block-a-browser-in-squid-924596/">https://www.linuxquestions.org/questions/linux-server-73/block-a-browser-in-squid-924596/</a>)</li>
-<li>[Instalar Squid Proxy Server en Ubuntu](<a href="https://www.sololinux.es/instalar-squid-proxy-server-en-ubuntu-18-04/">https://www.sololinux.es/instalar-squid-proxy-server-en-ubuntu-18-04/</a>)</li>
-</ul>
+</ol>
+</div>
+</div>
+<div id="outline-container-org136cd31" class="outline-4">
+<h4 id="org136cd31"><span class="section-number-4">3.4.2.</span> Referencias Web Extraoficiales</h4>
+<div class="outline-text-4" id="text-3-4-2">
+<ol class="org-ol">
+<li><a href="https://ketansingh.net/setting-proxy-for-archlinux/">Configurar Proxy en la Shell ZSH - Ketansingh.net</a></li>
+<li><a href="https://www.garron.me/es/gnu-linux/configurar-proxy-ubuntu-desktop-server.html">Configurar Proxy en Ubuntu - Garron.me</a></li>
+<li><a href="https://www.sololinux.es/instalar-squid-proxy-server-en-ubuntu-18-04/">Configurar Squid en Ubuntu - Sololinux.es</a></li>
+<li><a href="https://medium.com/@krish.raghuram/setting-up-proxy-in-ubuntu-95058da0b2d4">Configurar Enviroment - Blog by Krish</a></li>
+<li><a href="https://www.whoishostingthis.com/tools/user-agent/">Conocer user agente - whoishostingthis.com</a></li>
+<li><a href="https://www.sololinux.es/instalar-squid-proxy-server-en-ubuntu-18-04/">Instalar Squid Proxy Server en Ubuntu - Sololinux.es</a></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org2347209" class="outline-4">
+<h4 id="org2347209"><span class="section-number-4">3.4.3.</span> Referencias Issues</h4>
+<div class="outline-text-4" id="text-3-4-3">
+<ol class="org-ol">
+<li><a href="https://www.linuxquestions.org/questions/linux-server-73/block-a-browser-in-squid-924596/">Block a Browser in Squid - Linuxquestions.org</a></li>
+</ol>
 </div>
 </div>
 </div>
-<div id="outline-container-org9f1d133" class="outline-2">
-<h2 id="org9f1d133"><span class="section-number-2">4</span> Iptables</h2>
+</div>
+<div id="outline-container-org79f05b1" class="outline-2">
+<h2 id="org79f05b1"><span class="section-number-2">4.</span> Iptables</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org9ea6e64" class="outline-3">
-<h3 id="org9ea6e64"><span class="section-number-3">4.1</span> Referencias Youtube</h3>
+<div id="outline-container-orgb5cf0f3" class="outline-3">
+<h3 id="orgb5cf0f3"><span class="section-number-3">4.1.</span> Referencias Youtube</h3>
 <div class="outline-text-3" id="text-4-1">
-<ul class="org-ul">
-<li>[Referencia #1 - Youtube ](<a href="https://www.youtube.com/watch?v=Yk61s5Ec6YA">https://www.youtube.com/watch?v=Yk61s5Ec6YA</a>)</li>
-<li>[Referencia #2 - YOutube](<a href="https://www.youtube.com/watch?v=qPEA6J9pjG8">https://www.youtube.com/watch?v=qPEA6J9pjG8</a>)</li>
-<li>[Referencia #3 - youtube](<a href="https://www.youtube.com/watch?v=zELPIdxoGaQ&amp;t=93s">https://www.youtube.com/watch?v=zELPIdxoGaQ&amp;t=93s</a>)</li>
-</ul>
+<ol class="org-ol">
+<li><a href="https://www.youtube.com/watch?v=Yk61s5Ec6YA">Referencia #1</a></li>
+<li><a href="https://www.youtube.com/watch?v=qPEA6J9pjG8">Referencia #2</a></li>
+<li><a href="https://www.youtube.com/watch?v=zELPIdxoGaQ&amp;t=93s">Referencia #3</a></li>
+</ol>
 </div>
 </div>
 </div>
-<div id="outline-container-orge99e257" class="outline-2">
-<h2 id="orge99e257"><span class="section-number-2">5</span> Proxy Squid y Tor</h2>
+<div id="outline-container-org5a61f47" class="outline-2">
+<h2 id="org5a61f47"><span class="section-number-2">5.</span> Proxy Squid y Tor</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-orgd556d5d" class="outline-3">
-<h3 id="orgd556d5d"><span class="section-number-3">5.1</span> Referencias Youtube</h3>
+<div id="outline-container-org082658c" class="outline-3">
+<h3 id="org082658c"><span class="section-number-3">5.1.</span> Referencias Youtube</h3>
 <div class="outline-text-3" id="text-5-1">
-<ul class="org-ul">
-<li><a href="https://www.youtube.com/watch?v=vj00RVHGxFg">https://www.youtube.com/watch?v=vj00RVHGxFg</a></li>
-<li><a href="https://www.youtube.com/watch?v=IJ-1Dksex5k">https://www.youtube.com/watch?v=IJ-1Dksex5k</a></li>
-</ul>
+<ol class="org-ol">
+<li><a href="https://www.youtube.com/watch?v=vj00RVHGxFg">Referencia #1</a></li>
+<li><a href="https://www.youtube.com/watch?v=IJ-1Dksex5k">Referencia #2</a></li>
+</ol>
 </div>
 </div>
 </div>
-<div id="outline-container-org726abb3" class="outline-2">
-<h2 id="org726abb3"><span class="section-number-2">6</span> Referencias</h2>
+<div id="outline-container-org246e0d2" class="outline-2">
+<h2 id="org246e0d2"><span class="section-number-2">6.</span> Referencias</h2>
 <div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-orgcb2eb28" class="outline-3">
-<h3 id="orgcb2eb28"><span class="section-number-3">6.1</span> Referencias Web Oficiales</h3>
+<div id="outline-container-org93b26ee" class="outline-3">
+<h3 id="org93b26ee"><span class="section-number-3">6.1.</span> Referencias Web Oficiales</h3>
 <div class="outline-text-3" id="text-6-1">
-<ul class="org-ul">
-<li>[Comando ifconfig, The Linux Documentation Project](<a href="http://es.tldp.org/Manuales-LuCAS/GARL2/garl2/x-087-2-iface.ifconfig.html">http://es.tldp.org/Manuales-LuCAS/GARL2/garl2/x-087-2-iface.ifconfig.html</a>)</li>
-<li>[Curso de Redes](<a href="http://e-ghost.deusto.es/docs/articulo.redes.html">http://e-ghost.deusto.es/docs/articulo.redes.html</a>)</li>
-<li>[Curso de Administracion de Sistemas y Redes](<a href="http://persoal.citius.usc.es/tf.pena/ASR/Tema_3html/node21.html">http://persoal.citius.usc.es/tf.pena/ASR/Tema_3html/node21.html</a>)</li>
-</ul>
+<ol class="org-ol">
+<li><a href="http://es.tldp.org/Manuales-LuCAS/GARL2/garl2/x-087-2-iface.ifconfig.html">Comando ifconfig, The Linux Documentation Project</a></li>
+<li><a href="http://e-ghost.deusto.es/docs/articulo.redes.html">Curso de Redes</a></li>
+<li><a href="http://persoal.citius.usc.es/tf.pena/ASR/Tema_3html/node21.html">Curso de Administracion de Sistemas y Redes</a></li>
+</ol>
 </div>
 </div>
-<div id="outline-container-org455e6fc" class="outline-3">
-<h3 id="org455e6fc"><span class="section-number-3">6.2</span> Referencias Web Extraoficiales</h3>
+<div id="outline-container-org853a27a" class="outline-3">
+<h3 id="org853a27a"><span class="section-number-3">6.2.</span> Referencias Web Extraoficiales</h3>
 <div class="outline-text-3" id="text-6-2">
-<ul class="org-ul">
-<li>[Configurar Interfaces, LinuxConfig](<a href="https://linuxconfig.org/configuring-virtual-network-interfaces-in-linux">https://linuxconfig.org/configuring-virtual-network-interfaces-in-linux</a>)</li>
-<li>[Configurar manual ip permanente/temporal, Meltit](<a href="http://www.meltit.com.ar/linux-configuracion-internetip-manual-permanente-y-temporal-route-nameserver-interf">http://www.meltit.com.ar/linux-configuracion-internetip-manual-permanente-y-temporal-route-nameserver-interf</a></li>
-</ul>
-<p>
-aces-ifconfig-gateway)
-</p>
-<ul class="org-ul">
-<li>[Configuracion de la Interfaz - IngDiaz](<a href="http://www.ingdiaz.org/configuracion-de-interfaces-de-red-en-ubuntu-distros-basados-en-debian/">http://www.ingdiaz.org/configuracion-de-interfaces-de-red-en-ubuntu-distros-basados-en-debian/</a>)</li>
-<li>[Comando ip y ifconfig, Linux Party](<a href="https://www.linux-party.com/29-internet/10036-ifconfig-vs-ip-diferencia-y-comparacion-de-la-configuracion-de-red">https://www.linux-party.com/29-internet/10036-ifconfig-vs-ip-diferencia-y-comparacion-de-la-configuracion-de-red</a>)</li>
-<li>[Comando ifconfig con ejemplos, Mas Linux](<a href="https://maslinux.es/comando-ifconfig-aprende-con-algunos-ejemplos/">https://maslinux.es/comando-ifconfig-aprende-con-algunos-ejemplos/</a>)</li>
-</ul>
+<ol class="org-ol">
+<li><a href="https://linuxconfig.org/configuring-virtual-network-interfaces-in-linux">Configurar Interfaces - LinuxConfig.org</a></li>
+<li><a href="http://www.meltit.com.ar/linux-configuracion-internetip-manual-permanente-y-temporal-route-nameserver-interfaces-ifconfig-gateway">Configurar manual ip permanente/temporal, Meltit.com.ar</a></li>
+<li><a href="http://www.ingdiaz.org/configuracion-de-interfaces-de-red-en-ubuntu-distros-basados-en-debian/">Configuracion de la Interfaz - IngDiaz.org</a></li>
+<li><a href="https://www.linux-party.com/29-internet/10036-ifconfig-vs-ip-diferencia-y-comparacion-de-la-configuracion-de-red">Comando ip y ifconfig, Linux Party</a></li>
+<li><a href="https://maslinux.es/comando-ifconfig-aprende-con-algunos-ejemplos/">Comando ifconfig con ejemplos - MasLinux.es</a></li>
+</ol>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: jelou</p>
-<p class="date">Created: 2021-04-04 dom 01:51</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+<p class="date">Created: 2021-10-18 lun 18:26</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 
 

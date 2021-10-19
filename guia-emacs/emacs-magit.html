@@ -1,5 +1,5 @@
 <!--?xml version="1.0" encoding="utf-8"?--><!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<!-- 2021-04-04 dom 17:08 -->
+<!-- 2021-10-18 lun 20:49 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Guía Emacs - Versionando Proyectos con MAGIT</title>
@@ -36,7 +36,7 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
+    overflow: auto;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -48,7 +48,7 @@
     padding: 3px;
     border: 1px solid black;
   }
-  pre.src:hover:before { display: inline;}
+  pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
@@ -193,50 +193,26 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/sass-style.css">
 <script type="text/javascript" src="/assets/js/all.js"></script>
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2020 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 </head>
 <body>
@@ -246,69 +222,74 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org516d86b">1. Traer cambios de un branch al master</a></li>
-<li><a href="#orgbed1af9">2. Diferencia entre master y origin/master</a>
+<li><a href="#org7575de1">1. Traer cambios de un branch al master</a></li>
+<li><a href="#org97a9c7d">2. Diferencia entre master y origin/master</a>
 <ul>
-<li><a href="#orge43044c">2.1. Procedimiento</a></li>
-<li><a href="#org2c65cd0">2.2. Referencias Web Extraoficiales</a></li>
+<li><a href="#org464b382">2.1. Procedimiento</a></li>
+<li><a href="#orgd5b6994">2.2. Referencias</a>
+<ul>
+<li><a href="#org80caf7e">2.2.1. Referencias Web Extraoficiales</a></li>
+<li><a href="#orgc551c51">2.2.2. Referencias Issues</a></li>
 </ul>
 </li>
-<li><a href="#orga41ea6f">3. Guardar cambios de forma temporal (Stash)</a>
-<ul>
-<li><a href="#org2065c8f">3.1. Procedimiento</a></li>
-<li><a href="#org42a3f62">3.2. Referencias Web Extraoficiales</a></li>
 </ul>
 </li>
-<li><a href="#orgb377333">4. Listar historial de commits de un archivo</a>
+<li><a href="#org3ff3416">3. Guardar cambios de forma temporal (Stash)</a>
 <ul>
-<li><a href="#org26bc9b9">4.1. Procedimiento</a></li>
-<li><a href="#org506b41a">4.2. Referencias Web Oficiales</a></li>
+<li><a href="#org1718f08">3.1. Procedimiento</a></li>
+<li><a href="#org99cb8de">3.2. Referencias Web Extraoficiales</a></li>
 </ul>
 </li>
-<li><a href="#org90127e1">5. Atajos</a></li>
-<li><a href="#org5cec80e">6. Posibles Situaciones</a>
+<li><a href="#orgfa75c6f">4. Listar historial de commits de un archivo</a>
 <ul>
-<li><a href="#orgfc3879b">6.1. Hacer cambios, subirlos y actualizar</a></li>
-<li><a href="#org9b6f5ba">6.2. Resolver conflicto, diferencia entre archivos</a></li>
+<li><a href="#org77865c1">4.1. Procedimiento</a></li>
+<li><a href="#org6d2ac57">4.2. Referencias Web Oficiales</a></li>
 </ul>
 </li>
-<li><a href="#org0ea77df">7. Referencias</a>
+<li><a href="#orgb357793">5. Atajos</a></li>
+<li><a href="#org3f05726">6. Posibles Situaciones</a>
 <ul>
-<li><a href="#org18e8544">7.1. Paginas recomendadas</a></li>
-<li><a href="#org247f5ff">7.2. Videos de recomendados</a></li>
+<li><a href="#org4a3a2cc">6.1. Hacer cambios, subirlos y actualizar</a></li>
+<li><a href="#org9feac71">6.2. Resolver conflicto, diferencia entre archivos</a></li>
+</ul>
+</li>
+<li><a href="#org741e38d">7. Referencias</a>
+<ul>
+<li><a href="#org14b9980">7.1. Referencias Web Extraoficiales</a></li>
+<li><a href="#org49a6dbe">7.2. Referencias Youtube</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org516d86b" class="outline-2">
-<h2 id="org516d86b"><span class="section-number-2">1</span> Traer cambios de un branch al master</h2>
+<div id="outline-container-org7575de1" class="outline-2">
+<h2 id="org7575de1"><span class="section-number-2">1.</span> Traer cambios de un branch al master</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-Si hicimos cambios y los guardamos en <b>*branches</b> y queremos traerlos al <b>branch master</b> (suele ser la ultima version, la que ira a produccion)
+Si hicimos cambios y los guardamos en <b>branches</b> y queremos traerlos al <b>branch master</b> (suele ser la última versión, la que irá a producción)
 </p>
 
 <ol class="org-ol">
 <li>Cambiamos al <b>branch master</b>
-Presionamos <code>SPC g s</code> para acceder al menu de Magit, 
-luego <code>b b</code> y elegimos el <b>master branch</b> (no es lo mismo que origin/master)</li>
-<li>Hacemos <b>(merge)</b> con el branch que queremos (Ej. hotfix branch o testing branch)
+Presionamos <code>SPC g s</code> para acceder al menú de Magit, 
+luego <code>b b</code> y elegimos el <b>master branch</b> (<i>no es lo mismo que origin/master</i>)</li>
+<li>Hacemos <b>(merge)</b> con el branch que queremos (<i>Ej. hotfix branch o testing branch</i>)
 Presionamos <code>SPC g s</code> luego <code>m m</code> y elegimos el <b>branch</b> para traer los cambios al <b>master branch</b></li>
 <li>Hacemos <b>(push)</b> del <b>(merge)</b>
 Presionamos con <code>SPC g s</code> luego <code>p p</code></li>
 </ol>
 </div>
 </div>
-<div id="outline-container-orgbed1af9" class="outline-2">
-<h2 id="orgbed1af9"><span class="section-number-2">2</span> Diferencia entre master y origin/master</h2>
+<div id="outline-container-org97a9c7d" class="outline-2">
+<h2 id="org97a9c7d"><span class="section-number-2">2.</span> Diferencia entre master y origin/master</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-orge43044c" class="outline-3">
-<h3 id="orge43044c"><span class="section-number-3">2.1</span> Procedimiento</h3>
+<div id="outline-container-org464b382" class="outline-3">
+<h3 id="org464b382"><span class="section-number-3">2.1.</span> Procedimiento</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
-Del ejemplo anterior quizas puede aparecer esto, y pueden surgir dudas.
+Del ejemplo anterior quizás puede aparecer esto, y pueden surgir dudas.
 </p>
 
 <p>
@@ -326,22 +307,34 @@ Por ejemplo origin/hotfix y hotfix, origin/testing y testing, etc..
 </p>
 </div>
 </div>
-<div id="outline-container-org2c65cd0" class="outline-3">
-<h3 id="org2c65cd0"><span class="section-number-3">2.2</span> Referencias Web Extraoficiales</h3>
+<div id="outline-container-orgd5b6994" class="outline-3">
+<h3 id="orgd5b6994"><span class="section-number-3">2.2.</span> Referencias</h3>
 <div class="outline-text-3" id="text-2-2">
-<ul class="org-ul">
-<li>Referencia #1 - Stackify.com - [Ver Pagina](<a href="https://stackify.com/git-checkout-remote-branch/">https://stackify.com/git-checkout-remote-branch/</a>)</li>
-<li>Referencia #2 - Stackoverfow - [Ver Pagina](<a href="https://stackoverflow.com/questions/48596045/git-difference-between-origin-master-and-origin-master">https://stackoverflow.com/questions/48596045/git-difference-between-origin-master-and-origin-master</a>)</li>
-</ul>
+</div>
+<div id="outline-container-org80caf7e" class="outline-4">
+<h4 id="org80caf7e"><span class="section-number-4">2.2.1.</span> Referencias Web Extraoficiales</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<ol class="org-ol">
+<li><a href="https://stackify.com/git-checkout-remote-branch/">Git checkout remote branch - Stackify.com</a></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgc551c51" class="outline-4">
+<h4 id="orgc551c51"><span class="section-number-4">2.2.2.</span> Referencias Issues</h4>
+<div class="outline-text-4" id="text-2-2-2">
+<ol class="org-ol">
+<li><a href="https://stackoverflow.com/questions/48596045/git-difference-between-origin-master-and-origin-master">Difference between master and origin master - Stackoverfow.com</a></li>
+</ol>
 </div>
 </div>
 </div>
-<div id="outline-container-orga41ea6f" class="outline-2">
-<h2 id="orga41ea6f"><span class="section-number-2">3</span> Guardar cambios de forma temporal (Stash)</h2>
+</div>
+<div id="outline-container-org3ff3416" class="outline-2">
+<h2 id="org3ff3416"><span class="section-number-2">3.</span> Guardar cambios de forma temporal (Stash)</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org2065c8f" class="outline-3">
-<h3 id="org2065c8f"><span class="section-number-3">3.1</span> Procedimiento</h3>
+<div id="outline-container-org1718f08" class="outline-3">
+<h3 id="org1718f08"><span class="section-number-3">3.1.</span> Procedimiento</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 Si hicimos cambios en archivos de nuestro ordenador (se dice que es local, y se guarda en <b>unstage</b>),
@@ -349,37 +342,36 @@ para guardar esos cambios en otro lugar de "forma temporal" (se guarda en <b>sta
 </p>
 
 <ol class="org-ol">
-<li>Antes de hacer <b>(commit)</b> de los cambios, separamos el codigo con <b>(stash)</b>
+<li>Antes de hacer <b>(commit)</b> de los cambios, separamos el código con <b>(stash)</b>
 Los cambios que se hicimos en los archivos del entorno local estan en <b>unstage</b> sino hicimos commit,
-seleccionamos ese bloque de codigo y presionamos <code>zz RET</code> (no le asignamos nombre porque es opcional).
-<b>Nota:</b> 
+seleccionamos ese bloque de código y presionamos <code>zz RET</code> (no le asignamos nombre porque es opcional).
 Cuando volvamos al archivo, no apareceran lo cambios, quedaron separados en <b>stash</b></li>
 <li>Creamos un <b>branch</b> para las nuevas características que nos pidieron de improviso
-Al crear el <b>branch</b> nos aseguramos de separar las nuevas caracteristicas
-del <b>commit</b> que hariamos con las funcionalidades que estabamos desarrollando.</li>
-<li>Volvemos a traer el codigo que reservamos con <b>(stash)</b>
+Al crear el <b>branch</b> nos aseguramos de separar las nuevas características
+del <b>commit</b> que haríamos con las funcionalidades que estabamos desarrollando.</li>
+<li>Volvemos a traer el código que reservamos con <b>(stash)</b>
 Seleccionamos los cambios que teniamos <b>stashes</b> y presionamos <code>a</code> (hace referencia a add/agregar)
 y volverá a aparecer esos cambios en el archivo, por tanto estará en <b>unstage</b> 
-donde quedan las modificaciones que aun no se hizo <b>commit</b> (si lo hicieramos quedarian en <b>stage</b>)</li>
+donde quedan las modificaciones que aún no se hizo <b>commit</b> (si lo hicieramos quedarían en <b>stage</b>)</li>
 </ol>
 </div>
 </div>
-<div id="outline-container-org42a3f62" class="outline-3">
-<h3 id="org42a3f62"><span class="section-number-3">3.2</span> Referencias Web Extraoficiales</h3>
+<div id="outline-container-org99cb8de" class="outline-3">
+<h3 id="org99cb8de"><span class="section-number-3">3.2.</span> Referencias Web Extraoficiales</h3>
 <div class="outline-text-3" id="text-3-2">
-<ul class="org-ul">
-<li>Referencia #1 - Code Tutsplus [Ver Pagina](<a href="https://code.tutsplus.com/es/tutorials/quick-tip-leveraging-the-power-of-git-stash--cms-22988">https://code.tutsplus.com/es/tutorials/quick-tip-leveraging-the-power-of-git-stash--cms-22988</a>)</li>
-<li>Referencia #2 - RunRoom -  [Ver Pagina](<a href="https://www.runroom.com/realworld/git-stash">https://www.runroom.com/realworld/git-stash</a>)</li>
-</ul>
+<ol class="org-ol">
+<li><a href="https://code.tutsplus.com/es/tutorials/quick-tip-leveraging-the-power-of-git-stash--cms-22988">Referencia #1 - Code Tutsplus</a></li>
+<li><a href="https://www.runroom.com/realworld/git-stash">Referencia #2 - RunRoom</a></li>
+</ol>
 </div>
 </div>
 </div>
-<div id="outline-container-orgb377333" class="outline-2">
-<h2 id="orgb377333"><span class="section-number-2">4</span> Listar historial de commits de un archivo</h2>
+<div id="outline-container-orgfa75c6f" class="outline-2">
+<h2 id="orgfa75c6f"><span class="section-number-2">4.</span> Listar historial de commits de un archivo</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org26bc9b9" class="outline-3">
-<h3 id="org26bc9b9"><span class="section-number-3">4.1</span> Procedimiento</h3>
+<div id="outline-container-org77865c1" class="outline-3">
+<h3 id="org77865c1"><span class="section-number-3">4.1.</span> Procedimiento</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 Corremos el comando <b>(blame)</b> presionando <code>SPC g b</code> y nos muestra un log de los cambios
@@ -387,19 +379,19 @@ Si presionamos <code>b</code> va a los commits anteriores y con <code>q</code> l
 </p>
 </div>
 </div>
-<div id="outline-container-org506b41a" class="outline-3">
-<h3 id="org506b41a"><span class="section-number-3">4.2</span> Referencias Web Oficiales</h3>
+<div id="outline-container-org6d2ac57" class="outline-3">
+<h3 id="org6d2ac57"><span class="section-number-3">4.2.</span> Referencias Web Oficiales</h3>
 <div class="outline-text-3" id="text-4-2">
-<ul class="org-ul">
-<li>Referencia #1 - Magit.vc - [Ver Pagina](<a href="https://magit.vc/manual/magit/Blaming.html">https://magit.vc/manual/magit/Blaming.html</a>)</li>
-</ul>
+<ol class="org-ol">
+<li><a href="https://magit.vc/manual/magit/Blaming.html">Blaming - Magit.vc</a></li>
+</ol>
 </div>
 </div>
 </div>
-<div id="outline-container-org90127e1" class="outline-2">
-<h2 id="org90127e1"><span class="section-number-2">5</span> Atajos</h2>
+<div id="outline-container-orgb357793" class="outline-2">
+<h2 id="orgb357793"><span class="section-number-2">5.</span> Atajos</h2>
 <div class="outline-text-2" id="text-5">
-<table id="orgdf90cd5" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orgf6e41cf" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -482,12 +474,12 @@ Si presionamos <code>b</code> va a los commits anteriores y con <code>q</code> l
 </table>
 </div>
 </div>
-<div id="outline-container-org5cec80e" class="outline-2">
-<h2 id="org5cec80e"><span class="section-number-2">6</span> Posibles Situaciones</h2>
+<div id="outline-container-org3f05726" class="outline-2">
+<h2 id="org3f05726"><span class="section-number-2">6.</span> Posibles Situaciones</h2>
 <div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-orgfc3879b" class="outline-3">
-<h3 id="orgfc3879b"><span class="section-number-3">6.1</span> Hacer cambios, subirlos y actualizar</h3>
+<div id="outline-container-org4a3a2cc" class="outline-3">
+<h3 id="org4a3a2cc"><span class="section-number-3">6.1.</span> Hacer cambios, subirlos y actualizar</h3>
 <div class="outline-text-3" id="text-6-1">
 <ol class="org-ol">
 <li>Guardamos los cambios de forma local <b>(unstage)</b>
@@ -513,12 +505,12 @@ Si ya estamos en el menú de <b>magit</b> no es necesario presionar el atajo <co
 </p>
 </div>
 </div>
-<div id="outline-container-org9b6f5ba" class="outline-3">
-<h3 id="org9b6f5ba"><span class="section-number-3">6.2</span> Resolver conflicto, diferencia entre archivos</h3>
+<div id="outline-container-org9feac71" class="outline-3">
+<h3 id="org9feac71"><span class="section-number-3">6.2.</span> Resolver conflicto, diferencia entre archivos</h3>
 <div class="outline-text-3" id="text-6-2">
 <p>
 Si en el paso 5 del ejemplo anterior hubiesemos tenido un conflicto,
-porque alguien modifico el mismo archivo en las mismas lineas.
+porque alguien modificó el mismo archivo en las mismas lineas.
 </p>
 
 <ol class="org-ol">
@@ -565,36 +557,36 @@ Comiteamos con <code>c c</code> y <code>, ,</code> y por último pusheamos con <
 </div>
 </div>
 </div>
-<div id="outline-container-org0ea77df" class="outline-2">
-<h2 id="org0ea77df"><span class="section-number-2">7</span> Referencias</h2>
+<div id="outline-container-org741e38d" class="outline-2">
+<h2 id="org741e38d"><span class="section-number-2">7.</span> Referencias</h2>
 <div class="outline-text-2" id="text-7">
 </div>
-<div id="outline-container-org18e8544" class="outline-3">
-<h3 id="org18e8544"><span class="section-number-3">7.1</span> Paginas recomendadas</h3>
+<div id="outline-container-org14b9980" class="outline-3">
+<h3 id="org14b9980"><span class="section-number-3">7.1.</span> Referencias Web Extraoficiales</h3>
 <div class="outline-text-3" id="text-7-1">
-<ul class="org-ul">
-<li>Referencia #1 - Salty Crane - [Ver Pagina](<a href="https://www.saltycrane.com/blog/2018/11/magit-spacemacs-evil-magit-notes/">https://www.saltycrane.com/blog/2018/11/magit-spacemacs-evil-magit-notes/</a>)</li>
-</ul>
+<ol class="org-ol">
+<li><a href="https://www.saltycrane.com/blog/2018/11/magit-spacemacs-evil-magit-notes/">Referencia #1 - Blog SaltyCrane.com</a></li>
+</ol>
 </div>
 </div>
-<div id="outline-container-org247f5ff" class="outline-3">
-<h3 id="org247f5ff"><span class="section-number-3">7.2</span> Videos de recomendados</h3>
+<div id="outline-container-org49a6dbe" class="outline-3">
+<h3 id="org49a6dbe"><span class="section-number-3">7.2.</span> Referencias Youtube</h3>
 <div class="outline-text-3" id="text-7-2">
-<ul class="org-ul">
-<li>Referencia #1 - [Ver Video](<a href="https://www.youtube.com/watch?v=7ywEgcbaiys">https://www.youtube.com/watch?v=7ywEgcbaiys</a>)</li>
-<li>Referencia #2 - [Ver Video](<a href="https://www.youtube.com/watch?v=qXgGtyjXPiw">https://www.youtube.com/watch?v=qXgGtyjXPiw</a>)</li>
-<li>Referencia #3 - [Ver Video](<a href="https://www.youtube.com/watch?v=fFuf3hExF5w">https://www.youtube.com/watch?v=fFuf3hExF5w</a>)</li>
-<li>Referencia #4 - [Ver Video](<a href="https://www.youtube.com/watch?v=NDP91RNgT4A">https://www.youtube.com/watch?v=NDP91RNgT4A</a>)</li>
-<li>Referencia #5 - [Ver Video](<a href="https://www.youtube.com/watch?v=1IYsiHXR620">https://www.youtube.com/watch?v=1IYsiHXR620</a>)</li>
-</ul>
+<ol class="org-ol">
+<li><a href="https://www.youtube.com/watch?v=7ywEgcbaiys">Referencia #1</a></li>
+<li><a href="https://www.youtube.com/watch?v=qXgGtyjXPiw">Referencia #2</a></li>
+<li><a href="https://www.youtube.com/watch?v=fFuf3hExF5w">Referencia #3</a></li>
+<li><a href="https://www.youtube.com/watch?v=NDP91RNgT4A">Referencia #4</a></li>
+<li><a href="https://www.youtube.com/watch?v=1IYsiHXR620">Referencia #5</a></li>
+</ol>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: jelou</p>
-<p class="date">Created: 2021-04-04 dom 17:08</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+<p class="date">Created: 2021-10-18 lun 20:49</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 
 

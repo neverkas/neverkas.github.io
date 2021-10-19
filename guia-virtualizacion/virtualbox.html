@@ -1,5 +1,5 @@
 <!--?xml version="1.0" encoding="utf-8"?--><!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<!-- 2021-04-04 dom 00:14 -->
+<!-- 2021-10-19 mar 04:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Guia Virtualización - Virtualbox</title>
@@ -36,7 +36,7 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
+    overflow: auto;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -48,7 +48,7 @@
     padding: 3px;
     border: 1px solid black;
   }
-  pre.src:hover:before { display: inline;}
+  pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
@@ -193,50 +193,26 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/sass-style.css">
 <script type="text/javascript" src="/assets/js/all.js"></script>
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2020 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 </head>
 <body>
@@ -246,38 +222,38 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgabfb432">1. 1. Instalacion de Virtualbox</a></li>
-<li><a href="#orgfe4383c">2. 2. Integrar Vagrant</a>
+<li><a href="#orgee643c8">1. Instalación de Virtualbox</a></li>
+<li><a href="#org2006107">2. Integrar Vagrant</a>
 <ul>
-<li><a href="#orgf186246">2.1. Instalación</a></li>
-<li><a href="#orgbf17f07">2.2. Comandos básicos</a></li>
-<li><a href="#org6a4997b">2.3. Referencias</a>
+<li><a href="#org68df5a7">2.1. Instalación</a></li>
+<li><a href="#org6b612f7">2.2. Comandos básicos</a></li>
+<li><a href="#orgd03d21a">2.3. Referencias</a>
 <ul>
-<li><a href="#org25e8063">2.3.1. Referencias Web Oficiales</a></li>
-<li><a href="#org63e4023">2.3.2. Referencias Web Extraoficiales</a></li>
+<li><a href="#org522d847">2.3.1. Referencias Web Oficiales</a></li>
+<li><a href="#orgead4461">2.3.2. Referencias Web Extraoficiales</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org47215ab">3. Referencias</a>
+<li><a href="#orgd842974">3. Referencias</a>
 <ul>
-<li><a href="#org85be520">3.1. Referencias Web Oficiales</a></li>
-<li><a href="#orgcd934d7">3.2. Referencias Web Extraoficiales</a></li>
+<li><a href="#orgbb4447b">3.1. Referencias Web Oficiales</a></li>
+<li><a href="#org9882763">3.2. Referencias Web Extraoficiales</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgabfb432" class="outline-2">
-<h2 id="orgabfb432"><span class="section-number-2">1</span> 1. Instalacion de Virtualbox</h2>
+<div id="outline-container-orgee643c8" class="outline-2">
+<h2 id="orgee643c8"><span class="section-number-2">1.</span> Instalación de Virtualbox</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-Nos aseguramos de instalar una version que se adapte a nuestro kernel
+Nos aseguramos de instalar una versión que se adapte a nuestro kernel
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell" id="org641c1aa"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">La version que nos diga sera la que agregamos</span>
+<pre class="src src-shell" id="orgd94b4f2"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">La version que nos diga sera la que agregamos</span>
 mhwd-kernel -li
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Instalamos virtualbox (suponiendo que tu kernel es linux54)</span>
 sudo pacman -Syu virtualbox linux54-virtualbox-host-modules
@@ -291,12 +267,12 @@ sudo gpasswd -a $<span style="color: #7590db;">USER</span> vboxusers
 </div>
 </div>
 </div>
-<div id="outline-container-orgfe4383c" class="outline-2">
-<h2 id="orgfe4383c"><span class="section-number-2">2</span> 2. Integrar Vagrant</h2>
+<div id="outline-container-org2006107" class="outline-2">
+<h2 id="org2006107"><span class="section-number-2">2.</span> Integrar Vagrant</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-orgf186246" class="outline-3">
-<h3 id="orgf186246"><span class="section-number-3">2.1</span> Instalación</h3>
+<div id="outline-container-org68df5a7" class="outline-3">
+<h3 id="org68df5a7"><span class="section-number-3">2.1.</span> Instalación</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 Tenemos otro apartado donde se explica con más detalle sobre <b>Vagrant</b> 
@@ -304,7 +280,7 @@ en esta sección mencionaremos lo básico.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="org722859e"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Instalamos vagrant</span>
+<pre class="src src-sh" id="orge2f060b"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Instalamos vagrant</span>
 pacman -S vagrant
 
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Instalamos plugins </span>
@@ -326,10 +302,10 @@ vagrant ssh
 </div>
 </div>
 </div>
-<div id="outline-container-orgbf17f07" class="outline-3">
-<h3 id="orgbf17f07"><span class="section-number-3">2.2</span> Comandos básicos</h3>
+<div id="outline-container-org6b612f7" class="outline-3">
+<h3 id="org6b612f7"><span class="section-number-3">2.2.</span> Comandos básicos</h3>
 <div class="outline-text-3" id="text-2-2">
-<table id="orgee90646" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org5fd3069" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -372,67 +348,65 @@ vagrant ssh
 </table>
 </div>
 </div>
-<div id="outline-container-org6a4997b" class="outline-3">
-<h3 id="org6a4997b"><span class="section-number-3">2.3</span> Referencias</h3>
+<div id="outline-container-orgd03d21a" class="outline-3">
+<h3 id="orgd03d21a"><span class="section-number-3">2.3.</span> Referencias</h3>
 <div class="outline-text-3" id="text-2-3">
 </div>
-<div id="outline-container-org25e8063" class="outline-4">
-<h4 id="org25e8063"><span class="section-number-4">2.3.1</span> Referencias Web Oficiales</h4>
+<div id="outline-container-org522d847" class="outline-4">
+<h4 id="org522d847"><span class="section-number-4">2.3.1.</span> Referencias Web Oficiales</h4>
 <div class="outline-text-4" id="text-2-3-1">
-<ul class="org-ul">
-<li><a href="https://wiki.archlinux.org/index.php/Vagrant">https://wiki.archlinux.org/index.php/Vagrant</a></li>
-<li><a href="https://www.vagrantup.com/docs/boxes/base.html">https://www.vagrantup.com/docs/boxes/base.html</a></li>
-<li><a href="https://www.vagrantup.com/intro/getting-started/provisioning.html">https://www.vagrantup.com/intro/getting-started/provisioning.html</a></li>
-</ul>
+<ol class="org-ol">
+<li><a href="https://wiki.archlinux.org/index.php/Vagrant">Vagrant - Wiki, ArchLinux.org</a></li>
+<li><a href="https://www.vagrantup.com/docs/boxes/base.html">Creating a Base Box - Vagrantup.com</a></li>
+<li><a href="https://www.vagrantup.com/intro/getting-started/provisioning.html">Provisioning - Vagrantup.com</a></li>
+</ol>
 </div>
 </div>
-<div id="outline-container-org63e4023" class="outline-4">
-<h4 id="org63e4023"><span class="section-number-4">2.3.2</span> Referencias Web Extraoficiales</h4>
+<div id="outline-container-orgead4461" class="outline-4">
+<h4 id="orgead4461"><span class="section-number-4">2.3.2.</span> Referencias Web Extraoficiales</h4>
 <div class="outline-text-4" id="text-2-3-2">
-<ul class="org-ul">
-<li><a href="https://dev.to/psnebc/vagrant-package-and-vagrant-box-add-8of">https://dev.to/psnebc/vagrant-package-and-vagrant-box-add-8of</a></li>
-<li><a href="https://medium.com/@Joachim8675309/vagrant-provisioning-e4c9fd57968d">https://medium.com/@Joachim8675309/vagrant-provisioning-e4c9fd57968d</a></li>
-<li><a href="https://scotch.io/courses/getting-started-with-vagrant-for-local-development/provisioning-vmprovision-how-to-customize-the-box">https://scotch.io/courses/getting-started-with-vagrant-for-local-development/provisioning-vmprovision-how-to-customize-the-box</a></li>
-<li><a href="https://blog.ipswitch.com/installing-your-first-vagrant-box">https://blog.ipswitch.com/installing-your-first-vagrant-box</a></li>
-<li><a href="https://computingforgeeks.com/how-to-addinstall-and-run-centos-7-vagrant-box-to-virtualbox-using-vagrant/">https://computingforgeeks.com/how-to-addinstall-and-run-centos-7-vagrant-box-to-virtualbox-using-vagrant/</a></li>
-</ul>
+<ol class="org-ol">
+<li><a href="https://dev.to/psnebc/vagrant-package-and-vagrant-box-add-8of">Vagrant Package and Vagrant Box - Dev.to</a></li>
+<li><a href="https://medium.com/@Joachim8675309/vagrant-provisioning-e4c9fd57968d">Vagrant Provisioning - Blog, Joachim</a></li>
+<li><a href="https://scotch.io/courses/getting-started-with-vagrant-for-local-development/provisioning-vmprovision-how-to-customize-the-box">Como personalizar una Box de Vagrant - Scotch.io</a></li>
+<li><a href="https://blog.ipswitch.com/installing-your-first-vagrant-box">Instalando tu primer Vagrant Box - Blog, IPSwitch</a></li>
+<li><a href="https://computingforgeeks.com/how-to-addinstall-and-run-centos-7-vagrant-box-to-virtualbox-using-vagrant/">Como instalar/ejecutar Centos7 con Vagrant</a></li>
+</ol>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org47215ab" class="outline-2">
-<h2 id="org47215ab"><span class="section-number-2">3</span> Referencias</h2>
+<div id="outline-container-orgd842974" class="outline-2">
+<h2 id="orgd842974"><span class="section-number-2">3.</span> Referencias</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org85be520" class="outline-3">
-<h3 id="org85be520"><span class="section-number-3">3.1</span> Referencias Web Oficiales</h3>
+<div id="outline-container-orgbb4447b" class="outline-3">
+<h3 id="orgbb4447b"><span class="section-number-3">3.1.</span> Referencias Web Oficiales</h3>
 <div class="outline-text-3" id="text-3-1">
-<ul class="org-ul">
-<li><a href="https://wiki.manjaro.org/index.php?title=VirtualBox">https://wiki.manjaro.org/index.php?title=VirtualBox</a></li>
-</ul>
+<ol class="org-ol">
+<li><a href="https://wiki.manjaro.org/index.php?title=VirtualBox">Virtualbox - Wiki, Manjaro.org</a></li>
+</ol>
 </div>
 </div>
-<div id="outline-container-orgcd934d7" class="outline-3">
-<h3 id="orgcd934d7"><span class="section-number-3">3.2</span> Referencias Web Extraoficiales</h3>
+<div id="outline-container-org9882763" class="outline-3">
+<h3 id="org9882763"><span class="section-number-3">3.2.</span> Referencias Web Extraoficiales</h3>
 <div class="outline-text-3" id="text-3-2">
-<ul class="org-ul">
-<li><a href="https://www.2daygeek.com/how-to-resize-active-primary-root-partition-in-linux-using-gparted-utility/">https://www.2daygeek.com/how-to-resize-active-primary-root-partition-in-linux-using-gparted-utility/</a></li>
-<li><a href="https://access.redhat.com/articles/1190213">https://access.redhat.com/articles/1190213</a></li>
-<li><a href="https://kwilson.io/blog/format-a-linux-disk-as-ext4-from-the-command-line/">https://kwilson.io/blog/format-a-linux-disk-as-ext4-from-the-command-line/</a></li>
-<li><a href="https://www.tecmint.com/create-new-ext4-file-system-partition-in-linux/">https://www.tecmint.com/create-new-ext4-file-system-partition-in-linux/</a></li>
-<li><a href="https://www.profesionalreview.com/2018/11/19/virtualbox-extension-pack/">https://www.profesionalreview.com/2018/11/19/virtualbox-extension-pack/</a></li>
-<li><a href="https://www.hostinger.com.ar/tutoriales/centos-vs-ubuntu-elegir-servidor-web/">https://www.hostinger.com.ar/tutoriales/centos-vs-ubuntu-elegir-servidor-web/</a></li>
-<li><a href="https://webtematica.com/centos-o-debian-para-servidores-web">https://webtematica.com/centos-o-debian-para-servidores-web</a></li>
-<li><a href="https://www.sinologic.net/2011-02/porque-debian-no-centos.html">https://www.sinologic.net/2011-02/porque-debian-no-centos.html</a></li>
-</ul>
+<ol class="org-ol">
+<li><a href="https://www.2daygeek.com/how-to-resize-active-primary-root-partition-in-linux-using-gparted-utility/">Como redimensionar una partición primaria - 2daygeek.com</a></li>
+<li><a href="https://access.redhat.com/articles/1190213">Redimensionar una partición con fdisk - redhat.com</a></li>
+<li><a href="https://www.profesionalreview.com/2018/11/19/virtualbox-extension-pack/">Virtualbox Extension Pack - Profesionalreview.com</a></li>
+<li><a href="https://www.hostinger.com.ar/tutoriales/centos-vs-ubuntu-elegir-servidor-web/">CentOs Vs Ubuntu como Servidor - Hostinger.com.ar</a></li>
+<li><a href="https://webtematica.com/centos-o-debian-para-servidores-web">CentOs Vs Debian como Servidor - webtematica.com</a></li>
+<li><a href="https://www.sinologic.net/2011-02/porque-debian-no-centos.html">Debian en vez de Centos - sinologic.net</a></li>
+</ol>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: jelou</p>
-<p class="date">Created: 2021-04-04 dom 00:14</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+<p class="date">Created: 2021-10-19 mar 04:02</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 
 

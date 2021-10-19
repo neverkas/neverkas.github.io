@@ -1,5 +1,5 @@
 <!--?xml version="1.0" encoding="utf-8"?--><!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<!-- 2021-04-02 vie 19:42 -->
+<!-- 2021-09-13 lun 13:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Guia Linux - Configuraciones</title>
@@ -36,7 +36,7 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
+    overflow: auto;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -48,7 +48,7 @@
     padding: 3px;
     border: 1px solid black;
   }
-  pre.src:hover:before { display: inline;}
+  pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
@@ -193,50 +193,26 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/sass-style.css">
 <script type="text/javascript" src="/assets/js/all.js"></script>
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2020 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 </head>
 <body>
@@ -246,51 +222,61 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org786ca90">1. Crear un Alias</a></li>
-<li><a href="#orge3ae350">2. Referencias</a></li>
+<li><a href="#org0d4acac">1. Alias para comandos</a>
+<ul>
+<li><a href="#org6115100">1.1. Conceptos</a></li>
+<li><a href="#org4344a57">1.2. Ejemplo</a></li>
+</ul>
+</li>
+<li><a href="#orge52b861">2. Referencias Web</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org786ca90" class="outline-2">
-<h2 id="org786ca90"><span class="section-number-2">1</span> Crear un Alias</h2>
+<div id="outline-container-org0d4acac" class="outline-2">
+<h2 id="org0d4acac"><span class="section-number-2">1.</span> Alias para comandos</h2>
 <div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org6115100" class="outline-3">
+<h3 id="org6115100"><span class="section-number-3">1.1.</span> Conceptos</h3>
+<div class="outline-text-3" id="text-1-1">
+<blockquote>
 <p>
 Los <b><b>alias</b></b> nos permiten ejecutar comandos con un nombre personalizado.
 Puede darse que querramos ejecutar un programa con varios parámetros, con
 solo escribir en la terminal una palabra, que sería más fácil de recordar.
 </p>
-
-<div class="org-src-container">
-<pre class="src src-shell" id="org8ad6343">sudo nano ~/.bashrc <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">accedemos al archivo .bashrc para modificar</span>
-</pre>
+</blockquote>
 </div>
-
-<p>
-Suponiendo que estamos en el editor modificando el archivo <b>.bashrc</b>
-</p>
-
+</div>
+<div id="outline-container-org4344a57" class="outline-3">
+<h3 id="org4344a57"><span class="section-number-3">1.2.</span> Ejemplo</h3>
+<div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
-<pre class="src src-bash" id="org02f6e26"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">creamos el alias 'emacs' cada vez que se ejecute en la terminal</span>
+<pre class="src src-bash" id="org6355b36"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">1. accedemos al archivo .bashrc para modificar</span>
+sudo nano ~/.bashrc
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">2. creamos el alias 'emacs' cada vez que se ejecute en la terminal</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">en realidad ejecutará el comando 'emacs -nw' es decir con ese otro parámetro</span>
 <span style="color: #4f97d7;">alias</span> emacs = <span style="color: #2d9574;">'emacs -nw'</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orge3ae350" class="outline-2">
-<h2 id="orge3ae350"><span class="section-number-2">2</span> Referencias</h2>
+</div>
+<div id="outline-container-orge52b861" class="outline-2">
+<h2 id="orge52b861"><span class="section-number-2">2.</span> Referencias Web</h2>
 <div class="outline-text-2" id="text-2">
-<ul class="org-ul">
-<li>Como crear referencias [Ver Página](<a href="https://vitux.com/how-to-create-aliases-for-customizing-commands-in-ubuntu/">https://vitux.com/how-to-create-aliases-for-customizing-commands-in-ubuntu/</a>)</li>
-</ul>
+<ol class="org-ol">
+<li><a href="https://vitux.com/how-to-create-aliases-for-customizing-commands-in-ubuntu/">Como crear alias para comandos en Ubuntu - virtux.com</a></li>
+</ol>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: jelou</p>
-<p class="date">Created: 2021-04-02 vie 19:42</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+<p class="date">Created: 2021-09-13 lun 13:29</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 
 

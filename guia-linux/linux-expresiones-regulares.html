@@ -1,5 +1,5 @@
 <!--?xml version="1.0" encoding="utf-8"?--><!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<!-- 2021-04-03 sáb 23:52 -->
+<!-- 2021-10-17 dom 22:47 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Guia Linux - Expresiones Regulares</title>
@@ -36,7 +36,7 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
+    overflow: auto;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -48,7 +48,7 @@
     padding: 3px;
     border: 1px solid black;
   }
-  pre.src:hover:before { display: inline;}
+  pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
@@ -193,50 +193,26 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/sass-style.css">
 <script type="text/javascript" src="/assets/js/all.js"></script>
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2020 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 </head>
 <body>
@@ -246,18 +222,18 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orga789856">1. Conceptos</a></li>
-<li><a href="#org7204f81">2. Listar archivos que empiecen con un caracter</a></li>
-<li><a href="#orgae5e54d">3. Listar archivos que no comiencen con un caracter</a></li>
-<li><a href="#org3e86e4c">4. Listar archivos que empiecen y finalicen con un caracter</a></li>
-<li><a href="#org58e9757">5. Agrupando los conceptos anteriores</a></li>
-<li><a href="#org25ca218">6. Referencias</a></li>
+<li><a href="#orgd4a2252">1. Conceptos</a></li>
+<li><a href="#org04ab29e">2. Listar archivos que empiecen con un caracter</a></li>
+<li><a href="#org8d47f60">3. Listar archivos que no comiencen con un caracter</a></li>
+<li><a href="#org2aef760">4. Listar archivos que empiecen y finalicen con un caracter</a></li>
+<li><a href="#org61b6f3c">5. Agrupando los conceptos anteriores</a></li>
+<li><a href="#org3e41e0b">6. Referencias Web</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orga789856" class="outline-2">
-<h2 id="orga789856"><span class="section-number-2">1</span> Conceptos</h2>
+<div id="outline-container-orgd4a2252" class="outline-2">
+<h2 id="orgd4a2252"><span class="section-number-2">1.</span> Conceptos</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Cuando hacemos referencia a listar achivos, pueden ser tanto directorios como
@@ -270,7 +246,7 @@ con los ejemplos que le sigan. No explico todos los ejemplos por el momento,
 quizás luego lo siga. Esto es solo una breve introducción al tema.
 </p>
 
-<table id="orgdd25868" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org0982f21" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -360,8 +336,8 @@ que lo explican en detalle.
 </p>
 </div>
 </div>
-<div id="outline-container-org7204f81" class="outline-2">
-<h2 id="org7204f81"><span class="section-number-2">2</span> Listar archivos que empiecen con un caracter</h2>
+<div id="outline-container-org04ab29e" class="outline-2">
+<h2 id="org04ab29e"><span class="section-number-2">2.</span> Listar archivos que empiecen con un caracter</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Utilizamos el operador <code>^</code> que significa "todo lo que empiece con", seguido entre <code>[ ]</code> los 
@@ -379,7 +355,7 @@ Por ejemplo, filtremos los archivos que empiezan con letra <b>e</b>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell" id="orgeef11d0">ls | grep <span style="color: #2d9574;">"^[e].*"</span>
+<pre class="src src-shell" id="org6dbfe46">ls | grep <span style="color: #2d9574;">"^[e].*"</span>
 </pre>
 </div>
 
@@ -396,15 +372,15 @@ Explicación de lo realizado
 El resultado sería
 </p>
 
-<pre class="example">exercise1-10.c
+<pre class="example" id="org93ece3c">exercise1-10.c
 exercise1-10.c~
 exercise1-11.c
 exercise1-11.c~
 </pre>
 </div>
 </div>
-<div id="outline-container-orgae5e54d" class="outline-2">
-<h2 id="orgae5e54d"><span class="section-number-2">3</span> Listar archivos que no comiencen con un caracter</h2>
+<div id="outline-container-org8d47f60" class="outline-2">
+<h2 id="org8d47f60"><span class="section-number-2">3.</span> Listar archivos que no comiencen con un caracter</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Seria lo mismo que el anterior, con la diferencia que al principio de
@@ -419,7 +395,7 @@ Por ejemplo, filtremos los archivos que <b>NO</b> inician con alguna de las letr
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell" id="orgfce24cd">ls | grep <span style="color: #2d9574;">"^[^e].*"</span>
+<pre class="src src-shell" id="org377a74f">ls | grep <span style="color: #2d9574;">"^[^e].*"</span>
 </pre>
 </div>
 
@@ -435,15 +411,15 @@ Explicación de lo realizado
 <p>
 El resultado sería el siguiente
 </p>
-<pre class="example">a.out
+<pre class="example" id="org330b3a6">a.out
 #testing.c#
 testing.c
 testing.c~
 </pre>
 </div>
 </div>
-<div id="outline-container-org3e86e4c" class="outline-2">
-<h2 id="org3e86e4c"><span class="section-number-2">4</span> Listar archivos que empiecen y finalicen con un caracter</h2>
+<div id="outline-container-org2aef760" class="outline-2">
+<h2 id="org2aef760"><span class="section-number-2">4.</span> Listar archivos que empiecen y finalicen con un caracter</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 Es similar al primer ejemplo, salvo que le agregamos el <code>$</code> al final, que indica
@@ -463,7 +439,7 @@ Por ejemplo, tratemos de listar los archivos que empiezan con "e" y terminan con
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell" id="org36306e0">ls | grep <span style="color: #2d9574;">"^e.*\.c$"</span>
+<pre class="src src-shell" id="orged192e0">ls | grep <span style="color: #2d9574;">"^e.*\.c$"</span>
 </pre>
 </div>
 
@@ -471,15 +447,15 @@ Por ejemplo, tratemos de listar los archivos que empiezan con "e" y terminan con
 El resultado seria el siguiente
 </p>
 
-<pre class="example">exercise1-10.c
+<pre class="example" id="orgbaf7741">exercise1-10.c
 exercise1-11.c
 exercise1-12.c
 exercise1-3.c
 </pre>
 </div>
 </div>
-<div id="outline-container-org58e9757" class="outline-2">
-<h2 id="org58e9757"><span class="section-number-2">5</span> Agrupando los conceptos anteriores</h2>
+<div id="outline-container-org61b6f3c" class="outline-2">
+<h2 id="org61b6f3c"><span class="section-number-2">5.</span> Agrupando los conceptos anteriores</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 Supongamos el caso que tengamos en un directorio multiples archivos con distintas extensiones,
@@ -511,14 +487,14 @@ en este caso el <code>.</code>, y con <code>c$</code> decimos que debe <b>si o s
 La expresión regular deberia ser la siguiente
 </p>
 <div class="org-src-container">
-<pre class="src src-shell" id="orgabf973f">ls | grep -E <span style="color: #2d9574;">"^e.*\-?[0-9]\.c$"</span>
+<pre class="src src-shell" id="org007f716">ls | grep -E <span style="color: #2d9574;">"^e.*\-?[0-9]\.c$"</span>
 </pre>
 </div>
 
 <p>
 el resultado de escribir esto en la terminal sería
 </p>
-<pre class="example">exercise1.c
+<pre class="example" id="orgb1a34da">exercise1.c
 exercise2.c
 exercise-1.c
 exercise-3.c
@@ -533,32 +509,32 @@ Podes tratar de hacer el intento sin este parámetro y verás que el resultado e
 </p>
 </div>
 </div>
-<div id="outline-container-org25ca218" class="outline-2">
-<h2 id="org25ca218"><span class="section-number-2">6</span> Referencias</h2>
+<div id="outline-container-org3e41e0b" class="outline-2">
+<h2 id="org3e41e0b"><span class="section-number-2">6.</span> Referencias Web</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 Las referencias estan ordenadas por cuales son más relevantes
 </p>
-<ul class="org-ul">
-<li>[Expansiones de la Shell - Curso Sysadmin](<a href="http://persoal.citius.usc.es/tf.pena/ASR/Tema_2html/node15.html">http://persoal.citius.usc.es/tf.pena/ASR/Tema_2html/node15.html</a>)</li>
-<li>[Tilde Expansion, Brace Expansion, Arithmetic Expansion - Linuxcommand](<a href="http://linuxcommand.sourceforge.net/lc3_lts0080.php">http://linuxcommand.sourceforge.net/lc3_lts0080.php</a>)</li>
-<li>[Expansion de comodines - IT Swarm.dev](<a href="http://linuxcommand.sourceforge.net/lc3_lts0080.php">http://linuxcommand.sourceforge.net/lc3_lts0080.php</a>)</li>
-<li>[Cuando envolver las comillas alrededor de una variable de Shell - IT Swarm.dev](<a href="https://www.it-swarm.dev/es/linux/cuando-envolver-las-comillas-alrededor-de-una-variable-de-shell/1065766250/">https://www.it-swarm.dev/es/linux/cuando-envolver-las-comillas-alrededor-de-una-variable-de-shell/1065766250/</a>)</li>
-<li>[Busqueda de archivos de texto por Regexp - IBM](<a href="https://developer.ibm.com/es/tutorials/l-lpic1-v3-103-7/">https://developer.ibm.com/es/tutorials/l-lpic1-v3-103-7/</a>#)</li>
-<li>[Unix: Expresiones Regulares - Rm-rf.es](<a href="https://rm-rf.es/unix-expresiones-regulares/">https://rm-rf.es/unix-expresiones-regulares/</a>)</li>
-<li>[Expresiones Regulares - Curso Unix](<a href="https://bioinf.comav.upv.es/courses/unix/expresiones_regulares.html">https://bioinf.comav.upv.es/courses/unix/expresiones_regulares.html</a>)</li>
-<li>[Expresiones Regulares - Curso Sysadmin](<a href="http://persoal.citius.usc.es/tf.pena/ASR/Tema_2html/node22.html">http://persoal.citius.usc.es/tf.pena/ASR/Tema_2html/node22.html</a>)</li>
-<li>[Concepto generales POSIX, BRE ERE](<a href="https://blog.desdelinux.net/con-el-terminal-uso-de-expresiones-regulares/">https://blog.desdelinux.net/con-el-terminal-uso-de-expresiones-regulares/</a>)</li>
-<li>[Expresion REgular Extendida, Boost](<a href="https://www.boost.org/doc/libs/1_38_0/libs/regex/doc/html/boost_regex/syntax/basic_extended.html">https://www.boost.org/doc/libs/1_38_0/libs/regex/doc/html/boost_regex/syntax/basic_extended.html</a>)</li>
-<li>[Expresion Regular Basica vs Extendida](<a href="https://www.gnu.org/software/grep/manual/html_node/Basic-vs-Extended.html">https://www.gnu.org/software/grep/manual/html_node/Basic-vs-Extended.html</a>)</li>
-</ul>
+<ol class="org-ol">
+<li><a href="http://persoal.citius.usc.es/tf.pena/ASR/Tema_2html/node15.html">Expansiones de la Shell - Curso Sysadmin</a></li>
+<li><a href="http://linuxcommand.sourceforge.net/lc3_lts0080.php">Tilde Expansion, Brace Expansion, Arithmetic Expansion - Linuxcommand</a></li>
+<li><a href="http://linuxcommand.sourceforge.net/lc3_lts0080.php">Expansion de comodines - IT Swarm.dev</a></li>
+<li><a href="https://www.it-swarm.dev/es/linux/cuando-envolver-las-comillas-alrededor-de-una-variable-de-shell/1065766250/">Cuando envolver las comillas alrededor de una variable de Shell - IT Swarm.dev</a></li>
+<li><a href="https://developer.ibm.com/es/tutorials/l-lpic1-v3-103-7/">Busqueda de archivos de texto por Regexp - IBM</a></li>
+<li><a href="https://rm-rf.es/unix-expresiones-regulares/">Unix: Expresiones Regulares - Rm-rf.es</a></li>
+<li><a href="https://bioinf.comav.upv.es/courses/unix/expresiones_regulares.html">Expresiones Regulares - Curso Unix</a></li>
+<li><a href="http://persoal.citius.usc.es/tf.pena/ASR/Tema_2html/node22.html">Expresiones Regulares - Curso Sysadmin</a></li>
+<li><a href="https://blog.desdelinux.net/con-el-terminal-uso-de-expresiones-regulares/">Concepto generales POSIX, BRE ERE</a></li>
+<li><a href="https://www.boost.org/doc/libs/1_38_0/libs/regex/doc/html/boost_regex/syntax/basic_extended.html">Expresión Regular Extendida, Boost</a></li>
+<li><a href="https://www.gnu.org/software/grep/manual/html_node/Basic-vs-Extended.html">Expresión Regular Basica vs Extendida</a></li>
+</ol>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: jelou</p>
-<p class="date">Created: 2021-04-03 sáb 23:52</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+<p class="date">Created: 2021-10-17 dom 22:47</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 
 

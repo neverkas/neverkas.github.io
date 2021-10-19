@@ -1,5 +1,5 @@
 <!--?xml version="1.0" encoding="utf-8"?--><!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<!-- 2021-04-02 vie 15:55 -->
+<!-- 2021-09-13 lun 11:57 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Guia Linux - Sobrevivir a la terminal - Parte 2</title>
@@ -36,7 +36,7 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
+    overflow: auto;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -48,7 +48,7 @@
     padding: 3px;
     border: 1px solid black;
   }
-  pre.src:hover:before { display: inline;}
+  pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
@@ -193,50 +193,26 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/sass-style.css">
 <script type="text/javascript" src="/assets/js/all.js"></script>
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2020 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 </head>
 <body>
@@ -246,51 +222,51 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgaab3cf6">1. Tareas y Procesos</a>
+<li><a href="#orgf3b634d">1. Tareas y Procesos</a>
 <ul>
-<li><a href="#orgb67212c">1.1. Iniciar tareas</a>
+<li><a href="#org16a9cb8">1.1. Iniciar tareas</a>
 <ul>
-<li><a href="#org5925fa1">1.1.1. Iniciar una tarea en primer plano</a></li>
-<li><a href="#org7ce0ede">1.1.2. Iniciar una tarea en segundo plano</a></li>
-<li><a href="#org62acacb">1.1.3. Evitar imprimir  mensajes de una tarea que está segundo plano</a></li>
-<li><a href="#orgcb7175b">1.1.4. Pasar una tarea a primer o segundo plano</a></li>
+<li><a href="#org9b34101">1.1.1. Iniciar una tarea en primer plano</a></li>
+<li><a href="#org11b9e26">1.1.2. Iniciar una tarea en segundo plano</a></li>
+<li><a href="#org4b97156">1.1.3. Evitar imprimir  mensajes de una tarea que está segundo plano</a></li>
+<li><a href="#orgbe20314">1.1.4. Pasar una tarea a primer o segundo plano</a></li>
 </ul>
 </li>
-<li><a href="#orgfcbf79b">1.2. Ver procesos y tareas</a>
+<li><a href="#org7228fbb">1.2. Ver procesos y tareas</a>
 <ul>
-<li><a href="#org371c647">1.2.1. Obtener solo el número de proceso</a></li>
-<li><a href="#org7137f79">1.2.2. Obtener solo algunos datos de los procesos</a></li>
-<li><a href="#orga286040">1.2.3. Ordenar los procesos por algun campo</a></li>
-<li><a href="#org8924f45">1.2.4. Mostrar procesos padres e hijos</a></li>
+<li><a href="#org8a96e08">1.2.1. Obtener solo el número de proceso</a></li>
+<li><a href="#orga91269e">1.2.2. Obtener solo algunos datos de los procesos</a></li>
+<li><a href="#org5f34b6f">1.2.3. Ordenar los procesos por algun campo</a></li>
+<li><a href="#org7f0302c">1.2.4. Mostrar procesos padres e hijos</a></li>
 </ul>
 </li>
-<li><a href="#org8143b33">1.3. Detener una tarea en ejecución</a></li>
-<li><a href="#org14c047b">1.4. Guardar un proceso dependiente de una terminal</a></li>
-<li><a href="#orgf60ab34">1.5. Practicando procesos, tareas</a></li>
+<li><a href="#org46aca5e">1.3. Detener una tarea en ejecución</a></li>
+<li><a href="#org7131117">1.4. Guardar un proceso dependiente de una terminal</a></li>
+<li><a href="#orgf717579">1.5. Practicando procesos, tareas</a></li>
 </ul>
 </li>
-<li><a href="#org5db0fc5">2. Sincronizar directorios</a>
+<li><a href="#org9478c53">2. Sincronizar directorios</a>
 <ul>
-<li><a href="#orgd02cd06">2.1. Copiar un directorio local a otro</a></li>
-<li><a href="#orga234b13">2.2. Transferir todos los archivos de un directorio local a un servidor</a></li>
-<li><a href="#org737f8eb">2.3. Transferir un directorio local a un servidor pasandole usuario</a></li>
-<li><a href="#orgefa36b8">2.4. Transferir desde un servidor a la maquina local</a></li>
-<li><a href="#org4e15f0a">2.5. Transfencia segura con ssh desde el servidor a máquina local</a></li>
-<li><a href="#orgac8746c">2.6. Simular transferencia de archivos</a></li>
-<li><a href="#org3c15337">2.7. Referencias Web</a></li>
+<li><a href="#org6708e67">2.1. Copiar un directorio local a otro</a></li>
+<li><a href="#org9770446">2.2. Transferir todos los archivos de un directorio local a un servidor</a></li>
+<li><a href="#org2180e5b">2.3. Transferir un directorio local a un servidor pasandole usuario</a></li>
+<li><a href="#org861de71">2.4. Transferir desde un servidor a la maquina local</a></li>
+<li><a href="#org310bce1">2.5. Transfencia segura con ssh desde el servidor a máquina local</a></li>
+<li><a href="#orgc66ebf5">2.6. Simular transferencia de archivos</a></li>
+<li><a href="#org4d89c73">2.7. Referencias Web</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div class="figure">
+<div id="orgff38b85" class="figure">
 <p><img src="/img/linux-terminal.png" alt="linux-terminal.png" width="600">
 </p>
 </div>
 
-<div id="outline-container-orgaab3cf6" class="outline-2">
-<h2 id="orgaab3cf6"><span class="section-number-2">1</span> Tareas y Procesos</h2>
+<div id="outline-container-orgf3b634d" class="outline-2">
+<h2 id="orgf3b634d"><span class="section-number-2">1.</span> Tareas y Procesos</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Los <b><b>procesos</b></b> son programas que se pueden estar ejecutando o no.
@@ -315,12 +291,12 @@ uso de la terminal cuando la tarea finalize o que nosotros la finalizemos.
 En el segundo caso, permiten utilizar la terminal mientras la tarea se está ejecutando.
 </p>
 </div>
-<div id="outline-container-orgb67212c" class="outline-3">
-<h3 id="orgb67212c"><span class="section-number-3">1.1</span> Iniciar tareas</h3>
+<div id="outline-container-org16a9cb8" class="outline-3">
+<h3 id="org16a9cb8"><span class="section-number-3">1.1.</span> Iniciar tareas</h3>
 <div class="outline-text-3" id="text-1-1">
 </div>
-<div id="outline-container-org5925fa1" class="outline-4">
-<h4 id="org5925fa1"><span class="section-number-4">1.1.1</span> Iniciar una tarea en primer plano</h4>
+<div id="outline-container-org9b34101" class="outline-4">
+<h4 id="org9b34101"><span class="section-number-4">1.1.1.</span> Iniciar una tarea en primer plano</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
 Esta tarea se va a seguir ejecutando hasta que se finalice desde la interfáz gráfica
@@ -328,14 +304,14 @@ de ese programa, o si se finaliza desde la terminal, hasta tanto no se puede usa
 </p>
 
 <div class="org-src-container">
-<pre class="src src-bash" id="orgc303921"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">inicia el navegador firefox en primer plano</span>
+<pre class="src src-bash" id="org8c1d52f"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">inicia el navegador firefox en primer plano</span>
 firefox
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org7ce0ede" class="outline-4">
-<h4 id="org7ce0ede"><span class="section-number-4">1.1.2</span> Iniciar una tarea en segundo plano</h4>
+<div id="outline-container-org11b9e26" class="outline-4">
+<h4 id="org11b9e26"><span class="section-number-4">1.1.2.</span> Iniciar una tarea en segundo plano</h4>
 <div class="outline-text-4" id="text-1-1-2">
 <p>
 En segundo plano se pueden agregar aquellas que no necesitan interactuar con la consola,
@@ -343,7 +319,7 @@ es como un "esconder" mientras se ejecutan.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell" id="org1a8c967"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">inicia el navegador firefox en segundo plano</span>
+<pre class="src src-shell" id="orgbdba888"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">inicia el navegador firefox en segundo plano</span>
 firefox &amp;
 
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">comprimir los archivos de la carpeta fotos</span>
@@ -357,8 +333,8 @@ Sólo se necesita de agregar el <b><b>&amp;</b></b> seguido de nombre del progra
 </p>
 </div>
 </div>
-<div id="outline-container-org62acacb" class="outline-4">
-<h4 id="org62acacb"><span class="section-number-4">1.1.3</span> Evitar imprimir  mensajes de una tarea que está segundo plano</h4>
+<div id="outline-container-org4b97156" class="outline-4">
+<h4 id="org4b97156"><span class="section-number-4">1.1.3.</span> Evitar imprimir  mensajes de una tarea que está segundo plano</h4>
 <div class="outline-text-4" id="text-1-1-3">
 <p>
 Con el comando <b><b>nohup</b></b> podemos seguir utilizando la terminal, sin que aparezcan los mensajes 
@@ -366,21 +342,21 @@ que generan los programas que tenemos en segundo plano.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell" id="org99198fd"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">corre el programa "mkdocs" en segundo plano, y no mostrará los mensajes</span>
+<pre class="src src-shell" id="org0ca99ec"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">corre el programa "mkdocs" en segundo plano, y no mostrará los mensajes</span>
 nohup mkdocs serve &amp;
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgcb7175b" class="outline-4">
-<h4 id="orgcb7175b"><span class="section-number-4">1.1.4</span> Pasar una tarea a primer o segundo plano</h4>
+<div id="outline-container-orgbe20314" class="outline-4">
+<h4 id="orgbe20314"><span class="section-number-4">1.1.4.</span> Pasar una tarea a primer o segundo plano</h4>
 <div class="outline-text-4" id="text-1-1-4">
 <p>
 A veces puede ocurrir que se desee alternar
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell" id="org72b7a24"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">pasa una tarea a primer plano</span>
+<pre class="src src-shell" id="org5d05675"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">pasa una tarea a primer plano</span>
 <span style="color: #4f97d7;">fg</span> numeroTarea
 
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">pasa la tarea a segundo plano</span>
@@ -390,8 +366,8 @@ A veces puede ocurrir que se desee alternar
 </div>
 </div>
 </div>
-<div id="outline-container-orgfcbf79b" class="outline-3">
-<h3 id="orgfcbf79b"><span class="section-number-3">1.2</span> Ver procesos y tareas</h3>
+<div id="outline-container-org7228fbb" class="outline-3">
+<h3 id="org7228fbb"><span class="section-number-3">1.2.</span> Ver procesos y tareas</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 Con el comando <b><b>jobs</b></b> podemos conocer las tareas que se ejecutan en segundo plano 
@@ -407,7 +383,7 @@ Con el comando <b><b>ps</b></b> nos mostrará todas las tareas (dispone de vario
 Algunas referencias a las columnas del listado de procesos:
 </p>
 
-<table id="orgcd33024" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org8d83503" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -460,7 +436,7 @@ Algunas referencias a las columnas del listado de procesos:
 Otras referencias de los parámetros para el comando <b><b>ps</b></b> que lista los procesos:
 </p>
 
-<table id="org8fd5a22" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org53b51c2" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -493,7 +469,7 @@ Otras referencias de los parámetros para el comando <b><b>ps</b></b> que lista 
 </table>
 
 <div class="org-src-container">
-<pre class="src src-shell" id="org64fd802"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">devuelve una lista con las tareas en ejecución en la terminal actual</span>
+<pre class="src src-shell" id="org98f3e29"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">devuelve una lista con las tareas en ejecución en la terminal actual</span>
 <span style="color: #4f97d7;">jobs</span>
 
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">devuelve todas las tareas</span>
@@ -501,8 +477,8 @@ ps
 </pre>
 </div>
 </div>
-<div id="outline-container-org371c647" class="outline-4">
-<h4 id="org371c647"><span class="section-number-4">1.2.1</span> Obtener solo el número de proceso</h4>
+<div id="outline-container-org8a96e08" class="outline-4">
+<h4 id="org8a96e08"><span class="section-number-4">1.2.1.</span> Obtener solo el número de proceso</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <p>
 Suelo optar por <b><b>pgrep</b></b> seguido del nombre del proceso, que es mas sencillo.
@@ -514,7 +490,7 @@ con filtrar el proceso con <b><b>grep</b></b> y retornar la columna del PID con 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell" id="orgd93c10c"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">devuelve el numero de id del un proceso</span>
+<pre class="src src-shell" id="orgacd5ad2"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">devuelve el numero de id del un proceso</span>
 pgrep | nombreTarea
 
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">también devuelve el numero de id del proceso</span>
@@ -523,8 +499,8 @@ ps | grep nombreTarea | awk <span style="color: #2d9574;">'{print $1}'</span>
 </div>
 </div>
 </div>
-<div id="outline-container-org7137f79" class="outline-4">
-<h4 id="org7137f79"><span class="section-number-4">1.2.2</span> Obtener solo algunos datos de los procesos</h4>
+<div id="outline-container-orga91269e" class="outline-4">
+<h4 id="orga91269e"><span class="section-number-4">1.2.2.</span> Obtener solo algunos datos de los procesos</h4>
 <div class="outline-text-4" id="text-1-2-2">
 <p>
 En caso de querer saber solo algunas de las columnas de <b><b>ps</b></b> podemos usar 
@@ -533,7 +509,7 @@ Algunos campos podrian ser
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell" id="org1ac846d"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">mostrará la columna del identificador, el comando, y tiempo en ejecución</span>
+<pre class="src src-shell" id="org5957045"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">mostrará la columna del identificador, el comando, y tiempo en ejecución</span>
 ps -eo pid,comm,etime
 </pre>
 </div>
@@ -544,15 +520,15 @@ Es importante que las columnas este separadas por coma sin espacios.
 </p>
 </div>
 </div>
-<div id="outline-container-orga286040" class="outline-4">
-<h4 id="orga286040"><span class="section-number-4">1.2.3</span> Ordenar los procesos por algun campo</h4>
+<div id="outline-container-org5f34b6f" class="outline-4">
+<h4 id="org5f34b6f"><span class="section-number-4">1.2.3.</span> Ordenar los procesos por algun campo</h4>
 <div class="outline-text-4" id="text-1-2-3">
 <p>
 Para esto necesitamos del parametro <b><b>–sort</b></b> seguido de los campos que utilizamos como criterio para ordenar
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell" id="orgb2b838a">ps -eo pid,comm,etime,%cpu --sort=-%mem | head
+<pre class="src src-shell" id="org858c5d7">ps -eo pid,comm,etime,%cpu --sort=-%mem | head
 </pre>
 </div>
 
@@ -562,23 +538,23 @@ Si queres visualizar la cabecera de los campos, agregar <b><b>head</b></b>
 </p>
 </div>
 </div>
-<div id="outline-container-org8924f45" class="outline-4">
-<h4 id="org8924f45"><span class="section-number-4">1.2.4</span> Mostrar procesos padres e hijos</h4>
+<div id="outline-container-org7f0302c" class="outline-4">
+<h4 id="org7f0302c"><span class="section-number-4">1.2.4.</span> Mostrar procesos padres e hijos</h4>
 <div class="outline-text-4" id="text-1-2-4">
 <p>
 A veces es importante conocer si un proceso depende de varios es decir al detener este sus procesos hijos también.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell" id="orga8968a3"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">muestra los procesos padres e hijos</span>
+<pre class="src src-shell" id="org70a7047"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">muestra los procesos padres e hijos</span>
 ps --forest
 </pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org8143b33" class="outline-3">
-<h3 id="org8143b33"><span class="section-number-3">1.3</span> Detener una tarea en ejecución</h3>
+<div id="outline-container-org46aca5e" class="outline-3">
+<h3 id="org46aca5e"><span class="section-number-3">1.3.</span> Detener una tarea en ejecución</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 Si la tara está en <b><b>primer plano</b></b> podriamos usar el atajo <b><b>CTRL+Z</b></b>
@@ -590,7 +566,7 @@ del numero de proceso o el PID que lo identifica.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell" id="orgdb25eb7"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">detiene el proceso numero 1</span>
+<pre class="src src-shell" id="org3124291"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">detiene el proceso numero 1</span>
 <span style="color: #4f97d7;">kill</span> %1
 </pre>
 </div>
@@ -601,8 +577,8 @@ Al utilizar el % va seguido del número de proceso, caso contrario agregar el PI
 </p>
 </div>
 </div>
-<div id="outline-container-org14c047b" class="outline-3">
-<h3 id="org14c047b"><span class="section-number-3">1.4</span> Guardar un proceso dependiente de una terminal</h3>
+<div id="outline-container-org7131117" class="outline-3">
+<h3 id="org7131117"><span class="section-number-3">1.4.</span> Guardar un proceso dependiente de una terminal</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 Con el comando <b>disown</b> se puede guardar un proceso que está corriendo 
@@ -618,7 +594,7 @@ Como argumento se le puede pasar el <b>PID</b> ó el número de proceso precedid
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell" id="orgb8d4d72"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">ejecuto el programa en segundo plano, y oculto sus mensajes</span>
+<pre class="src src-shell" id="org3465694"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">ejecuto el programa en segundo plano, y oculto sus mensajes</span>
 nohup mkdocs serve&amp;
 
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">busco el PID del proceso</span>
@@ -634,7 +610,7 @@ pgrep mkdocs
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell" id="orga48269c"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">ejecuto el programa en segundo plano, y oculto sus mensajes</span>
+<pre class="src src-shell" id="org092c0a9"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">ejecuto el programa en segundo plano, y oculto sus mensajes</span>
 nohup mkdocs serve&amp;
 
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">busco el PID</span>
@@ -646,11 +622,11 @@ ps -ax | grep mkdocs
 </div>
 </div>
 </div>
-<div id="outline-container-orgf60ab34" class="outline-3">
-<h3 id="orgf60ab34"><span class="section-number-3">1.5</span> Practicando procesos, tareas</h3>
+<div id="outline-container-orgf717579" class="outline-3">
+<h3 id="orgf717579"><span class="section-number-3">1.5.</span> Practicando procesos, tareas</h3>
 <div class="outline-text-3" id="text-1-5">
 <div class="org-src-container">
-<pre class="src src-shell" id="orgf936abc"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">corro en segundo plano ambos navegadores web</span>
+<pre class="src src-shell" id="org520a30f"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">corro en segundo plano ambos navegadores web</span>
 firefox &amp; ; chrome &amp;
 
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">verifico el numero de proceso de ambos, y si estan corriendo</span>
@@ -667,8 +643,8 @@ ps -a | grep chrome
 </div>
 </div>
 </div>
-<div id="outline-container-org5db0fc5" class="outline-2">
-<h2 id="org5db0fc5"><span class="section-number-2">2</span> Sincronizar directorios</h2>
+<div id="outline-container-org9478c53" class="outline-2">
+<h2 id="org9478c53"><span class="section-number-2">2.</span> Sincronizar directorios</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 El comando <b><b>rsync</b></b> cumple un rol fundamental para copiar, 
@@ -680,7 +656,7 @@ utilizar <b><b>cp</b></b> ó <b><b>scp</b></b> ya que comprime los archivos ante
 Algunos de los parámetros son:
 </p>
 
-<table id="orgb29396a" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org0214d66" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -722,79 +698,79 @@ Algunos de los parámetros son:
 </tbody>
 </table>
 </div>
-<div id="outline-container-orgd02cd06" class="outline-3">
-<h3 id="orgd02cd06"><span class="section-number-3">2.1</span> Copiar un directorio local a otro</h3>
+<div id="outline-container-org6708e67" class="outline-3">
+<h3 id="org6708e67"><span class="section-number-3">2.1.</span> Copiar un directorio local a otro</h3>
 <div class="outline-text-3" id="text-2-1">
 <div class="org-src-container">
-<pre class="src src-shell" id="org52b029b"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Copia todo lo del directorio1 al directorio2</span>
+<pre class="src src-shell" id="orge1227ed"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Copia todo lo del directorio1 al directorio2</span>
 rysnc -vazh directorio1/ directorio2/
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orga234b13" class="outline-3">
-<h3 id="orga234b13"><span class="section-number-3">2.2</span> Transferir todos los archivos de un directorio local a un servidor</h3>
+<div id="outline-container-org9770446" class="outline-3">
+<h3 id="org9770446"><span class="section-number-3">2.2.</span> Transferir todos los archivos de un directorio local a un servidor</h3>
 <div class="outline-text-3" id="text-2-2">
 <div class="org-src-container">
-<pre class="src src-shell" id="org74f1757"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">transferir a un servidor</span>
+<pre class="src src-shell" id="org4764738"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">transferir a un servidor</span>
 rysnc -vazh carpeta/* host1:pruebas/
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org737f8eb" class="outline-3">
-<h3 id="org737f8eb"><span class="section-number-3">2.3</span> Transferir un directorio local a un servidor pasandole usuario</h3>
+<div id="outline-container-org2180e5b" class="outline-3">
+<h3 id="org2180e5b"><span class="section-number-3">2.3.</span> Transferir un directorio local a un servidor pasandole usuario</h3>
 <div class="outline-text-3" id="text-2-3">
 <div class="org-src-container">
-<pre class="src src-shell" id="org43db2c1"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">transferir a un servidor pasando usuario</span>
+<pre class="src src-shell" id="orgc77976f"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">transferir a un servidor pasando usuario</span>
 rysnc -vazh directorio2/ usuario:host2:fotos/
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgefa36b8" class="outline-3">
-<h3 id="orgefa36b8"><span class="section-number-3">2.4</span> Transferir desde un servidor a la maquina local</h3>
+<div id="outline-container-org861de71" class="outline-3">
+<h3 id="org861de71"><span class="section-number-3">2.4.</span> Transferir desde un servidor a la maquina local</h3>
 <div class="outline-text-3" id="text-2-4">
 <div class="org-src-container">
-<pre class="src src-shell" id="org2dee6ca"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">transferir desde el servidor a la maquina local</span>
+<pre class="src src-shell" id="org98eb55c"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">transferir desde el servidor a la maquina local</span>
 rysnc -vazh admin:192.168.92.1:/srv/fotos /home/juan/carpeta
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org4e15f0a" class="outline-3">
-<h3 id="org4e15f0a"><span class="section-number-3">2.5</span> Transfencia segura con ssh desde el servidor a máquina local</h3>
+<div id="outline-container-org310bce1" class="outline-3">
+<h3 id="org310bce1"><span class="section-number-3">2.5.</span> Transfencia segura con ssh desde el servidor a máquina local</h3>
 <div class="outline-text-3" id="text-2-5">
 <p>
 A diferencia del resto se agrega el parámetro <b><b>e</b></b> y <b><b>ssh</b></b>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell" id="org21361f7">rysnc -vazh -e ssh admin@<span style="color: #a45bad;">192.168.92.1:/srv/fotos</span> /home/juan/fotos
+<pre class="src src-shell" id="orgffaba2a">rysnc -vazh -e ssh admin@<span style="color: #a45bad;">192.168.92.1:/srv/fotos</span> /home/juan/fotos
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgac8746c" class="outline-3">
-<h3 id="orgac8746c"><span class="section-number-3">2.6</span> Simular transferencia de archivos</h3>
+<div id="outline-container-orgc66ebf5" class="outline-3">
+<h3 id="orgc66ebf5"><span class="section-number-3">2.6.</span> Simular transferencia de archivos</h3>
 <div class="outline-text-3" id="text-2-6">
 <p>
 Si queremos probar en caso de errores podemos utilizar <b><b>–dry-run</b></b>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell" id="org7418402"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Copia todo lo del directorio1 al directorio2</span>
+<pre class="src src-shell" id="org746383a"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Copia todo lo del directorio1 al directorio2</span>
 rysnc -vazh --dry-run directorio1/ directorio2/
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org3c15337" class="outline-3">
-<h3 id="org3c15337"><span class="section-number-3">2.7</span> Referencias Web</h3>
+<div id="outline-container-org4d89c73" class="outline-3">
+<h3 id="org4d89c73"><span class="section-number-3">2.7.</span> Referencias Web</h3>
 <div class="outline-text-3" id="text-2-7">
 <ul class="org-ul">
-<li>Documentación sobre rsyncm, Linux.die [Ver Página](<a href="https://linux.die.net/man/1/rsync">https://linux.die.net/man/1/rsync</a>)</li>
-<li>Conociendo el comando rsync, LinuxTechi [Ver Página](<a href="https://www.linuxtechi.com/rsync-command-examples-linux/">https://www.linuxtechi.com/rsync-command-examples-linux/</a>)</li>
+<li>Documentación sobre rsyncm, Linux.die <a href="https://linux.die.net/man/1/rsync">[Ver Página]​</a></li>
+<li>Conociendo el comando rsync, LinuxTechi <a href="https://www.linuxtechi.com/rsync-command-examples-linux/">[Ver Página]​</a></li>
 </ul>
 </div>
 </div>
@@ -802,8 +778,8 @@ rysnc -vazh --dry-run directorio1/ directorio2/
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: jelou</p>
-<p class="date">Created: 2021-04-02 vie 15:55</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+<p class="date">Created: 2021-09-13 lun 11:57</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 
 

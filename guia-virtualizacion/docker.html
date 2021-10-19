@@ -1,5 +1,5 @@
 <!--?xml version="1.0" encoding="utf-8"?--><!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<!-- 2021-04-04 dom 02:07 -->
+<!-- 2021-10-19 mar 03:18 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Guia Virtualización - Docker</title>
@@ -36,7 +36,7 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
+    overflow: auto;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -48,7 +48,7 @@
     padding: 3px;
     border: 1px solid black;
   }
-  pre.src:hover:before { display: inline;}
+  pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
@@ -193,50 +193,26 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/sass-style.css">
 <script type="text/javascript" src="/assets/js/all.js"></script>
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2020 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 </head>
 <body>
@@ -246,135 +222,137 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgc0a41e3">1. Docker</a>
+<li><a href="#orgdcdd97d">1. Docker</a>
 <ul>
-<li><a href="#org0bb7528">1.1. Conceptos</a>
+<li><a href="#orgef04766">1.1. Conceptos</a>
 <ul>
-<li><a href="#org577bf16">1.1.1. Imagen</a></li>
-<li><a href="#org46d8d3f">1.1.2. Contenedor</a></li>
+<li><a href="#org6266b88">1.1.1. Imagen</a></li>
+<li><a href="#org86daaed">1.1.2. Contenedor</a></li>
 </ul>
 </li>
-<li><a href="#org139678f">1.2. Instalación</a></li>
-<li><a href="#org97d49c6">1.3. Comandos básicos</a>
+<li><a href="#orgd440764">1.2. Instalación</a></li>
+<li><a href="#orgb51eae7">1.3. Comandos básicos</a>
 <ul>
-<li><a href="#org81272c9">1.3.1. Lista de Comandos</a></li>
-<li><a href="#orgcf1de06">1.3.2. Lista de parámetros</a></li>
-<li><a href="#org7c2b305">1.3.3. Observaciones importantes</a></li>
-<li><a href="#org00e1a3c">1.3.4. Crear Contenedores en primer y segundo plano</a></li>
-<li><a href="#org0c023cb">1.3.5. Crear Imagenes</a></li>
-<li><a href="#org8545222">1.3.6. Eliminar multiples Contenedores</a></li>
-<li><a href="#orgc917fb0">1.3.7. Eliminar multiples imagenes</a></li>
-<li><a href="#org343e7bf">1.3.8. Descargar ó Actualizar un Contenedor</a></li>
-<li><a href="#orgf908ec0">1.3.9. Listar contenedores en ejecución e inactivos</a></li>
-<li><a href="#org8b91710">1.3.10. Acceder ó Iniciar/Detener ejecución de contenedores</a></li>
-<li><a href="#orgaa3c2fc">1.3.11. Versionar containers</a></li>
-<li><a href="#org3e7f444">1.3.12. Abrir Puertos</a></li>
-<li><a href="#org56bb338">1.3.13. Referencias Web</a></li>
+<li><a href="#org2c51c39">1.3.1. Lista de Comandos</a></li>
+<li><a href="#orgb3325ab">1.3.2. Referencias</a></li>
+<li><a href="#orge10652c">1.3.3. Lista de parámetros</a></li>
+<li><a href="#org00bf698">1.3.4. Observaciones importantes</a></li>
+<li><a href="#org593a018">1.3.5. Crear Contenedores en primer y segundo plano</a></li>
+<li><a href="#orgddd7d42">1.3.6. Crear Imagenes</a></li>
+<li><a href="#org0b9b088">1.3.7. Eliminar multiples Contenedores</a></li>
+<li><a href="#org4da6f51">1.3.8. Eliminar multiples imagenes</a></li>
+<li><a href="#orgee42985">1.3.9. Descargar ó Actualizar un Contenedor</a></li>
+<li><a href="#org1e2d584">1.3.10. Listar contenedores en ejecución e inactivos</a></li>
+<li><a href="#org0f60065">1.3.11. Acceder ó Iniciar/Detener ejecución de contenedores</a></li>
+<li><a href="#org4be0f0c">1.3.12. Versionar containers</a></li>
+<li><a href="#org8017249">1.3.13. Abrir Puertos</a></li>
+<li><a href="#org69166b6">1.3.14. Referencias Web Extraoficiales</a></li>
 </ul>
 </li>
-<li><a href="#orgbd32182">1.4. Estados</a></li>
-<li><a href="#org9369a32">1.5. Configurando Puertos</a></li>
-<li><a href="#orgb99aecf">1.6. Configurando Volumenes</a>
+<li><a href="#org371086b">1.4. Estados</a></li>
+<li><a href="#org1ef6190">1.5. Configurando Puertos</a></li>
+<li><a href="#orgcc4c4d9">1.6. Configurando Volumenes</a>
 <ul>
-<li><a href="#orgf9b27dd">1.6.1. Conceptos</a></li>
-<li><a href="#orge251490">1.6.2. Ejemplos</a></li>
-<li><a href="#org0644e05">1.6.3. Referencias Youtube</a></li>
+<li><a href="#orgb3ff470">1.6.1. Conceptos</a></li>
+<li><a href="#orged0fd80">1.6.2. Ejemplos</a></li>
+<li><a href="#org6ef4c8f">1.6.3. Referencias Youtube</a></li>
 </ul>
 </li>
-<li><a href="#org73577cc">1.7. Probando Distribuciones Linux</a>
+<li><a href="#org8a8db60">1.7. Probando Distribuciones Linux</a>
 <ul>
-<li><a href="#orgfcba308">1.7.1. Probando Alpine Edge</a></li>
-<li><a href="#org0d4c40f">1.7.2. Probando Debian Buster</a></li>
-<li><a href="#org2c48c4b">1.7.3. Probando Ubuntu Trusty</a></li>
-<li><a href="#orgc28c195">1.7.4. Ubuntu</a></li>
+<li><a href="#orgbbc5884">1.7.1. Probando Alpine Edge</a></li>
+<li><a href="#org0de71cb">1.7.2. Probando Debian Buster</a></li>
+<li><a href="#org7f20519">1.7.3. Probando Ubuntu Trusty</a></li>
+<li><a href="#org9f291ff">1.7.4. Ubuntu</a></li>
 </ul>
 </li>
-<li><a href="#org16c7d13">1.8. Configurando Redes Docker</a>
+<li><a href="#org9b432a8">1.8. Configurando Redes Docker</a>
 <ul>
-<li><a href="#orgce3004f">1.8.1. Conceptos</a></li>
-<li><a href="#org74a8ead">1.8.2. Crear Red</a></li>
-<li><a href="#org85a78fa">1.8.3. Referencias</a></li>
+<li><a href="#orgef7b8e2">1.8.1. Conceptos</a></li>
+<li><a href="#orgef4af8a">1.8.2. Crear Red</a></li>
+<li><a href="#org2f793b6">1.8.3. Referencias</a></li>
 </ul>
 </li>
-<li><a href="#org6ebd409">1.9. Ejemplos</a></li>
-<li><a href="#orgb2e7de8">1.10. Referencias</a>
+<li><a href="#orgbd1adf0">1.9. Ejemplos</a></li>
+<li><a href="#org723eb1f">1.10. Referencias</a>
 <ul>
-<li><a href="#org0795692">1.10.1. Referencias Web Extraoficiales</a></li>
-<li><a href="#orgfc9fa14">1.10.2. Referencias Youtube</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org45fb488">2. Dockerfile</a>
-<ul>
-<li><a href="#org40f6e62">2.1. Conceptos</a></li>
-<li><a href="#orgc973437">2.2. Comandos básicos</a>
-<ul>
-<li><a href="#orgc8f7de8">2.2.1. (BUILD) Crear Imagen</a></li>
-<li><a href="#org0a6603c">2.2.2. (COPY) Copiar archivos</a></li>
-<li><a href="#org4ee024f">2.2.3. (ADD) Descargar y Descomprimir archivos</a></li>
-<li><a href="#org2d21ff8">2.2.4. (ENTRYPOINT) Pasar scripts por parámetro</a></li>
-<li><a href="#org31df005">2.2.5. (CMD) Comandos por defecto</a></li>
-<li><a href="#orgaa201f0">2.2.6. (RUN) Ejecutar comandos</a></li>
-</ul>
-</li>
-<li><a href="#orgd7d24e6">2.3. Ejemplos</a></li>
-</ul>
-</li>
-<li><a href="#orga49b0c9">3. Docker Compose</a>
-<ul>
-<li><a href="#orgee40442">3.1. Conceptos</a></li>
-<li><a href="#org408cfe1">3.2. Instalación y Configuración</a></li>
-<li><a href="#org45dcfd1">3.3. Comandos Básicos</a></li>
-<li><a href="#orga9b790d">3.4. Ejemplos</a></li>
-<li><a href="#org31178e7">3.5. Referencias</a>
-<ul>
-<li><a href="#org9516398">3.5.1. Referencias Web Oficiales</a></li>
-<li><a href="#orgf548adc">3.5.2. Referencias Youtube</a></li>
-<li><a href="#org5cc4d8d">3.5.3. Issues Comunes</a></li>
+<li><a href="#org0d1443b">1.10.1. Referencias Web Extraoficiales</a></li>
+<li><a href="#org1c3378f">1.10.2. Referencias Issues</a></li>
+<li><a href="#org9b8ab44">1.10.3. Referencias Youtube</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org4bc7315">4. Docker Tips</a>
+<li><a href="#org372018c">2. Dockerfile</a>
 <ul>
-<li><a href="#orga553f2a">4.1. Ejecutar contenedores al iniciar el sistema</a></li>
-<li><a href="#org280ba7a">4.2. Conocer el timestamp de los logs</a></li>
+<li><a href="#org1ddf6c6">2.1. Conceptos</a></li>
+<li><a href="#orgd2f6f50">2.2. Comandos básicos</a>
+<ul>
+<li><a href="#orga661aa3">2.2.1. (BUILD) Crear Imagen</a></li>
+<li><a href="#orga76df77">2.2.2. (COPY) Copiar archivos</a></li>
+<li><a href="#org61585b1">2.2.3. (ADD) Descargar y Descomprimir archivos</a></li>
+<li><a href="#org4688a30">2.2.4. (ENTRYPOINT) Pasar scripts por parámetro</a></li>
+<li><a href="#org10061df">2.2.5. (CMD) Comandos por defecto</a></li>
+<li><a href="#orgb1dbeec">2.2.6. (RUN) Ejecutar comandos</a></li>
 </ul>
 </li>
-<li><a href="#org4e60a4c">5. Servicios Básicos</a>
-<ul>
-<li><a href="#orgebf453f">5.1. Nginx</a></li>
-<li><a href="#org220d711">5.2. Duckdns</a>
-<ul>
-<li><a href="#orgb2fa38a">5.2.1. Conceptos</a></li>
-<li><a href="#org35fe140">5.2.2. Referencias</a></li>
+<li><a href="#orge7188c1">2.3. Ejemplos</a></li>
 </ul>
 </li>
-<li><a href="#org465e186">5.3. Inspircd</a>
+<li><a href="#org52bb493">3. Docker Compose</a>
 <ul>
-<li><a href="#orgaf3b49e">5.3.1. Conceptos</a></li>
-<li><a href="#orgb28ef14">5.3.2. Referencias Web Oficiales</a></li>
-<li><a href="#org5cb30f3">5.3.3. Referencias Youtube</a></li>
+<li><a href="#org7030f36">3.1. Conceptos</a></li>
+<li><a href="#org9977f85">3.2. Instalación y Configuración</a></li>
+<li><a href="#orgca1605b">3.3. Comandos Básicos</a></li>
+<li><a href="#orgf20b43c">3.4. Ejemplos</a></li>
+<li><a href="#org3384603">3.5. Referencias</a>
+<ul>
+<li><a href="#org34cded0">3.5.1. Referencias Web Oficiales</a></li>
+<li><a href="#orgf7f8751">3.5.2. Referencias Youtube</a></li>
+<li><a href="#org3f1e9e9">3.5.3. Issues Comunes</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org144395b">6. Glosario</a></li>
+<li><a href="#orgb7654c8">4. Docker Tips</a>
+<ul>
+<li><a href="#orged20ca1">4.1. Ejecutar contenedores al iniciar el sistema</a></li>
+<li><a href="#org71cbf31">4.2. Conocer el timestamp de los logs</a></li>
+</ul>
+</li>
+<li><a href="#org2d4ac57">5. Servicios Básicos</a>
+<ul>
+<li><a href="#orgddeca2d">5.1. Nginx</a></li>
+<li><a href="#org8e5bc7e">5.2. Duckdns</a>
+<ul>
+<li><a href="#orgeedabef">5.2.1. Conceptos</a></li>
+<li><a href="#org95154af">5.2.2. Referencias</a></li>
+</ul>
+</li>
+<li><a href="#org2c64158">5.3. Inspircd</a>
+<ul>
+<li><a href="#org4f9f753">5.3.1. Conceptos</a></li>
+<li><a href="#org06f2976">5.3.2. Referencias Web Oficiales</a></li>
+<li><a href="#orgecf86aa">5.3.3. Referencias Youtube</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org6d97046">6. Glosario</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgc0a41e3" class="outline-2">
-<h2 id="orgc0a41e3"><span class="section-number-2">1</span> Docker</h2>
+<div id="outline-container-orgdcdd97d" class="outline-2">
+<h2 id="orgdcdd97d"><span class="section-number-2">1.</span> Docker</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org0bb7528" class="outline-3">
-<h3 id="org0bb7528"><span class="section-number-3">1.1</span> Conceptos</h3>
+<div id="outline-container-orgef04766" class="outline-3">
+<h3 id="orgef04766"><span class="section-number-3">1.1.</span> Conceptos</h3>
 <div class="outline-text-3" id="text-1-1">
 </div>
-<div id="outline-container-org577bf16" class="outline-4">
-<h4 id="org577bf16"><span class="section-number-4">1.1.1</span> Imagen</h4>
+<div id="outline-container-org6266b88" class="outline-4">
+<h4 id="org6266b88"><span class="section-number-4">1.1.1.</span> Imagen</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <ul class="org-ul">
 <li>Es como una plantilla que se usa de modelo para crear <b>contenedores</b></li>
@@ -383,8 +361,8 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-org46d8d3f" class="outline-4">
-<h4 id="org46d8d3f"><span class="section-number-4">1.1.2</span> Contenedor</h4>
+<div id="outline-container-org86daaed" class="outline-4">
+<h4 id="org86daaed"><span class="section-number-4">1.1.2.</span> Contenedor</h4>
 <div class="outline-text-4" id="text-1-1-2">
 <ul class="org-ul">
 <li>Se crean a partir de una imagen</li>
@@ -393,11 +371,11 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org139678f" class="outline-3">
-<h3 id="org139678f"><span class="section-number-3">1.2</span> Instalación</h3>
+<div id="outline-container-orgd440764" class="outline-3">
+<h3 id="orgd440764"><span class="section-number-3">1.2.</span> Instalación</h3>
 <div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
-<pre class="src src-shell" id="org2536920"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">en manjaro</span>
+<pre class="src src-shell" id="org40ea3ac"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">en manjaro</span>
 sudo pacman -S docker
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">en ubuntu</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">apt install docker</span>
@@ -415,7 +393,7 @@ docker run hello-world
 </div>
 
 <div class="org-src-container">
-<pre class="src src-shell" id="org2f45bef"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para listar los contenedores en ejecución</span>
+<pre class="src src-shell" id="org0723866"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para listar los contenedores en ejecución</span>
 docker ps
 
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para correr o descargar &amp;&amp; instalar una version ligera de linux con el tag 3.12</span>
@@ -450,17 +428,17 @@ docker image tag asdasd123123 miPrimerDocker
 </div>
 </div>
 </div>
-<div id="outline-container-org97d49c6" class="outline-3">
-<h3 id="org97d49c6"><span class="section-number-3">1.3</span> Comandos básicos</h3>
+<div id="outline-container-orgb51eae7" class="outline-3">
+<h3 id="orgb51eae7"><span class="section-number-3">1.3.</span> Comandos básicos</h3>
 <div class="outline-text-3" id="text-1-3">
 <ul class="org-ul">
-<li>El parámetro <b>ps</b> es como en linux normal, muestra los procesos en ejecución por tanto mostrará los containers activos (en ejecución)</li>
+<li>El parámetro <code>ps</code> es como en linux normal, muestra los procesos en ejecución por tanto mostrará los containers activos (en ejecución)</li>
 </ul>
 </div>
-<div id="outline-container-org81272c9" class="outline-4">
-<h4 id="org81272c9"><span class="section-number-4">1.3.1</span> Lista de Comandos</h4>
+<div id="outline-container-org2c51c39" class="outline-4">
+<h4 id="org2c51c39"><span class="section-number-4">1.3.1.</span> Lista de Comandos</h4>
 <div class="outline-text-4" id="text-1-3-1">
-<table id="org6fc47a7" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orgea3d762" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -608,26 +586,38 @@ docker image tag asdasd123123 miPrimerDocker
 </tr>
 </tbody>
 </table>
-
-<p>
-Referencias:
-</p>
+</div>
+</div>
+<div id="outline-container-orgb3325ab" class="outline-4">
+<h4 id="orgb3325ab"><span class="section-number-4">1.3.2.</span> Referencias</h4>
+<div class="outline-text-4" id="text-1-3-2">
+</div>
 <ol class="org-ol">
-<li><a href="https://docs.docker.com/engine/reference/commandline/container_prune/">https://docs.docker.com/engine/reference/commandline/container_prune/</a></li>
-<li><a href="https://hub.docker.com/repository/docker/neverkas/distroalpine">https://hub.docker.com/repository/docker/neverkas/distroalpine</a></li>
-<li><a href="https://www.digitalocean.com/community/tutorials/como-instalar-y-usar-docker-en-ubuntu-18-04-1-es">https://www.digitalocean.com/community/tutorials/como-instalar-y-usar-docker-en-ubuntu-18-04-1-es</a></li>
-<li><a href="https://www.ionos.es/digitalguide/servidores/configuracion/tutorial-docker-instalacion-y-primeros-pasos/">https://www.ionos.es/digitalguide/servidores/configuracion/tutorial-docker-instalacion-y-primeros-pasos/</a></li>
-<li><a href="https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/">https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/</a></li>
-<li><a href="https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/">https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/</a></li>
-<li><a href="https://platzi.com/blog/desplegar-contenedores-docker/">Desplegar contenedores - platzi.com</a></li>
-<li><a href="https://pandorafms.com/blog/es/docker-run/">Docker run - pandorafms.com</a></li>
+<li><a id="orgb7b477c"></a>Referencias Web Oficiales<br>
+<div class="outline-text-5" id="text-1-3-2-1">
+<ol class="org-ol">
+<li><a href="https://docs.docker.com/engine/reference/commandline/container_prune/">Comando container prune - Docs, Docker.com</a></li>
 </ol>
 </div>
+</li>
+<li><a id="orga76431f"></a>Referencias Web Extraoficiales<br>
+<div class="outline-text-5" id="text-1-3-2-2">
+<ol class="org-ol">
+<li><a href="https://www.digitalocean.com/community/tutorials/como-instalar-y-usar-docker-en-ubuntu-18-04-1-es">Instalar Docker en Ubuntu - Digitalocean.com</a></li>
+<li><a href="https://www.ionos.es/digitalguide/servidores/configuracion/tutorial-docker-instalacion-y-primeros-pasos/">Instalación de Docker - Ionos.es</a></li>
+<li><a href="https://platzi.com/blog/desplegar-contenedores-docker/">Desplegar contenedores - platzi.com</a></li>
+<li><a href="https://pandorafms.com/blog/es/docker-run/">Docker run - pandorafms.com</a></li>
+<li><a href="https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/">Eliminar imagenes/contenedores/volumenes/conexiones de Docker - Linuxsize.com</a></li>
+<li><a href="https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/">Hacer pull de una imagen de un repositorio privado - Kubernetes.io</a></li>
+</ol>
 </div>
-<div id="outline-container-orgcf1de06" class="outline-4">
-<h4 id="orgcf1de06"><span class="section-number-4">1.3.2</span> Lista de parámetros</h4>
-<div class="outline-text-4" id="text-1-3-2">
-<table id="orgd998c25" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+</li>
+</ol>
+</div>
+<div id="outline-container-orge10652c" class="outline-4">
+<h4 id="orge10652c"><span class="section-number-4">1.3.3.</span> Lista de parámetros</h4>
+<div class="outline-text-4" id="text-1-3-3">
+<table id="org2e84277" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -708,17 +698,17 @@ Referencias:
 </table>
 </div>
 </div>
-<div id="outline-container-org7c2b305" class="outline-4">
-<h4 id="org7c2b305"><span class="section-number-4">1.3.3</span> Observaciones importantes</h4>
-<div class="outline-text-4" id="text-1-3-3">
+<div id="outline-container-org00bf698" class="outline-4">
+<h4 id="org00bf698"><span class="section-number-4">1.3.4.</span> Observaciones importantes</h4>
+<div class="outline-text-4" id="text-1-3-4">
 <ul class="org-ul">
-<li>Si queremos acceder al container (NO CREAR UNO NUEVO) usamos "docker exec -it IDdeAlgunaImagen bash" (si usamos run se creará un nuevo container)</li>
-<li>Siempre se crea un contenedor distinto cuando ejecutas una imagen con "docker run -it IdAlgunaImagen bash"</li>
-<li>Podemos usar el comando "docker run -it IDdeAlgunaImagen bash" para crear un nuevo contenedor</li>
+<li>Si queremos acceder al container (NO CREAR UNO NUEVO) usamos <code>docker exec -it IDdeAlgunaImagen bash</code> (<i>si usamos run se creará un nuevo container</i>)</li>
+<li>Siempre se crea un contenedor distinto cuando ejecutas una imagen con <code>docker run -it IdAlgunaImagen bash</code></li>
+<li>Podemos usar el comando <code>docker run -it IDdeAlgunaImagen bash</code> para crear un nuevo contenedor</li>
 <li>Si queremos guardar cambios de un container, podemos versionarlo comiteando y pusheando los cambios en algun repositorio</li>
 </ul>
 
-<pre class="example" id="docker-crear-imagen">Supongamos que tenemos un container de un ubuntu trusty (14.04) que ya tiene varios packages porque es el que usamos
+<pre class="example" id="org0799f33">Supongamos que tenemos un container de un ubuntu trusty (14.04) que ya tiene varios packages porque es el que usamos
 (Ej. haskell, prolog, git, etc...) pero queremos probar un nuevo package o configuración
 como sería instalar mysql, mongodb, etc.. sin que se vea afectado el que solemos usar.
 Osea queremos uno de prueba, que sea idéntico al que usamos, donde instalemos cosas o probemos configuraciones del sistema operativo.
@@ -734,22 +724,22 @@ Para más información nos toca investigar sobre Dockerfile.
 </pre>
 </div>
 </div>
-<div id="outline-container-org00e1a3c" class="outline-4">
-<h4 id="org00e1a3c"><span class="section-number-4">1.3.4</span> Crear Contenedores en primer y segundo plano</h4>
-<div class="outline-text-4" id="text-1-3-4">
+<div id="outline-container-org593a018" class="outline-4">
+<h4 id="org593a018"><span class="section-number-4">1.3.5.</span> Crear Contenedores en primer y segundo plano</h4>
+<div class="outline-text-4" id="text-1-3-5">
 </div>
 <ol class="org-ol">
-<li><a id="orgf8b9b90"></a>Conceptos<br>
-<div class="outline-text-5" id="text-1-3-4-1">
+<li><a id="org8061233"></a>Conceptos<br>
+<div class="outline-text-5" id="text-1-3-5-1">
 <ul class="org-ul">
-<li>Para crear contenedores que corran en segundo plano pasamos el parámetro -d al comando <b>docker run</b></li>
-<li>Para ejecutar contenedores que corran en segundo plano pasamos el parámetro -d al comando <b>docker exec</b></li>
+<li>Para crear contenedores que corran en segundo plano pasamos el parámetro <code>-d</code> al comando <code>docker run</code></li>
+<li>Para ejecutar contenedores que corran en segundo plano pasamos el parámetro <code>-d</code> al comando <code>docker exec</code></li>
 </ul>
 
-<blockquote id="docker-diferencias-primer-segundo-plano">
+<blockquote id="org8fcea7b">
 <p>
 Al crear un contenedor en segundo plano, se ejecutará de fondo (osea por detrás de la terminal)
-de donde ejecutemos el comando <b>docker run</b>, pudiendo seguir utilizando esa terminal donde lo ejecutamos.
+de donde ejecutemos el comando <code>docker run</code>, pudiendo seguir utilizando esa terminal donde lo ejecutamos.
 (particularmente útil para correr servidores linux, base de datos, ….)
 </p>
 
@@ -763,14 +753,14 @@ Sería como encenderlo, y luego apagarlo, sin poder darle uso. Teniendo que inic
 <p>
 Es decir si creamos un contenedor en primer plano (no le pasamos el parámetro -d)
 que ejecuta un comando ó tarea. Luego que esta tarea/comando se ejecutó, se detendrá la ejecución del contenedor.
-Por tanto no podremos ejecutar otro comando, a menos que iniciemos el contenedor con el comando <b>docker start</b>
+Por tanto no podremos ejecutar otro comando, a menos que iniciemos el contenedor con el comando <code>docker start</code>
 </p>
 </blockquote>
 
-<blockquote id="docker-diferencias-comandos-run-exec">
+<blockquote id="orgbf316d8">
 <p>
-El comando <b>docker run</b> crea un contenedor que corra una tarea/comando 
-El comando <b>docker exec</b> ejecuta en un contenedor ya existente una tarea/comando
+El comando <code>docker run</code> crea un contenedor que corra una tarea/comando 
+El comando <code>docker exec</code> ejecuta en un contenedor ya existente una tarea/comando
 </p>
 
 <p>
@@ -780,19 +770,19 @@ y podamos mandarle via terminal a ese linux comandos (ls, ps, …)
 </p>
 
 <p>
-debemos habilitar en el comando <b>docker run</b> el modo de "pseudoterminal" con el parámetro -t (hace referencia a tty)
-para que luego podamos acceder con <b>docker exec</b> a la pseudoterminal de forma interactiva con el parámetro -i -t
+debemos habilitar en el comando <code>docker run</code> el modo de "pseudoterminal" con el parámetro <code>-t</code> (hace referencia a tty)
+para que luego podamos acceder con <code>docker exec</code> a la pseudoterminal de forma interactiva con el parámetro <code>-i -t</code>
 ó solo enviarle comandos (sin usar -i -t)
 </p>
 
 <p>
-Si usamos los parámetros -i -t en el comando <b>docker run</b>,
+Si usamos los parámetros <code>-i -t</code> en el comando <code>docker run</code>,
 habilitará la terminal, ejecutará el comando que le pasemos y entrará en el contenedor de manera interactiva
 </p>
 </blockquote>
 
 <div class="org-src-container">
-<pre class="src src-shell" id="orgb8d8486"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Creamos un contenedor con las siguientes características</span>
+<pre class="src src-shell" id="orgaccc639"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Creamos un contenedor con las siguientes características</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-El puerto 8000 habilitado, y podamos acceder a ese puerto desde nuestro ordenador desde puerto 80 (se redirecciona)</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-Con el nombre "miservidor"</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-Que sea un linux con la distribución Debian booster</span>
@@ -820,8 +810,8 @@ docker exec -ti miservidor bash
 </div>
 </div>
 </li>
-<li><a id="orgd7f2fb5"></a>Referencias (de Issues)<br>
-<div class="outline-text-5" id="text-1-3-4-2">
+<li><a id="org4c82347"></a>Referencias (de Issues)<br>
+<div class="outline-text-5" id="text-1-3-5-2">
 <ol class="org-ol">
 <li><a href="https://mkyong.com/docker/docker-exec-bash-executable-file-not-found-in-path/">Docker -exec: Executable file not found - mkyong.com/docker</a></li>
 <li><a href="https://stackoverflow.com/questions/29599632/docker-container-is-not-running/45270860#45270860">Docker Container is not running - stackoverflow.com</a></li>
@@ -830,14 +820,14 @@ docker exec -ti miservidor bash
 </li>
 </ol>
 </div>
-<div id="outline-container-org0c023cb" class="outline-4">
-<h4 id="org0c023cb"><span class="section-number-4">1.3.5</span> Crear Imagenes</h4>
-<div class="outline-text-4" id="text-1-3-5">
+<div id="outline-container-orgddd7d42" class="outline-4">
+<h4 id="orgddd7d42"><span class="section-number-4">1.3.6.</span> Crear Imagenes</h4>
+<div class="outline-text-4" id="text-1-3-6">
 </div>
 <ol class="org-ol">
-<li><a id="orga62d444"></a>Conceptos<br>
-<div class="outline-text-5" id="text-1-3-5-1">
-<blockquote id="docker-crear-imagenes">
+<li><a id="org326408e"></a>Conceptos<br>
+<div class="outline-text-5" id="text-1-3-6-1">
+<blockquote id="org6c2b75a">
 <p>
 Podemos crear una imagen de un servidor web que tenga por defecto algunos lenguajes de programación
 como haskell, php, etc.. Ó que también tenga servicios de base de datos como sql, mysql, mongodb, etc..
@@ -862,8 +852,8 @@ de la que partimos para crear los contenedores.
 </div>
 </li>
 
-<li><a id="org56677e8"></a>Referencias<br>
-<div class="outline-text-5" id="text-1-3-5-2">
+<li><a id="org75c2771"></a>Referencias<br>
+<div class="outline-text-5" id="text-1-3-6-2">
 <ol class="org-ol">
 <li><a href="https://aulasoftwarelibre.github.io/taller-de-docker/dockerfile/">Crear imágenes propias - aulasoftwarelibre</a></li>
 </ol>
@@ -871,15 +861,15 @@ de la que partimos para crear los contenedores.
 </li>
 </ol>
 </div>
-<div id="outline-container-org8545222" class="outline-4">
-<h4 id="org8545222"><span class="section-number-4">1.3.6</span> Eliminar multiples Contenedores</h4>
-<div class="outline-text-4" id="text-1-3-6">
+<div id="outline-container-org0b9b088" class="outline-4">
+<h4 id="org0b9b088"><span class="section-number-4">1.3.7.</span> Eliminar multiples Contenedores</h4>
+<div class="outline-text-4" id="text-1-3-7">
 </div>
 <ol class="org-ol">
-<li><a id="orge4bf2d6"></a>Ejemplos<br>
-<div class="outline-text-5" id="text-1-3-6-1">
+<li><a id="org5c971aa"></a>Ejemplos<br>
+<div class="outline-text-5" id="text-1-3-7-1">
 <div class="org-src-container">
-<pre class="src src-sh" id="org016c00d"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">listamos los contenedores en ejecución</span>
+<pre class="src src-sh" id="orgb080f4f"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">listamos los contenedores en ejecución</span>
 docker ps
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">otra manera de listar los contenedores en ejecución</span>
 docker container ls
@@ -891,7 +881,7 @@ docker container ls -a
 
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para detener todos los contenedores</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- el parámetro -aq genera y devuelve un listado de contenedores</span>
-docker container stop $<span style="color: #4f97d7;">(</span><span style="color: #fa8072;">docker</span> container ls -aq<span style="color: #4f97d7;">)</span>
+docker container stop $<span style="color: #4f97d7;">(</span><span style="color: #bc6ec5;">docker</span> container ls -aq<span style="color: #4f97d7;">)</span>
 
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">eliminamos uno o varios contenedores por id</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">(El id lo podemos conocer cuando listamos los contenedores, es la primera columna)</span>
@@ -907,8 +897,8 @@ docker container prune --filter <span style="color: #2d9574;">"until=12h"</span>
 </div>
 </div>
 </li>
-<li><a id="org3068d36"></a>Referencias<br>
-<div class="outline-text-5" id="text-1-3-6-2">
+<li><a id="org0eec170"></a>Referencias Web - Extraoficiales<br>
+<div class="outline-text-5" id="text-1-3-7-2">
 <ol class="org-ol">
 <li><a href="https://phoenixnap.com/kb/remove-docker-images-containers-networks-volumes">Remove Docker images containers networks volumes - phoenix.com</a></li>
 </ol>
@@ -916,16 +906,16 @@ docker container prune --filter <span style="color: #2d9574;">"until=12h"</span>
 </li>
 </ol>
 </div>
-<div id="outline-container-orgc917fb0" class="outline-4">
-<h4 id="orgc917fb0"><span class="section-number-4">1.3.7</span> Eliminar multiples imagenes</h4>
-<div class="outline-text-4" id="text-1-3-7">
+<div id="outline-container-org4da6f51" class="outline-4">
+<h4 id="org4da6f51"><span class="section-number-4">1.3.8.</span> Eliminar multiples imagenes</h4>
+<div class="outline-text-4" id="text-1-3-8">
 <p>
 Recordemos que para eliminar contenedores usamos el comando <b>rm</b>
 mientras que para remover imagenes es <b>rmi</b>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="orgae05f06"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">listamos las imagenes para revisar el ID</span>
+<pre class="src src-sh" id="org51dab9f"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">listamos las imagenes para revisar el ID</span>
 docker images ls
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">suponiendo que son varias imagenes se pueden agrupar en una linea</span>
 docker rmi a23bb4013216 a341b4013200 a24bb422226
@@ -933,11 +923,11 @@ docker rmi a23bb4013216 a341b4013200 a24bb422226
 </div>
 </div>
 </div>
-<div id="outline-container-org343e7bf" class="outline-4">
-<h4 id="org343e7bf"><span class="section-number-4">1.3.8</span> Descargar ó Actualizar un Contenedor</h4>
-<div class="outline-text-4" id="text-1-3-8">
+<div id="outline-container-orgee42985" class="outline-4">
+<h4 id="orgee42985"><span class="section-number-4">1.3.9.</span> Descargar ó Actualizar un Contenedor</h4>
+<div class="outline-text-4" id="text-1-3-9">
 <div class="org-src-container">
-<pre class="src src-sh" id="org0d41152"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para descargar una imagen ó actualizar un container local ya existente</span>
+<pre class="src src-sh" id="orgd895dc3"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para descargar una imagen ó actualizar un container local ya existente</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">el uso de tag es opcional</span>
 docker pull nombreAlgunContainer:tag
 
@@ -955,11 +945,11 @@ docker pull debian:buster <span style="color: #2aa1ae; background-color: #292e34
 </div>
 </div>
 </div>
-<div id="outline-container-orgf908ec0" class="outline-4">
-<h4 id="orgf908ec0"><span class="section-number-4">1.3.9</span> Listar contenedores en ejecución e inactivos</h4>
-<div class="outline-text-4" id="text-1-3-9">
+<div id="outline-container-org1e2d584" class="outline-4">
+<h4 id="org1e2d584"><span class="section-number-4">1.3.10.</span> Listar contenedores en ejecución e inactivos</h4>
+<div class="outline-text-4" id="text-1-3-10">
 <div class="org-src-container">
-<pre class="src src-sh" id="org00770b3"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">listar containers en ejecución</span>
+<pre class="src src-sh" id="orgdcc054a"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">listar containers en ejecución</span>
 docker ps
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-l se refiere a "list"</span>
 docker ps -l <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">tiene el mismo resultado que no pasarle el parámetro -l</span>
@@ -971,19 +961,19 @@ docker ps -a
 </div>
 </div>
 </div>
-<div id="outline-container-org8b91710" class="outline-4">
-<h4 id="org8b91710"><span class="section-number-4">1.3.10</span> Acceder ó Iniciar/Detener ejecución de contenedores</h4>
-<div class="outline-text-4" id="text-1-3-10">
+<div id="outline-container-org0f60065" class="outline-4">
+<h4 id="org0f60065"><span class="section-number-4">1.3.11.</span> Acceder ó Iniciar/Detener ejecución de contenedores</h4>
+<div class="outline-text-4" id="text-1-3-11">
 </div>
 <ol class="org-ol">
-<li><a id="org39a5a3a"></a>Conceptos<br>
-<div class="outline-text-5" id="text-1-3-10-1">
+<li><a id="orgd423654"></a>Conceptos<br>
+<div class="outline-text-5" id="text-1-3-11-1">
 <ul class="org-ul">
-<li>Iniciamos el contenedor ejecutando en la terminal <b>docker start</b></li>
-<li>Detenemos la ejecución con <b>docker stop</b></li>
+<li>Iniciamos el contenedor ejecutando en la terminal <code>docker start</code></li>
+<li>Detenemos la ejecución con <code>docker stop</code></li>
 </ul>
 
-<pre class="example" id="docker-ejemplo1-iniciar-contenedor">Si al crear el contenedor mediante *docker run*
+<pre class="example" id="orge8224c1">Si al crear el contenedor mediante *docker run*
 no le pasamos el parámetro -it, entonces no podremos acceder por terminal
 mediante este otro comando *docker exec -it IDdeAlgunContenedor bash*
 
@@ -992,7 +982,7 @@ si no le decimos que lo haga con el modo interactivo mediante una pseudoterminal
 tampoco lo hará cuando se lo pasemos al comando *exec*
 </pre>
 
-<pre class="example" id="docker-ejemplo2-iniciar-contenedor">Usando de referencia el ejemplo1, una vez que salgamos del modo interactivo con la pseudoterminal
+<pre class="example" id="org0e1c25d">Usando de referencia el ejemplo1, una vez que salgamos del modo interactivo con la pseudoterminal
 el contenedor se detendrá, y deberemos de iniciarlo nuevamente. 
 
 Si no queremos estar iniciando a cada rato el contenedor
@@ -1004,7 +994,7 @@ esto es solo a modo de aclaración, de que se detendrá el contenedor una vez qu
 </pre>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="orgcd6b728"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">iniciar un container</span>
+<pre class="src src-sh" id="orgbbdc6fb"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">iniciar un container</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">se le puede pasar el nombre, o el ID</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">docker start nombreContainer</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">docker start idContainer</span>
@@ -1030,23 +1020,23 @@ docker exec -it ubuntu bin/bash
 </li>
 </ol>
 </div>
-<div id="outline-container-orgaa3c2fc" class="outline-4">
-<h4 id="orgaa3c2fc"><span class="section-number-4">1.3.11</span> Versionar containers</h4>
-<div class="outline-text-4" id="text-1-3-11">
+<div id="outline-container-org4be0f0c" class="outline-4">
+<h4 id="org4be0f0c"><span class="section-number-4">1.3.12.</span> Versionar containers</h4>
+<div class="outline-text-4" id="text-1-3-12">
 </div>
 <ol class="org-ol">
-<li><a id="org829cc3f"></a>Conceptos<br>
-<div class="outline-text-5" id="text-1-3-11-1">
+<li><a id="orgdfec194"></a>Conceptos<br>
+<div class="outline-text-5" id="text-1-3-12-1">
 <p>
 Suponiendo que ya habiamos creado en la página de <b>dockerhub</b> un repositorio llamado <b>distroalpine</b>
 podemos realizar los ejemplos de crear tag, o subir los cambios.
 </p>
 </div>
 </li>
-<li><a id="org20d5db8"></a>Crear un tag a nuestro container local<br>
-<div class="outline-text-5" id="text-1-3-11-2">
+<li><a id="orgdca4cad"></a>Crear un tag a nuestro container local<br>
+<div class="outline-text-5" id="text-1-3-12-2">
 <div class="org-src-container">
-<pre class="src src-sh" id="org325b58b">docker tag a24bb4013296 neverkas/distroalpine:3.12
+<pre class="src src-sh" id="org1c485db">docker tag a24bb4013296 neverkas/distroalpine:3.12
 
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">los datos que aparecen son</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- usuario (dueño) del repositorio: neverkas</span>
@@ -1056,51 +1046,49 @@ podemos realizar los ejemplos de crear tag, o subir los cambios.
 </div>
 </div>
 </li>
-<li><a id="orgc5e0255"></a>Subir los cambios<br>
-<div class="outline-text-5" id="text-1-3-11-3">
+<li><a id="orgeb38244"></a>Subir los cambios<br>
+<div class="outline-text-5" id="text-1-3-12-3">
 <div class="org-src-container">
-<pre class="src src-sh" id="org9ab49d9">docker push neverkas/distroalpine:3.12
+<pre class="src src-sh" id="orgbb78ff5">  docker push neverkas/distroalpine:3.12
 
-<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">los datos que aparecen son</span>
-<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- usuario (dueño) del repositorio: neverkas</span>
-<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- nombre del repositorio: distroalpine</span>
-<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- tag (version en este caso): 3.12</span>
-</pre>
-</div>
+  <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">los datos que aparecen son</span>
+  <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- usuario (dueño) del repositorio: neverkas</span>
+  <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- nombre del repositorio: distroalpine</span>
+  <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">- tag (version en este caso): 3.12</span>
 
-<p>
 docker tag local-image:tagname new-repo:tagname
 docker push new-repo:tagname
-</p>
+</pre>
+</div>
 </div>
 </li>
 </ol>
 </div>
-<div id="outline-container-org3e7f444" class="outline-4">
-<h4 id="org3e7f444"><span class="section-number-4">1.3.12</span> Abrir Puertos</h4>
-<div class="outline-text-4" id="text-1-3-12">
+<div id="outline-container-org8017249" class="outline-4">
+<h4 id="org8017249"><span class="section-number-4">1.3.13.</span> Abrir Puertos</h4>
+<div class="outline-text-4" id="text-1-3-13">
 <p>
-Usamos el parámetro -p
+Usamos el parámetro <code>-p</code>
 </p>
 </div>
 </div>
-<div id="outline-container-org56bb338" class="outline-4">
-<h4 id="org56bb338"><span class="section-number-4">1.3.13</span> Referencias Web</h4>
-<div class="outline-text-4" id="text-1-3-13">
+<div id="outline-container-org69166b6" class="outline-4">
+<h4 id="org69166b6"><span class="section-number-4">1.3.14.</span> Referencias Web Extraoficiales</h4>
+<div class="outline-text-4" id="text-1-3-14">
 <ol class="org-ol">
 <li><a href="https://es.linux-console.net/?p=1181">Contenedor en segundo plano - linux-console.com</a></li>
 </ol>
 </div>
 </div>
 </div>
-<div id="outline-container-orgbd32182" class="outline-3">
-<h3 id="orgbd32182"><span class="section-number-3">1.4</span> Estados</h3>
+<div id="outline-container-org371086b" class="outline-3">
+<h3 id="org371086b"><span class="section-number-3">1.4.</span> Estados</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 Los estados que puede tener un contenedor son dos <b>exited</b> (inactivo) ó <b>up</b> (en ejecución)
 </p>
 
-<table id="org03714ea" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orgdd10d0d" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -1128,23 +1116,23 @@ Los estados que puede tener un contenedor son dos <b>exited</b> (inactivo) ó <b
 </table>
 </div>
 </div>
-<div id="outline-container-org9369a32" class="outline-3">
-<h3 id="org9369a32"><span class="section-number-3">1.5</span> Configurando Puertos</h3>
+<div id="outline-container-org1ef6190" class="outline-3">
+<h3 id="org1ef6190"><span class="section-number-3">1.5.</span> Configurando Puertos</h3>
 </div>
-<div id="outline-container-orgb99aecf" class="outline-3">
-<h3 id="orgb99aecf"><span class="section-number-3">1.6</span> Configurando Volumenes</h3>
+<div id="outline-container-orgcc4c4d9" class="outline-3">
+<h3 id="orgcc4c4d9"><span class="section-number-3">1.6.</span> Configurando Volumenes</h3>
 <div class="outline-text-3" id="text-1-6">
 </div>
-<div id="outline-container-orgf9b27dd" class="outline-4">
-<h4 id="orgf9b27dd"><span class="section-number-4">1.6.1</span> Conceptos</h4>
+<div id="outline-container-orgb3ff470" class="outline-4">
+<h4 id="orgb3ff470"><span class="section-number-4">1.6.1.</span> Conceptos</h4>
 <div class="outline-text-4" id="text-1-6-1">
 <p>
-Los volumenes por defecto se crean en la ruta /var/lib/docker/volumes
+Los <b>volumenes</b> por defecto se crean en la ruta /var/lib/docker/volumes
 </p>
 </div>
 </div>
-<div id="outline-container-orge251490" class="outline-4">
-<h4 id="orge251490"><span class="section-number-4">1.6.2</span> Ejemplos</h4>
+<div id="outline-container-orged0fd80" class="outline-4">
+<h4 id="orged0fd80"><span class="section-number-4">1.6.2.</span> Ejemplos</h4>
 <div class="outline-text-4" id="text-1-6-2">
 <div class="org-src-container">
 <pre class="src src-sh"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">creamos un nuevo volumen</span>
@@ -1155,21 +1143,21 @@ docker run -it -v /datos:/www/ --name mi-server alpine:latest sh
 </div>
 </div>
 </div>
-<div id="outline-container-org0644e05" class="outline-4">
-<h4 id="org0644e05"><span class="section-number-4">1.6.3</span> Referencias Youtube</h4>
+<div id="outline-container-org6ef4c8f" class="outline-4">
+<h4 id="org6ef4c8f"><span class="section-number-4">1.6.3.</span> Referencias Youtube</h4>
 <div class="outline-text-4" id="text-1-6-3">
 <ol class="org-ol">
-<li><a href="https://www.youtube.com/watch?v=GfL_Ltu-eyw">https://www.youtube.com/watch?v=GfL_Ltu-eyw</a></li>
+<li><a href="https://www.youtube.com/watch?v=GfL_Ltu-eyw">Referencia #1</a></li>
 </ol>
 </div>
 </div>
 </div>
-<div id="outline-container-org73577cc" class="outline-3">
-<h3 id="org73577cc"><span class="section-number-3">1.7</span> Probando Distribuciones Linux</h3>
+<div id="outline-container-org8a8db60" class="outline-3">
+<h3 id="org8a8db60"><span class="section-number-3">1.7.</span> Probando Distribuciones Linux</h3>
 <div class="outline-text-3" id="text-1-7">
 </div>
-<div id="outline-container-orgfcba308" class="outline-4">
-<h4 id="orgfcba308"><span class="section-number-4">1.7.1</span> Probando Alpine Edge</h4>
+<div id="outline-container-orgbbc5884" class="outline-4">
+<h4 id="orgbbc5884"><span class="section-number-4">1.7.1.</span> Probando Alpine Edge</h4>
 <div class="outline-text-4" id="text-1-7-1">
 <div class="org-src-container">
 <pre class="src src-sh"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">https://www.emacswiki.org/emacs/Evil</span>
@@ -1212,8 +1200,8 @@ Agregar lo sig al ~/.emacs para activar el vim mod y el theme dark dracula
 </div>
 </div>
 </div>
-<div id="outline-container-org0d4c40f" class="outline-4">
-<h4 id="org0d4c40f"><span class="section-number-4">1.7.2</span> Probando Debian Buster</h4>
+<div id="outline-container-org0de71cb" class="outline-4">
+<h4 id="org0de71cb"><span class="section-number-4">1.7.2.</span> Probando Debian Buster</h4>
 <div class="outline-text-4" id="text-1-7-2">
 <div class="org-src-container">
 <pre class="src src-sh"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">1. Descargamos el OS Debian</span>
@@ -1231,8 +1219,8 @@ docker run -it debian:buster /bin/bash
 </div>
 </div>
 </div>
-<div id="outline-container-org2c48c4b" class="outline-4">
-<h4 id="org2c48c4b"><span class="section-number-4">1.7.3</span> Probando Ubuntu Trusty</h4>
+<div id="outline-container-org7f20519" class="outline-4">
+<h4 id="org7f20519"><span class="section-number-4">1.7.3.</span> Probando Ubuntu Trusty</h4>
 <div class="outline-text-4" id="text-1-7-3">
 <div class="org-src-container">
 <pre class="src src-sh"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">entramos a la terminal (se creará un nuevo contenedor "distinto" cada vez que ejecutamos este comando)</span>
@@ -1297,14 +1285,14 @@ docker exec -it test1 /bin/bash
 </div>
 </div>
 </div>
-<div id="outline-container-orgc28c195" class="outline-4">
-<h4 id="orgc28c195"><span class="section-number-4">1.7.4</span> Ubuntu</h4>
+<div id="outline-container-org9f291ff" class="outline-4">
+<h4 id="org9f291ff"><span class="section-number-4">1.7.4.</span> Ubuntu</h4>
 <div class="outline-text-4" id="text-1-7-4">
 <p>
 Cada versión de la distribución lleva un nombre distinto
 </p>
 
-<table id="org108c467" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org3e8f154" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -1347,15 +1335,15 @@ Cada versión de la distribución lleva un nombre distinto
 </div>
 </div>
 </div>
-<div id="outline-container-org16c7d13" class="outline-3">
-<h3 id="org16c7d13"><span class="section-number-3">1.8</span> Configurando Redes Docker</h3>
+<div id="outline-container-org9b432a8" class="outline-3">
+<h3 id="org9b432a8"><span class="section-number-3">1.8.</span> Configurando Redes Docker</h3>
 <div class="outline-text-3" id="text-1-8">
 </div>
-<div id="outline-container-orgce3004f" class="outline-4">
-<h4 id="orgce3004f"><span class="section-number-4">1.8.1</span> Conceptos</h4>
+<div id="outline-container-orgef7b8e2" class="outline-4">
+<h4 id="orgef7b8e2"><span class="section-number-4">1.8.1.</span> Conceptos</h4>
 </div>
-<div id="outline-container-org74a8ead" class="outline-4">
-<h4 id="org74a8ead"><span class="section-number-4">1.8.2</span> Crear Red</h4>
+<div id="outline-container-orgef4af8a" class="outline-4">
+<h4 id="orgef4af8a"><span class="section-number-4">1.8.2.</span> Crear Red</h4>
 <div class="outline-text-4" id="text-1-8-2">
 <div class="org-src-container">
 <pre class="src src-sh">docker network create mi-red
@@ -1369,12 +1357,12 @@ docker inspect mi-red &gt; mi-red.txt
 </div>
 </div>
 </div>
-<div id="outline-container-org85a78fa" class="outline-4">
-<h4 id="org85a78fa"><span class="section-number-4">1.8.3</span> Referencias</h4>
+<div id="outline-container-org2f793b6" class="outline-4">
+<h4 id="org2f793b6"><span class="section-number-4">1.8.3.</span> Referencias</h4>
 </div>
 </div>
-<div id="outline-container-org6ebd409" class="outline-3">
-<h3 id="org6ebd409"><span class="section-number-3">1.9</span> Ejemplos</h3>
+<div id="outline-container-orgbd1adf0" class="outline-3">
+<h3 id="orgbd1adf0"><span class="section-number-3">1.9.</span> Ejemplos</h3>
 <div class="outline-text-3" id="text-1-9">
 <div class="org-src-container">
 <pre class="src src-sh"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Creamos una red para conectar el contenedor</span>
@@ -1423,14 +1411,14 @@ alpine:edge
 </blockquote>
 </div>
 </div>
-<div id="outline-container-orgb2e7de8" class="outline-3">
-<h3 id="orgb2e7de8"><span class="section-number-3">1.10</span> Referencias</h3>
+<div id="outline-container-org723eb1f" class="outline-3">
+<h3 id="org723eb1f"><span class="section-number-3">1.10.</span> Referencias</h3>
 <div class="outline-text-3" id="text-1-10">
 </div>
-<div id="outline-container-org0795692" class="outline-4">
-<h4 id="org0795692"><span class="section-number-4">1.10.1</span> Referencias Web Extraoficiales</h4>
+<div id="outline-container-org0d1443b" class="outline-4">
+<h4 id="org0d1443b"><span class="section-number-4">1.10.1.</span> Referencias Web Extraoficiales</h4>
 <div class="outline-text-4" id="text-1-10-1">
-<ul class="org-ul">
+<ol class="org-ol">
 <li><a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/">Best practices for writing Dockerfiles - docs.docker.com</a></li>
 <li><a href="https://docs.docker.com/engine/reference/commandline/container_prune/">https://docs.docker.com/engine/reference/commandline/container_prune/</a></li>
 <li><a href="https://github.com/rocker-org/rocker/wiki/How-to-save-data">How to save data - github.com/rocker-org</a></li>
@@ -1439,47 +1427,52 @@ alpine:edge
 <li><a href="https://colorfield.be/blog/cleaning-lando-containers">Cleaning up containers - colorfield.de</a></li>
 <li><a href="https://blog.hipolabs.com/understanding-docker-without-losing-your-shit-cf2b30307c63">Understanding Docker - Blog hipolabs</a></li>
 <li><a href="https://docs.docker.com/engine/reference/commandline/commit/">Docker commit - Docker.com</a></li>
-
-<li><a href="https://stackoverflow.com/questions/21871479/docker-cant-connect-to-docker-daemon">https://stackoverflow.com/questions/21871479/docker-cant-connect-to-docker-daemon</a></li>
-<li><a href="https://www.digitalocean.com/community/questions/how-to-fix-docker-got-permission-denied-while-trying-to-connect-to-the-docker-daemon-socket">https://www.digitalocean.com/community/questions/how-to-fix-docker-got-permission-denied-while-trying-to-connect-to-the-docker-daemon-socket</a></li>
-<li><a href="https://manjaro.site/how-to-install-docker-on-manjaro-18-0/">https://manjaro.site/how-to-install-docker-on-manjaro-18-0/</a></li>
-</ul>
+</ol>
 </div>
 </div>
-<div id="outline-container-orgfc9fa14" class="outline-4">
-<h4 id="orgfc9fa14"><span class="section-number-4">1.10.2</span> Referencias Youtube</h4>
+<div id="outline-container-org1c3378f" class="outline-4">
+<h4 id="org1c3378f"><span class="section-number-4">1.10.2.</span> Referencias Issues</h4>
 <div class="outline-text-4" id="text-1-10-2">
+<ol class="org-ol">
+<li><a href="https://stackoverflow.com/questions/21871479/docker-cant-connect-to-docker-daemon">Docker Can't connect to docker daemon - Stackoverflow.com</a></li>
+<li><a href="https://www.digitalocean.com/community/questions/how-to-fix-docker-got-permission-denied-while-trying-to-connect-to-the-docker-daemon-socket">Permission denied while trying to connect to Docker Daemon - Digitalocean.com</a></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org9b8ab44" class="outline-4">
+<h4 id="org9b8ab44"><span class="section-number-4">1.10.3.</span> Referencias Youtube</h4>
+<div class="outline-text-4" id="text-1-10-3">
 <ol class="org-ol">
 <li><a href="https://www.youtube.com/watch?v=r6bxsuDq6wY&amp;list=PLmBbXLdrZ-O3B3rsLOVHufTL_wmickgLf&amp;ab_channel=ServersforHackers">Playlist #1</a></li>
 <li><a href="https://www.youtube.com/watch?v=jjuIEHhXX7k&amp;list=PLmBbXLdrZ-O0GxzRkPdY6zUe9XRYNt38A&amp;ab_channel=ServersforHackers">Playlist #2</a></li>
-<li><a href="https://www.youtube.com/watch?v=PbiYll21Jxg&amp;list=PLZdsdjcJ44WU_cY2Y1LFLnmsSjFD5BZLZ">Playlist - DOcker container course (el mejor por ahora)</a></li>
-<li><a href="https://www.youtube.com/watch?v=vjnOIE-CwMU&amp;list=PLqRCtm0kbeHAep1hc7yW-EZQoAJqSTgD-&amp;index=2">Video - DOcker - primeros pasos</a></li>
+<li><a href="https://www.youtube.com/watch?v=PbiYll21Jxg&amp;list=PLZdsdjcJ44WU_cY2Y1LFLnmsSjFD5BZLZ">Playlist - Docker container course (el mejor por ahora)</a></li>
+<li><a href="https://www.youtube.com/watch?v=vjnOIE-CwMU&amp;list=PLqRCtm0kbeHAep1hc7yW-EZQoAJqSTgD-&amp;index=2">Video - Docker - primeros pasos</a></li>
 <li><a href="https://www.youtube.com/watch?v=6idFknRIOp4&amp;t=201s">Video - Aprender docker en 14min</a></li>
 </ol>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org45fb488" class="outline-2">
-<h2 id="org45fb488"><span class="section-number-2">2</span> Dockerfile</h2>
+<div id="outline-container-org372018c" class="outline-2">
+<h2 id="org372018c"><span class="section-number-2">2.</span> Dockerfile</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org40f6e62" class="outline-3">
-<h3 id="org40f6e62"><span class="section-number-3">2.1</span> Conceptos</h3>
+<div id="outline-container-org1ddf6c6" class="outline-3">
+<h3 id="org1ddf6c6"><span class="section-number-3">2.1.</span> Conceptos</h3>
 </div>
-<div id="outline-container-orgc973437" class="outline-3">
-<h3 id="orgc973437"><span class="section-number-3">2.2</span> Comandos básicos</h3>
+<div id="outline-container-orgd2f6f50" class="outline-3">
+<h3 id="orgd2f6f50"><span class="section-number-3">2.2.</span> Comandos básicos</h3>
 <div class="outline-text-3" id="text-2-2">
 </div>
-<div id="outline-container-orgc8f7de8" class="outline-4">
-<h4 id="orgc8f7de8"><span class="section-number-4">2.2.1</span> (BUILD) Crear Imagen</h4>
+<div id="outline-container-orga661aa3" class="outline-4">
+<h4 id="orga661aa3"><span class="section-number-4">2.2.1.</span> (BUILD) Crear Imagen</h4>
 <div class="outline-text-4" id="text-2-2-1">
 <p>
 La idea del dockerfile es crear imagenes, para luego crear contenedores
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="org71fea7d"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">usamos el comando build</span>
+<pre class="src src-sh" id="org0dcb8d8"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">usamos el comando build</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">seguido del parámetro -t</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">seguido de la imagen y un tag que especifique la versión (opcional)</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">por último la ruta donde está el Dockerfile, si se deja el punto se refiere a la ruta actual</span>
@@ -1488,8 +1481,8 @@ docker build -t nombreImagen:algunTag .
 </div>
 </div>
 </div>
-<div id="outline-container-org0a6603c" class="outline-4">
-<h4 id="org0a6603c"><span class="section-number-4">2.2.2</span> (COPY) Copiar archivos</h4>
+<div id="outline-container-orga76df77" class="outline-4">
+<h4 id="orga76df77"><span class="section-number-4">2.2.2.</span> (COPY) Copiar archivos</h4>
 <div class="outline-text-4" id="text-2-2-2">
 <ul class="org-ul">
 <li>A diferencia del comando <b>ADD</b> no descomprime los archivos (Ej. .jar, .gz,..) que quizás no es la intención,</li>
@@ -1499,7 +1492,7 @@ y los mueve a la ruta destino.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="orga0a2d75">FROM debian
+<pre class="src src-sh" id="org0a1292a">FROM debian
 
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">resources/app.jar es una ruta que pertenece al host, son los archivos y directorios que queremos copiar</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">/app es una ruta que está dentro del contenedor de docker, es donde se copiarán los archivos</span>
@@ -1512,8 +1505,8 @@ CMD <span style="color: #4f97d7;">[</span><span style="color: #2d9574;">"java"</
 </div>
 </div>
 </div>
-<div id="outline-container-org4ee024f" class="outline-4">
-<h4 id="org4ee024f"><span class="section-number-4">2.2.3</span> (ADD) Descargar y Descomprimir archivos</h4>
+<div id="outline-container-org61585b1" class="outline-4">
+<h4 id="org61585b1"><span class="section-number-4">2.2.3.</span> (ADD) Descargar y Descomprimir archivos</h4>
 <div class="outline-text-4" id="text-2-2-3">
 <ul class="org-ul">
 <li>Puede descargar archivos de url de internet y agregarlos a una ruta del contenedor</li>
@@ -1521,7 +1514,7 @@ CMD <span style="color: #4f97d7;">[</span><span style="color: #2d9574;">"java"</
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="org7f983b7">FROM alpine:edge
+<pre class="src src-sh" id="org740cd09">FROM alpine:edge
 
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">ADD rutaDelHost rutaEnElDocker</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">1. La primera ruta puede ser de un archivo, o directorio del Host,</span>
@@ -1532,22 +1525,22 @@ ADD php-conf.conf /etc/php/7.2/php-conf.conf
 </pre>
 </div>
 
-<pre class="example">Una breve explicación del código anterior
+<pre class="example" id="org4c56784">Una breve explicación del código anterior
 
 1. El primer parámetro de ADD es la ruta origen del HOST, es decir el ordendor donde ejecutamos nuestro docker
 2. El segundo parámetro es la ruta destino al Contenedor, donde se agregarán los directorios/archivos
 </pre>
 </div>
 </div>
-<div id="outline-container-org2d21ff8" class="outline-4">
-<h4 id="org2d21ff8"><span class="section-number-4">2.2.4</span> (ENTRYPOINT) Pasar scripts por parámetro</h4>
+<div id="outline-container-org4688a30" class="outline-4">
+<h4 id="org4688a30"><span class="section-number-4">2.2.4.</span> (ENTRYPOINT) Pasar scripts por parámetro</h4>
 <div class="outline-text-4" id="text-2-2-4">
 <ul class="org-ul">
 <li>Podemos ejecutar scripts que ejecuten comandos de configuración (Ej. apache, php, …)</li>
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="orge703a54">FROM alpine:edge
+<pre class="src src-sh" id="org8589926">FROM alpine:edge
 
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">no es necesario especificar la extensión .sh</span>
 ENTRYPOINT <span style="color: #4f97d7;">[</span><span style="color: #2d9574;">"start-container"</span><span style="color: #4f97d7;">]</span>
@@ -1555,7 +1548,7 @@ ENTRYPOINT <span style="color: #4f97d7;">[</span><span style="color: #2d9574;">"
 </div>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="orgca2ceb2"><span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">!/usr/bin/</span><span style="color: #4f97d7; font-weight: bold;">env</span><span style="color: #2aa1ae; background-color: #292e34;"> bash</span>
+<pre class="src src-sh" id="org27317df"><span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">!/usr/bin/</span><span style="color: #4f97d7; font-weight: bold;">env</span><span style="color: #2aa1ae; background-color: #292e34;"> bash</span>
 
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">este script será ejecutado por la linea ENTRYPOINT en el Dockerfile</span>
 
@@ -1570,8 +1563,8 @@ chmod -R ugo+rw ./composer
 </div>
 </div>
 </div>
-<div id="outline-container-org31df005" class="outline-4">
-<h4 id="org31df005"><span class="section-number-4">2.2.5</span> (CMD) Comandos por defecto</h4>
+<div id="outline-container-org10061df" class="outline-4">
+<h4 id="org10061df"><span class="section-number-4">2.2.5.</span> (CMD) Comandos por defecto</h4>
 <div class="outline-text-4" id="text-2-2-5">
 <ul class="org-ul">
 <li>Se ejecuta mientras corre el contenedor</li>
@@ -1583,7 +1576,7 @@ chmod -R ugo+rw ./composer
 El siguiente sería un archivo Dockerfile con las configuraciones
 </p>
 <div class="org-src-container">
-<pre class="src src-sh" id="orgc349822">FROM alpine:edge
+<pre class="src src-sh" id="orgb66ad16">FROM alpine:edge
 
 CMD echo <span style="color: #2d9574;">"Hola"</span>
 <span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">CMD ["/bin/echo", "hola"]</span>
@@ -1595,7 +1588,7 @@ CMD echo <span style="color: #2d9574;">"Hola"</span>
 Y luego desde la terminal podemos ejecutar los siguientes comandos
 </p>
 <div class="org-src-container">
-<pre class="src src-sh" id="orgd6a7a41"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para crear la imagen</span>
+<pre class="src src-sh" id="org443e36d"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para crear la imagen</span>
 docker build -t miservidor .
 
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">para correr el contenedor en base a la imagen creada</span>
@@ -1604,11 +1597,10 @@ docker run -it miservidor
 </div>
 </div>
 </div>
-<div id="outline-container-orgaa201f0" class="outline-4">
-<h4 id="orgaa201f0"><span class="section-number-4">2.2.6</span> (RUN) Ejecutar comandos</h4>
+<div id="outline-container-orgb1dbeec" class="outline-4">
+<h4 id="orgb1dbeec"><span class="section-number-4">2.2.6.</span> (RUN) Ejecutar comandos</h4>
 <div class="outline-text-4" id="text-2-2-6">
 <ul class="org-ul">
-<li>Por cada linea que repitamos RUN, se creará una capa de..?</li>
 <li>Para escribir varios comandos en una capa, utiliza el slash invertido</li>
 </ul>
 
@@ -1634,8 +1626,8 @@ RUN apk add --force emacs
 </div>
 </div>
 </div>
-<div id="outline-container-orgd7d24e6" class="outline-3">
-<h3 id="orgd7d24e6"><span class="section-number-3">2.3</span> Ejemplos</h3>
+<div id="outline-container-orge7188c1" class="outline-3">
+<h3 id="orge7188c1"><span class="section-number-3">2.3.</span> Ejemplos</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 Cada linea del Dockerfile es <b>cacheada</b> en memoria, por lo que si en una linea decimos que
@@ -1652,7 +1644,7 @@ es posible que no se ejecute esta segunda
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="org1df5ce4">FROM ubuntu:trusty
+<pre class="src src-sh" id="orgf51a0cf">FROM ubuntu:trusty
 
 MANTAINER jelou
 
@@ -1670,12 +1662,12 @@ CMD <span style="color: #4f97d7;">[</span><span style="color: #2d9574;">"Hola"</
 </div>
 </div>
 </div>
-<div id="outline-container-orga49b0c9" class="outline-2">
-<h2 id="orga49b0c9"><span class="section-number-2">3</span> Docker Compose</h2>
+<div id="outline-container-org52bb493" class="outline-2">
+<h2 id="org52bb493"><span class="section-number-2">3.</span> Docker Compose</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-orgee40442" class="outline-3">
-<h3 id="orgee40442"><span class="section-number-3">3.1</span> Conceptos</h3>
+<div id="outline-container-org7030f36" class="outline-3">
+<h3 id="org7030f36"><span class="section-number-3">3.1.</span> Conceptos</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li>Manejar varios contenedores en un archivo</li>
@@ -1683,19 +1675,23 @@ CMD <span style="color: #4f97d7;">[</span><span style="color: #2d9574;">"Hola"</
 </ul>
 </div>
 </div>
-<div id="outline-container-org408cfe1" class="outline-3">
-<h3 id="org408cfe1"><span class="section-number-3">3.2</span> Instalación y Configuración</h3>
+<div id="outline-container-org9977f85" class="outline-3">
+<h3 id="org9977f85"><span class="section-number-3">3.2.</span> Instalación y Configuración</h3>
 <div class="outline-text-3" id="text-3-2">
+<blockquote>
 <p>
-<b>Observación</b>:
-En la distribución Manjaro, intenté de instalar con <b>pacman -S docker-compose</b>
+En la distribución Manjaro, intenté de instalar con <code>pacman -S docker-compose</code>
 pero tiraba error por falta de packages. 
-Por tanto decidi realizar la instalación mediante <b>pip install docker-compose</b>
-que tuvo éxito.
 </p>
 
+<p>
+Por tanto decidí realizar la instalación mediante <code>pip install docker-compose</code>
+que tuvo éxito.
+</p>
+</blockquote>
+
 <div class="org-src-container">
-<pre class="src src-yaml" id="org34df830"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">ES IMPORTANTE LA TABULACION, si no crashea</span>
+<pre class="src src-yaml" id="org57433b5"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">ES IMPORTANTE LA TABULACION, si no crashea</span>
 <span style="color: #7590db;">version</span>: <span style="color: #2d9574;">"2.1"</span>
 <span style="color: #7590db;">services</span>:
   <span style="color: #7590db;">irc</span>:
@@ -1726,11 +1722,11 @@ que tuvo éxito.
 </div>
 </div>
 </div>
-<div id="outline-container-org45dcfd1" class="outline-3">
-<h3 id="org45dcfd1"><span class="section-number-3">3.3</span> Comandos Básicos</h3>
+<div id="outline-container-orgca1605b" class="outline-3">
+<h3 id="orgca1605b"><span class="section-number-3">3.3.</span> Comandos Básicos</h3>
 <div class="outline-text-3" id="text-3-3">
 <div class="org-src-container">
-<pre class="src src-sh" id="orgc9d126a"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">corremos el docker-compose.yml de la ruta actual</span>
+<pre class="src src-sh" id="org72d766d"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">corremos el docker-compose.yml de la ruta actual</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">up: crea el contenedor y lo ejecuta</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">-d: lo ejecuta en segundo plano</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">si no usamos -d, no podremos seguir utilizando la sesión de la terminal</span>
@@ -1748,8 +1744,8 @@ docker-composer ps
 </div>
 </div>
 </div>
-<div id="outline-container-orga9b790d" class="outline-3">
-<h3 id="orga9b790d"><span class="section-number-3">3.4</span> Ejemplos</h3>
+<div id="outline-container-orgf20b43c" class="outline-3">
+<h3 id="orgf20b43c"><span class="section-number-3">3.4.</span> Ejemplos</h3>
 <div class="outline-text-3" id="text-3-4">
 <div class="org-src-container">
 <pre class="src src-yaml"><span style="color: #7590db;">version</span>: <span style="color: #2d9574;">"2.1"</span>
@@ -1788,20 +1784,20 @@ docker-composer ps
 </div>
 </div>
 </div>
-<div id="outline-container-org31178e7" class="outline-3">
-<h3 id="org31178e7"><span class="section-number-3">3.5</span> Referencias</h3>
+<div id="outline-container-org3384603" class="outline-3">
+<h3 id="org3384603"><span class="section-number-3">3.5.</span> Referencias</h3>
 <div class="outline-text-3" id="text-3-5">
 </div>
-<div id="outline-container-org9516398" class="outline-4">
-<h4 id="org9516398"><span class="section-number-4">3.5.1</span> Referencias Web Oficiales</h4>
+<div id="outline-container-org34cded0" class="outline-4">
+<h4 id="org34cded0"><span class="section-number-4">3.5.1.</span> Referencias Web Oficiales</h4>
 <div class="outline-text-4" id="text-3-5-1">
 <ol class="org-ol">
 <li><a href="https://docs.docker.com/compose/gettingstarted/">Getting Started - docs.docker.com</a></li>
 </ol>
 </div>
 </div>
-<div id="outline-container-orgf548adc" class="outline-4">
-<h4 id="orgf548adc"><span class="section-number-4">3.5.2</span> Referencias Youtube</h4>
+<div id="outline-container-orgf7f8751" class="outline-4">
+<h4 id="orgf7f8751"><span class="section-number-4">3.5.2.</span> Referencias Youtube</h4>
 <div class="outline-text-4" id="text-3-5-2">
 <ol class="org-ol">
 <li><a href="https://www.youtube.com/watch?v=pxMCpYrnzwM">Todo sobre docker compose - Webinars con Agilia</a></li>
@@ -1809,8 +1805,8 @@ docker-composer ps
 </ol>
 </div>
 </div>
-<div id="outline-container-org5cc4d8d" class="outline-4">
-<h4 id="org5cc4d8d"><span class="section-number-4">3.5.3</span> Issues Comunes</h4>
+<div id="outline-container-org3f1e9e9" class="outline-4">
+<h4 id="org3f1e9e9"><span class="section-number-4">3.5.3.</span> Issues Comunes</h4>
 <div class="outline-text-4" id="text-3-5-3">
 <ol class="org-ol">
 <li><a href="https://stackoverflow.com/questions/36249744/interactive-shell-using-docker-compose">Interactive Shell - stackoverflow.com</a></li>
@@ -1819,20 +1815,20 @@ docker-composer ps
 </div>
 </div>
 </div>
-<div id="outline-container-org4bc7315" class="outline-2">
-<h2 id="org4bc7315"><span class="section-number-2">4</span> Docker Tips</h2>
+<div id="outline-container-orgb7654c8" class="outline-2">
+<h2 id="orgb7654c8"><span class="section-number-2">4.</span> Docker Tips</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-orga553f2a" class="outline-3">
-<h3 id="orga553f2a"><span class="section-number-3">4.1</span> Ejecutar contenedores al iniciar el sistema</h3>
+<div id="outline-container-orged20ca1" class="outline-3">
+<h3 id="orged20ca1"><span class="section-number-3">4.1.</span> Ejecutar contenedores al iniciar el sistema</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 Si tenemos algún problema en nuestro ordenador (se reinicia, se apaga, cuelga, error, etc..)
-podemos usar el parámetro <b>always</b>
+podemos usar el parámetro <code>always</code>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-yaml" id="orgf1debee"><span style="color: #7590db;">version</span>: <span style="color: #2d9574;">"3.9"</span>
+<pre class="src src-yaml" id="orgeacb32f"><span style="color: #7590db;">version</span>: <span style="color: #2d9574;">"3.9"</span>
 <span style="color: #7590db;">services</span>:
   <span style="color: #7590db;">redis</span>:
     <span style="color: #7590db;">image</span>: redis:alpine
@@ -1846,16 +1842,16 @@ podemos usar el parámetro <b>always</b>
 </div>
 </div>
 </div>
-<div id="outline-container-org280ba7a" class="outline-3">
-<h3 id="org280ba7a"><span class="section-number-3">4.2</span> Conocer el timestamp de los logs</h3>
+<div id="outline-container-org71cbf31" class="outline-3">
+<h3 id="org71cbf31"><span class="section-number-3">4.2.</span> Conocer el timestamp de los logs</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
-Con el comando <b>docker logs nombreContenedor</b> nos muestra un historial de logs del contenedor,
-pero podemos conocer en detalle cuando sucedió utilizando el parámetro <b>t</b>
+Con el comando <code>docker logs nombreContenedor</code> nos muestra un historial de logs del contenedor,
+pero podemos conocer en detalle cuando sucedió utilizando el parámetro <code>t</code>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="orgfb58130">docker logs --tail=<span style="color: #a45bad;">10</span> -t nombreAlgunContenedor
+<pre class="src src-sh" id="org4540e7e">docker logs --tail=<span style="color: #a45bad;">10</span> -t nombreAlgunContenedor
 
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">con --tail=10, indicamos que nos muestre los últimos 10 eventos del historial de logs</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">con -t, indicamos que queremos conocer el timestamp de cada evento sucedido</span>
@@ -1864,32 +1860,32 @@ pero podemos conocer en detalle cuando sucedió utilizando el parámetro <b>t</b
 </div>
 </div>
 </div>
-<div id="outline-container-org4e60a4c" class="outline-2">
-<h2 id="org4e60a4c"><span class="section-number-2">5</span> Servicios Básicos</h2>
+<div id="outline-container-org2d4ac57" class="outline-2">
+<h2 id="org2d4ac57"><span class="section-number-2">5.</span> Servicios Básicos</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-orgebf453f" class="outline-3">
-<h3 id="orgebf453f"><span class="section-number-3">5.1</span> Nginx</h3>
+<div id="outline-container-orgddeca2d" class="outline-3">
+<h3 id="orgddeca2d"><span class="section-number-3">5.1.</span> Nginx</h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
-para servidor http, similar a apache2 pero con menos configuración
+Como servidor http, similar a apache2 pero con menos configuración
 </p>
 </div>
 </div>
-<div id="outline-container-org220d711" class="outline-3">
-<h3 id="org220d711"><span class="section-number-3">5.2</span> Duckdns</h3>
+<div id="outline-container-org8e5bc7e" class="outline-3">
+<h3 id="org8e5bc7e"><span class="section-number-3">5.2.</span> Duckdns</h3>
 <div class="outline-text-3" id="text-5-2">
 </div>
-<div id="outline-container-orgb2fa38a" class="outline-4">
-<h4 id="orgb2fa38a"><span class="section-number-4">5.2.1</span> Conceptos</h4>
+<div id="outline-container-orgeedabef" class="outline-4">
+<h4 id="orgeedabef"><span class="section-number-4">5.2.1.</span> Conceptos</h4>
 <div class="outline-text-4" id="text-5-2-1">
 <ul class="org-ul">
 <li>duckdns para enmascarar por asi decir la ip, como no-ip</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org35fe140" class="outline-4">
-<h4 id="org35fe140"><span class="section-number-4">5.2.2</span> Referencias</h4>
+<div id="outline-container-org95154af" class="outline-4">
+<h4 id="org95154af"><span class="section-number-4">5.2.2.</span> Referencias</h4>
 <div class="outline-text-4" id="text-5-2-2">
 <ul class="org-ul">
 <li><a href="https://www.duckdns.org/">Duckdns - Sitio Oficial</a></li>
@@ -1898,20 +1894,20 @@ para servidor http, similar a apache2 pero con menos configuración
 </div>
 </div>
 </div>
-<div id="outline-container-org465e186" class="outline-3">
-<h3 id="org465e186"><span class="section-number-3">5.3</span> Inspircd</h3>
+<div id="outline-container-org2c64158" class="outline-3">
+<h3 id="org2c64158"><span class="section-number-3">5.3.</span> Inspircd</h3>
 <div class="outline-text-3" id="text-5-3">
 </div>
-<div id="outline-container-orgaf3b49e" class="outline-4">
-<h4 id="orgaf3b49e"><span class="section-number-4">5.3.1</span> Conceptos</h4>
+<div id="outline-container-org4f9f753" class="outline-4">
+<h4 id="org4f9f753"><span class="section-number-4">5.3.1.</span> Conceptos</h4>
 <div class="outline-text-4" id="text-5-3-1">
 <p>
 Para crear un servidor irc
 </p>
 </div>
 </div>
-<div id="outline-container-orgb28ef14" class="outline-4">
-<h4 id="orgb28ef14"><span class="section-number-4">5.3.2</span> Referencias Web Oficiales</h4>
+<div id="outline-container-org06f2976" class="outline-4">
+<h4 id="org06f2976"><span class="section-number-4">5.3.2.</span> Referencias Web Oficiales</h4>
 <div class="outline-text-4" id="text-5-3-2">
 <ol class="org-ol">
 <li><a href="https://github.com/inspircd/inspircd-docker">Inspircd Docker - hub.docker.com</a></li>
@@ -1919,8 +1915,8 @@ Para crear un servidor irc
 </ol>
 </div>
 </div>
-<div id="outline-container-org5cb30f3" class="outline-4">
-<h4 id="org5cb30f3"><span class="section-number-4">5.3.3</span> Referencias Youtube</h4>
+<div id="outline-container-orgecf86aa" class="outline-4">
+<h4 id="orgecf86aa"><span class="section-number-4">5.3.3.</span> Referencias Youtube</h4>
 <div class="outline-text-4" id="text-5-3-3">
 <ol class="org-ol">
 <li><a href="https://www.youtube.com/watch?v=67f9iptWqt0&amp;t=492s">Host a Deep web IRC Server - youtube.com</a></li>
@@ -1929,8 +1925,8 @@ Para crear un servidor irc
 </div>
 </div>
 </div>
-<div id="outline-container-org144395b" class="outline-2">
-<h2 id="org144395b"><span class="section-number-2">6</span> Glosario</h2>
+<div id="outline-container-org6d97046" class="outline-2">
+<h2 id="org6d97046"><span class="section-number-2">6.</span> Glosario</h2>
 <div class="outline-text-2" id="text-6">
 <ol class="org-ol">
 <li>Daemon</li>
@@ -1945,8 +1941,8 @@ Para crear un servidor irc
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: jelou</p>
-<p class="date">Created: 2021-04-04 dom 02:07</p>
-<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+<p class="date">Created: 2021-10-19 mar 03:18</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 
 
