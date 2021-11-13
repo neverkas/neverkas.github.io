@@ -1,0 +1,756 @@
+<!--?xml version="1.0" encoding="utf-8"?--><!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<!-- 2021-11-01 lun 22:04 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guia GIT 3.0</title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="jelou">
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/sass-style.css">
+<script type="text/javascript" src="/assets/js/all.js"></script>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Guia GIT 3.0</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org09661a2">1. Traerse ramas remotas</a></li>
+<li><a href="#org849e751">2. Subir ramas locales</a></li>
+<li><a href="#org109bef1">3. Deshacer cambios confirmados</a>
+<ul>
+<li><a href="#org37783dd">3.1. Deshacer cambios confirmados (borrando historial)</a></li>
+<li><a href="#org2871825">3.2. Deshacer el borrado de historial</a></li>
+<li><a href="#orgd74a29e">3.3. Deshacer cambios confirmados (creando un commit)</a></li>
+</ul>
+</li>
+<li><a href="#org595152a">4. Traerse cambios confirmados de otras ramas</a>
+<ul>
+<li><a href="#org27f99fe">4.1. Git Merge Vs Git Rebase</a></li>
+<li><a href="#orga9564c2">4.2. Conflictos</a>
+<ul>
+<li><a href="#org8bc1aae">4.2.1. Conflictos con Rebase</a></li>
+<li><a href="#orga19665e">4.2.2. Conflictos con Merge</a></li>
+</ul>
+</li>
+<li><a href="#orga578f76">4.3. Traerse cambios confirmados (reescribiendo el historial de commits)</a></li>
+<li><a href="#orge919bc0">4.4. Traerse cambios confirmados (sin alterar el historial de commits)</a></li>
+</ul>
+</li>
+<li><a href="#orgc00210d">5. Alterar historial con GUI de varios commits</a></li>
+<li><a href="#org23f2a00">6. Borrar ramas</a></li>
+<li><a href="#org61813ac">7. Guardar cambios temporalmente</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org09661a2" class="outline-2">
+<h2 id="org09661a2"><span class="section-number-2">1.</span> Traerse ramas remotas</h2>
+<div class="outline-text-2" id="text-1">
+<div class="org-src-container">
+<pre class="src src-shell">git checkout -b nombreRama origin/nombreRama
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org849e751" class="outline-2">
+<h2 id="org849e751"><span class="section-number-2">2.</span> Subir ramas locales</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>El <b>origin</b> hace referencia al <b>repositorio remoto</b> (<i>al que está en internet</i>)</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-shell">git push origin ramaLocal
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org109bef1" class="outline-2">
+<h2 id="org109bef1"><span class="section-number-2">3.</span> Deshacer cambios confirmados</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org37783dd" class="outline-3">
+<h3 id="org37783dd"><span class="section-number-3">3.1.</span> Deshacer cambios confirmados (borrando historial)</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li>Se sugiere sólo usar <code>git reset</code> en ramas locales, para evitar borrar cambios confirmados de otros usuarios en el <b>repositorio remoto</b></li>
+<li>Con <code>git reset</code> nos podemos mover a un <b>commit</b> borrando del <b>historial</b> los <b>cambios confirmados</b></li>
+<li>El <code>HEAD</code> es un puntero que apunta al <b>commit</b> actual en el que estémos trabajando, podemos cambiar su referencia con <code>git checkout hashCommit</code></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">ahora HEAD apunta al último cambio confirmado de la branch "feature/navbar"</span>
+git checkout feature/navbar
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">si queremos volver un cambio atrás</span>
+git reset HEAD^
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">si queremos volver un cambio atrás</span>
+git reset HEAD~1
+
+<span style="color: #2aa1ae; background-color: #292e34;">#######################################</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">si queremos volver tres cambios atrás</span>
+git reset HEAD~3
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">si queremos volver tres cambios atrás</span>
+git reset HEAD^^^
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2871825" class="outline-3">
+<h3 id="org2871825"><span class="section-number-3">3.2.</span> Deshacer el borrado de historial</h3>
+<div class="outline-text-3" id="text-3-2">
+<blockquote>
+<p>
+Si hicimos un <code>git reset</code> por error y queremos volver al estado anterior,
+no podríamos sólo usando <code>git log --oneline -graph</code> porque el historial de commits fue alterado..
+</p>
+
+<p>
+La solución es usar <code>git reflog show nombreRama</code> que muestra un historial de todos los comandos
+(reset, rebase, commit, revert, ..) por tanto podemos elegir el hash del commit previo al <code>git reset</code>
+</p>
+</blockquote>
+
+<pre class="example" id="orgc20838a">Hagamos de ejemplo que estamos desarrollando un navbar para un sitio web,
+en la rama "feature/navbar".. y lo siguiente son cambios confirmados en nuestra rama local
+1. Armamos la estructura del HTML con los respectivos tags
+2. Agregamos estilos css, animaciones con javascript, iconos al html
+
+De repente nuestro jefe ve los últimos cambios, pero no le gustó nada del punto 2,
+entonces debemos volver al punto 1 donde sólo tenemos la estructura html
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Hacemos que HEAD apunte a la branch feature/navbar</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">(apuntará al commit más reciente de esa rama)</span>
+git checkout feature/navbar
+
+git log --oneline
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Historial de commits en feature/navbar previo al "git reset"</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">el puntero HEAD apunta al último commit con hash f373...</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">f37332f (HEAD -&gt; feature/navbar) Agregamos iconos al html del navbar &lt;--- se borrará</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">09912df Agregamos animaciones js al navbar &lt;--- se borrará</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">2c6d3b6 Agregamos estilos css al navbar &lt;--- se borrará</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">43bc73d Agregamos estructura html al navbar</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">e592a66 Creamos navbar</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">a566d68 (origin/master, master) Agregamos contenido al README</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">2175a2d Agregamos README</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;">######################################################################</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Nuestro jefe nos dijo que no le gustó nuestros cambios &gt;:(</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">bueno, empecemos de nuevo.. T_T</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Volvemos 3 commits atrás, estaremos en el commit 43bc..</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">se borrarán del historial los commits f373.., 0991.., 2c6d...</span>
+git reset HEAD~3
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Historial de commits alterado, luego de un "git reset"</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">43bc73d (HEAD -&gt; feature/navbar) Agregamos estructura html al navbar</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">e592a66 Creamos navbar</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">a566d68 (origin/master, master) Agregamos contenido al README</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">2175a2d Agregamos README</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;">###########################################################################</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Ups..! Nuestro jefe se arripintió y nos dice que le gustaba lo que estaba hecho..</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">bueno, volvemos al estado anterior, previo al "git reset HEAD~3"</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Revisamos el historial de comandos de git (reset,rebase,commit,revert,....)</span>
+git reflog show feature/navbar
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">43bc73d (HEAD -&gt; feature/navbar) feature/navbar@{0}: reset: moving to HEAD~3</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">f37332f feature/navbar@{1}: commit: Agregamos iconos al html del navbar &lt;--- acá queremos volver</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">09912df feature/navbar@{2}: commit: Agregamos animaciones js al navbar</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">2c6d3b6 feature/navbar@{3}: commit: Agregamos estilos css al navbar</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">43bc73d (HEAD -&gt; feature/navbar) feature/navbar@{4}: commit: Agregamos estructura html al navbar</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">e592a66 feature/navbar@{5}: commit: Creamos navbar</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">a566d68 (origin/master, master) feature/navbar@{6}: branch: Created from HEAD</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Volvemos al commit f373... que es anterior al "git reset"</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">en vez de poner el hash del commit, usamos nombreRama@{1} para evitar errores de tipeo</span>
+git reset feature/navbar@<span style="color: #4f97d7;">{</span><span style="color: #a45bad;">1</span><span style="color: #4f97d7;">}</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Chequeamos el historial por si acaso, y aparecen nuevamente los commits</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">que estaban perdidos :)</span>
+git log --oneline
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">f37332f (HEAD -&gt; feature/navbar) Agregamos iconos al html del navbar &lt;--- volvió</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">09912df Agregamos animaciones js al navbar &lt;--- volvió</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">2c6d3b6 Agregamos estilos css al navbar &lt;--- volvió</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">43bc73d Agregamos estructura html al navbar</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">e592a66 Creamos navbar</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">a566d68 (origin/master, master) Agregamos contenido al README</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">2175a2d Agregamos README</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd74a29e" class="outline-3">
+<h3 id="orgd74a29e"><span class="section-number-3">3.3.</span> Deshacer cambios confirmados (creando un commit)</h3>
+<div class="outline-text-3" id="text-3-3">
+<ul class="org-ul">
+<li>Con <code>git revert</code> hacemos casi lo mismo que con <code>git reset</code> pero no borra el historial, crea un nuevo <b>commit</b></li>
+<li>Se recomienda usar <code>git revert</code> en <b>ramas remotas</b> porque no borra <b>cambios confirmados</b> de otros usuarios</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">ahora HEAD apunta al último cambio confirmado de la branch "feature/sidebar"</span>
+git checkout feature/sidebar
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">si queremos volver un cambio atrás</span>
+git revert HEAD^
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">si queremos volver un cambio atrás</span>
+git revert HEAD~1
+
+<span style="color: #2aa1ae; background-color: #292e34;">#######################################</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">si queremos volver tres cambios atrás</span>
+git revert HEAD~3
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">si queremos volver tres cambios atrás</span>
+git revert HEAD^^^
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org595152a" class="outline-2">
+<h2 id="org595152a"><span class="section-number-2">4.</span> Traerse cambios confirmados de otras ramas</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org27f99fe" class="outline-3">
+<h3 id="org27f99fe"><span class="section-number-3">4.1.</span> Git Merge Vs Git Rebase</h3>
+<div class="outline-text-3" id="text-4-1">
+<blockquote>
+<p>
+Las diferencias entre traerse los cambios con <code>git merge</code> y <code>git rebase</code>
+es más fácil si lo vemos a partir de una imagen del historial
+</p>
+
+<p>
+Si hubiese algún <b>conflicto</b> al traerse los cambios de otra rama,
+es más seguro si hubiesemos usado <code>git merge</code>.
+Porque luego de resolverlo se genera un nuevo commit con el conflicto resuelto,
+éste nuevo commit queda separado de los otros dos commits que entraron en conflicto.
+</p>
+
+<p>
+Si un tercero dice que el conflicto no se resolvió de manera correcta,
+es fácil volver a un estado anterior, porque tenemos el historial de cambios confirmados :)
+</p>
+
+<hr>
+
+<p>
+Mientras que si hubiesemos usado <code>git rebase</code>,
+luego de resolver el conflicto, éste hubiese pisado el commit donde se resolvió el conflicto
+y veremos en el historial de cambios confirmados, que de los dos commits que entraron en conflicto
+sólo vemos uno de ellos, y el commit del conflicto resuelto :(
+</p>
+
+<p>
+y.. si un tercero dice que el conflicto no se había resuelto de manera correcta..? que hacemos?
+quizás deberiamos usar <code>git reflog</code> para chequear a cual commit volver
+y luego un <code>git revert</code> para volver a un estado anterior del conflicto…
+</p>
+</blockquote>
+
+
+<div id="orgb1878df" class="figure">
+<p><img src="/img/git-merge-vs-rebase.png" alt="git-merge-vs-rebase.png">
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orga9564c2" class="outline-3">
+<h3 id="orga9564c2"><span class="section-number-3">4.2.</span> Conflictos</h3>
+<div class="outline-text-3" id="text-4-2">
+</div>
+<div id="outline-container-org8bc1aae" class="outline-4">
+<h4 id="org8bc1aae"><span class="section-number-4">4.2.1.</span> Conflictos con Rebase</h4>
+<div class="outline-text-4" id="text-4-2-1">
+<div class="org-src-container">
+<pre class="src src-shell">git log --oneline --graph feature/notifications fix/componentes-notifications
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">* 9d15ce9 (HEAD -&gt; feature/notifications) Cambiamos los componentes del template &lt;--- RECORDÁ ESTE HASH</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">| * 15f67c2 (fix/componentes-notifications) Corregimos errores de componentes en el template</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">|/</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">* d0eab85 Nuevos componentes en el template</span>
+
+git rebase fix/componentes-notifications
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Auto-fusionando src/templates/layout.hbs</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">CONFLICTO (contenido): Conflicto de fusión en src/templates/layout.hbs</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">error: no se pudo aplicar 9d15ce9... Cambiamos los componentes del template</span>
+
+git status
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">rebase interactivo en progreso; en 15f67c2</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">El último comando realizado (1 comando realizado):</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">pick 9d15ce9 Cambiamos los componentes del template</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Estás aplicando un rebase de la rama 'feature/notifications' en '15f67c2.</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">corregimos los errores</span>
+vim layout.hbs
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">confirmamos que resolvimos el conflicto</span>
+git add layout.hbs
+git rebase --continue
+
+<span style="color: #2aa1ae; background-color: #292e34;">#################################################################################</span>
+
+git log --oneline --graph feature/notifications fix/componentes-notifications
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">* d97b639 (HEAD -&gt; feature/notifications) Cambiamos los componentes del template &lt;--- REESCRIBIÓ EL HISTORIAL</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">* 15f67c2 (fix/componentes-notifications) Corregimos errores de componentes en el template</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">* d0eab85 Nuevos componentes en el template</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orga19665e" class="outline-4">
+<h4 id="orga19665e"><span class="section-number-4">4.2.2.</span> Conflictos con Merge</h4>
+<div class="outline-text-4" id="text-4-2-2">
+<div class="org-src-container">
+<pre class="src src-shell">git log --oneline --graph --all
+<span style="color: #2aa1ae; background-color: #292e34;">#   </span><span style="color: #2aa1ae; background-color: #292e34;">* b524286 (fix/login) Corregimos errores de login, esto hará pum!</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#   </span><span style="color: #2aa1ae; background-color: #292e34;">| * 8911ee8 (HEAD -&gt; feature/login) Nuevo feature del login</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#   </span><span style="color: #2aa1ae; background-color: #292e34;">| * f3cc3f4 Agregamos cambios al controller</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#   </span><span style="color: #2aa1ae; background-color: #292e34;">|/</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#   </span><span style="color: #2aa1ae; background-color: #292e34;">* c5a59a2 Corregimos errores del login</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#   </span><span style="color: #2aa1ae; background-color: #292e34;">* e213803 Resolvemos bugs del controller del login</span>
+
+git checkout feature/login
+git merge fix/login
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Auto-fusionando src/controllers/ControllerLogin.java</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">CONFLICTO (contenido): Conflicto de fusión en src/controllers/ControllerLogin.java</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Fusión automática falló; arregle los conflictos y luego realice un commit con el resultado.</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;">##############################################################################################</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">corregimos los conflictos</span>
+git add ControllerLogin.java
+git commit -m <span style="color: #2d9574;">"Conflicto resuelto en login"</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">1c007b0 (HEAD -&gt; feature/login) Conflicto resuelto en login</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">b524286 (fix/login) Corregimos errores de login, esto hará pum!</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">8911ee8 Nuevo feature del login</span>
+
+git log --oneline --graph feature/login fix/login
+<span style="color: #2aa1ae; background-color: #292e34;">#    </span><span style="color: #2aa1ae; background-color: #292e34;">*   1c007b0 (HEAD -&gt; feature/login) Conflicto resuelto en login &lt;- nuevo commit, no reescribió historial</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#    </span><span style="color: #2aa1ae; background-color: #292e34;">|\</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#    </span><span style="color: #2aa1ae; background-color: #292e34;">| * b524286 (fix/login) Corregimos errores de login, esto hará pum!</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#    </span><span style="color: #2aa1ae; background-color: #292e34;">* | 8911ee8 Nuevo feature del login &lt;--- el "Merge" no lo reescribió, mantuvo este commit </span>
+<span style="color: #2aa1ae; background-color: #292e34;">#    </span><span style="color: #2aa1ae; background-color: #292e34;">* | f3cc3f4 Agregamos cambios al controller</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#    </span><span style="color: #2aa1ae; background-color: #292e34;">|/</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#    </span><span style="color: #2aa1ae; background-color: #292e34;">* c5a59a2 Corregimos errores del login</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#    </span><span style="color: #2aa1ae; background-color: #292e34;">* e213803 Resolvemos bugs del controller del login</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orga578f76" class="outline-3">
+<h3 id="orga578f76"><span class="section-number-3">4.3.</span> Traerse cambios confirmados (reescribiendo el historial de commits)</h3>
+<div class="outline-text-3" id="text-4-3">
+<ul class="org-ul">
+<li>Usamos el <code>git rebase otraRama</code> para traernos los cambios de otra rama</li>
+<li>El <code>git rebase</code> altera el historial y hace que quede más lineal/uniforme, para eso elimina ramificaciones</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-shell">git log --oneline feature/login
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Previo al git rebase, estamos en feature/login</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">64db81f (HEAD -&gt; feature/login) Cambios en el Controller del login</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">7f4719a Desarrollamos el template para el login</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">44dff8f Creamos la vista para el Login</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">2950f8f Implementamos el Controller del login</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">7ded51d Agregamos estructura MVC</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">a566d68 (origin/master, master) Agregamos contenido al README</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">2175a2d Agregamos README</span>
+
+git log --oneline fix/login
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Rama fix/login se creó a partir de feature/login</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">e213803 (HEAD -&gt; fix/login) Resolvemos bugs del controller del login</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">bb00725 Corregimos errores de la Vista del Login</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">64db81f (HEAD -&gt; feature/login) Cambios en el Controller del login</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">"el resto de los commits de feature/login" hasta 2175..</span>
+
+git log --oneline --graph feature/login fix/login
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Comparamos que tan avanzadas están ambas ramas</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">e213803 (fix/login) Resolvemos bugs del controller del login</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">bb00725 Corregimos errores de la Vista del Login</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">64db81f (HEAD -&gt; feature/login) Cambios en el Controller del login</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">7f4719a Desarrollamos el template para el login</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">44dff8f Creamos la vista para el Login</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">2950f8f Implementamos el Controller del login</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">7ded51d Agregamos estructura MVC</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">a566d68 (origin/master, master) Agregamos contenido al README</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">2175a2d Agregamos README</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;">#########################################################################</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">cambiamos a la rama "feature/login" donde HEAD apunta a su commit más reciente</span>
+git checkout feature/login
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">nos traemos los cambios de la ama fix/login</span>
+git rebase fix/login
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">validamos que feature/login tenga los últimos commits de fix/login</span>
+git log --oneline
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">e213803 (HEAD -&gt; feature/login, fix/login) Resolvemos bugs del controller del login</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">bb00725 Corregimos errores de la Vista del Login</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">64db81f Cambios en el Controller del login</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">7f4719a Desarrollamos el template para el login</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">44dff8f Creamos la vista para el Login</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">2950f8f Implementamos el Controller del login</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">7ded51d Agregamos estructura MVC</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">a566d68 (origin/master, master) Agregamos contenido al README</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">2175a2d Agregamos README</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orge919bc0" class="outline-3">
+<h3 id="orge919bc0"><span class="section-number-3">4.4.</span> Traerse cambios confirmados (sin alterar el historial de commits)</h3>
+<div class="outline-text-3" id="text-4-4">
+<ul class="org-ul">
+<li>Usamos el <code>git merge otraRama</code> para traernos los cambios de otra rama</li>
+<li>El <code>git merge</code> a diferencia del <code>git rebase</code>, mantiene las ramificaciones</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-shell">git log --oneline feature/notifications
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Previo al git merge, estamos en feature/notifications</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">ba2b632 (HEAD -&gt; feature/notifications) Implementamos el controller para las notificaciones</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">53eba36 Creamos template para las notificaciones</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">8c03d54 Creamos estructura MVC para las notificaciones</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">ddbcd4e Creamos estructura para las notificaciones</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">a566d68 (origin/master, master) Agregamos contenido al README</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">2175a2d Agregamos README</span>
+
+git log --oneline fix/controllerNotifications
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">eff7bf8 (HEAD -&gt; fix/controllerNotifications) Corregimos los NullException</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">04f244b Removemos imports innecesarios</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">ba2b632 (feature/notifications) Implementamos el controller para las notificaciones</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">"el resto de los commits de feature/login" hasta 2175..</span>
+
+git checkout feature/notifications
+git merge fix/controllerNotifications
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Actualizando ba2b632..eff7bf8</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Fast-forward</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">src/controllers/ControllerNotification.java | 2 ++</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">1 file changed, 2 insertions(+)</span>
+
+git log --oneline
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">eff7bf8 (HEAD -&gt; feature/notifications, fix/controllerNotifications) Corregimos los NullException</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">04f244b Removemos imports innecesarios</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">ba2b632 Implementamos el controller para las notificaciones</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">53eba36 Creamos template para las notificaciones</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">8c03d54 Creamos estructura MVC para las notificaciones</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">ddbcd4e Creamos estructura para las notificaciones</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">a566d68 (origin/master, master) Agregamos contenido al README</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">2175a2d Agregamos README</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc00210d" class="outline-2">
+<h2 id="orgc00210d"><span class="section-number-2">5.</span> Alterar historial con GUI de varios commits</h2>
+<div class="outline-text-2" id="text-5">
+<blockquote>
+<p>
+Con el comando <code>git rebase -i hashCommit</code> podemos reescribir el historial,
+nos aparecerá un editor en la terminal con el historial de commits.
+</p>
+
+<p>
+A la izquierda del <b>Hash</b> de cada commit aparece por default <code>pick</code>
+pero podemos cambiarlo por otro comando (Ej. <code>squash</code>)
+</p>
+
+<p>
+Podemos fusionar varios commits en un solo commit con <code>squash</code> con el commit anterior
+(un commit el que esté debajo)
+ó cambiando el orden en que aparecen (<i>sólo debemos alterar el orden de las lineas</i>)
+ó eliminando varios commits (<i>sólo debemos borrar las lineas</i>)
+</p>
+
+<p>
+Ojo..! El orden de los commits en el <b>rebase interactivo</b> aparece al revés que en <code>git log --oneline</code>
+Los commits más recientes aparecen al final, y los más viejos arriba..
+</p>
+</blockquote>
+
+<div class="org-src-container">
+<pre class="src src-shell">git log --oneline
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">a60d9aa (HEAD -&gt; feature/layout) Borramos layout viejo (el commit más reciente)</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">12935c2 Agregamos alternativa al layout</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">21da601 Cambiamos nombre del layout</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">c2e1aa7 Corregimos errores del layout</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">9888240 Agregamos contenido al layout</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">69851c5 Creamos el layout.hbs &lt;- HASTA ACÁ será el HEAD~6, porque también considera el a60d9</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">a566d68 (origin/master, master) Agregamos contenido al README</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">2175a2d Agregamos README</span>
+
+git rebase -i HEAD~6
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">pick 69851c5 Creamos el layout.hbs (el commit más viejo)</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">squash 9888240 Agregamos contenido al layout</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">squash c2e1aa7 Corregimos errores del layout</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">squash 21da601 Cambiamos nombre del layout</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">squash 12935c2 Agregamos alternativa al layout &lt;--- se fusionará con el anterior (21da.. )</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">squash a60d9aa Borramos layout viejo &lt;--- (el commit más reciente) se fusionará con el anterior (1293.. )</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Rebase a566d68..a60d9aa en a566d68 (6 comandos)</span>
+
+git log --oneline
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">522ca88 (HEAD -&gt; feature/layout) Desarrollamos layout &lt;--- Fusionó los 6 commits en uno nuevo</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">a566d68 (origin/master, master) Agregamos contenido al README</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">2175a2d Agregamos README</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org23f2a00" class="outline-2">
+<h2 id="org23f2a00"><span class="section-number-2">6.</span> Borrar ramas</h2>
+<div class="outline-text-2" id="text-6">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">borramos una rama local</span>
+git branch -d miRamaLocal
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">borramos la rama que está en el repositorio remoto (internet)</span>
+git push origin -d unaRamaRemota
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org61813ac" class="outline-2">
+<h2 id="org61813ac"><span class="section-number-2">7.</span> Guardar cambios temporalmente</h2>
+<div class="outline-text-2" id="text-7">
+<div class="org-src-container">
+<pre class="src src-shell">git stash --save <span style="color: #2d9574;">"nombre "</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">lo q sea</span>
+git pop
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: jelou</p>
+<p class="date">Created: 2021-11-01 lun 22:04</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+
+
+</body></html>
